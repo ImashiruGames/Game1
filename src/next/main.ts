@@ -124,6 +124,10 @@ mountSampleControl({get enabled(){return audio.effectsEnabled;},get status(){ret
 mountSampleControl(music,el('music-controls'),{id:'music-toggle',label:'BGM',icon:'music',description:'ホーム・通常戦闘・中ボス・マザーコアで専用曲へ切り替えます。効果音とは別です。'});
 const audioVisibility=()=>audio.setHidden(document.hidden);
 document.addEventListener('visibilitychange',audioVisibility);audioVisibility();
+// 日本語: 画面を離れて戻る・OS側の中断のあと「再開」のまま無音になるのを防ぐため、次の操作（タップ・キー）で自動的に音を再開する。音のON/OFFボタン自体は除く。
+// English: After a tab switch or OS interruption audio stays in 'resume' until a gesture; revive it from the next tap/key so SE never stays silent.
+const reviveAudio=(event:Event)=>{if(document.hidden)return;const target=event.target instanceof Element?event.target:null;if(target?.closest('[id$="-toggle"],.compact-sound-control'))return;if(audio.effectsStatus==='resume')void audio.enableEffectsGesture();if(audio.musicStatus==='resume')void audio.enableMusicGesture();};
+for(const type of ['pointerup','click','keydown'])document.addEventListener(type,reviveAudio,true);
 mountPresentationSettings(audio,el('presentation-controls'),el<HTMLInputElement>('reduce'),{select:el<HTMLSelectElement>('battle-speed'),note:el('battle-speed-note')});
 mountSoundThemeSettings(audio,el('presentation-controls'));
 const cancelClickGuard=createCancelClickGuard();
