@@ -20,6 +20,7 @@ export interface TutorialPanel {
   readonly expect: Beat['expect'];
   readonly highlight?: Beat['highlight'];
   readonly last: boolean;
+  readonly canBack: boolean;
 }
 
 /** 日本語: 乱数列から「この列に置く」結果になる種を探す（敵の手を台本どおりにする）。 */
@@ -32,6 +33,8 @@ export function seedForColumn(legalIds: readonly string[], col: number, from = 0
 
 export class TutorialController extends BattleController {
   private cursor = -1;
+  private maxCursor = -1;
+  private rewinding = false;
   private enemyQueue: string[] = [];
   private advanceResolver: (() => void) | null = null;
   private beat: Beat | null = null;
@@ -50,7 +53,7 @@ export class TutorialController extends BattleController {
   get panel(): TutorialPanel | null {
     const beat = this.beat;
     if (!beat || this.finished) return null;
-    return { index: this.cursor, total: beats.length, who: beat.who, text: beat.text, expect: beat.expect, ...(beat.highlight ? { highlight: beat.highlight } : {}), last: this.cursor === beats.length - 1 };
+    return { index: this.cursor, total: beats.length, who: beat.who, text: beat.text, expect: beat.expect, ...(beat.highlight ? { highlight: beat.highlight } : {}), last: this.cursor === beats.length - 1, canBack: this.canBack };
   }
   get done(): boolean { return this.finished; }
   /** 日本語: 何をさせたいか。UI側のロックとハイライトに使う。 */
@@ -139,6 +142,18 @@ export class TutorialController extends BattleController {
   }
 
   // --- 台本の進行 ---
+  /** 日本語: 1つ前の台詞へ戻れるか。場面を切り替えた直後や、直前が操作の場面へは戻らない。 */
+  get canBack(): boolean {
+    const beat = this.beat;
+    if (!beat || this.finished || this.cursor < 1 || this.resolving) return false;
+    return beats[this.cursor - 1]!.expect.kind === 'tap' && !beat.scene && !beat.autoEnemy;
+  }
+  /** 日本語: 「戻る」。盤面は変えずに台詞だけ1つ戻す。 */
+  back(): void {
+    if (!this.canBack) return;
+    this.rewinding = true;
+    this.resolveExpect();
+  }
   /** 日本語: 「つぎへ」。tap型の台詞だけを進める。 */
   tap(): void { if (this.expect?.kind === 'tap') this.resolveExpect(); }
 
@@ -148,8 +163,11 @@ export class TutorialController extends BattleController {
     for (this.cursor = 0; this.cursor < beats.length && !this.destroyedFlag; this.cursor++) {
       const beat = beats[this.cursor]!;
       this.beat = beat;
-      if (beat.scene) this.snap(beat.scene);
-      if (beat.autoEnemy) {
+      // 日本語: 戻ってから進み直す時は場面や敵の手をやり直さない。
+      const fresh = this.cursor > this.maxCursor;
+      this.maxCursor = Math.max(this.maxCursor, this.cursor);
+      if (beat.scene && fresh) this.snap(beat.scene);
+      if (beat.autoEnemy && fresh) {
         this.enemyQueue = [...beat.autoEnemy];
         const next = this.automaticAction();
         if (next) await this.runSequence(next);
@@ -157,6 +175,7 @@ export class TutorialController extends BattleController {
       this.onPanel(this.panel);
       await new Promise<void>(resolve => { this.advanceResolver = resolve; });
       if (this.destroyedFlag) return;
+      if (this.rewinding) { this.rewinding = false; this.cursor -= 2; }
     }
     this.finished = true; this.beat = null;
     this.onPanel(null);

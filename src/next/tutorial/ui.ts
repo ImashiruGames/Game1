@@ -16,7 +16,7 @@ export interface TutorialUiHooks {
 const NAMES = { ao: '青の子', star: 'チュートリアル星人' } as const;
 const GUIDE: Record<string, string> = {
   drop: '光っている▼をタップ。もう一度タップで決定',
-  board: '左下の盤面スキルをタップ → 1段目をタップ → もう一度タップで決定',
+  board: '光っている盤面スキルをタップ → 光っている1段目をタップ → もう一度タップで決定',
   transform: '光っている「変化する」をタップ',
   category: '光っている「ステータス」をタップ',
   reward: '好きなカードをタップ。もう一度タップで決定',
@@ -30,19 +30,25 @@ export function createTutorialUi(root: HTMLElement, hooks: TutorialUiHooks) {
   element.setAttribute('aria-live', 'polite');
   element.hidden = true;
   let askedSkip = false;
+  // 日本語: 無効なボタン（戦闘終了後のマスなど）はクリックを受け取らないため、台詞の場面では全画面の受け皿を重ねる。
+  const catcher = document.createElement('div');
+  catcher.className = 'tutorial-catch';
+  catcher.hidden = true;
+  catcher.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); tutorial?.tap(); });
 
   const html = (p: TutorialPanel): string => {
     const portrait = hooks.portrait(p.who);
     const guide = GUIDE[p.expect.kind];
+    const back = p.canBack ? '<button type="button" class="tutorial-back" data-tutorial="back">◀ 戻る</button>' : '';
     const action = p.expect.kind === 'tap'
-      ? `<button type="button" class="tutorial-next" data-tutorial="next">${p.last ? 'おわり' : 'つぎへ ▶'}</button>`
-      : `<span class="tutorial-guide">${guide ?? ''}</span>`;
+      ? `${back}<span class="tutorial-tap">画面をタップで${p.last ? 'おわり' : 'つぎへ'} ▶</span>`
+      : `${back}<span class="tutorial-guide">${guide ?? ''}</span>`;
     return `<img class="tutorial-avatar" src="${portrait.src}" alt="${portrait.alt}"><div class="tutorial-body"><div class="tutorial-head"><span class="tutorial-who">${NAMES[p.who]}</span><span class="tutorial-count">${p.index + 1} / ${p.total}</span><button type="button" class="tutorial-skip" data-tutorial="skip">スキップ</button></div><p class="tutorial-text">${p.text}</p><div class="tutorial-foot">${action}</div></div>`;
   };
 
   /** 日本語: 盤面は一番上の空き段の上、報酬画面ではダイアログの先頭に置く。 */
   const place = (): void => {
-    if (!panel) { element.hidden = true; return; }
+    if (!panel) { element.hidden = true; catcher.hidden = true; return; }
     const reward = hooks.reward();
     const host: HTMLElement = reward.open ? reward : hooks.area();
     element.classList.toggle('in-dialog', reward.open);
@@ -50,10 +56,17 @@ export function createTutorialUi(root: HTMLElement, hooks: TutorialUiHooks) {
       if (reward.open) host.prepend(element); else host.append(element);
     }
     if (!reward.open) {
-      const area = hooks.area().getBoundingClientRect(), drops = hooks.drops().nextElementSibling?.getBoundingClientRect() ?? hooks.drops().getBoundingClientRect();
-      element.style.setProperty('--tut-top', `${Math.max(0, (drops.top - area.top) + 4)}px`);
+      // 日本語: 放出口（▼）の一番下より下に置く。PCでは▼が盤面の縁に重なるため実際の位置を測る。
+      const area = hooks.area().getBoundingClientRect();
+      const emitters = Array.from(hooks.drops().querySelectorAll<HTMLElement>('.edge-emitter'));
+      const board = hooks.drops().nextElementSibling?.getBoundingClientRect();
+      const bottom = emitters.length ? Math.max(...emitters.map(node => node.getBoundingClientRect().bottom)) : (board?.top ?? area.top);
+      element.style.setProperty('--tut-top', `${Math.max(0, bottom - area.top + 6)}px`);
     }
+    element.classList.toggle('is-busy', !!tutorial?.isResolving && panel.expect.kind !== 'tap');
     element.hidden = false;
+    if (!catcher.isConnected) document.body.append(catcher);
+    catcher.hidden = !(panel.expect.kind === 'tap' && !reward.open);
   };
   const show = (next: TutorialPanel | null): void => {
     panel = next;
@@ -76,7 +89,10 @@ export function createTutorialUi(root: HTMLElement, hooks: TutorialUiHooks) {
     else if (e.kind === 'transform') mark('[data-transform]');
     else if (e.kind === 'category') mark('#reward [data-category="stats"]', '#reward [data-category]');
     else if (e.kind === 'reward') mark('#reward [data-reward-preview]');
-    if (panel.highlight) mark(`#reward [data-category="${panel.highlight}"]`, '#reward [data-category]');
+    const h = panel.highlight;
+    if (h === 'board') mark('[data-board]');
+    else if (h === 'shape') mark('#skill-hud [data-skill-info="0"]');
+    else if (h) mark(`#reward [data-category="${h}"]`, '#reward [data-category]');
     if (e.kind === 'board') root.querySelectorAll<HTMLElement>('[data-cell-row="7"]').forEach(node => node.classList.add('tutorial-glow'));
   };
 
@@ -95,8 +111,10 @@ export function createTutorialUi(root: HTMLElement, hooks: TutorialUiHooks) {
   const gate = (event: MouseEvent): void => {
     if (!tutorial) return;
     const b = (event.target as Element | null)?.closest<HTMLElement>('button,[role=button],a');
+    // 日本語: 台詞だけの場面は画面のどこをタップしても進む（スキップ・戻るは除く）。
+    if (panel?.expect.kind === 'tap' && b?.dataset.tutorial !== 'skip' && b?.dataset.tutorial !== 'back') { event.preventDefault(); event.stopImmediatePropagation(); tutorial.tap(); return; }
     if (!b) return;
-    if (b.dataset.tutorial === 'next') { event.preventDefault(); event.stopImmediatePropagation(); tutorial.tap(); return; }
+    if (b.dataset.tutorial === 'back') { event.preventDefault(); event.stopImmediatePropagation(); tutorial.back(); return; }
     if (b.dataset.tutorial === 'skip') {
       event.preventDefault(); event.stopImmediatePropagation();
       if (tutorial.isFirstRun && !askedSkip && !window.confirm('スキップしてもあとからホームの「？」で見られます。スキップしますか？')) return;
@@ -106,8 +124,13 @@ export function createTutorialUi(root: HTMLElement, hooks: TutorialUiHooks) {
     if (!allowed(b)) { event.preventDefault(); event.stopImmediatePropagation(); }
   };
   // 日本語: ゲーム側のハンドラより先（捕捉段階）で止める。English: Capture phase, before the game's own handlers.
-  root.addEventListener('click', gate, true);
-  window.addEventListener('keydown', event => { if (tutorial && event.key === 'Escape') event.stopImmediatePropagation(); }, true);
+  document.addEventListener('click', gate, true);
+  window.addEventListener('keydown', event => {
+    if (!tutorial) return;
+    if (event.key === 'Escape') event.stopImmediatePropagation();
+    if (event.key === 'ArrowRight') tutorial.tap();
+    if (event.key === 'ArrowLeft') tutorial.back();
+  }, true);
   window.addEventListener('resize', place);
 
   return {
@@ -116,7 +139,7 @@ export function createTutorialUi(root: HTMLElement, hooks: TutorialUiHooks) {
       controller.onPanel = show;
       controller.onFinish = () => { show(null); hooks.finish(); };
     },
-    detach(): void { tutorial = null; panel = null; element.hidden = true; element.remove(); glow(); },
+    detach(): void { tutorial = null; panel = null; element.hidden = true; element.remove(); catcher.remove(); glow(); },
     /** 描画のたびに呼ぶ（盤面・報酬画面が作り直されるため）。 */
     afterRender(): void { if (tutorial) { place(); glow(); } },
     get active(): boolean { return tutorial !== null; },

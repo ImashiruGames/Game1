@@ -48,3 +48,21 @@ test('台本が許さない操作は受け付けない', async () => {
   assert.equal(await c.drop('ceiling:2:0'), true);
   c.destroy();
 });
+
+test('台詞は1つ戻れて、戻っても盤面ややり直しは起きない', async () => {
+  const c = new TutorialController(view, true);
+  const indexes: number[] = [];
+  c.onPanel = p => { if (p) indexes.push(p.index); };
+  void c.play(); await tick(); await tick();
+  assert.equal(c.canBack, false); // 最初の台詞
+  c.tap(); await tick(); c.tap(); await tick();
+  assert.equal(c.canBack, true);
+  c.back(); await tick();
+  assert.deepEqual(indexes, [0, 1, 2, 1]);
+  c.tap(); await tick();
+  assert.equal(indexes.at(-1), 2);
+  // 場面の切り替わる台詞（1-2の最初）からは戻れない
+  for (let i = 0; i < 2; i++) { c.tap(); await tick(); }
+  assert.equal(c.canBack, false);
+  c.destroy();
+});

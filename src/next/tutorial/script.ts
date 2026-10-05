@@ -21,7 +21,7 @@ export interface Beat {
   /** プレイヤーが操作したあとの敵の手（省略は様子見） */
   readonly enemy?: readonly string[];
   /** 報酬画面で光らせるボタン */
-  readonly highlight?: 'heal' | 'stats' | 'skills';
+  readonly highlight?: 'heal' | 'stats' | 'skills' | 'board' | 'shape';
 }
 const tap: Expect = { kind: 'tap' };
 const say = (who: Beat['who'], text: string, extra: Partial<Beat> = {}): Beat => ({ who, text, expect: tap, ...extra });
@@ -47,7 +47,7 @@ export const beats: readonly Beat[] = [
   say('star', 'むむっ'),
   say('ao', 'こんなふうに攻めるだけじゃなくて『塞ぐ』のも大事だよ'),
   // 1-5 形スキル（ヘルス）
-  say('ao', '下に見える十字のマークは『形スキル』。決められた形を自分の箱で作ると効果が発動するよ', { scene: 'shape' }),
+  say('ao', '光っている十字のマークは『形スキル』。決められた形を自分の箱で作ると効果が発動するよ', { scene: 'shape', highlight: 'shape' }),
   say('ao', 'あとひとつで十字になるよ。試しに作ってみよう！', { expect: { kind: 'drop', col: 'C' } }),
   say('ao', 'ヘルスで回復できたね！十字の中の3つ並びもリンクになるから攻撃もしちゃうよ'),
   // 1-6 とどめ
@@ -55,10 +55,10 @@ export const beats: readonly Beat[] = [
   // 2-1 ボーナスの選び方（撃破後に報酬画面が開く）
   say('star', 'やられた〜！'),
   say('ao', '敵を倒すと、ボーナスがもらえるよ'),
-  say('ao', '一番上の『今すぐ回復』はHPが減っていてすぐ回復したいときに押そう', { highlight: 'heal' }),
-  say('ao', '真ん中の『ステータス』は自分のパワーや体力を増やせるんだ！', { highlight: 'stats' }),
-  say('ao', 'そして下の『スキル』では新しいスキルを選べるの', { highlight: 'skills' }),
-  say('ao', '一度選ぶとその回は変えられないからよく考えてね。今回は真ん中を選んでみよう！', { highlight: 'stats', expect: { kind: 'category', category: 'stats' } }),
+  say('ao', 'ここの『今すぐ回復』はHPが減っていてすぐ回復したいときに押そう', { highlight: 'heal' }),
+  say('ao', 'ここの『ステータス』は自分のパワーや体力を増やせるんだ！', { highlight: 'stats' }),
+  say('ao', 'そしてここの『スキル』では新しいスキルを選べるの', { highlight: 'skills' }),
+  say('ao', '一度選ぶとその回は変えられないからよく考えてね。今回は光っている『ステータス』を選んでみよう！', { highlight: 'stats', expect: { kind: 'category', category: 'stats' } }),
   // 2-2 能力アップ
   say('ao', '好きなものを1つ選んでね。迷ったら体力がおすすめだよ', { expect: { kind: 'reward' } }),
   say('ao', '能力が上がったよ！'),
@@ -67,9 +67,9 @@ export const beats: readonly Beat[] = [
   say('star', 'まだまだ！'),
   say('ao', 'そうだ！『盤面スキル』と『変化』についても話しておかないとだね'),
   // 3-2 盤面スキル
-  say('ao', '盤面スキルは左下に見えているこれ！ゲージや体力を使って盤面をちょっと有利にするスキルだよ', { scene: 'boardSkill' }),
-  say('ao', 'わたしのは『痛みはお互いに』。選んだ横一列を消して1個につき2ダメージ。自分の箱の分は相手へ相手の箱の分は自分へ入るの'),
-  say('ao', 'この列は青が5個で紫が1個。相手に10ダメージで自分に2ダメージだね。さっそく使ってみよう！', { expect: { kind: 'board', row: 7 } }),
+  say('ao', '盤面スキルは光っているこれ！ゲージや体力を使って盤面をちょっと有利にするスキルだよ', { scene: 'boardSkill', highlight: 'board' }),
+  say('ao', 'わたしのは『痛みはお互いに』。選んだ横一列を消して1個につき2ダメージ。自分の箱の分は相手へ相手の箱の分は自分へ入るの', { highlight: 'board' }),
+  say('ao', 'この列は青が5個で紫が1個。相手に10ダメージで自分に2ダメージだね。さっそく使ってみよう！', { expect: { kind: 'board', row: 7 }, highlight: 'board' }),
   say('ao', '盤面が埋まって相手が箱を置けなくなると『負け』になっちゃう。こうやって空きを作りながらうまく有利に変えていってね'),
   // 3-3 変化
   say('ao', '次は『変化』についてお話しするね。ゲージがたまると使える特別な力。キャラが変身して強い効果をしばらく得られるよ', { scene: 'transform' }),

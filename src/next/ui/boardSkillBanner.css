@@ -1,0 +1,10 @@
+/* 日本語: 盤面の中央を横切る「盤面スキル発動！」の帯。操作は妨げない。 */
+.board-skill-banner{position:absolute;inset:0;z-index:12;pointer-events:none!important;display:flex;align-items:center;justify-content:center;overflow:hidden;--bsb:#7fd6ff;--bsb-bg:#0d2433}
+.board-skill-banner.is-warm{--bsb:#ffb589;--bsb-bg:#331a12}
+.board-skill-banner *{pointer-events:none!important}
+.bsb-flash{position:absolute;left:50%;top:50%;width:140%;aspect-ratio:1;margin:-70% 0 0 -70%;border-radius:50%;background:radial-gradient(circle,#ffffffcc 0,var(--bsb) 18%,#0000 62%);opacity:0}
+.bsb-band{position:relative;display:grid;gap:2px;justify-items:center;width:112%;padding:12px 0 10px;border-block:3px solid var(--bsb);background:linear-gradient(90deg,#0000,var(--bsb-bg) 14%,var(--bsb-bg) 86%,#0000);box-shadow:0 0 24px var(--bsb);transform:skewX(-12deg)}
+.bsb-title{font:900 28px/1.1 system-ui,sans-serif;letter-spacing:.08em;color:#fff;text-shadow:0 0 10px var(--bsb),0 0 22px var(--bsb),0 2px 2px #000;white-space:nowrap}
+.bsb-name{font:700 14px/1.2 system-ui,sans-serif;letter-spacing:.12em;color:var(--bsb);text-shadow:0 1px 2px #000;white-space:nowrap}
+.board-skill-banner.is-static .bsb-flash{display:none}
+@media(min-width:700px){.bsb-title{font-size:36px}.bsb-name{font-size:16px}}

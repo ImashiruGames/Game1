@@ -16,7 +16,7 @@ export const enemyPortraits = {
   hoshimimi: {label:'ホシミミ',alt:'耳先に星を付けた紫のうさぎ、ホシミミ',src:new URL('./assets/monsters/hoshimimi-transparent.webp',import.meta.url).href},
   mokousagi: {label:'モコウサギ',alt:'クリーム色と桃色のもこもこうさぎ、モコウサギ',src:new URL('./assets/monsters/mokousagi-transparent.webp',import.meta.url).href},
   hinobou: {label:'ヒノボウ',alt:'頭と尾に炎をともしたオレンジの子、ヒノボウ',src:new URL('./assets/monsters/hinobou-transparent.webp',import.meta.url).href},
-  'tutorial-star': {label:'チュートリアル星人',alt:'紫と白の歯のような姿をした練習相手、チュートリアル星人',src:new URL('./assets/monsters/tutorial-star.svg',import.meta.url).href},
+  'tutorial-star': {label:'チュートリアル星人',alt:'紫と白の歯のような姿をした練習相手、チュートリアル星人',src:new URL('./assets/monsters/tutorial-star-transparent.webp',import.meta.url).href},
   biribiriman: {label:'ビリビリマン',alt:'稲妻をまとった黄色い拳闘家、ビリビリマン',src:new URL('./assets/monsters/biribiriman-transparent.webp',import.meta.url).href},
   shashark: {label:'シャシャーク',alt:'青緑の水の輪をまとったサメ、シャシャーク',src:new URL('./assets/monsters/shashark-transparent.webp',import.meta.url).href},
   'twin-core': {label:'ツインコア',alt:'二つの核を持つツインコア',src:new URL('./assets/monsters/twin-core.webp',import.meta.url).href},

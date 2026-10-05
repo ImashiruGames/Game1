@@ -21,6 +21,7 @@ import type {RunMeta} from './meta/profile.ts';
 import {prepareDeparture} from './meta/departure.ts';
 import {roster} from './meta/roster.ts';
 import './style.css';
+import {createBoardSkillBanner} from './ui/boardSkillBanner.ts';
 import {TutorialController} from './tutorial/controller.ts';
 import {createTutorialUi} from './tutorial/ui.ts';
 import {installImpactReview} from './ui/impactReview.ts';
@@ -128,6 +129,7 @@ const portraitViewer=createPortraitViewer(root,{onClosePointer:point=>cancelClic
 const transformCinematic=createTransformationCinematic({onSkipPointer:point=>cancelClickGuard.mark(point)});
 const dropMotion=createDropMotion(root,()=>energyAppearance(displayed));
 const boardSkillPresentation=createBoardSkillPresentation(root);
+const boardSkillBanner=createBoardSkillBanner(root);
 const energyLinks=createEnergyLinks(root);
 const rowDoubleTap=createRowDoubleTap();
 const stageNumberCinematic=createStageNumberCinematic({onSkipPointer:point=>cancelClickGuard.mark(point)});
@@ -345,7 +347,7 @@ const view:BattleView={
   render:(state,enemyAction=null)=>render(state,true,controller.runSnapshot,enemyAction),
   drop:(event,signal,motion)=>dropMotion.play(event,{signal,motion}),
   react:(event,signal,motion)=>portraitReactions.play(event,{signal,motion}),
-  boardSkill:(event,resolution,before,signal,motion)=>{if(boardSkillPresentation.play(event,resolution,before,{signal,motion}))return event.type==='board-skill'?motion.timeline!.skill.name:motion.timeline!.skill.effect;},
+  boardSkill:(event,resolution,before,signal,motion)=>{if(event.type==='board-skill'&&event.actor==='player')boardSkillBanner.play(event.skillId,boardSkillName(event.skillId),{motion,signal});if(boardSkillPresentation.play(event,resolution,before,{signal,motion}))return event.type==='board-skill'?motion.timeline!.skill.name:motion.timeline!.skill.effect;},
   energy:(event,links,state,signal,motion)=>{energyLinks.play(event,links,state,signal,motion);},
   impact:event=>energyLinks.impact(event),
   feedback:showFeedback,
@@ -358,7 +360,7 @@ const view:BattleView={
   const restored=suppressRestoredTransitionTo===run.stage;if(restored)suppressRestoredTransitionTo=null;
   await stageNumberCinematic.play({eventId:after,event:{type:'stage-transition',fromStage:run.stage-1,toStage:run.stage},restored,signal,motion:presentationMotion()});
  },
- reset(){portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();stageNumberCinematic.reset();suppressRestoredTransitionTo=null;cancelClickGuard.reset();rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();transformCinematic.cancel('restart');audio.reset();music.restart();turnPresentation.reset();bossPresentation.reset();stagePresentation.reset();selected=null;highlights=[];el('feedback-layer').replaceChildren();const end=el<HTMLDialogElement>('end');if(end.open)end.close();history.length=0;last='';rewardDialog.reset();},
+ reset(){portraitViewer.close(false);boardSkillPresentation.clear();boardSkillBanner.clear();energyLinks.clear();stageNumberCinematic.reset();suppressRestoredTransitionTo=null;cancelClickGuard.reset();rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();transformCinematic.cancel('restart');audio.reset();music.restart();turnPresentation.reset();bossPresentation.reset();stagePresentation.reset();selected=null;highlights=[];el('feedback-layer').replaceChildren();const end=el<HTMLDialogElement>('end');if(end.open)end.close();history.length=0;last='';rewardDialog.reset();},
  reportError(){portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();stageNumberCinematic.cancel('presentation-error');rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();last='表示を更新しました。確定した行動は保持されています';}
 };
 const ownership=new SaveOwnership();
@@ -374,7 +376,7 @@ function savePrompt(title:string,message:string,actions:string):void{el('save-ti
 // 日本語: 最後に保存できた時刻（分かるときだけ）。English: Last successful save time, when known.
 function lastSavedLabel():string{const at=save?.latest?.savedAt;return typeof at==='number'&&at>0?`（${new Date(at).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})}）`:'';}
 function reportSaveError(error:unknown):void{portraitViewer.close(false);el('save-status').textContent='保存停止';savePrompt('保存を確認してください',error instanceof Error?error.message:'自動保存できませんでした',button('保存を再試行','data-save="retry" class="save-primary"')+button(`未保存分を破棄して最後の保存${lastSavedLabel()}へ戻る`,'data-save="restore"'));}
-const home=mountHome(root,{mountMusic:host=>mountHomeMusicControls(music,audio,host),store:()=>profileStore!,saved:()=>save?.latest?.checkpoint??null,preview:SAVE_PREVIEW,async qa(kind){if(!SAVE_PREVIEW)return;if(kind==='selected-kit'){const p=profileStore!.current,x=prepareDeparture(freezeRunMeta(p,p.selected,false),19),initialGauge=gaugeDefinition(x.config.characterId,tuningOf(x.config))!.cap;await newRun({...x,config:{...x.config,initialGauge,initialBoxes:[[7,0,'player'],[7,1,'player'],[7,2,'player'],[6,0,'player'],[6,1,'player'],[7,3,'enemy'],[7,4,'enemy'],[7,5,'enemy'],[6,3,'enemy'],[6,4,'enemy']].map(([row,col,owner],i)=>({id:`kit-qa:${i}`,row:Number(row),col:Number(col),owner:owner as 'player'|'enemy',type:'normal' as const,status:'normal' as const})),combatants:{player:{...x.config.combatants.player,maxHp:1000,initialHp:1000},enemy:{...x.config.combatants.enemy,maxHp:1000,initialHp:1000}}}});}else if(kind==='types'){const x=prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:13,mode:'manual',stage:1,fixture:'normal',route:'boss-loop'});await newRun({...x,config:{...x.config,initialBoxes:[{id:'type:0',row:7,col:0,owner:'player',type:'rubble',status:'normal'},{id:'type:1',row:6,col:0,owner:'player',type:'normal',status:'normal'},{id:'type:2',row:7,col:1,owner:'player',type:'poison',status:'normal'},{id:'type:3',row:7,col:2,owner:'enemy',type:'deadly-poison',status:'normal'},{id:'type:4',row:7,col:3,owner:'player',type:'frozen',status:'normal'},{id:'type:5',row:7,col:4,owner:'player',type:'shiny',status:'normal'},{id:'type:6',row:7,col:5,owner:'neutral',type:'thorn',status:'normal'}],combatants:{player:{...x.config.combatants.player,maxHp:1000,initialHp:1000},enemy:{...x.config.combatants.enemy,maxHp:1000,initialHp:1000}}}});}else if(kind==='imashiru'){const p=profileStore!.current;const meta=profileStore!.current.ownedCharacters.includes('imashiru')?prepareDeparture(freezeRunMeta(p,'imashiru',false),11):null;if(!meta)return;await newRun({...meta,config:{...meta.config,initialGauge:230,initialBoxes:[0,1].map(col=>({id:`imashiru-qa:${col}`,row:7,col,owner:'player' as const,type:'normal' as const,status:'normal' as const})),combatants:{...meta.config.combatants,enemy:{...meta.config.combatants.enemy,maxHp:999,initialHp:999}}}});}else await newRun(prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:kind==='speed'?25:50,fixture:'charged',route:'boss-loop'}));},continue(){saveDialog.close();void musicScene.enterBattle(controller.snapshot.config.enemyId);void controller.start();},retire:requestRetirement,tutorial(){startTutorial(false);},async launch(meta:RunMeta,route){const seed=crypto.getRandomValues(new Uint32Array(1))[0]!;await newRun(prepareDeparture(meta,seed,route));}});
+const home=mountHome(root,{mountMusic:host=>mountHomeMusicControls(music,audio,host),store:()=>profileStore!,saved:()=>save?.latest?.checkpoint??null,preview:SAVE_PREVIEW,async qa(kind){if(!SAVE_PREVIEW)return;if(kind==='selected-kit'){const p=profileStore!.current,x=prepareDeparture(freezeRunMeta(p,p.selected,false),19),initialGauge=gaugeDefinition(x.config.characterId,tuningOf(x.config))!.cap;await newRun({...x,config:{...x.config,initialGauge,initialBoxes:[[7,0,'player'],[7,1,'player'],[7,2,'player'],[6,0,'player'],[6,1,'player'],[7,3,'enemy'],[7,4,'enemy'],[7,5,'enemy'],[6,3,'enemy'],[6,4,'enemy']].map(([row,col,owner],i)=>({id:`kit-qa:${i}`,row:Number(row),col:Number(col),owner:owner as 'player'|'enemy',type:'normal' as const,status:'normal' as const})),combatants:{player:{...x.config.combatants.player,maxHp:1000,initialHp:1000},enemy:{...x.config.combatants.enemy,maxHp:1000,initialHp:1000}}}});}else if(kind==='types'){const x=prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:13,mode:'manual',stage:1,fixture:'normal',route:'boss-loop'});await newRun({...x,config:{...x.config,initialBoxes:[{id:'type:0',row:7,col:0,owner:'player',type:'rubble',status:'normal'},{id:'type:1',row:6,col:0,owner:'player',type:'normal',status:'normal'},{id:'type:2',row:7,col:1,owner:'player',type:'poison',status:'normal'},{id:'type:3',row:7,col:2,owner:'enemy',type:'deadly-poison',status:'normal'},{id:'type:4',row:7,col:3,owner:'player',type:'frozen',status:'normal'},{id:'type:5',row:7,col:4,owner:'player',type:'shiny',status:'normal'},{id:'type:6',row:7,col:5,owner:'neutral',type:'thorn',status:'normal'}],combatants:{player:{...x.config.combatants.player,maxHp:1000,initialHp:1000},enemy:{...x.config.combatants.enemy,maxHp:1000,initialHp:1000}}}});}else if(kind==='imashiru'){const p=profileStore!.current;const meta=profileStore!.current.ownedCharacters.includes('imashiru')?prepareDeparture(freezeRunMeta(p,'imashiru',false),11):null;if(!meta)return;await newRun({...meta,config:{...meta.config,initialGauge:230,initialBoxes:[0,1].map(col=>({id:`imashiru-qa:${col}`,row:7,col,owner:'player' as const,type:'normal' as const,status:'normal' as const})),combatants:{...meta.config.combatants,enemy:{...meta.config.combatants.enemy,maxHp:999,initialHp:999}}}});}else await newRun(prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:kind==='speed'?25:50,fixture:'charged',route:'boss-loop'}));},continue(){saveDialog.close();void musicScene.enterBattle(controller.snapshot.config.enemyId);void controller.start();},retire:requestRetirement,tutorial(){void startTutorial(false);},async launch(meta:RunMeta,route){const seed=crypto.getRandomValues(new Uint32Array(1))[0]!;await newRun(prepareDeparture(meta,seed,route));}});
 function reconcileSavedSettlement():void{if(!profileStore||!save)throw new Error('保存の準備ができていません');reconcileSavedProgress(save,profileStore);}
 function showHome():void{el<HTMLDialogElement>('battle-log').close();el<HTMLDialogElement>('skill-info').close();if(!profileStore)return;try{reconcileSavedSettlement();}catch(error){saveRecovery='boot';reportSaveError(error);return;}details.close();rewardDialog.reset();el<HTMLDialogElement>('end').close();saveDialog.close();selected=null;void musicScene.showHome();home.show();}
 function requestRetirement():boolean {
@@ -406,11 +408,34 @@ const tutorialUi=createTutorialUi(root,{
 });
 /** 日本語: 初めて開いた人（成長の記録も保存中のランもない）だけ自動で始める。 */
 function isNewPlayer():boolean{if(!profileStore||save?.latest)return false;const p=profileStore.current;return p.revision<=1&&Object.keys(p.receipts).length===0;}
-function startTutorial(first:boolean):void{
- if(!profileStore||tutorial)return;
- realController=controller;home.hide();saveDialog.close();details.close();rewardDialog.reset();el<HTMLDialogElement>('end').close();selected=null;
- tutorial=new TutorialController(view,first);controller=tutorial;tutorialUi.attach(tutorial);view.reset?.();
- void musicScene.enterBattle('tutorial-star');void tutorial.play();
+/** 日本語: 音が鳴ることを先に伝え、「はい」ならBGMと効果音をオンにする。すでに両方オンなら出さない。 */
+function askTutorialSound():Promise<void>{
+ if(audio.effectsEnabled&&music.enabled)return Promise.resolve();
+ return new Promise(resolve=>{
+  const d=document.createElement('dialog');d.id='tutorial-sound';d.className='tutorial-sound';d.setAttribute('aria-label','音の確認');
+  d.innerHTML='<h2>音について</h2><p>このゲームは音が鳴ります。<br>音を鳴らしますか？</p><div class="tutorial-sound-actions"><button type="button" data-sound="yes" class="primary">はい</button><button type="button" data-sound="no">いいえ</button></div>';
+  d.addEventListener('cancel',event=>event.preventDefault());
+  d.addEventListener('click',event=>{
+   const b=(event.target as Element).closest<HTMLButtonElement>('button[data-sound]');if(!b)return;
+   event.stopPropagation();
+   // 日本語: ユーザー操作の中で開始する（ブラウザの自動再生制限のため）。
+   if(b.dataset.sound==='yes'){audio.setEffectsEnabled(true);void audio.enableEffectsGesture();music.setEnabled(true);void music.enableGesture();}
+   d.close();d.remove();resolve();
+  });
+  root.append(d);d.showModal();d.querySelector<HTMLButtonElement>('[data-sound="yes"]')?.focus();
+ });
+}
+let tutorialStarting=false;
+async function startTutorial(first:boolean):Promise<void>{
+ if(!profileStore||tutorial||tutorialStarting)return;
+ tutorialStarting=true;
+ try{
+  home.hide();saveDialog.close();details.close();rewardDialog.reset();el<HTMLDialogElement>('end').close();selected=null;
+  await askTutorialSound();
+  realController=controller;
+  tutorial=new TutorialController(view,first);controller=tutorial;tutorialUi.attach(tutorial);view.reset?.();
+  void musicScene.enterBattle('tutorial-star');void tutorial.play();
+ }finally{tutorialStarting=false;}
 }
 function endTutorial(completed:boolean):void{
  const t=tutorial;if(!t||!profileStore)return;
@@ -440,7 +465,7 @@ async function boot():Promise<void>{
   profileReady=true;saveRecovery='controller';
   if(saved){const restoredCheckpoint=saved.checkpoint;suppressRestoredTransitionTo=restoredCheckpoint.run&&(restoredCheckpoint.pendingReward||restoredCheckpoint.run.offer?.category==='heal')?restoredCheckpoint.run.stage+1:null;controller=BattleController.restore(saved.checkpoint,view,persistence);restoreSetupFields();render(controller.snapshot,true,controller.runSnapshot);}
   else controller=new BattleController(initialSetup.config,view,initialSetup.options,persistence);
-  if(epoch===bootEpoch){if(isNewPlayer()){saveDialog.close();startTutorial(true);}else showHome();}
+  if(epoch===bootEpoch){if(isNewPlayer()){saveDialog.close();void startTutorial(true);}else showHome();}
  }catch(error){if(epoch!==bootEpoch)return;savePrompt('セーブを読み込めません',error instanceof Error?error.message:'保存を確認できません。元の内容は保持しています。',button('再確認','data-save="read"')+(ownership.owned&&(profileReady||profileReadComplete&&!save?.latest)&&save?.hasExisting?button('新しいラン','data-save="new"'):''));}
 }
 async function newRun(setup=initialSetup):Promise<void>{
