@@ -1,0 +1,5 @@
+/* Same existing gauge/intent row, with no additional board-height cost. */
+.gauge-row{grid-template-columns:auto minmax(18px,1fr) minmax(0,max-content)}
+#intent{overflow:hidden;text-overflow:ellipsis;max-width:174px}
+#intent.boss-intent{font-variant-numeric:tabular-nums;color:#e4d7f3}
+.boss-cycle-details ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:6px;padding:0;list-style:none;margin:10px 0}.boss-cycle-details li{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:7px;border:1px solid #415461;border-radius:5px;font-size:12px}.boss-cycle-details li>span{color:#b6c7d4}.boss-cycle-details li.current{border-color:#dbb28b;background:#3b3126}.boss-cycle-details li>b{font-size:10px;color:#ffe0a8}

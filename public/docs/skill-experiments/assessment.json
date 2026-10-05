@@ -1,0 +1,4798 @@
+{
+  "status": "bounded_first_evaluation_pass_complete;22provisional3unscored;human_validation_and_long_runs_future",
+  "sourceTreeHash": "748ef269a4ee8d2a270b5ef9d9ba8ef0bcaaebb64162700b606360bc90975a2a",
+  "fixtureCasesPassed": 50,
+  "interactionCasesPassed": 14,
+  "sharedBaselineRuns": 36,
+  "experimentalRuns": 900,
+  "savedReplayVerification": {
+    "sessions": 936,
+    "actions": 31296,
+    "baselineParity": 36,
+    "failures": [],
+    "description": "Every saved organic action trace re-executed from its exact config; events,HP,RNG,final state hash match. All36 none-equipped sessions equal original release state/event results at every action."
+  },
+  "localChoiceProbeCount": 2236,
+  "localChoiceDifferences": 51,
+  "initialWindow": 60,
+  "censoredExtensions": [
+    {
+      "proposal": "B011",
+      "key": "blue/nigirin/42",
+      "terminalOwnTurns": 70,
+      "result": {
+        "winner": "player",
+        "reason": "hp-zero"
+      }
+    },
+    {
+      "proposal": "D001",
+      "key": "blue/nigirin/42",
+      "terminalOwnTurns": 61,
+      "result": {
+        "winner": "enemy",
+        "reason": "hp-zero"
+      }
+    }
+  ],
+  "policies": [
+    "Headless synthetic decision policy; not human play or fun",
+    "Knows next deterministic enemy reply when scoring; not a player-realistic win-rate estimate",
+    "A057 critical outcome suppressed from move scoring",
+    "B011 only maximal full lines; short segments omitted",
+    "B019 first128 differing-owner pairs; full action space not exhaustive",
+    "Single battles, no rewards/carry;60 own-turn window is censored not loss",
+    "Post-divergence whole-game deltas descriptive, not local causal effects"
+  ],
+  "perSkill": [
+    {
+      "proposal": "A061",
+      "name": "縁の下の力持ち",
+      "battles": 36,
+      "triggeredBattles": 36,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 601,
+        "playerActiveDrops": 472,
+        "playerLinkHits": 166,
+        "enemyLinkHits": 133,
+        "eligibleEvents": 166,
+        "triggerEvents": 158,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1531,
+        "playerLoss": 516,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 273
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {
+        "bonus_1": 125,
+        "bonus_2": 19,
+        "bonus_0": 8,
+        "bonus_3": 14
+      },
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 22,
+          "triggers": 22,
+          "playerLinkHits": 22,
+          "enemyLinkHits": 37
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 16,
+          "triggers": 16,
+          "playerLinkHits": 16,
+          "enemyLinkHits": 18
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 28,
+          "triggers": 28,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 44
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 44,
+          "triggers": 38,
+          "playerLinkHits": 44,
+          "enemyLinkHits": 17
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 24,
+          "triggers": 24,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 7
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 32,
+          "triggers": 30,
+          "playerLinkHits": 32,
+          "enemyLinkHits": 10
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 89,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 158,
+        "enemyLinkTurns": 110,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 36
+      },
+      "interpretation": "全158リンク起点で加算。+1が125、+2が19、+3が14。この方策では上限3の常時化は見られず、今回の横展開プレイとは状況が異なる。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "空盤面の1つの実プレイでは3自手目で底段上限3へ到達。以後は同じ最大リンク経路を選び、継続的な新判断より火力加算という観察。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "one partial organic run"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "短い現在盤面条件で分かりやすい。ただし広げる開幕では早期上限後に平坦化する。",
+        "nextTest": "青の別seed・縦積み/横展開を各1戦。底段を消す固有技との即時交換を観察。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "横展開した1戦では早期上限後、同じ最大リンク経路を選んだ",
+        "clarity": "底段の数と先頭リンク加算は読みやすい",
+        "tedium": "上限後の平坦化を1つのプレイで観察。縦積み方策では加算量が変わる"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "A062",
+      "name": "鉄壁",
+      "battles": 36,
+      "triggeredBattles": 3,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 14.0,
+      "stats": {
+        "ownDecisionCount": 625,
+        "playerActiveDrops": 496,
+        "playerLinkHits": 184,
+        "enemyLinkHits": 146,
+        "eligibleEvents": 146,
+        "triggerEvents": 11,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1486,
+        "playerLoss": 532,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 249
+      },
+      "samePhysicalPrefixChoiceDifferences": 1,
+      "choiceExamples": [
+        {
+          "key": "red/nigirin/1112",
+          "step": 25,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:1:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:2:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -5.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": -5.95
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": -5.95
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "ember"
+              },
+              "score": -8.9
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 38,
+          "triggers": 0,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 38
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 19,
+          "triggers": 0,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 19
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 46,
+          "triggers": 0,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 46
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 24,
+          "triggers": 9,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 24
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 8,
+          "triggers": 0,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 11,
+          "triggers": 2,
+          "playerLinkHits": 36,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 92,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 171,
+        "enemyLinkTurns": 118,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 35
+      },
+      "interpretation": "発動は赤の3戦のみ。青18戦は0。現在の方策は即時ダメージ優先で行消しを使うため、維持する四角の価値を過小観測し得る。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "遠方の自2×2で敵hikikizanの10→8。HP22対20、被害ゲージ8対10。現在条件は分かるが自然頻度に懸念。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "not established by this report"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "条件付き守備の存在と効果は読みやすいが、3/36戦しか露出しない方策もある。",
+        "nextTest": "仕込みなしで四角を残す自然な青/赤戦。意識的な作成が面倒な準備になるかを観察。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "四角を残す守備条件。自然な選択価値は露出不足",
+        "clarity": "遠方の2×2でも10→8。条件付き守備は明瞭",
+        "tedium": "四角を作ることが面倒な準備にならないかは未確認"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "A001",
+      "name": "ぴたり三連",
+      "battles": 36,
+      "triggeredBattles": 36,
+      "winsObservedWindow": 28,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 596,
+        "playerActiveDrops": 466,
+        "playerLinkHits": 165,
+        "enemyLinkHits": 132,
+        "eligibleEvents": 165,
+        "triggerEvents": 96,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1572,
+        "playerLoss": 519,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 287
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 22,
+          "triggers": 13,
+          "playerLinkHits": 22,
+          "enemyLinkHits": 37
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 15,
+          "triggers": 10,
+          "playerLinkHits": 15,
+          "enemyLinkHits": 16
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 28,
+          "triggers": 15,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 45
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 44,
+          "triggers": 28,
+          "playerLinkHits": 44,
+          "enemyLinkHits": 17
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 24,
+          "triggers": 14,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 7
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 32,
+          "triggers": 16,
+          "playerLinkHits": 32,
+          "enemyLinkHits": 10
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 89,
+        "n": 1
+      },
+      "additionalDenominators": {
+        "linkOrigins": 157,
+        "enemyLinkTurns": 110,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 36
+      },
+      "interpretation": "96/165の自一次リンクへ加算。現在状態の選択差は1/89。短いリンク優遇の効果を確認しただけで、選択が楽しくなった証拠ではない。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_one_completed_organic_browser_comparison",
+        "observer": "assistant",
+        "evidence": "空盤面、青/ヒキキザン/seed1。基準と装備の双方が8自手・HP27で勝利。投入列3,4,5,6,6,6,6,6。装備時は2回発動し、一次攻撃4/7/4/7/11が7/7/7/7/11へ。実際のUIを各手で読み、自然に選んだ1比較。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "Round2 terminal comparison; one assistant observer; prior baseline familiarity; no human enjoyment measurement"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "青・ヒキキザン・seed1の完走比較で、基準と同じ8手を選んだ。短いリンクを選び分ける新しい分岐は現れなかった。 2回の発動は普通の攻撃の中で生じた。終盤の同じ列への投入反復は変わらなかった。",
+        "nextTest": "ちょうど3と長いリンクが同時に選べる自然盤面を比較。今回の同じ経路への加算だけで判断の幅が増したとはしない。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "青・ヒキキザン・seed1の完走比較で、基準と同じ8手を選んだ。短いリンクを選び分ける新しい分岐は現れなかった。",
+        "clarity": "ちょうど3は7ダメージ・発動1、4連も7・発動0。3→4で威力が増えない性質がプレビューから分かった。",
+        "tedium": "2回の発動は普通の攻撃の中で生じた。終盤の同じ列への投入反復は変わらなかった。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "A004",
+      "name": "一点照準",
+      "battles": 36,
+      "triggeredBattles": 36,
+      "winsObservedWindow": 32,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 11.5,
+      "stats": {
+        "ownDecisionCount": 508,
+        "playerActiveDrops": 392,
+        "playerLinkHits": 126,
+        "enemyLinkHits": 98,
+        "eligibleEvents": 126,
+        "triggerEvents": 124,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1547,
+        "playerLoss": 397,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 191
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 20,
+          "triggers": 20,
+          "playerLinkHits": 20,
+          "enemyLinkHits": 31
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 12,
+          "triggers": 12,
+          "playerLinkHits": 12,
+          "enemyLinkHits": 11
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 23,
+          "triggers": 23,
+          "playerLinkHits": 23,
+          "enemyLinkHits": 32
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 33,
+          "triggers": 31,
+          "playerLinkHits": 33,
+          "enemyLinkHits": 11
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 18,
+          "triggers": 18,
+          "playerLinkHits": 18,
+          "enemyLinkHits": 6
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 20,
+          "triggers": 20,
+          "playerLinkHits": 20,
+          "enemyLinkHits": 7
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 82,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 124,
+        "enemyLinkTurns": 82,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 27
+      },
+      "interpretation": "124リンク起点すべてで最大軸1本へ加算。現状態82件では方策の選択不変。大きい+5を新たな判断と同一視しない。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 主軸が競合する自然盤面で最大実長の軸への優遇が選択を変えるか。現状は数値増幅として保留。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1。既に選んだ投入列3,4,5,6,6,6を実UIで固定再生し、6自手・HP27で勝利。攻撃9/12/9。自由な新しい選択の観察とは区別。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_input_live_UI_replay",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "有利ケースと固定入力再生では短い条件の増幅が明瞭。最大実長の軸を選ぶ面白さは未観察で、伸ばす可能性だけを低確信で仮評価。",
+        "nextTest": "主軸が競合する自然盤面で最大実長の軸への優遇が選択を変えるか。現状は数値増幅として保留。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "同じ既定投入列で6手勝利。最大実長の軸を選び分ける新たな判断は今回観察していない。",
+        "clarity": "有利ケースと固定入力では攻撃量9・12・9が読めた。一軸経路では毎攻撃＋5に近い単純強化。",
+        "tedium": "8手の基準経路が6手へ短縮。操作負担は増えないが、これは火力による短縮。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low_role_hypothesis_from_favorable_and_fixed_UI",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null,
+      "scoreEvidenceLimit": "Role hypothesis only: favorable fixture plus fixed-input live replay. No novel organic choice or human enjoyment claim."
+    },
+    {
+      "proposal": "A025",
+      "name": "最低保証",
+      "battles": 36,
+      "triggeredBattles": 21,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 618,
+        "playerActiveDrops": 488,
+        "playerLinkHits": 183,
+        "enemyLinkHits": 140,
+        "eligibleEvents": 183,
+        "triggerEvents": 45,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1531,
+        "playerLoss": 539,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 280
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 23,
+          "triggers": 13,
+          "playerLinkHits": 23,
+          "enemyLinkHits": 38
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 16,
+          "triggers": 11,
+          "playerLinkHits": 16,
+          "enemyLinkHits": 18
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 29,
+          "triggers": 15,
+          "playerLinkHits": 29,
+          "enemyLinkHits": 45
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 50,
+          "triggers": 2,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 20
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 28,
+          "triggers": 2,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 37,
+          "triggers": 2,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 91,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 171,
+        "enemyLinkTurns": 116,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 37
+      },
+      "interpretation": "45/183の自一次リンクで最低値が働いた。15戦は発動0。高火力や赤の縦置換では床が不要な点を分けて観察する。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 赤や他強化でも役割が残るか。単なる小さな底上げとの違いを、自由な選択場面で確かめる。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1、固定入力3,4,5,6,6,6,6,6。攻撃5/7/5/7/11、8自手・HP27で勝利。基準と同じ経路・終了手。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_input_live_UI_replay",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 2,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "最低値の小さな補強として分かりやすいが、3連＋1だけでは独自性が弱いという設計仮説。人間が退屈と感じたという証拠ではない。",
+        "nextTest": "赤や他強化でも役割が残るか。単なる小さな底上げとの違いを、自由な選択場面で確かめる。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "基準と同じ8手。3連の4→5以外は変化が小さく、選択差は観察していない。",
+        "clarity": "最低5のルールと＋1は単純。強いリンクでは表示が基準と同じになった。",
+        "tedium": "追加操作はないが、独自の手応えが弱い可能性。これは限定観察の仮説。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low_role_hypothesis_from_favorable_and_fixed_UI",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null,
+      "scoreEvidenceLimit": "Role hypothesis only: favorable fixture plus fixed-input live replay. No novel organic choice or human enjoyment claim."
+    },
+    {
+      "proposal": "A026",
+      "name": "追い込み",
+      "battles": 36,
+      "triggeredBattles": 24,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 617,
+        "playerActiveDrops": 487,
+        "playerLinkHits": 180,
+        "enemyLinkHits": 138,
+        "eligibleEvents": 180,
+        "triggerEvents": 32,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1496,
+        "playerLoss": 537,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 259
+      },
+      "samePhysicalPrefixChoiceDifferences": 1,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/2026",
+          "step": 47,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:3:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:2:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:3:0"
+              },
+              "score": 48.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": 44.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": 44.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:3:0"
+              },
+              "score": 32.05
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 24,
+          "triggers": 3,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 37
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 17,
+          "triggers": 4,
+          "playerLinkHits": 17,
+          "enemyLinkHits": 18
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 27,
+          "triggers": 1,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 46
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 47,
+          "triggers": 10,
+          "playerLinkHits": 47,
+          "enemyLinkHits": 18
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 28,
+          "triggers": 6,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 37,
+          "triggers": 8,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 91,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 167,
+        "enemyLinkTurns": 114,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 36
+      },
+      "interpretation": "32/180のhitで発動。閾値を跨ぐ複軸fixtureは合格。通常戦の取得/選択価値はUI観察待ち。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 瀕死の敵に複数の勝ち筋がある自然局面を観察。非発動の理由をHP割合の計算なしに予告できるか。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1、基準と同じ8自手・HP27で勝利、発動0。有利ケースでは敵11→縦4で7→横8で撃破。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_input_live_UI_replay",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": null,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "insufficient_for_scoring",
+        "basis": "有利ケースは動作、自由戦由来の固定経路では発動0。用途の体験根拠不足。",
+        "nextTest": "瀕死の敵に複数の勝ち筋がある自然局面を観察。非発動の理由をHP割合の計算なしに予告できるか。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "固定入力の完走では未発動。最後の攻撃前の敵HP8は25%閾値7.5を上回り、そのまま11で撃破した。",
+        "clarity": "有利ケースでは同じ投入の途中で閾値へ入る効果を確認。ただし勝ち切る経路でも発動帯を通らないことがある。",
+        "tedium": "発動待ちのために弱い攻撃へ変える価値は未確認。無理に待たせる採用は避けたい。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "limited_role_observation_unscored",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": "有利ケースは動作、自由戦由来の固定経路では発動0。用途の体験根拠不足。"
+    },
+    {
+      "proposal": "A028",
+      "name": "対等の刃",
+      "battles": 36,
+      "triggeredBattles": 14,
+      "winsObservedWindow": 29,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 610,
+        "playerActiveDrops": 486,
+        "playerLinkHits": 181,
+        "enemyLinkHits": 134,
+        "eligibleEvents": 181,
+        "triggerEvents": 29,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1544,
+        "playerLoss": 514,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 244
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 22,
+          "triggers": 10,
+          "playerLinkHits": 22,
+          "enemyLinkHits": 37
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 19,
+          "triggers": 1,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 19
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 25,
+          "triggers": 17,
+          "playerLinkHits": 25,
+          "enemyLinkHits": 39
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 50,
+          "triggers": 1,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 20
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 28,
+          "triggers": 0,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 37,
+          "triggers": 0,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 91,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 169,
+        "enemyLinkTurns": 111,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 34
+      },
+      "interpretation": "29/181のhitで発動、22戦は0。比率は各hit直前に評価されることを実装で確認。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 実際に不利なHP割合になる対戦で、攻撃と回復のどちらを選ぶかを確認。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1、同じ固定8投入でHP27勝利、発動0。こちらのHP割合は常に敵より高かった。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_input_live_UI_replay",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": null,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "insufficient_for_scoring",
+        "basis": "有利ケース以外では条件に入らず、逆転局面の体験を未観察。",
+        "nextTest": "実際に不利なHP割合になる対戦で、攻撃と回復のどちらを選ぶかを確認。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "終始こちらのHP割合が高い経路では未発動。優勢時の判断を増やす技能ではない。",
+        "clarity": "有利ケースの4→7は確認。割合比較を毎回頭で計算せず読めるかは未確認。",
+        "tedium": "追加操作や形の準備は不要だが、不利な自然対戦での露出が今回足りない。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "limited_role_observation_unscored",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": "有利ケース以外では条件に入らず、逆転局面の体験を未観察。"
+    },
+    {
+      "proposal": "A030",
+      "name": "フルパワー",
+      "battles": 36,
+      "triggeredBattles": 19,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.0,
+      "stats": {
+        "ownDecisionCount": 597,
+        "playerActiveDrops": 467,
+        "playerLinkHits": 157,
+        "enemyLinkHits": 132,
+        "eligibleEvents": 157,
+        "triggerEvents": 43,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1472,
+        "playerLoss": 515,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 235
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 23,
+          "triggers": 2,
+          "playerLinkHits": 23,
+          "enemyLinkHits": 38
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 19,
+          "triggers": 0,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 19
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 27,
+          "triggers": 0,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 46
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 41,
+          "triggers": 15,
+          "playerLinkHits": 41,
+          "enemyLinkHits": 15
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 21,
+          "triggers": 12,
+          "playerLinkHits": 21,
+          "enemyLinkHits": 6
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 26,
+          "triggers": 14,
+          "playerLinkHits": 26,
+          "enemyLinkHits": 8
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 89,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 150,
+        "enemyLinkTurns": 108,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 33
+      },
+      "interpretation": "43回発動、17戦は0。ヘルスで全快して同投入の最初のリンクだけ強化するfixtureは合格。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "ヘルスで20→30、その後リンク9。回復と攻撃が短い条件でつながる読みやすい相性という限定観察。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "not established by this report"
+      },
+      "assistantProvisionalPotential": {
+        "score": 4,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "既存のヘルスから全快→攻撃という短く見える相性が、実際のUIで読み取れる。",
+        "nextTest": "不利なHP状態と満タン維持の代償。回復を優先する判断が自然に起きるか。"
+      },
+      "recommendation": "adopt_candidate",
+      "recommendationLabel": "採用検討候補",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "既存の回復で満HPにして、その投入を強める相性",
+        "clarity": "ヘルス20→30の後に9ダメージが見え、短い条件でつながる",
+        "tedium": "自然な対戦で何度も使った時の負担は未確認"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "A031",
+      "name": "血の前借り",
+      "battles": 36,
+      "triggeredBattles": 36,
+      "winsObservedWindow": 28,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 10.0,
+      "stats": {
+        "ownDecisionCount": 525,
+        "playerActiveDrops": 413,
+        "playerLinkHits": 136,
+        "enemyLinkHits": 106,
+        "eligibleEvents": 413,
+        "triggerEvents": 133,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1444,
+        "playerLoss": 664,
+        "playerHealRequested": 15,
+        "playerHealActual": 15,
+        "enemyHealActual": 136
+      },
+      "samePhysicalPrefixChoiceDifferences": 4,
+      "choiceExamples": [
+        {
+          "key": "blue/nigirin/7",
+          "step": 9,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:1:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -7.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": -7.95
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -7.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -7.95
+            }
+          ]
+        },
+        {
+          "key": "blue/nigirin/65537",
+          "step": 9,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:1:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -7.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": -7.95
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -7.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -7.95
+            }
+          ]
+        },
+        {
+          "key": "red/nigirin/42",
+          "step": 9,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:1:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": 0.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 0.05
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 110,
+          "triggers": 23,
+          "playerLinkHits": 22,
+          "enemyLinkHits": 35
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 72,
+          "triggers": 14,
+          "playerLinkHits": 13,
+          "enemyLinkHits": 16
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 85,
+          "triggers": 24,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 29
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 64,
+          "triggers": 34,
+          "playerLinkHits": 39,
+          "enemyLinkHits": 14
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 42,
+          "triggers": 19,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 6
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 40,
+          "triggers": 19,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 6
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 80,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 131,
+        "enemyLinkTurns": 87,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 24
+      },
+      "interpretation": "413通常投入中133費用支払い。攻撃起点は131で、支払い後に自己KOして攻撃が出なかった投入がある。無料投入への費用なしを別検証。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "自己HP2消費後に7＋7。費用と結果は明瞭だが、自動支払いは危険を感じやすいという限定観察。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "not established by this report"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "HP2と各リンク増加という明確な即時代償があるが、自動自己KOの危険を抱える。",
+        "nextTest": "HP1/2/3の予告と取消操作、回復が先に入る時の支払い順を実UIで確認。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "HP2を今払い、複数リンクを強める明確な交換",
+        "clarity": "自己費用2→7＋7の順が見える",
+        "tedium": "自動自己KOの危険がある。HP1/2/3の予告を要確認"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "A035",
+      "name": "単線集中",
+      "battles": 36,
+      "triggeredBattles": 36,
+      "winsObservedWindow": 30,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.0,
+      "stats": {
+        "ownDecisionCount": 556,
+        "playerActiveDrops": 431,
+        "playerLinkHits": 144,
+        "enemyLinkHits": 120,
+        "eligibleEvents": 144,
+        "triggerEvents": 133,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1514,
+        "playerLoss": 466,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 212
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 21,
+          "triggers": 21,
+          "playerLinkHits": 21,
+          "enemyLinkHits": 37
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 14,
+          "triggers": 14,
+          "playerLinkHits": 14,
+          "enemyLinkHits": 14
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 25,
+          "triggers": 25,
+          "playerLinkHits": 25,
+          "enemyLinkHits": 39
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 40,
+          "triggers": 32,
+          "playerLinkHits": 40,
+          "enemyLinkHits": 15
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 19,
+          "triggers": 19,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 6
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 25,
+          "triggers": 22,
+          "playerLinkHits": 25,
+          "enemyLinkHits": 9
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 83,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 137,
+        "enemyLinkTurns": 99,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 30
+      },
+      "interpretation": "133/144の自hitで倍率が働いた。方策の多くが単軸を選ぶため、高頻度だけでは多様な判断を証明しない。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_one_completed_organic_browser_comparison",
+        "observer": "assistant",
+        "evidence": "空盤面、青/ヒキキザン/seed1。共通基準8自手・HP27に対し、装備は7自手・HP27で勝利。列3,4,5,6,6,6,6、攻撃6/10/6/10、4回発動。1手短縮は威力上昇の証拠であり、選択多様化の証拠ではない。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "Round2 terminal comparison; one assistant observer; prior baseline familiarity; no human enjoyment measurement"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "自然対戦では全4攻撃が1軸で、基準と同じ経路だった。単軸と交差を選び分ける局面は未出現。 追加操作も特別な準備も不要。基準8手から7手へ短縮したが、同じ列の反復が多い点は変わらない。",
+        "nextTest": "自然に単軸と複数軸の両方を選べる局面で、条件を気持ちよく読めるかを追加確認。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "自然対戦では全4攻撃が1軸で、基準と同じ経路だった。単軸と交差を選び分ける局面は未出現。",
+        "clarity": "3連6→4連10へ伸び、発動1と加算値が対応。通常の縦・横リンクを強める条件は読めた。",
+        "tedium": "追加操作も特別な準備も不要。基準8手から7手へ短縮したが、同じ列の反復が多い点は変わらない。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "A039",
+      "name": "衝撃の天井",
+      "battles": 36,
+      "triggeredBattles": 5,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 624,
+        "playerActiveDrops": 496,
+        "playerLinkHits": 186,
+        "enemyLinkHits": 143,
+        "eligibleEvents": 143,
+        "triggerEvents": 6,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1496,
+        "playerLoss": 536,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 259
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 38,
+          "triggers": 0,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 38
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 3,
+          "eligible": 20,
+          "triggers": 4,
+          "playerLinkHits": 20,
+          "enemyLinkHits": 20
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 46,
+          "triggers": 0,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 46
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 20,
+          "triggers": 0,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 20
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 8,
+          "triggers": 2,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 11,
+          "triggers": 0,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 92,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 174,
+        "enemyLinkTurns": 118,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 36
+      },
+      "interpretation": "6/143の被hitのみで上限が働き、31戦は発動0。大技相手だけの用途として評価する。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 大技を受けるか防ぐかの自然な比較。敵の攻撃表が分かる装備画面でニッチが伝わるか。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1の固定8投入でHP27・ゲージ87、基準と同じ。唯一の敵3ダメージは変わらず。有利ケースでは10→6。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_input_live_UI_replay",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "有利ケース10→6と固定入力の通常3→3から、大技対策の役割仮説は具体的。自然な有効軽減や継続的な判断の変化は未観察。",
+        "nextTest": "大技を受けるか防ぐかの自然な比較。敵の攻撃表が分かる装備画面でニッチが伝わるか。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "今回の敵攻撃は3だけで軽減なし。大技への保険としての装備判断は未検証。",
+        "clarity": "有利ケース10→6と通常3→3を両方確認。すべての攻撃を軽くする技能ではない。",
+        "tedium": "受動で操作負担なし。大技が出ない対戦では装備した実感がない可能性。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low_role_hypothesis_from_favorable_and_fixed_UI",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null,
+      "scoreEvidenceLimit": "Role hypothesis only: favorable fixture plus fixed-input live replay. No novel organic choice or human enjoyment claim."
+    },
+    {
+      "proposal": "A041",
+      "name": "割合受け",
+      "battles": 36,
+      "triggeredBattles": 24,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 623,
+        "playerActiveDrops": 494,
+        "playerLinkHits": 187,
+        "enemyLinkHits": 147,
+        "eligibleEvents": 147,
+        "triggerEvents": 41,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1510,
+        "playerLoss": 528,
+        "playerHealRequested": 15,
+        "playerHealActual": 13,
+        "enemyHealActual": 259
+      },
+      "samePhysicalPrefixChoiceDifferences": 4,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/1",
+          "step": 55,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:1:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -20.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": -20.95
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -1000000
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -1000000
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/42",
+          "step": 39,
+          "experimentalAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 4
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:5:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": 0.9
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": -0.09999999999999999
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": -0.09999999999999999
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -2.1
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/1112",
+          "step": 49,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:3:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:3:0"
+              },
+              "score": -23.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -1000000
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -1000000
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -1000000
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 43,
+          "triggers": 12,
+          "playerLinkHits": 26,
+          "enemyLinkHits": 43
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 3,
+          "eligible": 19,
+          "triggers": 3,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 19
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 46,
+          "triggers": 16,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 46
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 20,
+          "triggers": 5,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 20
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 8,
+          "triggers": 2,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 3,
+          "eligible": 11,
+          "triggers": 3,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 92,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 175,
+        "enemyLinkTurns": 119,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 36
+      },
+      "interpretation": "41/147の被hitで軽減。raw3以下は0軽減。守りとの合成はraw6→3を確認。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 4境界と大打を自然対戦で観察し、端数の説明が負担にならないか確認。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1の固定8投入でHP27・ゲージ87。敵3に対しfloor(3/4)=0、有効軽減なし。別の有利ケースは6→5。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_input_live_UI_replay",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "有利ケース6→5と固定入力の3→3から、端数を含む割合防御の役割仮説は立つ。自然な有効軽減や選択差は未観察。",
+        "nextTest": "4境界と大打を自然対戦で観察し、端数の説明が負担にならないか確認。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "敵3ダメージでは切捨て軽減0。今回の行動選択と最終HPは基準と同じ。",
+        "clarity": "有利ケース6→5と通常3→3で、四分の一を切り捨てる境界が具体化した。小打も必ず軽くなると期待させない表示が必要。",
+        "tedium": "受動で追加操作なし。小さい攻撃主体だと反応が見えない。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low_role_hypothesis_from_favorable_and_fixed_UI",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null,
+      "scoreEvidenceLimit": "Role hypothesis only: favorable fixture plus fixed-input live replay. No novel organic choice or human enjoyment claim."
+    },
+    {
+      "proposal": "A043",
+      "name": "身軽な守り",
+      "battles": 36,
+      "triggeredBattles": 34,
+      "winsObservedWindow": 29,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 15.0,
+      "stats": {
+        "ownDecisionCount": 642,
+        "playerActiveDrops": 505,
+        "playerLinkHits": 198,
+        "enemyLinkHits": 180,
+        "eligibleEvents": 180,
+        "triggerEvents": 180,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1588,
+        "playerLoss": 492,
+        "playerHealRequested": 15,
+        "playerHealActual": 10,
+        "enemyHealActual": 267
+      },
+      "samePhysicalPrefixChoiceDifferences": 3,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/42",
+          "step": 29,
+          "experimentalAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 4
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:3:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": 1.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:3:0"
+              },
+              "score": 0.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:3:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -4.05
+            }
+          ]
+        },
+        {
+          "key": "blue/hikikizan/7",
+          "step": 11,
+          "experimentalAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 5
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 6
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 5
+              },
+              "score": 1.95
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 6
+              },
+              "score": 1.95
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 6
+              },
+              "score": 1.95
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": 0.05
+            }
+          ]
+        },
+        {
+          "key": "blue/hikikizan/42",
+          "step": 41,
+          "experimentalAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 4
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": 4.050000000000001
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 0.05
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 56,
+          "triggers": 56,
+          "playerLinkHits": 34,
+          "enemyLinkHits": 56
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 25,
+          "triggers": 25,
+          "playerLinkHits": 15,
+          "enemyLinkHits": 25
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 55,
+          "triggers": 55,
+          "playerLinkHits": 33,
+          "enemyLinkHits": 55
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 25,
+          "triggers": 25,
+          "playerLinkHits": 51,
+          "enemyLinkHits": 25
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 8,
+          "triggers": 8,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 11,
+          "triggers": 11,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 92,
+        "n": 1
+      },
+      "additionalDenominators": {
+        "linkOrigins": 185,
+        "enemyLinkTurns": 139,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 37
+      },
+      "interpretation": "空き1を維持する単独装備で180/180の被hitを1軽減。装備を増やす選択はこの単独戦方策では発生しないため、ビルドの面白さは測れていない。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 報酬で技能を取るか空き枠を残すかを実際に選ぶランで比較。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1、実験1枠＋残り空き1枠。固定8投入でHP28・ゲージ86、基準HP27・87に対し被害1軽減。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_input_live_UI_replay",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "固定空き1枠で被害1を減らす役割は明瞭。主な判断がある構築段階の機会費用は未検証で、採用確定ではない。",
+        "nextTest": "報酬で技能を取るか空き枠を残すかを実際に選ぶランで比較。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "空き枠を残す選択は構築段階にある。固定ビルドの一戦だけで他技能を入れる機会費用は評価できない。",
+        "clarity": "残り空き1枠で敵3→2、最終HP28。空き枠の表示と軽減が対応した。",
+        "tedium": "戦闘中の追加入力はなし。枠を維持する負担は報酬を含む長期ランで未確認。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low_role_hypothesis_from_favorable_and_fixed_UI",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null,
+      "scoreEvidenceLimit": "Role hypothesis only: favorable fixture plus fixed-input live replay. No novel organic choice or human enjoyment claim."
+    },
+    {
+      "proposal": "A049",
+      "name": "吸収の刃",
+      "battles": 36,
+      "triggeredBattles": 36,
+      "winsObservedWindow": 28,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 644,
+        "playerActiveDrops": 509,
+        "playerLinkHits": 189,
+        "enemyLinkHits": 149,
+        "eligibleEvents": 189,
+        "triggerEvents": 178,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1540,
+        "playerLoss": 569,
+        "playerHealRequested": 249,
+        "playerHealActual": 166,
+        "enemyHealActual": 277
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {
+        "requested_heal_trigger_with_actual0": 59
+      },
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 26,
+          "triggers": 26,
+          "playerLinkHits": 26,
+          "enemyLinkHits": 45
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 19,
+          "triggers": 17,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 19
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 29,
+          "triggers": 28,
+          "playerLinkHits": 29,
+          "enemyLinkHits": 46
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 50,
+          "triggers": 47,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 20
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 28,
+          "triggers": 26,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 37,
+          "triggers": 34,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 91,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 177,
+        "enemyLinkTurns": 123,
+        "playerHealEvents": 179,
+        "enemyHealEvents": 38
+      },
+      "interpretation": "名目吸収発動178回中59回は実回復0。名目発動数を有効回復数として報告しない。Blue変化中の名目量連動は別検証済み。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 自然な低HP、複軸上限3、敵残HPが少ないとき、青の変化中の予定回復との相性を継続確認。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ニギリン/seed7、8投入3,4,5,3,3,3,3,3＋3行目の痛みはお互いにで9自手勝利。5リンク発動、実回復は最後の2だけ。対応基準も同じ9手でHP28、装備時HP30。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "manual_live_UI_decisions_with_familiar_baseline",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "簡単で見える攻撃付随回復を1戦で確認。選択の広がりや瀕死救済は未確認。",
+        "nextTest": "自然な低HP、複軸上限3、敵残HPが少ないとき、青の変化中の予定回復との相性を継続確認。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "今の攻撃を選ぶだけで自然に2回復。今回のルートや終了手は変わらず、主に攻撃に付随する維持効果。",
+        "clarity": "満HP時のプレビューは回復0。敵に2受けた後は11攻撃/回復2となり、実行で28→30。実回復と発動数を分けて読めた。",
+        "tedium": "追加操作や新しい形の準備なし。最初の4発動は実回復0で、毎発動が有用なわけではない。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null
+    },
+    {
+      "proposal": "A051",
+      "name": "相互の手当",
+      "battles": 36,
+      "triggeredBattles": 1,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 625,
+        "playerActiveDrops": 496,
+        "playerLinkHits": 185,
+        "enemyLinkHits": 142,
+        "eligibleEvents": 1,
+        "triggerEvents": 1,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1498,
+        "playerLoss": 550,
+        "playerHealRequested": 19,
+        "playerHealActual": 14,
+        "enemyHealActual": 261
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 1,
+          "triggers": 1,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 38
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 19
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 46
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 20
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 92,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 173,
+        "enemyLinkTurns": 117,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 37
+      },
+      "interpretation": "36戦で自回復イベントが1回だけで、その1回に反応。赤には回復技能がない初期装備なので、露出不足を能力不発のバグとしない。",
+      "provisionalDecision": "Hold for targeted additional evaluation: よく発動する既存回復を1つ併用した別比較で、敵の2回復を払ってよい場面を確認。単独採用は保留。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ニギリン/seed7、基準と同じ9自手・HP28で勝利。自己回復0・実験発動0。各手の投入予測にも回復候補なし。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "manual_live_UI_decisions_with_familiar_baseline",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": null,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "insufficient_for_scoring",
+        "basis": "自然な完走で発動しなかった。準備ケース以外の回復交換を未観察。",
+        "nextTest": "よく発動する既存回復を1つ併用した別比較で、敵の2回復を払ってよい場面を確認。単独採用は保留。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "攻撃優先の自然経路で自己回復候補がなく、9手勝利まで効果0。単体で新しい行動は生まれなかった。",
+        "clarity": "準備ケースでは自回復＋4と敵回復2を確認。ただし自然な露出が薄く、代償の選び方は未観察。",
+        "tedium": "既存ヘルスの＋形を無理に作るために攻撃を遅らせなかった。回復源を追加した構築で改めて見る必要がある。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "limited_role_observation_unscored",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": "自然な完走で発動しなかった。準備ケース以外の回復交換を未観察。"
+    },
+    {
+      "proposal": "A057",
+      "name": "会心の抽選",
+      "battles": 36,
+      "triggeredBattles": 24,
+      "winsObservedWindow": 30,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 568,
+        "playerActiveDrops": 447,
+        "playerLinkHits": 160,
+        "enemyLinkHits": 123,
+        "eligibleEvents": 153,
+        "triggerEvents": 39,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1493,
+        "playerLoss": 497,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 204
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 23,
+          "triggers": 5,
+          "playerLinkHits": 23,
+          "enemyLinkHits": 38
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 3,
+          "eligible": 17,
+          "triggers": 4,
+          "playerLinkHits": 17,
+          "enemyLinkHits": 15
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 3,
+          "eligible": 27,
+          "triggers": 6,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 36
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 37,
+          "triggers": 10,
+          "playerLinkHits": 42,
+          "enemyLinkHits": 16
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 23,
+          "triggers": 6,
+          "playerLinkHits": 23,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 26,
+          "triggers": 8,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 10
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 87,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 153,
+        "enemyLinkTurns": 104,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 29
+      },
+      "interpretation": "リンク起点153回中39会心（25.49%）。この観測比率は乱数列の記述で、人間の期待・驚きの測定ではない。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 結果を知らない複数seedと、会心表示を見た人間の納得感を確認。未抽選の予告を確定結果に見せない。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1、列3,4,5,6,6,6,6,6を選び8手・HP27勝利。5攻撃中、最初だけ会心。表示ダメージ8/7/4/7/11、基準は4/7/4/7/11。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "manual_live_UI_decisions_with_familiar_baseline",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "小さいルールで偶発的な上振れが自然に見える。新しい判断や人間の高揚感の証拠ではない。",
+        "nextTest": "結果を知らない複数seedと、会心表示を見た人間の納得感を確認。未抽選の予告を確定結果に見せない。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "基準と同じ経路・8手勝利。初回会心の大きな数字は見えたが、この対戦では選択も終了手も変わらなかった。",
+        "clarity": "通常予告4に対して実行8。25%注記で抽選として理解。旧表示の「効果＋2」は倍率を誤読しうるため、v21で「倍率×2/×1」に修正された。",
+        "tedium": "特別な準備や追加操作は不要。抽選の好みや期待外れは人間に未確認。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null
+    },
+    {
+      "proposal": "B001",
+      "name": "精密接収",
+      "battles": 36,
+      "triggeredBattles": 15,
+      "winsObservedWindow": 31,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 14.0,
+      "stats": {
+        "ownDecisionCount": 629,
+        "playerActiveDrops": 486,
+        "playerLinkHits": 211,
+        "enemyLinkHits": 131,
+        "eligibleEvents": 26,
+        "triggerEvents": 26,
+        "manualExperimentChoices": 26,
+        "manualExperimentAvailableDecisions": 593,
+        "playerDamage": 1611,
+        "playerLoss": 493,
+        "playerHealRequested": 0,
+        "playerHealActual": 0,
+        "enemyHealActual": 267
+      },
+      "samePhysicalPrefixChoiceDifferences": 15,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/1",
+          "step": 37,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B001",
+            "targetIds": [
+              "drop:17"
+            ]
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 5
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B001",
+                "targetIds": [
+                  "drop:17"
+                ]
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 5
+              },
+              "score": -2.1
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 5
+              },
+              "score": -2.1
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 6
+              },
+              "score": -8.1
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/7",
+          "step": 31,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B001",
+            "targetIds": [
+              "drop:5"
+            ]
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 4
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B001",
+                "targetIds": [
+                  "drop:5"
+                ]
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B001",
+                "targetIds": [
+                  "drop:3"
+                ]
+              },
+              "score": -5.95
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -10.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -11.95
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/42",
+          "step": 39,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B001",
+            "targetIds": [
+              "drop:30"
+            ]
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:5:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B001",
+                "targetIds": [
+                  "drop:30"
+                ]
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B001",
+                "targetIds": [
+                  "drop:31"
+                ]
+              },
+              "score": 0.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": -0.09999999999999999
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -2.1
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 9,
+          "triggers": 9,
+          "playerLinkHits": 38,
+          "enemyLinkHits": 38
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 5,
+          "triggers": 5,
+          "playerLinkHits": 22,
+          "enemyLinkHits": 10
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 9,
+          "triggers": 9,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 45
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 2,
+          "triggers": 2,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 20
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 1,
+          "triggers": 1,
+          "playerLinkHits": 36,
+          "enemyLinkHits": 10
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 92,
+        "n": 2
+      },
+      "additionalDenominators": {
+        "linkOrigins": 197,
+        "enemyLinkTurns": 106,
+        "playerHealEvents": 0,
+        "enemyHealEvents": 38
+      },
+      "interpretation": "候補あり593判断中26回選択。全体の勝率は方策依存。敵箱の現所有者だけ変わり、新リンク攻撃なしを確認。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "敵箱を選ぶと、所有者の変化が盤面で見える。攻撃を発生させず1手消費。直接的に選べる余地を確認。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "not established by this report"
+      },
+      "assistantProvisionalPotential": {
+        "score": 4,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "単体を見て今の所有者を変える直接的な操作。未来の配置手順を覚えなくても作用が見える。",
+        "nextTest": "普通に置く方がよい時にも選べる自然戦。敵の脅威を奪うか攻めるかを比較。"
+      },
+      "recommendation": "adopt_candidate",
+      "recommendationLabel": "採用検討候補",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "敵の今の脅威を1箱奪う対象選択が直接的",
+        "clarity": "敵箱を選び、所有者が変わる結果を確認",
+        "tedium": "繰返しの退屈さは未確認"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "B009",
+      "name": "精密解体",
+      "battles": 36,
+      "triggeredBattles": 18,
+      "winsObservedWindow": 27,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 690,
+        "playerActiveDrops": 494,
+        "playerLinkHits": 185,
+        "enemyLinkHits": 140,
+        "eligibleEvents": 64,
+        "triggerEvents": 64,
+        "manualExperimentChoices": 64,
+        "manualExperimentAvailableDecisions": 654,
+        "playerDamage": 1498,
+        "playerLoss": 544,
+        "playerHealRequested": 0,
+        "playerHealActual": 0,
+        "enemyHealActual": 285
+      },
+      "samePhysicalPrefixChoiceDifferences": 18,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/1",
+          "step": 49,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B009",
+            "targetIds": [
+              "drop:37"
+            ]
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B009",
+                "targetIds": [
+                  "drop:37"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B009",
+                "targetIds": [
+                  "drop:39"
+                ]
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -0.09999999999999999
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -5.95
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/7",
+          "step": 43,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B009",
+            "targetIds": [
+              "drop:31"
+            ]
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:2:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B009",
+                "targetIds": [
+                  "drop:31"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B009",
+                "targetIds": [
+                  "drop:35"
+                ]
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": -0.09999999999999999
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -2.1
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/42",
+          "step": 39,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B009",
+            "targetIds": [
+              "drop:30"
+            ]
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:5:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B009",
+                "targetIds": [
+                  "drop:30"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B009",
+                "targetIds": [
+                  "drop:31"
+                ]
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": -0.09999999999999999
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -2.1
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 35,
+          "triggers": 35,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 46
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 3,
+          "eligible": 7,
+          "triggers": 7,
+          "playerLinkHits": 21,
+          "enemyLinkHits": 16
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 10,
+          "triggers": 10,
+          "playerLinkHits": 31,
+          "enemyLinkHits": 43
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 5,
+          "triggers": 5,
+          "playerLinkHits": 51,
+          "enemyLinkHits": 16
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 3,
+          "triggers": 3,
+          "playerLinkHits": 29,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 4,
+          "triggers": 4,
+          "playerLinkHits": 34,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 93,
+        "n": 8
+      },
+      "additionalDenominators": {
+        "linkOrigins": 173,
+        "enemyLinkTurns": 115,
+        "playerHealEvents": 0,
+        "enemyHealEvents": 39
+      },
+      "interpretation": "候補あり654判断中64回選択。単体削除と支持箱落下は正しい。取り壊し操作の体感負担はUI待ち。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "1箱削除により塞がった天井候補が再開。今の詰まりを解く操作として直接的。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "not established by this report"
+      },
+      "assistantProvisionalPotential": {
+        "score": 4,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "詰まった投入先がその場で開く分かりやすい作用。単体選択で操作負担も限定的。",
+        "nextTest": "何度も削る延命が増えないか、底の支持箱を抜く時の落下予告を確認。"
+      },
+      "recommendation": "adopt_candidate",
+      "recommendationLabel": "採用検討候補",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "今の詰まりを1箱だけ消して解く選択が直接的",
+        "clarity": "投入不能の天井候補が再開する結果を確認",
+        "tedium": "消して延命する反復になるかは未確認"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "B010",
+      "name": "塊の解体",
+      "battles": 36,
+      "triggeredBattles": 19,
+      "winsObservedWindow": 34,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.0,
+      "stats": {
+        "ownDecisionCount": 699,
+        "playerActiveDrops": 493,
+        "playerLinkHits": 207,
+        "enemyLinkHits": 114,
+        "eligibleEvents": 49,
+        "triggerEvents": 49,
+        "manualExperimentChoices": 49,
+        "manualExperimentAvailableDecisions": 663,
+        "playerDamage": 1706,
+        "playerLoss": 473,
+        "playerHealRequested": 30,
+        "playerHealActual": 30,
+        "enemyHealActual": 310
+      },
+      "samePhysicalPrefixChoiceDifferences": 19,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/1",
+          "step": 23,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B010",
+            "targetIds": [
+              "drop:7"
+            ]
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 6
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B010",
+                "targetIds": [
+                  "drop:7"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B010",
+                "targetIds": [
+                  "drop:8"
+                ]
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 6
+              },
+              "score": -4.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": -5.95
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/7",
+          "step": 31,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B010",
+            "targetIds": [
+              "drop:5"
+            ]
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 4
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B010",
+                "targetIds": [
+                  "drop:5"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B010",
+                "targetIds": [
+                  "drop:3"
+                ]
+              },
+              "score": -6
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -10.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -11.95
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/42",
+          "step": 39,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B010",
+            "targetIds": [
+              "drop:30"
+            ]
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:5:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B010",
+                "targetIds": [
+                  "drop:30"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": -0.09999999999999999
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": -0.09999999999999999
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -2.1
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 18,
+          "triggers": 18,
+          "playerLinkHits": 34,
+          "enemyLinkHits": 34
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 8,
+          "triggers": 8,
+          "playerLinkHits": 15,
+          "enemyLinkHits": 8
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 14,
+          "triggers": 14,
+          "playerLinkHits": 44,
+          "enemyLinkHits": 38
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 4,
+          "triggers": 4,
+          "playerLinkHits": 51,
+          "enemyLinkHits": 16
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 3,
+          "triggers": 3,
+          "playerLinkHits": 29,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 2,
+          "triggers": 2,
+          "playerLinkHits": 34,
+          "enemyLinkHits": 10
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 93,
+        "n": 9
+      },
+      "additionalDenominators": {
+        "linkOrigins": 193,
+        "enemyLinkTurns": 101,
+        "playerHealEvents": 2,
+        "enemyHealEvents": 42
+      },
+      "interpretation": "候補あり663判断中49回選択。直交成分だけを事前確定し、落下後に除去を連鎖しない。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "3箱の連結塊を事前ハイライトし、確定後に3箱除去。まとまりを見て消すフィードバックが読みやすい。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "not established by this report"
+      },
+      "assistantProvisionalPotential": {
+        "score": 4,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "小さな連結塊の予告と一括消去が読める。作用が視覚的にまとまり、現在の盤面へ直接働く。",
+        "nextTest": "自箱の大塊を巻き込む不利例、通常の盤面密度で選択にかかる実時間。"
+      },
+      "recommendation": "adopt_candidate",
+      "recommendationLabel": "採用検討候補",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "現在の連結塊をまとめて除く対象選択がある",
+        "clarity": "3箱の事前ハイライトと実際の3箱消去が対応",
+        "tedium": "大きな自箱群の損失や反復時の負担は未確認"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "B011",
+      "name": "切断線",
+      "battles": 36,
+      "triggeredBattles": 19,
+      "winsObservedWindow": 31,
+      "baselineWins": 27,
+      "censoredInitialWindow": 1,
+      "medianOwnTurns": 13.0,
+      "stats": {
+        "ownDecisionCount": 784,
+        "playerActiveDrops": 534,
+        "playerLinkHits": 196,
+        "enemyLinkHits": 131,
+        "eligibleEvents": 95,
+        "triggerEvents": 95,
+        "manualExperimentChoices": 95,
+        "manualExperimentAvailableDecisions": 748,
+        "playerDamage": 1639,
+        "playerLoss": 525,
+        "playerHealRequested": 0,
+        "playerHealActual": 0,
+        "enemyHealActual": 305
+      },
+      "samePhysicalPrefixChoiceDifferences": 19,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/1",
+          "step": 23,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B011",
+            "start": {
+              "row": 2,
+              "col": 0
+            },
+            "end": {
+              "row": 7,
+              "col": 5
+            }
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 6
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B011",
+                "start": {
+                  "row": 2,
+                  "col": 0
+                },
+                "end": {
+                  "row": 7,
+                  "col": 5
+                }
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B011",
+                "start": {
+                  "row": 7,
+                  "col": 5
+                },
+                "end": {
+                  "row": 2,
+                  "col": 0
+                }
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 6
+              },
+              "score": -4.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": -5.95
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/7",
+          "step": 31,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B011",
+            "start": {
+              "row": 0,
+              "col": 3
+            },
+            "end": {
+              "row": 7,
+              "col": 3
+            }
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 4
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B011",
+                "start": {
+                  "row": 0,
+                  "col": 3
+                },
+                "end": {
+                  "row": 7,
+                  "col": 3
+                }
+              },
+              "score": -0.05
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B011",
+                "start": {
+                  "row": 7,
+                  "col": 3
+                },
+                "end": {
+                  "row": 0,
+                  "col": 3
+                }
+              },
+              "score": -0.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -10.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -11.95
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/42",
+          "step": 39,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B011",
+            "start": {
+              "row": 2,
+              "col": 0
+            },
+            "end": {
+              "row": 2,
+              "col": 5
+            }
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:5:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B011",
+                "start": {
+                  "row": 2,
+                  "col": 0
+                },
+                "end": {
+                  "row": 2,
+                  "col": 5
+                }
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B011",
+                "start": {
+                  "row": 2,
+                  "col": 5
+                },
+                "end": {
+                  "row": 2,
+                  "col": 0
+                }
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": -0.09999999999999999
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -2.1
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 32,
+          "triggers": 32,
+          "playerLinkHits": 34,
+          "enemyLinkHits": 43
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 26,
+          "triggers": 26,
+          "playerLinkHits": 16,
+          "enemyLinkHits": 8
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 23,
+          "triggers": 23,
+          "playerLinkHits": 34,
+          "enemyLinkHits": 40
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 5,
+          "triggers": 5,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 19
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 3,
+          "triggers": 3,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 10
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 6,
+          "triggers": 6,
+          "playerLinkHits": 34,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 91,
+        "n": 8
+      },
+      "additionalDenominators": {
+        "linkOrigins": 187,
+        "enemyLinkTurns": 112,
+        "playerHealEvents": 0,
+        "enemyHealEvents": 46
+      },
+      "interpretation": "列挙した全長線が使える748判断中95回選択。短い部分区間は方策の候補外なので過少評価あり。60手打切り1戦を続け、70手で勝利。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 複数の短い区間、味方巻込み、不利盤面での防御価値と二点入力負担を確認。今回を厳密な優越とはしない。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ヒキキザン/seed1。投入3,4,5→切断→6,6,6,6,6で9自手・HP27・ゲージ88勝利。基準8手・HP27・87。第4敵手の3被害を防いだが、第8敵手に3を受け、終局HP差はなかった。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "manual_live_UI_decision_with_paired_baseline",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "盤面を今編集する具体的な判断と、その1手の代償を実UIで確認。効果の範囲は限定的。",
+        "nextTest": "複数の短い区間、味方巻込み、不利盤面での防御価値と二点入力負担を確認。今回を厳密な優越とはしない。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "第4自手に横4攻撃7の代わりに敵の隣接2箱を切断し、その時点の横攻撃3を防いだ。現在の脅威を消す直接的な選択。",
+        "clarity": "始点7行3列→終点7行4列で敵2箱を切断。範囲指定と1手消費が結果に対応。",
+        "tedium": "二点指定の追加操作がある。守備は一時的で、後に敵が埋め直して3を受けた。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null
+    },
+    {
+      "proposal": "B019",
+      "name": "位置交換",
+      "battles": 36,
+      "triggeredBattles": 15,
+      "winsObservedWindow": 28,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 15.0,
+      "stats": {
+        "ownDecisionCount": 663,
+        "playerActiveDrops": 496,
+        "playerLinkHits": 198,
+        "enemyLinkHits": 149,
+        "eligibleEvents": 44,
+        "triggerEvents": 44,
+        "manualExperimentChoices": 44,
+        "manualExperimentAvailableDecisions": 589,
+        "playerDamage": 1541,
+        "playerLoss": 539,
+        "playerHealRequested": 0,
+        "playerHealActual": 0,
+        "enemyHealActual": 269
+      },
+      "samePhysicalPrefixChoiceDifferences": 15,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/1",
+          "step": 37,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B019",
+            "targetIds": [
+              "drop:12",
+              "drop:17"
+            ]
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 5
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B019",
+                "targetIds": [
+                  "drop:12",
+                  "drop:17"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B019",
+                "targetIds": [
+                  "drop:17",
+                  "drop:23"
+                ]
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 5
+              },
+              "score": -2.1
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 6
+              },
+              "score": -8.1
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/7",
+          "step": 31,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B019",
+            "targetIds": [
+              "drop:4",
+              "drop:5"
+            ]
+          },
+          "baselineAction": {
+            "type": "board-skill",
+            "skillId": "pain-shared",
+            "row": 4
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B019",
+                "targetIds": [
+                  "drop:4",
+                  "drop:5"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B019",
+                "targetIds": [
+                  "drop:5",
+                  "drop:21"
+                ]
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -10.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -11.95
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/42",
+          "step": 39,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "B019",
+            "targetIds": [
+              "drop:7",
+              "drop:30"
+            ]
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:5:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B019",
+                "targetIds": [
+                  "drop:7",
+                  "drop:30"
+                ]
+              },
+              "score": 0
+            },
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "B019",
+                "targetIds": [
+                  "drop:7",
+                  "drop:31"
+                ]
+              },
+              "score": 0
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:5:0"
+              },
+              "score": -0.09999999999999999
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 4
+              },
+              "score": -2.1
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 20,
+          "triggers": 20,
+          "playerLinkHits": 26,
+          "enemyLinkHits": 46
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 11,
+          "triggers": 11,
+          "playerLinkHits": 20,
+          "enemyLinkHits": 16
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 4,
+          "eligible": 10,
+          "triggers": 10,
+          "playerLinkHits": 35,
+          "enemyLinkHits": 46
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 2,
+          "triggers": 2,
+          "playerLinkHits": 51,
+          "enemyLinkHits": 22
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 1,
+          "eligible": 1,
+          "triggers": 1,
+          "playerLinkHits": 38,
+          "enemyLinkHits": 11
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 92,
+        "n": 2
+      },
+      "additionalDenominators": {
+        "linkOrigins": 185,
+        "enemyLinkTurns": 118,
+        "playerHealEvents": 0,
+        "enemyHealEvents": 38
+      },
+      "interpretation": "列挙した異所有者ペアが使える589判断中44回選択。同所有者交換はこの方策から除外。最大128ペアの制約あり。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "2箱の交換を盤面で確認。2つ選んだ後の配置を考える分、単体指定より判断負担が多いという限定観察。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "not established by this report"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "交換の作用は見えるが、二点と交換後の配置を読む負担が単体指定より高い。",
+        "nextTest": "通常箱だけでも単体変換/解体より独自に欲しい場面があるか。二点操作の取消/誤選択も確認。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "2箱の交換を選べるが、交換後を読む負担もある",
+        "clarity": "交換した2箱の変化は盤面で確認できた",
+        "tedium": "単体指定より二点選択の判断負担が多いという限定観察"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "D001",
+      "name": "瞑想",
+      "battles": 36,
+      "triggeredBattles": 26,
+      "winsObservedWindow": 29,
+      "baselineWins": 27,
+      "censoredInitialWindow": 1,
+      "medianOwnTurns": 18.5,
+      "stats": {
+        "ownDecisionCount": 792,
+        "playerActiveDrops": 541,
+        "playerLinkHits": 200,
+        "enemyLinkHits": 236,
+        "eligibleEvents": 110,
+        "triggerEvents": 110,
+        "manualExperimentChoices": 110,
+        "manualExperimentAvailableDecisions": 474,
+        "playerDamage": 1651,
+        "playerLoss": 921,
+        "playerHealRequested": 675,
+        "playerHealActual": 490,
+        "enemyHealActual": 363
+      },
+      "samePhysicalPrefixChoiceDifferences": 26,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/1",
+          "step": 5,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "D001"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "D001"
+              },
+              "score": 4
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 0.05
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/7",
+          "step": 5,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "D001"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "D001"
+              },
+              "score": 4
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 0.05
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/42",
+          "step": 5,
+          "experimentalAction": {
+            "type": "experiment-action",
+            "skillId": "D001"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "experiment-action",
+                "skillId": "D001"
+              },
+              "score": 4
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 0.05
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 34,
+          "triggers": 34,
+          "playerLinkHits": 25,
+          "enemyLinkHits": 78
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 23,
+          "triggers": 23,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 27
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 45,
+          "triggers": 45,
+          "playerLinkHits": 40,
+          "enemyLinkHits": 92
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 3,
+          "eligible": 3,
+          "triggers": 3,
+          "playerLinkHits": 51,
+          "enemyLinkHits": 18
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 2,
+          "eligible": 2,
+          "triggers": 2,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 9
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 3,
+          "eligible": 3,
+          "triggers": 3,
+          "playerLinkHits": 37,
+          "enemyLinkHits": 12
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 95,
+        "n": 5
+      },
+      "additionalDenominators": {
+        "linkOrigins": 187,
+        "enemyLinkTurns": 186,
+        "playerHealEvents": 111,
+        "enemyHealEvents": 54
+      },
+      "interpretation": "ready474判断中110回使用。自手番中央値18.5は基準13.5より長いが、実時間の遅さとは言わない。打切り1戦を続け、61手で敗北。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_one_completed_organic_browser_comparison",
+        "observer": "assistant",
+        "evidence": "空盤面、青/マルジロ/seed7を条件固定して2戦完走。第10自手に通常攻撃の代わりに瞑想を選び、HP24→30、青の変化反応で敵23→17。敵の4・6攻撃後も第12自手にHP20で勝利。基準は同12手・HP14。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "Round2 terminal comparison; one assistant observer; prior baseline familiarity; no human enjoyment measurement"
+      },
+      "assistantProvisionalPotential": {
+        "score": 4,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "HP28で11攻撃を選び回復を見送り、後にHP24・青の変化中で回復6＋反応攻撃6を選んだ。今の回復と攻撃の具体的な交換が生じた。 1回使用。基準と装備の双方12自手で、終局HPは14対20。繰り返す回復による長期化は今回未検証。",
+        "nextTest": "赤、瀕死救済、複数回再使用、長期停滞の確認。青の変化を示す新バナーが相性の理解を助けるか再確認。"
+      },
+      "recommendation": "adopt_candidate",
+      "recommendationLabel": "採用検討候補",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "HP28で11攻撃を選び回復を見送り、後にHP24・青の変化中で回復6＋反応攻撃6を選んだ。今の回復と攻撃の具体的な交換が生じた。",
+        "clarity": "1ボタンと再使用まで3→2手の表示は明瞭。観察版0.2.1では青の変化が主画面で分かりにくく、過去ログの展開が必要だった。v21/0.2.2では状態バナーが追加され、別の自然対戦で青の変化状態と回復反応の文章が表示されることを確認した。",
+        "tedium": "1回使用。基準と装備の双方12自手で、終局HPは14対20。繰り返す回復による長期化は今回未検証。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "D017",
+      "name": "終幕の灯",
+      "battles": 36,
+      "triggeredBattles": 36,
+      "winsObservedWindow": 36,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 10.0,
+      "stats": {
+        "ownDecisionCount": 389,
+        "playerActiveDrops": 302,
+        "playerLinkHits": 104,
+        "enemyLinkHits": 59,
+        "eligibleEvents": 389,
+        "triggerEvents": 372,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1590,
+        "playerLoss": 284,
+        "playerHealRequested": 0,
+        "playerHealActual": 0,
+        "enemyHealActual": 150
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 101,
+          "triggers": 99,
+          "playerLinkHits": 15,
+          "enemyLinkHits": 17
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 57,
+          "triggers": 56,
+          "playerLinkHits": 6,
+          "enemyLinkHits": 3
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 88,
+          "triggers": 86,
+          "playerLinkHits": 10,
+          "enemyLinkHits": 11
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 64,
+          "triggers": 58,
+          "playerLinkHits": 38,
+          "enemyLinkHits": 14
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 39,
+          "triggers": 36,
+          "playerLinkHits": 16,
+          "enemyLinkHits": 6
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 40,
+          "triggers": 37,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 8
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 76,
+        "n": 3
+      },
+      "additionalDenominators": {
+        "linkOrigins": 101,
+        "enemyLinkTurns": 54,
+        "playerHealEvents": 0,
+        "enemyHealEvents": 15,
+        "nativeActions": 88
+      },
+      "interpretation": "389完了中372回追加ダメージ。36/36勝利だが人間の勝率ではない。空行消しはこの自動方策では0件。別途の実UIで、空行行動1回にも終了ダメージ2が付くことを確認。反復だけでの終局勝利は未確認。",
+      "provisionalDecision": "Continue actual UI observation; no adoption/rank decision from simulation",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_executed_in_live_browser",
+        "observer": "assistant",
+        "evidence": "空の6×8、青、marujiro、自HP30/敵60。「痛みはお互いに」で空の1行目を選択。自箱0/敵箱0、直接敵ダメージ0/自己損失0/消去0の後、終了ゲージ+1とD017の2で敵60→58。通常1手は消費する。空行反復だけで勝ち切るところまでは試していない。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "not established by this report"
+      },
+      "assistantProvisionalPotential": {
+        "score": 2,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "通常1手は使うが、HP費用・消去・リンクのない空行行動にも2ダメージが付く。盤面に作用しない反復を促す設計懸念を実UIで確認。仕様どおりであり実装バグではない。",
+        "nextTest": "再設計案を1つに絞って再検証。例えば「リンク成立した通常行動の後だけ」等の簡単な条件で、無益反復に報酬が付く問題を避けられるか。変更は未実施。"
+      },
+      "recommendation": "rework",
+      "recommendationLabel": "要再設計",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "リンクも有効な盤面編集もなしで毎手2を与えられる",
+        "clarity": "空行を選ぶだけで敵60→58を確認",
+        "tedium": "無益な行動反復を報酬にする設計懸念。終局までの反復勝利は未確認"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      }
+    },
+    {
+      "proposal": "D024",
+      "name": "棘返し",
+      "battles": 36,
+      "triggeredBattles": 35,
+      "winsObservedWindow": 29,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 12.5,
+      "stats": {
+        "ownDecisionCount": 523,
+        "playerActiveDrops": 413,
+        "playerLinkHits": 160,
+        "enemyLinkHits": 167,
+        "eligibleEvents": 152,
+        "triggerEvents": 140,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1535,
+        "playerLoss": 556,
+        "playerHealRequested": 0,
+        "playerHealActual": 0,
+        "enemyHealActual": 221
+      },
+      "samePhysicalPrefixChoiceDifferences": 13,
+      "choiceExamples": [
+        {
+          "key": "blue/marujiro/1",
+          "step": 7,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:4:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 2.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 2.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:4:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "board-skill",
+                "skillId": "pain-shared",
+                "row": 7
+              },
+              "score": -4.05
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/42",
+          "step": 15,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:1:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 2.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": 2.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": -5.95
+            }
+          ]
+        },
+        {
+          "key": "blue/marujiro/1112",
+          "step": 9,
+          "experimentalAction": {
+            "type": "drop",
+            "candidateId": "ceiling:0:0"
+          },
+          "baselineAction": {
+            "type": "drop",
+            "candidateId": "ceiling:2:0"
+          },
+          "experimentalChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": 2.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:1:0"
+              },
+              "score": 2.05
+            }
+          ],
+          "baselineChoices": [
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:2:0"
+              },
+              "score": 0.05
+            },
+            {
+              "action": {
+                "type": "drop",
+                "candidateId": "ceiling:0:0"
+              },
+              "score": -5.95
+            }
+          ]
+        }
+      ],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 48,
+          "triggers": 43,
+          "playerLinkHits": 17,
+          "enemyLinkHits": 53
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 23,
+          "triggers": 21,
+          "playerLinkHits": 14,
+          "enemyLinkHits": 23
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 42,
+          "triggers": 37,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 49
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 20,
+          "triggers": 20,
+          "playerLinkHits": 45,
+          "enemyLinkHits": 21
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 8,
+          "triggers": 8,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 9
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 11,
+          "triggers": 11,
+          "playerLinkHits": 33,
+          "enemyLinkHits": 12
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 89,
+        "n": 12
+      },
+      "additionalDenominators": {
+        "linkOrigins": 146,
+        "enemyLinkTurns": 146,
+        "playerHealEvents": 0,
+        "enemyHealEvents": 28
+      },
+      "interpretation": "146被リンク手番で140反撃。最初の実損失0では消費せず、反撃で敵KOなら後続敵軸を中断することを確認。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 瀕死、初撃0軽減、敵複軸で、今止める/受ける交換が選択として成立するか確認。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ニギリン/seed7。最初の6投入は既定開幕を実UI再生、その後は表示を見て選択。敵第7手の2ダメージに1回反撃し、第8自手でHP28勝利。共有基準は9手・HP28。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_opening_then_manual_live_UI_encounter",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "自然な被弾に短い反応が対応し、終局が1手早まった。新しい戦術や安全性は未確認。",
+        "nextTest": "瀕死、初撃0軽減、敵複軸で、今止める/受ける交換が選択として成立するか確認。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "攻撃11を取って敵の2を受け、反撃2で次の攻撃が致死になった。基準でも同じ攻撃を選ぶ局面で、新しい選択を生んだとは未確認。",
+        "clarity": "敵2ダメージ→自HP30→28→反撃2で敵12→10の順がログに並び、原因が明確。",
+        "tedium": "追加入力なし。準備ケースで複軸でも1敵手番1回を確認。毎被弾を報酬として待つ反復は未検証。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null
+    },
+    {
+      "proposal": "D030",
+      "name": "治癒の反証",
+      "battles": 36,
+      "triggeredBattles": 11,
+      "winsObservedWindow": 28,
+      "baselineWins": 27,
+      "censoredInitialWindow": 0,
+      "medianOwnTurns": 13.5,
+      "stats": {
+        "ownDecisionCount": 624,
+        "playerActiveDrops": 496,
+        "playerLinkHits": 183,
+        "enemyLinkHits": 128,
+        "eligibleEvents": 35,
+        "triggerEvents": 34,
+        "manualExperimentChoices": 0,
+        "manualExperimentAvailableDecisions": 0,
+        "playerDamage": 1577,
+        "playerLoss": 522,
+        "playerHealRequested": 15,
+        "playerHealActual": 14,
+        "enemyHealActual": 285
+      },
+      "samePhysicalPrefixChoiceDifferences": 0,
+      "choiceExamples": [],
+      "special": {},
+      "strata": {
+        "blue/marujiro": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 24,
+          "enemyLinkHits": 38
+        },
+        "blue/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 19,
+          "enemyLinkHits": 19
+        },
+        "blue/nigirin": {
+          "runs": 6,
+          "triggered_runs": 6,
+          "eligible": 27,
+          "triggers": 27,
+          "playerLinkHits": 27,
+          "enemyLinkHits": 33
+        },
+        "red/marujiro": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 50,
+          "enemyLinkHits": 20
+        },
+        "red/hikikizan": {
+          "runs": 6,
+          "triggered_runs": 0,
+          "eligible": 0,
+          "triggers": 0,
+          "playerLinkHits": 28,
+          "enemyLinkHits": 8
+        },
+        "red/nigirin": {
+          "runs": 6,
+          "triggered_runs": 5,
+          "eligible": 8,
+          "triggers": 7,
+          "playerLinkHits": 35,
+          "enemyLinkHits": 10
+        }
+      },
+      "assistantSubjectiveScores": null,
+      "humanFeedback": null,
+      "localChoiceProbes": {
+        "N": 92,
+        "n": 0
+      },
+      "additionalDenominators": {
+        "linkOrigins": 171,
+        "enemyLinkTurns": 109,
+        "playerHealEvents": 1,
+        "enemyHealEvents": 35
+      },
+      "interpretation": "35敵回復イベント中34回反応。25戦は0。無回復敵が24戦含まれるため、その0は想定どおり。",
+      "provisionalDecision": "Hold for targeted additional evaluation: 回復しない敵への無効表示、連戦の敵構成、実回復1の端数を確認。対回復専用の装備として保留。",
+      "scores": null,
+      "assistantUIObservation": {
+        "coverage": "favorable_fixture_plus_completed_free_board_UI_trial",
+        "observer": "assistant",
+        "evidence": "青/ニギリン/seed7。既定4投入後は表示を見て続行。敵第5手の実回復8へ4反撃、1回発動。第8自手でHP28勝利、共有基準は9手・HP28。",
+        "humanValidated": false,
+        "naturalPlayCoverage": "fixed_opening_then_manual_live_UI_encounter",
+        "thirdPassEvidenceFile": "browser_observations_round3.json"
+      },
+      "assistantProvisionalPotential": {
+        "score": 3,
+        "scale": "integer1–5 editorial hypothesis of potential; not a fun measurement, ranking, or approval",
+        "confidence": "low",
+        "basis": "対象敵では効果が自然に見え、説明も短い。限定対策の構築価値と選択幅は未確認。",
+        "nextTest": "回復しない敵への無効表示、連戦の敵構成、実回復1の端数を確認。対回復専用の装備として保留。"
+      },
+      "recommendation": "hold",
+      "recommendationLabel": "保留して追加検証",
+      "recommendationIsApproval": false,
+      "experienceAxes": {
+        "agency": "回復敵への短い対策として自然発動。今回の攻撃経路は同じで、判断の変化は見えなかった。",
+        "clarity": "敵22→30の実回復8、その半分4を30→26と戻す表示。予定10ではなく実回復に基づくことを確認。回復自体を完全に止める技能ではない。",
+        "tedium": "追加操作なし。回復しない敵では働かないため、敵構成による空振りが主な懸念。"
+      },
+      "confidence": {
+        "mechanics": "high_for_executed_cases_only",
+        "experience": "low",
+        "humanFun": "not_measured"
+      },
+      "unscoredReason": null
+    }
+  ],
+  "notTested": [
+    "Human enjoyment or preference",
+    "Unassisted human playtesting and long-form natural play for every skill",
+    "Every boundary check in the prospective protocol",
+    "Complete manual-action search space",
+    "Randomized human trials or causal full-battle skill effects",
+    "Endless route/rewards/carry integration",
+    "Physical wall-clock UI tempo"
+  ],
+  "rankings": null,
+  "assistantUISummary": {
+    "favorableCasesExecuted": 25,
+    "coverage": "All25 focused favorable UI cases;16 distinct equipped skills terminal free-board UI trials, some fixed-input replay. No claim all25 had full organic play.",
+    "humanFeedback": null,
+    "potentialScoresProvided": 22,
+    "unscored": 3,
+    "D017EmptyActionStatus": "confirmed_one_empty_row_action_deals2; no full empty-action-only victory claim",
+    "round2CompletedBrowserGames": 5,
+    "round2PlayerActions": 47,
+    "round2ComparisonCount": 3,
+    "round3CompletedBrowserGames": 14,
+    "round3PlayerActions": 114,
+    "combinedRounds2and3CompletedGames": 19,
+    "combinedRounds2and3PlayerActions": 161,
+    "terminalFreeBoardEquippedSkills": 16
+  },
+  "releaseQA": {
+    "automatedTests": 348,
+    "existingTests": 283,
+    "labTests": 65,
+    "strictTypecheck": "pass",
+    "productionBuild": "pass",
+    "releaseHashes": "unchanged",
+    "baselineTraceParity": "102 original plus same102 in none-equipped lab",
+    "scope": "Builder-reported current project QA; separate from independent64 evaluation cases. No enjoyment inference from test counts.",
+    "version": "lab0.2.3",
+    "presentationFixes": {
+      "deployed": "Blue/Red transformation banner;A057 multiplier label;A061 current-count versus post-placement wording",
+      "independentObservation": "Blue active banner verified in Round3;prior0.2.1 observations retained",
+      "builderRedVisualVerification": "Separate cloud tab: pending2→first used/future1→pending1→last current turn→normal after ordinary action.",
+      "completedWording": "A061 status card shows current bottom count and says the actual bonus is decided after placement; exact per-choice forecasts are unchanged."
+    },
+    "mechanicsReferenceCommit": "a5a6b44e301d5b79fffe826ccdabe7c4ebaf4eea"
+  },
+  "title": "優先25技能の評価と次の判断",
+  "updated": "2026-10-01",
+  "recommendationCounts": {
+    "adopt_candidate": 5,
+    "rework": 1,
+    "hold": 19
+  },
+  "round2Evidence": {
+    "file": "browser_observations_round2.json",
+    "status": "integrated after parent review",
+    "humanEnjoyment": "not measured",
+    "comparisonLimits": "Two baselines shared across three comparisons; one observer and order/familiarity effects; no causal estimate of fun"
+  },
+  "round3Evidence": {
+    "file": "browser_observations_round3.json",
+    "status": "bounded first assessment complete",
+    "incompleteUnderstanding": [
+      "human enjoyment",
+      "near-death healing tradeoffs",
+      "long-run rewards/build choices",
+      "repeated cooldown/stall risk",
+      "broader seeds and opponent conditions"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": "1.11.1",
+  "scope": "User-requested box inspection/type visual overlays and half-then-melt frozen / persistent absolute-zero rules for new runs. Legacy configs preserve prior damage and no-thaw behavior.",
+  "files": {
+    "src/next/config.ts": "27e120c16a26238f8088a1fbfac00abd089fe2637ad61477856940dbabaa9ffd",
+    "src/next/core/activeDrop.ts": "410c31592c07e89acc0d82f8384323accdc8a6cf99274e8fbaf41912f0e74574",
+    "src/next/core/boxTypes.ts": "1bebfd7d5e8d4174a44c152846bfb0371cf97e0eaa4e0922a7d30eff8ee97018",
+    "src/next/core/kitBoards.ts": "6b0c79928413940289121aa232b04458ab148a159308ee5d8865175a2ad70496",
+    "src/next/core/types.ts": "4ee28be0f4c98dc0cb711ffbf63d0e4b3b3916722fabbdbe79e28e9527c8c9ec",
+    "src/next/core/validation.ts": "04f6135950e40d6e30fd626268e182f3d0da637be272bc791ab24d8d064589ea",
+    "src/next/main.ts": "b5527b95a8b1ae3e875b188f19b99b87f2f7369d1c9006e364c426796e48a7eb",
+    "src/next/ui/battleAnimator.ts": "f7eda180ef93e68359d111a873120a5750c8ca9cd5efd20d39ac8f8aef30962e",
+    "src/next/ui/energyBox.css": "a15645f75de5e71fc5a7cb22ee6462ef3aa11bf174f104f7709ddaa6a12b164a",
+    "src/next/ui/energyBox.ts": "47feb861c3e4c8e1f83ccd492b11295cbcfb12d76b15ec8e1d47abe23c105582",
+    "src/next/ui/monsterPresentation.ts": "e13f85069fdc012b4fbf0bc9eadb2da8f42724d58ed7db2fcc2c87827dda22c4",
+    "src/next/version.ts": "da0ec2bd0126207b91c4081ca80d7209007f516421e8ff27bc7eacbbe75726a0"
+  }
+}

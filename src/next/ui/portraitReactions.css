@@ -1,0 +1,12 @@
+/* Positioning context only: portrait reactions add no row, size, or layout shift. */
+.hud{position:relative}
+.portrait-reaction-layer{position:absolute;display:block;pointer-events:none!important;overflow:hidden;z-index:4;contain:layout paint;line-height:0}
+.portrait-reaction-layer svg{display:block;width:100%;height:100%;overflow:hidden;pointer-events:none!important}
+.portrait-reaction-layer.hit[data-target=player] svg{transform:scaleX(-1)}
+.portrait-impact-rays{fill:none;stroke:#ffe1a2;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.portrait-impact-core{fill:#f9c67840;stroke:#ffbd75;stroke-width:1.6}
+.portrait-heal-ring{fill:none;stroke:#8cf3ac;stroke-width:1.5}
+.portrait-heal-plus{fill:none;stroke:#bcffd0;stroke-width:2;stroke-linecap:round}
+/* WAAPI is skipped by the helper for reduced/short motion; no flashing fallback is used. */
+body[data-reduced-motion=true] .portrait-reaction-layer{opacity:1!important}
+@media(prefers-reduced-motion:reduce){.portrait-reaction-layer{opacity:1!important}}

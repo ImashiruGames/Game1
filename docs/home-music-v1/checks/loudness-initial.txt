@@ -1,0 +1,29 @@
+[f32le @ 0x55f37b3162c0] Estimating duration from bitrate, this may be inaccurate
+[aist#0:0/pcm_f32le @ 0x55f37b4b7140] Guessed Channel Layout: stereo
+Input #0, f32le, from 'checks/loop-raw.f32':
+  Duration: 00:00:48.00, bitrate: 3072 kb/s
+  Stream #0:0: Audio: pcm_f32le, 48000 Hz, stereo, flt, 3072 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_f32le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf61.7.103
+  Stream #0:0: Audio: pcm_s16le, 192000 Hz, stereo, s16, 6144 kb/s
+      Metadata:
+        encoder         : Lavc61.19.101 pcm_s16le
+size=N/A time=00:00:13.90 bitrate=N/A speed=27.8x    size=N/A time=00:00:31.80 bitrate=N/A speed=31.8x    [Parsed_loudnorm_0 @ 0x7fb50c003480] 
+{
+	"input_i" : "-32.26",
+	"input_tp" : "-20.80",
+	"input_lra" : "0.80",
+	"input_thresh" : "-42.26",
+	"output_i" : "-18.10",
+	"output_tp" : "-6.63",
+	"output_lra" : "0.80",
+	"output_thresh" : "-28.10",
+	"normalization_type" : "dynamic",
+	"target_offset" : "0.10"
+}
+[out#0/null @ 0x55f37b4b72c0] video:0KiB audio:36000KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:00:48.00 bitrate=N/A speed=33.3x    

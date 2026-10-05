@@ -1,0 +1,13 @@
+/* Existing strip + HUD only: no extra row, no board/button shrink. */
+.turn-indicator{display:inline-flex;align-items:center;justify-content:center;min-height:22px;padding:1px 5px;border:1px solid #566978;border-radius:5px;font-size:11px;line-height:1.2;background:#152430}
+.game[data-turn-owner=player] .turn-indicator{color:#ffe0a8;border-color:#9c7845}
+.game[data-turn-owner=enemy] .turn-indicator{color:#b4edf1;border-color:#5999a8}
+.hud .player-hud,.hud .enemy-hud{border-radius:5px;outline:1px solid transparent;outline-offset:2px}
+.game[data-turn-owner=player] .player-hud{outline-color:#bd995d}
+.game[data-turn-owner=enemy] .enemy-hud{outline-color:#70afb9}
+.game[data-turn-phase=resolving] .turn-indicator:before{content:'…';margin-right:3px;font-weight:700}
+#hint.turn-locked{border-radius:5px;background:#253541;color:#d3dfe7}
+.game[data-turn-motion=full] .turn-enter{animation:turn-enter 160ms ease-out}
+@keyframes turn-enter{from{box-shadow:inset 0 0 0 2px #e1d3a899;background-color:#e1d3a81a}to{box-shadow:inset 0 0 0 0 #e1d3a800;background-color:transparent}}
+body[data-reduced-motion=true] .game .turn-enter{animation:none}
+@media(prefers-reduced-motion:reduce){.game[data-turn-motion=full] .turn-enter{animation:none}}

@@ -1,0 +1,26 @@
+{
+  "name": "game1-box-stacking",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Game1 deterministic box-stacking PvE prototype",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "check": "npm run test && npm run build"
+  },
+  "dependencies": {
+    "phaser": "3.90.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3",
+    "vite": "8.3.1"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}

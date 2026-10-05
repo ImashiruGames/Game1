@@ -1,0 +1,145 @@
+{
+  "revision": "neon-v1",
+  "bgm": {
+    "id": "neon_undertow_game_loop_v1",
+    "title": "Neon Undertow",
+    "filename": "02_neon_undertow_game_loop_v1.wav",
+    "sha256": "42d64a0b0d7f346a77ee04d4adaedf966353ced13e8a973101b1645573abbc68",
+    "bytes": 12567372,
+    "encoding": "PCM signed 24-bit little-endian WAV",
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 2094545,
+    "loopStartFrame": 0,
+    "loopEndFrame": 2094545,
+    "loopStart": 0,
+    "loopEnd": 43.63635416666666,
+    "durationSeconds": 43.63635416666666,
+    "bpm": 132,
+    "beatsPerBar": 4,
+    "bars": 24,
+    "idealFramesPerCycle": 2094545.4545454544,
+    "frameQuantizationErrorSamples": -0.45454545435495675,
+    "effectiveLoopBpm": 132.00002864583956,
+    "sourceProject": "neon_undertow_game_loop.jummbox.json",
+    "sourceProjectSha256": "ef53ed8caca16c043b0933a53ac856432840497a8c20e60e2e6239a6ff9ccc50",
+    "sourceProjectUnchanged": true,
+    "sourceRender": "neon_undertow_4cycles.render-f32.wav",
+    "extraction": {
+      "cycle": 4,
+      "startFrame": 6283636,
+      "endFrame": 8378181,
+      "warmupCycles": 3,
+      "boundaryDetection": "Observed official Synth bar wrap at one-sample granularity; not inferred only from theoretical sample count"
+    },
+    "processing": {
+      "highpass_hz": 20,
+      "highpass_applied_to_full_continuous_render": true,
+      "static_gain_db": 14.58,
+      "aligned_head_crossfade_frames": 0,
+      "aligned_head_crossfade_ms": 0.0,
+      "crossfade_curve": "not applied; natural join is below surrounding normal sample differences",
+      "frame_count_unchanged": true,
+      "fade_out": false,
+      "dynamic_compression_added": false,
+      "limiter_added": false
+    },
+    "levels": {
+      "integrated_lufs": -18.0,
+      "true_peak_dbtp": -2.58,
+      "loudness_range_lu": 2.6,
+      "sample_peak_dbfs": -2.5772039795088038,
+      "rms_dbfs": -19.44435247850443,
+      "dc_per_channel": [
+        -5.604992802205378e-08,
+        -5.6213271689060574e-08
+      ],
+      "clipped_samples": 0,
+      "nonfinite_samples": 0
+    },
+    "seam": {
+      "original_crop_boundary_delta": [
+        -0.0005633715438535668,
+        -3.8294616922990926e-05
+      ],
+      "final_boundary_delta": [
+        -0.0005633831024169922,
+        -3.826618194580078e-05
+      ],
+      "native_continuous_boundary_delta": [
+        -0.0005727232526098426,
+        2.8900652698280613e-06
+      ],
+      "boundary_minus_native_delta": [
+        9.340150192850387e-06,
+        -4.1156247215628845e-05
+      ],
+      "max_all_adjacent_sample_delta": 0.255092978477478,
+      "first_100ms_rms_dbfs": -15.952188831537686,
+      "last_100ms_rms_dbfs": -30.81154729049565,
+      "first_20ms_rms_dbfs": -13.578029516133622,
+      "last_20ms_rms_dbfs": -35.51631864872121
+    },
+    "runtime": {
+      "bgm_gain_db": -4.5,
+      "se_gain_db": 0,
+      "master_gain_db": -3,
+      "max_attack_voices_including_fades": 2,
+      "other_audio_buses_included": false,
+      "start_stop_gain_ramp_ms": 12,
+      "use_audio_buffer_loop": true,
+      "loop_start_seconds": 0,
+      "loop_end_policy": "At decoded 48k use loopEnd; if AudioContext resamples, use decoded AudioBuffer.duration so the complete decoded frame set loops without an added/truncated sample",
+      "fallback_to_old_oscillator": false,
+      "mp3_runtime_fallback": false,
+      "worst_case_two_voice_bound_dbtp": -2.0738493077762667
+    },
+    "qa": {
+      "subjective_listening": "Not performed",
+      "two_cycle_file": "qa_two_cycles.wav",
+      "seam_file": "qa_loop_seam_100ms-f32.wav",
+      "native_seam_reference": "qa_native_seam_100ms-f32.wav"
+    },
+    "lossless_archive": {
+      "filename": "02_neon_undertow_game_loop_v1.flac",
+      "bytes": 5529146,
+      "sha256": "3d7df4c239181d0128bcf773e567fcfdc759d6a121169f2c3a0d3c5dbaa36d8c",
+      "decoded_pcm_sha256": "963ce7e791f8fb6f7803fc24b7cea210d1a3bd3ccc59a1330e28379299e1f856",
+      "wav_pcm_identical": true
+    }
+  },
+  "effects": [
+    {
+      "id": "se01_neon_strike",
+      "title": "Neon Strike",
+      "filename": "se01_neon_strike.wav",
+      "sha256": "01351ab06c6cb0a6dbaf528069d219af6ef8317102bed22b76b69e57fa9e30e7",
+      "seconds": 0.28
+    },
+    {
+      "id": "se02_neon_crush",
+      "title": "Neon Crush",
+      "filename": "se02_neon_crush.wav",
+      "sha256": "4aafd60c6ca67dfac1bbc161a2ac8d4ba2aa6bfbcd8070c66c6d93eda61fa5d8",
+      "seconds": 0.48
+    },
+    {
+      "id": "se03_neon_breaker",
+      "title": "Neon Breaker",
+      "filename": "se03_neon_breaker.wav",
+      "sha256": "c0d5b8d0434cd37fb8fa21e6197008b90579ff4dd6ccfb7dc800ffc9d2372fba",
+      "seconds": 0.72
+    }
+  ],
+  "mapping": {
+    "primary_link_3": "se01_neon_strike",
+    "primary_link_4": "se02_neon_crush",
+    "primary_link_5_or_more": "se03_neon_breaker",
+    "other_events": "silent"
+  },
+  "aggregation_window_ms": 80,
+  "max_effect_voices_including_fade": 2,
+  "game_rules_changed": false,
+  "subjective_listening_performed": false,
+  "independent_signal_qc": "passed"
+}

@@ -1,0 +1,7369 @@
+{
+  "sourceCommit": "2c5caa0590231453a69e553d8d501bdb1cc2258c",
+  "cases": [
+    {
+      "name": "legacy-xp-0",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 1,
+        "current": 0,
+        "next": 40,
+        "points": 2
+      }
+    },
+    {
+      "name": "legacy-xp-39",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 39,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 39,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 39,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 39,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 39,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 39,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 39,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 39,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 1,
+        "current": 39,
+        "next": 40,
+        "points": 2
+      }
+    },
+    {
+      "name": "legacy-xp-40",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 40,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 40,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 40,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 40,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 40,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 40,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 40,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 40,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 2,
+        "current": 0,
+        "next": 60,
+        "points": 4
+      }
+    },
+    {
+      "name": "legacy-xp-99",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 99,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 99,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 99,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 99,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 99,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 99,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 99,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 99,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 2,
+        "current": 59,
+        "next": 60,
+        "points": 4
+      }
+    },
+    {
+      "name": "legacy-xp-100",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 100,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 100,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 100,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 100,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 100,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 100,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 100,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 100,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 3,
+        "current": 0,
+        "next": 80,
+        "points": 6
+      }
+    },
+    {
+      "name": "legacy-xp-179",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 179,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 179,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 179,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 179,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 179,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 179,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 179,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 179,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 3,
+        "current": 79,
+        "next": 80,
+        "points": 6
+      }
+    },
+    {
+      "name": "legacy-xp-180",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 180,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 180,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 180,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 180,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 180,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 180,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 180,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 180,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 4,
+        "current": 0,
+        "next": 100,
+        "points": 8
+      }
+    },
+    {
+      "name": "legacy-xp-279",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 4,
+        "current": 99,
+        "next": 100,
+        "points": 8
+      }
+    },
+    {
+      "name": "legacy-xp-280",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 5,
+        "current": 0,
+        "next": 120,
+        "points": 10
+      }
+    },
+    {
+      "name": "legacy-xp-1299",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1299,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 1299,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 1299,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 1299,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 1299,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 1299,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 1299,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 1299,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 10,
+        "current": 219,
+        "next": 220,
+        "points": 20
+      }
+    },
+    {
+      "name": "legacy-xp-1300",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1300,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 1300,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 1300,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 1300,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 1300,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 1300,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 1300,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 1300,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 11,
+        "current": 0,
+        "next": 240,
+        "points": 22
+      }
+    },
+    {
+      "name": "legacy-xp-1539",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1539,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 1539,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 1539,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 1539,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 1539,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 1539,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 1539,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 1539,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 11,
+        "current": 239,
+        "next": 240,
+        "points": 22
+      }
+    },
+    {
+      "name": "legacy-xp-1540",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1540,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 1540,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 1540,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 1540,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 1540,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 1540,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 1540,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 1540,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 12,
+        "current": 0,
+        "next": 260,
+        "points": 24
+      }
+    },
+    {
+      "name": "legacy-xp-1799",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1799,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 1799,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 1799,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 1799,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 1799,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 1799,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 1799,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 1799,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 12,
+        "current": 259,
+        "next": 260,
+        "points": 24
+      }
+    },
+    {
+      "name": "legacy-xp-1800",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1800,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 1800,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 1800,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 1800,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 1800,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 1800,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 1800,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 1800,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 13,
+        "current": 0,
+        "next": 280,
+        "points": 26
+      }
+    },
+    {
+      "name": "legacy-xp-2079",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 2079,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 2079,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 2079,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 2079,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 2079,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 2079,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 2079,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 2079,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 13,
+        "current": 279,
+        "next": 280,
+        "points": 26
+      }
+    },
+    {
+      "name": "legacy-xp-2080",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 2080,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 2080,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 2080,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 2080,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 2080,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 2080,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 2080,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 2080,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 14,
+        "current": 0,
+        "next": 300,
+        "points": 28
+      }
+    },
+    {
+      "name": "legacy-xp-9279",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 9279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 9279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 9279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 9279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 9279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 9279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 9279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 9279,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 29,
+        "current": 599,
+        "next": 600,
+        "points": 58
+      }
+    },
+    {
+      "name": "legacy-xp-9280",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 9280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 9280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 9280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 9280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 9280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 9280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 9280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 9280,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 30,
+        "current": 0,
+        "next": 0,
+        "points": 60
+      }
+    },
+    {
+      "name": "legacy-xp-1000000",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1000000,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 1000000,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 1000000,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 1000000,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 1000000,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 1000000,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 1000000,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 1000000,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 30,
+        "current": 990720,
+        "next": 0,
+        "points": 60
+      }
+    },
+    {
+      "name": "legacy-xp-9007199254740991",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 1234,
+        "energy": 7,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 9007199254740991,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 9007199254740991,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 9007199254740991,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 9007199254740991,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 9007199254740991,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 9007199254740991,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 9007199254740991,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 9007199254740991,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 9213,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "expected": {
+        "level": 30,
+        "current": 9007199254731711,
+        "next": 0,
+        "points": 60
+      }
+    },
+    {
+      "name": "legacy-active-before-cap",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 4321,
+        "energy": 9,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1539,
+            "tree": {
+              "three": 5,
+              "four": 5,
+              "five": 5,
+              "slots": 2,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {
+          "7503aa15-fa3b-49d1-b6a1-8390f1d73b01": {
+            "character": "blue",
+            "snapshot": "{\"version\":1,\"kitVersion\":2,\"kitBalance\":{\"version\":1,\"mintShapeBonus\":3,\"roseHorizontalBonus\":12,\"silverBarrier\":12,\"violetPoisonTargets\":2,\"amber\":{\"mode\":\"link-power\",\"multiplier\":2,\"ownTurns\":1},\"boards\":{\"mint-observe\":{\"gauge\":10,\"hp\":0},\"rose-slice\":{\"gauge\":10,\"hp\":0},\"amber-convert\":{\"gauge\":20,\"hp\":0},\"violet-poison\":{\"gauge\":20,\"hp\":0},\"silver-freeze\":{\"gauge\":15,\"hp\":0},\"blue-freeze\":{\"gauge\":10,\"hp\":0},\"red-capture\":{\"gauge\":0,\"hp\":2},\"imashiru-focus\":{\"gauge\":40,\"hp\":0}}},\"rosterId\":\"blue\",\"level\":11,\"tree\":{\"three\":5,\"four\":5,\"five\":5,\"slots\":2,\"board\":0},\"pool\":[\"health\",\"grow-fire\",\"charge\",\"first-guard\",\"horizontal-slash\",\"corner-strike\"],\"board\":\"pain-shared\",\"slots\":4,\"eligible\":true}"
+          }
+        },
+        "rng": 1972,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "checkpoint": {
+        "runId": "7503aa15-fa3b-49d1-b6a1-8390f1d73b01",
+        "initialConfig": {
+          "id": "standard",
+          "title": "基本の対戦",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 30,
+              "attacks": {
+                "3": 9,
+                "4": 12,
+                "5": 21
+              }
+            },
+            "enemy": {
+              "maxHp": 60,
+              "initialHp": 60,
+              "attacks": {
+                "3": 2,
+                "4": 4,
+                "5": 6
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 53917,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "marujiro",
+          "initialBuild": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0,
+          "meta": {
+            "version": 1,
+            "kitVersion": 2,
+            "kitBalance": {
+              "version": 1,
+              "mintShapeBonus": 3,
+              "roseHorizontalBonus": 12,
+              "silverBarrier": 12,
+              "violetPoisonTargets": 2,
+              "amber": {
+                "mode": "link-power",
+                "multiplier": 2,
+                "ownTurns": 1
+              },
+              "boards": {
+                "mint-observe": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "rose-slice": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "amber-convert": {
+                  "gauge": 20,
+                  "hp": 0
+                },
+                "violet-poison": {
+                  "gauge": 20,
+                  "hp": 0
+                },
+                "silver-freeze": {
+                  "gauge": 15,
+                  "hp": 0
+                },
+                "blue-freeze": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "red-capture": {
+                  "gauge": 0,
+                  "hp": 2
+                },
+                "imashiru-focus": {
+                  "gauge": 40,
+                  "hp": 0
+                }
+              }
+            },
+            "rosterId": "blue",
+            "level": 11,
+            "tree": {
+              "three": 5,
+              "four": 5,
+              "five": 5,
+              "slots": 2,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared",
+            "slots": 4,
+            "eligible": true
+          }
+        },
+        "options": {
+          "run": {
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 1,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "standard",
+            "title": "基本の対戦",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 30,
+                "attacks": {
+                  "3": 9,
+                  "4": 12,
+                  "5": 21
+                }
+              },
+              "enemy": {
+                "maxHp": 60,
+                "initialHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 53917,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "marujiro",
+            "initialBuild": {
+              "fixed": {
+                "id": "health",
+                "rank": 1,
+                "uses": null
+              },
+              "slots": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "power": {
+                "3": 0,
+                "4": 0,
+                "5": 0
+              }
+            },
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialEnemyTurnCount": 0,
+            "meta": {
+              "version": 1,
+              "kitVersion": 2,
+              "kitBalance": {
+                "version": 1,
+                "mintShapeBonus": 3,
+                "roseHorizontalBonus": 12,
+                "silverBarrier": 12,
+                "violetPoisonTargets": 2,
+                "amber": {
+                  "mode": "link-power",
+                  "multiplier": 2,
+                  "ownTurns": 1
+                },
+                "boards": {
+                  "mint-observe": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "rose-slice": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "amber-convert": {
+                    "gauge": 20,
+                    "hp": 0
+                  },
+                  "violet-poison": {
+                    "gauge": 20,
+                    "hp": 0
+                  },
+                  "silver-freeze": {
+                    "gauge": 15,
+                    "hp": 0
+                  },
+                  "blue-freeze": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "red-capture": {
+                    "gauge": 0,
+                    "hp": 2
+                  },
+                  "imashiru-focus": {
+                    "gauge": 40,
+                    "hp": 0
+                  }
+                }
+              },
+              "rosterId": "blue",
+              "level": 11,
+              "tree": {
+                "three": 5,
+                "four": 5,
+                "five": 5,
+                "slots": 2,
+                "board": 0
+              },
+              "pool": [
+                "health",
+                "grow-fire",
+                "charge",
+                "first-guard",
+                "horizontal-slash",
+                "corner-strike"
+              ],
+              "board": "pain-shared",
+              "slots": 4,
+              "eligible": true
+            }
+          },
+          "boxes": [],
+          "hp": {
+            "player": {
+              "current": 30,
+              "max": 30
+            },
+            "enemy": {
+              "current": 60,
+              "max": 60
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 53917,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 0,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": null
+        },
+        "run": {
+          "stage": 1,
+          "defeatedCount": 0,
+          "currentEnemyId": "marujiro",
+          "status": "active"
+        },
+        "enemyOrder": [
+          "marujiro",
+          "hikikizan",
+          "nigirin"
+        ],
+        "rewardRng": 1374549398
+      },
+      "terminalCheckpoint": {
+        "runId": "7503aa15-fa3b-49d1-b6a1-8390f1d73b01",
+        "initialConfig": {
+          "id": "standard",
+          "title": "基本の対戦",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 30,
+              "attacks": {
+                "3": 9,
+                "4": 12,
+                "5": 21
+              }
+            },
+            "enemy": {
+              "maxHp": 60,
+              "initialHp": 60,
+              "attacks": {
+                "3": 2,
+                "4": 4,
+                "5": 6
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 53917,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "marujiro",
+          "initialBuild": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0,
+          "meta": {
+            "version": 1,
+            "kitVersion": 2,
+            "kitBalance": {
+              "version": 1,
+              "mintShapeBonus": 3,
+              "roseHorizontalBonus": 12,
+              "silverBarrier": 12,
+              "violetPoisonTargets": 2,
+              "amber": {
+                "mode": "link-power",
+                "multiplier": 2,
+                "ownTurns": 1
+              },
+              "boards": {
+                "mint-observe": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "rose-slice": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "amber-convert": {
+                  "gauge": 20,
+                  "hp": 0
+                },
+                "violet-poison": {
+                  "gauge": 20,
+                  "hp": 0
+                },
+                "silver-freeze": {
+                  "gauge": 15,
+                  "hp": 0
+                },
+                "blue-freeze": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "red-capture": {
+                  "gauge": 0,
+                  "hp": 2
+                },
+                "imashiru-focus": {
+                  "gauge": 40,
+                  "hp": 0
+                }
+              }
+            },
+            "rosterId": "blue",
+            "level": 11,
+            "tree": {
+              "three": 5,
+              "four": 5,
+              "five": 5,
+              "slots": 2,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared",
+            "slots": 4,
+            "eligible": true
+          }
+        },
+        "options": {
+          "run": {
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 1,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "standard",
+            "title": "基本の対戦",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 30,
+                "attacks": {
+                  "3": 9,
+                  "4": 12,
+                  "5": 21
+                }
+              },
+              "enemy": {
+                "maxHp": 60,
+                "initialHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 53917,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "marujiro",
+            "initialBuild": {
+              "fixed": {
+                "id": "health",
+                "rank": 1,
+                "uses": null
+              },
+              "slots": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "power": {
+                "3": 0,
+                "4": 0,
+                "5": 0
+              }
+            },
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialEnemyTurnCount": 0,
+            "meta": {
+              "version": 1,
+              "kitVersion": 2,
+              "kitBalance": {
+                "version": 1,
+                "mintShapeBonus": 3,
+                "roseHorizontalBonus": 12,
+                "silverBarrier": 12,
+                "violetPoisonTargets": 2,
+                "amber": {
+                  "mode": "link-power",
+                  "multiplier": 2,
+                  "ownTurns": 1
+                },
+                "boards": {
+                  "mint-observe": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "rose-slice": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "amber-convert": {
+                    "gauge": 20,
+                    "hp": 0
+                  },
+                  "violet-poison": {
+                    "gauge": 20,
+                    "hp": 0
+                  },
+                  "silver-freeze": {
+                    "gauge": 15,
+                    "hp": 0
+                  },
+                  "blue-freeze": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "red-capture": {
+                    "gauge": 0,
+                    "hp": 2
+                  },
+                  "imashiru-focus": {
+                    "gauge": 40,
+                    "hp": 0
+                  }
+                }
+              },
+              "rosterId": "blue",
+              "level": 11,
+              "tree": {
+                "three": 5,
+                "four": 5,
+                "five": 5,
+                "slots": 2,
+                "board": 0
+              },
+              "pool": [
+                "health",
+                "grow-fire",
+                "charge",
+                "first-guard",
+                "horizontal-slash",
+                "corner-strike"
+              ],
+              "board": "pain-shared",
+              "slots": 4,
+              "eligible": true
+            }
+          },
+          "boxes": [],
+          "hp": {
+            "player": {
+              "current": 30,
+              "max": 30
+            },
+            "enemy": {
+              "current": 0,
+              "max": 60
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 53917,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 0,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": {
+            "winner": "player",
+            "reason": "hp-zero"
+          }
+        },
+        "run": {
+          "stage": 50,
+          "defeatedCount": 50,
+          "currentEnemyId": "marujiro",
+          "status": "cleared"
+        },
+        "enemyOrder": [
+          "marujiro",
+          "hikikizan",
+          "nigirin"
+        ],
+        "rewardRng": 1374549398
+      },
+      "expectedAfterOldClear": {
+        "xp": 2289,
+        "level": 14,
+        "points": 28,
+        "coins": 4771,
+        "tree": {
+          "three": 5,
+          "four": 5,
+          "five": 5,
+          "slots": 2,
+          "board": 0
+        }
+      }
+    },
+    {
+      "name": "legacy-terminal-unsettled",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 4321,
+        "energy": 9,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 1539,
+            "tree": {
+              "three": 5,
+              "four": 5,
+              "five": 5,
+              "slots": 2,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {
+          "7503aa15-fa3b-49d1-b6a1-8390f1d73b01": {
+            "character": "blue",
+            "snapshot": "{\"version\":1,\"kitVersion\":2,\"kitBalance\":{\"version\":1,\"mintShapeBonus\":3,\"roseHorizontalBonus\":12,\"silverBarrier\":12,\"violetPoisonTargets\":2,\"amber\":{\"mode\":\"link-power\",\"multiplier\":2,\"ownTurns\":1},\"boards\":{\"mint-observe\":{\"gauge\":10,\"hp\":0},\"rose-slice\":{\"gauge\":10,\"hp\":0},\"amber-convert\":{\"gauge\":20,\"hp\":0},\"violet-poison\":{\"gauge\":20,\"hp\":0},\"silver-freeze\":{\"gauge\":15,\"hp\":0},\"blue-freeze\":{\"gauge\":10,\"hp\":0},\"red-capture\":{\"gauge\":0,\"hp\":2},\"imashiru-focus\":{\"gauge\":40,\"hp\":0}}},\"rosterId\":\"blue\",\"level\":11,\"tree\":{\"three\":5,\"four\":5,\"five\":5,\"slots\":2,\"board\":0},\"pool\":[\"health\",\"grow-fire\",\"charge\",\"first-guard\",\"horizontal-slash\",\"corner-strike\"],\"board\":\"pain-shared\",\"slots\":4,\"eligible\":true}"
+          }
+        },
+        "rng": 1972,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "checkpoint": {
+        "runId": "7503aa15-fa3b-49d1-b6a1-8390f1d73b01",
+        "initialConfig": {
+          "id": "standard",
+          "title": "基本の対戦",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 30,
+              "attacks": {
+                "3": 9,
+                "4": 12,
+                "5": 21
+              }
+            },
+            "enemy": {
+              "maxHp": 60,
+              "initialHp": 60,
+              "attacks": {
+                "3": 2,
+                "4": 4,
+                "5": 6
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 53917,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "marujiro",
+          "initialBuild": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0,
+          "meta": {
+            "version": 1,
+            "kitVersion": 2,
+            "kitBalance": {
+              "version": 1,
+              "mintShapeBonus": 3,
+              "roseHorizontalBonus": 12,
+              "silverBarrier": 12,
+              "violetPoisonTargets": 2,
+              "amber": {
+                "mode": "link-power",
+                "multiplier": 2,
+                "ownTurns": 1
+              },
+              "boards": {
+                "mint-observe": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "rose-slice": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "amber-convert": {
+                  "gauge": 20,
+                  "hp": 0
+                },
+                "violet-poison": {
+                  "gauge": 20,
+                  "hp": 0
+                },
+                "silver-freeze": {
+                  "gauge": 15,
+                  "hp": 0
+                },
+                "blue-freeze": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "red-capture": {
+                  "gauge": 0,
+                  "hp": 2
+                },
+                "imashiru-focus": {
+                  "gauge": 40,
+                  "hp": 0
+                }
+              }
+            },
+            "rosterId": "blue",
+            "level": 11,
+            "tree": {
+              "three": 5,
+              "four": 5,
+              "five": 5,
+              "slots": 2,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared",
+            "slots": 4,
+            "eligible": true
+          }
+        },
+        "options": {
+          "run": {
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 1,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "standard",
+            "title": "基本の対戦",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 30,
+                "attacks": {
+                  "3": 9,
+                  "4": 12,
+                  "5": 21
+                }
+              },
+              "enemy": {
+                "maxHp": 60,
+                "initialHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 53917,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "marujiro",
+            "initialBuild": {
+              "fixed": {
+                "id": "health",
+                "rank": 1,
+                "uses": null
+              },
+              "slots": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "power": {
+                "3": 0,
+                "4": 0,
+                "5": 0
+              }
+            },
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialEnemyTurnCount": 0,
+            "meta": {
+              "version": 1,
+              "kitVersion": 2,
+              "kitBalance": {
+                "version": 1,
+                "mintShapeBonus": 3,
+                "roseHorizontalBonus": 12,
+                "silverBarrier": 12,
+                "violetPoisonTargets": 2,
+                "amber": {
+                  "mode": "link-power",
+                  "multiplier": 2,
+                  "ownTurns": 1
+                },
+                "boards": {
+                  "mint-observe": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "rose-slice": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "amber-convert": {
+                    "gauge": 20,
+                    "hp": 0
+                  },
+                  "violet-poison": {
+                    "gauge": 20,
+                    "hp": 0
+                  },
+                  "silver-freeze": {
+                    "gauge": 15,
+                    "hp": 0
+                  },
+                  "blue-freeze": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "red-capture": {
+                    "gauge": 0,
+                    "hp": 2
+                  },
+                  "imashiru-focus": {
+                    "gauge": 40,
+                    "hp": 0
+                  }
+                }
+              },
+              "rosterId": "blue",
+              "level": 11,
+              "tree": {
+                "three": 5,
+                "four": 5,
+                "five": 5,
+                "slots": 2,
+                "board": 0
+              },
+              "pool": [
+                "health",
+                "grow-fire",
+                "charge",
+                "first-guard",
+                "horizontal-slash",
+                "corner-strike"
+              ],
+              "board": "pain-shared",
+              "slots": 4,
+              "eligible": true
+            }
+          },
+          "boxes": [],
+          "hp": {
+            "player": {
+              "current": 30,
+              "max": 30
+            },
+            "enemy": {
+              "current": 0,
+              "max": 60
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 53917,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 0,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": {
+            "winner": "player",
+            "reason": "hp-zero"
+          }
+        },
+        "run": {
+          "stage": 50,
+          "defeatedCount": 50,
+          "currentEnemyId": "marujiro",
+          "status": "cleared"
+        },
+        "enemyOrder": [
+          "marujiro",
+          "hikikizan",
+          "nigirin"
+        ],
+        "rewardRng": 1374549398
+      },
+      "expectedAfterOldClear": {
+        "xp": 2289,
+        "level": 14,
+        "points": 28,
+        "coins": 4771,
+        "tree": {
+          "three": 5,
+          "four": 5,
+          "five": 5,
+          "slots": 2,
+          "board": 0
+        }
+      }
+    },
+    {
+      "name": "legacy-terminal-already-settled",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 4771,
+        "energy": 9,
+        "ownedCharacters": [
+          "blue",
+          "red"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 2289,
+            "tree": {
+              "three": 5,
+              "four": 5,
+              "five": 5,
+              "slots": 2,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {
+          "clear50:first": 10,
+          "clear50:blue": 10
+        },
+        "receipts": {
+          "7503aa15-fa3b-49d1-b6a1-8390f1d73b01": {
+            "runId": "7503aa15-fa3b-49d1-b6a1-8390f1d73b01",
+            "character": "blue",
+            "xp": 750,
+            "coins": 450,
+            "defeated": 50,
+            "clear": true,
+            "trophies": [
+              "clear50:first",
+              "clear50:blue"
+            ],
+            "at": 10
+          }
+        },
+        "launches": {},
+        "rng": 1972,
+        "drawCount": 0,
+        "pendingDraw": false,
+        "lastDraw": null
+      },
+      "checkpoint": {
+        "runId": "7503aa15-fa3b-49d1-b6a1-8390f1d73b01",
+        "initialConfig": {
+          "id": "standard",
+          "title": "基本の対戦",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 30,
+              "attacks": {
+                "3": 9,
+                "4": 12,
+                "5": 21
+              }
+            },
+            "enemy": {
+              "maxHp": 60,
+              "initialHp": 60,
+              "attacks": {
+                "3": 2,
+                "4": 4,
+                "5": 6
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 53917,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "marujiro",
+          "initialBuild": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0,
+          "meta": {
+            "version": 1,
+            "kitVersion": 2,
+            "kitBalance": {
+              "version": 1,
+              "mintShapeBonus": 3,
+              "roseHorizontalBonus": 12,
+              "silverBarrier": 12,
+              "violetPoisonTargets": 2,
+              "amber": {
+                "mode": "link-power",
+                "multiplier": 2,
+                "ownTurns": 1
+              },
+              "boards": {
+                "mint-observe": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "rose-slice": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "amber-convert": {
+                  "gauge": 20,
+                  "hp": 0
+                },
+                "violet-poison": {
+                  "gauge": 20,
+                  "hp": 0
+                },
+                "silver-freeze": {
+                  "gauge": 15,
+                  "hp": 0
+                },
+                "blue-freeze": {
+                  "gauge": 10,
+                  "hp": 0
+                },
+                "red-capture": {
+                  "gauge": 0,
+                  "hp": 2
+                },
+                "imashiru-focus": {
+                  "gauge": 40,
+                  "hp": 0
+                }
+              }
+            },
+            "rosterId": "blue",
+            "level": 11,
+            "tree": {
+              "three": 5,
+              "four": 5,
+              "five": 5,
+              "slots": 2,
+              "board": 0
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared",
+            "slots": 4,
+            "eligible": true
+          }
+        },
+        "options": {
+          "run": {
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 1,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "standard",
+            "title": "基本の対戦",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 30,
+                "attacks": {
+                  "3": 9,
+                  "4": 12,
+                  "5": 21
+                }
+              },
+              "enemy": {
+                "maxHp": 60,
+                "initialHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 53917,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "marujiro",
+            "initialBuild": {
+              "fixed": {
+                "id": "health",
+                "rank": 1,
+                "uses": null
+              },
+              "slots": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "power": {
+                "3": 0,
+                "4": 0,
+                "5": 0
+              }
+            },
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialEnemyTurnCount": 0,
+            "meta": {
+              "version": 1,
+              "kitVersion": 2,
+              "kitBalance": {
+                "version": 1,
+                "mintShapeBonus": 3,
+                "roseHorizontalBonus": 12,
+                "silverBarrier": 12,
+                "violetPoisonTargets": 2,
+                "amber": {
+                  "mode": "link-power",
+                  "multiplier": 2,
+                  "ownTurns": 1
+                },
+                "boards": {
+                  "mint-observe": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "rose-slice": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "amber-convert": {
+                    "gauge": 20,
+                    "hp": 0
+                  },
+                  "violet-poison": {
+                    "gauge": 20,
+                    "hp": 0
+                  },
+                  "silver-freeze": {
+                    "gauge": 15,
+                    "hp": 0
+                  },
+                  "blue-freeze": {
+                    "gauge": 10,
+                    "hp": 0
+                  },
+                  "red-capture": {
+                    "gauge": 0,
+                    "hp": 2
+                  },
+                  "imashiru-focus": {
+                    "gauge": 40,
+                    "hp": 0
+                  }
+                }
+              },
+              "rosterId": "blue",
+              "level": 11,
+              "tree": {
+                "three": 5,
+                "four": 5,
+                "five": 5,
+                "slots": 2,
+                "board": 0
+              },
+              "pool": [
+                "health",
+                "grow-fire",
+                "charge",
+                "first-guard",
+                "horizontal-slash",
+                "corner-strike"
+              ],
+              "board": "pain-shared",
+              "slots": 4,
+              "eligible": true
+            }
+          },
+          "boxes": [],
+          "hp": {
+            "player": {
+              "current": 30,
+              "max": 30
+            },
+            "enemy": {
+              "current": 0,
+              "max": 60
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 53917,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 0,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": {
+            "winner": "player",
+            "reason": "hp-zero"
+          }
+        },
+        "run": {
+          "stage": 50,
+          "defeatedCount": 50,
+          "currentEnemyId": "marujiro",
+          "status": "cleared"
+        },
+        "enemyOrder": [
+          "marujiro",
+          "hikikizan",
+          "nigirin"
+        ],
+        "rewardRng": 1374549398
+      },
+      "expected": {
+        "xp": 2289,
+        "level": 14,
+        "points": 28,
+        "coins": 4771
+      }
+    },
+    {
+      "name": "legacy-pending-all-owned-duplicate",
+      "profile": {
+        "schema": 1,
+        "revision": 0,
+        "selected": "blue",
+        "coins": 400,
+        "energy": 6,
+        "ownedCharacters": [
+          "blue",
+          "red",
+          "mint",
+          "amber",
+          "violet",
+          "silver",
+          "rose",
+          "imashiru"
+        ],
+        "ownedSkills": [
+          "grow-fire",
+          "corner-strike",
+          "square-strike",
+          "horizontal-slash",
+          "charge",
+          "first-guard"
+        ],
+        "characters": {
+          "blue": {
+            "xp": 9280,
+            "tree": {
+              "three": 5,
+              "four": 5,
+              "five": 5,
+              "slots": 2,
+              "board": 1
+            },
+            "pool": [
+              "health",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "pain-shared"
+          },
+          "red": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "ember"
+          },
+          "mint": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "corner-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "square-strike"
+            ],
+            "board": "mint-observe"
+          },
+          "amber": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "square-strike",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike"
+            ],
+            "board": "amber-convert"
+          },
+          "violet": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "horizontal-slash",
+              "diagonal-shot",
+              "corner-strike"
+            ],
+            "board": "violet-poison"
+          },
+          "silver": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "first-guard",
+              "grow-fire",
+              "charge",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "silver-freeze"
+          },
+          "rose": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "horizontal-slash",
+              "grow-fire",
+              "charge",
+              "first-guard",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "rose-slice"
+          },
+          "imashiru": {
+            "xp": 0,
+            "tree": {
+              "three": 0,
+              "four": 0,
+              "five": 0,
+              "slots": 0,
+              "board": 0
+            },
+            "pool": [
+              "charge",
+              "grow-fire",
+              "first-guard",
+              "horizontal-slash",
+              "corner-strike",
+              "square-strike"
+            ],
+            "board": "imashiru-insight"
+          }
+        },
+        "trophies": {},
+        "receipts": {},
+        "launches": {},
+        "rng": 628748038,
+        "drawCount": 1,
+        "pendingDraw": true,
+        "lastDraw": {
+          "id": 1,
+          "kind": "character",
+          "item": "mint",
+          "duplicate": true,
+          "coins": 0,
+          "energy": 3
+        }
+      },
+      "expected": {
+        "level": 30,
+        "points": 60,
+        "coins": 400,
+        "energy": 6
+      }
+    }
+  ]
+}

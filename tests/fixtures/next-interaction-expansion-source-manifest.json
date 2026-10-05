@@ -1,0 +1,29 @@
+{
+  "purpose": "User-authorized 1.8 interaction, geometry, normal skill and character-only board expansion. Legacy root/lab remain pinned to original manifests.",
+  "files": {
+    "src/next/app/rewards.ts": "2973e95d3782efc00a3d4dc94b6207cc80ef12a8de05e6e7c71ca0df7405210e",
+    "src/next/core/activeDrop.ts": "118acef2a1be2cbfb6d4c732c9ce24f61c6a164e24fe9defa31d8fb9eb5d7d03",
+    "src/next/core/instantSkills.ts": "deb60f3cbf35377bdee1d994528a3085e47551f9d8ea95096454ad95b0f2d547",
+    "src/next/core/kitBoards.ts": "300b129cbfddbbf7efdaa6366347da1ce0f1c261c3a6f19fe77d78c27f4c8951",
+    "src/next/core/normalSkillEffects.ts": "1544ab381f692402ea893d085da21e9e8c183d67bd236098d4c7fd6df6a7b5db",
+    "src/next/core/shapePatterns.ts": "24a8947f7e98c3beec0a5206b765ac47442622e37dbbef65bb8de1cb105ce886",
+    "src/next/core/skillCatalog.ts": "6807e56158f9eabff3019e373e71b9566e9abf8dcbe56638d32176db4ba0af75",
+    "src/next/core/tuning.ts": "a8752a2a0261f965efb2f527216dfaaa44b94b1e634d1456bd0c9033145f221d",
+    "src/next/core/types.ts": "563dc49b0cb65f2fd87c8b449f55ca0c6fc898d423b2ae5924a28201635be853",
+    "src/next/core/validation.ts": "b09d143d7c493118496b8349f599e90e969395f40f5815903fb4d019b88c96da",
+    "src/next/main.ts": "be57008ccaf38c9e4a97f31718ef5b40f9d1da8455ffd7a258286f72502d34e9",
+    "src/next/meta/home.css": "2cdb27c566808d902438eab116dabee0f84bb744ee27456daeabbca3da362600",
+    "src/next/meta/home.ts": "2750a17339db9da43511e26dd9782f847f8e3a796c0a9ca646d9ec832667235d",
+    "src/next/meta/kitBalance.ts": "4e5358b0c905b9b4c157ab334eaebbafc8eb0c1820a53855c04213fd4edb46a3",
+    "src/next/meta/kits.ts": "1b248be8c3da8a192b64c32abec369dfd68f6b9b0c505145a1ecf6a74e37fff1",
+    "src/next/meta/profile.ts": "f9547c28c3ac45e2ac988952a8612c5a52f38d04d91bbdfe4b45139e6eee03e2",
+    "src/next/style.css": "66f32afe7660e4bdcaf902311caf03d5c80c334dcf5d51b0b3a11d1a4970f7cd",
+    "src/next/ui/actionForecast.ts": "ddf94840babec08ede629cdceaf8a053f97f1294fdbd540cfa34cafba360e579",
+    "src/next/ui/battleReadability.ts": "50b1ef8e5e56891a0773a1daa60547fda81525486f55c96efdb580c5af5d155c",
+    "src/next/ui/consumableReadability.ts": "bfa17d0fd23e73ae5d85c230ffa74d91514d77634e778265e17395b8bde2b3d8",
+    "src/next/ui/edgeEmitters.ts": "392ac15aea67cbc90af69205c2d78725bd73a2d7476b7372313e33a24dd86c03",
+    "src/next/ui/rewardPresentation.ts": "6dc0e70852cc1cb39d7da0342cde46733d474a62ffd7c3def6ca29bd3348347d",
+    "src/next/ui/skillHud.ts": "bae87c99baed7b8253f36eb8523fb4ff0144b9ac56254c3d51f9e0a16bf38ebd",
+    "src/next/version.ts": "5641e5bb96407834d080f78de7bd49fe0eefde09c3271bb3fbefd5b41a82f773"
+  }
+}

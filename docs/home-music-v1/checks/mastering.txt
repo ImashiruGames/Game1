@@ -1,0 +1,49 @@
+[f32le @ 0x561121c3c3c0] Estimating duration from bitrate, this may be inaccurate
+[aist#0:0/pcm_f32le @ 0x561121ddd1c0] Guessed Channel Layout: stereo
+Input #0, f32le, from 'checks/loop-raw.f32':
+  Duration: 00:00:48.00, bitrate: 3072 kb/s
+  Stream #0:0: Audio: pcm_f32le, 48000 Hz, stereo, flt, 3072 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_f32le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to 'audio/home_starlight_terminal_v1.wav':
+  Metadata:
+    ISFT            : Lavf61.7.103
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+      Metadata:
+        encoder         : Lavc61.19.101 pcm_s16le
+[out#0/wav @ 0x561121ddd380] video:0KiB audio:9000KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.000846%
+size=    9000KiB time=00:00:48.00 bitrate=1536.0kbits/s speed=1.7e+03x    
+[aist#0:0/pcm_s16le @ 0x5639cbc105c0] Guessed Channel Layout: stereo
+Input #0, wav, from 'audio/home_starlight_terminal_v1.wav':
+  Metadata:
+    encoder         : Lavf61.7.103
+  Duration: 00:00:48.00, bitrate: 1536 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s16le (native) -> flac (native))
+Press [q] to stop, [?] for help
+Output #0, flac, to 'audio/home_starlight_terminal_v1.flac':
+  Metadata:
+    encoder         : Lavf61.7.103
+  Stream #0:0: Audio: flac, 48000 Hz, stereo, s16, 128 kb/s
+      Metadata:
+        encoder         : Lavc61.19.101 flac
+[out#0/flac @ 0x5639cbc10780] video:0KiB audio:1969KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.411029%
+size=    1977KiB time=00:00:48.00 bitrate= 337.4kbits/s speed= 221x    
+Input #0, flac, from 'audio/home_starlight_terminal_v1.flac':
+  Metadata:
+    encoder         : Lavf61.7.103
+  Duration: 00:00:48.00, start: 0.000000, bitrate: 337 kb/s
+  Stream #0:0: Audio: flac, 48000 Hz, stereo, s16
+Stream mapping:
+  Stream #0:0 -> #0:0 (flac (native) -> pcm_f32le (native))
+Press [q] to stop, [?] for help
+Output #0, f32le, to 'checks/final-decoded.f32':
+  Metadata:
+    encoder         : Lavf61.7.103
+  Stream #0:0: Audio: pcm_f32le, 48000 Hz, stereo, flt, 3072 kb/s
+      Metadata:
+        encoder         : Lavc61.19.101 pcm_f32le
+[out#0/f32le @ 0x558eb7993d80] video:0KiB audio:18000KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.000000%
+size=   18000KiB time=00:00:48.00 bitrate=3072.0kbits/s speed= 875x    

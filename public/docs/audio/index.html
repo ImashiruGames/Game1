@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="10テーマ × 5種類の攻撃SEを比較する、試作サウンドパック第一版。">
+  <title>テーマ別 SE 試聴室</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1120'/%3E%3Cpath d='M7 14h4l6-5v14l-6-5H7zM21 11q7 5 0 10' fill='none' stroke='%237bf2df' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="catalog-data.js"></script>
+  <script defer src="audition.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#sound-list">音を選ぶ</a>
+  <main class="shell">
+    <header class="page-head">
+      <div>
+        <p class="eyebrow"><span class="signal-dot"></span> SOUND PACK / 01</p>
+        <h1>テーマ別 SE 試聴室</h1>
+        <p class="lede">同じ攻撃を、10の音色で。</p>
+      </div>
+      <div class="release-status"><span class="badge">試作・未ゲーム採用</span><span id="availability-summary">配布ファイルを確認中</span></div>
+    </header>
+
+    <section class="transport" aria-label="再生コントロール">
+      <div class="now-playing">
+        <span class="status-icon" id="status-icon" aria-hidden="true">■</span>
+        <div><p class="overline" id="playback-label">STANDBY</p><p id="playback-status" role="status" aria-live="polite" aria-atomic="true">再生する音を選んでください</p></div>
+        <button id="stop" class="button stop-button" type="button">■ 停止</button>
+      </div>
+      <div class="volume-control">
+        <button id="mute" class="button mute-button" type="button" aria-pressed="false" aria-label="ミュートにする">音あり</button>
+        <label for="volume">音量 <output id="volume-value" for="volume">65%</output></label>
+        <input id="volume" type="range" min="0" max="100" value="65" step="1" aria-label="全体の音量">
+      </div>
+      <p class="small-note">ボタンを押すまで音は鳴りません。最初は小さめの音量でお試しください。</p>
+    </section>
+
+    <section class="themes-section" aria-labelledby="theme-title">
+      <div class="section-heading"><h2 id="theme-title">01 <span>テーマを選ぶ</span></h2><span class="quiet">10 themes</span></div>
+      <div id="theme-list" class="theme-list" role="group" aria-label="テーマ選択"></div>
+    </section>
+
+    <section class="sounds-section" aria-labelledby="sounds-title">
+      <div class="section-heading selected-heading"><h2 id="sounds-title">02 <span id="selected-theme-label">音を選ぶ</span></h2><button id="play-theme" class="button secondary-button" type="button" disabled>この5音を順に聴く</button></div>
+      <div id="sound-list" class="sound-list" tabindex="-1"></div>
+    </section>
+
+    <section class="sequence-section" aria-labelledby="sequence-title">
+      <div class="section-heading"><h2 id="sequence-title">03 <span>聴き比べる</span></h2></div>
+      <div class="sequence-options">
+        <div class="sequence-option"><div><h3>テーマ順にすべて</h3><p>かわいい → かっこいい → … → 宇宙</p></div><button id="play-all" class="button primary-button" type="button" disabled>全50音を順に聴く</button></div>
+        <div class="sequence-option"><div><h3>同じ攻撃でテーマ比較</h3><p>1種類の攻撃を10テーマで聴き比べ</p></div><div class="compare-controls"><label class="sr-only" for="compare-kind">比較する攻撃の種類</label><select id="compare-kind"></select><button id="play-compare" class="button secondary-button" type="button" disabled>10テーマを聴く</button></div></div>
+      </div>
+      <p class="small-note">ひとつずつ、約2秒以上の間隔で再生します。別の音を押すと前の音は止まります。</p>
+    </section>
+
+    <section class="downloads-section" aria-labelledby="downloads-title">
+      <div class="section-heading"><h2 id="downloads-title">ファイルと制作メモ</h2></div>
+      <div id="pack-downloads" class="pack-downloads"></div>
+      <p class="small-note">各音はMP3・WAV・FLACで保存できます。編集用JummBoxプロジェクトは別配布のSource Packに収録。Neon②用SE 3音とは別のサウンドパックです。</p>
+      <p class="review-note">音源そのものの実聴レビューは未実施です。これは試作の第一版で、ゲームにはまだ採用していません。</p>
+      <details id="file-issues" hidden><summary>未配布・読み込めないファイル</summary><ul id="file-issues-list"></ul></details>
+      <p id="catalog-error" class="error-message" role="alert" hidden></p>
+    </section>
+    <footer>10 THEMES × 5 ATTACKS <span aria-hidden="true">·</span> SOUND PACK 01</footer>
+  </main>
+</body>
+</html>

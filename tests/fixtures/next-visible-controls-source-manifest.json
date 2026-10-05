@@ -1,0 +1,16 @@
+{
+  "scope": "User requested 1.12.2 visible speed and compact icon controls; no gameplay changes",
+  "files": {
+    "src/next/audio/homeMusicControls.ts": "f17dc0093b2e3d73bb93c9264d7554fef378d97537f43195dd9fc527d4887727",
+    "src/next/audio/presentationSettings.ts": "3b526c1c09d760ca079c5e4cae07994473cc184d2e99b7f0205044218a17a1cc",
+    "src/next/audio/sampleAudioControls.ts": "c44211b53fd207b6d62420f63efcb0f16b14c76d93810dfd8331804db005ccaf",
+    "src/next/main.ts": "6fe8447aa0e17145db7aa1240c637c5f138096d3a9dd88ace1ce542b7a89d031",
+    "src/next/style.css": "2052b2685f6bf11c4c1217beb4ca96f9ab6d06f9db4b2000f170c7a088470bf1",
+    "src/next/version.ts": "a2d8a613955b0469b3c0d348e9afc10f475d147fa4e1075e36352eef4f9f3561",
+    "src/next/ui/battleSpeed.ts": "519933e6d0242118749ff08e94e21355d48405b562402340f403ccdf32477a17",
+    "src/next/ui/controlIcons.ts": "08773bb1ef1441ac0a4684d4f694a34721fff4a9c552f10976a7b718d7e8edb1",
+    "scripts/docs/build-player-guide.mts": "8c553a1602f46736fc201796bf023a16e2db23139ff01199597c8aca494a87e4",
+    "public/docs/game1_content_catalog_next.html": "435457c3663c9ba3438b06895283776f89ce273a4923ff5dd609a3c5985f9d8c",
+    "public/docs/game1_content_catalog_next.json": "b54297abb45a8fb13ddcb0adbf53048f9b7b0699b3922d573b34846b978cb475"
+  }
+}

@@ -1,0 +1,9 @@
+/* Reuse the existing name/HP rows; this patch adds no HUD height. */
+.player-hud>div{position:relative}
+.hud #player-name{display:block;padding-right:78px;font-size:10px;line-height:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player-power-meter{position:absolute;right:0;top:0;text-align:right;font-size:9px;line-height:15px;max-width:calc(100% - 30px);color:#d3dfe6}
+.hud .player-power-meter span{font-size:9px}.power-values{display:flex;justify-content:flex-end;gap:4px;white-space:nowrap;font-variant-numeric:tabular-nums}.power-values b{font-size:10px;color:var(--gold)}
+.power-growth{position:absolute;right:0;top:17px;white-space:nowrap;line-height:15px;color:#c5aadb}
+.player-hud>div:has(.power-growth)>#player-hp{padding-right:36px}
+.power-details dl{display:grid;gap:5px}.power-details dl>div{display:grid;grid-template-columns:36px 1fr;gap:7px}.power-details dt{font-size:13px}.power-details dd{margin:0;font-weight:700}.power-details dd small{font-weight:400;font-size:12px;color:#b9cad5}.power-details .power-warning{color:#ffe0a1}
+@media(min-width:700px){.hud #player-name{font-size:13px;padding-right:125px}.player-power-meter,.hud .player-power-meter span{font-size:12px;line-height:17px}.power-values b{font-size:13px}.power-growth{top:22px}.player-hud>div:has(.power-growth)>#player-hp{padding-right:60px}}

@@ -1,0 +1,11 @@
+/* Fixed marks survive a small portrait. Only the mark pulses; HUD turn animation stays independent. */
+.hud .enemy-hud[data-boss-kind]{position:relative}
+.hud .enemy-hud .boss-phase-mark{position:absolute;right:-2px;bottom:0;min-width:28px;padding:1px 3px;border:1px solid #8b7898;border-radius:3px;background:#2b2334;color:#e9d2fa;font:700 9px/1.25 system-ui;text-align:center;pointer-events:none}
+.hud .enemy-hud[data-boss-danger=true]{box-shadow:inset 0 0 0 1px #eea45f;background:#eea45f0b}
+.hud .enemy-hud[data-boss-danger=true] #enemy-name{color:#ffd29b}
+.hud .enemy-hud[data-boss-danger=true] .boss-phase-mark{border-color:#f0ab65;background:#583820;color:#ffe1b8}
+.hud .enemy-hud[data-boss-phase=pending] .boss-phase-mark{border-style:dashed}
+.hud .enemy-hud .boss-phase-mark.boss-phase-enter{animation:boss-phase-enter 160ms ease-out}
+@keyframes boss-phase-enter{from{box-shadow:0 0 0 3px #ffd29480;border-color:#ffe1b8}to{box-shadow:0 0 0 0 #ffd29400;border-color:#f0ab65}}
+body[data-reduced-motion=true] .hud .enemy-hud .boss-phase-mark.boss-phase-enter{animation:none}
+@media(prefers-reduced-motion:reduce){.hud .enemy-hud .boss-phase-mark.boss-phase-enter{animation:none}}

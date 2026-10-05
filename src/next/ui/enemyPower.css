@@ -1,0 +1,10 @@
+/* Reuse the existing name/HP rows; no extra HUD or board-height cost. */
+.enemy-hud>div{position:relative}
+.hud #enemy-name{display:block;padding-left:75px;font-size:10px;line-height:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.enemy-power-meter{position:absolute;left:0;top:0;display:block;max-width:calc(100% - 42px);min-height:15px;margin:0;padding:0;border:0;border-radius:3px;background:transparent;text-align:left;font-size:9px;line-height:15px;color:#d3dfe6}
+.hud .enemy-power-meter span{font-size:9px}.enemy-power-values{display:flex;justify-content:flex-start;gap:4px;white-space:nowrap;font-variant-numeric:tabular-nums}.enemy-power-values b{font-size:10px;color:var(--cyan)}.enemy-power-values .enemy-power-sharp b{color:#ffbf89}.enemy-power-note{position:absolute;left:0;top:18px;white-space:nowrap;font-size:9px;line-height:13px;color:#ffbf89}.enemy-hud>div:has(.enemy-power-note)>#enemy-hp{padding-left:52px}
+.enemy-power-details table{width:100%;border-collapse:collapse;table-layout:fixed;text-align:center;margin:10px 0}.enemy-power-details caption{font-size:12px;color:#b9cad5;text-align:left;margin-bottom:5px}.enemy-power-details th,.enemy-power-details td{padding:7px 4px;border:1px solid #415461}.enemy-power-details th{font-size:13px;font-weight:400}.enemy-power-details td{font:bold 20px ui-monospace,monospace;color:var(--cyan)}.enemy-power-details .enemy-power-sharp,.enemy-power-details .enemy-power-warning{color:#ffbf89}
+/* 日本語: 390px幅でも3桁の現在/最大HPと注意書きを同じ行に収める。
+   English: Reserve the warning label without truncating three-digit encounter HP on narrow screens. */
+@media(max-width:699px){.enemy-hud>div:has(.enemy-power-note)>#enemy-hp{padding-left:45px;font-size:18px}.enemy-hud>div:has(.enemy-power-note)>#enemy-hp small{font-size:11px}}
+@media(min-width:700px){.hud #enemy-name{font-size:13px;padding-left:125px}.enemy-power-meter,.hud .enemy-power-meter span{font-size:12px;line-height:17px}.enemy-power-values b{font-size:13px}.enemy-power-note{top:22px}.enemy-hud>div:has(.enemy-power-note)>#enemy-hp{padding-left:72px}}

@@ -1,0 +1,30 @@
+{
+  "version": "1.9.0",
+  "scope": "User-requested six monsters, versioned stage bands, save compatibility and corresponding intent UI. Other historical source hashes stay frozen.",
+  "files": {
+    "src/next/app/BattleController.ts": "f449dd2906c9dd343b8fa428332375306c350de07f40847e14436127aae6f49a",
+    "src/next/app/BattleRun.ts": "c6fa2dc8a3ddd77170bcbfb88e56003f60a849aa53aed39a543de13216b580dd",
+    "src/next/app/encounters.ts": "6aa88334045c883a4e50139b6fc492e855fbce992adc6ab4f007ebe7bf68b00b",
+    "src/next/app/progression.ts": "a87d6a5aa44cb40dde12d6fc3d8e5ba24fe3f2802a7565c2858b50c469e1c9fd",
+    "src/next/app/saveCheckpoint.ts": "cf3ccae2c97d424385d6d0998163c623212b2ed425a13bbc286b40987e37f075",
+    "src/next/config.ts": "d5cf7eb177aaff2a89fd793b79a0f454f3f4639e8f19d434ae0f982f4939d48b",
+    "src/next/core/activeDrop.ts": "3bf5290d3549ba77c6f718e6c35d9d62967622a3f7615a15841c130c4ac3db21",
+    "src/next/core/definitions.ts": "02b13adf6523509637ac4f786939a4b0d157781ec479d4eb5c216e92c0c45a01",
+    "src/next/core/enemySequence.ts": "5f18677a3e2bba1735069acb5b4451828179658d1b34ea3cc4fdd28a0d28e027",
+    "src/next/core/monsterBehavior.ts": "41c6419d33e433675da95802f89675a288099ec1627e9039aa61c8c34732da34",
+    "src/next/core/monsters.ts": "4aaf0bf6735a892a13b70b0149fd0f9c4243f24f31efb1e0f508af0cc845bbf1",
+    "src/next/core/skills.ts": "f71dde7d268e5b5dbb5e54e0c2ed24619831a245ff5a87bb5a0182017137e02f",
+    "src/next/core/tuning.ts": "39c45c200b9af28117e4b07f66dd9585a7de59c5aa215562d791c9d44efcb030",
+    "src/next/core/types.ts": "574002828b4d12d5d0b20e95cc06e37ff0a5873a2d56041e8935799b301dfc3e",
+    "src/next/core/validation.ts": "a76139aa7806b62edfab39dbf737e02c6b982ceaa1d9ba90f4f53211d8cc8058",
+    "src/next/main.ts": "d97be6965ee2a3d886af026bfa4869e44a1c63da5b5bacc7f454b0f08a71f44f",
+    "src/next/portraits.ts": "d100e89f33ac3865d17d4091ed4964ec9572c5581f124fe2581868a2a5275a87",
+    "src/next/ui/battleAnimator.ts": "804e828b5270417d3240611412c67bef405ca9ee1e4c77517cf8ecf9144d6e67",
+    "src/next/ui/battleFeedback.ts": "92739e6982380174c46f6b4e671ad360400e4fc38bbab1f2c8ed62f980d6c2b9",
+    "src/next/ui/battleReadability.ts": "855b0f83998bcfb4b11d9ecb22341ac379a3a22892f995cfdf884295a8e3220f",
+    "src/next/ui/enemyIntent.ts": "08b725c27c695afeb2c1bc485fca98f8a747f43e30b41a0eaad14a1a66376745",
+    "src/next/ui/energyReviewFixture.ts": "b2c510326b27fb93a10491a5e36fb0ff5b1994a3f9ce72b23b78305dd59e0b53",
+    "src/next/ui/monsterPresentation.ts": "3be3edc04c56c2a17ecc2f65221a3f83d29d7e9263d753772adb74fb918d8163",
+    "src/next/version.ts": "359bc94e1663d4cf4361e66776c8088b55f3e639823e64e6e86eae34f78c5c40"
+  }
+}

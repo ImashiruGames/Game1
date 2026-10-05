@@ -1,0 +1,21 @@
+{
+  "name": "Cognitive Ascension",
+  "renderer": "Official JummBox Synth / unmodified source",
+  "sample_rate": 48000,
+  "channels": 2,
+  "bits": 16,
+  "frames": 38400,
+  "seconds": 0.8,
+  "bytes": 153644,
+  "peak": 0.019834021106362343,
+  "peak_dbfs": -34.05178457896271,
+  "rms_dbfs": -46.73203278957271,
+  "dc_left": -1.0466443996937332e-9,
+  "dc_right": -1.0466443996937332e-9,
+  "clipped_frames": 0,
+  "nan_frames": 0,
+  "boundary_delta_left": -1.3503602680486892e-8,
+  "boundary_delta_right": -1.3503602680486892e-8,
+  "parsed_channels": 3,
+  "parsed_notes": 6
+}

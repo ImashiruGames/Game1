@@ -1,0 +1,10 @@
+/* Event-only decoration: real grid geometry, carry marks, input, and model stay untouched. */
+.kinetic-drop-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none!important;z-index:10;contain:layout paint}
+.kinetic-drop-box{position:absolute;left:0;top:0;display:grid;place-items:center;border:1px solid #a17d48;border-radius:5px;background:#6b4f25;color:#ffe0a8;font-family:ui-monospace,monospace;font-weight:700;line-height:1;transform-origin:50% 100%;pointer-events:none!important;will-change:transform}
+.kinetic-drop-box.enemy{background:#295a68;color:#b4edf1;border-color:#5d939d}
+.kinetic-drop-box.neutral{background:#454c60;color:#d5d8e1;border-color:#6b7184}
+.cell.kinetic-drop-masked{opacity:0!important}
+/* Changing the preference mid-fall reveals the committed box immediately. */
+body[data-reduced-motion=true] .kinetic-drop-layer{display:none}
+body[data-reduced-motion=true] .cell.kinetic-drop-masked{opacity:1!important}
+@media(prefers-reduced-motion:reduce){.kinetic-drop-layer{display:none}.cell.kinetic-drop-masked{opacity:1!important}}

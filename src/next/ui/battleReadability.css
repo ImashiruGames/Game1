@@ -1,0 +1,13 @@
+/* One quiet lower-left pixel: separate from white carry-candidate corner brackets. */
+.cell[data-recent-drop]::before{content:"";position:absolute;left:3px;bottom:3px;width:5px;height:5px;pointer-events:none;background:#ffd782;box-shadow:0 0 0 1px #15202b;transform:rotate(45deg)}
+.cell[data-recent-drop=enemy]::before{background:#dcadff;transform:none}
+.action-breakdown ul{padding:0;list-style:none;display:grid;gap:6px;margin:8px 0}
+.action-breakdown li{display:grid;grid-template-columns:minmax(0,1fr)auto;gap:1px 8px;padding:6px 8px;background:#0d1821;border-left:2px solid #748b9a;font-size:12px;overflow-wrap:anywhere}
+.action-breakdown li>strong{font-size:12px;font-variant-numeric:tabular-nums;color:#f4c77b}
+.action-breakdown li>small{grid-column:1/-1;font-size:11px;color:#b3c4cf}
+.action-breakdown li[data-contribution=heal]{border-color:#8cf3ac}.action-breakdown li[data-contribution=heal]>strong{color:#8cf3ac}
+.action-breakdown li[data-contribution=reflection]{border-color:#c69df6}
+.action-breakdown .action-breakdown-note{font-size:11px;color:#adbfca;line-height:1.5}
+.recent-drop-note{font-size:11px!important;color:#adbfca;line-height:1.5}
+
+.last-actions>summary{min-height:44px;padding-block:10px;line-height:24px;color:#c4e5ef}

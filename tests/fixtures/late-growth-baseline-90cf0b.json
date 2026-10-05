@@ -1,0 +1,4725 @@
+{
+  "baseline": "90cf0b12468b9c3e0cc7dc1d9a0a6b6ea43f30a8",
+  "encounters": [
+    {
+      "seed": 0,
+      "ids": [
+        "merarun",
+        "twin-core",
+        "marujiro",
+        "twin-core",
+        "hikikizan",
+        "twin-core",
+        "merarun",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "marujiro",
+        "needle-core",
+        "merarun",
+        "hikikizan",
+        "twin-core",
+        "hikikizan",
+        "marujiro",
+        "needle-core",
+        "twin-core",
+        "hikikizan",
+        "hikikizan",
+        "twin-core",
+        "twin-core",
+        "marujiro",
+        "speed-core",
+        "thorn-core",
+        "nigirin",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "nigirin",
+        "frost-core",
+        "thorn-core",
+        "speed-core",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "mother-core",
+        "needle-core",
+        "hikikizan",
+        "hikikizan",
+        "merarun",
+        "merarun",
+        "needle-core",
+        "marujiro",
+        "twin-core",
+        "needle-core",
+        "hikikizan",
+        "marujiro",
+        "twin-core",
+        "marujiro",
+        "twin-core",
+        "twin-core",
+        "twin-core",
+        "merarun",
+        "merarun",
+        "marujiro",
+        "marujiro",
+        "merarun",
+        "merarun",
+        "merarun",
+        "marujiro",
+        "speed-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "nigirin",
+        "nigirin",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "thorn-core",
+        "nigirin",
+        "nigirin",
+        "nigirin",
+        "speed-core",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "mother-core",
+        "twin-core",
+        "marujiro",
+        "marujiro",
+        "marujiro",
+        "merarun",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "twin-core",
+        "marujiro",
+        "hikikizan",
+        "needle-core",
+        "needle-core",
+        "needle-core",
+        "marujiro",
+        "marujiro",
+        "merarun",
+        "marujiro",
+        "marujiro",
+        "twin-core",
+        "hikikizan",
+        "twin-core",
+        "hikikizan",
+        "twin-core",
+        "speed-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "speed-core",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "mother-core"
+      ]
+    },
+    {
+      "seed": 1,
+      "ids": [
+        "twin-core",
+        "needle-core",
+        "needle-core",
+        "merarun",
+        "marujiro",
+        "twin-core",
+        "marujiro",
+        "hikikizan",
+        "twin-core",
+        "merarun",
+        "marujiro",
+        "twin-core",
+        "twin-core",
+        "twin-core",
+        "marujiro",
+        "marujiro",
+        "marujiro",
+        "marujiro",
+        "twin-core",
+        "marujiro",
+        "marujiro",
+        "needle-core",
+        "needle-core",
+        "marujiro",
+        "speed-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "thorn-core",
+        "nigirin",
+        "thorn-core",
+        "nigirin",
+        "frost-core",
+        "frost-core",
+        "speed-core",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "mother-core",
+        "merarun",
+        "twin-core",
+        "merarun",
+        "hikikizan",
+        "twin-core",
+        "twin-core",
+        "marujiro",
+        "needle-core",
+        "twin-core",
+        "hikikizan",
+        "twin-core",
+        "twin-core",
+        "twin-core",
+        "needle-core",
+        "marujiro",
+        "twin-core",
+        "merarun",
+        "needle-core",
+        "needle-core",
+        "marujiro",
+        "marujiro",
+        "needle-core",
+        "twin-core",
+        "hikikizan",
+        "speed-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "frost-core",
+        "nigirin",
+        "nigirin",
+        "nigirin",
+        "frost-core",
+        "speed-core",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "mother-core",
+        "needle-core",
+        "marujiro",
+        "twin-core",
+        "needle-core",
+        "hikikizan",
+        "twin-core",
+        "merarun",
+        "marujiro",
+        "marujiro",
+        "marujiro",
+        "needle-core",
+        "needle-core",
+        "needle-core",
+        "twin-core",
+        "merarun",
+        "needle-core",
+        "merarun",
+        "merarun",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "hikikizan",
+        "twin-core",
+        "merarun",
+        "speed-core",
+        "nigirin",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "nigirin",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "speed-core",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "mother-core"
+      ]
+    },
+    {
+      "seed": 31,
+      "ids": [
+        "hikikizan",
+        "twin-core",
+        "needle-core",
+        "marujiro",
+        "needle-core",
+        "marujiro",
+        "twin-core",
+        "merarun",
+        "needle-core",
+        "hikikizan",
+        "twin-core",
+        "merarun",
+        "twin-core",
+        "twin-core",
+        "twin-core",
+        "twin-core",
+        "needle-core",
+        "hikikizan",
+        "marujiro",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "needle-core",
+        "hikikizan",
+        "speed-core",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "thorn-core",
+        "thorn-core",
+        "nigirin",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "speed-core",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "mother-core",
+        "twin-core",
+        "twin-core",
+        "twin-core",
+        "marujiro",
+        "hikikizan",
+        "needle-core",
+        "twin-core",
+        "twin-core",
+        "marujiro",
+        "merarun",
+        "needle-core",
+        "merarun",
+        "twin-core",
+        "needle-core",
+        "hikikizan",
+        "hikikizan",
+        "needle-core",
+        "merarun",
+        "hikikizan",
+        "hikikizan",
+        "marujiro",
+        "needle-core",
+        "merarun",
+        "marujiro",
+        "speed-core",
+        "frost-core",
+        "nigirin",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "nigirin",
+        "thorn-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "speed-core",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "mother-core",
+        "merarun",
+        "hikikizan",
+        "marujiro",
+        "merarun",
+        "merarun",
+        "twin-core",
+        "hikikizan",
+        "merarun",
+        "hikikizan",
+        "marujiro",
+        "marujiro",
+        "hikikizan",
+        "twin-core",
+        "marujiro",
+        "marujiro",
+        "merarun",
+        "merarun",
+        "marujiro",
+        "twin-core",
+        "merarun",
+        "marujiro",
+        "twin-core",
+        "twin-core",
+        "marujiro",
+        "speed-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "nigirin",
+        "nigirin",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "speed-core",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "mother-core"
+      ]
+    },
+    {
+      "seed": 42,
+      "ids": [
+        "twin-core",
+        "needle-core",
+        "hikikizan",
+        "marujiro",
+        "marujiro",
+        "twin-core",
+        "twin-core",
+        "needle-core",
+        "needle-core",
+        "twin-core",
+        "hikikizan",
+        "hikikizan",
+        "hikikizan",
+        "merarun",
+        "twin-core",
+        "twin-core",
+        "hikikizan",
+        "marujiro",
+        "needle-core",
+        "twin-core",
+        "marujiro",
+        "marujiro",
+        "twin-core",
+        "hikikizan",
+        "speed-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "nigirin",
+        "frost-core",
+        "frost-core",
+        "speed-core",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "mother-core",
+        "needle-core",
+        "hikikizan",
+        "needle-core",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "marujiro",
+        "hikikizan",
+        "hikikizan",
+        "marujiro",
+        "twin-core",
+        "merarun",
+        "marujiro",
+        "needle-core",
+        "marujiro",
+        "marujiro",
+        "hikikizan",
+        "hikikizan",
+        "twin-core",
+        "twin-core",
+        "merarun",
+        "twin-core",
+        "twin-core",
+        "needle-core",
+        "speed-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "nigirin",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "speed-core",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "mother-core",
+        "twin-core",
+        "needle-core",
+        "merarun",
+        "needle-core",
+        "hikikizan",
+        "twin-core",
+        "marujiro",
+        "twin-core",
+        "twin-core",
+        "merarun",
+        "merarun",
+        "marujiro",
+        "hikikizan",
+        "hikikizan",
+        "marujiro",
+        "needle-core",
+        "merarun",
+        "needle-core",
+        "twin-core",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "merarun",
+        "marujiro",
+        "speed-core",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "nigirin",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "thorn-core",
+        "frost-core",
+        "thorn-core",
+        "speed-core",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "mother-core"
+      ]
+    },
+    {
+      "seed": 4294967295,
+      "ids": [
+        "twin-core",
+        "twin-core",
+        "merarun",
+        "merarun",
+        "needle-core",
+        "hikikizan",
+        "merarun",
+        "marujiro",
+        "merarun",
+        "marujiro",
+        "needle-core",
+        "merarun",
+        "needle-core",
+        "merarun",
+        "twin-core",
+        "needle-core",
+        "marujiro",
+        "twin-core",
+        "marujiro",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "hikikizan",
+        "hikikizan",
+        "speed-core",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "thorn-core",
+        "nigirin",
+        "frost-core",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "nigirin",
+        "speed-core",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "mother-core",
+        "hikikizan",
+        "hikikizan",
+        "merarun",
+        "twin-core",
+        "hikikizan",
+        "hikikizan",
+        "needle-core",
+        "needle-core",
+        "twin-core",
+        "needle-core",
+        "marujiro",
+        "twin-core",
+        "merarun",
+        "twin-core",
+        "needle-core",
+        "hikikizan",
+        "twin-core",
+        "merarun",
+        "twin-core",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "twin-core",
+        "hikikizan",
+        "speed-core",
+        "frost-core",
+        "frost-core",
+        "nigirin",
+        "nigirin",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "speed-core",
+        "briar-wheel",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "rime-crown",
+        "mother-core",
+        "marujiro",
+        "twin-core",
+        "merarun",
+        "twin-core",
+        "merarun",
+        "hikikizan",
+        "hikikizan",
+        "marujiro",
+        "hikikizan",
+        "marujiro",
+        "twin-core",
+        "marujiro",
+        "needle-core",
+        "merarun",
+        "marujiro",
+        "twin-core",
+        "marujiro",
+        "merarun",
+        "hikikizan",
+        "needle-core",
+        "merarun",
+        "merarun",
+        "needle-core",
+        "hikikizan",
+        "speed-core",
+        "thorn-core",
+        "thorn-core",
+        "nigirin",
+        "nigirin",
+        "thorn-core",
+        "thorn-core",
+        "frost-core",
+        "nigirin",
+        "frost-core",
+        "nigirin",
+        "thorn-core",
+        "frost-core",
+        "frost-core",
+        "thorn-core",
+        "speed-core",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "rime-crown",
+        "rime-crown",
+        "briar-wheel",
+        "briar-wheel",
+        "rime-crown",
+        "briar-wheel",
+        "mother-core"
+      ]
+    }
+  ],
+  "profile": {
+    "schema": 2,
+    "boardCatalogVersion": 2,
+    "progressionVersion": 2,
+    "revision": 0,
+    "selected": "blue",
+    "coins": 0,
+    "energy": 0,
+    "ownedCharacters": [
+      "blue",
+      "red"
+    ],
+    "ownedSkills": [
+      "grow-fire",
+      "corner-strike",
+      "square-strike",
+      "horizontal-slash",
+      "charge",
+      "first-guard"
+    ],
+    "characters": {
+      "blue": {
+        "xp": 1540,
+        "tree": {
+          "three": 5,
+          "four": 5,
+          "five": 5,
+          "slots": 2,
+          "board": 1
+        },
+        "pool": [
+          "health",
+          "grow-fire",
+          "charge",
+          "first-guard",
+          "horizontal-slash",
+          "corner-strike"
+        ],
+        "board": "pain-shared"
+      },
+      "red": {
+        "xp": 0,
+        "tree": {
+          "three": 0,
+          "four": 0,
+          "five": 0,
+          "slots": 0,
+          "board": 0
+        },
+        "pool": [
+          "grow-fire",
+          "charge",
+          "first-guard",
+          "horizontal-slash",
+          "corner-strike",
+          "square-strike"
+        ],
+        "board": "ember"
+      },
+      "mint": {
+        "xp": 0,
+        "tree": {
+          "three": 0,
+          "four": 0,
+          "five": 0,
+          "slots": 0,
+          "board": 0
+        },
+        "pool": [
+          "corner-strike",
+          "grow-fire",
+          "charge",
+          "first-guard",
+          "horizontal-slash",
+          "square-strike"
+        ],
+        "board": "mint-observe"
+      },
+      "amber": {
+        "xp": 0,
+        "tree": {
+          "three": 0,
+          "four": 0,
+          "five": 0,
+          "slots": 0,
+          "board": 0
+        },
+        "pool": [
+          "square-strike",
+          "grow-fire",
+          "charge",
+          "first-guard",
+          "horizontal-slash",
+          "corner-strike"
+        ],
+        "board": "amber-convert"
+      },
+      "violet": {
+        "xp": 0,
+        "tree": {
+          "three": 0,
+          "four": 0,
+          "five": 0,
+          "slots": 0,
+          "board": 0
+        },
+        "pool": [
+          "grow-fire",
+          "charge",
+          "first-guard",
+          "horizontal-slash",
+          "diagonal-shot",
+          "corner-strike"
+        ],
+        "board": "violet-poison"
+      },
+      "silver": {
+        "xp": 0,
+        "tree": {
+          "three": 0,
+          "four": 0,
+          "five": 0,
+          "slots": 0,
+          "board": 0
+        },
+        "pool": [
+          "first-guard",
+          "grow-fire",
+          "charge",
+          "horizontal-slash",
+          "corner-strike",
+          "square-strike"
+        ],
+        "board": "silver-freeze"
+      },
+      "rose": {
+        "xp": 0,
+        "tree": {
+          "three": 0,
+          "four": 0,
+          "five": 0,
+          "slots": 0,
+          "board": 0
+        },
+        "pool": [
+          "horizontal-slash",
+          "grow-fire",
+          "charge",
+          "first-guard",
+          "corner-strike",
+          "square-strike"
+        ],
+        "board": "rose-slice"
+      },
+      "imashiru": {
+        "xp": 0,
+        "tree": {
+          "three": 0,
+          "four": 0,
+          "five": 0,
+          "slots": 0,
+          "board": 0
+        },
+        "pool": [
+          "charge",
+          "grow-fire",
+          "first-guard",
+          "horizontal-slash",
+          "corner-strike",
+          "square-strike"
+        ],
+        "board": "imashiru-insight"
+      }
+    },
+    "trophies": {},
+    "receipts": {},
+    "launches": {},
+    "rng": 42,
+    "drawCount": 0,
+    "pendingDraw": false,
+    "lastDraw": null
+  },
+  "departure": "{\"format\":\"game1-next-save\",\"schema\":1,\"rules\":\"next-1.9-encounters-bands-v1\",\"revision\":1,\"savedAt\":0,\"checkpoint\":{\"runId\":\"b242aa15-6b0b-4749-9600-8e4a1f362e21\",\"initialConfig\":{\"id\":\"standard\",\"title\":\"基本の対戦\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":30,\"attacks\":{\"3\":9,\"4\":12,\"5\":21}},\"enemy\":{\"maxHp\":42,\"initialHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}}},\"firstActor\":\"player\",\"seed\":42,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"twin-core\",\"initialBuild\":{\"fixed\":{\"id\":\"health\",\"rank\":1,\"uses\":null},\"slots\":[null,null,null,null],\"power\":{\"3\":0,\"4\":0,\"5\":0}},\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0,\"meta\":{\"version\":1,\"boardCatalogVersion\":2,\"boardBalance\":{\"version\":1,\"boards\":{\"blue-crosscut\":{\"gauge\":35,\"hp\":0},\"blue-plumb\":{\"gauge\":15,\"hp\":0},\"red-frontline\":{\"gauge\":15,\"hp\":3},\"red-brand\":{\"gauge\":20,\"hp\":2},\"mint-diagonal\":{\"gauge\":15,\"hp\":0},\"mint-frame\":{\"gauge\":25,\"hp\":0},\"amber-squarepress\":{\"gauge\":65,\"hp\":0},\"amber-rubble\":{\"gauge\":10,\"hp\":0},\"violet-venom\":{\"gauge\":20,\"hp\":0},\"violet-sting\":{\"gauge\":35,\"hp\":0},\"silver-frostbind\":{\"gauge\":20,\"hp\":0},\"silver-thornwall\":{\"gauge\":25,\"hp\":0},\"rose-longcut\":{\"gauge\":25,\"hp\":0},\"rose-twincut\":{\"gauge\":10,\"hp\":0},\"imashiru-polish\":{\"gauge\":65,\"hp\":0},\"imashiru-reset\":{\"gauge\":15,\"hp\":0}}},\"progressionVersion\":2,\"kitVersion\":2,\"kitBalance\":{\"version\":1,\"mintShapeBonus\":3,\"roseHorizontalBonus\":12,\"silverBarrier\":12,\"violetPoisonTargets\":2,\"amber\":{\"mode\":\"link-power\",\"multiplier\":2,\"ownTurns\":1},\"boards\":{\"mint-observe\":{\"gauge\":10,\"hp\":0},\"rose-slice\":{\"gauge\":10,\"hp\":0},\"amber-convert\":{\"gauge\":20,\"hp\":0},\"violet-poison\":{\"gauge\":20,\"hp\":0},\"silver-freeze\":{\"gauge\":15,\"hp\":0},\"blue-freeze\":{\"gauge\":10,\"hp\":0},\"red-capture\":{\"gauge\":0,\"hp\":2},\"imashiru-focus\":{\"gauge\":40,\"hp\":0}}},\"rosterId\":\"blue\",\"level\":12,\"tree\":{\"three\":5,\"four\":5,\"five\":5,\"slots\":2,\"board\":1},\"pool\":[\"health\",\"grow-fire\",\"charge\",\"first-guard\",\"horizontal-slash\",\"corner-strike\"],\"board\":\"pain-shared\",\"slots\":4,\"eligible\":true}},\"options\":{\"run\":{\"encounterVersion\":\"bands-v1\",\"rotationStart\":\"marujiro\",\"route\":\"boss-loop\",\"startStage\":1,\"finishAtStage\":50,\"mode\":\"endless\",\"rewards\":true,\"rewardMode\":\"categories\"}},\"state\":{\"config\":{\"id\":\"standard\",\"title\":\"基本の対戦\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":30,\"attacks\":{\"3\":9,\"4\":12,\"5\":21}},\"enemy\":{\"maxHp\":42,\"initialHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}}},\"firstActor\":\"player\",\"seed\":42,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"twin-core\",\"initialBuild\":{\"fixed\":{\"id\":\"health\",\"rank\":1,\"uses\":null},\"slots\":[null,null,null,null],\"power\":{\"3\":0,\"4\":0,\"5\":0}},\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0,\"meta\":{\"version\":1,\"boardCatalogVersion\":2,\"boardBalance\":{\"version\":1,\"boards\":{\"blue-crosscut\":{\"gauge\":35,\"hp\":0},\"blue-plumb\":{\"gauge\":15,\"hp\":0},\"red-frontline\":{\"gauge\":15,\"hp\":3},\"red-brand\":{\"gauge\":20,\"hp\":2},\"mint-diagonal\":{\"gauge\":15,\"hp\":0},\"mint-frame\":{\"gauge\":25,\"hp\":0},\"amber-squarepress\":{\"gauge\":65,\"hp\":0},\"amber-rubble\":{\"gauge\":10,\"hp\":0},\"violet-venom\":{\"gauge\":20,\"hp\":0},\"violet-sting\":{\"gauge\":35,\"hp\":0},\"silver-frostbind\":{\"gauge\":20,\"hp\":0},\"silver-thornwall\":{\"gauge\":25,\"hp\":0},\"rose-longcut\":{\"gauge\":25,\"hp\":0},\"rose-twincut\":{\"gauge\":10,\"hp\":0},\"imashiru-polish\":{\"gauge\":65,\"hp\":0},\"imashiru-reset\":{\"gauge\":15,\"hp\":0}}},\"progressionVersion\":2,\"kitVersion\":2,\"kitBalance\":{\"version\":1,\"mintShapeBonus\":3,\"roseHorizontalBonus\":12,\"silverBarrier\":12,\"violetPoisonTargets\":2,\"amber\":{\"mode\":\"link-power\",\"multiplier\":2,\"ownTurns\":1},\"boards\":{\"mint-observe\":{\"gauge\":10,\"hp\":0},\"rose-slice\":{\"gauge\":10,\"hp\":0},\"amber-convert\":{\"gauge\":20,\"hp\":0},\"violet-poison\":{\"gauge\":20,\"hp\":0},\"silver-freeze\":{\"gauge\":15,\"hp\":0},\"blue-freeze\":{\"gauge\":10,\"hp\":0},\"red-capture\":{\"gauge\":0,\"hp\":2},\"imashiru-focus\":{\"gauge\":40,\"hp\":0}}},\"rosterId\":\"blue\",\"level\":12,\"tree\":{\"three\":5,\"four\":5,\"five\":5,\"slots\":2,\"board\":1},\"pool\":[\"health\",\"grow-fire\",\"charge\",\"first-guard\",\"horizontal-slash\",\"corner-strike\"],\"board\":\"pain-shared\",\"slots\":4,\"eligible\":true}},\"boxes\":[],\"hp\":{\"player\":{\"current\":30,\"max\":30},\"enemy\":{\"current\":42,\"max\":42}},\"actor\":\"player\",\"turn\":1,\"enemyPatternIndex\":0,\"enemyTurnCount\":0,\"link3Growth\":0,\"rngState\":42,\"build\":{\"fixed\":{\"id\":\"health\",\"rank\":1,\"uses\":null},\"slots\":[null,null,null,null],\"power\":{\"3\":0,\"4\":0,\"5\":0}},\"gauge\":0,\"transformation\":null,\"playerTurnStarted\":false,\"nextBoxId\":1,\"result\":null},\"run\":{\"stage\":1,\"defeatedCount\":0,\"currentEnemyId\":\"twin-core\",\"status\":\"active\"},\"enemyOrder\":[\"twin-core\"],\"rewardRng\":1374496545},\"checksum\":\"981d89c0\"}",
+  "rewards": [
+    {
+      "stage": 24,
+      "raw": "{\"format\":\"game1-next-save\",\"schema\":1,\"rules\":\"next-1.9-encounters-bands-v1\",\"revision\":1,\"savedAt\":0,\"checkpoint\":{\"runId\":\"06ac7ecd-4ca6-43f8-8010-31e5a6fb4956\",\"initialConfig\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":260,\"initialHp\":1,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"hikikizan\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"options\":{\"run\":{\"encounterVersion\":\"bands-v1\",\"rotationStart\":\"marujiro\",\"route\":\"boss-loop\",\"startStage\":24,\"finishAtStage\":50,\"mode\":\"endless\",\"rewards\":true,\"rewardMode\":\"categories\"}},\"state\":{\"config\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":260,\"initialHp\":1,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"hikikizan\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"boxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"drop:1\",\"row\":7,\"col\":2,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"hp\":{\"player\":{\"current\":18,\"max\":30},\"enemy\":{\"current\":-3,\"max\":260}},\"actor\":\"player\",\"turn\":1,\"enemyPatternIndex\":0,\"enemyTurnCount\":0,\"link3Growth\":0,\"rngState\":31,\"build\":{\"fixed\":{\"id\":\"health\",\"rank\":1,\"uses\":null},\"slots\":[null,null],\"power\":{\"3\":0,\"4\":0,\"5\":0}},\"gauge\":3,\"transformation\":null,\"playerTurnStarted\":false,\"nextBoxId\":2,\"result\":{\"winner\":\"player\",\"reason\":\"hp-zero\"}},\"run\":{\"stage\":24,\"defeatedCount\":1,\"currentEnemyId\":\"hikikizan\",\"status\":\"reward\",\"offer\":{\"id\":\"reward:06ac7ecd-4ca6-43f8-8010-31e5a6fb4956:24:1\",\"category\":\"pending\",\"choices\":[]}},\"enemyOrder\":[\"hikikizan\"],\"rewardRng\":1374496532},\"checksum\":\"db58df0f\"}",
+      "expected": {
+        "runId": "06ac7ecd-4ca6-43f8-8010-31e5a6fb4956",
+        "initialConfig": {
+          "id": "next-reward",
+          "title": "報酬直前",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 18,
+              "attacks": {
+                "3": 4,
+                "4": 7,
+                "5": 11
+              }
+            },
+            "enemy": {
+              "maxHp": 260,
+              "initialHp": 1,
+              "attacks": {
+                "3": 3,
+                "4": 10,
+                "5": 15
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 31,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "hikikizan",
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "t-strike": [
+                6,
+                9
+              ],
+              "zigzag-strike": [
+                6,
+                9
+              ],
+              "cup-strike": [
+                8,
+                12
+              ],
+              "diamond-strike": [
+                7,
+                10
+              ],
+              "cross-strike": [
+                9,
+                13
+              ],
+              "full-power": [
+                2,
+                3
+              ],
+              "foundation": [
+                1,
+                2
+              ],
+              "snake-line": [
+                4,
+                6
+              ],
+              "edge-strike": [
+                2,
+                3
+              ],
+              "siege": [
+                1,
+                2
+              ],
+              "crossfire": [
+                2,
+                3
+              ],
+              "last-stand": [
+                3,
+                5
+              ],
+              "iron-wall": [
+                1,
+                2
+              ],
+              "capacitor": [
+                12,
+                20
+              ],
+              "solvent": [
+                2,
+                4
+              ],
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "twin-core": {
+                "maxHp": 42,
+                "attacks": {
+                  "3": 4,
+                  "4": 5,
+                  "5": 7
+                }
+              },
+              "needle-core": {
+                "maxHp": 25,
+                "attacks": {
+                  "3": 2,
+                  "4": 6,
+                  "5": 13
+                }
+              },
+              "frost-core": {
+                "maxHp": 36,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "thorn-core": {
+                "maxHp": 40,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 7
+                }
+              },
+              "rime-crown": {
+                "maxHp": 48,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "briar-wheel": {
+                "maxHp": 52,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0
+        },
+        "options": {
+          "run": {
+            "encounterVersion": "bands-v1",
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 24,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "next-reward",
+            "title": "報酬直前",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [
+              {
+                "id": "fixture:0",
+                "row": 7,
+                "col": 0,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "fixture:1",
+                "row": 7,
+                "col": 1,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "drop:1",
+                "row": 7,
+                "col": 2,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              }
+            ],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 28,
+                "attacks": {
+                  "3": 4,
+                  "4": 7,
+                  "5": 11
+                }
+              },
+              "enemy": {
+                "maxHp": 290,
+                "initialHp": 290,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 3576916343,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "speed-core",
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "t-strike": [
+                  6,
+                  9
+                ],
+                "zigzag-strike": [
+                  6,
+                  9
+                ],
+                "cup-strike": [
+                  8,
+                  12
+                ],
+                "diamond-strike": [
+                  7,
+                  10
+                ],
+                "cross-strike": [
+                  9,
+                  13
+                ],
+                "full-power": [
+                  2,
+                  3
+                ],
+                "foundation": [
+                  1,
+                  2
+                ],
+                "snake-line": [
+                  4,
+                  6
+                ],
+                "edge-strike": [
+                  2,
+                  3
+                ],
+                "siege": [
+                  1,
+                  2
+                ],
+                "crossfire": [
+                  2,
+                  3
+                ],
+                "last-stand": [
+                  3,
+                  5
+                ],
+                "iron-wall": [
+                  1,
+                  2
+                ],
+                "capacitor": [
+                  12,
+                  20
+                ],
+                "solvent": [
+                  2,
+                  4
+                ],
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "twin-core": {
+                  "maxHp": 42,
+                  "attacks": {
+                    "3": 4,
+                    "4": 5,
+                    "5": 7
+                  }
+                },
+                "needle-core": {
+                  "maxHp": 25,
+                  "attacks": {
+                    "3": 2,
+                    "4": 6,
+                    "5": 13
+                  }
+                },
+                "frost-core": {
+                  "maxHp": 36,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "thorn-core": {
+                  "maxHp": 40,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 7
+                  }
+                },
+                "rime-crown": {
+                  "maxHp": 48,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "briar-wheel": {
+                  "maxHp": 52,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialGauge": 0
+          },
+          "boxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "drop:1",
+              "row": 7,
+              "col": 2,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "hp": {
+            "player": {
+              "current": 28,
+              "max": 30
+            },
+            "enemy": {
+              "current": 290,
+              "max": 290
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 3576916343,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 3,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": null
+        },
+        "run": {
+          "stage": 25,
+          "defeatedCount": 1,
+          "currentEnemyId": "speed-core",
+          "status": "active"
+        },
+        "enemyOrder": [
+          "hikikizan"
+        ],
+        "rewardRng": 1374496532
+      }
+    },
+    {
+      "stage": 39,
+      "raw": "{\"format\":\"game1-next-save\",\"schema\":1,\"rules\":\"next-1.9-encounters-bands-v1\",\"revision\":1,\"savedAt\":0,\"checkpoint\":{\"runId\":\"09240eea-4891-47f5-afba-bba801e966da\",\"initialConfig\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":420,\"initialHp\":1,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"thorn-core\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"options\":{\"run\":{\"encounterVersion\":\"bands-v1\",\"rotationStart\":\"marujiro\",\"route\":\"boss-loop\",\"startStage\":39,\"finishAtStage\":50,\"mode\":\"endless\",\"rewards\":true,\"rewardMode\":\"categories\"}},\"state\":{\"config\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":420,\"initialHp\":1,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"thorn-core\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"boxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"drop:1\",\"row\":7,\"col\":2,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"hp\":{\"player\":{\"current\":18,\"max\":30},\"enemy\":{\"current\":-3,\"max\":420}},\"actor\":\"player\",\"turn\":1,\"enemyPatternIndex\":0,\"enemyTurnCount\":0,\"link3Growth\":0,\"rngState\":31,\"build\":{\"fixed\":{\"id\":\"health\",\"rank\":1,\"uses\":null},\"slots\":[null,null],\"power\":{\"3\":0,\"4\":0,\"5\":0}},\"gauge\":3,\"transformation\":null,\"playerTurnStarted\":false,\"nextBoxId\":2,\"result\":{\"winner\":\"player\",\"reason\":\"hp-zero\"}},\"run\":{\"stage\":39,\"defeatedCount\":1,\"currentEnemyId\":\"thorn-core\",\"status\":\"reward\",\"offer\":{\"id\":\"reward:09240eea-4891-47f5-afba-bba801e966da:39:1\",\"category\":\"pending\",\"choices\":[]}},\"enemyOrder\":[\"thorn-core\"],\"rewardRng\":1374496532},\"checksum\":\"c017e08b\"}",
+      "expected": {
+        "runId": "09240eea-4891-47f5-afba-bba801e966da",
+        "initialConfig": {
+          "id": "next-reward",
+          "title": "報酬直前",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 18,
+              "attacks": {
+                "3": 4,
+                "4": 7,
+                "5": 11
+              }
+            },
+            "enemy": {
+              "maxHp": 420,
+              "initialHp": 1,
+              "attacks": {
+                "3": 2,
+                "4": 4,
+                "5": 7
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 31,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "thorn-core",
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "t-strike": [
+                6,
+                9
+              ],
+              "zigzag-strike": [
+                6,
+                9
+              ],
+              "cup-strike": [
+                8,
+                12
+              ],
+              "diamond-strike": [
+                7,
+                10
+              ],
+              "cross-strike": [
+                9,
+                13
+              ],
+              "full-power": [
+                2,
+                3
+              ],
+              "foundation": [
+                1,
+                2
+              ],
+              "snake-line": [
+                4,
+                6
+              ],
+              "edge-strike": [
+                2,
+                3
+              ],
+              "siege": [
+                1,
+                2
+              ],
+              "crossfire": [
+                2,
+                3
+              ],
+              "last-stand": [
+                3,
+                5
+              ],
+              "iron-wall": [
+                1,
+                2
+              ],
+              "capacitor": [
+                12,
+                20
+              ],
+              "solvent": [
+                2,
+                4
+              ],
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "twin-core": {
+                "maxHp": 42,
+                "attacks": {
+                  "3": 4,
+                  "4": 5,
+                  "5": 7
+                }
+              },
+              "needle-core": {
+                "maxHp": 25,
+                "attacks": {
+                  "3": 2,
+                  "4": 6,
+                  "5": 13
+                }
+              },
+              "frost-core": {
+                "maxHp": 36,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "thorn-core": {
+                "maxHp": 40,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 7
+                }
+              },
+              "rime-crown": {
+                "maxHp": 48,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "briar-wheel": {
+                "maxHp": 52,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0
+        },
+        "options": {
+          "run": {
+            "encounterVersion": "bands-v1",
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 39,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "next-reward",
+            "title": "報酬直前",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [
+              {
+                "id": "fixture:0",
+                "row": 7,
+                "col": 0,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "fixture:1",
+                "row": 7,
+                "col": 1,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "drop:1",
+                "row": 7,
+                "col": 2,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              }
+            ],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 28,
+                "attacks": {
+                  "3": 4,
+                  "4": 7,
+                  "5": 11
+                }
+              },
+              "enemy": {
+                "maxHp": 440,
+                "initialHp": 440,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 443779918,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "speed-core",
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "t-strike": [
+                  6,
+                  9
+                ],
+                "zigzag-strike": [
+                  6,
+                  9
+                ],
+                "cup-strike": [
+                  8,
+                  12
+                ],
+                "diamond-strike": [
+                  7,
+                  10
+                ],
+                "cross-strike": [
+                  9,
+                  13
+                ],
+                "full-power": [
+                  2,
+                  3
+                ],
+                "foundation": [
+                  1,
+                  2
+                ],
+                "snake-line": [
+                  4,
+                  6
+                ],
+                "edge-strike": [
+                  2,
+                  3
+                ],
+                "siege": [
+                  1,
+                  2
+                ],
+                "crossfire": [
+                  2,
+                  3
+                ],
+                "last-stand": [
+                  3,
+                  5
+                ],
+                "iron-wall": [
+                  1,
+                  2
+                ],
+                "capacitor": [
+                  12,
+                  20
+                ],
+                "solvent": [
+                  2,
+                  4
+                ],
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "twin-core": {
+                  "maxHp": 42,
+                  "attacks": {
+                    "3": 4,
+                    "4": 5,
+                    "5": 7
+                  }
+                },
+                "needle-core": {
+                  "maxHp": 25,
+                  "attacks": {
+                    "3": 2,
+                    "4": 6,
+                    "5": 13
+                  }
+                },
+                "frost-core": {
+                  "maxHp": 36,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "thorn-core": {
+                  "maxHp": 40,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 7
+                  }
+                },
+                "rime-crown": {
+                  "maxHp": 48,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "briar-wheel": {
+                  "maxHp": 52,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialGauge": 0
+          },
+          "boxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "drop:1",
+              "row": 7,
+              "col": 2,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "hp": {
+            "player": {
+              "current": 28,
+              "max": 30
+            },
+            "enemy": {
+              "current": 440,
+              "max": 440
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 443779918,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 3,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": null
+        },
+        "run": {
+          "stage": 40,
+          "defeatedCount": 1,
+          "currentEnemyId": "speed-core",
+          "status": "active"
+        },
+        "enemyOrder": [
+          "thorn-core"
+        ],
+        "rewardRng": 1374496532
+      }
+    },
+    {
+      "stage": 40,
+      "raw": "{\"format\":\"game1-next-save\",\"schema\":1,\"rules\":\"next-1.9-encounters-bands-v1\",\"revision\":1,\"savedAt\":0,\"checkpoint\":{\"runId\":\"cb408f0e-98b6-4306-9d3b-50b16e86cd52\",\"initialConfig\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":440,\"initialHp\":1,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"speed-core\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"options\":{\"run\":{\"encounterVersion\":\"bands-v1\",\"rotationStart\":\"marujiro\",\"route\":\"boss-loop\",\"startStage\":40,\"finishAtStage\":50,\"mode\":\"endless\",\"rewards\":true,\"rewardMode\":\"categories\"}},\"state\":{\"config\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":440,\"initialHp\":1,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"speed-core\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"boxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"drop:1\",\"row\":7,\"col\":2,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"hp\":{\"player\":{\"current\":18,\"max\":30},\"enemy\":{\"current\":-3,\"max\":440}},\"actor\":\"player\",\"turn\":1,\"enemyPatternIndex\":0,\"enemyTurnCount\":0,\"link3Growth\":0,\"rngState\":31,\"build\":{\"fixed\":{\"id\":\"health\",\"rank\":1,\"uses\":null},\"slots\":[null,null],\"power\":{\"3\":0,\"4\":0,\"5\":0}},\"gauge\":3,\"transformation\":null,\"playerTurnStarted\":false,\"nextBoxId\":2,\"result\":{\"winner\":\"player\",\"reason\":\"hp-zero\"}},\"run\":{\"stage\":40,\"defeatedCount\":1,\"currentEnemyId\":\"speed-core\",\"status\":\"reward\",\"offer\":{\"id\":\"reward:cb408f0e-98b6-4306-9d3b-50b16e86cd52:40:1\",\"category\":\"pending\",\"choices\":[]}},\"enemyOrder\":[\"speed-core\"],\"rewardRng\":1374496532},\"checksum\":\"bf6e0809\"}",
+      "expected": {
+        "runId": "cb408f0e-98b6-4306-9d3b-50b16e86cd52",
+        "initialConfig": {
+          "id": "next-reward",
+          "title": "報酬直前",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 18,
+              "attacks": {
+                "3": 4,
+                "4": 7,
+                "5": 11
+              }
+            },
+            "enemy": {
+              "maxHp": 440,
+              "initialHp": 1,
+              "attacks": {
+                "3": 6,
+                "4": 7,
+                "5": 9
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 31,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "speed-core",
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "t-strike": [
+                6,
+                9
+              ],
+              "zigzag-strike": [
+                6,
+                9
+              ],
+              "cup-strike": [
+                8,
+                12
+              ],
+              "diamond-strike": [
+                7,
+                10
+              ],
+              "cross-strike": [
+                9,
+                13
+              ],
+              "full-power": [
+                2,
+                3
+              ],
+              "foundation": [
+                1,
+                2
+              ],
+              "snake-line": [
+                4,
+                6
+              ],
+              "edge-strike": [
+                2,
+                3
+              ],
+              "siege": [
+                1,
+                2
+              ],
+              "crossfire": [
+                2,
+                3
+              ],
+              "last-stand": [
+                3,
+                5
+              ],
+              "iron-wall": [
+                1,
+                2
+              ],
+              "capacitor": [
+                12,
+                20
+              ],
+              "solvent": [
+                2,
+                4
+              ],
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "twin-core": {
+                "maxHp": 42,
+                "attacks": {
+                  "3": 4,
+                  "4": 5,
+                  "5": 7
+                }
+              },
+              "needle-core": {
+                "maxHp": 25,
+                "attacks": {
+                  "3": 2,
+                  "4": 6,
+                  "5": 13
+                }
+              },
+              "frost-core": {
+                "maxHp": 36,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "thorn-core": {
+                "maxHp": 40,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 7
+                }
+              },
+              "rime-crown": {
+                "maxHp": 48,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "briar-wheel": {
+                "maxHp": 52,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0
+        },
+        "options": {
+          "run": {
+            "encounterVersion": "bands-v1",
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 40,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "next-reward",
+            "title": "報酬直前",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [
+              {
+                "id": "fixture:0",
+                "row": 7,
+                "col": 0,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "fixture:1",
+                "row": 7,
+                "col": 1,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "drop:1",
+                "row": 7,
+                "col": 2,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              }
+            ],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 28,
+                "attacks": {
+                  "3": 4,
+                  "4": 7,
+                  "5": 11
+                }
+              },
+              "enemy": {
+                "maxHp": 452,
+                "initialHp": 452,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 3098215687,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "briar-wheel",
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "t-strike": [
+                  6,
+                  9
+                ],
+                "zigzag-strike": [
+                  6,
+                  9
+                ],
+                "cup-strike": [
+                  8,
+                  12
+                ],
+                "diamond-strike": [
+                  7,
+                  10
+                ],
+                "cross-strike": [
+                  9,
+                  13
+                ],
+                "full-power": [
+                  2,
+                  3
+                ],
+                "foundation": [
+                  1,
+                  2
+                ],
+                "snake-line": [
+                  4,
+                  6
+                ],
+                "edge-strike": [
+                  2,
+                  3
+                ],
+                "siege": [
+                  1,
+                  2
+                ],
+                "crossfire": [
+                  2,
+                  3
+                ],
+                "last-stand": [
+                  3,
+                  5
+                ],
+                "iron-wall": [
+                  1,
+                  2
+                ],
+                "capacitor": [
+                  12,
+                  20
+                ],
+                "solvent": [
+                  2,
+                  4
+                ],
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "twin-core": {
+                  "maxHp": 42,
+                  "attacks": {
+                    "3": 4,
+                    "4": 5,
+                    "5": 7
+                  }
+                },
+                "needle-core": {
+                  "maxHp": 25,
+                  "attacks": {
+                    "3": 2,
+                    "4": 6,
+                    "5": 13
+                  }
+                },
+                "frost-core": {
+                  "maxHp": 36,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "thorn-core": {
+                  "maxHp": 40,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 7
+                  }
+                },
+                "rime-crown": {
+                  "maxHp": 48,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "briar-wheel": {
+                  "maxHp": 52,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialGauge": 0
+          },
+          "boxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "drop:1",
+              "row": 7,
+              "col": 2,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "hp": {
+            "player": {
+              "current": 28,
+              "max": 30
+            },
+            "enemy": {
+              "current": 452,
+              "max": 452
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 3098215687,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 3,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": null
+        },
+        "run": {
+          "stage": 41,
+          "defeatedCount": 1,
+          "currentEnemyId": "briar-wheel",
+          "status": "active"
+        },
+        "enemyOrder": [
+          "speed-core"
+        ],
+        "rewardRng": 1374496532
+      }
+    },
+    {
+      "stage": 41,
+      "raw": "{\"format\":\"game1-next-save\",\"schema\":1,\"rules\":\"next-1.9-encounters-bands-v1\",\"revision\":1,\"savedAt\":0,\"checkpoint\":{\"runId\":\"82e96916-315c-4e79-b141-183173b4107e\",\"initialConfig\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":452,\"initialHp\":1,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"briar-wheel\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"options\":{\"run\":{\"encounterVersion\":\"bands-v1\",\"rotationStart\":\"marujiro\",\"route\":\"boss-loop\",\"startStage\":41,\"finishAtStage\":50,\"mode\":\"endless\",\"rewards\":true,\"rewardMode\":\"categories\"}},\"state\":{\"config\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":452,\"initialHp\":1,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"briar-wheel\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"boxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"drop:1\",\"row\":7,\"col\":2,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"hp\":{\"player\":{\"current\":18,\"max\":30},\"enemy\":{\"current\":-3,\"max\":452}},\"actor\":\"player\",\"turn\":1,\"enemyPatternIndex\":0,\"enemyTurnCount\":0,\"link3Growth\":0,\"rngState\":31,\"build\":{\"fixed\":{\"id\":\"health\",\"rank\":1,\"uses\":null},\"slots\":[null,null],\"power\":{\"3\":0,\"4\":0,\"5\":0}},\"gauge\":3,\"transformation\":null,\"playerTurnStarted\":false,\"nextBoxId\":2,\"result\":{\"winner\":\"player\",\"reason\":\"hp-zero\"}},\"run\":{\"stage\":41,\"defeatedCount\":1,\"currentEnemyId\":\"briar-wheel\",\"status\":\"reward\",\"offer\":{\"id\":\"reward:82e96916-315c-4e79-b141-183173b4107e:41:1\",\"category\":\"pending\",\"choices\":[]}},\"enemyOrder\":[\"briar-wheel\"],\"rewardRng\":1374496532},\"checksum\":\"dc94caf5\"}",
+      "expected": {
+        "runId": "82e96916-315c-4e79-b141-183173b4107e",
+        "initialConfig": {
+          "id": "next-reward",
+          "title": "報酬直前",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 18,
+              "attacks": {
+                "3": 4,
+                "4": 7,
+                "5": 11
+              }
+            },
+            "enemy": {
+              "maxHp": 452,
+              "initialHp": 1,
+              "attacks": {
+                "3": 3,
+                "4": 5,
+                "5": 8
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 31,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "briar-wheel",
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "t-strike": [
+                6,
+                9
+              ],
+              "zigzag-strike": [
+                6,
+                9
+              ],
+              "cup-strike": [
+                8,
+                12
+              ],
+              "diamond-strike": [
+                7,
+                10
+              ],
+              "cross-strike": [
+                9,
+                13
+              ],
+              "full-power": [
+                2,
+                3
+              ],
+              "foundation": [
+                1,
+                2
+              ],
+              "snake-line": [
+                4,
+                6
+              ],
+              "edge-strike": [
+                2,
+                3
+              ],
+              "siege": [
+                1,
+                2
+              ],
+              "crossfire": [
+                2,
+                3
+              ],
+              "last-stand": [
+                3,
+                5
+              ],
+              "iron-wall": [
+                1,
+                2
+              ],
+              "capacitor": [
+                12,
+                20
+              ],
+              "solvent": [
+                2,
+                4
+              ],
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "twin-core": {
+                "maxHp": 42,
+                "attacks": {
+                  "3": 4,
+                  "4": 5,
+                  "5": 7
+                }
+              },
+              "needle-core": {
+                "maxHp": 25,
+                "attacks": {
+                  "3": 2,
+                  "4": 6,
+                  "5": 13
+                }
+              },
+              "frost-core": {
+                "maxHp": 36,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "thorn-core": {
+                "maxHp": 40,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 7
+                }
+              },
+              "rime-crown": {
+                "maxHp": 48,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "briar-wheel": {
+                "maxHp": 52,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0
+        },
+        "options": {
+          "run": {
+            "encounterVersion": "bands-v1",
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 41,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "next-reward",
+            "title": "報酬直前",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [
+              {
+                "id": "fixture:0",
+                "row": 7,
+                "col": 0,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "fixture:1",
+                "row": 7,
+                "col": 1,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "drop:1",
+                "row": 7,
+                "col": 2,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              }
+            ],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 28,
+                "attacks": {
+                  "3": 4,
+                  "4": 7,
+                  "5": 11
+                }
+              },
+              "enemy": {
+                "maxHp": 458,
+                "initialHp": 458,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 1457684160,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "rime-crown",
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "t-strike": [
+                  6,
+                  9
+                ],
+                "zigzag-strike": [
+                  6,
+                  9
+                ],
+                "cup-strike": [
+                  8,
+                  12
+                ],
+                "diamond-strike": [
+                  7,
+                  10
+                ],
+                "cross-strike": [
+                  9,
+                  13
+                ],
+                "full-power": [
+                  2,
+                  3
+                ],
+                "foundation": [
+                  1,
+                  2
+                ],
+                "snake-line": [
+                  4,
+                  6
+                ],
+                "edge-strike": [
+                  2,
+                  3
+                ],
+                "siege": [
+                  1,
+                  2
+                ],
+                "crossfire": [
+                  2,
+                  3
+                ],
+                "last-stand": [
+                  3,
+                  5
+                ],
+                "iron-wall": [
+                  1,
+                  2
+                ],
+                "capacitor": [
+                  12,
+                  20
+                ],
+                "solvent": [
+                  2,
+                  4
+                ],
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "twin-core": {
+                  "maxHp": 42,
+                  "attacks": {
+                    "3": 4,
+                    "4": 5,
+                    "5": 7
+                  }
+                },
+                "needle-core": {
+                  "maxHp": 25,
+                  "attacks": {
+                    "3": 2,
+                    "4": 6,
+                    "5": 13
+                  }
+                },
+                "frost-core": {
+                  "maxHp": 36,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "thorn-core": {
+                  "maxHp": 40,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 7
+                  }
+                },
+                "rime-crown": {
+                  "maxHp": 48,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "briar-wheel": {
+                  "maxHp": 52,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialGauge": 0
+          },
+          "boxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "drop:1",
+              "row": 7,
+              "col": 2,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "hp": {
+            "player": {
+              "current": 28,
+              "max": 30
+            },
+            "enemy": {
+              "current": 458,
+              "max": 458
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 1457684160,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 3,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": null
+        },
+        "run": {
+          "stage": 42,
+          "defeatedCount": 1,
+          "currentEnemyId": "rime-crown",
+          "status": "active"
+        },
+        "enemyOrder": [
+          "briar-wheel"
+        ],
+        "rewardRng": 1374496532
+      }
+    },
+    {
+      "stage": 48,
+      "raw": "{\"format\":\"game1-next-save\",\"schema\":1,\"rules\":\"next-1.9-encounters-bands-v1\",\"revision\":1,\"savedAt\":0,\"checkpoint\":{\"runId\":\"4468b847-a715-4e6c-b59e-19abc658656e\",\"initialConfig\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":522,\"initialHp\":1,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"briar-wheel\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"options\":{\"run\":{\"encounterVersion\":\"bands-v1\",\"rotationStart\":\"marujiro\",\"route\":\"boss-loop\",\"startStage\":48,\"finishAtStage\":50,\"mode\":\"endless\",\"rewards\":true,\"rewardMode\":\"categories\"}},\"state\":{\"config\":{\"id\":\"next-reward\",\"title\":\"報酬直前\",\"description\":\"6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。\",\"board\":{\"width\":6,\"height\":8,\"gravity\":\"down\",\"terrain\":[],\"invalidCells\":[]},\"initialBoxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"combatants\":{\"player\":{\"maxHp\":30,\"initialHp\":18,\"attacks\":{\"3\":4,\"4\":7,\"5\":11}},\"enemy\":{\"maxHp\":522,\"initialHp\":1,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}}},\"firstActor\":\"player\",\"seed\":31,\"enemyPattern\":[{\"type\":\"drop\"}],\"characterId\":\"blue\",\"enemyId\":\"briar-wheel\",\"strategy\":{\"transformation\":\"manual-charge\",\"gauge\":\"bands\"},\"tuning\":{\"board\":{\"painPerBox\":2,\"emberCost\":3,\"emberConversions\":2},\"gauge\":{\"turnGain\":1,\"linkPerBox\":4,\"damagePerHp\":1,\"limits\":{\"blue\":{\"cost\":80,\"cap\":120},\"red\":{\"cost\":100,\"cap\":150}},\"bands\":{\"3\":2,\"4\":4,\"5\":6,\"sixPlus\":30}},\"transformation\":{\"minimumLink\":6,\"redBonusStarts\":2},\"links\":{\"growFireGrowth\":1},\"skills\":{\"t-strike\":[6,9],\"zigzag-strike\":[6,9],\"cup-strike\":[8,12],\"diamond-strike\":[7,10],\"cross-strike\":[9,13],\"full-power\":[2,3],\"foundation\":[1,2],\"snake-line\":[4,6],\"edge-strike\":[2,3],\"siege\":[1,2],\"crossfire\":[2,3],\"last-stand\":[3,5],\"iron-wall\":[1,2],\"capacitor\":[12,20],\"solvent\":[2,4],\"health\":[15,20],\"grow-fire\":[3,5],\"charge\":[2,3],\"first-guard\":[2,3],\"horizontal-slash\":[2,4],\"diagonal-shot\":[2,3],\"corner-strike\":[3,5],\"square-strike\":[5,8],\"healing-potion\":[5,10],\"magic-bullet\":[2,3]},\"enemies\":{\"twin-core\":{\"maxHp\":42,\"attacks\":{\"3\":4,\"4\":5,\"5\":7}},\"needle-core\":{\"maxHp\":25,\"attacks\":{\"3\":2,\"4\":6,\"5\":13}},\"frost-core\":{\"maxHp\":36,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"thorn-core\":{\"maxHp\":40,\"attacks\":{\"3\":2,\"4\":4,\"5\":7}},\"rime-crown\":{\"maxHp\":48,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"briar-wheel\":{\"maxHp\":52,\"attacks\":{\"3\":3,\"4\":5,\"5\":8}},\"marujiro\":{\"maxHp\":60,\"attacks\":{\"3\":2,\"4\":4,\"5\":6}},\"hikikizan\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":10,\"5\":15}},\"nigirin\":{\"maxHp\":30,\"attacks\":{\"3\":2,\"4\":4,\"5\":6},\"healEveryOwnTurns\":5,\"healAmount\":10},\"merarun\":{\"maxHp\":30,\"attacks\":{\"3\":3,\"4\":6,\"5\":9}},\"speed-core\":{\"maxHp\":50,\"attacks\":{\"3\":6,\"4\":7,\"5\":9}},\"mother-core\":{\"maxHp\":150,\"attacks\":{\"3\":5,\"4\":8,\"5\":12}}},\"bosses\":{\"speedPulseEvery\":5,\"speedPulseDamage\":3,\"motherThresholdPercent\":20,\"motherPulseDamage\":5},\"progression\":{\"hpPerStage\":10,\"loopLength\":50,\"hpMultiplierStep\":2,\"attackPerLoop\":2,\"fixedDamagePerLoop\":1},\"rewards\":{\"choices\":3,\"threePower\":1,\"largeFourPower\":1,\"largeFivePower\":2,\"immediateHeal\":10,\"maxHp\":5,\"fourPower\":2,\"fivePower\":3}},\"enemyFixedDamageBonus\":0,\"initialEnemyTurnCount\":0},\"boxes\":[{\"id\":\"fixture:0\",\"row\":7,\"col\":0,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"fixture:1\",\"row\":7,\"col\":1,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"},{\"id\":\"drop:1\",\"row\":7,\"col\":2,\"owner\":\"player\",\"type\":\"normal\",\"status\":\"normal\"}],\"hp\":{\"player\":{\"current\":18,\"max\":30},\"enemy\":{\"current\":-3,\"max\":522}},\"actor\":\"player\",\"turn\":1,\"enemyPatternIndex\":0,\"enemyTurnCount\":0,\"link3Growth\":0,\"rngState\":31,\"build\":{\"fixed\":{\"id\":\"health\",\"rank\":1,\"uses\":null},\"slots\":[null,null],\"power\":{\"3\":0,\"4\":0,\"5\":0}},\"gauge\":3,\"transformation\":null,\"playerTurnStarted\":false,\"nextBoxId\":2,\"result\":{\"winner\":\"player\",\"reason\":\"hp-zero\"}},\"run\":{\"stage\":48,\"defeatedCount\":1,\"currentEnemyId\":\"briar-wheel\",\"status\":\"reward\",\"offer\":{\"id\":\"reward:4468b847-a715-4e6c-b59e-19abc658656e:48:1\",\"category\":\"pending\",\"choices\":[]}},\"enemyOrder\":[\"briar-wheel\"],\"rewardRng\":1374496532},\"checksum\":\"2ad556fa\"}",
+      "expected": {
+        "runId": "4468b847-a715-4e6c-b59e-19abc658656e",
+        "initialConfig": {
+          "id": "next-reward",
+          "title": "報酬直前",
+          "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+          "board": {
+            "width": 6,
+            "height": 8,
+            "gravity": "down",
+            "terrain": [],
+            "invalidCells": []
+          },
+          "initialBoxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "combatants": {
+            "player": {
+              "maxHp": 30,
+              "initialHp": 18,
+              "attacks": {
+                "3": 4,
+                "4": 7,
+                "5": 11
+              }
+            },
+            "enemy": {
+              "maxHp": 522,
+              "initialHp": 1,
+              "attacks": {
+                "3": 3,
+                "4": 5,
+                "5": 8
+              }
+            }
+          },
+          "firstActor": "player",
+          "seed": 31,
+          "enemyPattern": [
+            {
+              "type": "drop"
+            }
+          ],
+          "characterId": "blue",
+          "enemyId": "briar-wheel",
+          "strategy": {
+            "transformation": "manual-charge",
+            "gauge": "bands"
+          },
+          "tuning": {
+            "board": {
+              "painPerBox": 2,
+              "emberCost": 3,
+              "emberConversions": 2
+            },
+            "gauge": {
+              "turnGain": 1,
+              "linkPerBox": 4,
+              "damagePerHp": 1,
+              "limits": {
+                "blue": {
+                  "cost": 80,
+                  "cap": 120
+                },
+                "red": {
+                  "cost": 100,
+                  "cap": 150
+                }
+              },
+              "bands": {
+                "3": 2,
+                "4": 4,
+                "5": 6,
+                "sixPlus": 30
+              }
+            },
+            "transformation": {
+              "minimumLink": 6,
+              "redBonusStarts": 2
+            },
+            "links": {
+              "growFireGrowth": 1
+            },
+            "skills": {
+              "t-strike": [
+                6,
+                9
+              ],
+              "zigzag-strike": [
+                6,
+                9
+              ],
+              "cup-strike": [
+                8,
+                12
+              ],
+              "diamond-strike": [
+                7,
+                10
+              ],
+              "cross-strike": [
+                9,
+                13
+              ],
+              "full-power": [
+                2,
+                3
+              ],
+              "foundation": [
+                1,
+                2
+              ],
+              "snake-line": [
+                4,
+                6
+              ],
+              "edge-strike": [
+                2,
+                3
+              ],
+              "siege": [
+                1,
+                2
+              ],
+              "crossfire": [
+                2,
+                3
+              ],
+              "last-stand": [
+                3,
+                5
+              ],
+              "iron-wall": [
+                1,
+                2
+              ],
+              "capacitor": [
+                12,
+                20
+              ],
+              "solvent": [
+                2,
+                4
+              ],
+              "health": [
+                15,
+                20
+              ],
+              "grow-fire": [
+                3,
+                5
+              ],
+              "charge": [
+                2,
+                3
+              ],
+              "first-guard": [
+                2,
+                3
+              ],
+              "horizontal-slash": [
+                2,
+                4
+              ],
+              "diagonal-shot": [
+                2,
+                3
+              ],
+              "corner-strike": [
+                3,
+                5
+              ],
+              "square-strike": [
+                5,
+                8
+              ],
+              "healing-potion": [
+                5,
+                10
+              ],
+              "magic-bullet": [
+                2,
+                3
+              ]
+            },
+            "enemies": {
+              "twin-core": {
+                "maxHp": 42,
+                "attacks": {
+                  "3": 4,
+                  "4": 5,
+                  "5": 7
+                }
+              },
+              "needle-core": {
+                "maxHp": 25,
+                "attacks": {
+                  "3": 2,
+                  "4": 6,
+                  "5": 13
+                }
+              },
+              "frost-core": {
+                "maxHp": 36,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "thorn-core": {
+                "maxHp": 40,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 7
+                }
+              },
+              "rime-crown": {
+                "maxHp": 48,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "briar-wheel": {
+                "maxHp": 52,
+                "attacks": {
+                  "3": 3,
+                  "4": 5,
+                  "5": 8
+                }
+              },
+              "marujiro": {
+                "maxHp": 60,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                }
+              },
+              "hikikizan": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 10,
+                  "5": 15
+                }
+              },
+              "nigirin": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6
+                },
+                "healEveryOwnTurns": 5,
+                "healAmount": 10
+              },
+              "merarun": {
+                "maxHp": 30,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              },
+              "speed-core": {
+                "maxHp": 50,
+                "attacks": {
+                  "3": 6,
+                  "4": 7,
+                  "5": 9
+                }
+              },
+              "mother-core": {
+                "maxHp": 150,
+                "attacks": {
+                  "3": 5,
+                  "4": 8,
+                  "5": 12
+                }
+              }
+            },
+            "bosses": {
+              "speedPulseEvery": 5,
+              "speedPulseDamage": 3,
+              "motherThresholdPercent": 20,
+              "motherPulseDamage": 5
+            },
+            "progression": {
+              "hpPerStage": 10,
+              "loopLength": 50,
+              "hpMultiplierStep": 2,
+              "attackPerLoop": 2,
+              "fixedDamagePerLoop": 1
+            },
+            "rewards": {
+              "choices": 3,
+              "threePower": 1,
+              "largeFourPower": 1,
+              "largeFivePower": 2,
+              "immediateHeal": 10,
+              "maxHp": 5,
+              "fourPower": 2,
+              "fivePower": 3
+            }
+          },
+          "enemyFixedDamageBonus": 0,
+          "initialEnemyTurnCount": 0
+        },
+        "options": {
+          "run": {
+            "encounterVersion": "bands-v1",
+            "rotationStart": "marujiro",
+            "route": "boss-loop",
+            "startStage": 48,
+            "finishAtStage": 50,
+            "mode": "endless",
+            "rewards": true,
+            "rewardMode": "categories"
+          }
+        },
+        "state": {
+          "config": {
+            "id": "next-reward",
+            "title": "報酬直前",
+            "description": "6 × 8の共通盤面。3つ以上のリンクで攻撃します。数値は検証用です。",
+            "board": {
+              "width": 6,
+              "height": 8,
+              "gravity": "down",
+              "terrain": [],
+              "invalidCells": []
+            },
+            "initialBoxes": [
+              {
+                "id": "fixture:0",
+                "row": 7,
+                "col": 0,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "fixture:1",
+                "row": 7,
+                "col": 1,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              },
+              {
+                "id": "drop:1",
+                "row": 7,
+                "col": 2,
+                "owner": "player",
+                "type": "normal",
+                "status": "normal"
+              }
+            ],
+            "combatants": {
+              "player": {
+                "maxHp": 30,
+                "initialHp": 28,
+                "attacks": {
+                  "3": 4,
+                  "4": 7,
+                  "5": 11
+                }
+              },
+              "enemy": {
+                "maxHp": 528,
+                "initialHp": 528,
+                "attacks": {
+                  "3": 3,
+                  "4": 6,
+                  "5": 9
+                }
+              }
+            },
+            "firstActor": "player",
+            "seed": 2858865359,
+            "enemyPattern": [
+              {
+                "type": "drop"
+              }
+            ],
+            "characterId": "blue",
+            "enemyId": "rime-crown",
+            "strategy": {
+              "transformation": "manual-charge",
+              "gauge": "bands"
+            },
+            "tuning": {
+              "board": {
+                "painPerBox": 2,
+                "emberCost": 3,
+                "emberConversions": 2
+              },
+              "gauge": {
+                "turnGain": 1,
+                "linkPerBox": 4,
+                "damagePerHp": 1,
+                "limits": {
+                  "blue": {
+                    "cost": 80,
+                    "cap": 120
+                  },
+                  "red": {
+                    "cost": 100,
+                    "cap": 150
+                  }
+                },
+                "bands": {
+                  "3": 2,
+                  "4": 4,
+                  "5": 6,
+                  "sixPlus": 30
+                }
+              },
+              "transformation": {
+                "minimumLink": 6,
+                "redBonusStarts": 2
+              },
+              "links": {
+                "growFireGrowth": 1
+              },
+              "skills": {
+                "t-strike": [
+                  6,
+                  9
+                ],
+                "zigzag-strike": [
+                  6,
+                  9
+                ],
+                "cup-strike": [
+                  8,
+                  12
+                ],
+                "diamond-strike": [
+                  7,
+                  10
+                ],
+                "cross-strike": [
+                  9,
+                  13
+                ],
+                "full-power": [
+                  2,
+                  3
+                ],
+                "foundation": [
+                  1,
+                  2
+                ],
+                "snake-line": [
+                  4,
+                  6
+                ],
+                "edge-strike": [
+                  2,
+                  3
+                ],
+                "siege": [
+                  1,
+                  2
+                ],
+                "crossfire": [
+                  2,
+                  3
+                ],
+                "last-stand": [
+                  3,
+                  5
+                ],
+                "iron-wall": [
+                  1,
+                  2
+                ],
+                "capacitor": [
+                  12,
+                  20
+                ],
+                "solvent": [
+                  2,
+                  4
+                ],
+                "health": [
+                  15,
+                  20
+                ],
+                "grow-fire": [
+                  3,
+                  5
+                ],
+                "charge": [
+                  2,
+                  3
+                ],
+                "first-guard": [
+                  2,
+                  3
+                ],
+                "horizontal-slash": [
+                  2,
+                  4
+                ],
+                "diagonal-shot": [
+                  2,
+                  3
+                ],
+                "corner-strike": [
+                  3,
+                  5
+                ],
+                "square-strike": [
+                  5,
+                  8
+                ],
+                "healing-potion": [
+                  5,
+                  10
+                ],
+                "magic-bullet": [
+                  2,
+                  3
+                ]
+              },
+              "enemies": {
+                "twin-core": {
+                  "maxHp": 42,
+                  "attacks": {
+                    "3": 4,
+                    "4": 5,
+                    "5": 7
+                  }
+                },
+                "needle-core": {
+                  "maxHp": 25,
+                  "attacks": {
+                    "3": 2,
+                    "4": 6,
+                    "5": 13
+                  }
+                },
+                "frost-core": {
+                  "maxHp": 36,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "thorn-core": {
+                  "maxHp": 40,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 7
+                  }
+                },
+                "rime-crown": {
+                  "maxHp": 48,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "briar-wheel": {
+                  "maxHp": 52,
+                  "attacks": {
+                    "3": 3,
+                    "4": 5,
+                    "5": 8
+                  }
+                },
+                "marujiro": {
+                  "maxHp": 60,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  }
+                },
+                "hikikizan": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 10,
+                    "5": 15
+                  }
+                },
+                "nigirin": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 2,
+                    "4": 4,
+                    "5": 6
+                  },
+                  "healEveryOwnTurns": 5,
+                  "healAmount": 10
+                },
+                "merarun": {
+                  "maxHp": 30,
+                  "attacks": {
+                    "3": 3,
+                    "4": 6,
+                    "5": 9
+                  }
+                },
+                "speed-core": {
+                  "maxHp": 50,
+                  "attacks": {
+                    "3": 6,
+                    "4": 7,
+                    "5": 9
+                  }
+                },
+                "mother-core": {
+                  "maxHp": 150,
+                  "attacks": {
+                    "3": 5,
+                    "4": 8,
+                    "5": 12
+                  }
+                }
+              },
+              "bosses": {
+                "speedPulseEvery": 5,
+                "speedPulseDamage": 3,
+                "motherThresholdPercent": 20,
+                "motherPulseDamage": 5
+              },
+              "progression": {
+                "hpPerStage": 10,
+                "loopLength": 50,
+                "hpMultiplierStep": 2,
+                "attackPerLoop": 2,
+                "fixedDamagePerLoop": 1
+              },
+              "rewards": {
+                "choices": 3,
+                "threePower": 1,
+                "largeFourPower": 1,
+                "largeFivePower": 2,
+                "immediateHeal": 10,
+                "maxHp": 5,
+                "fourPower": 2,
+                "fivePower": 3
+              }
+            },
+            "enemyFixedDamageBonus": 0,
+            "initialGauge": 0
+          },
+          "boxes": [
+            {
+              "id": "fixture:0",
+              "row": 7,
+              "col": 0,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "fixture:1",
+              "row": 7,
+              "col": 1,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            },
+            {
+              "id": "drop:1",
+              "row": 7,
+              "col": 2,
+              "owner": "player",
+              "type": "normal",
+              "status": "normal"
+            }
+          ],
+          "hp": {
+            "player": {
+              "current": 28,
+              "max": 30
+            },
+            "enemy": {
+              "current": 528,
+              "max": 528
+            }
+          },
+          "actor": "player",
+          "turn": 1,
+          "enemyPatternIndex": 0,
+          "enemyTurnCount": 0,
+          "link3Growth": 0,
+          "rngState": 2858865359,
+          "build": {
+            "fixed": {
+              "id": "health",
+              "rank": 1,
+              "uses": null
+            },
+            "slots": [
+              null,
+              null
+            ],
+            "power": {
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          "gauge": 3,
+          "transformation": null,
+          "playerTurnStarted": false,
+          "nextBoxId": 1,
+          "result": null
+        },
+        "run": {
+          "stage": 49,
+          "defeatedCount": 1,
+          "currentEnemyId": "rime-crown",
+          "status": "active"
+        },
+        "enemyOrder": [
+          "briar-wheel"
+        ],
+        "rewardRng": 1374496532
+      }
+    }
+  ]
+}

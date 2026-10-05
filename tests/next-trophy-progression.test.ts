@@ -1,0 +1,41 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {createProfile,freezeRunMeta,settleProfile,migrateProfile,eligibleSkills,drawGacha,validateProfile} from '../src/next/meta/profile.ts';
+import {prepareDeparture} from '../src/next/meta/departure.ts';
+import {BattleController} from '../src/next/app/BattleController.ts';
+import {newRunAchievements,trackRunAction} from '../src/next/app/runAchievements.ts';
+import {decodeSave,encodeSave} from '../src/next/app/saveCheckpoint.ts';
+import {trophyDefinitions} from '../src/next/meta/trophies.ts';
+import type {Resolution} from '../src/next/core/types.ts';
+const view={render(){},async animate(){}};
+function start(){const p=createProfile(2),setup=prepareDeparture(freezeRunMeta(p,'blue',true),5),c=new BattleController(setup.config,view,setup.options),cp=c.exportCheckpoint();p.launches[cp.runId]={character:'blue',snapshot:JSON.stringify(cp.initialConfig.meta)};return {p,cp};}
+const hit=(before:number,after:number)=>({type:'damage' as const,actor:'player' as const,target:'enemy' as const,source:'magic-bullet' as const,damage:before-after,hpBefore:before,hpAfter:after});
+test('actual HP aggregates within player turn, excluding overkill and enemy period',()=>{const {cp}=start(),s=cp.state;const r:Resolution={actor:'player',originBoxId:null,links:[],enemyPlannedAction:null,events:[hit(120,60),hit(60,30)]};const ended={...s,actor:'enemy' as const};let a=trackRunAction(newRunAchievements(),s,ended,r,1);assert.equal(a.bestTurnDamage,90);a=trackRunAction(a,s,ended,{...r,events:[hit(30,-100)]},1);assert.equal(a.bestTurnDamage,120);a=trackRunAction(a,{...s,turn:3},s,{...r,events:[hit(100,80)]},1);assert.equal(a.turnDamage,20);a=trackRunAction(a,s,s,{...r,actor:'enemy',events:[hit(1000,0)]},1);assert.equal(a.bestTurnDamage,120);a=trackRunAction(a,s,s,{...r,events:[hit(100,50)]},2);assert.equal(a.turnDamage,50);});
+test('threshold grants ownership once without modifying frozen or configured pools',()=>{const {p,cp}=start();const qualified={...cp,achievements:{...newRunAchievements(),bestTurnDamage:100,highestMaxHp:100}};const oldPool=JSON.stringify(p.characters);const n=settleProfile(p,qualified,12);assert(n.ownedSkills.includes('heavy-swing'));assert(n.ownedSkills.includes('rescue-kit'));assert.equal(JSON.stringify(n.characters),oldPool);assert.equal(JSON.stringify(cp.initialConfig.meta),p.launches[cp.runId]!.snapshot);assert(eligibleSkills(n,'red').includes('rescue-kit'));assert.equal(settleProfile(n,qualified,20),n);assert.equal(n.trophies['damage100:turn'],12);validateProfile(n);});
+test('no retroactive inferred damage/maxHP, no QA/unregistered grants',()=>{const {p,cp}=start();assert.equal(settleProfile(p,{...cp,achievements:undefined}),p);const qualified={...cp,achievements:{...newRunAchievements(),bestTurnDamage:999,highestMaxHp:100}};assert.equal(settleProfile({...p,launches:{}},qualified).ownedSkills.length,p.ownedSkills.length);assert.equal(settleProfile(p,{...qualified,initialConfig:{...cp.initialConfig,meta:{...cp.initialConfig.meta!,eligible:false}}}).ownedSkills.length,p.ownedSkills.length);});
+test('all recorded clear trophies migrate once and never manufacture missing trophies',()=>{const p=createProfile(4);for(const t of trophyDefinitions.filter(t=>t.id.startsWith('clear50:')))p.trophies[t.id]=1;const n=migrateProfile(p);assert.equal(n.ownedSkills.length,p.ownedSkills.length+8);assert.equal(migrateProfile(n),n);assert(!n.ownedSkills.includes('heavy-swing'));assert(!n.ownedSkills.includes('rescue-kit'));validateProfile(n);});
+test('gacha cannot bypass trophy access over 3000 seeded draws',()=>{const ids=trophyDefinitions.flatMap(t=>t.skill?[t.skill]:[]);for(let seed=0;seed<3000;seed++){const p=createProfile(seed);p.coins=100;const n=drawGacha(p);assert(!ids.includes(n.lastDraw!.item as never));}});
+test('achievement checkpoints survive roundtrip, reject invalid counters, old field omitted remains loadable',()=>{const {cp}=start();const c={...cp,achievements:{version:1 as const,turnKey:'1:1',turnDamage:45,bestTurnDamage:99,highestMaxHp:55}};assert.deepEqual(decodeSave(encodeSave(c,1)).checkpoint.achievements,c.achievements);assert.throws(()=>encodeSave({...c,achievements:{...c.achievements,turnDamage:-1}},1));const old={...cp};delete old.achievements;assert.equal(decodeSave(encodeSave(old,1)).checkpoint.achievements,undefined);});
+test('Violet 1/2/3 is frozen only for new starts; prior snapshot retains 4/7/12',()=>{const p=createProfile(1);p.ownedCharacters.push('violet');const m=freezeRunMeta(p,'violet',true);assert.deepEqual(prepareDeparture(m,1).config.combatants.player.attacks,{3:1,4:2,5:3});const old={...m};delete old.balanceVersion;assert.deepEqual(prepareDeparture(old,1).config.combatants.player.attacks,{3:4,4:7,5:12});});
+
+test('bonus damage is retained across save but paid only at turn end or terminal boundary',()=>{const {cp}=start(),s=cp.state,r:Resolution={actor:'player',originBoxId:null,links:[],enemyPlannedAction:null,events:[hit(200,90)]};const a=trackRunAction(newRunAchievements(),s,s,r,1);assert.equal(a.turnDamage,110);assert.equal(a.bestTurnDamage,0);const restored=decodeSave(encodeSave({...cp,achievements:a},1)).checkpoint.achievements!;const b=trackRunAction(restored,s,{...s,actor:'enemy'},{...r,events:[]},1);assert.equal(b.bestTurnDamage,110);});
+
+test('durable threshold checkpoint reconciles a failed profile write exactly once',async()=>{
+ const {ProfileStore}=await import('../src/next/meta/profile.ts');
+ for(const failAfter of [false,true]){
+  const data=new Map<string,string>();let fail=false;
+  const storage={getItem:(key:string)=>data.get(key)??null,setItem(key:string,value:string){if(fail&&!failAfter)throw Error('before-write');data.set(key,value);if(fail)throw Error('after-write');}};
+  const store=new ProfileStore(storage,()=>true);const p=store.read(),setup=prepareDeparture(freezeRunMeta(p,'blue',true),5),c=new BattleController(setup.config,view,setup.options),cp=c.exportCheckpoint();store.register(cp);
+  const qualified={...cp,achievements:{...newRunAchievements(),bestTurnDamage:100,highestMaxHp:100}};
+  const durable=decodeSave(encodeSave(qualified,1)).checkpoint;fail=true;assert.throws(()=>store.settle(durable));fail=false;
+  const retry=new ProfileStore(storage,()=>true);retry.read();retry.settle(durable);retry.settle(durable);
+  assert.equal(retry.current.ownedSkills.filter(id=>id==='heavy-swing').length,1);assert.equal(retry.current.ownedSkills.filter(id=>id==='rescue-kit').length,1);assert.equal(retry.current.coins,p.coins);
+ }
+});
+test('real Red bonus damage survives restore and settles with ordinary action once',async()=>{
+ const p=createProfile(4),setup=prepareDeparture(freezeRunMeta(p,'red',true),6);
+ const config={...setup.config,initialTransformation:{character:'red' as const,scope:'run' as const,remainingStarts:1},initialBoxes:Array.from({length:12},(_,i)=>({id:`pre:${i}`,row:6+Math.floor(i/6),col:i%6,owner:'player' as const,type:'normal' as const,status:'normal' as const})),combatants:{...setup.config.combatants,player:{...setup.config.combatants.player,attacks:{3:110,4:110,5:110}},enemy:{...setup.config.combatants.enemy,maxHp:2000,initialHp:2000}}};
+ const controller=new BattleController(config,view,setup.options);await controller.start();const cp=controller.exportCheckpoint();assert(cp.achievements!.turnDamage>=100);assert.equal(cp.achievements!.bestTurnDamage,0);
+ const restored=BattleController.restore(decodeSave(encodeSave(cp,1)).checkpoint,view);const {getDropOptions}=await import('../src/next/core/index.ts');const candidate=getDropOptions(restored.snapshot).find(o=>o.available)!;assert(await restored.drop(candidate.id));const done=restored.exportCheckpoint();assert(done.achievements!.bestTurnDamage>=cp.achievements!.turnDamage);assert(done.achievements!.bestTurnDamage<2000);
+});
+
+test('retirement is a terminal settlement for an observed partial bonus turn',()=>{const {p,cp}=start();const partial={...cp,achievements:{...newRunAchievements(),turnKey:'1:1',turnDamage:100}};assert.equal(settleProfile(p,partial),p);const retired={...partial,run:{...cp.run!,status:'retired' as const}};assert(settleProfile(p,retired,44).ownedSkills.includes('heavy-swing'));});

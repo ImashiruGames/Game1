@@ -1,0 +1,20 @@
+{
+  "renderer": "Unmodified official JummBox Synth",
+  "source_project_sha256": "ef53ed8caca16c043b0933a53ac856432840497a8c20e60e2e6239a6ff9ccc50",
+  "sample_rate": 48000,
+  "bars": 24,
+  "beats_per_bar": 4,
+  "bpm": 132,
+  "exact_cycle_frames": 2094545.4545454544,
+  "observed_cycle_boundaries_frames": [
+    0,
+    2094545,
+    4189090,
+    6283636,
+    8378181
+  ],
+  "render_frames": 8382982,
+  "raw_peak_dbfs": -17.661720549449562,
+  "raw_clip_frames": 0,
+  "raw_nonfinite_frames": 0
+}

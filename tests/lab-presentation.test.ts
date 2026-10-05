@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { transformationStatus } from '../src/lab/presentation.ts';
+test('lab shows Blue active form for the stage and explains nominal heal damage',()=>{const text=transformationStatus({actor:'player',playerTurnStarted:false,transformation:{character:'blue',scope:'stage'}});assert.equal(text.active,true);assert.match(text.label,/この戦闘中/);assert.match(text.detail,/回復予定量/);});
+test('lab Red label distinguishes pending current bonus, used current bonus and final turn',()=>{const base={actor:'player' as const,playerTurnStarted:false,transformation:{character:'red' as const,scope:'run' as const,remainingStarts:2}};assert.match(transformationStatus(base).detail,/追加投入待ち/);assert.match(transformationStatus({...base,playerTurnStarted:true,transformation:{...base.transformation,remainingStarts:1}}).detail,/今手番の追加投入は完了/);assert.match(transformationStatus({...base,playerTurnStarted:true,transformation:{...base.transformation,remainingStarts:0}}).label,/この手番で終了/);assert.match(transformationStatus({...base,actor:'enemy'}).detail,/次の自分の手番/);});
+test('lab clears the transformation banner when the form expires',()=>assert.deepEqual(transformationStatus({actor:'player',playerTurnStarted:true,transformation:null}),{label:'通常形態',detail:'',active:false}));
+import { experimentAmountLabel } from '../src/lab/presentation.ts';
+test('critical log distinguishes its multiplier from flat damage modifiers',()=>{const critical={type:'experiment' as const,skill:'A057' as const,phase:'origin-roll',eligible:true,triggered:true,detail:'会心',amount:2};assert.equal(experimentAmountLabel(critical),'倍率 ×2');assert.equal(experimentAmountLabel({...critical,triggered:false,amount:1}),'倍率 ×1');assert.equal(experimentAmountLabel({...critical,skill:'A061',phase:'primary-link',amount:3}),'効果 +3');});
+import { foundationStatus } from '../src/lab/presentation.ts';
+import { fixtureConfig } from '../src/lab/fixtures.ts';
+import { createBattle } from '../src/lab/engine/battle.ts';
+test('A061 current-status text does not pretend its pre-drop count predicts the next bonus',()=>{const text=foundationStatus(createBattle(fixtureConfig('foundation-on','blue','marujiro',1,'A061')));assert.match(text,/自箱2個/);assert.match(text,/配置後に確定/);assert.doesNotMatch(text,/次の最初のリンク＋2/);});

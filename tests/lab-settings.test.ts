@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { parseSetupFields, pairedConfig } from '../src/lab/settings.ts';
+import { defaultConfig } from '../src/lab/engine/definitions.ts';
+import { fixtureConfig } from '../src/lab/fixtures.ts';
+import { createBattle } from '../src/lab/engine/battle.ts';
+const fields={skill:'A061',fixture:'open',character:'blue',enemy:'hikikizan',seed:'7'};
+test('restart reads typed seed7 atomically even without change or blur event',()=>{const parsed=parseSetupFields(fields)!;assert.equal(parsed.seed,7);assert.equal(parsed.enemy,'hikikizan');const s=createBattle(fixtureConfig(parsed.fixture,parsed.character,parsed.enemy,parsed.seed,parsed.selected==='none'?undefined:parsed.selected));assert.equal(s.config.seed,7);assert.equal(s.config.enemyId,'hikikizan');});
+test('setup rejects blank, fractional, negative and overflowing seeds',()=>{for(const seed of ['', '1.5','-1','4294967296','NaN'])assert.equal(parseSetupFields({...fields,seed}),null);assert.equal(parseSetupFields({...fields,seed:'0'})!.seed,0);assert.equal(parseSetupFields({...fields,seed:'4294967295'})!.seed,4294967295);});
+test('paired reset preserves committed enemy, scenario, HP, seed and tuning despite draft changes',()=>{const initial=fixtureConfig('open','red','hikikizan',7,'A061');const baseline=pairedConfig(initial);assert.equal(baseline.experiment,undefined);const {experiment:_,...rest}=initial;assert.deepEqual(baseline,rest);assert.deepEqual(pairedConfig(baseline,'A061'),initial);});
+test('prepared fixture fixed enemy parses honestly without replacing prepared statistics',()=>{const parsed=parseSetupFields({...fields,fixture:'case:A026:favorable',enemy:'fixture'},'nigirin')!;const config=fixtureConfig(parsed.fixture,parsed.character,parsed.enemy,parsed.seed,'A026');assert.equal(config.combatants.enemy.initialHp,11);assert.equal(config.combatants.enemy.maxHp,defaultConfig.combatants.enemy.maxHp);});

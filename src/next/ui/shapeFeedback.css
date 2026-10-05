@@ -1,0 +1,5 @@
+/* Part of the existing feedback bubble: no extra overlay, animation or waiting phase. */
+.shape-feedback-header{display:flex;align-items:center;justify-content:center;gap:6px;margin:0 0 4px;color:#f1dfe4;font-size:12px;line-height:1.1;font-weight:700}
+.heal .shape-feedback-header{color:#d8f4e1}
+.shape-feedback-sigil{display:grid;grid-template-columns:repeat(var(--shape-cols),4px);grid-template-rows:repeat(var(--shape-rows),4px);gap:1px;flex:none;padding:2px;border:1px solid currentColor;border-radius:2px}
+.shape-feedback-sigil i{display:block;width:4px;height:4px;background:transparent}.shape-feedback-sigil i.filled{background:currentColor}

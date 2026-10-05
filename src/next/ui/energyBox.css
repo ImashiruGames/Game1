@@ -1,0 +1,78 @@
+/* Shared, self-contained energy containers. Geometry and cell hit targets stay unchanged. */
+.energy-box{display:block;width:100%;height:100%;overflow:visible;pointer-events:none!important;--ink:#77e1f2;--bright:#e7fcff;--deep:#318cb9;--delay:0s;transform-origin:center bottom}
+.energy-box *{pointer-events:none!important}
+.energy-box[data-energy-theme=red]{--ink:#ffb071;--bright:#fff5d8;--deep:#be552f}
+.energy-box.enemy{--ink:#c697f2;--bright:#f7eaff;--deep:#8f54b1}
+.energy-box[data-energy-theme=hikikizan]{--ink:#cba6f5;--deep:#7753a1}
+.energy-box[data-energy-theme=nigirin]{--ink:#a2d7c5;--bright:#effff7;--deep:#4f8d86}
+.energy-box[data-energy-theme=merarun]{--ink:#f0a1b7;--bright:#fff0f4;--deep:#ad547a}
+.energy-box[data-energy-theme=speed-core]{--ink:#b9cdf8;--bright:#eef6ff;--deep:#697bbc}
+.energy-box[data-energy-theme=mother-core]{--ink:#e0a2ed;--bright:#fff0ff;--deep:#985aac}
+.energy-box.neutral{--ink:#a6b2c4;--bright:#eef2f7;--deep:#586879}
+.energy-box .eb-glass-body{fill:var(--ink);fill-opacity:.055;stroke:var(--ink);stroke-opacity:.8;stroke-width:1.15}
+.energy-box .eb-glass-bevel{fill:none;stroke:var(--ink);stroke-width:.45;opacity:.35}
+.energy-box .eb-glass-shine{fill:none;stroke:var(--bright);stroke-width:.7;stroke-linecap:round;opacity:.76}
+.energy-box .eb-corner-foot{fill:var(--ink);opacity:.75}
+.energy-box .eb-inner-aura{fill:var(--ink);opacity:.09}
+.energy-box .eb-prism-field{fill:var(--ink);opacity:.19;stroke:var(--bright);stroke-width:.3;stroke-opacity:.55}
+.energy-box .eb-prism-seam{fill:none;stroke:var(--bright);stroke-width:.3;opacity:.55}
+.energy-box .eb-core-rim{fill:var(--deep);stroke:var(--ink);stroke-width:.55}
+.energy-box .eb-core-fill{fill:var(--ink)}.energy-box .eb-core-glint{fill:var(--bright)}.energy-box .eb-core-shade{fill:var(--deep);opacity:.45}
+.energy-box .eb-energy-float{animation:energy-core-drift 3.6s ease-in-out infinite;animation-delay:var(--delay);transform-origin:center;transform-box:fill-box}
+.energy-box.enemy .eb-energy-float{animation-duration:4.2s}.energy-box.neutral .eb-energy-float{animation:none}
+.energy-box .eb-blue-energy,.energy-box .eb-red-energy{transform-origin:center;transform-box:fill-box}
+.energy-box .eb-red-energy{display:none}.energy-box[data-energy-theme=red] .eb-blue-energy{display:none}.energy-box[data-energy-theme=red] .eb-red-energy{display:block}
+.energy-box .eb-flame-inner{fill:var(--bright);opacity:.8}.energy-box .eb-flame-outer{fill:var(--ink);opacity:.35}.energy-box .eb-flame-edge{fill:none;stroke:var(--ink);stroke-width:.65;opacity:.8}
+.energy-box .eb-flame-tongue{animation:energy-flame-breathe 2s ease-in-out infinite alternate;animation-delay:var(--delay);transform-origin:50% 100%;transform-box:fill-box}
+.energy-box .eb-dust{fill:var(--bright);opacity:.65}.energy-box .eb-base-shadow{fill:var(--ink);opacity:.12}.energy-box .eb-conversion-wash{fill:var(--ink);opacity:0}
+.energy-box.is-transformed .eb-glass-bevel{stroke:var(--bright);opacity:.8;stroke-width:.75}.energy-box.is-transformed .eb-core-rim{stroke:var(--bright);stroke-width:1}.energy-box.is-transformed .eb-inner-aura{opacity:.16}
+.board .cell.player,.board .cell.enemy,.board .cell.neutral{border-color:transparent;background:transparent;color:inherit}
+.board .cell:has(.energy-box){padding:0}.board .cell.ghost{border:1px dashed #bfeaff;background:#72dbf012}.cell.ghost .energy-box{opacity:.46}.cell.ghost .eb-energy-float,.row-projected .energy-box .eb-energy-float,.row-projected .energy-box .eb-flame-tongue{animation:none}
+.board .cell.hit{filter:none;outline-width:2px;outline-offset:-1px;background-image:none;border-radius:5px}.cell.hit .eb-glass-body{fill-opacity:.2;stroke-opacity:1}.cell.hit .eb-core-fill{fill:var(--bright)}.cell.hit .eb-core-rim{stroke:var(--bright);stroke-width:1.4}
+.kinetic-drop-box:has(.energy-box){background:transparent;border:0;padding:1px;border-radius:0}.kinetic-drop-box .eb-energy-float,.kinetic-drop-box .eb-flame-tongue{animation:none}
+.board-skill-converted.energy-conversion{border:0;box-shadow:none;border-radius:0;background:transparent}.energy-conversion>span{position:absolute;inset:0;display:block}.energy-conversion .energy-box .eb-energy-float,.energy-conversion .energy-box .eb-flame-tongue{animation:none}.energy-conversion .eb-conversion-wash{opacity:.25}.energy-conversion.is-still .conversion-old{display:none}
+@keyframes energy-core-drift{0%,100%{transform:translateY(.4px)}50%{transform:translateY(-.8px)}}
+@keyframes energy-flame-breathe{from{transform:scaleX(.94) scaleY(.97)}to{transform:scaleX(1.02) scaleY(1.06)}}
+body[data-reduced-motion=true] .energy-box *,body[data-energy-short=true] .energy-box *{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.energy-box *{animation:none!important;transition:none!important}}
+.game{position:relative}
+.energy-link-layer{position:absolute;inset:0;z-index:9;overflow:hidden;pointer-events:none!important;--link-ink:#77e1f2;--link-bright:#e7fcff}
+.energy-link-layer,.energy-link-layer *{pointer-events:none!important}.energy-link-layer[data-energy-theme=red]{--link-ink:#ffb071;--link-bright:#fff5d8}.energy-link-layer.enemy{--link-ink:#c697f2;--link-bright:#f7eaff}.energy-link-layer[data-energy-theme=nigirin]{--link-ink:#a2d7c5}.energy-link-layer[data-energy-theme=merarun]{--link-ink:#f0a1b7}.energy-link-layer[data-energy-theme=speed-core]{--link-ink:#b9cdf8}.energy-link-layer[data-energy-theme=mother-core]{--link-ink:#e0a2ed}
+.energy-link-line{display:block;position:absolute;height:1.5px;margin-top:-.75px;background:var(--link-ink);opacity:.85;transform-origin:0 50%;box-shadow:0 0 3px var(--link-ink)}
+.energy-link-node{position:absolute;display:block;width:10px;height:10px;margin:-5px;border:1px solid var(--link-bright);border-radius:50%;background:var(--link-ink);box-shadow:0 0 6px var(--link-ink)}.energy-link-layer.enemy .energy-link-node{border-radius:1px;transform:rotate(45deg)}
+.energy-attack-particle{display:block;position:absolute;left:0;top:0;width:4px;height:4px;margin:-2px;border-radius:50%;background:var(--link-bright);box-shadow:0 0 4px var(--link-ink)}
+.energy-link-layer.is-still .energy-link-node{background:transparent;box-shadow:none}.energy-link-layer.is-still .energy-link-line{box-shadow:none}
+body[data-reduced-motion=true] .energy-attack-particle{display:none}
+@media(prefers-reduced-motion:reduce){.energy-attack-particle{display:none}}
+
+.energy-box[data-energy-theme=imashiru]{--ink:#c2a1f0;--bright:#fff6ff;--deep:#8158ad}
+/* 日本語: タイプ外周は芯より上、照準・命中表示より下。色だけに頼らない。
+   English: SVG paint order preserves ownership; cell outlines and hit feedback stay above type frames. */
+.eb-type-overlay{fill:none;stroke:var(--type-ink);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.eb-type-fill{fill:var(--type-ink);fill-opacity:.32}.eb-type-solid{fill:var(--type-ink);stroke-width:.5}
+.eb-type-shiny{--type-ink:#ffeaa0}.eb-type-frozen{--type-ink:#bcefff}.eb-type-poison{--type-ink:#c491f5}.eb-type-deadly-poison{--type-ink:#ff8bb9;stroke-width:1.7}.eb-type-rubble{--type-ink:#cbb59a;stroke-width:1.6}.eb-type-thorn{--type-ink:#ffa675;stroke-width:1.6}
+.eb-type-spark{animation:type-spark-breathe 4s ease-in-out infinite;animation-delay:var(--delay)}
+@keyframes type-spark-breathe{0%,100%{opacity:.65}50%{opacity:1}}
+.cell.ghost .eb-type-overlay,.row-projected .eb-type-overlay{animation:none}
+.box-inspection{position:fixed;inset:auto;margin:0;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);box-sizing:border-box;padding:16px;border:1px solid #9db8d0;border-radius:14px;background:#131e2e;color:#f5f8fc;box-shadow:0 12px 40px #0008;z-index:100;line-height:1.65;font-size:14px}
+.box-inspection::backdrop{background:#06101b55}.box-inspection-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.box-inspection h2{font-size:17px;margin:0}.box-inspection-top button{padding:8px 12px;flex-shrink:0}.box-inspection p{margin:12px 0 0}.box-inspection-context{color:#b7c9dd;font-size:12px}.box-inspection-toggle{font-size:11px;padding:4px 8px;white-space:nowrap}.box-inspection-toggle[aria-pressed=true]{outline:2px solid #bcefff}.inspecting-boxes .cell[data-box-id]{cursor:help}.cell[data-box-id]{-webkit-touch-callout:none;user-select:none;touch-action:pan-y}
+
+.eb-type-absolute-zero{--type-ink:#b6beff;stroke-width:1.5}.eb-type-absolute-zero>.eb-type-fill{fill-opacity:.06}
+/* 日本語: 既存の2列ヒントへ3番目を暗黙行として追加しない。予告中だけ説明を全幅にする。
+   English: Keep inspection in an explicit footer column, never an implicit row over the action buttons. */
+.hint-line:has(.box-inspection-toggle){grid-template-columns:minmax(0,1fr) auto auto;grid-template-rows:minmax(0,1fr);min-height:0}
+.hint-line .box-inspection-toggle{height:22px;min-height:0;max-height:100%;padding:1px 7px;font-size:11px;line-height:18px;justify-self:end;align-self:center}
+.hint-line:has(#hint:is(.ember-forecast,.row-forecast)){grid-template-columns:minmax(0,1fr) auto;grid-template-rows:minmax(0,1fr) 22px;row-gap:2px}
+.hint-line #hint:is(.ember-forecast,.row-forecast){grid-column:1/-1}
+.hint-line:has(#hint:is(.ember-forecast,.row-forecast)) #save-status{justify-self:start}
+@media(max-height:520px){.hint-line .box-inspection-toggle{height:20px;line-height:16px}}
+/* Raster art owns the type border; the center remains the existing ownership glyph.
+   One-shot material arrival, no continuously moving board frames or flash loop. */
+.eb-type-raster{pointer-events:none;opacity:.96;transform-origin:20px 20px}
+.type-arriving .eb-type-raster{animation:box-material-arrive var(--material-arrival-ms,180ms) cubic-bezier(.22,.7,.25,1) both}
+.type-arriving .eb-type-poison .eb-type-raster,.type-arriving .eb-type-deadly-poison .eb-type-raster{animation-name:box-liquid-arrive;animation-duration:var(--material-arrival-ms,180ms)}
+@keyframes box-material-arrive{from{opacity:.55;transform:translateY(.45px) scale(.985)}to{opacity:.96;transform:translateY(0) scale(1)}}
+@keyframes box-liquid-arrive{from{opacity:.65;transform:translateY(.7px) scaleY(.975)}to{opacity:.96;transform:translateY(0) scaleY(1)}}
+.cell.ghost .eb-type-raster,.row-projected .eb-type-raster,.kinetic-drop-box .eb-type-raster,.energy-conversion .eb-type-raster{animation:none}
+body[data-reduced-motion=true] .eb-type-raster,body[data-energy-short=true] .eb-type-raster,body[data-low-performance=true] .eb-type-raster{animation:none!important}
+@media(prefers-reduced-motion:reduce){.eb-type-raster{animation:none!important}}

@@ -1,0 +1,24 @@
+{
+  "version": "1.10.0",
+  "scope": "User-requested Devilmon/Shashark, reward-only healing growth and dynamic numeric tree caps; immutable old encounter fixture parity independently tested. Historical root/lab remain unchanged.",
+  "files": {
+    "src/next/app/BattleController.ts": "4ec9cee53d1e33a7548ae8150efd5c6a1e6e75998a6c1fc4873bc6b68c1e66e5",
+    "src/next/app/encounters.ts": "fb8bb846ace89a44c08f8c52347cf57057eb035281efcfa83652f6979f8d985e",
+    "src/next/app/saveCheckpoint.ts": "123fa3dc54ef6657aed7fbcf56ca235741a17afd1b88e209d1058cae49dd4f7a",
+    "src/next/config.ts": "37d4190a0e8938a7efc182894c01a73304e2040b64c633db484ac435f78bc8bc",
+    "src/next/core/activeDrop.ts": "3a42a93808b64eb5ea8db3739f3e5b2736dcbbc237250df0b8cd791776c43d03",
+    "src/next/core/monsterBehavior.ts": "b4efabc13f9bd54b09f73dfdfc8d0b73519282d714a799a1654b882f3244d4fa",
+    "src/next/core/monsters.ts": "c4b84b3cd74700b5eba8e4b630269c37585d095d7fa5122bf74506064e30d8c9",
+    "src/next/core/tuning.ts": "2ea20e4823c960f4f4bf6916188fe599db8c95d46dbba169f65599b7a1a1615b",
+    "src/next/core/types.ts": "34e8c1b4bf050afe95cc7df08162a41ceccff07d603345f36772e45750152637",
+    "src/next/core/validation.ts": "3b87d77d188af8013c162a5e69f44d35874585536f14b46b40c6bcf27a236b12",
+    "src/next/meta/departure.ts": "99c62e3647152b845f95b257c8c6dc8ab46c6890671004a12aa0babc223ada8d",
+    "src/next/meta/home.ts": "07b21b3c25a4dd533634c17bd2d4c2106d794f42b4780016ed14e531a05ffb79",
+    "src/next/meta/profile.ts": "f3755312f4e99d70ed1d355d8487668ec234004b5ef7541e8f3a78c97305adc3",
+    "src/next/portraits.ts": "427dd24f08c391ad907331097e4044e0b5d449632eec0be7b5a3ac9ef4cee9a4",
+    "src/next/ui/battleFeedback.ts": "41ff04cfd5a8c3e9a37ff9feee53f32226cfe52935dc8e3add703d02bf31d14e",
+    "src/next/ui/battleReadability.ts": "5d2f8c38af40bda92ffa300008795e2fca10994eae6f925f73e9cd3341fe21bd",
+    "src/next/ui/monsterPresentation.ts": "e68d2e71f98263a6bba7f26b13a35bdf935e7cd10f50bf186f897684f56cb19b",
+    "src/next/version.ts": "0571226eb0cfc02d8e21663ac42c8cd3ad103ce8eb3acafd50ed7e6d9b455fb0"
+  }
+}

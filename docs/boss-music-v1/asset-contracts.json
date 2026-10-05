@@ -1,0 +1,208 @@
+[
+  {
+    "id": "speedcore_velocity_loop_v1",
+    "title": "SpeedCore — Velocity Signal",
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 2304000,
+    "durationSeconds": 48.0,
+    "loopStartFrame": 0,
+    "loopEndFrame": 2304000,
+    "loopStart": 0,
+    "loopEnd": 48.0,
+    "bpm": 160,
+    "bars": 32,
+    "beatsPerBar": 4,
+    "idealCycleFrames": 2304000,
+    "frameQuantizationErrorSamples": 0,
+    "runtimeFile": "speedcore_velocity_loop_v1.flac",
+    "runtimeEncoding": "Lossless FLAC, 16-bit stereo",
+    "fallbackFile": "speedcore_velocity_loop_v1.pcm16.wav",
+    "masterFile": "speedcore_velocity_loop_v1.wav",
+    "nativeSource": "projects/speedcore_velocity_loop_v1.jummbox.json",
+    "nativeUrl": "projects/speedcore_velocity_loop_v1.jummbox.url.txt",
+    "sourceProjectSha256": "3d63c97359393548cc6a82872d649f0c223e90371e8eff4671400c61f822c620",
+    "renderProvenance": "renders/speedcore_velocity_loop_v1.render-provenance.json",
+    "extraction": {
+      "cycle": 4,
+      "warmupCycles": 3,
+      "startFrame": 6912000,
+      "endFrame": 9216000,
+      "boundariesObservedOneSampleAtATime": true
+    },
+    "processing": {
+      "continuousHighpassHz": 20,
+      "staticGainDb": 11.579999999999998,
+      "crossfadeFrames": 0,
+      "startEndFade": false,
+      "addedCompressorOrLimiter": false,
+      "runtimeDither": "Triangular, 16-bit"
+    },
+    "levels": {
+      "integratedLufs": -18.01,
+      "truePeakDbtp": -6.29,
+      "loudnessRangeLu": 0.9,
+      "samplePeakDbfs": -6.296912866303314,
+      "rmsDbfs": -19.676923703426603,
+      "dcPerChannel": [
+        3.276930914984809e-08,
+        1.933839586046007e-09
+      ],
+      "clippedSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    "seam": {
+      "boundaryDeltaPerChannel": [
+        -0.001495361328125,
+        -0.00213623046875
+      ],
+      "continuousRendererDeltaPerChannel": [
+        0.0003962601174403138,
+        -0.0013588378596228908
+      ],
+      "joinDiscrepancyPerChannel": [
+        -0.0018916214455653138,
+        -0.0007773926091271092
+      ],
+      "local99PercentileSampleDelta": 0.02185241699218754,
+      "boundaryWithinNumericTolerance": true,
+      "crossfadeRequiredByNumericCheck": false
+    },
+    "qa": {
+      "runtimeFlacDecodedFrames": 2304000,
+      "runtimeFlacMatchesPcm16Exactly": true,
+      "nativeJsonCompactRoundtripPassed": true,
+      "silent100msBlocks": 0,
+      "subjectiveListening": "Not performed; no listening/audio-perception tool available",
+      "twoCycleAndSeamFiles": "qa/"
+    },
+    "runtimeGuidance": {
+      "playback": "Decode into AudioBuffer; loop=true; loopStart=0; loopEnd=decodedBuffer.duration",
+      "bgmGainDb": -4.5,
+      "masterGainDb": -3,
+      "switching": "Reuse existing single-director gesture/OFF/hidden guards; ramp start/stop at least 12 ms; at most two BGM sources only during a complementary-gain transition",
+      "noOscillatorFallback": true,
+      "noMp3OrAacPadding": true
+    },
+    "files": [
+      {
+        "filename": "speedcore_velocity_loop_v1.flac",
+        "bytes": 2718344,
+        "sha256": "a1b43e64d2964afc2e43fd8ed6ec6654cbe48704c0520c7b95f2c6719e2f2cee"
+      },
+      {
+        "filename": "speedcore_velocity_loop_v1.pcm16.wav",
+        "bytes": 9216078,
+        "sha256": "2a826167db4863d4578ddeaa07f4e8f7fee3c436272e2299b7b5cef61af48029"
+      },
+      {
+        "filename": "speedcore_velocity_loop_v1.wav",
+        "bytes": 13824102,
+        "sha256": "2aacbda2132dd22a51b2bc42177f54b0c501dc6f0c2df2c0b39a3c37d6b7aea0"
+      }
+    ]
+  },
+  {
+    "id": "mothercore_gravity_loop_v1",
+    "title": "MotherCore — Gravity Crown",
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 2560000,
+    "durationSeconds": 53.333333333333336,
+    "loopStartFrame": 0,
+    "loopEndFrame": 2560000,
+    "loopStart": 0,
+    "loopEnd": 53.333333333333336,
+    "bpm": 144,
+    "bars": 32,
+    "beatsPerBar": 4,
+    "idealCycleFrames": 2560000,
+    "frameQuantizationErrorSamples": 0,
+    "runtimeFile": "mothercore_gravity_loop_v1.flac",
+    "runtimeEncoding": "Lossless FLAC, 16-bit stereo",
+    "fallbackFile": "mothercore_gravity_loop_v1.pcm16.wav",
+    "masterFile": "mothercore_gravity_loop_v1.wav",
+    "nativeSource": "projects/mothercore_gravity_loop_v1.jummbox.json",
+    "nativeUrl": "projects/mothercore_gravity_loop_v1.jummbox.url.txt",
+    "sourceProjectSha256": "1ae27da093233307b1c44679f84625524497be37c08c88da86181e1e7f79def2",
+    "renderProvenance": "renders/mothercore_gravity_loop_v1.render-provenance.json",
+    "extraction": {
+      "cycle": 4,
+      "warmupCycles": 3,
+      "startFrame": 7680001,
+      "endFrame": 10240001,
+      "boundariesObservedOneSampleAtATime": true
+    },
+    "processing": {
+      "continuousHighpassHz": 20,
+      "staticGainDb": 10.34,
+      "crossfadeFrames": 0,
+      "startEndFade": false,
+      "addedCompressorOrLimiter": false,
+      "runtimeDither": "Triangular, 16-bit"
+    },
+    "levels": {
+      "integratedLufs": -18.0,
+      "truePeakDbtp": -6.46,
+      "loudnessRangeLu": 1.3,
+      "samplePeakDbfs": -6.462110798271872,
+      "rmsDbfs": -19.537781662264383,
+      "dcPerChannel": [
+        1.6450881958007814e-08,
+        2.3126602172851563e-09
+      ],
+      "clippedSamples": 0,
+      "nonfiniteSamples": 0
+    },
+    "seam": {
+      "boundaryDeltaPerChannel": [
+        -0.000152587890625,
+        0.00054931640625
+      ],
+      "continuousRendererDeltaPerChannel": [
+        0.000720879461501005,
+        0.00034111639799134976
+      ],
+      "joinDiscrepancyPerChannel": [
+        -0.000873467352126005,
+        0.00020820000825865024
+      ],
+      "local99PercentileSampleDelta": 0.02313323974609377,
+      "boundaryWithinNumericTolerance": true,
+      "crossfadeRequiredByNumericCheck": false
+    },
+    "qa": {
+      "runtimeFlacDecodedFrames": 2560000,
+      "runtimeFlacMatchesPcm16Exactly": true,
+      "nativeJsonCompactRoundtripPassed": true,
+      "silent100msBlocks": 0,
+      "subjectiveListening": "Not performed; no listening/audio-perception tool available",
+      "twoCycleAndSeamFiles": "qa/"
+    },
+    "runtimeGuidance": {
+      "playback": "Decode into AudioBuffer; loop=true; loopStart=0; loopEnd=decodedBuffer.duration",
+      "bgmGainDb": -4.5,
+      "masterGainDb": -3,
+      "switching": "Reuse existing single-director gesture/OFF/hidden guards; ramp start/stop at least 12 ms; at most two BGM sources only during a complementary-gain transition",
+      "noOscillatorFallback": true,
+      "noMp3OrAacPadding": true
+    },
+    "files": [
+      {
+        "filename": "mothercore_gravity_loop_v1.flac",
+        "bytes": 2882654,
+        "sha256": "c5c88a55b3dad4af971b505faa4f5175ed6e050d045ad8a094df58aef8ba4c7d"
+      },
+      {
+        "filename": "mothercore_gravity_loop_v1.pcm16.wav",
+        "bytes": 10240078,
+        "sha256": "6f78f966ee4f9fc34746d2620aa098d25bab9a4f77184608d8049b852fa79a92"
+      },
+      {
+        "filename": "mothercore_gravity_loop_v1.wav",
+        "bytes": 15360102,
+        "sha256": "9f27175740d8bcba11b6f89c66a001732b737e082cea697f45ab888e9515da47"
+      }
+    ]
+  }
+]

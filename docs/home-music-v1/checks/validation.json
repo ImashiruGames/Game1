@@ -1,0 +1,45 @@
+{
+  "durationSeconds": 48.0,
+  "frames": 2304000,
+  "sampleRate": 48000,
+  "channels": 2,
+  "samplePeakDbfs": -6.547311782836914,
+  "nonfiniteSamples": 0,
+  "clippedSamples": 0,
+  "loopBoundaryDelta": [
+    0.000946044921875,
+    0.00445556640625
+  ],
+  "ordinaryMaxAdjacentDelta": [
+    0.0355224609375,
+    0.042572021484375
+  ],
+  "ordinary99thPercentileAdjacentDelta": [
+    0.01971435546875,
+    0.02001953125
+  ],
+  "mastering": "Static +14.26 dB gain; no limiter. 40 ms smooth opening blend from actual continuous next-cycle render, preserving all 2,304,000 frames.",
+  "subjectiveListening": "Not performed; composition and signal validation only",
+  "files": {
+    "audio/home_starlight_terminal_v1.wav": {
+      "bytes": 9216078,
+      "sha256": "6c1a9771bc707e16e5c6ed0975093ec65dbb99ecc130e24b8caa81c2d9400370"
+    },
+    "audio/home_starlight_terminal_v1.flac": {
+      "bytes": 2024200,
+      "sha256": "539c922c7b3982f4f98ca86483aae127308b25cd7476bd02054c8f9f29b8a209"
+    }
+  },
+  "loudness": {
+    "input_i": "-18.00",
+    "input_tp": "-6.54",
+    "input_lra": "0.80",
+    "input_thresh": "-28.00",
+    "output_i": "-18.11",
+    "output_tp": "-6.63",
+    "output_lra": "0.80",
+    "output_thresh": "-28.11",
+    "normalization_type": "dynamic",
+    "target_offset": "0.11"
+  }
+}

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Game1 1.2.25の更新メモ。音楽、変化、報酬、行動予告と消去後の盤面表示、実プレイの到達点と確認範囲。">
+  <title>Game1 · ひと晩の更新メモ · 2026-10-03</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0d171e;--panel:#15262e;--line:#36535b;--text:#edf5f3;--muted:#b9cfce;--mint:#9cf3d8;--pink:#ffb9de;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text);font-size:16px}
+    *{box-sizing:border-box}
+    body{margin:0;line-height:1.8;overflow-wrap:anywhere}
+    main{width:min(100%,960px);margin:auto;padding:28px 24px 36px}
+    header{border-top:3px solid var(--mint);padding-top:15px}
+    .meta{display:flex;gap:8px 20px;justify-content:space-between;flex-wrap:wrap;font-size:.875rem;color:var(--muted)}
+    h1{font-size:clamp(1.45rem,4.4vw,2rem);line-height:1.5;margin:9px 0 8px;letter-spacing:.02em}
+    h2{font-size:1.15rem;line-height:1.6;margin:0 0 13px}
+    h3{font-size:1rem;line-height:1.7;margin:0 0 4px}
+    p{margin:0 0 12px}p:last-child{margin-bottom:0}
+    .intro{color:var(--muted);margin-bottom:18px}
+    a{color:var(--mint);text-underline-offset:4px}
+    a:hover{text-decoration-thickness:2px}
+    a:focus-visible,summary:focus-visible{outline:3px solid var(--pink);outline-offset:5px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+    .actions a{display:inline-flex;justify-content:center;align-items:center;min-height:46px;padding:9px 17px;border:1px solid var(--line);border-radius:7px;text-decoration:none;font-weight:650}
+    .actions .primary{color:#10251f;background:var(--mint);border-color:var(--mint)}
+    .actions .secondary{background:var(--panel);color:var(--text)}
+    section{margin-top:24px}
+    .start{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:20px;margin-top:0}
+    .start h2{color:var(--mint)}
+    .steps{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+    .steps li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px}
+    .number{color:var(--mint);font-weight:750;font-variant-numeric:tabular-nums}
+    .steps p{color:var(--muted);margin:3px 0 0}
+    .changes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+    .changes article{border-top:1px solid var(--line);padding:15px 0}
+    .changes h3{color:var(--mint)}
+    .changes p{color:var(--muted)}
+    .play{border-left:3px solid var(--pink);background:var(--panel);padding:19px 20px;border-radius:0 8px 8px 0}
+    .play h2{color:var(--pink)}
+    .status{font-weight:650;margin-bottom:12px}
+    .stats{display:flex;flex-wrap:wrap;gap:10px 24px;margin:0 0 15px;padding:0 0 14px;border-bottom:1px solid var(--line)}
+    .stats div{min-width:100px}.stats dt{font-size:.875rem;color:var(--muted)}.stats dd{font-size:1.25rem;font-weight:700;margin:0;font-variant-numeric:tabular-nums}
+    .play p{color:var(--muted)}
+    .scope{border-top:1px solid var(--line);padding-top:19px}
+    .scope ul{margin:0;padding-left:1.2em}.scope li{margin:8px 0;color:var(--muted)}
+    .scope strong{color:var(--text);font-weight:650}
+    details{margin-top:15px;border-top:1px solid var(--line);padding-top:12px}
+    summary{cursor:pointer;color:var(--pink);font-size:.9375rem}
+    details p{margin-top:12px;color:var(--muted);font-size:.9375rem}
+    footer{border-top:1px solid var(--line);margin-top:24px;padding-top:16px;font-size:.875rem;color:var(--muted)}
+    footer nav{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:9px}
+    @media(max-width:620px){main{padding:20px 16px 28px}.changes{grid-template-columns:1fr}.start,.play{padding:17px 16px}.actions{display:grid;grid-template-columns:1fr}.actions a{min-height:48px}.stats{gap:8px 18px}.stats div{min-width:84px}}
+    @media print{html{color-scheme:light}:root{--bg:#fff;--panel:#fff;--line:#888;--text:#111;--muted:#333;--mint:#064d3b;--pink:#6c2350}main{width:100%;padding:0}.actions .primary{color:#111;background:#fff}section,article{break-inside:avoid}details{display:block}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="meta"><span>GAME1 · 更新メモ</span><span><time datetime="2026-10-03">2026-10-03</time> JST · 確認版 1.2.25</span></div>
+    <h1>音と演出、次の一手の見やすさ</h1>
+    <p class="intro">音楽・変化・報酬画面を更新。行を消した後の落下先を、確定前に同じ盤面で確認できます。</p>
+    <nav class="actions" aria-label="ゲームと試聴">
+      <a class="primary" href="/next/">最新版で遊ぶ</a>
+      <a class="secondary" href="/docs/audio/">追加テーマの50音を試聴</a>
+    </nav>
+  </header>
+
+  <section class="start" aria-labelledby="start-title">
+    <h2 id="start-title">まず試す操作</h2>
+    <ol class="steps">
+      <li><span class="number" aria-hidden="true">01</span><div><strong>音楽は、画面下の「BGM」で開始</strong><p>効果音は隣の「効果音」で別にON。初期状態はどちらもOFFです。音色は「詳細」内の「効果音のテーマ」で選べます。</p></div></li>
+      <li><span class="number" aria-hidden="true">02</span><div><strong>行を選んで「消去後を見る」</strong><p>「横一列を消す」で行を選ぶと、自然落下が終わった配置と、動いた箱の印を確認できます。「元の盤面へ」で比較し、「この行を消す」で確定します。</p><p>プレビューは未確定です。敵の次の一手は含まず、自然落下だけでは攻撃しません。</p></div></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="changes-title">
+    <h2 id="changes-title">今回変わったところ</h2>
+    <div class="changes">
+      <article><h3>音楽と10種類の追加テーマ</h3><p>作曲アプリで制作したオリジナルBGM「Neon Undertow」を切れ目なくループ。標準はNeonの3種類のリンク音です。以前のゲーム内生成BGM・SEは通常再生から外しています。</p><p>追加テーマは各5音（リンク小・中・大、形、直接ダメージ）。変わるのは効果音だけで、BGMやゲームの強さは変わりません。</p></article>
+      <article><h3>全画面の「変化！」</h3><p>変化前、シルエット、変化後をつなぐ演出に。タップでスキップでき、短縮・動きを抑える設定にも対応します。</p><p>投入は実際の経路をたどり、被弾と回復は顔まわりで小さく反応。画面全体は揺らしません。</p></article>
+      <article><h3>盤面と行動の内訳</h3><p>直近の投入印と発動した形のマークを追加。持越し候補の角枠とあわせて盤面を読め、自分・敵それぞれの直前の行動も追えます。</p><p>予告では実際のHP減少・回復・自己コストを区別。青の反射に使う名目回復量と、敵HPを超えるダメージも別に読めます。</p></article>
+      <article><h3>報酬を並べて比較</h3><p>カテゴリは選んだ時点で固定。枠が満杯でも候補3枚と入替可能な2枠を同じ画面で比較し、最後の確定で取得します。</p><p>固定枠のヘルスは、＋強化しても固定枠のままです。</p></article>
+    </div>
+  </section>
+
+  <section class="play" aria-labelledby="play-title">
+    <h2 id="play-title">ギラリの通常プレイ記録</h2>
+    <div class="status">18階まで撃破 · 19階の戦闘途中（未突破）</div>
+    <dl class="stats">
+      <div><dt>自分のHP</dt><dd>48 / 50</dd></div>
+      <div><dt>敵のHP</dt><dd>153 / 240</dd></div>
+      <div><dt>変化ゲージ</dt><dd>57 / 80</dd></div>
+    </dl>
+    <p>青の子・シード1の同じランを、通常の画面操作で約1時間ずつ2回プレイ。途中状態の差し替えや攻略用の改変は使っていません。前半は12階・HP40/40まで進み、1.2.23で盤面・HP・ゲージ・ビルドがそのまま再開できることを確認しました。</p>
+    <p>行消去からヘルスの＋形を組み直す流れには、考えて決める面白さがあり、詳しくなった予告も選択に役立ちました。14階では敵の再接続を読み違えて15ダメージ。この経験から「消去後を見る」を加えています。これはアシスタントの試遊所感で、人が遊んだ楽しさの検証ではありません。</p>
+  </section>
+
+  <section class="scope" aria-labelledby="scope-title">
+    <h2 id="scope-title">確認できたこと・残っていること</h2>
+    <ul>
+      <li><strong>確認済み：</strong>自動テスト659件、型チェック、ビルド。独立したクラウドブラウザで幅390px・高さ600/640pxの実画面操作も確認しています。</li>
+      <li><strong>未確認：</strong>実際に聴いた音質、実機iPhone／Safari、FPS。スマホ幅での確認は、実機確認とは別です。</li>
+      <li><strong>維持：</strong>標準の50階クリア、セーブと保存形式、ゲームの数値。旧1.0とスキル実験の内容も変更していません。</li>
+    </ul>
+    <details>
+      <summary>特殊盤面の既知の問題とZIPの状況</summary>
+      <p>特殊地形の検証では、行選択中以外に、盤面内の複数の天井へ向かう投入矢印が重なります。通常1〜50階の6列盤面にはこの地形はなく、対応は特殊盤面の採用時まで保留しています。</p>
+      <p>1.2.25のソースZIPは手元で作成・検証済みですが、保存先のアクセス制限でLibraryの差し替えは未完了です。現在LibraryにあるZIPは旧版です。</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>このメモの確認版は1.2.25。現在のゲームは「最新版で遊ぶ」から開けます。</p>
+    <nav aria-label="資料と比較用の旧版"><a href="/docs/">資料一覧</a><a href="/">比較：旧1.0</a><a href="/lab/">比較：スキル実験</a></nav>
+  </footer>
+</main>
+</body>
+</html>

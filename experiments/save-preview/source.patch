@@ -1,0 +1,1144 @@
+diff --git a/NEXT-README.md b/NEXT-README.md
+index 9e1f483..25230cb 100644
+--- a/NEXT-README.md
++++ b/NEXT-README.md
+@@ -1,4 +1,4 @@
+-# Game1 1.1.1 trial: intrinsic Health rewards
++# Game1 1.2 trial: save, clear50, battle feedback
+ 
+ Playable entry: `/next/`. This is a separate trial, not adoption of the 25 skill proposals.
+ Root version 1.0 and `/lab/` retain their original source. Their byte manifest and frozen traces are unchanged.
+@@ -6,7 +6,7 @@ The trial core/app began as an isolated copy of release source at commit 718a35c
+ 
+ ## Current rules
+ 
+-- Victory first requires committing one category: immediate recovery, stats, or skills. The category cannot be changed. The recovery category immediately heals 10, capped at maximum HP, and advances.
++- Victories through stage49 first require committing one category: immediate recovery, stats, or skills. The category cannot be changed. The recovery category immediately heals 10, capped at maximum HP, and advances.
+ - Stats draw 3 different entries from maximum/current HP +5, 3-link power +1, 4-link power +2, and 5+-link power +3. They last for this run and use no equipment slot.
+ - Skills draw up to 3 different eligible entries from the existing 10 formal skills. Owned plus skills are excluded. Health is now an intrinsic normal skill: only a character whose immutable starter is Health can receive its plus upgrade; other characters cannot acquire it. Grow Fire remains shared. Fixed starter, two flexible slots, duplicate upgrades, consumable uses, and explicit replacement are preserved.
+ - A committed stats/skills reward may be declined, preserving the prior skip option. There is no skip before category selection. Declining ends that reward and cannot open another category.
+@@ -25,7 +25,7 @@ The trial core/app began as an isolated copy of release source at commit 718a35c
+ 
+ ## 2026-10-02 correction and recovery design policy
+ 
+-This correction applies to `/next/` only. The version1.0 documents, root game, and 25-skill lab are historical comparisons. The current HTML/JSON content catalog is `/docs/game1_content_catalog_next.html` and `.json`; both carry revision `1.1.1` and are generated from the next skill metadata and tuning with `scripts/build-next-catalog.mts`.
++This correction applies to `/next/` only. The version1.0 documents, root game, and 25-skill lab are historical comparisons. The current HTML/JSON content catalog is `/docs/game1_content_catalog_next.html` and `.json`; both carry revision `1.2` and are generated from the next skill metadata and tuning with `scripts/build-next-catalog.mts`.
+ 
+ ヘルスは固有通常スキル。初期固定枠に持つキャラクター（現在は青の子）だけ、通常報酬に＋強化用として出る。赤など非初期所持者には提示・新規取得・後付け所持からの強化を許可しない。15/20回復、青の名目回復量による連動攻撃、能動投入ごとの既存発動条件は変更しない。戦闘内回数上限は採用していない。成長する火も初期固定スキルだが、今回その共有報酬資格は変更していない。中ボス撃破やショップによる特別強化は将来案であり、実装済み仕様ではない。
+ 
+@@ -38,17 +38,48 @@ The trial UI uses a viewport-height CSS Grid, board target previews plus explici
+ Values are provisional, not established balance or evidence of human enjoyment. Boss trial additions are described below. All loop values are provisional and adjustable.
+ 
+ 
+-## Bosses and endless loops
++## Bosses and the 50-stage finish
+ 
+-The default trial route is now a 50-stage loop. The existing simple enemy cycle remains selectable in setup. The normal enemy cycle is indexed by local stage 1–50, with Speed Core replacing stages 25 and 40, and Mother Core replacing stage 50. Bosses return at 75/90/100, etc. A surviving victory at stage 50 produces one reward and continues to stage 51.
++The standard trial ends after a surviving victory at stage50, with no final build reward or stage51. The existing simple enemy cycle remains selectable for tests. The normal cycle is indexed by stage1–50, with Speed Core at25 and40 and Mother Core at50. The old endless strategy and later-loop formulas remain callable for regression comparisons with explicit `ending: legacy-endless`; they are not exposed as the standard UI run.
+ 
+ - Speed Core (スピードコア): base HP50 and link attacks6/7/9. On every fifth own turn, fixed3 damage resolves before one insertion; other turns have one insertion.
+ - Mother Core (マザーコア): base HP150 and link attacks5/8/12. Its seven-turn normal loop is insertion ×4 turns, wait ×1 turn, two insertions ×2 turns. At HP at or below20%, the next own turn starts a two-turn cycle from fixed5 damage then insertion, followed by one insertion. The low-HP phase does not repeatedly reset. Threshold comparison uses the HP ratio without rounding.
+ - First-loop maximum HP is baseHP +10×(localStage−1): Speed290 at25,440 at40, Mother640 at50. This is distinct from the base HP records.
+-- For loopIndex=floor((absoluteStage−1)/50), maximumHP=firstLoopMaximumHP×(1+2×loopIndex); each link tier adds2×loopIndex; fixed damage adds1×loopIndex. There is no additional absolute-stage HP growth. Stage51 Marujiro is180HP and4/6/8 attacks. Speed at75 is870HP,8/9/11 attacks, fixed4. Mother at100 is1920HP,7/10/14 attacks, fixed6.
++- Retained legacy endless only: for loopIndex=floor((absoluteStage−1)/50), maximumHP=firstLoopMaximumHP×(1+2×loopIndex); each link tier adds2×loopIndex; fixed damage adds1×loopIndex. There is no additional absolute-stage HP growth. Stage51 Marujiro is180HP and4/6/8 attacks. Speed at75 is870HP,8/9/11 attacks, fixed4. Mother at100 is1920HP,7/10/14 attacks, fixed6.
+ 
+ Every ordered sequence consumes exactly one enemy own turn. Each insertion uses the updated board, runs its normal complete axis-attack sequence, and settles before the next sub-action. A KO stops later sub-actions and RNG draws. A scheduled insertion with no legal entry uses the existing lethal fallback; a wait remains a wait. Fixed damage bypasses the first-link guard and charges gauge from actual HP lost. First-guard applies once across the entire multi-insertion enemy turn, not once per insertion. PvE simultaneous KO remains a loss.
+ 
+ Provided boss PNGs are included unchanged; their bright green backgrounds remain. No background-removal edit is claimed.
+ 
+-Setup exposes an initial stage and distinct test seeds for Speed's fifth turn, Mother's waiting turn, two-drop turn, and initial critical phase. These start a new test run, not a mid-battle skip or stat editor. Next-stage construction clears those test turn counters and phase state. The reward-ready fixture can test stage50→51 with one drop. `tests/next-bosses.test.ts` covers first and later loops, phase transitions, KO/blocked/wait boundaries, shared guard, origin geometry, stage/reward carry, and reset.
++Setup exposes an initial stage and distinct test seeds for Speed's fifth turn, Mother's waiting turn, two-drop turn, and initial critical phase. These start a new test run, not a mid-battle skip or stat editor. Next-stage construction clears those test turn counters and phase state. The reward-ready fixture can test stage50→clear with one drop. Its result explicitly identifies a test starting at50; it does not claim a complete 1–50 run. The legacy test suite explicitly selects endless when testing50→51. `tests/next-bosses.test.ts` covers first and later loops, phase transitions, KO/blocked/wait boundaries, shared guard, origin geometry, stage/reward carry, and reset.
++
++
++## Local autosave (1.2)
++
++This feature is for new runs using1.2. It does not retrofit a save into an already-open1.1.1 game. Production and the isolated `/save-preview/` QA route use different save and ownership keys.
++
++The same browser/origin stores one versioned localStorage save. There is no account, cloud upload, or cross-device synchronization. Pre-save pages cannot be recovered retroactively.
++
++- The complete battle state and original run configuration are persisted, including combat/reward RNG, selected reward category/candidates, permanent build, stage-local Grow, exact HP/maxHP, Red start markers and remaining starts, Mother phase clock, Speed own-turn clock, and route origin.
++- Ordinary writes happen only at a complete automatic-sequence boundary. Presentation/intermediate displayed snapshots are never saved. A terminated tab during resolution returns to its prior complete checkpoint.
++- Category choice is saved before candidates are exposed. Reward choice is a write-ahead intent with the untouched pre-effect snapshot. Recovery completes that choice once and replaces it with a completed checkpoint; failure retries retain the intended choice and never apply healing twice to the in-memory result.
++- Selected drop/row/skill previews, replacement selection, dialogs and highlights are not restored. A replacement cancel keeps the already committed offer.
++- An exclusive same-origin Web Lock prevents a second tab from playing over this save. There is no lease stealing or unsafe fallback. The previous raw value is checked before every action/write as a second conflict barrier.
++- Save read/write/quota/corruption/version/conflict errors are visible and stop play. The old record is not silently erased. Starting a new run asks before replacing it. Failed new setup leaves the existing saved record intact.
++- Pagehide aborts controller work before releasing ownership. BFCache pageshow reacquires, rereads and rebuilds the controller before Continue, without replaying presentation callbacks.
++- JSON intentionally omits undefined optional properties; gameplay values and subsequent deterministic state/events are preserved. The checksum detects accidental corruption and is not anti-cheat authentication.
++
++Validation: `tests/next-autosave.test.ts` exercises boundary replay, category lock, pending-reward interruption, save-failure retries, corruption, ownership cancellation, Red carry and boss/loop state. `tests/next-clear-feedback.test.ts` checks terminal saves, no final reward, simultaneous KO, result facts and event/geometry presentation. Browser QA coverage is recorded separately; a browser Back that reloads is not evidence of a real BFCache restoration. Simulated write failure is not a measured storage-capacity limit.
++
++
++## Save compatibility and results
++
++Format `game1-next-save`, schema1, rules `next-1.2-clear50-intrinsic-health`. Earlier preview-rule saves fail visibly and remain stored until the user confirms replacement; they are not silently migrated from endless to clear50. The checkpoint includes the finish limit, and rejects final-stage rewards or stages beyond that limit. A clear result restores as a terminal result, with no additional enemy turn, reward or stage. Simultaneous enemy/player KO remains a loss.
++
++The result screen uses recorded stage, defeated count, final HP/build and initial seed. It never treats stage-local turn or growth counters as lifetime statistics. Starting from a fixture is explicitly labeled.
++
++## Battle feedback
++
++Committed attack/heal/cost events drive red damage and green actual-healing labels on the board. Primary axes highlight and resolve one at a time; skills use the event's actual shape box IDs. Blue nominal-heal reflection is a separate damage event and label, including when actual healing was zero. Ember self-cost and row-clear damage identify their source. Feedback stays within the board area; reduced-motion mode shortens it. Rendering never recalculates an effect, consumes RNG, or becomes a checkpoint. Reload/resume restores the stable state without replaying animations.
++
++The damage formulas, Grow behavior, shape base values, unlimited eligible Health activations and the clear-arm/reinsert tactic are unchanged in this phase. Future scaling proposals are separate.
+diff --git a/public/docs/game1_content_catalog_next.html b/public/docs/game1_content_catalog_next.html
+index 6685e22..28cf905 100644
+--- a/public/docs/game1_content_catalog_next.html
++++ b/public/docs/game1_content_catalog_next.html
+@@ -1 +1 @@
+-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game1 試作1.1.1・通常スキルと回復の設計方針</title><style>:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101923;color:#e7edf1}*{box-sizing:border-box}body{max-width:900px;margin:auto;padding:24px;line-height:1.8}a{color:#f2d48c}h1{font-size:clamp(23px,5vw,32px)}h2{font-size:23px}h3{margin:0}section,article{border:1px solid #435867;border-radius:10px;background:#182733;padding:20px;margin:18px 0}article p{margin:8px 0}.tag{font-size:14px;color:#f2d48c}.notice{border-color:#b9935d}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid article{margin:0}nav{display:flex;gap:18px;flex-wrap:wrap}li{margin:6px 0}@media(max-width:620px){body{padding:18px}.grid{grid-template-columns:1fr}}</style></head><body><nav><a href="/next/">試作を開く</a><a href="/docs/">資料一覧</a><a href="game1_content_catalog_next.json" download>JSON</a></nav><h1>Game1 試作1.1.1・通常スキルと回復の設計方針</h1><p>改訂 1.1.1 · 2026-10-02</p><section class="notice"><h2>今回の訂正</h2><p>ヘルスを固有通常スキルへ訂正。初期固定枠の所持者のみ通常報酬で＋強化できる。非初期所持者には提示・新規取得させない。</p><p>ver1.0のHTML/PDF/Word、ルートのゲーム、25スキル実験は当時の比較資料。この訂正はnextだけに適用する。</p><ul><li>ヘルス15／20回復、能動投入の起点を含む＋形、1投入につき1回</li><li>戦闘内の回数上限なし。青の名目回復量による連動攻撃を維持</li><li>赤の成長する火は共有報酬のまま。青も取得可能</li><li>回復報酬10、最大HP＋5に現在HP＋5が付随する仕様を維持</li></ul><p>中ボス撃破時やショップでの固有スキル特別強化は将来案。今回実装しない。</p></section><section><h2>今後の回復スキル</h2><p>今後の回復スキルは厳しく評価し、連戦の消耗を容易に帳消しにする量・頻度・組み合わせを避ける。</p><ul><li>単体回復量と発動頻度</li><li>通常行動のコストと装備枠の機会費用</li><li>自傷コストの相殺</li><li>追加投入による発動増加</li><li>名目回復量に反応する青の連動攻撃</li><li>入手性・強化・再入手</li></ul><p>実回復、過剰回復、発動回数、敵からの実HP損失を分け、通常戦・長期戦・ボス・周回で確認する。勝率だけでは判断しない。</p><p>回復の一律禁止や未承認の回数制限を意味しない。</p></section><h2>正式な通常スキル10種</h2><p>通常報酬は取得できる候補から最大3種類。カテゴリ確定後の再抽選はありません。＋を所持中のスキルは候補から外れます。</p><div class="grid"><article id="health"><h3>ヘルス</h3><p class="tag">固有通常スキル・初期所持者の＋強化のみ</p><p>通常：＋形でHP15回復<br>＋：＋形でHP20回復</p><p>初期固定所持：青の子</p></article><article id="grow-fire"><h3>成長する火</h3><p class="tag">共有の通常報酬</p><p>通常：縦3以上：3リンク火力＋3、成長＋1<br>＋：縦3以上：3リンク火力＋5、成長＋1</p><p>初期固定所持：赤の子</p></article><article id="charge"><h3>蓄勢</h3><p class="tag">共有の通常報酬</p><p>通常：手番終了のゲージ獲得を合計3にする<br>＋：手番終了のゲージ獲得を合計4にする</p><p>初期固定所持：なし</p></article><article id="first-guard"><h3>初撃の守り</h3><p class="tag">共有の通常報酬</p><p>通常：敵手番の最初のリンク被害−2<br>＋：敵手番の最初のリンク被害−3</p><p>初期固定所持：なし</p></article><article id="horizontal-slash"><h3>横薙ぎ</h3><p class="tag">共有の通常報酬</p><p>通常：横3以上のリンク火力＋2<br>＋：横3以上のリンク火力＋4</p><p>初期固定所持：なし</p></article><article id="diagonal-shot"><h3>斜め撃ち</h3><p class="tag">共有の通常報酬</p><p>通常：斜め3以上のリンク火力＋2<br>＋：斜め3以上のリンク火力＋3</p><p>初期固定所持：なし</p></article><article id="corner-strike"><h3>角打ち</h3><p class="tag">共有の通常報酬</p><p>通常：L形で3ダメージ・回転可<br>＋：L形で5ダメージ・回転可</p><p>初期固定所持：なし</p></article><article id="square-strike"><h3>四角打ち</h3><p class="tag">共有の通常報酬</p><p>通常：2×2で5ダメージ・回転可<br>＋：2×2で8ダメージ・回転可</p><p>初期固定所持：なし</p></article><article id="healing-potion"><h3>回復ポーション</h3><p class="tag">共有の通常報酬</p><p>通常：HP5回復・1回限り・1手消費<br>＋：HP10回復・1回限り・1手消費</p><p>初期固定所持：なし</p></article><article id="magic-bullet"><h3>魔法弾</h3><p class="tag">共有の通常報酬</p><p>通常：現在の4リンク火力×2・1回限り・1手消費<br>＋：現在の4リンク火力×3・1回限り・1手消費</p><p>初期固定所持：なし</p></article></div></body></html>
++<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game1 試作1.2・現在のルールと通常スキル</title><style>:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101923;color:#e7edf1}*{box-sizing:border-box}body{max-width:900px;margin:auto;padding:24px;line-height:1.8}a{color:#f2d48c}h1{font-size:clamp(23px,5vw,32px)}h2{font-size:23px}h3{margin:0}section,article{border:1px solid #435867;border-radius:10px;background:#182733;padding:20px;margin:18px 0}article p{margin:8px 0}.tag{font-size:14px;color:#f2d48c}.notice{border-color:#b9935d}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid article{margin:0}nav{display:flex;gap:18px;flex-wrap:wrap}li{margin:6px 0}@media(max-width:620px){body{padding:18px}.grid{grid-template-columns:1fr}}</style></head><body><nav><a href="/next/">試作を開く</a><a href="/docs/">資料一覧</a><a href="game1_content_catalog_next.json" download>JSON</a></nav><h1>Game1 試作1.2・現在のルールと通常スキル</h1><p>改訂 1.2 · 2026-10-02</p><section><h2>1.2のラン・セーブ・表示</h2><ul><li>標準ランは50階の撃破で終了。最終報酬を出さず、結果を保存する</li><li>同じ端末・ブラウザに自動保存。行動の全解決後とカテゴリ・報酬確定を保持し、再開で再抽選しない</li><li>1.1.1の既に開いているランには遡って保存できない。以前の検証用保存は別ルールとして拒否し、確認なしに削除しない</li><li>結果は保存済みの階数・撃破数・HP・ビルド・開始seedを表示。検証途中開始は明記する</li><li>盤面に赤いダメージと緑の実回復量を表示。青の名目回復反射と自己HPコストは別に表示</li><li>攻撃計算・形スキルの数値・ヘルスの回数制限なしは従来どおり</li></ul></section><section class="notice"><h2>継続して適用するヘルスの訂正</h2><p>ヘルスを固有通常スキルへ訂正。初期固定枠の所持者のみ通常報酬で＋強化できる。非初期所持者には提示・新規取得させない。</p><p>ver1.0のHTML/PDF/Word、ルートのゲーム、25スキル実験は当時の比較資料。この訂正はnextだけに適用する。</p><ul><li>ヘルス15／20回復、能動投入の起点を含む＋形、1投入につき1回</li><li>戦闘内の回数上限なし。青の名目回復量による連動攻撃を維持</li><li>赤の成長する火は共有報酬のまま。青も取得可能</li><li>回復報酬10、最大HP＋5に現在HP＋5が付随する仕様を維持</li></ul><p>中ボス撃破時やショップでの固有スキル特別強化は将来案。今回実装しない。</p></section><section><h2>今後の回復スキル</h2><p>今後の回復スキルは厳しく評価し、連戦の消耗を容易に帳消しにする量・頻度・組み合わせを避ける。</p><ul><li>単体回復量と発動頻度</li><li>通常行動のコストと装備枠の機会費用</li><li>自傷コストの相殺</li><li>追加投入による発動増加</li><li>名目回復量に反応する青の連動攻撃</li><li>入手性・強化・再入手</li></ul><p>実回復、過剰回復、発動回数、敵からの実HP損失を分け、通常戦・長期戦・ボス・周回で確認する。勝率だけでは判断しない。</p><p>回復の一律禁止や未承認の回数制限を意味しない。</p></section><h2>正式な通常スキル10種</h2><p>通常報酬は取得できる候補から最大3種類。カテゴリ確定後の再抽選はありません。＋を所持中のスキルは候補から外れます。</p><div class="grid"><article id="health"><h3>ヘルス</h3><p class="tag">固有通常スキル・初期所持者の＋強化のみ</p><p>通常：＋形でHP15回復<br>＋：＋形でHP20回復</p><p>初期固定所持：青の子</p></article><article id="grow-fire"><h3>成長する火</h3><p class="tag">共有の通常報酬</p><p>通常：縦3以上：3リンク火力＋3、成長＋1<br>＋：縦3以上：3リンク火力＋5、成長＋1</p><p>初期固定所持：赤の子</p></article><article id="charge"><h3>蓄勢</h3><p class="tag">共有の通常報酬</p><p>通常：手番終了のゲージ獲得を合計3にする<br>＋：手番終了のゲージ獲得を合計4にする</p><p>初期固定所持：なし</p></article><article id="first-guard"><h3>初撃の守り</h3><p class="tag">共有の通常報酬</p><p>通常：敵手番の最初のリンク被害−2<br>＋：敵手番の最初のリンク被害−3</p><p>初期固定所持：なし</p></article><article id="horizontal-slash"><h3>横薙ぎ</h3><p class="tag">共有の通常報酬</p><p>通常：横3以上のリンク火力＋2<br>＋：横3以上のリンク火力＋4</p><p>初期固定所持：なし</p></article><article id="diagonal-shot"><h3>斜め撃ち</h3><p class="tag">共有の通常報酬</p><p>通常：斜め3以上のリンク火力＋2<br>＋：斜め3以上のリンク火力＋3</p><p>初期固定所持：なし</p></article><article id="corner-strike"><h3>角打ち</h3><p class="tag">共有の通常報酬</p><p>通常：L形で3ダメージ・回転可<br>＋：L形で5ダメージ・回転可</p><p>初期固定所持：なし</p></article><article id="square-strike"><h3>四角打ち</h3><p class="tag">共有の通常報酬</p><p>通常：2×2で5ダメージ・回転可<br>＋：2×2で8ダメージ・回転可</p><p>初期固定所持：なし</p></article><article id="healing-potion"><h3>回復ポーション</h3><p class="tag">共有の通常報酬</p><p>通常：HP5回復・1回限り・1手消費<br>＋：HP10回復・1回限り・1手消費</p><p>初期固定所持：なし</p></article><article id="magic-bullet"><h3>魔法弾</h3><p class="tag">共有の通常報酬</p><p>通常：現在の4リンク火力×2・1回限り・1手消費<br>＋：現在の4リンク火力×3・1回限り・1手消費</p><p>初期固定所持：なし</p></article></div></body></html>
+diff --git a/public/docs/game1_content_catalog_next.json b/public/docs/game1_content_catalog_next.json
+index 0de7478..e0e725d 100644
+--- a/public/docs/game1_content_catalog_next.json
++++ b/public/docs/game1_content_catalog_next.json
+@@ -1,8 +1,16 @@
+ {
+-  "revision": "1.1.1",
++  "revision": "1.2",
+   "updated": "2026-10-02",
+   "scope": "/next/",
+-  "title": "Game1 試作1.1.1・通常スキルと回復の設計方針",
++  "title": "Game1 試作1.2・現在のルールと通常スキル",
++  "currentRun": [
++    "標準ランは50階の撃破で終了。最終報酬を出さず、結果を保存する",
++    "同じ端末・ブラウザに自動保存。行動の全解決後とカテゴリ・報酬確定を保持し、再開で再抽選しない",
++    "1.1.1の既に開いているランには遡って保存できない。以前の検証用保存は別ルールとして拒否し、確認なしに削除しない",
++    "結果は保存済みの階数・撃破数・HP・ビルド・開始seedを表示。検証途中開始は明記する",
++    "盤面に赤いダメージと緑の実回復量を表示。青の名目回復反射と自己HPコストは別に表示",
++    "攻撃計算・形スキルの数値・ヘルスの回数制限なしは従来どおり"
++  ],
+   "correction": "ヘルスを固有通常スキルへ訂正。初期固定枠の所持者のみ通常報酬で＋強化できる。非初期所持者には提示・新規取得させない。",
+   "historicalScope": "ver1.0のHTML/PDF/Word、ルートのゲーム、25スキル実験は当時の比較資料。この訂正はnextだけに適用する。",
+   "preserved": [
+diff --git a/save-preview/index.html b/save-preview/index.html
+new file mode 100644
+index 0000000..154e990
+--- /dev/null
++++ b/save-preview/index.html
+@@ -0,0 +1 @@
++<!doctype html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0d141d"><title>Game1 · 手動変化とカテゴリ報酬</title></head><body><div id="app"></div><script type="module" src="/src/next/main.ts"></script></body></html>
+diff --git a/scripts/build-next-catalog.mts b/scripts/build-next-catalog.mts
+index 8ba5b21..d8d3ec7 100644
+--- a/scripts/build-next-catalog.mts
++++ b/scripts/build-next-catalog.mts
+@@ -3,7 +3,8 @@ import { skillCatalog, normalSkillIds, skillDescription } from '../src/next/core
+ import { trialTuning } from '../src/next/config.ts';
+ import { createPlayerBuild, canReceiveSkillReward } from '../src/next/core/playerBuild.ts';
+ const catalog = {
+-  revision: '1.1.1', updated: '2026-10-02', scope: '/next/', title: 'Game1 試作1.1.1・通常スキルと回復の設計方針',
++  revision: '1.2', updated: '2026-10-02', scope: '/next/', title: 'Game1 試作1.2・現在のルールと通常スキル',
++  currentRun: ['標準ランは50階の撃破で終了。最終報酬を出さず、結果を保存する', '同じ端末・ブラウザに自動保存。行動の全解決後とカテゴリ・報酬確定を保持し、再開で再抽選しない', '1.1.1の既に開いているランには遡って保存できない。以前の検証用保存は別ルールとして拒否し、確認なしに削除しない', '結果は保存済みの階数・撃破数・HP・ビルド・開始seedを表示。検証途中開始は明記する', '盤面に赤いダメージと緑の実回復量を表示。青の名目回復反射と自己HPコストは別に表示', '攻撃計算・形スキルの数値・ヘルスの回数制限なしは従来どおり'],
+   correction: 'ヘルスを固有通常スキルへ訂正。初期固定枠の所持者のみ通常報酬で＋強化できる。非初期所持者には提示・新規取得させない。',
+   historicalScope: 'ver1.0のHTML/PDF/Word、ルートのゲーム、25スキル実験は当時の比較資料。この訂正はnextだけに適用する。',
+   preserved: ['ヘルス15／20回復、能動投入の起点を含む＋形、1投入につき1回', '戦闘内の回数上限なし。青の名目回復量による連動攻撃を維持', '赤の成長する火は共有報酬のまま。青も取得可能', '回復報酬10、最大HP＋5に現在HP＋5が付随する仕様を維持'],
+@@ -24,6 +25,6 @@ const catalog = {
+ };
+ const esc=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+ const list=(xs:readonly string[])=>`<ul>${xs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+-const html=`<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${catalog.title}</title><style>:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101923;color:#e7edf1}*{box-sizing:border-box}body{max-width:900px;margin:auto;padding:24px;line-height:1.8}a{color:#f2d48c}h1{font-size:clamp(23px,5vw,32px)}h2{font-size:23px}h3{margin:0}section,article{border:1px solid #435867;border-radius:10px;background:#182733;padding:20px;margin:18px 0}article p{margin:8px 0}.tag{font-size:14px;color:#f2d48c}.notice{border-color:#b9935d}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid article{margin:0}nav{display:flex;gap:18px;flex-wrap:wrap}li{margin:6px 0}@media(max-width:620px){body{padding:18px}.grid{grid-template-columns:1fr}}</style></head><body><nav><a href="/next/">試作を開く</a><a href="/docs/">資料一覧</a><a href="game1_content_catalog_next.json" download>JSON</a></nav><h1>${catalog.title}</h1><p>改訂 ${catalog.revision} · ${catalog.updated}</p><section class="notice"><h2>今回の訂正</h2><p>${catalog.correction}</p><p>${catalog.historicalScope}</p>${list(catalog.preserved)}<p>${catalog.futureOnly}</p></section><section><h2>今後の回復スキル</h2><p>${catalog.recoveryPolicy.principle}</p>${list(catalog.recoveryPolicy.reviewAxes)}<p>${catalog.recoveryPolicy.evidence}</p><p>${catalog.recoveryPolicy.boundary}</p></section><h2>正式な通常スキル10種</h2><p>通常報酬は取得できる候補から最大3種類。カテゴリ確定後の再抽選はありません。＋を所持中のスキルは候補から外れます。</p><div class="grid">${catalog.skills.map(s=>`<article id="${s.id}"><h3>${s.name}</h3><p class="tag">${s.rewardAccess==='starter-upgrade-only'?'固有通常スキル・初期所持者の＋強化のみ':'共有の通常報酬'}</p><p>通常：${esc(s.effects[0])}<br>＋：${esc(s.effects[1])}</p><p>初期固定所持：${s.initialFixedHolders.map(c=>c==='blue'?'青の子':'赤の子').join('・')||'なし'}</p></article>`).join('')}</div></body></html>`;
++const html=`<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${catalog.title}</title><style>:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101923;color:#e7edf1}*{box-sizing:border-box}body{max-width:900px;margin:auto;padding:24px;line-height:1.8}a{color:#f2d48c}h1{font-size:clamp(23px,5vw,32px)}h2{font-size:23px}h3{margin:0}section,article{border:1px solid #435867;border-radius:10px;background:#182733;padding:20px;margin:18px 0}article p{margin:8px 0}.tag{font-size:14px;color:#f2d48c}.notice{border-color:#b9935d}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid article{margin:0}nav{display:flex;gap:18px;flex-wrap:wrap}li{margin:6px 0}@media(max-width:620px){body{padding:18px}.grid{grid-template-columns:1fr}}</style></head><body><nav><a href="/next/">試作を開く</a><a href="/docs/">資料一覧</a><a href="game1_content_catalog_next.json" download>JSON</a></nav><h1>${catalog.title}</h1><p>改訂 ${catalog.revision} · ${catalog.updated}</p><section><h2>1.2のラン・セーブ・表示</h2>${list(catalog.currentRun)}</section><section class="notice"><h2>継続して適用するヘルスの訂正</h2><p>${catalog.correction}</p><p>${catalog.historicalScope}</p>${list(catalog.preserved)}<p>${catalog.futureOnly}</p></section><section><h2>今後の回復スキル</h2><p>${catalog.recoveryPolicy.principle}</p>${list(catalog.recoveryPolicy.reviewAxes)}<p>${catalog.recoveryPolicy.evidence}</p><p>${catalog.recoveryPolicy.boundary}</p></section><h2>正式な通常スキル10種</h2><p>通常報酬は取得できる候補から最大3種類。カテゴリ確定後の再抽選はありません。＋を所持中のスキルは候補から外れます。</p><div class="grid">${catalog.skills.map(s=>`<article id="${s.id}"><h3>${s.name}</h3><p class="tag">${s.rewardAccess==='starter-upgrade-only'?'固有通常スキル・初期所持者の＋強化のみ':'共有の通常報酬'}</p><p>通常：${esc(s.effects[0])}<br>＋：${esc(s.effects[1])}</p><p>初期固定所持：${s.initialFixedHolders.map(c=>c==='blue'?'青の子':'赤の子').join('・')||'なし'}</p></article>`).join('')}</div></body></html>`;
+ writeFileSync(new URL('../public/docs/game1_content_catalog_next.json',import.meta.url),JSON.stringify(catalog,null,2)+'\n');
+ writeFileSync(new URL('../public/docs/game1_content_catalog_next.html',import.meta.url),html+'\n');
+diff --git a/src/next/app/BattleController.ts b/src/next/app/BattleController.ts
+index d508a08..cc353cf 100644
+--- a/src/next/app/BattleController.ts
++++ b/src/next/app/BattleController.ts
+@@ -6,6 +6,9 @@ import { applyRunReward, generateRewardOffer, rewardSeed, categoryOffer, generat
+ import { canReceiveSkillReward } from '../core/playerBuild.ts';
+ import type { RewardId, RewardCategory } from './rewards.ts';
+ import type { BattleRunOptions, BattleRunState } from './BattleRun.ts';
++import { freeze } from '../core/immutable.ts';
++import { isCheckpointBoundary, validateCheckpoint } from './saveCheckpoint.ts';
++import type { RunCheckpoint, PendingReward } from './saveCheckpoint.ts';
+ export type { BattleRunOptions, BattleRunState } from './BattleRun.ts';
+ 
+ export interface BattleControllerOptions {
+@@ -19,6 +22,11 @@ export interface BattleView {
+   reset?(): void;
+   reportError?(error: unknown): void;
+ }
++export interface PersistenceHooks {
++  readonly beforeAction: () => void;
++  readonly write: (checkpoint: RunCheckpoint) => void;
++  readonly failed: (error: unknown) => void;
++}
+ 
+ /**
+  * 日本語: Core を一度だけ実行し、その結果を描画する薄い進行役。
+@@ -37,8 +45,13 @@ export class BattleController {
+   private animation = new AbortController();
+   private destroyed = false;
+   private rewardRng = 0;
++  private runId: string = crypto.randomUUID();
++  private persistence?: PersistenceHooks;
++  private saveBlocked = false;
++  private resumeReward?: PendingReward;
++  private retryCheckpoint?: RunCheckpoint;
+ 
+-  constructor(config: BattleConfig, view: BattleView, options: BattleControllerOptions = {}) {
++  constructor(config: BattleConfig, view: BattleView, options: BattleControllerOptions = {}, persistence?: PersistenceHooks) {
+     this.state = createBattle(config);
+     this.initialConfig = this.state.config;
+     this.options = this.copyOptions(options);
+@@ -46,19 +59,48 @@ export class BattleController {
+     this.run = this.enemyOrder ? createRunState(this.enemyOrder[0]!, this.options.run?.startStage) : null;
+     this.view = view;
+     this.rewardRng = rewardSeed(config.seed);
++    this.persistence = persistence;
++  }
++
++  static restore(checkpoint: RunCheckpoint, view: BattleView, persistence?: PersistenceHooks): BattleController {
++    validateCheckpoint(checkpoint);
++    const data=freeze(structuredClone(checkpoint));
++    const c=new BattleController(data.initialConfig,view,data.options,persistence);
++    c.state=data.state;c.run=data.run;c.enemyOrder=data.enemyOrder;c.rewardRng=data.rewardRng;c.runId=data.runId;
++    c.resumeReward=data.pendingReward;
++    return c;
++  }
++
++  get persistenceBlocked():boolean{return this.saveBlocked;}
++  exportCheckpoint(pendingReward:PendingReward|undefined=this.resumeReward):RunCheckpoint {
++    if(this.resolving||!isCheckpointBoundary(this.state,this.run))throw new Error('自動行動の解決中は保存できません');
++    return freeze(structuredClone({runId:this.runId,initialConfig:this.initialConfig,options:this.options,state:this.state,run:this.run,enemyOrder:this.enemyOrder,rewardRng:this.rewardRng,...(pendingReward?{pendingReward}:{})}));
++  }
++  /** Retry persists the already computed stable result; it never replays an in-memory reward. */
++  retrySave():boolean {
++    if(this.destroyed||this.resolving)return false;
++    if(!this.retryCheckpoint&&!isCheckpointBoundary(this.state,this.run)){this.failedSave(new Error('自動行動の途中で停止しています。「保存された状態へ戻る」から確定済みの操作を再開してください。'));return false;}
++    const target=this.retryCheckpoint??this.exportCheckpoint();
++    if(!this.persist(target))return false;
++    const data=freeze(structuredClone(target));
++    this.state=data.state;this.run=data.run;this.initialConfig=data.initialConfig;this.options=data.options;this.enemyOrder=data.enemyOrder;this.rewardRng=data.rewardRng;this.runId=data.runId;this.resumeReward=data.pendingReward;
++    this.saveBlocked=false;this.emit();return true;
+   }
+ 
+   get snapshot(): BattleState { return this.state; }
+   get runSnapshot(): BattleRunState | null { return this.run; }
++  get runOrigin(): {seed:number;startStage:number} {return {seed:this.initialConfig.seed,startStage:this.options.run?.startStage??1};}
+   get isResolving(): boolean { return this.resolving; }
+ 
+   async start(): Promise<void> {
+-    if (this.destroyed || this.resolving) return;
++    if (this.destroyed || this.resolving || !this.beforeMutation()) return;
+     const generation = this.generation;
+     this.emit();
+     if (generation !== this.generation || this.destroyed) return;
++    if(this.resumeReward){const intent=this.resumeReward;await this.chooseReward(intent.offerId,intent.rewardId,intent.replacement);return;}
++    if(this.run?.offer?.category==='heal'){await this.chooseReward(this.run.offer.id,'immediate-heal');return;}
+     const next = this.automaticAction();
+-    if (next) await this.runSequence(next);
++    if (next) await this.runSequence(next); else {this.finishBoundary();this.emit();}
+   }
+ 
+   async drop(candidateId: string): Promise<boolean> {
+@@ -84,9 +126,15 @@ export class BattleController {
+   async chooseCategory(offerId: string, category: RewardCategory): Promise<boolean> {
+     if (this.destroyed || this.resolving || this.run?.status !== 'reward' || this.run.offer?.id !== offerId || this.run.offer.category !== 'pending' || !this.state.build
+       || !['heal', 'stats', 'skills'].includes(category)) return false;
++    if(!this.beforeMutation())return false;
+     const selected = generateCategoryOffer(this.state.build, this.rewardRng, offerId, category, tuningOf(this.state.config));
++    const nextRun=Object.freeze({ ...this.run, offer: selected.offer });
++    const intent=category==='heal'?{offerId,rewardId:'immediate-heal' as const}:undefined;
++    const checkpoint={...this.exportCheckpoint(intent),run:nextRun,rewardRng:selected.rngState};
++    if(!this.persist(checkpoint))return false;
+     this.rewardRng = selected.rngState;
+-    this.run = Object.freeze({ ...this.run, offer: selected.offer });
++    this.run = nextRun;
++    this.resumeReward=intent;
+     if (category === 'heal') return this.chooseReward(offerId, 'immediate-heal');
+     this.emit();
+     return true;
+@@ -95,14 +143,18 @@ export class BattleController {
+   async chooseReward(offerId: string, rewardId: RewardId | null, replacement?: number): Promise<boolean> {
+     if (this.destroyed || this.resolving || this.run?.status !== 'reward' || this.run.offer?.id !== offerId || !this.state.build) return false;
+     if (this.run.offer.category === 'pending') return false;
++    if(this.resumeReward&&(this.resumeReward.offerId!==offerId||this.resumeReward.rewardId!==rewardId||this.resumeReward.replacement!==replacement))return false;
+     if (rewardId !== null && !this.run.offer.choices.includes(rewardId)) return false;
+     // 日本語: 古い候補にも現在の資格を再適用。English: Stale offers never bypass current acquisition policy.
+     if (rewardId !== null && isSkillReward(rewardId) && !canReceiveSkillReward(this.state.build, rewardId)) return false;
+     const rewarded = rewardId === null ? this.state : applyRunReward(this.state, rewardId, replacement);
+     if (!rewarded) return false;
++    if(!this.beforeMutation()||!this.persist(this.exportCheckpoint({offerId,rewardId,...(replacement===undefined?{}:{replacement})})))return false;
+     const generation = this.generation; const signal = this.animation.signal;
+     this.resolving = true;
++    this.resumeReward={offerId,rewardId,...(replacement===undefined?{}:{replacement})};
+     this.state = rewarded;
++    this.resumeReward=undefined;
+     this.run = Object.freeze({ ...this.run, status: 'transitioning', offer: undefined });
+     this.emit();
+     try {
+@@ -111,13 +163,13 @@ export class BattleController {
+       const next = this.automaticAction();
+       if (next) await this.runSequence(next);
+     } finally {
+-      if (this.current(generation, signal)) { this.resolving = false; this.emit(); }
++      if (this.current(generation, signal)) { this.resolving = false; this.finishBoundary();this.emit(); }
+     }
+     return true;
+   }
+ 
+   async restart(config: BattleConfig = this.initialConfig, options: BattleControllerOptions = this.options): Promise<void> {
+-    if (this.destroyed) return;
++    if (this.destroyed || !this.beforeMutation()) return;
+     // 日本語: 不正な設定は現戦闘を壊す前に拒否する。English: Validate before replacing a live battle.
+     const next = createBattle(config);
+     const nextOptions = this.copyOptions(options);
+@@ -132,6 +184,7 @@ export class BattleController {
+     this.initialConfig = next.config;
+     this.options = nextOptions;
+     this.rewardRng = rewardSeed(next.config.seed);
++    this.runId=crypto.randomUUID();this.resumeReward=undefined;
+     this.enemyOrder = nextOrder;
+     this.run = nextOrder ? createRunState(nextOrder[0]!, nextOptions.run?.startStage) : null;
+     this.resolving = false;
+@@ -148,11 +201,13 @@ export class BattleController {
+ 
+   private copyOptions(options: BattleControllerOptions): BattleControllerOptions {
+     if(options.run?.startStage!==undefined&&(!Number.isSafeInteger(options.run.startStage)||options.run.startStage<1))throw new Error('Invalid initial stage');
++    if(options.run?.finishAtStage!==undefined&&(!Number.isSafeInteger(options.run.finishAtStage)||options.run.finishAtStage<1||(options.run.startStage??1)>options.run.finishAtStage))throw new Error('Invalid run finish stage');
+     if(options.run?.route!==undefined&&!['standard','boss-loop'].includes(options.run.route))throw new Error('Invalid run route');
+     return Object.freeze(options.run ? { run: Object.freeze({
+       ...(options.run.rotationStart ? { rotationStart: options.run.rotationStart } : {}),
+       ...(options.run.route ? { route: options.run.route } : {}),
+       ...(options.run.startStage === undefined ? {} : { startStage: options.run.startStage }),
++      ...(options.run.finishAtStage === undefined ? {} : { finishAtStage: options.run.finishAtStage }),
+       ...(options.run.mode ? { mode: options.run.mode } : {}),
+       ...(options.run.rewards === undefined ? {} : { rewards: options.run.rewards }),
+       ...(options.run.rewardMode ? { rewardMode: options.run.rewardMode } : {}),
+@@ -161,7 +216,15 @@ export class BattleController {
+   }
+ 
+   private canAct(): boolean {
+-    return !this.destroyed && !this.resolving && !this.state.result && this.state.actor === 'player' && !needsTurnStart(this.state);
++    return !this.destroyed && !this.resolving && !this.saveBlocked && !this.state.result && this.state.actor === 'player' && !needsTurnStart(this.state);
++  }
++
++  private failedSave(error:unknown):void {this.saveBlocked=true;try{this.persistence?.failed(error);}catch{/* A broken message must not unlock gameplay. */}}
++  private beforeMutation():boolean {if(this.saveBlocked)return false;try{this.persistence?.beforeAction();return true;}catch(error){this.failedSave(error);return false;}}
++  private persist(checkpoint:RunCheckpoint):boolean {try{this.persistence?.write(checkpoint);this.retryCheckpoint=undefined;return true;}catch(error){this.retryCheckpoint=freeze(structuredClone(checkpoint));this.failedSave(error);return false;}}
++  private finishBoundary():void {
++    if(this.destroyed||this.resolving||this.saveBlocked||this.resumeReward||this.automaticAction()!==null||!isCheckpointBoundary(this.state,this.run))return;
++    this.persist(this.exportCheckpoint());
+   }
+ 
+   private report(error: unknown): void {
+@@ -173,7 +236,7 @@ export class BattleController {
+     try { callback(); } catch (error) { this.report(error); }
+   }
+ 
+-  private emit(): void { this.present(() => this.view.render(this.state, this.resolving, this.run)); }
++  private emit(): void { this.present(() => this.view.render(this.state, this.resolving||this.saveBlocked||!!this.resumeReward, this.run)); }
+ 
+   private automaticAction(): BattleAction | null {
+     if (this.state.result) return null;
+@@ -193,9 +256,10 @@ export class BattleController {
+     if (!this.run || !this.state.result) return;
+     if (this.state.result.winner === 'enemy') { this.run = Object.freeze({ ...this.run, status: 'lost' }); return; }
+     const defeatedCount = this.run.defeatedCount + 1;
+-    const continues = this.options.run?.mode === 'endless' || this.run.stage < this.enemyOrder!.length;
++    const atFinish=this.options.run?.finishAtStage!==undefined&&this.run.stage>=this.options.run.finishAtStage;
++    const continues = !atFinish&&(this.options.run?.mode === 'endless' || this.run.stage < this.enemyOrder!.length);
+     if (continues && this.options.run?.rewards && this.state.build) {
+-      const id = `reward:${this.generation}:${this.run.stage}:${defeatedCount}`;
++      const id = `reward:${this.runId}:${this.run.stage}:${defeatedCount}`;
+       const result = this.options.run?.rewardMode === 'categories' ? { offer: categoryOffer(id), rngState: this.rewardRng } : generateRewardOffer(this.state.build, this.rewardRng, id, tuningOf(this.state.config));
+       this.rewardRng = result.rngState;
+       this.run = Object.freeze({ ...this.run, defeatedCount, status: 'reward', offer: result.offer });
+@@ -226,6 +290,7 @@ export class BattleController {
+   }
+ 
+   private async runSequence(firstAction: BattleAction): Promise<boolean> {
++    if(!this.beforeMutation())return false;
+     const generation = this.generation;
+     const signal = this.animation.signal;
+     this.resolving = true;
+@@ -263,6 +328,7 @@ export class BattleController {
+     } finally {
+       if (this.current(generation, signal)) {
+         this.resolving = false;
++        this.finishBoundary();
+         this.emit();
+       }
+     }
+diff --git a/src/next/app/BattleRun.ts b/src/next/app/BattleRun.ts
+index 6c283bf..bd8b88b 100644
+--- a/src/next/app/BattleRun.ts
++++ b/src/next/app/BattleRun.ts
+@@ -9,6 +9,8 @@ export interface BattleRunOptions {
+   readonly rewards?: boolean;
+   readonly route?: 'standard' | 'boss-loop';
+   readonly startStage?: number;
++  /** Optional fixed finish line; omission retains the legacy endless strategy. */
++  readonly finishAtStage?: number;
+   readonly rotationStart?: EnemyId;
+   readonly rewardMode?: 'mixed-v1' | 'categories';
+ }
+diff --git a/src/next/app/localSave.ts b/src/next/app/localSave.ts
+new file mode 100644
+index 0000000..b4751f7
+--- /dev/null
++++ b/src/next/app/localSave.ts
+@@ -0,0 +1,64 @@
++import { decodeSave, encodeSave } from './saveCheckpoint.ts';
++import type { RunCheckpoint, SaveEnvelope } from './saveCheckpoint.ts';
++export function saveNamespace(pathname:string):{key:string;lock:string;preview:boolean}{const preview=pathname==='/save-preview'||pathname.startsWith('/save-preview/');const prefix=preview?'game1.save-preview':'game1.next';return {key:`${prefix}.autosave.v1`,lock:`${prefix}.autosave.owner.v1`,preview};}
++const namespace=saveNamespace(typeof window==='undefined'?'/next/':window.location.pathname);
++export const SAVE_KEY=namespace.key;
++export const SAVE_LOCK=namespace.lock;
++export const SAVE_PREVIEW=namespace.preview;
++export interface SaveStorage { getItem(key:string):string|null;setItem(key:string,value:string):void }
++/** 日本語: Web Lockを持つタブだけが読み書きする。例外や競合を黙って無視しない。
++ * English: Ownership and exact previous bytes are checked before every action/write. */
++export class LocalSave {
++ private expected:string|null|undefined=undefined;
++ private envelope:SaveEnvelope|null=null;
++ private attempted:string|null=null;
++ private storage:SaveStorage;
++ private owned:()=>boolean;
++ constructor(storage:SaveStorage,owned:()=>boolean){this.storage=storage;this.owned=owned;}
++ read():SaveEnvelope|null {
++  this.owner();let raw:string|null;
++  try{raw=this.storage.getItem(SAVE_KEY);}catch{throw new Error('このブラウザの保存領域を読み込めません。設定や空き容量を確認してください。');}
++  this.expected=raw;this.envelope=null;
++  if(raw!==null)this.envelope=decodeSave(raw);
++  return this.envelope;
++ }
++ get hasExisting():boolean{return this.expected!==undefined&&this.expected!==null;}
++ get latest():SaveEnvelope|null{return this.envelope;}
++ guard():void {
++  this.owner();if(this.expected===undefined)throw new Error('保存内容をまだ確認できていません。');
++  let raw:string|null;try{raw=this.storage.getItem(SAVE_KEY);}catch{throw new Error('保存領域を読めないため、進行を停止しました。');}
++  if(raw!==this.expected){if(raw!==null&&raw===this.attempted){this.envelope=decodeSave(raw);this.expected=raw;this.attempted=null;}else throw new Error('別の操作でセーブが変更されました。上書きを止めました。ページを開き直して確認してください。');}
++ }
++ write(checkpoint:RunCheckpoint):SaveEnvelope {
++  this.guard();if(this.envelope&&JSON.stringify(this.envelope.checkpoint)===JSON.stringify(checkpoint))return this.envelope;
++  const raw=encodeSave(checkpoint,(this.envelope?.revision??0)+1);
++  this.attempted=raw;
++  try{this.storage.setItem(SAVE_KEY,raw);if(this.storage.getItem(SAVE_KEY)!==raw)throw new Error('verify');}
++  catch{throw new Error('自動保存できませんでした。空き容量や保存の許可を確認してください。これ以上の操作は止めています。');}
++  this.expected=raw;this.attempted=null;this.envelope=decodeSave(raw);return this.envelope;
++ }
++ private owner():void{if(!this.owned())throw new Error('このタブには保存の操作権がありません。ほかのプレイ中のタブを閉じてから再開してください。');}
++}
++/** Exclusive lock lasts for the playable session; there is deliberately no unsafe fallback. */
++export class SaveOwnership {
++ private held=false;
++ private releaseHold:(()=>void)|null=null;
++ private acquisition:Promise<boolean>|null=null;
++ private epoch=0;
++ get owned():boolean{return this.held;}
++ acquire(locks:Pick<LockManager,'request'>|undefined):Promise<boolean>{
++  if(this.held)return Promise.resolve(true);
++  if(this.acquisition)return this.acquisition;
++  if(!locks)return Promise.reject(new Error('このブラウザでは複数タブからの安全な保存を利用できません。対応ブラウザで開いてください。'));
++  const epoch=++this.epoch;
++  this.acquisition=new Promise<boolean>((resolve,reject)=>{
++   void locks.request(SAVE_LOCK,{mode:'exclusive',ifAvailable:true},async lock=>{
++    if(!lock||epoch!==this.epoch){resolve(false);return;}
++    this.held=true;resolve(true);
++    await new Promise<void>(release=>{this.releaseHold=release;});
++   }).catch(error=>{reject(error);}).finally(()=>{if(epoch===this.epoch){this.held=false;this.releaseHold=null;this.acquisition=null;}});
++  });
++  return this.acquisition;
++ }
++ release():void{this.epoch++;this.held=false;this.releaseHold?.();this.releaseHold=null;this.acquisition=null;}
++}
+diff --git a/src/next/app/saveCheckpoint.ts b/src/next/app/saveCheckpoint.ts
+new file mode 100644
+index 0000000..7031787
+--- /dev/null
++++ b/src/next/app/saveCheckpoint.ts
+@@ -0,0 +1,97 @@
++import { freeze } from '../core/immutable.ts';
++import { validateConfig } from '../core/validation.ts';
++import { validatePlayerBuild, canReceiveSkillReward } from '../core/playerBuild.ts';
++import { getAvailableBoardSkills, getDropOptions, instantSlots, needsTurnStart } from '../core/index.ts';
++import { gaugeDefinition } from '../core/gauge.ts';
++import { tuningOf } from '../core/tuning.ts';
++import { prepareEnemyOrder } from './BattleRun.ts';
++import { applyRunReward, isSkillReward } from './rewards.ts';
++import type { RewardId } from './rewards.ts';
++import type { BattleConfig, BattleState, EnemyId } from '../core/types.ts';
++import type { BattleRunOptions, BattleRunState } from './BattleRun.ts';
++export const SAVE_FORMAT = 'game1-next-save';
++export const SAVE_SCHEMA = 1;
++export const SAVE_RULES = 'next-1.2-clear50-intrinsic-health';
++const MAX_SAVE_LENGTH=2_000_000;
++const MAX_SAVE_BOXES=64*64;
++// 日本語: 衝突箱を全て飛ばす場合と後続の自動投入でも整数範囲を越えない。
++// English: Keep headroom for every possible collision plus the following automatic insertions.
++const BOX_ID_HEADROOM=MAX_SAVE_BOXES+8;
++export interface PendingReward { readonly offerId: string; readonly rewardId: RewardId | null; readonly replacement?: number }
++export interface RunCheckpoint {
++  readonly runId: string;
++  readonly initialConfig: BattleConfig;
++  readonly options: { readonly run?: BattleRunOptions };
++  readonly state: BattleState;
++  readonly run: BattleRunState | null;
++  readonly enemyOrder: readonly EnemyId[] | null;
++  readonly rewardRng: number;
++  /** 日本語: 報酬適用前の確定操作。復帰時はこの元状態から一度だけ完了する。
++   * English: A durable reward intent resumes from its pre-effect state, never a partly advanced stage. */
++  readonly pendingReward?: PendingReward;
++}
++export interface SaveEnvelope { readonly format: typeof SAVE_FORMAT; readonly schema: typeof SAVE_SCHEMA; readonly rules: typeof SAVE_RULES; readonly revision: number; readonly savedAt: number; readonly checkpoint: RunCheckpoint; readonly checksum: string }
++const require=(ok:unknown,message:string):void=>{if(!ok)throw new Error(`セーブ内容を確認できません：${message}`);};
++const integer=(n:unknown,min=0,max=Number.MAX_SAFE_INTEGER)=>typeof n==='number'&&Number.isSafeInteger(n)&&n>=min&&n<=max;
++function record(v:unknown):v is Record<string,unknown>{return !!v&&typeof v==='object'&&!Array.isArray(v);}
++/** Stable means the whole automatic response has finished, including Red's next start. */
++export function isCheckpointBoundary(state:BattleState,run:BattleRunState|null):boolean {
++  if(run?.status==='transitioning')return false;
++  if(state.result)return true;
++  return state.actor==='player'&&!needsTurnStart(state)&&(getDropOptions(state).some(o=>o.available)||getAvailableBoardSkills(state).length>0||instantSlots(state).length>0);
++}
++export function validateCheckpoint(value:unknown):asserts value is RunCheckpoint {
++ require(record(value),'形式');const c=value as RunCheckpoint;
++ require(record(c.state)&&record(c.options)&&record(c.initialConfig),'構造');
++ require(typeof c.runId==='string'&&c.runId.length>=8&&c.runId.length<=100,'ラン識別子');
++ const s=c.state;require(record(s.config)&&record(s.config.board),'盤面');
++ require(integer(s.config.board.width,1,64)&&integer(s.config.board.height,1,64),'盤面サイズ');
++ require(integer(c.initialConfig.board?.width,1,64)&&integer(c.initialConfig.board?.height,1,64),'開始盤面サイズ');
++ validateConfig(c.initialConfig);validateConfig(s.config);
++ require(s.config.characterId===c.initialConfig.characterId,'キャラクター');
++ require(JSON.stringify(s.config.board)===JSON.stringify(c.initialConfig.board),'開始盤面との対応');
++ require(Array.isArray(s.boxes)&&s.boxes.length<=MAX_SAVE_BOXES,'箱');
++ // Reuse the authoritative config validator for runtime boxes, gauge, form and build.
++ validateConfig({...s.config,initialBoxes:s.boxes,initialBuild:s.build??undefined,initialGauge:s.gauge,initialTransformation:s.transformation??undefined});
++ require(s.actor==='player'||s.actor==='enemy','手番');
++ for(const n of [s.enemyTurnCount,s.link3Growth])require(integer(n),'戦闘カウンター');
++ require(integer(s.turn,1)&&integer(s.nextBoxId,1,Number.MAX_SAFE_INTEGER-BOX_ID_HEADROOM)&&integer(s.enemyPatternIndex,0,s.config.enemyPattern.length-1),'進行値');
++ require(integer(s.rngState,0,0xffff_ffff)&&integer(c.rewardRng,0,0xffff_ffff),'乱数');
++ require(typeof s.playerTurnStarted==='boolean','追加投入開始');
++ require(s.build===null||record(s.build),'装備');if(s.build)validatePlayerBuild(s.build,s.config);
++ require(s.transformation===null||record(s.transformation),'変化');
++ require(integer(s.gauge,0,gaugeDefinition(s.config.characterId,tuningOf(s.config))?.cap??0),'ゲージ');
++ for(const actor of ['player','enemy'] as const){require(record(s.hp?.[actor]),'HP');const hp=s.hp[actor];require(integer(hp.max,1)&&integer(hp.current,-Number.MAX_SAFE_INTEGER,hp.max),'HP値');}
++ if(s.enemyPhase!==undefined){require(s.config.enemyId==='mother-core'&&['normal','critical'].includes(s.enemyPhase.phase)&&integer(s.enemyPhase.completedTurns),'ボス段階');}
++ if(s.config.enemyId==='mother-core'){require(s.enemyPhase!==undefined,'ボス段階の欠落');require(s.enemyPhase!.completedTurns<=s.enemyTurnCount&&(s.enemyPhase!.phase!=='normal'||s.enemyPhase!.completedTurns===s.enemyTurnCount),'ボス時計');}
++ if(s.result){require(['player','enemy'].includes(s.result.winner)&&['hp-zero','enemy-blocked'].includes(s.result.reason),'勝敗');require(s.result.winner==='player'?s.hp.player.current>0&&s.hp.enemy.current<=0:s.hp.player.current<=0,'勝敗とHP');}
++ else require(s.result===null&&s.hp.player.current>0&&s.hp.enemy.current>0,'進行中HP');
++ const o=c.options.run;
++ if(o){require(o.mode===undefined||['finite','endless'].includes(o.mode),'run方式');require(o.route===undefined||['standard','boss-loop'].includes(o.route),'経路');require(o.rewardMode===undefined||['mixed-v1','categories'].includes(o.rewardMode),'報酬方式');require(o.rewards===undefined||typeof o.rewards==='boolean','報酬設定');require(o.startStage===undefined||integer(o.startStage,1),'開始階');require(o.finishAtStage===undefined||integer(o.finishAtStage,1)&&(o.startStage??1)<=o.finishAtStage,'終了階');require(o.rotationStart===undefined||['marujiro','hikikizan','nigirin','merarun','speed-core','mother-core'].includes(o.rotationStart),'開始敵');}
++ const order=prepareEnemyOrder(c.initialConfig,o);require(JSON.stringify(order)===JSON.stringify(c.enemyOrder),'敵順序');
++ if(c.run){const r=c.run;require(order&&integer(r.stage,1)&&integer(r.defeatedCount)&&r.currentEnemyId===s.config.enemyId,'run');require(['active','reward','lost','cleared'].includes(r.status),'保存境界');require(o?.finishAtStage===undefined||r.stage<=o.finishAtStage,'終了階を越えるrun');
++  const continues=(o?.finishAtStage===undefined||r.stage<o.finishAtStage)&&(o?.mode==='endless'||r.stage<order!.length);
++  if(r.status==='cleared')require(!continues,'未完了のクリア');
++  const expected=r.stage-(o?.startStage??1)+(r.status==='reward'||r.status==='cleared'?1:0);require(r.defeatedCount===expected,'撃破数');
++  require(r.status==='active'?!s.result:r.status==='lost'?s.result?.winner==='enemy':s.result?.winner==='player','run勝敗');
++  if(r.status==='reward'){require(o?.rewards&&s.build&&continues,'報酬資格');const offer=r.offer;require(offer&&typeof offer.id==='string'&&Array.isArray(offer.choices)&&offer.choices.length<=20,'候補');require(new Set(offer!.choices).size===offer!.choices.length,'候補重複');require(offer!.choices.every(id=>!isSkillReward(id)||canReceiveSkillReward(s.build!,id)),'スキル候補資格');
++   require(offer!.choices.every(id=>isSkillReward(id)||['max-health','three-polish','four-polish','five-polish','large-polish','immediate-heal'].includes(id)),'候補ID');
++   if(o?.rewardMode==='categories'){require(['pending','heal','stats','skills'].includes(offer!.category??''),'カテゴリ');if(offer!.category==='pending')require(offer!.choices.length===0,'未選択候補');if(offer!.category==='heal')require(JSON.stringify(offer!.choices)==='["immediate-heal"]'&&c.pendingReward?.rewardId==='immediate-heal','回復候補');if(offer!.category==='stats')require(offer!.choices.every(id=>['max-health','three-polish','four-polish','five-polish'].includes(id)),'強化候補');if(offer!.category==='skills')require(offer!.choices.every(isSkillReward),'スキル候補');}
++  }else require(r.offer===undefined,'残った報酬');
++ }else require(c.run===null&&order===null,'run欠落');
++ require(isCheckpointBoundary(s,c.run),'未解決の自動行動');
++ if(c.pendingReward){const p=c.pendingReward,offer=c.run?.offer;require(c.run?.status==='reward'&&offer&&offer.category!=='pending'&&p.offerId===offer.id,'確定報酬');require(p.replacement===undefined||p.replacement===0||p.replacement===1,'交換先');require(p.rewardId===null||offer!.choices.includes(p.rewardId),'確定候補');require(p.rewardId===null||applyRunReward(s,p.rewardId,p.replacement)!==null,'報酬適用');}
++}
++// Accidental corruption detection, not an authentication or anti-cheat mechanism.
++function checksum(text:string):string {let h=0x811c9dc5;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,0x01000193);}return(h>>>0).toString(16).padStart(8,'0');}
++export function encodeSave(checkpoint:RunCheckpoint,revision:number,savedAt=Date.now()):string {
++ validateCheckpoint(checkpoint);require(integer(revision,1)&&integer(savedAt),'保存ヘッダー');
++ const body={format:SAVE_FORMAT,schema:SAVE_SCHEMA,rules:SAVE_RULES,revision,savedAt,checkpoint};const raw=JSON.stringify({...body,checksum:checksum(JSON.stringify(body))});require(raw.length<=MAX_SAVE_LENGTH,'保存サイズ');return raw;
++}
++export function decodeSave(raw:string):SaveEnvelope {
++ require(typeof raw==='string'&&raw.length<=MAX_SAVE_LENGTH,'保存サイズ');let data:unknown;try{data=JSON.parse(raw);}catch{throw new Error('セーブ内容が壊れています。自動で消去せず、そのまま保持しました。');}
++ require(record(data),'保存形式');const e=data as unknown as SaveEnvelope;
++ if(e.format!==SAVE_FORMAT||e.schema!==SAVE_SCHEMA||e.rules!==SAVE_RULES)throw new Error('この版では読めないセーブです。元の保存は変更していません。');
++ require(integer(e.revision,1)&&integer(e.savedAt),'保存時刻');
++ const body={format:e.format,schema:e.schema,rules:e.rules,revision:e.revision,savedAt:e.savedAt,checkpoint:e.checkpoint};require(e.checksum===checksum(JSON.stringify(body)),'破損チェック');validateCheckpoint(e.checkpoint);return freeze(structuredClone(e));
++}
+diff --git a/src/next/config.ts b/src/next/config.ts
+index 376cf15..ba9c6cd 100644
+--- a/src/next/config.ts
++++ b/src/next/config.ts
+@@ -19,7 +19,7 @@ export function trialFixture(kind: TrialFixture, character: CharacterId, enemy:
+ import { bossLoopEncounter, endlessEncounter } from './app/progression.ts';
+ import type { BattleControllerOptions } from './app/BattleController.ts';
+ export type TrialSetupFixture = TrialFixture | 'speed-pulse' | 'mother-wait' | 'mother-double' | 'mother-critical';
+-export interface TrialSetup { readonly character:CharacterId;readonly firstEnemy:EnemyId;readonly seed:number;readonly mode:'manual'|'automatic';readonly stage:number;readonly fixture:TrialSetupFixture;readonly route:'standard'|'boss-loop' }
++export interface TrialSetup { readonly character:CharacterId;readonly firstEnemy:EnemyId;readonly seed:number;readonly mode:'manual'|'automatic';readonly stage:number;readonly fixture:TrialSetupFixture;readonly route:'standard'|'boss-loop';readonly ending?:'clear50'|'legacy-endless' }
+ /** 日本語: 検証用ステージ/手番は開始設定でのみ指定。戦闘中の操作には混ぜない。
+  * English: Test stage and phase seeds live only in setup, never in ordinary battle actions. */
+ export function prepareTrialSetup(setup:TrialSetup):{config:BattleConfig;options:BattleControllerOptions} {
+@@ -30,6 +30,9 @@ export function prepareTrialSetup(setup:TrialSetup):{config:BattleConfig;options
+   if(setup.fixture==='speed-pulse'&&local!==25&&local!==40)stage=25;
+   if(setup.fixture.startsWith('mother-')&&local!==50)stage=50;
+   const route=bossFixture?'boss-loop':setup.route;
++  const ending=setup.ending??'clear50';
++  if(ending!=='clear50'&&ending!=='legacy-endless')throw new Error('ランの終了方式が不正です');
++  if(ending==='clear50'&&stage>50)throw new Error('標準ランは50階で終了します。開始階は50以下にしてください');
+   if(route==='boss-loop'&&setup.firstEnemy==='merarun')throw new Error('メラルンは従来の敵循環で試せます');
+   const encounter=route==='boss-loop'?bossLoopEncounter(stage,setup.firstEnemy,trialTuning):endlessEncounter(stage,setup.firstEnemy,trialTuning);
+   const basic:TrialFixture=setup.fixture==='charged'||setup.fixture==='reward'?setup.fixture:'normal';
+@@ -37,5 +40,5 @@ export function prepareTrialSetup(setup:TrialSetup):{config:BattleConfig;options
+   const fixed='fixedDamageBonus'in encounter?encounter.fixedDamageBonus:0;
+   const config:BattleConfig={...base,enemyFixedDamageBonus:fixed,firstActor:bossFixture?'enemy':'player',initialEnemyTurnCount:setup.fixture==='speed-pulse'||setup.fixture==='mother-wait'?4:setup.fixture==='mother-double'?5:0,
+     combatants:{...base.combatants,enemy:{...base.combatants.enemy,maxHp:encounter.maxHp,initialHp:basic==='reward'?1:setup.fixture==='mother-critical'?Math.max(1,Math.floor(encounter.maxHp*trialTuning.bosses.motherThresholdPercent/100)):encounter.maxHp,...('attacks'in encounter?{attacks:encounter.attacks}:{})}}};
+-  return {config,options:{run:{mode:'endless',rewards:true,rewardMode:'categories',route,startStage:stage,rotationStart:setup.firstEnemy}}};
++  return {config,options:{run:{mode:'endless',rewards:true,rewardMode:'categories',route,startStage:stage,rotationStart:setup.firstEnemy,...(ending==='clear50'?{finishAtStage:50}:{})}}};
+ }
+diff --git a/src/next/core/playerBuild.ts b/src/next/core/playerBuild.ts
+index 7e89f65..b80bff5 100644
+--- a/src/next/core/playerBuild.ts
++++ b/src/next/core/playerBuild.ts
+@@ -1,6 +1,6 @@
+ import { tuningOf } from './tuning.ts';
+ import { freeze } from './immutable.ts';
+-import { skillCatalog, skillValue } from './skillCatalog.ts';
++import { skillCatalog, skillValue, normalSkillIds } from './skillCatalog.ts';
+ import { getPlayerSkills } from './skills.ts';
+ import type { BattleConfig, BattleState, CharacterId, NormalSkillId, PlayerBuild, SkillInstance } from './types.ts';
+ 
+@@ -19,7 +19,7 @@ export function playerPower(state: BattleState, tier: 3 | 4 | 5): number { retur
+  * English: Intrinsic rewards only upgrade the immutable starter; an injected flexible-slot copy grants no eligibility. */
+ export function canReceiveSkillReward(build: PlayerBuild, id: NormalSkillId): boolean {
+   const definition = skillCatalog[id];
+-  if (!definition) return false;
++  if (!normalSkillIds.includes(id)) return false;
+   const owned = [build.fixed, ...build.slots].find(skill => skill?.id === id);
+   if (owned?.rank === 2) return false;
+   return definition.rewardAccess !== 'starter-upgrade-only' || build.fixed.id === id;
+@@ -56,6 +56,6 @@ export function validatePlayerBuild(build: PlayerBuild, config: BattleConfig): v
+   if (!config.characterId || build.fixed.id !== expected || build.slots.length !== 2) throw new Error('Invalid fixed starter or flexible slots');
+   const skills = [build.fixed, ...build.slots.filter((s): s is SkillInstance => s !== null)];
+   if (new Set(skills.map(s => s.id)).size !== skills.length) throw new Error('Duplicate equipped skill identities');
+-  for (const skill of skills) if (!skillCatalog[skill.id] || ![1, 2].includes(skill.rank) || skill.uses !== (skillCatalog[skill.id].kind === 'instant' ? 1 : null)) throw new Error('Invalid skill instance');
++  for (const skill of skills) if (!normalSkillIds.includes(skill.id) || ![1, 2].includes(skill.rank) || skill.uses !== (skillCatalog[skill.id].kind === 'instant' ? 1 : null)) throw new Error('Invalid skill instance');
+   for (const tier of [3, 4, 5] as const) if (!Number.isSafeInteger(build.power[tier]) || build.power[tier] < 0) throw new Error('Invalid permanent power');
+ }
+diff --git a/src/next/main.ts b/src/next/main.ts
+index 869da57..d7e47f4 100644
+--- a/src/next/main.ts
++++ b/src/next/main.ts
+@@ -1,5 +1,7 @@
+ import './style.css';
+ import { BattleController } from './app/BattleController.ts';
++import type { BattleView, PersistenceHooks } from './app/BattleController.ts';
++import { LocalSave, SaveOwnership, SAVE_KEY, SAVE_PREVIEW } from './app/localSave.ts';
+ import type { BattleRunState } from './app/BattleRun.ts';
+ import { rewardLabel, requiresReplacement, isSkillReward } from './app/rewards.ts';
+ import type { RewardId, RewardCategory } from './app/rewards.ts';
+@@ -10,11 +12,15 @@ import type { TrialSetupFixture } from './config.ts';
+ import { playerPortraits, transformedPortraits } from '../ui/portraits.ts';
+ import { enemyPortraits } from './portraits.ts';
+ import { getEnemyDefinition } from './core/definitions.ts';
++import {feedbackForEvent,feedbackPosition,feedbackTiming} from './ui/battleFeedback.ts';
++import type {BattleFeedback} from './ui/battleFeedback.ts';
++import {runResultHtml} from './ui/runResult.ts';
+ 
+ /** 日本語: 盤面は常時表示。対象選択は下部に出し、詳細は要求時だけ開く。
+  * English: Keep the board visible while targeting; optional details open only on request. */
+ const root = document.querySelector<HTMLElement>('#app')!;
+-root.innerHTML = `<main class="game" aria-label="Game1 試作1.1.1"><header class="hud"><section class="player-hud"><img id="player-image" alt=""><div><span id="player-name"></span><strong id="player-hp"></strong><div class="hp-track"><i id="player-fill"></i></div></div></section><section class="enemy-hud"><div><span id="enemy-name"></span><strong id="enemy-hp"></strong><div class="hp-track"><i id="enemy-fill"></i></div></div><img id="enemy-image" alt=""></section><div class="gauge-row"><span id="gauge-text"></span><div class="gauge-track"><i id="gauge-fill"></i></div><span id="intent"></span></div></header><div class="strip"><span id="stage"></span><strong id="form"></strong><span id="turn"></span></div><section class="board-area" aria-label="共有盤面"><div class="board-wrap"><div id="drop-buttons" class="drops"></div><div id="board" class="board"></div></div><div id="end" class="end" hidden></div></section><footer class="controls"><p id="hint" aria-live="polite"></p><div id="actions" class="actions"></div><p class="meta"><span id="latest"></span><span>試作 1.1.1 · <a href="/">1.0</a> · <a href="/lab/">スキル実験</a></span></p></footer></main><dialog id="details" aria-label="スキルと設定"><div class="dialog-top"><h2>スキルと設定</h2><button data-close="details">閉じる</button></div><div id="details-body"></div><section class="settings"><h3>再開始の設定</h3><label>キャラクター<select id="character"><option value="blue">青の子</option><option value="red">赤の子</option></select></label><label>最初の敵<select id="enemy"><option value="marujiro">マルジロ</option><option value="hikikizan">ヒキキザン</option><option value="nigirin">ニギリン</option><option value="merarun">メラルン</option></select></label><label>変化方式<select id="mode"><option value="manual">手動・ゆっくり充填</option><option value="automatic">旧自動・6リンクと旧充填</option></select></label><label>進行<select id="route"><option value="boss-loop">50ステージごとに周回・ボスあり</option><option value="standard">従来の敵循環</option></select></label><label>開始ステージ<input id="start-stage" type="number" min="1" step="1" value="1"></label><label>検証状態<select id="fixture"><option value="normal">通常の連続対戦</option><option value="charged">ゲージ準備済み</option><option value="reward">報酬直前（3列目で撃破）</option><option value="speed-pulse">中ボス：5手番目の固定攻撃</option><option value="mother-wait">大ボス：5手番目の待機</option><option value="mother-double">大ボス：6手番目の2回投入</option><option value="mother-critical">大ボス：HP20%から新ループ</option></select></label><label>乱数シード<input id="seed" type="number" min="0" max="4294967295" step="1" value="1"></label><label><input id="reduce" type="checkbox"> 演出を短くする</label><button id="restart">この設定で再開始</button><p id="error" role="alert"></p></section><details><summary>今回のルール・試作値</summary><div id="rules"></div></details><details><summary>戦闘ログ</summary><ol id="logs"></ol></details></dialog><dialog id="reward" aria-label="撃破報酬"><h2 id="reward-title"></h2><p id="reward-note"></p><div id="reward-choices"></div><div id="replacement"></div><button id="skip-reward">今回は取らずに次へ</button></dialog>`;
++root.innerHTML = `<main class="game" aria-label="Game1 試作1.2"><header class="hud"><section class="player-hud"><img id="player-image" alt=""><div><span id="player-name"></span><strong id="player-hp"></strong><div class="hp-track"><i id="player-fill"></i></div></div></section><section class="enemy-hud"><div><span id="enemy-name"></span><strong id="enemy-hp"></strong><div class="hp-track"><i id="enemy-fill"></i></div></div><img id="enemy-image" alt=""></section><div class="gauge-row"><span id="gauge-text"></span><div class="gauge-track"><i id="gauge-fill"></i></div><span id="intent"></span></div></header><div class="strip"><span id="stage"></span><strong id="form"></strong><span id="turn"></span></div><section class="board-area" aria-label="共有盤面"><div class="board-wrap"><div id="drop-buttons" class="drops"></div><div id="board" class="board"></div></div><div id="feedback-layer" aria-live="polite"></div><dialog id="end" class="end" aria-label="ラン結果"></dialog></section><footer class="controls"><p id="hint" aria-live="polite"></p><div id="actions" class="actions"></div><p class="meta"><span id="latest"></span><span><span id="save-status" role="status">保存確認中</span> · 試作 1.2 · <a href="/">1.0</a> · <a href="/lab/">スキル実験</a></span></p></footer></main><dialog id="details" aria-label="スキルと設定"><div class="dialog-top"><h2>スキルと設定</h2><button data-close="details">閉じる</button></div><p id="save-description">自分と敵の行動がすべて解決した時と、報酬を確定した時に、このブラウザへ自動保存します。</p><div id="details-body"></div><section class="settings"><h3>再開始の設定</h3><label>キャラクター<select id="character"><option value="blue">青の子</option><option value="red">赤の子</option></select></label><label>最初の敵<select id="enemy"><option value="marujiro">マルジロ</option><option value="hikikizan">ヒキキザン</option><option value="nigirin">ニギリン</option><option value="merarun">メラルン</option></select></label><label>変化方式<select id="mode"><option value="manual">手動・ゆっくり充填</option><option value="automatic">旧自動・6リンクと旧充填</option></select></label><label>進行<select id="route"><option value="boss-loop">50階クリア・ボスあり</option><option value="standard">通常敵で検証・50階まで</option></select></label><label>開始ステージ<input id="start-stage" type="number" min="1" max="50" step="1" value="1"></label><label>検証状態<select id="fixture"><option value="normal">通常の連続対戦</option><option value="charged">ゲージ準備済み</option><option value="reward">報酬直前（3列目で撃破）</option><option value="speed-pulse">中ボス：5手番目の固定攻撃</option><option value="mother-wait">大ボス：5手番目の待機</option><option value="mother-double">大ボス：6手番目の2回投入</option><option value="mother-critical">大ボス：HP20%から新ループ</option></select></label><label>乱数シード<input id="seed" type="number" min="0" max="4294967295" step="1" value="1"></label><label><input id="reduce" type="checkbox"> 演出を短くする</label><button id="restart">この設定で再開始</button><p id="error" role="alert"></p></section><details><summary>今回のルール・試作値</summary><div id="rules"></div></details><details><summary>戦闘ログ</summary><ol id="logs"></ol></details></dialog><dialog id="reward" aria-label="撃破報酬"><h2 id="reward-title"></h2><p id="reward-note"></p><div id="reward-choices"></div><div id="replacement"></div><button id="skip-reward">今回は取らずに次へ</button></dialog><dialog id="save-dialog" aria-label="セーブと再開"><h2 id="save-title"></h2><p id="save-message"></p><div id="save-actions"></div></dialog>`;
++if(SAVE_PREVIEW){document.title='Game1 · セーブ検証版';root.querySelector('.game')!.setAttribute('aria-label','Game1 セーブ検証版');root.querySelector('.meta>span:last-child')!.insertAdjacentText('afterbegin','セーブ検証版 · ');root.querySelector('#save-description')!.insertAdjacentHTML('afterend','<section class="skill-card"><h3>保存の検証（このページだけ）</h3><label><input id="save-fail-once" type="checkbox"> 次の保存を1回失敗させる</label><p id="save-lifecycle">復帰方式を確認中</p></section>');}
+ const el = <T extends HTMLElement = HTMLElement>(id:string)=>document.getElementById(id) as T;
+ const escape = (s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+ let controller:BattleController;
+@@ -26,6 +32,7 @@ let replacement:RewardId|null=null;
+ let offerKey='';
+ let last='';
+ let highlights:readonly string[]=[];
++let highlightTone:'damage'|'heal'|'cost'='damage';
+ const history:string[]=[];
+ const details=el<HTMLDialogElement>('details'), reward=el<HTMLDialogElement>('reward');
+ const button=(label:string,attrs:string='',disabled=false)=>`<button ${attrs} ${disabled?'disabled':''}>${label}</button>`;
+@@ -49,7 +56,7 @@ function renderBoard(s:BattleState):void{
+  for(let row=0;row<s.config.board.height;row++)for(let col=0;col<s.config.board.width;col++){
+   const box=s.boxes.find(b=>b.row===row&&b.col===col),terrain=s.config.board.terrain.some(c=>c.row===row&&c.col===col),invalid=s.config.board.invalidCells.some(c=>c.row===row&&c.col===col);
+   const ghost=landing?.row===row&&landing.col===col;const own=box?.owner;
+-  const cls=['cell',own??'',terrain?'terrain':'',invalid?'invalid':'',ghost?'ghost':'',selected?.kind==='row'&&selected.row===row?'row-target':'',box&&highlights.includes(box.id)?'hit':''].join(' ');
++  const cls=['cell',own??'',terrain?'terrain':'',invalid?'invalid':'',ghost?'ghost':'',selected?.kind==='row'&&selected.row===row?'row-target':'',box&&highlights.includes(box.id)?`hit hit-${highlightTone}`:''].join(' ');
+   cells+=`<button class="${cls}" data-cell-row="${row}" data-cell-col="${col}" aria-label="${row+1}行${col+1}列 ${own==='player'?'自箱':own==='enemy'?'敵箱':own==='neutral'?'中立箱':terrain?'地形':'空き'}" ${!can||invalid||terrain?'disabled':''}>${own==='player'?'P':own==='enemy'?'E':own==='neutral'?'N':ghost?'P':terrain?'▪':''}${target&&col===0?`<small>${row+1}</small>`:''}</button>`;
+  }
+  el('board').innerHTML=cells;fitBoard();
+@@ -85,6 +92,7 @@ function intentText(s:BattleState):string{
+ }
+ function render(s:BattleState,resolving:boolean,run:BattleRunState|null):void{
+  displayed=s;locked=resolving;currentRun=run;
++ if(resolving&&!controller?.persistenceBlocked)el('save-status').textContent='保存待ち';
+  const portrait=s.transformation?transformedPortraits[s.config.characterId!]:playerPortraits[s.config.characterId!];const enemy=enemyPortraits[s.config.enemyId!];
+  for(const [id,src,alt] of [['player-image',portrait.src,portrait.alt],['enemy-image',enemy.src,enemy.alt]]){const img=el<HTMLImageElement>(id!);img.src=src!;img.alt=alt!;}
+  el('player-name').textContent=playerPortraits[s.config.characterId!].label;el('enemy-name').textContent=enemy.label;
+@@ -92,7 +100,7 @@ function render(s:BattleState,resolving:boolean,run:BattleRunState|null):void{
+  const gauge=gaugeDefinition(s.config.characterId,tuningOf(s.config))!;el('gauge-text').textContent=`変化 ${s.gauge}/${gauge.cost}`;el('gauge-fill').style.width=`${Math.min(1,s.gauge/gauge.cost)*100}%`;
+  el('intent').textContent=intentText(s);el('form').textContent=formText(s);el('stage').textContent=`STAGE ${run?.stage??1}`;el('turn').textContent=`${s.turn}手目`;
+  el('latest').textContent=last;renderBoard(s);renderActions(s);renderReward(s,run);
+- const end=el('end');end.hidden=!s.result||run?.status==='reward'||run?.status==='transitioning';if(!end.hidden)end.innerHTML=`<h2>${s.result!.winner==='enemy'?'ラン終了':'勝利'}</h2><p>${run?.defeatedCount??0}体を撃破</p>${button('同じ設定で再開始','data-restart="true"')}${button('設定を開く','data-details="true"')}`;
++ const end=el<HTMLDialogElement>('end');const ended=!!s.result&&run?.status!=='reward'&&run?.status!=='transitioning';if(!ended){if(end.open)end.close();}else{end.innerHTML=runResultHtml(s,run,controller.runOrigin)+`<div class="result-actions">${button('新しいラン（同じ設定）','data-restart="true"',locked)}${button('設定を開く','data-details="true"',locked)}</div>`;if(!locked&&!end.open)end.showModal();}
+ }
+ function renderReward(s:BattleState,run:BattleRunState|null):void{
+  if(run?.status!=='reward'||!run.offer||!s.build){if(reward.open)reward.close();offerKey='';replacement=null;return;}
+@@ -110,46 +118,96 @@ function renderReward(s:BattleState,run:BattleRunState|null):void{
+ function openDetails():void{
+  const s=displayed;const tuning=tuningOf(s.config);const build=s.build!;const enemy=getEnemyDefinition(s.config.enemyId!,tuning);const speed=getEnemyDefinition('speed-core',tuning),mother=getEnemyDefinition('mother-core',tuning),progress=tuning.progression;
+  el('details-body').innerHTML=`<p>適用中：シード ${s.config.seed} · ${s.config.strategy?.transformation==='manual-charge'?'手動変化':'旧自動変化'}</p><p>敵：${enemy.label}・基礎HP${enemy.maxHp} / 今回の最大HP${s.hp.enemy.max}<br>敵火力 ${s.config.combatants.enemy.attacks[3]}/${s.config.combatants.enemy.attacks[4]}/${s.config.combatants.enemy.attacks[5]} · 敵自身${s.enemyTurnCount}手番完了</p><p>基本攻撃 3連 ${playerPower(s,3)} / 4連 ${playerPower(s,4)} / 5以上 ${playerPower(s,5)}</p><p>${formText(s)}${s.transformation?.character==='blue'?'：回復予定量と同じダメージを敵へ与える':''}</p>${[build.fixed,...build.slots].map((skill,i)=>`<section class="skill-card"><strong>${i===0?'固定':`自由${i}`}：${skill?escape(skillName(skill.id,skill.rank)):'空き'}</strong>${skill?`<p>${escape(skillDescription(skill.id,skill.rank,tuning))}</p>`:''}${i>0&&instantSlots(s).includes(i-1)?button('使用を確認',`data-instant="${i-1}"`,!available()):''}</section>`).join('')}`;
+- el('rules').innerHTML=`<p>ヘルスは固有通常スキルです。初期所持の青の子だけ、報酬でヘルス＋へ強化できます。赤の子には出ません。回復15/20と発動条件は従来どおりです。<a href="/docs/game1_content_catalog_next.html">現在のスキル一覧・回復の設計方針</a></p><p>50ステージで1周。25・40にスピードコア、50にマザーコア。50を倒しても続行します。2周目以降は同じ位置の1周目HPへ周回ごと倍率＋${progress.hpMultiplierStep}、リンク火力＋${progress.attackPerLoop}、固定ダメージ＋${progress.fixedDamagePerLoop}。</p><p>スピードコア：基礎HP${speed.maxHp}、火力${speed.attacks[3]}/${speed.attacks[4]}/${speed.attacks[5]}。自身${tuning.bosses.speedPulseEvery}手番ごと固定${tuning.bosses.speedPulseDamage}ダメージの後に通常投入。それ以外は通常投入。1周目の実遭遇HPは25＝${speed.maxHp+24*progress.hpPerStage}、40＝${speed.maxHp+39*progress.hpPerStage}。</p><p>マザーコア：基礎HP${mother.maxHp}、火力${mother.attacks[3]}/${mother.attacks[4]}/${mother.attacks[5]}。1周目50の実遭遇HPは${mother.maxHp+49*progress.hpPerStage}。通常は投入4手→待機1手→2回投入2手の7手ループ。HP${tuning.bosses.motherThresholdPercent}%以下は次の敵手番から固定${tuning.bosses.motherPulseDamage}＋投入→投入の2手ループです。</p><p>報酬：回復${tuning.rewards.immediateHeal}、最大HPと現在HP＋${tuning.rewards.maxHp}、3リンク＋${tuning.rewards.threePower}、4リンク＋${tuning.rewards.fourPower}、5以上＋${tuning.rewards.fivePower}</p><p>手動方式：リンク3/4/5/6以上の各軸でゲージ2/4/6/30。6以上は固定30。通常自手番の終了＋1、実HP損失＋1/HP。旧自動方式は各軸の箱数×4、6リンクと必要ゲージで攻撃後に発動。</p><p>変化：青80 / 赤100。自分の行動選択中に手番消費なし。赤は次の自分の手番から2回追加投入。青はこの戦闘中。回復報酬は戦闘外で、青の反射は発生しません。</p>`;
++ el('rules').innerHTML=`<p>ヘルスは固有通常スキルです。初期所持の青の子だけ、報酬でヘルス＋へ強化できます。赤の子には出ません。回復15/20と発動条件は従来どおりです。<a href="/docs/game1_content_catalog_next.html">現在のスキル一覧・回復の設計方針</a></p><p>標準ランは50階で終了。25・40にスピードコア、50にマザーコア。50階を倒すと最終報酬は出さず、クリア結果を保存します。旧エンドレスの進行関数は比較用に保持しています。</p><p>スピードコア：基礎HP${speed.maxHp}、火力${speed.attacks[3]}/${speed.attacks[4]}/${speed.attacks[5]}。自身${tuning.bosses.speedPulseEvery}手番ごと固定${tuning.bosses.speedPulseDamage}ダメージの後に通常投入。それ以外は通常投入。1周目の実遭遇HPは25＝${speed.maxHp+24*progress.hpPerStage}、40＝${speed.maxHp+39*progress.hpPerStage}。</p><p>マザーコア：基礎HP${mother.maxHp}、火力${mother.attacks[3]}/${mother.attacks[4]}/${mother.attacks[5]}。1周目50の実遭遇HPは${mother.maxHp+49*progress.hpPerStage}。通常は投入4手→待機1手→2回投入2手の7手ループ。HP${tuning.bosses.motherThresholdPercent}%以下は次の敵手番から固定${tuning.bosses.motherPulseDamage}＋投入→投入の2手ループです。</p><p>報酬：回復${tuning.rewards.immediateHeal}、最大HPと現在HP＋${tuning.rewards.maxHp}、3リンク＋${tuning.rewards.threePower}、4リンク＋${tuning.rewards.fourPower}、5以上＋${tuning.rewards.fivePower}</p><p>手動方式：リンク3/4/5/6以上の各軸でゲージ2/4/6/30。6以上は固定30。通常自手番の終了＋1、実HP損失＋1/HP。旧自動方式は各軸の箱数×4、6リンクと必要ゲージで攻撃後に発動。</p><p>変化：青80 / 赤100。自分の行動選択中に手番消費なし。赤は次の自分の手番から2回追加投入。青はこの戦闘中。回復報酬は戦闘外で、青の反射は発生しません。</p>`;
+  el('logs').innerHTML=history.slice(-160).map(line=>`<li>${escape(line)}</li>`).join('');details.showModal();
+ }
+ function describe(event:BattleEvent):string|null{
+  if(event.type==='enemy-wait')return '敵は待機';
+  if(event.type==='enemy-phase')return 'マザーコア：低HPの行動へ移行';
+  if(event.type==='drop')return `${event.actor==='player'?'自分':'敵'}：${event.landing.col+1}列${event.landing.row+1}行へ投入`;
+- if(event.type==='attack'||event.type==='damage')return `${event.target==='enemy'?'敵':'自分'}HP −${event.damage}（${event.hpBefore}→${event.hpAfter}）`;
+- if(event.type==='heal')return `${event.target==='player'?'自分':'敵'}HP ＋${event.amount}（${event.hpBefore}→${event.hpAfter}）`;
++ if(event.type==='attack'||event.type==='damage'){const f=feedbackForEvent(event,[]);return `${f?.detail}：${event.damage}ダメージ（HP ${event.hpBefore}→${event.hpAfter}）`;}
++ if(event.type==='heal'){const f=feedbackForEvent(event,[]);return `${f?.detail}：実回復${event.amount}（HP ${event.hpBefore}→${event.hpAfter}）`;}
+  if(event.type==='transformation')return `${event.character==='blue'?'青':'赤'}に変化・ゲージ −${event.cost}`;
+  if(event.type==='transformation-ended')return '赤の変化が終了';
+  if(event.type==='turn-start')return event.skipped?'追加投入なし・残り回数を消費':`赤の追加投入・残り${event.remainingStarts}回`;
+  if(event.type==='instant-kill')return '敵の投入不能：自分HP 0';
++ if(event.type==='link-growth')return `成長する火：3リンク火力＋${event.amount}（この戦闘＋${event.after}）`;
++ if(event.type==='boxes-converted')return `敵箱${event.boxIds.length}個を自箱へ変換（受動リンクは発動しない）`;
++ if(event.type==='row-cleared')return `${event.row+1}行目を消去：自箱${event.playerCount}・敵箱${event.enemyCount}・中立${event.neutralCount}`;
++ if(event.type==='board-skill')return event.skillId==='ember'?'ほむらの火種を使用':'痛みはお互いにを使用';
++ if(event.type==='instant-skill')return `${skillName(event.skillId,event.rank)}を使用（1手・残り0回）`;
+  return null;
+ }
++function showFeedback(feedback:BattleFeedback,state:BattleState,reduced:boolean):HTMLElement{
++ const area=root.querySelector<HTMLElement>('.board-area')!,layer=el('feedback-layer');const areaRect=area.getBoundingClientRect();
++ const bubble=document.createElement('div');bubble.className=`floating-feedback ${feedback.tone}`;const strong=document.createElement('strong');strong.textContent=feedback.text;const small=document.createElement('small');small.textContent=feedback.detail;bubble.append(strong,small);layer.replaceChildren(bubble);
++ const cells=state.boxes.filter(box=>feedback.boxIds.includes(box.id)).flatMap(box=>{const cell=el('board').querySelector<HTMLElement>(`[data-cell-row="${box.row}"][data-cell-col="${box.col}"]`);if(!cell)return [];const r=cell.getBoundingClientRect();return [{left:r.left-areaRect.left,right:r.right-areaRect.left,top:r.top-areaRect.top,bottom:r.bottom-areaRect.top}];});
++ const p=feedbackPosition({width:areaRect.width,height:areaRect.height},cells,{width:bubble.offsetWidth,height:bubble.offsetHeight},feedback.anchor);bubble.style.left=`${p.x}px`;bubble.style.top=`${p.y}px`;bubble.style.setProperty('--rise',`${-p.rise}px`);bubble.style.setProperty('--hold',`${feedbackTiming(reduced).hold}ms`);if(!reduced)bubble.classList.add('moving');return bubble;
++}
+ function pause(ms:number,signal:AbortSignal):Promise<void>{if(signal.aborted)return Promise.resolve();return new Promise(resolve=>{const finish=()=>{clearTimeout(timer);signal.removeEventListener('abort',finish);resolve();};const timer=setTimeout(finish,ms);signal.addEventListener('abort',finish,{once:true});});}
+ const initialSetup=prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:1,fixture:'normal',route:'boss-loop'});
+-controller=new BattleController(initialSetup.config,{
++const view:BattleView={
+  render,
+  async animate(resolution,before,after,signal){
+-  let shown={...before};let activeLinks=resolution.links;const short=el<HTMLInputElement>('reduce').checked;
++  let shown={...before};let activeLinks=resolution.links;const short=el<HTMLInputElement>('reduce').checked||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+   for(const event of resolution.events){if(signal.aborted)return;
+    const label=describe(event);if(label){last=label;history.push(`${before.turn}手目 ${label}`);}
+    if(event.type==='drop'){shown={...shown,boxes:[...shown.boxes,event.box]};activeLinks=resolution.activeOrigins?.find(origin=>origin.originBoxId===event.box.id)?.links??resolution.links;}
++   const feedback=feedbackForEvent(event,activeLinks),timing=feedbackTiming(short);
++   highlights=feedback?.boxIds??[];highlightTone=feedback?.tone??'damage';
++   if(feedback){render(shown,true,controller.runSnapshot);await pause(timing.lead,signal);if(signal.aborted)return;}
+    if(event.type==='attack'||event.type==='damage'||event.type==='heal'||event.type==='instant-kill')shown={...shown,hp:{...shown.hp,[event.target]:{...shown.hp[event.target],current:event.hpAfter}}};
+    if(event.type==='gauge')shown={...shown,gauge:event.after};
++   if(event.type==='link-growth')shown={...shown,link3Growth:event.after};
++   if(event.type==='instant-skill')shown={...shown,build:after.build};
+    if(event.type==='transformation')shown={...shown,gauge:event.after,transformation:after.transformation,playerTurnStarted:after.playerTurnStarted};
+    if(event.type==='transformation-ended')shown={...shown,transformation:null};
+    if(event.type==='turn-start')shown={...shown,transformation:after.transformation,playerTurnStarted:true};
+-   if(event.type==='row-cleared'||event.type==='boxes-converted')shown={...shown,boxes:after.boxes,hp:after.hp};
+-   highlights=event.type==='attack'?activeLinks.find(l=>l.axis===event.axis)?.boxIds??[]:'shapeBoxIds'in event?event.shapeBoxIds??[]:[];
++   if(event.type==='row-cleared'||event.type==='boxes-converted')shown={...shown,boxes:after.boxes};
+    render(shown,true,controller.runSnapshot);
+-   if(label)await pause(short?15:event.type==='transformation'?450:180,signal);
++   if(feedback){const bubble=showFeedback(feedback,shown,short);await pause(timing.hold,signal);bubble.remove();if(signal.aborted)return;highlights=[];}
++   else if(event.type==='drop'||event.type==='transformation'||event.type==='turn-start')await pause(short?15:event.type==='transformation'?450:180,signal);
+   }
+   if(signal.aborted)return;highlights=[];render(after,true,controller.runSnapshot);
+  },
+  async animateStageTransition(_before,after,run,signal){last=`STAGE ${run.stage} · 次の戦闘`;render(after,true,run);await pause(el<HTMLInputElement>('reduce').checked?15:280,signal);},
+- reset(){selected=null;highlights=[];history.length=0;last='';replacement=null;offerKey='';if(reward.open)reward.close();},
++ reset(){selected=null;highlights=[];el('feedback-layer').replaceChildren();const end=el<HTMLDialogElement>('end');if(end.open)end.close();history.length=0;last='';replacement=null;offerKey='';if(reward.open)reward.close();},
+  reportError(){last='表示を更新しました。確定した行動は保持されています';}
+-},initialSetup.options);
++};
++const ownership=new SaveOwnership();
++let save:LocalSave|undefined;
++let bootEpoch=0;
++const saveDialog=el<HTMLDialogElement>('save-dialog');
++function restoreSetupFields():void{const cp=controller.exportCheckpoint();el<HTMLSelectElement>('character').value=cp.initialConfig.characterId??'blue';el<HTMLSelectElement>('enemy').value=cp.options.run?.rotationStart??cp.initialConfig.enemyId??'marujiro';el<HTMLInputElement>('seed').value=String(cp.initialConfig.seed);el<HTMLInputElement>('start-stage').value=String(cp.options.run?.startStage??1);el<HTMLSelectElement>('route').value=cp.options.run?.route??'standard';el<HTMLSelectElement>('mode').value=cp.initialConfig.strategy?.transformation==='manual-charge'?'manual':'automatic';el<HTMLSelectElement>('fixture').value='normal';}
++function savePrompt(title:string,message:string,actions:string):void{el('save-title').textContent=title;el('save-message').textContent=message;el('save-actions').innerHTML=actions;if(!saveDialog.open)saveDialog.showModal();}
++function reportSaveError(error:unknown):void{el('save-status').textContent='保存停止';savePrompt('保存を確認してください',error instanceof Error?error.message:'自動保存できませんでした',button('保存を再試行','data-save="retry"')+button('保存された状態へ戻る','data-save="restore"'));}
++const persistence:PersistenceHooks={beforeAction(){if(!save)throw new Error('保存の準備ができていません');save.guard();},write(checkpoint){save!.write(checkpoint);el('save-status').textContent='保存済';},failed:reportSaveError};
++async function boot():Promise<void>{
++ const epoch=++bootEpoch;controller?.destroy();el('feedback-layer').replaceChildren();const result=el<HTMLDialogElement>('end');if(result.open)result.close();selected=null;replacement=null;offerKey='';highlights=[];last='';history.length=0;if(details.open)details.close();if(reward.open)reward.close();
++ savePrompt('セーブを確認中','このブラウザの保存を確認しています','');
++ try{
++  if(!await ownership.acquire(navigator.locks)){savePrompt('別のタブでプレイ中','同時の上書きを防ぐため、このタブは開始していません。ほかのプレイ中のタブを閉じてから再確認してください。',button('再確認','data-save="read"'));return;}
++  if(epoch!==bootEpoch)return;
++  save=new LocalSave({getItem:key=>window.localStorage.getItem(key),setItem(key,value){const failure=el<HTMLInputElement>('save-fail-once');if(SAVE_PREVIEW&&failure?.checked){failure.checked=false;throw new DOMException('Preview quota failure','QuotaExceededError');}window.localStorage.setItem(key,value);}},()=>ownership.owned);
++  const saved=save.read();
++  if(saved){controller=BattleController.restore(saved.checkpoint,view,persistence);restoreSetupFields();render(controller.snapshot,true,controller.runSnapshot);const cp=saved.checkpoint;savePrompt('続きから遊べます',`${cp.state.config.characterId==='red'?'赤の子':'青の子'} · STAGE ${cp.run?.stage??1} · HP ${Math.max(0,cp.state.hp.player.current)} / ${cp.state.hp.player.max}。候補を含めて保存時の状態から再開します。`,button('続きから','data-save="continue" class="primary"')+button('新しいラン','data-save="new"'));}
++  else{controller=new BattleController(initialSetup.config,view,initialSetup.options,persistence);await controller.start();if(epoch===bootEpoch&&!controller.persistenceBlocked)saveDialog.close();}
++ }catch(error){if(epoch!==bootEpoch)return;savePrompt('セーブを読み込めません',error instanceof Error?error.message:'保存を確認できません。元の内容は保持しています。',button('再確認','data-save="read"')+(ownership.owned&&save?.hasExisting?button('新しいラン','data-save="new"'):''));}
++}
++async function newRun(setup=initialSetup):Promise<void>{
++ if(!save||!ownership.owned)return;
++ if(save.hasExisting&&!window.confirm('現在のセーブを置き換えて、新しいランを始めますか？'))return;
++ try{save.guard();const next=new BattleController(setup.config,view,setup.options,persistence);controller?.destroy();controller=next;selected=null;view.reset?.();await controller.start();if(!controller.persistenceBlocked)saveDialog.close();}
++ catch(error){reportSaveError(error);}
++}
++saveDialog.addEventListener('cancel',event=>event.preventDefault());
++saveDialog.addEventListener('click',event=>{const action=(event.target as Element).closest<HTMLButtonElement>('[data-save]')?.dataset.save;if(!action)return;
++ if(action==='read'){void boot();return;}
++ if(action==='new'){void newRun();return;}
++ if(action==='continue'){saveDialog.close();void controller.start();return;}
++ if(action==='retry'){if(controller?.retrySave()){saveDialog.close();void controller.start();}return;}
++ if(action==='restore'&&window.confirm('未保存の進行を戻し、最後の保存を読み直しますか？'))void boot();
++});
+ async function commit():Promise<void>{
+  if(!selected||!available())return;const choice=selected;selected=null;
+  if(choice.kind==='drop')await controller.drop(choice.id);
+@@ -161,7 +219,7 @@ root.addEventListener('click',event=>{
+  const b=(event.target as Element).closest<HTMLButtonElement>('button');if(!b||b.disabled)return;
+  if(b.dataset.close){el<HTMLDialogElement>(b.dataset.close).close();return;}
+  if(b.dataset.details){openDetails();return;}
+- if(b.dataset.restart){void controller.restart();return;}
++ if(b.dataset.restart){void newRun({config:controller.exportCheckpoint().initialConfig,options:controller.exportCheckpoint().options});return;}
+  if(b.dataset.drop&&available()){if(selected?.kind==='drop'&&selected.id===b.dataset.drop)void commit();else{selected={kind:'drop',id:b.dataset.drop};render(controller.snapshot,false,controller.runSnapshot);}return;}
+  if(b.dataset.cellRow!==undefined&&available()){
+   if(selected?.kind==='row'){selected={kind:'row',row:Number(b.dataset.cellRow)};render(controller.snapshot,false,controller.runSnapshot);}
+@@ -179,14 +237,17 @@ root.addEventListener('click',event=>{
+  if(b.dataset.replaceCancel){replacement=null;renderReward(controller.snapshot,controller.runSnapshot);return;}
+ });
+ reward.addEventListener('cancel',event=>event.preventDefault());
++el<HTMLDialogElement>('end').addEventListener('cancel',event=>event.preventDefault());
+ el('skip-reward').addEventListener('click',()=>{const offer=controller.runSnapshot?.offer;if(offer)void controller.chooseReward(offer.id,null);});
+ el('restart').addEventListener('click',()=>{
+  const rawSeed=el<HTMLInputElement>('seed').value.trim();const seed=Number(rawSeed);if(!rawSeed||!Number.isInteger(seed)||seed<0||seed>4294967295){el('error').textContent='シードは0〜4294967295の整数にしてください';return;}
+  el('error').textContent='';
+- try {const setup=prepareTrialSetup({fixture:el<HTMLSelectElement>('fixture').value as TrialSetupFixture,character:el<HTMLSelectElement>('character').value as CharacterId,firstEnemy:el<HTMLSelectElement>('enemy').value as EnemyId,seed,mode:el<HTMLSelectElement>('mode').value as 'manual'|'automatic',stage:Number(el<HTMLInputElement>('start-stage').value),route:el<HTMLSelectElement>('route').value as 'standard'|'boss-loop'});details.close();void controller.restart(setup.config,setup.options);}
++ try {const setup=prepareTrialSetup({fixture:el<HTMLSelectElement>('fixture').value as TrialSetupFixture,character:el<HTMLSelectElement>('character').value as CharacterId,firstEnemy:el<HTMLSelectElement>('enemy').value as EnemyId,seed,mode:el<HTMLSelectElement>('mode').value as 'manual'|'automatic',stage:Number(el<HTMLInputElement>('start-stage').value),route:el<HTMLSelectElement>('route').value as 'standard'|'boss-loop'});details.close();void newRun(setup);}
+  catch(error){el('error').textContent=error instanceof Error?error.message:'設定を確認してください';}
+ });
+ window.addEventListener('keydown',event=>{if(event.key==='Escape'&&selected&&!details.open&&!reward.open){selected=null;render(controller.snapshot,locked,controller.runSnapshot);}});
+ new ResizeObserver(fitBoard).observe(root.querySelector('.board-area')!);
+-window.addEventListener('pagehide',()=>controller.destroy(),{once:true});
+-void controller.start();
++window.addEventListener('pagehide',()=>{bootEpoch++;controller?.destroy();ownership.release();});
++window.addEventListener('pageshow',event=>{if(SAVE_PREVIEW)el('save-lifecycle').textContent=event.persisted?'BFCacheから復帰':'新しくページを読み込み';if(event.persisted)void boot();});
++window.addEventListener('storage',event=>{if(event.key===SAVE_KEY&&ownership.owned){try{save?.guard();}catch(error){controller?.destroy();reportSaveError(error);}}});
++void boot();
+diff --git a/src/next/style.css b/src/next/style.css
+index eb0986a..3a20e97 100644
+--- a/src/next/style.css
++++ b/src/next/style.css
+@@ -2,7 +2,12 @@
+ *{box-sizing:border-box}body{margin:0;min-width:320px}button,input,select{font:inherit}button{color:inherit;background:#21313f;border:1px solid #465966;border-radius:7px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}button:disabled{opacity:.42;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:1px}h1,h2,h3,p{margin:0}a{color:var(--cyan)}[hidden]{display:none!important}
+ /* 日本語: 画面の高さから盤面へ残りを割当。内容の最小高で押し出さない。
+    English: Give remaining viewport height to the board; zero minima prevent overflow. */
+-.game{height:100vh;height:100svh;max-width:920px;margin:auto;display:grid;grid-template-rows:76px 28px minmax(0,1fr)92px;gap:6px;padding:8px;padding-top:max(8px,env(safe-area-inset-top));padding-bottom:max(8px,env(safe-area-inset-bottom));overflow:hidden}.hud{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;border:1px solid #394750;border-radius:9px;background:#17232e;padding:5px 8px;min-width:0}.hud section{display:flex;align-items:center;gap:8px;min-width:0}.hud section>div{flex:1;min-width:0}.hud img{width:40px;height:42px;object-fit:contain}.hud span{font-size:13px}.hud strong{display:block;font:700 19px/1.1 ui-monospace,monospace;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hud strong small{font:normal 12px ui-monospace,monospace;color:#bdcbd4}.enemy-hud{text-align:right}.enemy-hud strong{color:var(--cyan)}.hp-track,.gauge-track{height:4px;border-radius:4px;background:#080f16;overflow:hidden}.hp-track i,.gauge-track i{height:100%;display:block;background:var(--gold)}.enemy-hud .hp-track i{background:var(--cyan)}.gauge-row{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;min-width:0}.gauge-row span{font-size:12px;white-space:nowrap}.gauge-track{height:5px}.gauge-track i{background:#c69df6}.strip{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:12px;min-width:0}.strip strong{font-size:13px;font-weight:500;color:#d5b9fa;text-align:center}.strip>span{white-space:nowrap;color:#adbdc9}.board-area{min-height:0;min-width:0;display:flex;justify-content:center;align-items:center;position:relative}.board-wrap{width:max-content;max-width:100%;display:grid;gap:4px}.drops{display:grid;grid-template-columns:repeat(var(--cols),var(--cell));gap:2px;height:32px}.drops button{font-size:20px;padding:0;color:var(--gold)}.drops button[aria-pressed=true]{background:#6b4f25;border-color:var(--gold)}.board{display:grid;grid-template-columns:repeat(var(--cols),var(--cell));grid-template-rows:repeat(var(--rows),var(--cell));gap:2px}.cell{position:relative;width:var(--cell);height:var(--cell);border-radius:5px;background:#182630;border-color:#344551;font:bold calc(var(--cell)*.42) ui-monospace,monospace;padding:0}.cell:disabled{opacity:1}.cell.player{background:#6b4f25;color:#ffe0a8;border-color:#a17d48}.cell.enemy{background:#295a68;color:#b4edf1;border-color:#5d939d}.cell.neutral{background:#454c60;color:#d5d8e1}.cell.terrain{background:repeating-linear-gradient(45deg,#515964,#515964 4px,#36414d 4px,#36414d 8px)}.cell.invalid{opacity:.15}.cell.ghost{color:var(--gold);border:2px dashed var(--gold);background:#f4c77b25}.cell.row-target{outline:2px solid #ffcf76;outline-offset:-2px}.cell.hit{outline:3px solid #fff;outline-offset:-3px;filter:brightness(1.45)}.cell small{position:absolute;top:2px;left:3px;font:10px system-ui}.controls{display:grid;grid-template-rows:22px 44px 20px;gap:3px;min-width:0}.controls>p:first-child{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;color:#d9e4eb}.actions{display:flex;gap:5px;min-width:0}.actions button{flex:1;min-width:0;padding:2px 4px;font-size:14px;line-height:1.15}.actions .primary{background:var(--gold);border-color:var(--gold);color:#27241d;font-weight:700}.actions .transform-button:not(:disabled){background:#6a457f;border-color:#d1a5ef}.meta{display:flex;justify-content:space-between;gap:10px;color:#9caeba;font-size:11px;min-width:0;align-items:center}.meta>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.meta>span:last-child{white-space:nowrap;font-size:11px}.end{position:absolute;inset:20% 3%;background:#14222df5;border:1px solid #81919d;border-radius:12px;display:grid;place-content:center;gap:16px;text-align:center;padding:24px}.end button{min-height:44px;padding:8px 14px}
++.game{height:100vh;height:100svh;max-width:920px;margin:auto;display:grid;grid-template-rows:76px 28px minmax(0,1fr)92px;gap:6px;padding:8px;padding-top:max(8px,env(safe-area-inset-top));padding-bottom:max(8px,env(safe-area-inset-bottom));overflow:hidden}.hud{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;border:1px solid #394750;border-radius:9px;background:#17232e;padding:5px 8px;min-width:0}.hud section{display:flex;align-items:center;gap:8px;min-width:0}.hud section>div{flex:1;min-width:0}.hud img{width:40px;height:42px;object-fit:contain}.hud span{font-size:13px}.hud strong{display:block;font:700 19px/1.1 ui-monospace,monospace;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hud strong small{font:normal 12px ui-monospace,monospace;color:#bdcbd4}.enemy-hud{text-align:right}.enemy-hud strong{color:var(--cyan)}.hp-track,.gauge-track{height:4px;border-radius:4px;background:#080f16;overflow:hidden}.hp-track i,.gauge-track i{height:100%;display:block;background:var(--gold)}.enemy-hud .hp-track i{background:var(--cyan)}.gauge-row{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;min-width:0}.gauge-row span{font-size:12px;white-space:nowrap}.gauge-track{height:5px}.gauge-track i{background:#c69df6}.strip{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:12px;min-width:0}.strip strong{font-size:13px;font-weight:500;color:#d5b9fa;text-align:center}.strip>span{white-space:nowrap;color:#adbdc9}.board-area{min-height:0;min-width:0;display:flex;justify-content:center;align-items:center;position:relative}.board-wrap{width:max-content;max-width:100%;display:grid;gap:4px}.drops{display:grid;grid-template-columns:repeat(var(--cols),var(--cell));gap:2px;height:32px}.drops button{font-size:20px;padding:0;color:var(--gold)}.drops button[aria-pressed=true]{background:#6b4f25;border-color:var(--gold)}.board{display:grid;grid-template-columns:repeat(var(--cols),var(--cell));grid-template-rows:repeat(var(--rows),var(--cell));gap:2px}.cell{position:relative;width:var(--cell);height:var(--cell);border-radius:5px;background:#182630;border-color:#344551;font:bold calc(var(--cell)*.42) ui-monospace,monospace;padding:0}.cell:disabled{opacity:1}.cell.player{background:#6b4f25;color:#ffe0a8;border-color:#a17d48}.cell.enemy{background:#295a68;color:#b4edf1;border-color:#5d939d}.cell.neutral{background:#454c60;color:#d5d8e1}.cell.terrain{background:repeating-linear-gradient(45deg,#515964,#515964 4px,#36414d 4px,#36414d 8px)}.cell.invalid{opacity:.15}.cell.ghost{color:var(--gold);border:2px dashed var(--gold);background:#f4c77b25}.cell.row-target{outline:2px solid #ffcf76;outline-offset:-2px}.cell.hit{outline:3px solid #fff;outline-offset:-3px;filter:brightness(1.45)}.cell small{position:absolute;top:2px;left:3px;font:10px system-ui}.controls{display:grid;grid-template-rows:22px 44px 20px;gap:3px;min-width:0}.controls>p:first-child{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;color:#d9e4eb}.actions{display:flex;gap:5px;min-width:0}.actions button{flex:1;min-width:0;padding:2px 4px;font-size:14px;line-height:1.15}.actions .primary{background:var(--gold);border-color:var(--gold);color:#27241d;font-weight:700}.actions .transform-button:not(:disabled){background:#6a457f;border-color:#d1a5ef}.meta{display:flex;justify-content:space-between;gap:10px;color:#9caeba;font-size:11px;min-width:0;align-items:center}.meta>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.meta>span:last-child{white-space:nowrap;font-size:11px}
+ dialog{color:#e8edf0;background:#14212c;border:1px solid #647783;border-radius:12px;width:min(520px,calc(100vw - 20px));max-height:calc(100svh - 24px);padding:18px;overflow:auto;font-size:16px;line-height:1.55}dialog::backdrop{background:#02070cc9}.dialog-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}dialog h2{font-size:20px}dialog h3{font-size:16px}dialog button{min-height:44px;padding:8px 12px}dialog p{margin:8px 0;font-size:14px}.skill-card{border:1px solid #415461;border-radius:8px;padding:10px;margin:10px 0}.skill-card strong{font-size:15px}.settings{display:grid;gap:12px;margin:20px 0}.settings label{display:flex;gap:10px;align-items:center;font-size:14px}.settings label select,.settings label input[type=number]{flex:1;min-width:0;background:#0d1821;color:#eef5f8;border:1px solid #5a707d;padding:8px;border-radius:6px;min-height:42px}.settings input[type=checkbox]{width:20px;height:20px}details{margin:16px 0}summary{cursor:pointer}#logs{font:12px ui-monospace,monospace;padding-left:25px}#error{color:#ffbdb0}.reward-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;width:100%;margin:12px 0;padding:14px;background:#233441;border-color:#6f8592}.reward-card strong{font-size:18px;color:var(--gold)}.reward-card span{font-size:14px}.reward-card small{font-size:12px;color:#b2c4d0}#reward-note{color:#c5d4dd}#replacement{display:flex;flex-wrap:wrap;gap:8px}#replacement h3{width:100%}#replacement:empty{display:none}#skip-reward{display:block;margin-top:16px;background:transparent;color:#becdd7}
+ @media(min-width:700px){.game{grid-template-rows:90px 30px minmax(0,1fr)100px;padding:12px;gap:8px}.hud{padding:8px 16px}.hud img{width:56px;height:50px}.hud span{font-size:14px}.hud strong{font-size:24px}.gauge-row{gap:12px}.controls{grid-template-rows:26px 48px 20px}.actions{max-width:680px;width:100%;margin:0 auto}.actions button{font-size:16px}.strip strong{font-size:15px}.meta{font-size:12px}}
+ @media(max-height:520px){.game{grid-template-rows:68px 22px minmax(0,1fr)88px;gap:4px;padding:6px}.hud img{height:34px}.strip strong{font-size:12px}.controls{grid-template-rows:20px 44px 18px}.meta{font-size:10px}}
++
++#save-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}#save-actions button{min-height:44px}#save-status{color:#b9d9c5}
++
++#feedback-layer{position:absolute;inset:0;pointer-events:none;z-index:12;overflow:visible}.floating-feedback{position:absolute;transform:translate(-50%,-100%);max-width:min(90%,280px);width:max-content;min-width:90px;text-align:center;padding:5px 8px;border-radius:7px;background:#111925ed;border:1px solid #803845;color:#ff777b;box-shadow:0 2px 10px #0008;line-height:1.2}.floating-feedback strong{display:block;font-size:clamp(22px,5vw,28px);font-weight:800;text-shadow:0 1px 3px #000}.floating-feedback small{display:block;color:#f1dfe4;font-size:11px;margin-top:3px;overflow-wrap:anywhere}.floating-feedback.heal{color:#8cf3ac;border-color:#3c8856;background:#0a2519ed}.floating-feedback.heal small{color:#d8f4e1}.floating-feedback.cost{border-style:dashed}.floating-feedback.moving{animation:feedback-rise var(--hold) ease-out both}.cell.hit-damage,.cell.hit-cost{outline-color:#ffdd88;background-image:linear-gradient(#ffdd8830,#ffdd8830)}.cell.hit-heal{outline-color:#8cf3ac;background-image:linear-gradient(#8cf3ac40,#8cf3ac40)}@keyframes feedback-rise{0%,75%{opacity:1}100%{opacity:0;transform:translate(-50%,-100%) translateY(var(--rise))}}
++dialog.end{width:min(490px,calc(100vw - 24px));max-height:calc(100svh - 24px);padding:18px;overflow:auto}dialog.end:not([open]){display:none}dialog.end[open]{display:grid;gap:8px}.end h2{color:var(--gold);font-size:26px}.end p{margin:0}.end h3{font-size:15px;margin-bottom:3px}.result-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:4px 0}.result-facts>div{background:#233541;border-radius:7px;padding:7px 10px}.result-facts dt{font-size:12px;color:#b4c6d2}.result-facts dd{margin:0;font:bold 19px ui-monospace,monospace;overflow-wrap:anywhere}.result-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.result-actions button{flex:1;min-height:44px;padding:7px;font-size:14px}
+diff --git a/src/next/ui/battleFeedback.ts b/src/next/ui/battleFeedback.ts
+new file mode 100644
+index 0000000..e268c94
+--- /dev/null
++++ b/src/next/ui/battleFeedback.ts
+@@ -0,0 +1,33 @@
++import { skillCatalog } from '../core/skillCatalog.ts';
++import type { BattleEvent, Link, Actor } from '../core/types.ts';
++export interface BattleFeedback {
++ readonly text:string;readonly detail:string;readonly tone:'damage'|'heal'|'cost';readonly boxIds:readonly string[];readonly anchor:Actor;
++}
++const axes={vertical:'縦',horizontal:'横','diagonal-down':'右下斜め','diagonal-up':'右上斜め'};
++function sourceName(source:string):string {
++ if(source==='blue-transformation')return '青の変化・名目回復の反射';
++ if(source==='ember')return 'ほむらの火種・自己コスト';
++ if(source==='pain-shared')return '列消去・双方同時の被害';
++ if(source==='boss-fixed')return 'ボスの固定攻撃';
++ if(source==='nigirin'||source==='enemy-pattern')return '敵の回復';
++ return Object.hasOwn(skillCatalog,source)?skillCatalog[source as keyof typeof skillCatalog].name:source;
++}
++/** 日本語: 確定イベントだけから作る表示。形やダメージを再判定しない。
++ * English: Read committed effects only; never rerun geometry, RNG, damage or healing. */
++export function feedbackForEvent(event:BattleEvent,links:readonly Link[]):BattleFeedback|null {
++ if(event.type==='attack')return {text:`${event.damage}ダメージ`,detail:`${event.actor==='player'?'自分':'敵'}の${axes[event.axis]}${event.linkCount}リンク${event.skillId?`・${sourceName(event.skillId)}`:''}`,tone:'damage',boxIds:links.find(link=>link.axis===event.axis)?.boxIds??[],anchor:event.actor};
++ if(event.type==='heal')return {text:`${event.amount}回復`,detail:`${event.target==='player'?'自分':'敵'}・${sourceName(event.source)}${event.amount!==event.requestedAmount?`（予定${event.requestedAmount}）`:''}`,tone:'heal',boxIds:event.shapeBoxIds??[],anchor:event.target};
++ if(event.type==='damage')return {text:event.source==='ember'?`${event.damage}HP消費`:`${event.damage}ダメージ`,detail:`${event.target==='player'?'自分へ':'敵へ'}・${sourceName(event.source)}`,tone:event.source==='ember'?'cost':'damage',boxIds:event.shapeBoxIds??[],anchor:event.target};
++ if(event.type==='instant-kill')return {text:`${event.damage}ダメージ`,detail:'自分へ・敵の投入不能による代替攻撃',tone:'damage',boxIds:[],anchor:'player'};
++ return null;
++}
++export interface FeedbackRect {readonly left:number;readonly right:number;readonly top:number;readonly bottom:number}
++/** Label coordinates are local to the board area, including the complete text dimensions. */
++export function feedbackPosition(area:{width:number;height:number},boxes:readonly FeedbackRect[],label:{width:number;height:number},anchor:Actor):{x:number;y:number;rise:number} {
++ const x=boxes.length?(Math.min(...boxes.map(b=>b.left))+Math.max(...boxes.map(b=>b.right)))/2:area.width*(anchor==='player'?.25:.75);
++ const y=boxes.length?Math.min(...boxes.map(b=>b.top))-8:label.height+6;
++ const half=Math.min(label.width/2,Math.max(0,area.width/2-6));
++ const point={x:Math.max(half+6,Math.min(area.width-half-6,x)),y:Math.max(label.height+6,Math.min(area.height-6,y))};
++ return {...point,rise:Math.min(10,Math.max(0,point.y-label.height-6))};
++}
++export function feedbackTiming(reduced:boolean):{lead:number;hold:number}{return reduced?{lead:0,hold:150}:{lead:100,hold:500};}
+diff --git a/src/next/ui/runResult.ts b/src/next/ui/runResult.ts
+new file mode 100644
+index 0000000..4c088ae
+--- /dev/null
++++ b/src/next/ui/runResult.ts
+@@ -0,0 +1,12 @@
++import { skillName } from '../core/skillCatalog.ts';
++import type { BattleState } from '../core/types.ts';
++import type { BattleRunState } from '../app/BattleRun.ts';
++const escape=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
++/** 日本語: 保存されている事実だけ。ステージ内手数をラン累計として扱わない。
++ * English: Render recorded facts only; stage-local counters are never run totals. */
++export function runResultHtml(state:BattleState,run:BattleRunState|null,origin:{seed:number;startStage:number}):string {
++ const clear=run?.status==='cleared'&&state.result?.winner==='player';
++ const title=clear?(origin.startStage===1&&run.stage===50?'50階クリア！':'検証ラン終了'):state.result?.winner==='player'?'勝利':'ラン終了';
++ const build=state.build;const skills=build?[build.fixed,...build.slots].map((s,i)=>`${i===0?'固定':`自由${i}`}：${s?skillName(s.id,s.rank):'空き'}`):[];
++ return `<h2>${title}</h2><p>${clear?'このランはここで完了です。':state.result?.winner==='player'?'敵を撃破しました。':state.result?.reason==='enemy-blocked'?'敵の投入先がなくなり、代替攻撃で敗北しました。':'HPが0になり、このランは終了しました。'}</p><dl class="result-facts"><div><dt>到達階</dt><dd>${run?.stage??1}</dd></div><div><dt>撃破した敵</dt><dd>${run?.defeatedCount??0}体</dd></div><div><dt>最終HP</dt><dd>${Math.max(0,state.hp.player.current)} / ${state.hp.player.max}</dd></div><div><dt>開始seed</dt><dd>${origin.seed}</dd></div></dl>${origin.startStage>1?`<p>検証開始階：${origin.startStage}（1階からの通しプレイではありません）</p>`:''}<section><h3>最終ビルド</h3><p>${skills.map(escape).join('<br>')}</p>${build?`<p>永久火力：3連＋${build.power[3]} / 4連＋${build.power[4]} / 5以上＋${build.power[5]}</p>`:''}</section>`;
++}
+diff --git a/tests/next-autosave.test.ts b/tests/next-autosave.test.ts
+new file mode 100644
+index 0000000..6c042f1
+--- /dev/null
++++ b/tests/next-autosave.test.ts
+@@ -0,0 +1,141 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import { BattleController } from '../src/next/app/BattleController.ts';
++import type { BattleView } from '../src/next/app/BattleController.ts';
++import { decodeSave, encodeSave, validateCheckpoint, isCheckpointBoundary } from '../src/next/app/saveCheckpoint.ts';
++import type { RunCheckpoint } from '../src/next/app/saveCheckpoint.ts';
++import { LocalSave, SaveOwnership, saveNamespace } from '../src/next/app/localSave.ts';
++import { trialFixture, prepareTrialSetup, createTrialConfig } from '../src/next/config.ts';
++import { getDropOptions } from '../src/next/core/board.ts';
++const plain=<T>(v:T):T=>JSON.parse(JSON.stringify(v)) as T;
++const view:BattleView={render(){},async animate(){}};
++const opts={run:{mode:'endless' as const,rewards:true,rewardMode:'categories' as const}};
++class MemoryStorage {data:string|null=null;failRead=false;failWrite=false;getItem(){if(this.failRead)throw new Error('read');return this.data;}setItem(_key:string,v:string){if(this.failWrite)throw new Error('quota');this.data=v;}}
++function persistence(storage=new MemoryStorage()){const store=new LocalSave(storage,()=>true);store.read();const errors:unknown[]=[];const history:RunCheckpoint[]=[];const hooks={beforeAction:()=>store.guard(),write(cp:RunCheckpoint){store.write(cp);history.push(cp);},failed:(e:unknown)=>{errors.push(e);}};return {storage,store,hooks,errors,history};}
++async function rewardReady(){const p=persistence();const c=new BattleController(trialFixture('reward','blue','marujiro',1,'manual'),view,opts,p.hooks);await c.start();await c.drop('ceiling:2:0');return {c,...p};}
++
++test('checkpoint replay preserves the next combat/reward RNG, state and exact future offer identities',async()=>{
++ const setup=prepareTrialSetup({ending:'legacy-endless',character:'red',firstEnemy:'marujiro',seed:1,mode:'manual',stage:44,fixture:'normal',route:'boss-loop'});
++ const base={...setup.config,combatants:{...setup.config.combatants,player:{...setup.config.combatants.player,maxHp:1000,initialHp:1000}}};
++ const c=new BattleController(base,view,setup.options);await c.start();
++ for(let step=0;step<35&&!c.snapshot.result;step++){
++  const cp=decodeSave(encodeSave(c.exportCheckpoint(),step+1,1)).checkpoint;
++  const restored=BattleController.restore(cp,view);await restored.start();assert.deepEqual(plain(restored.snapshot),plain(c.snapshot));assert.deepEqual(restored.runSnapshot,c.runSnapshot);
++  const legal=getDropOptions(c.snapshot).filter(o=>o.available);const id=legal[step%legal.length]?.id;if(!id)break;
++  await c.drop(id);await restored.drop(id);assert.deepEqual(plain(restored.snapshot),plain(c.snapshot));assert.deepEqual(restored.runSnapshot,c.runSnapshot);assert.equal(restored.exportCheckpoint().rewardRng,c.exportCheckpoint().rewardRng);
++ }
++});
++test('category commitment restores exact candidates and locks reroll before revealing them',async()=>{
++ const {c,store}=await rewardReady();const id=c.runSnapshot!.offer!.id;await c.chooseCategory(id,'skills');const cp=store.latest!.checkpoint;
++ assert.equal(cp.run!.offer!.category,'skills');const restored=BattleController.restore(cp,view);await restored.start();
++ assert.deepEqual(restored.runSnapshot!.offer,c.runSnapshot!.offer);assert.equal(await restored.chooseCategory(id,'stats'),false);assert.equal(await restored.chooseReward(id,'health'),true);assert.equal(restored.snapshot.build!.fixed.rank,2);
++});
++test('checkpoint is not written mid-animation; whole automatic chain produces one stable state',async()=>{
++ const p=persistence();let release!:()=>void;let calls=0;
++ const c=new BattleController(createTrialConfig('red'),{render(){},animate:()=>++calls===1?new Promise<void>(r=>{release=r;}):Promise.resolve()},opts,p.hooks);
++ await c.start();const raw=p.storage.data;const action=c.drop('ceiling:0:0');assert.equal(c.isResolving,true);assert.throws(()=>c.exportCheckpoint());assert.equal(p.storage.data,raw);release();await action;
++ assert.equal(c.snapshot.actor,'player');assert.equal(c.snapshot.enemyTurnCount,1);assert.deepEqual(plain(p.store.latest!.checkpoint.state),plain(c.snapshot));assert.ok(isCheckpointBoundary(c.snapshot,c.runSnapshot));
++});
++test('reward transition interruption resumes the durable pre-effect intent once',async()=>{
++ const p=persistence();let release!:()=>void;const c=new BattleController(trialFixture('reward','blue','marujiro',1,'manual'),{...view,animateStageTransition:()=>new Promise<void>(r=>{release=r;})},opts,p.hooks);
++ await c.start();await c.drop('ceiling:2:0');const action=c.chooseCategory(c.runSnapshot!.offer!.id,'heal');
++ assert.equal(c.snapshot.hp.player.current,28);const cp=p.store.latest!.checkpoint;assert.equal(cp.state.hp.player.current,18);assert.equal(cp.pendingReward!.rewardId,'immediate-heal');
++ c.destroy();release();await action;assert.deepEqual(p.store.latest!.checkpoint,cp);
++ const resumed=BattleController.restore(cp,view,p.hooks);await resumed.start();assert.equal(resumed.snapshot.hp.player.current,28);assert.equal(resumed.runSnapshot!.stage,2);assert.equal(p.store.latest!.checkpoint.pendingReward,undefined);
++ await resumed.start();assert.equal(resumed.snapshot.hp.player.current,28);
++});
++test('failed final write retries the computed reward outcome without healing twice',async()=>{
++ const {c,store,hooks,storage,errors}=await rewardReady();const original=hooks.write;
++ hooks.write=(cp)=>{if(cp.run?.stage===2&&!cp.pendingReward)storage.failWrite=true;original(cp);};
++ await c.chooseCategory(c.runSnapshot!.offer!.id,'heal');assert.equal(c.persistenceBlocked,true);assert.equal(c.snapshot.hp.player.current,28);assert.equal(store.latest!.checkpoint.state.hp.player.current,18);assert.ok(errors.length);
++ storage.failWrite=false;hooks.write=original;assert.equal(c.retrySave(),true);assert.equal(store.latest!.checkpoint.state.hp.player.current,28);assert.equal(store.latest!.checkpoint.pendingReward,undefined);assert.equal(c.snapshot.hp.player.current,28);
++});
++test('retry after restored intent preflight failure cannot abandon the committed reward',async()=>{
++ const {c}=await rewardReady();await c.chooseCategory(c.runSnapshot!.offer!.id,'skills');const offer=c.runSnapshot!.offer!;const cp={...c.exportCheckpoint(),pendingReward:{offerId:offer.id,rewardId:'health' as const}};
++ const p=persistence();p.store.write(cp);p.storage.failRead=true;const resumed=BattleController.restore(cp,view,p.hooks);await resumed.start();assert.equal(resumed.persistenceBlocked,true);
++ p.storage.failRead=false;assert.equal(resumed.retrySave(),true);assert.equal(p.store.latest!.checkpoint.pendingReward!.rewardId,'health');assert.equal(await resumed.chooseReward(offer.id,null),false);
++ await resumed.start();assert.equal(resumed.snapshot.build!.fixed.rank,2);assert.equal(resumed.runSnapshot!.stage,2);assert.equal(p.store.latest!.checkpoint.pendingReward,undefined);
++});
++test('corrupt, incompatible and inconsistent runtime data fail without deleting the raw save',async()=>{
++ const {c}=await rewardReady();const cp=c.exportCheckpoint(),raw=encodeSave(cp,1,123);
++ for(const bad of ['{',raw.replace('next-1.2-clear50-intrinsic-health','future-v2'),raw.replace('"checksum":"','"checksum":"x')]){const storage=new MemoryStorage();storage.data=bad;const store=new LocalSave(storage,()=>true);assert.throws(()=>store.read());assert.equal(storage.data,bad);}
++ const bad=structuredClone(cp);(bad.state as unknown as {playerTurnStarted:unknown}).playerTurnStarted='yes';assert.throws(()=>validateCheckpoint(bad));
++ const mismatch=structuredClone(cp);(mismatch.initialConfig as unknown as {characterId:string}).characterId='red';assert.throws(()=>validateCheckpoint(mismatch));
++});
++test('external overwrite and missing ownership stop writes before changing saved bytes',async()=>{
++ const {c}=await rewardReady();const storage=new MemoryStorage();let owned=true;const save=new LocalSave(storage,()=>owned);save.read();save.write(c.exportCheckpoint());const first=storage.data;
++ storage.data='external';assert.throws(()=>save.write(c.exportCheckpoint()));assert.equal(storage.data,'external');storage.data=first;owned=false;assert.throws(()=>save.guard());assert.throws(()=>save.write(c.exportCheckpoint()));assert.equal(storage.data,first);
++});
++test('ownership refuses simultaneous tabs and handles release before delayed grant',async()=>{
++ let callback:((lock:Lock|null)=>Promise<unknown>)|undefined;let requests=0;
++ const locks={request(_name:string,_options:unknown,cb:(lock:Lock|null)=>Promise<unknown>){requests++;callback=cb;return new Promise<unknown>(resolve=>{queueMicrotask(()=>{void callback!({name:'x',mode:'exclusive'} as Lock).then(resolve);});});}} as unknown as Pick<LockManager,'request'>;
++ const owner=new SaveOwnership();const a=owner.acquire(locks),b=owner.acquire(locks);assert.strictEqual(a,b);owner.release();assert.equal(await a,false);assert.equal(await b,false);assert.equal(owner.owned,false);assert.equal(requests,1);
++ const denied={request:async(_n:string,_o:unknown,cb:(lock:Lock|null)=>Promise<unknown>)=>cb(null)} as unknown as Pick<LockManager,'request'>;assert.equal(await owner.acquire(denied),false);assert.equal(owner.owned,false);await assert.rejects(new SaveOwnership().acquire(undefined));
++});
++test('Red manual form and remaining starts survive checkpoint restore without a retroactive insertion',async()=>{
++ const c=new BattleController(trialFixture('charged','red','marujiro',1,'manual'),view,opts);await c.start();await c.transform();const restored=BattleController.restore(decodeSave(encodeSave(c.exportCheckpoint(),1)).checkpoint,view);await restored.start();assert.deepEqual(plain(restored.snapshot),plain(c.snapshot));assert.equal(restored.snapshot.boxes.length,0);
++ await c.drop('ceiling:0:0');await restored.drop('ceiling:0:0');assert.deepEqual(plain(restored.snapshot),plain(c.snapshot));assert.equal(restored.snapshot.transformation?.character==='red'&&restored.snapshot.transformation.remainingStarts,1);
++});
++test('Mother phase and clocks, negative terminal HP and collision-skipping box IDs roundtrip',async()=>{
++ const setup=prepareTrialSetup({ending:'legacy-endless',character:'red',firstEnemy:'marujiro',seed:1,mode:'manual',stage:100,fixture:'mother-critical',route:'boss-loop'});const c=new BattleController(setup.config,view,setup.options);await c.start();const cp=c.exportCheckpoint();assert.equal(cp.state.enemyPhase?.phase,'critical');assert.deepEqual(plain(BattleController.restore(decodeSave(encodeSave(cp,1)).checkpoint,view).snapshot),plain(c.snapshot));
++ const {c:win}=await rewardReady();assert.ok(win.snapshot.hp.enemy.current<0);assert.deepEqual(decodeSave(encodeSave(win.exportCheckpoint(),1)).checkpoint.state.hp,win.snapshot.hp);
++ const carried=structuredClone(cp);(carried.state as unknown as {nextBoxId:number}).nextBoxId=1;validateCheckpoint(carried);
++});
++test('49→50 and50→51 reward restores keep scaling, HP and counter reset',async()=>{
++ for(const stage of [49,50]){const setup=prepareTrialSetup({ending:'legacy-endless',character:'red',firstEnemy:'marujiro',seed:1,mode:'manual',stage,fixture:'reward',route:'boss-loop'});const c=new BattleController(setup.config,view,setup.options);await c.drop('ceiling:2:0');const r=BattleController.restore(c.exportCheckpoint(),view);await r.chooseCategory(r.runSnapshot!.offer!.id,'heal');await c.chooseCategory(c.runSnapshot!.offer!.id,'heal');assert.deepEqual(r.snapshot,c.snapshot);assert.deepEqual(r.runSnapshot,c.runSnapshot);assert.equal(r.runSnapshot!.stage,stage+1);assert.equal(r.snapshot.enemyTurnCount,0);}
++});
++
++test('verification-read failure reconciles the exact written category instead of replacing it',async()=>{
++ const p=persistence();const c=new BattleController(trialFixture('reward','blue','marujiro',1,'manual'),view,opts,p.hooks);await c.start();await c.drop('ceiling:2:0');
++ const ordinarySet=p.storage.setItem.bind(p.storage);let failOnce=true;
++ p.storage.setItem=(key,v)=>{ordinarySet(key,v);if(failOnce){failOnce=false;p.storage.failRead=true;}};
++ assert.equal(await c.chooseCategory(c.runSnapshot!.offer!.id,'skills'),false);assert.equal(c.persistenceBlocked,true);assert.equal(c.runSnapshot!.offer!.category,'pending');
++ const durable=decodeSave(p.storage.data!);assert.equal(durable.checkpoint.run!.offer!.category,'skills');
++ p.storage.failRead=false;assert.equal(c.retrySave(),true);assert.equal(c.runSnapshot!.offer!.category,'skills');assert.deepEqual(c.runSnapshot!.offer,durable.checkpoint.run!.offer);assert.equal(await c.chooseCategory(c.runSnapshot!.offer!.id,'stats'),false);
++});
++test('failure before a carried Red start offers restoration from the retained reward journal',async()=>{
++ const p=persistence();const base=trialFixture('reward','red','marujiro',1,'manual');
++ const c=new BattleController({...base,initialGauge:100},{...view,async animateStageTransition(){p.storage.failRead=true;}},opts,p.hooks);
++ await c.start();await c.transform();await c.drop('ceiling:2:0');await c.chooseCategory(c.runSnapshot!.offer!.id,'heal');
++ assert.equal(c.persistenceBlocked,true);assert.equal(isCheckpointBoundary(c.snapshot,c.runSnapshot),false);p.storage.failRead=false;assert.equal(c.retrySave(),false);assert.ok(String(p.errors.at(-1)).includes('保存された状態へ戻る'));
++ const journal=p.store.latest!.checkpoint;assert.equal(journal.pendingReward!.rewardId,'immediate-heal');const restored=BattleController.restore(journal,view,p.hooks);await restored.start();assert.equal(restored.snapshot.hp.player.current,28);assert.equal(restored.runSnapshot!.stage,2);assert.equal(restored.snapshot.transformation?.character==='red'&&restored.snapshot.transformation.remainingStarts,1);assert.equal(p.store.latest!.checkpoint.pendingReward,undefined);
++});
++
++import {generateCategoryOffer,rewardSeed} from '../src/next/app/rewards.ts';
++import {createPlayerBuild,createSkill} from '../src/next/core/playerBuild.ts';
++import type {RewardId,RewardCategory} from '../src/next/app/rewards.ts';
++test('reward intent replay matches maxHP, all power tiers, fixed upgrade, replacement and skip',async()=>{
++ const build={...createPlayerBuild('blue'),slots:[createSkill('charge'),createSkill('first-guard')] as const};
++ for(const id of ['max-health','three-polish','four-polish','five-polish','health','magic-bullet',null] as readonly (RewardId|null)[]){const category:RewardCategory=id&&['health','magic-bullet'].includes(id)?'skills':'stats';let seed=0;
++ while(id&&!generateCategoryOffer(build,rewardSeed(seed),'x',category).offer.choices.includes(id))seed++;
++ const c=new BattleController({...trialFixture('reward','blue','marujiro',seed,'manual'),initialBuild:build},view,opts);await c.drop('ceiling:2:0');const offerId=c.runSnapshot!.offer!.id;await c.chooseCategory(offerId,category);const replacement=id==='magic-bullet'?1:undefined;
++ const checkpoint={...c.exportCheckpoint(),pendingReward:{offerId,rewardId:id,...(replacement===undefined?{}:{replacement})}};const restored=BattleController.restore(decodeSave(encodeSave(checkpoint,1)).checkpoint,view);
++ await c.chooseReward(offerId,id,replacement);await restored.start();assert.deepEqual(plain(restored.snapshot),plain(c.snapshot));assert.deepEqual(restored.runSnapshot,c.runSnapshot);assert.equal(restored.exportCheckpoint().rewardRng,c.exportCheckpoint().rewardRng);
++ }
++});
++
++
++test('prototype member names cannot masquerade as saved skill IDs',async()=>{
++ const {c}=await rewardReady();
++ for(const id of ['constructor','__proto__','toString']){const cp=structuredClone(c.exportCheckpoint());(cp.state.build!.slots as unknown as unknown[])[0]={id,rank:1,uses:null};assert.throws(()=>encodeSave(cp,1));assert.throws(()=>BattleController.restore(cp,view));}
++});
++
++
++test('an oversized checkpoint is rejected before replacing the previous readable save',async()=>{
++ const {c}=await rewardReady();const p=persistence();p.store.write(c.exportCheckpoint());const before=p.storage.data;
++ const cp=structuredClone(c.exportCheckpoint());(cp.initialConfig as unknown as {description:string}).description='x'.repeat(2_000_000);
++ assert.throws(()=>p.store.write(cp));assert.equal(p.storage.data,before);assert.deepEqual(p.store.read()!.checkpoint,decodeSave(before!).checkpoint);
++});
++
++
++test('saved box allocator leaves enough safe-integer headroom for collision skipping',async()=>{
++ const {c}=await rewardReady();const cp=structuredClone(c.exportCheckpoint());
++ (cp.state as unknown as {nextBoxId:number}).nextBoxId=Number.MAX_SAFE_INTEGER;
++ assert.throws(()=>encodeSave(cp,1));assert.throws(()=>BattleController.restore(cp,view));
++ (cp.state as unknown as {nextBoxId:number}).nextBoxId=1;validateCheckpoint(cp);
++});
++
++
++test('preview storage and ownership keys cannot collide with the next-game namespace',()=>{
++ const preview=saveNamespace('/save-preview/'),game=saveNamespace('/next/');assert.notEqual(preview.key,game.key);assert.notEqual(preview.lock,game.lock);assert.equal(preview.preview,true);assert.deepEqual(saveNamespace('/save-preview'),preview);assert.equal(game.preview,false);
++});
+diff --git a/tests/next-bosses.test.ts b/tests/next-bosses.test.ts
+index bc5fed5..2614de5 100644
+--- a/tests/next-bosses.test.ts
++++ b/tests/next-bosses.test.ts
+@@ -28,12 +28,12 @@ test('first insertion KO completes its axis attacks but prevents the second inse
+ test('board filling after first nonlethal drop makes second planned drop a lethal fallback',()=>{const b=config('mother-core',5);const s=createBattle({...b,board:{width:1,height:1,gravity:'down',terrain:[],invalidCells:[]}});const r=enemy(s);assert.equal(r.resolution!.events.filter(e=>e.type==='drop').length,1);assert.equal(r.resolution!.events.filter(e=>e.type==='instant-kill').length,1);assert.equal(r.state.result?.reason,'enemy-blocked');assert.equal(r.state.enemyTurnCount,6);assert.equal(r.state.gauge,30);});
+ test('wait remains a wait on a full board with no lethal fallback',()=>{const b=config('mother-core',4);const s=createBattle({...b,board:{width:1,height:1,gravity:'down',terrain:[],invalidCells:[]},initialBoxes:[box(0)]});const r=enemy(s);assert.deepEqual(r.resolution!.events.map(e=>e.type),['enemy-wait']);assert.deepEqual(r.state.hp,s.hp);assert.equal(r.state.rngState,s.rngState);assert.equal(r.state.result,null);assert.equal(r.state.actor,'player');});
+ test('second loop fixed attack adds only its configured bonus',()=>{const b=config('speed-core',4);const r=enemy(createBattle({...b,enemyFixedDamageBonus:1}));assert.equal(r.state.hp.player.current,26);assert.equal(r.state.gauge,4);const m=config('mother-core');const s=createBattle({...m,enemyFixedDamageBonus:1,combatants:{...m.combatants,enemy:{...m.combatants.enemy,initialHp:30}}});assert.equal(enemy(s).state.hp.player.current,24);});
+-test('stage50 victory offers one category and continues to stage51 with carry and scaled stats',async()=>{const setup=prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:50,fixture:'reward',route:'boss-loop'});const {c}=controller(setup.config,50);await c.drop('ceiling:2:0');assert.equal(c.runSnapshot!.stage,50);assert.equal(c.runSnapshot!.status,'reward');assert.equal(c.runSnapshot!.defeatedCount,1);const id=c.runSnapshot!.offer!.id;await c.chooseCategory(id,'heal');assert.equal(c.runSnapshot!.stage,51);assert.equal(c.snapshot.config.enemyId,'marujiro');assert.equal(c.snapshot.hp.enemy.max,180);assert.deepEqual(c.snapshot.config.combatants.enemy.attacks,{3:4,4:6,5:8});assert.equal(c.snapshot.enemyTurnCount,0);assert.equal(c.snapshot.enemyPhase,undefined);assert.equal(c.snapshot.hp.player.current,28);assert.equal(await c.chooseCategory(id,'heal'),false);await c.restart();assert.equal(c.runSnapshot!.stage,50);assert.equal(c.snapshot.hp.enemy.max,640);assert.equal(c.snapshot.enemyTurnCount,0);});
+-test('transition24→25 uses boss stats once; pulse test seeds reset at the next encounter',async()=>{const setup=prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:7,mode:'manual',stage:24,fixture:'reward',route:'boss-loop'});const {c}=controller({...setup.config,initialEnemyTurnCount:4},24);await c.drop('ceiling:2:0');await c.chooseCategory(c.runSnapshot!.offer!.id,'heal');assert.equal(c.runSnapshot!.stage,25);assert.equal(c.snapshot.config.enemyId,'speed-core');assert.equal(c.snapshot.hp.enemy.max,290);assert.equal(c.snapshot.enemyTurnCount,0);assert.deepEqual(c.snapshot.config.combatants.enemy.attacks,{3:6,4:7,5:9});});
+-test('boss test setup uses committed stage/phase seeds and rejects invalid stage',()=>{const f=(fixture:'speed-pulse'|'mother-wait'|'mother-double'|'mother-critical',stage:number)=>prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:7,mode:'manual',stage,fixture,route:'boss-loop'});assert.deepEqual(stepTypes(getEnemyIntent(createBattle(f('speed-pulse',75).config))),['fixed-damage','drop']);assert.equal(f('speed-pulse',75).config.combatants.enemy.maxHp,870);assert.deepEqual(stepTypes(getEnemyIntent(createBattle(f('mother-wait',100).config))),['wait']);assert.deepEqual(stepTypes(getEnemyIntent(createBattle(f('mother-double',50).config))),['drop','drop']);assert.deepEqual(stepTypes(getEnemyIntent(createBattle(f('mother-critical',50).config))),['fixed-damage','drop']);assert.throws(()=>f('speed-pulse',0));});
++test('stage50 victory offers one category and continues to stage51 with carry and scaled stats',async()=>{const setup=prepareTrialSetup({ending:'legacy-endless',character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:50,fixture:'reward',route:'boss-loop'});const {c}=controller(setup.config,50);await c.drop('ceiling:2:0');assert.equal(c.runSnapshot!.stage,50);assert.equal(c.runSnapshot!.status,'reward');assert.equal(c.runSnapshot!.defeatedCount,1);const id=c.runSnapshot!.offer!.id;await c.chooseCategory(id,'heal');assert.equal(c.runSnapshot!.stage,51);assert.equal(c.snapshot.config.enemyId,'marujiro');assert.equal(c.snapshot.hp.enemy.max,180);assert.deepEqual(c.snapshot.config.combatants.enemy.attacks,{3:4,4:6,5:8});assert.equal(c.snapshot.enemyTurnCount,0);assert.equal(c.snapshot.enemyPhase,undefined);assert.equal(c.snapshot.hp.player.current,28);assert.equal(await c.chooseCategory(id,'heal'),false);await c.restart();assert.equal(c.runSnapshot!.stage,50);assert.equal(c.snapshot.hp.enemy.max,640);assert.equal(c.snapshot.enemyTurnCount,0);});
++test('transition24→25 uses boss stats once; pulse test seeds reset at the next encounter',async()=>{const setup=prepareTrialSetup({ending:'legacy-endless',character:'blue',firstEnemy:'marujiro',seed:7,mode:'manual',stage:24,fixture:'reward',route:'boss-loop'});const {c}=controller({...setup.config,initialEnemyTurnCount:4},24);await c.drop('ceiling:2:0');await c.chooseCategory(c.runSnapshot!.offer!.id,'heal');assert.equal(c.runSnapshot!.stage,25);assert.equal(c.snapshot.config.enemyId,'speed-core');assert.equal(c.snapshot.hp.enemy.max,290);assert.equal(c.snapshot.enemyTurnCount,0);assert.deepEqual(c.snapshot.config.combatants.enemy.attacks,{3:6,4:7,5:9});});
++test('boss test setup uses committed stage/phase seeds and rejects invalid stage',()=>{const f=(fixture:'speed-pulse'|'mother-wait'|'mother-double'|'mother-critical',stage:number)=>prepareTrialSetup({ending:'legacy-endless',character:'blue',firstEnemy:'marujiro',seed:7,mode:'manual',stage,fixture,route:'boss-loop'});assert.deepEqual(stepTypes(getEnemyIntent(createBattle(f('speed-pulse',75).config))),['fixed-damage','drop']);assert.equal(f('speed-pulse',75).config.combatants.enemy.maxHp,870);assert.deepEqual(stepTypes(getEnemyIntent(createBattle(f('mother-wait',100).config))),['wait']);assert.deepEqual(stepTypes(getEnemyIntent(createBattle(f('mother-double',50).config))),['drop','drop']);assert.deepEqual(stepTypes(getEnemyIntent(createBattle(f('mother-critical',50).config))),['fixed-damage','drop']);assert.throws(()=>f('speed-pulse',0));});
+ test('mid-route setup keeps its selected rotation origin through later encounters',async()=>{
+  for(const [stage,firstEnemy,nextEnemy,nextHp] of [[23,'marujiro','nigirin',260],[25,'hikikizan','nigirin',280],[75,'marujiro','hikikizan',840]] as const){
+-  const setup=prepareTrialSetup({character:'blue',firstEnemy,seed:7,mode:'manual',stage,fixture:'reward',route:'boss-loop'});
++  const setup=prepareTrialSetup({ending:'legacy-endless',character:'blue',firstEnemy,seed:7,mode:'manual',stage,fixture:'reward',route:'boss-loop'});
+   const c=new BattleController(setup.config,{render(){},async animate(){}},setup.options);
+   await c.drop('ceiling:2:0');await c.chooseCategory(c.runSnapshot!.offer!.id,'heal');
+   assert.equal(c.runSnapshot!.stage,stage+1);assert.equal(c.snapshot.config.enemyId,nextEnemy);assert.equal(c.snapshot.hp.enemy.max,nextHp);
+diff --git a/tests/next-clear-feedback.test.ts b/tests/next-clear-feedback.test.ts
+new file mode 100644
+index 0000000..9faf6b7
+--- /dev/null
++++ b/tests/next-clear-feedback.test.ts
+@@ -0,0 +1,64 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {BattleController} from '../src/next/app/BattleController.ts';
++import {prepareTrialSetup,createTrialConfig} from '../src/next/config.ts';
++import {encodeSave,decodeSave,validateCheckpoint} from '../src/next/app/saveCheckpoint.ts';
++import {LocalSave} from '../src/next/app/localSave.ts';
++import {createBattle,applyAction} from '../src/next/core/battle.ts';
++import {battleFixtures} from '../src/next/core/definitions.ts';
++import {feedbackForEvent,feedbackPosition,feedbackTiming} from '../src/next/ui/battleFeedback.ts';
++import {runResultHtml} from '../src/next/ui/runResult.ts';
++import type {BattleView} from '../src/next/app/BattleController.ts';
++const view:BattleView={render(){},async animate(){}};
++const setup50=()=>prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:50,fixture:'reward',route:'boss-loop'});
++
++test('standard stage50 victory clears, saves, and resumes without reward or stage51',async()=>{
++ const setup=setup50();assert.equal(setup.options.run!.finishAtStage,50);let raw:string|null=null;const store=new LocalSave({getItem:()=>raw,setItem(_key,value){raw=value;}},()=>true);store.read();
++ const c=new BattleController(setup.config,view,setup.options,{beforeAction:()=>store.guard(),write:cp=>{store.write(cp);},failed:error=>{throw error;}});
++ await c.start();await c.drop('ceiling:2:0');assert.equal(c.runSnapshot!.status,'cleared');assert.equal(c.runSnapshot!.stage,50);assert.equal(c.runSnapshot!.offer,undefined);assert.equal(c.snapshot.hp.player.current,18);
++ assert.equal(await c.chooseCategory('anything','heal'),false);assert.equal(await c.drop('ceiling:3:0'),false);
++ const saved=decodeSave(raw!);assert.equal(saved.checkpoint.run!.status,'cleared');const restored=BattleController.restore(saved.checkpoint,view);await restored.start();assert.equal(restored.runSnapshot!.stage,50);assert.equal(restored.runSnapshot!.status,'cleared');assert.equal(restored.snapshot.hp.player.current,18);assert.equal(restored.runSnapshot!.offer,undefined);
++});
++test('stage50 simultaneous enemy/player KO remains a loss and never earns a final reward',async()=>{
++ const setup=setup50();const boxes=[{id:'p',row:7,col:0,owner:'player' as const,type:'normal' as const,status:'normal' as const},{id:'e',row:7,col:1,owner:'enemy' as const,type:'normal' as const,status:'normal' as const}];
++ const config={...setup.config,initialBoxes:boxes,combatants:{player:{...setup.config.combatants.player,initialHp:2},enemy:{...setup.config.combatants.enemy,initialHp:2}}};const c=new BattleController(config,view,setup.options);await c.boardSkill('pain-shared',7);
++ assert.equal(c.snapshot.hp.player.current,0);assert.equal(c.snapshot.hp.enemy.current,0);assert.equal(c.snapshot.result!.winner,'enemy');assert.equal(c.runSnapshot!.status,'lost');assert.equal(c.runSnapshot!.defeatedCount,0);assert.equal(c.runSnapshot!.offer,undefined);validateCheckpoint(c.exportCheckpoint());
++});
++test('legacy endless remains explicit and preserves the50 reward then51 transition',async()=>{
++ const setup=prepareTrialSetup({character:'red',firstEnemy:'marujiro',seed:1,mode:'manual',stage:50,fixture:'reward',route:'boss-loop',ending:'legacy-endless'});assert.equal(setup.options.run!.finishAtStage,undefined);const c=new BattleController(setup.config,view,setup.options);await c.drop('ceiling:2:0');assert.equal(c.runSnapshot!.status,'reward');await c.chooseCategory(c.runSnapshot!.offer!.id,'heal');assert.equal(c.runSnapshot!.stage,51);assert.equal(c.snapshot.hp.enemy.max,180);
++});
++test('finish bounds and inconsistent final reward checkpoints fail closed',async()=>{
++ assert.throws(()=>prepareTrialSetup({character:'red',firstEnemy:'marujiro',seed:1,mode:'manual',stage:51,fixture:'normal',route:'boss-loop'}));const setup=setup50();
++ for(const finishAtStage of [0,49,NaN])assert.throws(()=>new BattleController(setup.config,view,{run:{...setup.options.run!,finishAtStage}}));
++ const c=new BattleController(setup.config,view,setup.options);await c.drop('ceiling:2:0');const saved=c.exportCheckpoint();const cp={...saved,run:{...saved.run!,status:'reward' as const,offer:{id:'invalid-final',category:'pending' as const,choices:[]}}};assert.throws(()=>validateCheckpoint(cp));
++ const over={...saved,run:{...saved.run!,stage:51}};assert.throws(()=>validateCheckpoint(over));
++});
++test('result screen renders only saved facts and labels a mid-run fixture honestly',async()=>{
++ const setup=setup50();const c=new BattleController(setup.config,view,setup.options);await c.drop('ceiling:2:0');const html=runResultHtml(c.snapshot,c.runSnapshot,c.runOrigin);assert.ok(html.includes('検証ラン終了'));assert.ok(html.includes('検証開始階：50'));assert.ok(html.includes('18 / 30'));assert.ok(html.includes('ヘルス'));assert.ok(!html.includes('総ダメージ'));assert.ok(!html.includes('累計手数'));
++ const full=runResultHtml(c.snapshot,{...c.runSnapshot!,defeatedCount:50},{seed:77,startStage:1});assert.ok(full.includes('50階クリア！'));assert.ok(full.includes('<dd>50体</dd>'));assert.ok(full.includes('<dd>77</dd>'));assert.ok(!full.includes('検証開始階'));
++});
++test('old rules saves are rejected without overwriting or converting the record',async()=>{
++ const setup=setup50(),c=new BattleController(setup.config,view,setup.options);await c.start();const raw=encodeSave(c.exportCheckpoint(),1).replace('next-1.2-clear50-intrinsic-health','next-1.1.1-intrinsic-health');let writes=0;const store=new LocalSave({getItem:()=>raw,setItem(){writes++;}},()=>true);assert.throws(()=>store.read(),/この版では読めない/);assert.equal(writes,0);
++});
++test('feedback highlights only the current primary axis, never all matched directions together',()=>{
++ const base=battleFixtures.find(f=>f.id==='grow-fire')!;const state=createBattle(createTrialConfig('red','marujiro',base));const result=applyAction(state,{type:'drop',candidateId:'ceiling:1:0'});const attacks=result.resolution!.events.filter(e=>e.type==='attack');assert.ok(attacks.length>=2);
++ for(const event of attacks){const f=feedbackForEvent(event,result.resolution!.links)!;assert.deepEqual(f.boxIds,result.resolution!.links.find(l=>l.axis===event.axis)!.boxIds);assert.equal(f.text,`${event.damage}ダメージ`);assert.equal(f.tone,'damage');}
++});
++test('actual healing and nominal Blue reflection have separate values and real shape geometry',()=>{
++ const f=battleFixtures.find(f=>f.id==='transformed-health')!;const state=createBattle(createTrialConfig('blue','marujiro',f));const r=applyAction(state,{type:'drop',candidateId:'ceiling:0:0'});const h=r.resolution!.events.find(e=>e.type==='heal')!,d=r.resolution!.events.find(e=>e.type==='damage'&&e.source==='blue-transformation')!;
++ const heal=feedbackForEvent(h,r.resolution!.links)!,reflect=feedbackForEvent(d,r.resolution!.links)!;assert.equal(heal.text,'0回復');assert.ok(heal.detail.includes('予定15'));assert.equal(heal.tone,'heal');assert.equal(reflect.text,'15ダメージ');assert.ok(reflect.detail.includes('名目回復の反射'));assert.deepEqual(heal.boxIds,reflect.boxIds);assert.equal(heal.boxIds.length,5);
++});
++test('self-cost and enemy fixed damage identify their source and anchor on the damaged side',()=>{
++ const state=createBattle(createTrialConfig('red'));const r=applyAction(state,{type:'board-skill',skillId:'ember'});const cost=feedbackForEvent(r.resolution!.events.find(e=>e.type==='damage')!,[])!;assert.equal(cost.text,'3HP消費');assert.equal(cost.tone,'cost');assert.equal(cost.anchor,'player');assert.ok(cost.detail.includes('自己コスト'));
++ const setup=prepareTrialSetup({character:'red',firstEnemy:'marujiro',seed:1,mode:'manual',stage:25,fixture:'speed-pulse',route:'boss-loop'});const boss=applyAction(createBattle(setup.config),{type:'enemy'});const hit=feedbackForEvent(boss.resolution!.events.find(e=>e.type==='damage'&&e.source==='boss-fixed')!,[])!;assert.equal(hit.tone,'damage');assert.equal(hit.anchor,'player');assert.ok(hit.detail.includes('固定攻撃'));
++});
++test('feedback label fits inside narrow board bounds and reduced motion stays brief',()=>{
++ for(const width of [320,390,540])for(const box of [{left:0,right:40,top:0,bottom:40},{left:width-40,right:width,top:360,bottom:400}]){const p=feedbackPosition({width,height:410},[box],{width:280,height:60},'player');assert.ok(p.x-140>=6);assert.ok(p.x+140<=width-6);assert.ok(p.y-60-p.rise>=6);assert.ok(p.y<=404);}
++ assert.equal(feedbackTiming(true).lead,0);assert.ok(feedbackTiming(true).hold<feedbackTiming(false).hold);
++});
++test('Blue can clear the upper arm and actively replace it to heal again without a new limit',()=>{
++ const base=battleFixtures.find(f=>f.id==='health-plus')!;const setup=createTrialConfig('blue','marujiro',base);let s=createBattle({...setup,enemyId:undefined,enemyPattern:[{type:'heal',amount:0}],combatants:{...setup.combatants,enemy:{...setup.combatants.enemy,maxHp:500,initialHp:500}}});
++ const first=applyAction(s,{type:'drop',candidateId:'ceiling:0:0'});assert.equal(first.resolution!.events.filter(e=>e.type==='heal').length,1);s=applyAction(first.state,{type:'enemy'}).state;
++ const clear=applyAction(s,{type:'board-skill',skillId:'pain-shared',row:1});assert.equal(clear.resolution!.events.filter(e=>e.type==='heal').length,0);assert.equal(clear.state.hp.player.current,s.hp.player.current);s=applyAction(clear.state,{type:'enemy'}).state;
++ const second=applyAction(s,{type:'drop',candidateId:'ceiling:1:0'});const heal=second.resolution!.events.find(e=>e.type==='heal')!;assert.equal(heal.type==='heal'&&heal.requestedAmount,15);assert.equal(second.state.hp.player.current,30);
++});
+diff --git a/tests/next-intrinsic.test.ts b/tests/next-intrinsic.test.ts
+index 15dc3d7..f00b268 100644
+--- a/tests/next-intrinsic.test.ts
++++ b/tests/next-intrinsic.test.ts
+@@ -61,7 +61,7 @@ test('Health15/20, nominal Blue reflection and repeat active insertion effects a
+ });
+ test('next content catalog matches metadata and preserves explicit policy boundaries',()=>{
+  const data=JSON.parse(readFileSync(new URL('../public/docs/game1_content_catalog_next.json',import.meta.url),'utf8'));const html=readFileSync(new URL('../public/docs/game1_content_catalog_next.html',import.meta.url),'utf8');
+- assert.equal(data.revision,'1.1.1');assert.equal(data.skills.length,10);assert.ok(html.includes(data.revision));
++ assert.equal(data.revision,'1.2');assert.equal(data.skills.length,10);assert.ok(html.includes(data.revision));
+  for(const id of normalSkillIds){const record=data.skills.find((s:{id:string})=>s.id===id);assert.equal(record.rewardAccess,skillCatalog[id].rewardAccess??'shared');assert.equal(record.initialRewardEligible.red,canReceiveSkillReward(createPlayerBuild('red'),id));assert.equal(record.initialRewardEligible.blue,canReceiveSkillReward(createPlayerBuild('blue'),id));}
+  assert.equal(data.recoveryPolicy.reviewAxes.length,6);assert.ok(data.futureOnly.includes('将来案'));assert.ok(data.preserved.some((s:string)=>s.includes('回数上限なし')));
+ });
+diff --git a/vite.save-preview.config.ts b/vite.save-preview.config.ts
+new file mode 100644
+index 0000000..1e9f813
+--- /dev/null
++++ b/vite.save-preview.config.ts
+@@ -0,0 +1,6 @@
++import {defineConfig} from 'vite';
++export default defineConfig({
++  base:'/save-preview/',
++  publicDir:false,
++  build:{target:'es2022',outDir:'dist-save-preview',emptyOutDir:true,rolldownOptions:{input:{savePreview:'save-preview/index.html'}}},
++});

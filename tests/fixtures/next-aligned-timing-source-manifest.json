@@ -1,0 +1,19 @@
+{
+  "description": "Authorized v1.12.3 presentation timing and gear only; all previous gameplay/source freezes remain in force.",
+  "files": {
+    "public/docs/game1_content_catalog_next.html": "ee567ff76870126ae8aa927bfe404d21a769679d1e47c14a261182778c4b04fc",
+    "public/docs/game1_content_catalog_next.json": "a947ca7cbe4eabca594b7c970f05715160246dd73e160632b9a7a0d8c940da05",
+    "scripts/docs/build-player-guide.mts": "cf9554efa915a3f96e5ddc1d27261fa90fb0672c67fc29bb0371617acefe15c7",
+    "src/next/main.ts": "1d33a140acd611e9360e8d6c5796efb8e3d57bf8c71d17b03441a3bc3d1251d6",
+    "src/next/ui/battleAnimator.ts": "187e081cc585a60fb87a66385207597a6b8c1bd18f023decc4954244d2aaff5f",
+    "src/next/ui/battleFeedback.ts": "ab671ade101463e77d0900e576d52121593139ead5826aa93f702e87ea8e631f",
+    "src/next/ui/boardSkillPresentation.ts": "d826eb03c7f0d43b7b435a96a2b358c88237ca1cfe1f0ee8e5decaab224f65ef",
+    "src/next/ui/controlIcons.ts": "45754ff821e7a37bff0393f131224d3d450e866449cf5faf8d748bbc10208ff8",
+    "src/next/ui/dropMotion.ts": "5d44698e1cae14eb055d9981c0932261577eb8b1fdecd5a6a6a11b97624f634a",
+    "src/next/ui/energyBox.css": "843c2927a7ba10541ab3112eb98eaf91c4ea9e1a15364cdb6332d3de27172e87",
+    "src/next/ui/energyLinks.ts": "9648b8031a7ed332a92478421cd371579373d46591da0c01a7ff920c6f538197",
+    "src/next/ui/portraitReactions.ts": "7e07907e44ebb864fc24a7c578574ec5d136ff72c732f8613d4d5507a68b4f4c",
+    "src/next/version.ts": "2e5c1a5d83b6fa0cd7e49653cc6f2e5d07be352f61882a849b87d8438dc4b3a8",
+    "src/next/ui/animationTimeline.ts": "456e4ef81bee6fa676f52fd8e7a3321f58b7b032e67740301e74922eb426ec31"
+  }
+}

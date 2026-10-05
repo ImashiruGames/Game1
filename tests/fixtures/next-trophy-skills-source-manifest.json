@@ -1,0 +1,32 @@
+{
+  "version": "1.12.0",
+  "scope": "Authorized trophy ownership/effects, new Violet balance snapshot and home music scenes; existing unmodified source remains protected by earlier manifests. Updated behavior separately covered by mechanics, persistence, migration and compatibility tests. Seven generated transparent type frames and bounded arrival presentation preserve ownership and gameplay.",
+  "files": {
+    "src/next/app/BattleController.ts": "d5e3c322b8fd1b262e4bc2f907610a88d1ac58db3163ccfaa42c833a475749fa",
+    "src/next/app/rewards.ts": "1270880d66bacc9693c8468f1e39eff0bc33c775a7da59aacaa1b1ad930320d0",
+    "src/next/app/runAchievements.ts": "e14d23e06b2a9f4057e9f5c8641e8b03b49684bbc702c3aea7886e46b64ff1ba",
+    "src/next/app/saveCheckpoint.ts": "a692019a751c24dad6c0606967bb16da9eaa8f69d708a181fd3531e134a2683e",
+    "src/next/audio/musicScene.ts": "8d134522c4a5d31591a750cb958da65b62849bdc0ef82881b371a4dfa6b7ff52",
+    "src/next/core/activeDrop.ts": "5fcab57db58acddcb98ebab365067c292397cd7601a7774afe41063dd03bd11c",
+    "src/next/core/normalSkillEffects.ts": "e8b8852e2f6de0b63ac998544dc6a5e98b6b28163417e8a255439d8e8002e2b5",
+    "src/next/core/playerBuild.ts": "c5d1cfc84ec6bcbba3a33388a61c7e306b8cb7c5faf4503d352cf6a994c52f41",
+    "src/next/core/shapePatterns.ts": "87c77184dfb999a67dfba6796f1d357c567afff53f918ce3c2dc8058e082b84e",
+    "src/next/core/skillCatalog.ts": "b97f07f019dfaeaadedcdf32f72e461e99d087a5cd4d1062a3852566afda4d78",
+    "src/next/core/tuning.ts": "9410e86b348f41c34d205439aea3a80d14e8212e74a06076a9f773c812e6ea5d",
+    "src/next/core/types.ts": "0b427a3a0033960c216b7071ade3cf9e6f908ed748c6696269598709a6fd7511",
+    "src/next/core/validation.ts": "a03c4fc2b865589bf93f59920aedf0fd643a295f2a62da69f25115e916ae3a5b",
+    "src/next/main.ts": "3879ed89c27c55e6782dd25298f3ba77be881d02cc579e19a9307fb99f739ba9",
+    "src/next/meta/departure.ts": "df4037c638dc8631e8b4ad46a1c31e5351f09bb3f0d4f847c41e8a27d02b36f2",
+    "src/next/meta/home.ts": "8ca86efddf501ddcfde3c70f8b14e58552c5c5fcd7832e28a4330cc8b701e39e",
+    "src/next/meta/profile.ts": "5b9b0fcd8794a1a531a335db7017af7f0b7d095a760b24eec874e3104feaf0fd",
+    "src/next/meta/roster.ts": "89449e6999fe50c801bba77f1eea2196f3b11dd1af8f3a9324c8c9c0b4b02c2a",
+    "src/next/meta/trophies.ts": "708f6b415f96357ddeaf4df759509a670d626af47d4d4a686fb2f0ae65cf97c8",
+    "src/next/ui/battleReadability.ts": "7342a68d1e9f0284dcd1f881762c9eaa2ae38e391c86aa122593e11ffb178abf",
+    "src/next/ui/boxMaterialArrival.ts": "832855421cd315caa821bea6907d71b3f711e4472f6c402b97193248ee939933",
+    "src/next/ui/energyBox.css": "748e49aa1fb09880520e51a9bb210e715092610a05db2af0054e47732811c676",
+    "src/next/ui/energyBox.ts": "19eea8eac67dc36e36270e9e2a99a71c5384026f027f83991fd6a12a949a56cd",
+    "src/next/ui/rewardPresentation.ts": "9f89fec9617f2f460abc5833ef0cb96426f97681e5bea3e9a411e4bc7cb3c957",
+    "src/next/ui/shapeFeedback.ts": "a6086bd2416487e207a582772109fbf903af59a84aff4978427137fffcb6675a",
+    "src/next/version.ts": "955d2f7e33b0d524d0bfc18a5b2c7e9c016d84ced5de339c587afdd977ccdb0f"
+  }
+}

@@ -1,0 +1,407 @@
+{
+  "name": "Flame Ascension",
+  "format": "JummBox",
+  "version": 6,
+  "scale": "Free",
+  "key": "C",
+  "introBars": 0,
+  "loopBars": 1,
+  "beatsPerBar": 4,
+  "ticksPerBeat": 24,
+  "beatsPerMinute": 300,
+  "reverb": 0,
+  "masterGain": 0.6,
+  "compressionThreshold": 1,
+  "limitThreshold": 1,
+  "limitDecay": 4,
+  "limitRise": 4000,
+  "limitRatio": 1,
+  "compressionRatio": 1,
+  "layeredInstruments": false,
+  "patternInstruments": false,
+  "channels": [
+    {
+      "type": "pitch",
+      "name": "Heat charge rises",
+      "instruments": [
+        {
+          "type": "FM",
+          "volume": -11,
+          "eqFilter": [
+            {
+              "type": "high-pass",
+              "cutoffHz": 176.78,
+              "linearGain": 1
+            },
+            {
+              "type": "low-pass",
+              "cutoffHz": 2378.41,
+              "linearGain": 1
+            }
+          ],
+          "eqFilterType": false,
+          "eqSimpleCut": 10,
+          "eqSimplePeak": 0,
+          "envelopeSpeed": 12,
+          "discreteEnvelope": false,
+          "effects": [
+            "panning"
+          ],
+          "pan": 0,
+          "panDelay": 0,
+          "fadeInSeconds": 0,
+          "fadeOutTicks": -1,
+          "algorithm": "1←(2 3 4)",
+          "feedbackType": "1⟲",
+          "feedbackAmplitude": 3,
+          "operators": [
+            {
+              "frequency": "1×",
+              "amplitude": 15,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "2×",
+              "amplitude": 7,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "~2×",
+              "amplitude": 1,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "1×",
+              "amplitude": 0,
+              "waveform": "sine",
+              "pulseWidth": 5
+            }
+          ],
+          "envelopes": []
+        }
+      ],
+      "patterns": [
+        {
+          "notes": [
+            {
+              "pitches": [
+                36
+              ],
+              "points": [
+                {
+                  "tick": 0,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                },
+                {
+                  "tick": 8,
+                  "pitchBend": 1,
+                  "volume": 33,
+                  "forMod": false
+                },
+                {
+                  "tick": 22,
+                  "pitchBend": 5,
+                  "volume": 50,
+                  "forMod": false
+                },
+                {
+                  "tick": 39,
+                  "pitchBend": 12,
+                  "volume": 83,
+                  "forMod": false
+                },
+                {
+                  "tick": 46,
+                  "pitchBend": 14,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ],
+              "continuesLastPattern": false
+            }
+          ]
+        }
+      ],
+      "sequence": [
+        1
+      ],
+      "octaveScrollBar": 3
+    },
+    {
+      "type": "pitch",
+      "name": "Flame released",
+      "instruments": [
+        {
+          "type": "FM",
+          "volume": -9,
+          "eqFilter": [
+            {
+              "type": "high-pass",
+              "cutoffHz": 176.78,
+              "linearGain": 1
+            },
+            {
+              "type": "low-pass",
+              "cutoffHz": 2378.41,
+              "linearGain": 1
+            }
+          ],
+          "eqFilterType": false,
+          "eqSimpleCut": 10,
+          "eqSimplePeak": 0,
+          "envelopeSpeed": 12,
+          "discreteEnvelope": false,
+          "effects": [
+            "panning"
+          ],
+          "pan": 0,
+          "panDelay": 0,
+          "fadeInSeconds": 0,
+          "fadeOutTicks": -1,
+          "algorithm": "1←(2 3 4)",
+          "feedbackType": "1⟲",
+          "feedbackAmplitude": 3,
+          "operators": [
+            {
+              "frequency": "1×",
+              "amplitude": 15,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "2×",
+              "amplitude": 7,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "~2×",
+              "amplitude": 1,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "1×",
+              "amplitude": 0,
+              "waveform": "sine",
+              "pulseWidth": 5
+            }
+          ],
+          "envelopes": []
+        }
+      ],
+      "patterns": [
+        {
+          "notes": [
+            {
+              "pitches": [
+                48,
+                55
+              ],
+              "points": [
+                {
+                  "tick": 44,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                },
+                {
+                  "tick": 47,
+                  "pitchBend": 0,
+                  "volume": 100,
+                  "forMod": false
+                },
+                {
+                  "tick": 57,
+                  "pitchBend": -1,
+                  "volume": 67,
+                  "forMod": false
+                },
+                {
+                  "tick": 72,
+                  "pitchBend": -3,
+                  "volume": 33,
+                  "forMod": false
+                },
+                {
+                  "tick": 86,
+                  "pitchBend": -4,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sequence": [
+        1
+      ],
+      "octaveScrollBar": 3
+    },
+    {
+      "type": "drum",
+      "name": "Gathering combustion",
+      "instruments": [
+        {
+          "type": "noise",
+          "volume": -16,
+          "eqFilter": [
+            {
+              "type": "high-pass",
+              "cutoffHz": 594.6,
+              "linearGain": 1
+            },
+            {
+              "type": "low-pass",
+              "cutoffHz": 3363.59,
+              "linearGain": 1
+            }
+          ],
+          "eqFilterType": false,
+          "eqSimpleCut": 10,
+          "eqSimplePeak": 0,
+          "envelopeSpeed": 12,
+          "discreteEnvelope": false,
+          "effects": [
+            "panning"
+          ],
+          "pan": 0,
+          "panDelay": 0,
+          "fadeInSeconds": 0,
+          "fadeOutTicks": -1,
+          "wave": "white",
+          "envelopes": []
+        }
+      ],
+      "patterns": [
+        {
+          "notes": [
+            {
+              "pitches": [
+                4
+              ],
+              "points": [
+                {
+                  "tick": 0,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                },
+                {
+                  "tick": 12,
+                  "pitchBend": 0,
+                  "volume": 17,
+                  "forMod": false
+                },
+                {
+                  "tick": 28,
+                  "pitchBend": 1,
+                  "volume": 50,
+                  "forMod": false
+                },
+                {
+                  "tick": 42,
+                  "pitchBend": 2,
+                  "volume": 67,
+                  "forMod": false
+                },
+                {
+                  "tick": 48,
+                  "pitchBend": 2,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ],
+              "continuesLastPattern": false
+            }
+          ]
+        }
+      ],
+      "sequence": [
+        1
+      ]
+    },
+    {
+      "type": "drum",
+      "name": "Dispersing embers",
+      "instruments": [
+        {
+          "type": "noise",
+          "volume": -18,
+          "eqFilter": [
+            {
+              "type": "high-pass",
+              "cutoffHz": 594.6,
+              "linearGain": 1
+            },
+            {
+              "type": "low-pass",
+              "cutoffHz": 3363.59,
+              "linearGain": 1
+            }
+          ],
+          "eqFilterType": false,
+          "eqSimpleCut": 10,
+          "eqSimplePeak": 0,
+          "envelopeSpeed": 12,
+          "discreteEnvelope": false,
+          "effects": [
+            "panning"
+          ],
+          "pan": 0,
+          "panDelay": 0,
+          "fadeInSeconds": 0,
+          "fadeOutTicks": -1,
+          "wave": "white",
+          "envelopes": []
+        }
+      ],
+      "patterns": [
+        {
+          "notes": [
+            {
+              "pitches": [
+                5
+              ],
+              "points": [
+                {
+                  "tick": 46,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                },
+                {
+                  "tick": 48,
+                  "pitchBend": 0,
+                  "volume": 67,
+                  "forMod": false
+                },
+                {
+                  "tick": 57,
+                  "pitchBend": -1,
+                  "volume": 33,
+                  "forMod": false
+                },
+                {
+                  "tick": 76,
+                  "pitchBend": -2,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sequence": [
+        1
+      ]
+    }
+  ]
+}

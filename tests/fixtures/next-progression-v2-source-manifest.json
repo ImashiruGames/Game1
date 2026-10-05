@@ -1,0 +1,9 @@
+{
+  "purpose": "Explicitly versioned L12 growth cap with captured old level/point floors, backup-first profile migration, old-run terms, and forward-safe profile/backup/run gates. Combat values and payouts unchanged.",
+  "files": {
+    "src/next/meta/profile.ts": "7118dbcd5173ddd9760a1bbe0aa387474611005bc02dbe43c7e6d738aa7eccbb",
+    "src/next/meta/profileImport.ts": "87114d26df2c2aaa22c590fe1cfd64d99b659c4eaabe0fddd0d27af1f9859d04",
+    "src/next/core/validation.ts": "46ad31b3b9e1e13d54d812ccfcd766720dc46e48dc1333b126e4abd294cd2ed3",
+    "src/next/app/saveCheckpoint.ts": "9bf96fd54c8d44fb7c06876802196abd734546a5722fe295d769f2b65d6cdce2"
+  }
+}

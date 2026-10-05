@@ -1,0 +1,18 @@
+{
+  "purpose": "Authorized Game1 1.3 metaprogression, original boss music, Imashiru and box-type extension. Unlisted Site79 sources must retain their original bytes. Legacy102 trace parity and complete behavior tests are mandatory.",
+  "files": {
+    "src/next/app/BattleController.ts": "7e62bda494b965c04d153c193bed39805838dcdd4b61b6214d0d1218f68889ff",
+    "src/next/app/rewards.ts": "539c0bb388134610aef5c63081ef00449b447cec2ae8be09696ab156d2b8ab09",
+    "src/next/app/saveCheckpoint.ts": "f875a1223e2a1e15619603c7ab261f25958df5f813af421a34e29f251914e533",
+    "src/next/audio/SampleAudioDirector.ts": "966285a9b5a5aab08f8d729bc6b931b03f32e1c8e9df04dc2aa564177cd57c12",
+    "src/next/audio/sampleAssets.ts": "628219d537945ce36936a121f8a0b7c594aaac85951e03345f7f823dba330910",
+    "src/next/core/activeDrop.ts": "c56cede00971bcb588d7e61a92b8f1ef71b1998109a39444d444b85a61de110a",
+    "src/next/core/battle.ts": "43b75e660a792151688c8cc8d4ceab414baa597f0904836f3cb6b3eafc412b0c",
+    "src/next/core/boardSkills.ts": "63f3950b338e17d08e7bdff7a39910fb2393f36ffb72cd3825beba54ceec93d7",
+    "src/next/core/playerBuild.ts": "40a75ee7bd46af70225480bb7c04448b972b8e3bb5aaf1062c35b09a459c6e58",
+    "src/next/core/skills.ts": "9fea85ed74dc818fbfb597a43ba6d7d30825d7c260f05d01fca106f9b1ea1059",
+    "src/next/core/transformations.ts": "c74914d23b8f4fb6c734dc21e416f77b1d2f507002555b0488bbf0ddde347c21",
+    "src/next/core/types.ts": "da04ec93966436c1eac71d5135db0716a344145bafd1a4b740d8213dd7c03f3a",
+    "src/next/core/validation.ts": "a8dc068746a4f777c06d12fa91420cb5f29e91451ad635c0bda6ef122139fe15"
+  }
+}

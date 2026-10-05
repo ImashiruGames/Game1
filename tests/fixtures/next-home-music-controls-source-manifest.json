@@ -1,0 +1,12 @@
+{
+  "scope": "Approved 1.12.1 shared home/stage BGM controls and volume; gameplay and old saves unchanged",
+  "files": {
+    "src/next/audio/SampleAudioDirector.ts": "415bdab1602f1519dc28cbaba3e1e086d9080246907e9b83196ae7f5bd10cfc7",
+    "src/next/audio/presentationSettings.ts": "4c767e5ea772f6ec3f2df0e7b3d6fb4e74ffd46681271a5d34b6d49c0a912002",
+    "src/next/audio/homeMusicControls.ts": "4ef72c91d169fc0e726f72f82a882f7204abd51852528885a60d1fcb8137a83a",
+    "src/next/main.ts": "e4b9a306a95e6f6a898a106b38266d48f723b58a601f8691e84317d1cc1a35b6",
+    "src/next/meta/home.ts": "21c415bb1ca2566d2861c7bbc170244283305f65f672987bfb72fa924e01b61d",
+    "src/next/meta/home.css": "383b3b6d45541cb90e104f433f278e67a29df92cca8a2745101ad49320bf74da",
+    "src/next/version.ts": "a500c527e0e7a8ab7ffb870b46bf787fe2e0f7f2acfc8d780f6c8cc0b6806b11"
+  }
+}

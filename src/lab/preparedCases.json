@@ -1,0 +1,4286 @@
+[
+  {
+    "skill": "A061",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A061:favorable",
+      "title": "縁の下の力持ち：発動を試す",
+      "description": "着地(7,2)を含め底段自箱3。横3の4→7。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A061",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A061:unfavorable",
+      "title": "縁の下の力持ち：境界を試す",
+      "description": "着地(4,2)、縦3は成立するが底段は中立。追加0。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:5:2",
+          "row": 5,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A062",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A062:favorable",
+      "title": "鉄壁：発動を試す",
+      "description": "seed1112で(4,4)へ敵投入、縦4。敵基礎6→4。遠方の四角も有効。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:0",
+          "row": 6,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:4",
+          "row": 5,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A062",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A062:unfavorable",
+      "title": "鉄壁：境界を試す",
+      "description": "同じ敵投入・縦4。四角内の1箱が中立なので6のまま。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:0",
+          "row": 6,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:4",
+          "row": 5,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A001",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A001:favorable",
+      "title": "ぴたり三連：発動を試す",
+      "description": "実長3の4→7。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A001",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A001:unfavorable",
+      "title": "ぴたり三連：境界を試す",
+      "description": "実長4の7は不変。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:3:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A004",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A004:favorable",
+      "title": "一点照準：発動を試す",
+      "description": "縦3=4、横4=7+5=12。選択は実長で横、縦の基本攻撃を消さない。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:1",
+          "row": 5,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:0",
+          "row": 5,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:0",
+          "row": 6,
+          "col": 0,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A004",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A004:unfavorable",
+      "title": "一点照準：境界を試す",
+      "description": "リンクなし、加算先なし。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A025",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A025:favorable",
+      "title": "最低保証：発動を試す",
+      "description": "青の基礎4→最低5。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A025",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A025:unfavorable",
+      "title": "最低保証：境界を試す",
+      "description": "7→7。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:3:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A026",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A026:favorable",
+      "title": "追い込み：発動を試す",
+      "description": "敵HP11/30。縦4で7となり、横は四分の一以下なので4+4=8。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:1",
+          "row": 5,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 11,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A026",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A026:unfavorable",
+      "title": "追い込み：境界を試す",
+      "description": "敵HP8/30はhit直前に1/4超なので加算0。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 8,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A028",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A028:favorable",
+      "title": "対等の刃：発動を試す",
+      "description": "自HP14/30、敵30/30。リンク4→7。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 14,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A028",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A028:unfavorable",
+      "title": "対等の刃：境界を試す",
+      "description": "自30/30と敵30/30は等しいため加算0。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A030",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A030:favorable",
+      "title": "フルパワー：発動を試す",
+      "description": "自HP20からヘルスで30、横3=4+5=9。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:4:2",
+          "row": 4,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:2",
+          "row": 5,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 20,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:1:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A030",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A030:unfavorable",
+      "title": "フルパワー：境界を試す",
+      "description": "自HP29/30のまま、4のみ。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 29,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A031",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A031:favorable",
+      "title": "血の前借り：発動を試す",
+      "description": "通常投入の2軸に各+3、HP費用は2を1回。青各7、合計14、通常終了+1と費用ゲージ+2は別。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:1",
+          "row": 5,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A031",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A031:unfavorable",
+      "title": "血の前借り：境界を試す",
+      "description": "自HP2で費用支払後KO、リンク攻撃なし、敵へ移る前に敗北。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 2,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A035",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A035:favorable",
+      "title": "単線集中：発動を試す",
+      "description": "青の唯一の縦4=7、1.5倍切捨て10。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:5:5",
+          "row": 5,
+          "col": 5,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:5",
+          "row": 6,
+          "col": 5,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:5",
+          "row": 7,
+          "col": 5,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:5:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A035",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A035:unfavorable",
+      "title": "単線集中：境界を試す",
+      "description": "成立2軸なので各4のまま。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:1",
+          "row": 5,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A039",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A039:favorable",
+      "title": "衝撃の天井：発動を試す",
+      "description": "検証用敵4リンク10→6、実損失6、ゲージも実損失6。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:5:4",
+          "row": 5,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 10,
+            "5": 15
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A039",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A039:unfavorable",
+      "title": "衝撃の天井：境界を試す",
+      "description": "予定3≤6なので3のまま。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A041",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A041:favorable",
+      "title": "割合受け：発動を試す",
+      "description": "予定6のfloor(6/4)=1軽減で5。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:5:4",
+          "row": 5,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A041",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A041:unfavorable",
+      "title": "割合受け：境界を試す",
+      "description": "予定3のfloor(3/4)=0、3のまま。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A043",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A043:favorable",
+      "title": "身軽な守り：発動を試す",
+      "description": "実験が自由枠1を占有、残り1空き。予定3→2。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A043",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A043:unfavorable",
+      "title": "身軽な守り：境界を試す",
+      "description": "実験+既存chargeで両自由枠使用。空き0、予定3のまま。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue",
+      "initialBuild": {
+        "fixed": {
+          "id": "health",
+          "rank": 1,
+          "uses": null
+        },
+        "slots": [
+          {
+            "id": "charge",
+            "rank": 1,
+            "uses": null
+          },
+          null
+        ],
+        "power": {
+          "3": 0,
+          "4": 0,
+          "5": 0
+        }
+      }
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A049",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A049:favorable",
+      "title": "吸収の刃：発動を試す",
+      "description": "自HP20、敵HP30。通常リンク11の実損失11→floor(11/4)=2回復。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 20,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:4:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A049",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A049:unfavorable",
+      "title": "吸収の刃：境界を試す",
+      "description": "敵残HP1に11を与えても実損失1、回復0。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 20,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 1,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:4:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A051",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A051:favorable",
+      "title": "相互の手当：発動を試す",
+      "description": "自10/30:ヘルス15→19で29。敵20/30→22の後、横リンク4で18。baseline自25、敵16。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:4:2",
+          "row": 4,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:2",
+          "row": 5,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 10,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 20,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:1:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A051",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A051:unfavorable",
+      "title": "相互の手当：境界を試す",
+      "description": "自30/30では実回復0、未変化。敵20→22、リンク4で18。敵を余計に助ける。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:4:2",
+          "row": 4,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:2",
+          "row": 5,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 20,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:1:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A057",
+    "kind": "favorable",
+    "config": {
+      "id": "case:A057:favorable",
+      "title": "会心の抽選：発動を試す",
+      "description": "seed0、critical初期値2776568372→抽選index0当選、次204969987。縦4→8、横4。enemy用rngStateは0のまま。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:1",
+          "row": 5,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 0,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "A057",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:A057:unfavorable",
+      "title": "会心の抽選：境界を試す",
+      "description": "seed512、critical初期値2776567860→抽選index3非当選、次3647700483。横4のまま。enemy用rngStateは512のまま。別途empty投入ならcritical抽選なし。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 512,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "B001",
+    "kind": "favorable",
+    "config": {
+      "id": "case:B001:favorable",
+      "title": "精密接収：発動を試す",
+      "description": "E(7,1)がPへ。敵bottom連続2を断つ。ID/座標不変、攻撃/形/変化0、通常1手。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:5",
+          "row": 7,
+          "col": 5,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B001",
+        "target_box_id": "fixture:7:1"
+      }
+    ]
+  },
+  {
+    "skill": "B001",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:B001:unfavorable",
+      "title": "精密接収：境界を試す",
+      "description": "敵箱0で使用不可、通常手番/乱数不変。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B001",
+        "target_box_id": null
+      }
+    ]
+  },
+  {
+    "skill": "B009",
+    "kind": "favorable",
+    "config": {
+      "id": "case:B009:favorable",
+      "title": "精密解体：発動を試す",
+      "description": "上端E1箱だけ消去。ceiling:2:0が再開。ダメージ/新起点0、1手。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:0:2",
+          "row": 0,
+          "col": 2,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:1:2",
+          "row": 1,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:2:2",
+          "row": 2,
+          "col": 2,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:3:2",
+          "row": 3,
+          "col": 2,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:4:2",
+          "row": 4,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:2",
+          "row": 5,
+          "col": 2,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B009",
+        "target_box_id": "fixture:0:2"
+      }
+    ]
+  },
+  {
+    "skill": "B009",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:B009:unfavorable",
+      "title": "精密解体：境界を試す",
+      "description": "対象なし、使用不可。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B009",
+        "target_box_id": null
+      }
+    ]
+  },
+  {
+    "skill": "B010",
+    "kind": "favorable",
+    "config": {
+      "id": "case:B010:favorable",
+      "title": "塊の解体：発動を試す",
+      "description": "E(7,1),(6,1),(7,2)の3箱だけ除去。E(5,2)は斜めだけなので残り、受動落下しても連鎖除去しない。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:2",
+          "row": 5,
+          "col": 2,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:2",
+          "row": 6,
+          "col": 2,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B010",
+        "target_box_id": "fixture:7:1"
+      }
+    ]
+  },
+  {
+    "skill": "B010",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:B010:unfavorable",
+      "title": "塊の解体：境界を試す",
+      "description": "自P2箱を失い盤面が空く。直接攻撃0。通常c2なら4ダメージ可能。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B010",
+        "target_box_id": "fixture:7:0"
+      }
+    ]
+  },
+  {
+    "skill": "B011",
+    "kind": "favorable",
+    "config": {
+      "id": "case:B011:favorable",
+      "title": "切断線：発動を試す",
+      "description": "row5 c0(E),c1(P)を除去、空c2は通過、地形c3で停止、c4/c5は残る。直接被害0。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [
+          {
+            "row": 5,
+            "col": 3
+          }
+        ],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:5:0",
+          "row": 5,
+          "col": 0,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:1",
+          "row": 5,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:4",
+          "row": 5,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:5",
+          "row": 5,
+          "col": 5,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:0",
+          "row": 6,
+          "col": 0,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:1",
+          "row": 6,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:5",
+          "row": 6,
+          "col": 5,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:5",
+          "row": 7,
+          "col": 5,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B011",
+        "start": {
+          "row": 5,
+          "col": 0
+        },
+        "end": {
+          "row": 5,
+          "col": 5
+        }
+      }
+    ]
+  },
+  {
+    "skill": "B011",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:B011:unfavorable",
+      "title": "切断線：境界を試す",
+      "description": "箱0の線は確定不可。手番・RNG不変。終点同一/盤外/invalid endpointも拒否。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B011",
+        "start": {
+          "row": 7,
+          "col": 0
+        },
+        "end": {
+          "row": 7,
+          "col": 5
+        }
+      }
+    ]
+  },
+  {
+    "skill": "B019",
+    "kind": "favorable",
+    "config": {
+      "id": "case:B019:favorable",
+      "title": "位置交換：発動を試す",
+      "description": "EのIDが(7,4)へ、PのIDが(7,1)へ同時移動。所有者は各IDとともに保持。攻撃0。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:2",
+          "row": 7,
+          "col": 2,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:5",
+          "row": 7,
+          "col": 5,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B019",
+        "first_box_id": "fixture:7:1",
+        "second_box_id": "fixture:7:4"
+      }
+    ]
+  },
+  {
+    "skill": "B019",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:B019:unfavorable",
+      "title": "位置交換：境界を試す",
+      "description": "P同士では占有/所有パターンが不変、ID位置だけ入替。許可なら効果的には1手損。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "B019",
+        "first_box_id": "fixture:7:0",
+        "second_box_id": "fixture:7:1"
+      }
+    ]
+  },
+  {
+    "skill": "D001",
+    "kind": "favorable",
+    "config": {
+      "id": "case:D001:favorable",
+      "title": "瞑想：発動を試す",
+      "description": "自10→16、通常1手を使いCD開始。使用した完了は待ち3へ数えない。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 10,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "heal",
+          "amount": 0
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "D001"
+      }
+    ]
+  },
+  {
+    "skill": "D001",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:D001:unfavorable",
+      "title": "瞑想：境界を試す",
+      "description": "満HPでも使用可能。実回復0、通常1手を使いCD3開始。当該使用の完了ではCDを減らさない。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "experimental_action_intent",
+        "proposal_id": "D001"
+      }
+    ]
+  },
+  {
+    "skill": "D017",
+    "kind": "favorable",
+    "config": {
+      "id": "case:D017:favorable",
+      "title": "終幕の灯：発動を試す",
+      "description": "敵HP6、リンク4で2、通常完了後2で撃破。敵手番前に終戦。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 6,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "D017",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:D017:unfavorable",
+      "title": "終幕の灯：境界を試す",
+      "description": "敵HP4、主リンクで撃破済みなので終幕0。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:7:0",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 4,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "player",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "drop",
+          "candidateId": "ceiling:2:0"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "D024",
+    "kind": "favorable",
+    "config": {
+      "id": "case:D024:favorable",
+      "title": "棘返し：発動を試す",
+      "description": "敵縦/横3で自HPが各3減るが、敵への反撃2は敵手番1回のみ。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:3",
+          "row": 5,
+          "col": 3,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:5:5",
+          "row": 5,
+          "col": 5,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:3",
+          "row": 6,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:3",
+          "row": 7,
+          "col": 3,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:6:5",
+          "row": 6,
+          "col": 5,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:5",
+          "row": 7,
+          "col": 5,
+          "owner": "neutral",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "D024",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:D024:unfavorable",
+      "title": "棘返し：境界を試す",
+      "description": "自HP3、敵リンクでKOしたので反撃なし。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [
+        {
+          "id": "fixture:6:4",
+          "row": 6,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "fixture:7:4",
+          "row": 7,
+          "col": 4,
+          "owner": "enemy",
+          "type": "normal",
+          "status": "normal"
+        }
+      ],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 3,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1112,
+      "enemyPattern": [
+        {
+          "type": "drop"
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "D030",
+    "kind": "favorable",
+    "config": {
+      "id": "case:D030:favorable",
+      "title": "治癒の反証：発動を試す",
+      "description": "敵17→27、実回復10の半分5で27→22。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 17,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "heal",
+          "amount": 10
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  },
+  {
+    "skill": "D030",
+    "kind": "unfavorable",
+    "config": {
+      "id": "case:D030:unfavorable",
+      "title": "治癒の反証：境界を試す",
+      "description": "敵30/30の予定回復10はactual0、反応0。（効果を確かめる仕込み盤面。自然な頻度の根拠にはしません）",
+      "board": {
+        "width": 6,
+        "height": 8,
+        "gravity": "down",
+        "terrain": [],
+        "invalidCells": []
+      },
+      "initialBoxes": [],
+      "combatants": {
+        "player": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 4,
+            "4": 7,
+            "5": 11
+          }
+        },
+        "enemy": {
+          "maxHp": 30,
+          "initialHp": 30,
+          "attacks": {
+            "3": 3,
+            "4": 6,
+            "5": 9
+          }
+        }
+      },
+      "firstActor": "enemy",
+      "seed": 1,
+      "enemyPattern": [
+        {
+          "type": "heal",
+          "amount": 10
+        }
+      ],
+      "characterId": "blue"
+    },
+    "steps": [
+      {
+        "kind": "core_action",
+        "action": {
+          "type": "enemy"
+        }
+      }
+    ]
+  }
+]

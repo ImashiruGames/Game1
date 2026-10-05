@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d141d">
+  <meta name="description" content="Game1のエネルギーボックス。実寸の盤面と、同じ描画の拡大表示で動きを確認するデザイン試作。">
+  <title>エネルギーボックス | Game1 デザイン試作</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='7' y='7' width='50' height='50' rx='10' fill='%230d141d' stroke='%237ce5ef' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%237ce5ef'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./preview.css">
+  <script type="module" src="./preview.js"></script>
+</head>
+<body>
+  <main class="preview">
+    <header class="topbar"><div><p class="eyebrow">GAME1 / DESIGN STUDY 01</p><h1>エネルギーボックス</h1></div><a href="/next/" class="back">本編へ</a></header>
+    <section class="workspace" aria-label="エネルギーボックスの試作">
+      <div class="board-panel">
+        <div class="palette-row"><div class="palette" role="group" aria-label="自分のエネルギー"><button type="button" data-theme="blue" aria-pressed="true"><span class="swatch blue"></span>Blue</button><button type="button" data-theme="red" aria-pressed="false"><span class="swatch red"></span>Red</button></div><span class="scale-label">6 × 8 / 40px</span></div>
+        <div class="arena" id="arena">
+          <div class="arena-header"><span>自分 <i class="owner-dot"></i></span><div id="target" class="target"><span class="target-core"></span><span>敵</span></div></div>
+          <div class="board" id="board" aria-label="6列8行の実寸盤面"></div>
+          <svg id="effects" class="effects" aria-hidden="true"></svg>
+        </div>
+        <div class="event-controls" role="group" aria-label="演出を再生"><button type="button" data-event="place">投入</button><button type="button" data-event="link">リンク・攻撃</button><button type="button" data-event="convert">所有者変更</button><button type="button" id="reset" aria-label="初期配置に戻す" title="初期配置に戻す">戻す</button></div>
+        <p id="status" class="status" role="status" aria-live="polite">コアが静かに浮遊。ボタンで演出を再生</p>
+      </div>
+      <aside class="detail-panel" aria-label="ボックスを拡大して確認">
+        <div class="section-heading"><h2>同じ箱を拡大</h2><span>× 3</span></div>
+        <div class="specimens"><figure><div id="own-specimen" class="specimen"></div><figcaption><strong>自分</strong><span>丸いコア・滑らかな枠</span></figcaption></figure><figure><div id="enemy-specimen" class="specimen"></div><figcaption><strong>敵</strong><span>菱形コア・角を切った枠</span></figcaption></figure></div>
+        <div class="material-note"><span class="note-rule"></span><p>透明な箱の中に、エネルギーを閉じ込める</p><p id="material-caption">Blue は氷のプリズム。敵は紫の結晶</p></div>
+        <label class="motion-control"><input type="checkbox" id="reduce-motion"><span>動きを抑える</span><small id="motion-origin"></small></label>
+        <p class="footnote">390 × 600 の本編表示を想定した、1マス40pxの盤面。同じSVGを拡大表示しています</p>
+        <p class="footnote">表現だけの試作です。本編・セーブデータには影響しません</p>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

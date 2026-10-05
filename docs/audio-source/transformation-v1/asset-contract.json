@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "purpose": "Two dedicated transformation cues: rising charge then release. Authored native JummBox notes; not reused attack PCM.",
+  "production": "Official unmodified JummBox Synth render; post-render 30Hz high-pass, static gain to -12.1dBTP, 4ms input/30ms tail edge fades only.",
+  "runtime": "Decoded PCM playback; existing FX bus unity/master -3dB; no normalization or synthesis.",
+  "listening": "Numerical QC only. Subjective listening and iPhone device playback unverified.",
+  "sounds": [
+    {
+      "character": "blue",
+      "id": "transformation-blue",
+      "filename": "transform_blue_v1.wav",
+      "public_url": "/assets/audio/transformation-v1/transform_blue_v1.wav",
+      "sha256": "85a94dd41def93bf309a018239a9e6bb10348016a340d324913bf64dee0ff561",
+      "bytes": 230502,
+      "format": "PCM WAV",
+      "sample_rate": 48000,
+      "channels": 2,
+      "bits": 24,
+      "frames": 38400,
+      "duration_seconds": 0.8,
+      "native_project": "transform_blue_v1.jummbox.json",
+      "gain_db": 21.845467619659168,
+      "metrics": {
+        "peak_dbfs": -12.105526956679354,
+        "true_peak_dbtp_4x": -12.099999575566802,
+        "rms_dbfs": -24.886602460968035,
+        "first_100ms_rms_dbfs": -24.213270211824135,
+        "clip_samples": 0,
+        "nonfinite_samples": 0,
+        "dc": [
+          -3.855054586665574e-08,
+          -3.855054586665574e-08
+        ],
+        "first_frame": [
+          0.0,
+          0.0
+        ],
+        "last_frame": [
+          0.0,
+          0.0
+        ],
+        "last_1ms_peak_dbfs": -300.0
+      }
+    },
+    {
+      "character": "red",
+      "id": "transformation-red",
+      "filename": "transform_red_v1.wav",
+      "public_url": "/assets/audio/transformation-v1/transform_red_v1.wav",
+      "sha256": "c88df5068ea91fa69fa8cad4e23cef4bf3a81e074b8b3cb6c93c362736dc5344",
+      "bytes": 230502,
+      "format": "PCM WAV",
+      "sample_rate": 48000,
+      "channels": 2,
+      "bits": 24,
+      "frames": 38400,
+      "duration_seconds": 0.8,
+      "native_project": "transform_red_v1.jummbox.json",
+      "gain_db": 10.93409971329752,
+      "metrics": {
+        "peak_dbfs": -12.110564675937855,
+        "true_peak_dbtp_4x": -12.099999054330826,
+        "rms_dbfs": -30.14259477208404,
+        "first_100ms_rms_dbfs": -42.723202120211276,
+        "clip_samples": 0,
+        "nonfinite_samples": 0,
+        "dc": [
+          -8.089467939953465e-08,
+          -8.089467939953465e-08
+        ],
+        "first_frame": [
+          0.0,
+          0.0
+        ],
+        "last_frame": [
+          0.0,
+          0.0
+        ],
+        "last_1ms_peak_dbfs": -300.0
+      }
+    }
+  ]
+}

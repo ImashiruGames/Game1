@@ -1,0 +1,23 @@
+{
+  "renderer": "Unmodified official JummBox Synth",
+  "officialCommit": "f745b1c83e46359227a7e324d5f05075c306ac3b",
+  "sourceProjectSha256": "3d63c97359393548cc6a82872d649f0c223e90371e8eff4671400c61f822c620",
+  "sampleRate": 48000,
+  "bars": 32,
+  "beatsPerBar": 4,
+  "bpm": 160,
+  "idealCycleFrames": 2304000,
+  "observedCycleBoundariesFrames": [
+    0,
+    2304000,
+    4608000,
+    6912000,
+    9216000,
+    11520000
+  ],
+  "renderFrames": 11524800,
+  "rawPeakDbfs": -17.37512539511988,
+  "rawClipSamples": 0,
+  "rawNonfiniteSamples": 0,
+  "nativeJsonCompactRoundtripPassed": true
+}

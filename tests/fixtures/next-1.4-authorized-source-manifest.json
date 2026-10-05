@@ -1,0 +1,19 @@
+{
+  "purpose": "Explicit user-authorized role kits, Poisoning Art and targeted board skills. Absent kitVersion preserves legacy behavior; original102 trace parity is mandatory.",
+  "files": {
+    "src/next/app/BattleController.ts": "35a10a97f0d967d9dcec56829cf0eb5b8565c269a7ea80e67d776533c02a4925",
+    "src/next/app/saveCheckpoint.ts": "18826e4654396b537899667cb206c103f1910671434c7dead3cf28afb93bf5e7",
+    "src/next/core/activeDrop.ts": "f275b1fa8ced16616493a6c2608597b2d1973371a3f69b834eb03cc6336e218a",
+    "src/next/core/battle.ts": "92bb1cb25ab50254f96d85fc58b4a02a06c4c81ed83622cb06120266e6518500",
+    "src/next/core/enemySequence.ts": "072e678d8dc95ff4188047e26a1505b482542790aec28d22f913493248ab079e",
+    "src/next/core/playerBuild.ts": "0f6ae87a28845becd950da02cdb91744e2a924a1c0cce4156fb32890ab8b8a7a",
+    "src/next/core/skillCatalog.ts": "6731390ba400b47f06bbfdbf79bcaaa179b2d601d3e0de07edbbae5242a5e3d3",
+    "src/next/core/skills.ts": "54c8a19275d98108a6bab3e7f3cd842d64c06073a3cc0a4004e20a6a42415b98",
+    "src/next/core/transformations.ts": "d294f202f3f6c98e8f7f7293da225aeaa617000b4bbac5448b794deac60ea5f8",
+    "src/next/core/tuning.ts": "f48354ce648fc87a48313f7ab83ff669c17669e1adff70d5dfc12bd1e21d0700",
+    "src/next/core/types.ts": "b42eb7b0d30c7c88dcc8d39de23da5ca740954f0c6d280f0da15b940c2c59214",
+    "src/next/core/validation.ts": "1e103fe375a54f84a1076154fb5eead75aef1869dc8f5be992b1cb65d2631985",
+    "src/next/core/boardSkills.ts": "dd707106b1be651c9e8dfab2b1c86b216d725eda5f3c028b8c2052aed82d810a",
+    "src/next/audio/SampleAudioDirector.ts": "b1916c5b52015d4c6236a9175dba0ce95faabe5a2bf2e9b8087fa5707c5b2f95"
+  }
+}

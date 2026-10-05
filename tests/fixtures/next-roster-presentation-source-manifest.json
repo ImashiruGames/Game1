@@ -1,0 +1,11 @@
+{
+  "purpose": "Confirmed roster transformation sound gating and legacy caster/portrait identity fixes. Existing recorded banks reused explicitly; no combat or saved effects changed. Power text labels modifiers honestly.",
+  "files": {
+    "src/next/audio/SampleAudioDirector.ts": "d44c916ec2aa50df0f9cc72bc9503070b025fe1f1969f4f994d4a37aa61188b3",
+    "src/next/audio/characterSoundThemes.ts": "27a7f58320f9595405868adccf214119db3fe1d2f4ccfd81f3105553da58400e",
+    "src/next/ui/playerPower.ts": "d8c5546679a8625d311f07407f89a595ecbf14981df07837ecbdae9cfe67644b",
+    "src/next/ui/transformationCinematic.ts": "3d307e78c340dff3b83e5d3d7c445ede4b18cb2462437691857ede85c12836a2",
+    "src/next/ui/transformationIdentity.ts": "a6f7ccb862ce7098d1e03498ef12102a5744ec7698177fe9298c181c8aef682e",
+    "src/next/main.ts": "98dfc144afc06722cbd8c2240c40608a29859a9d62417985767b3890326a913a"
+  }
+}

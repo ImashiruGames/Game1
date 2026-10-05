@@ -1,0 +1,44 @@
+{
+  "official_repository": "https://github.com/jummbus/jummbox",
+  "commit": "f745b1c83e46359227a7e324d5f05075c306ac3b",
+  "commit_url": "https://github.com/jummbus/jummbox/commit/f745b1c83e46359227a7e324d5f05075c306ac3b",
+  "retrieved_utc": "2026-10-02",
+  "files": [
+    {
+      "file": "synth/synth.ts",
+      "sha256": "ee997695617df0c3051e20e34d920d3dda9e8ae38cfa7b252c5c1b8916c1ed97",
+      "url": "https://raw.githubusercontent.com/jummbus/jummbox/f745b1c83e46359227a7e324d5f05075c306ac3b/synth/synth.ts"
+    },
+    {
+      "file": "synth/SynthConfig.ts",
+      "sha256": "32b18693cb33d3d5615b96113d858c09b358236fa42cd0911f0b6af07d51d787",
+      "url": "https://raw.githubusercontent.com/jummbus/jummbox/f745b1c83e46359227a7e324d5f05075c306ac3b/synth/SynthConfig.ts"
+    },
+    {
+      "file": "synth/FFT.ts",
+      "sha256": "fcd356cad61ba94da63a257f1fb6ae37f94b964a5e0068c5df4328c76e99af84",
+      "url": "https://raw.githubusercontent.com/jummbus/jummbox/f745b1c83e46359227a7e324d5f05075c306ac3b/synth/FFT.ts"
+    },
+    {
+      "file": "synth/Deque.ts",
+      "sha256": "7c86ca7e8b95a23634f9fc112c039c515eb1e7f967caf2814841487798a4f119",
+      "url": "https://raw.githubusercontent.com/jummbus/jummbox/f745b1c83e46359227a7e324d5f05075c306ac3b/synth/Deque.ts"
+    },
+    {
+      "file": "synth/filtering.ts",
+      "sha256": "7c1079889c51221c198321eb47364e5fdee770a14c195e352cbef98df4c7bd38",
+      "url": "https://raw.githubusercontent.com/jummbus/jummbox/f745b1c83e46359227a7e324d5f05075c306ac3b/synth/filtering.ts"
+    },
+    {
+      "file": "editor/EditorConfig.ts",
+      "sha256": "3dbb748d160140452746710d6cec5faa06c5b73ff43d169bad5ec5df2de4e46e",
+      "url": "https://raw.githubusercontent.com/jummbus/jummbox/f745b1c83e46359227a7e324d5f05075c306ac3b/editor/EditorConfig.ts"
+    },
+    {
+      "file": "LICENSE.md",
+      "sha256": "95d98624b723d5e42e62fb43b01688169a3721135a6c222bca8823b3d9182de9",
+      "url": "https://raw.githubusercontent.com/jummbus/jummbox/f745b1c83e46359227a7e324d5f05075c306ac3b/LICENSE.md"
+    }
+  ],
+  "source_modifications": "None. TypeScript compilation only."
+}

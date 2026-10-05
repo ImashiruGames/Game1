@@ -1,0 +1,1731 @@
+[
+  {
+    "proposal_id": "A001",
+    "name": "ぴたり三連",
+    "category": "link_geometry",
+    "effect": "実長がちょうど3の軸だけ攻撃＋3。4以上には適用しない",
+    "tactical_choice": "長い線へ育てるか、短い線を新設するか",
+    "trigger": "能動投入のリンク攻撃量確定前：link.actualCount==3",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "link.actualCount==3",
+      "AddToExistingHit(3)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "6以上の基本5相当と実長を混同しない"
+    ],
+    "test_ideas": [
+      "3成立、4不成立、赤の縦3置換にも＋3"
+    ],
+    "mechanical_signature": "link_geometry:link.actualCount==3:AddToExistingHit(3)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "link.actualCount==3",
+      "AddToExistingHit(3)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "リンクの成立条件・配分",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "通常の3リンクだけで発動し、複雑な形や数手先の予約を要求しない。",
+      "short_description": "3つちょうどなら攻撃が強くなる。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A004",
+    "name": "一点照準",
+    "category": "link_geometry",
+    "effect": "最大実長の軸1本だけ攻撃＋5。同長なら既定の軸順で先の1本",
+    "tactical_choice": "複軸を作りながら主砲を選ぶ",
+    "trigger": "能動投入のリンク攻撃量確定前：SelectLongestAxisStable",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "SelectLongestAxisStable",
+      "AddSelectedHit(5)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "他軸の基本攻撃は消さない"
+    ],
+    "test_ideas": [
+      "縦横同長なら縦だけ加算"
+    ],
+    "mechanical_signature": "link_geometry:SelectLongestAxisStable:AddSelectedHit(5)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "SelectLongestAxisStable",
+      "AddSelectedHit(5)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "リンクの成立条件・配分",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "長さだけを見ればよく、複軸の細かな作り分けを必須にしない。",
+      "short_description": "いちばん長いリンクを1本強化する。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A025",
+    "name": "最低保証",
+    "category": "offense",
+    "effect": "自分の通常リンクの最終ダメージを最低5にする",
+    "tactical_choice": "小さい基礎火力や減衰に強い安定型を選ぶ",
+    "trigger": "能動投入のリンク攻撃量確定前：EligibleLink && afterOffensiveModifiers",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "EligibleLink && afterOffensiveModifiers",
+      "ApplyOutgoingFloor(5)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "相手の軽減前の下限。軽減後にも5を保証しない"
+    ],
+    "test_ideas": [
+      "元3→5、元7→7、敵防御3で実2"
+    ],
+    "mechanical_signature": "offense:EligibleLink && afterOffensiveModifiers:ApplyOutgoingFloor(5)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "EligibleLink && afterOffensiveModifiers",
+      "ApplyOutgoingFloor(5)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "攻撃量の修飾",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "配置条件を追加しない自動効果。数値調整と表示名は別途検討する。",
+      "short_description": "リンク攻撃の最低ダメージを保証する。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A026",
+    "name": "追い込み",
+    "category": "offense",
+    "effect": "当該打の直前で敵HPが最大の4分の1以下なら、その1打へ＋4",
+    "tactical_choice": "先行軸で敵を削り、後続軸を強くする",
+    "trigger": "能動投入のリンク攻撃量確定前：TargetHpRatioAtHit<=1/4",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "TargetHpRatioAtHit<=1/4",
+      "AddToExistingHit(4)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "整数の交差積で比率判定。敵HP0以下にも既存後続攻撃として適用可"
+    ],
+    "test_ideas": [
+      "形で閾値を跨ぐ場合、縦で跨いで横から加算する場合"
+    ],
+    "mechanical_signature": "offense:TargetHpRatioAtHit<=1/4:AddToExistingHit(4)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "TargetHpRatioAtHit<=1/4",
+      "AddToExistingHit(4)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "攻撃量の修飾",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "今の敵HPを見るだけの追撃補助で、事前の仕込みを要求しない。",
+      "short_description": "弱った敵へのリンク攻撃が強くなる。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A028",
+    "name": "対等の刃",
+    "category": "offense",
+    "effect": "自分の現在HP割合が敵より低い時だけリンク＋3",
+    "tactical_choice": "自分と敵の回復・損失の釣合いを読む",
+    "trigger": "能動投入のリンク攻撃量確定前：SelfHpFraction<TargetHpFraction",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "SelfHpFraction<TargetHpFraction",
+      "AddToExistingHit(3)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "比率の表示丸めを使わない。自分KO時は発動しない"
+    ],
+    "test_ideas": [
+      "50/100と100/200は不成立、49/100なら成立"
+    ],
+    "mechanical_signature": "offense:SelfHpFraction<TargetHpFraction:AddToExistingHit(3)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "SelfHpFraction<TargetHpFraction",
+      "AddToExistingHit(3)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "攻撃量の修飾",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "画面の双方のHPから読める現在状態条件。割合比較はアイコンで補助すれば短く説明できる。",
+      "short_description": "HP割合で不利な間、リンク攻撃が強くなる。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A030",
+    "name": "フルパワー",
+    "category": "offense",
+    "effect": "リンク処理時点で自HP満タンなら、その投入の最初の1打だけ＋5",
+    "tactical_choice": "形回復から満HP攻撃につなげる",
+    "trigger": "能動投入のリンク攻撃量確定前：SelfHp==MaxHp && firstEligibleHit",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "SelfHp==MaxHp && firstEligibleHit",
+      "AddFirstEligibleHit(5)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "満HPチェックは形後。全軸へ適用しない"
+    ],
+    "test_ideas": [
+      "形で全快して発動、被ダメージ1でも未回復なら不成立"
+    ],
+    "mechanical_signature": "offense:SelfHp==MaxHp && firstEligibleHit:AddFirstEligibleHit(5)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "SelfHp==MaxHp && firstEligibleHit",
+      "AddFirstEligibleHit(5)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "攻撃量の修飾",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "display_name": "フルパワー",
+    "aliases": [
+      "満身の一撃"
+    ],
+    "internal_mechanic_label": "満身の一撃",
+    "source_reference": {
+      "repository": "ImashiruGames/Game1",
+      "default_branch": "main",
+      "commit": "869769deedbc5e7aece8e841d3a1f17639188be6",
+      "commit_date_utc": "2025-03-01T04:38:25Z",
+      "file": "index.html",
+      "original_id": "full-power",
+      "original_name": "フルパワー",
+      "line_start": 1314,
+      "line_end": 1317,
+      "url": "https://github.com/ImashiruGames/Game1/blob/869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L1314-L1317",
+      "supporting_urls": [],
+      "verification": "GitHub接続でコミットを固定し静的読解。実行・プレイテスト・修理はしていない"
+    },
+    "original_effect": "元作の定義はHP満タン時、攻撃力・防御力補正前のダメージへ10加算。現行案の最初の1リンク限定とは同一仕様ではない。",
+    "proposed_effect": "リンク処理時点で自HP満タンなら、その投入の最初の1打だけ＋5",
+    "adaptation_notes": [
+      "表示名の提案のみ更新。proposal_id、既存effect、trigger、数値、費用、期間は変更しない。元作効果そのものへの置換ではない。"
+    ],
+    "deduplication_notes": [
+      "既存案と効果の核が重なるため新しい独立提案として数えない。"
+    ],
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "満HPという一目で分かる条件。元作フルパワーの読みやすい名前も使える。",
+      "short_description": "HP満タンなら最初のリンクが強くなる。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A031",
+    "name": "血の前借り",
+    "category": "offense",
+    "effect": "通常投入でリンクが成立する時、最初のリンク前にHP2を払い、その投入の各リンクへ＋3",
+    "tactical_choice": "多軸の利益とHP費用を比べる",
+    "trigger": "能動投入のリンク攻撃量確定前：ManualDropWithEligibleLinks",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "new_definition",
+    "primitives": [
+      "ManualDropWithEligibleLinks",
+      "PayHpOnceThenAddEachHit(2,3)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [
+      "origin内の費用支払済みフラグ"
+    ],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "赤無料投入は対象外。支払いでKOなら攻撃なし。費用損失は既存ゲージ対象"
+    ],
+    "test_ideas": [
+      "4軸でも費用2だけ、HP2で停止、無リンク無費用"
+    ],
+    "mechanical_signature": "offense:ManualDropWithEligibleLinks:PayHpOnceThenAddEachHit(2,3)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "medium",
+    "difficulty_reason": "複数一致・一時状態・新しい条件/合成順の定義と回帰検証が必要",
+    "composition_primitives": [
+      "ManualDropWithEligibleLinks",
+      "PayHpOnceThenAddEachHit(2,3)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "variants": [
+      {
+        "proposal_id": "A012",
+        "name": "軸の予約",
+        "effect": "通常投入の確定前に軸1つを任意指定。そこが3以上ならHP2を支払い攻撃＋6。不成立なら費用なし",
+        "tactical_choice": "確実な単軸を読む代わりに体力を使う",
+        "cost": "通常の装備枠。別記がなければ追加費用なし",
+        "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+        "primitives": [
+          "ManualDropIntent.preselectedAxis matches eligibleLink",
+          "PayHpThenAddSelectedHit(2,6)"
+        ],
+        "state": "行動意図に予約軸。キャンセルで破棄",
+        "interactions": [
+          "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+          "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+        ],
+        "edge_cases": [
+          "赤の自動無料投入では予約もHP費用も発生しない。自己KOで残攻撃を中断"
+        ],
+        "test_ideas": [
+          "取消無費用、指定軸不成立無費用、HP2ならKO後攻撃なし"
+        ],
+        "merge_reason": "HP費用とリンク加算の同じ核。軸予約/一点集中を操作上の変種として保持",
+        "counted_as_separate_proposal": false
+      }
+    ],
+    "domain": "戦闘・形・リンク",
+    "classification_label": "追加定義が必要な案",
+    "category_label": "攻撃量の修飾",
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "その場のHPと攻撃を交換する即時の代償。数手後の受取や配置予約はない。",
+      "short_description": "リンクができる通常投入でHPを払い、その攻撃を強める。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A035",
+    "name": "単線集中",
+    "category": "offense",
+    "effect": "成立リンクが1本だけなら、その攻撃を1.5倍にし切り捨て",
+    "tactical_choice": "交差を狙うより強い一本を確実に作る",
+    "trigger": "能動投入のリンク攻撃量確定前：EligibleAxisCount==1",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "EligibleAxisCount==1",
+      "ScaleExistingHit(3/2 floor)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "形は攻撃本数に数えず、変化連動も軸ではない"
+    ],
+    "test_ideas": [
+      "1軸7→10、2軸なら各元値"
+    ],
+    "mechanical_signature": "offense:EligibleAxisCount==1:ScaleExistingHit(3/2 floor)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "EligibleAxisCount==1",
+      "ScaleExistingHit(3/2 floor)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "攻撃量の修飾",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "普通のリンク1本で十分。複数形の同時完成や長い手順より成立が自然。",
+      "short_description": "リンクが1方向だけなら、その一撃が強くなる。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A039",
+    "name": "衝撃の天井",
+    "category": "defense",
+    "effect": "敵リンク1打から失うHPを最大6に制限する",
+    "tactical_choice": "一撃の大きい敵へ備える",
+    "trigger": "敵リンクのダメージ確定前：IncomingPrimaryLink",
+    "target": "自分のHP",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "IncomingPrimaryLink",
+      "CapIncomingHit(6)"
+    ],
+    "hooks": [
+      "敵リンクのダメージ確定前"
+    ],
+    "state": [],
+    "event_order": "敵のリンク予定量→置換/加算→本案の軽減→実HP損失→実損失分ゲージ。即死相当は別経路",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "即死相当、自己費用、毒等の将来派生効果には適用しない"
+    ],
+    "test_ideas": [
+      "5→5、10→6、初撃の守りとの順序を固定"
+    ],
+    "mechanical_signature": "defense:IncomingPrimaryLink:CapIncomingHit(6)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "IncomingPrimaryLink",
+      "CapIncomingHit(6)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "防御量の修飾",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "パッシブ・量の修飾",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "常時自動の上限防御で、発動のための難しい操作がない。",
+      "short_description": "敵リンク1発のダメージを一定量までに抑える。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A041",
+    "name": "割合受け",
+    "category": "defense",
+    "effect": "敵リンクの予定ダメージの4分の1を切捨てて軽減する",
+    "tactical_choice": "細かい攻撃より大技を割合で受け止める",
+    "trigger": "敵リンクのダメージ確定前：IncomingPrimaryLinkPreMitigation",
+    "target": "自分のHP",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "IncomingPrimaryLinkPreMitigation",
+      "ReduceBy(floor(rawDamage/4))"
+    ],
+    "hooks": [
+      "敵リンクのダメージ確定前"
+    ],
+    "state": [],
+    "event_order": "敵のリンク予定量→置換/加算→本案の軽減→実HP損失→実損失分ゲージ。即死相当は別経路",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "軽減済みの値を参照して二重減算しない"
+    ],
+    "test_ideas": [
+      "3は0軽減、4は1、複数軽減との安定順"
+    ],
+    "mechanical_signature": "defense:IncomingPrimaryLinkPreMitigation:ReduceBy(floor(rawDamage/4))",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "IncomingPrimaryLinkPreMitigation",
+      "ReduceBy(floor(rawDamage/4))"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "防御量の修飾",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "パッシブ・量の修飾",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "直ちに効く割合防御。個別配置や記憶する手順を増やさない。",
+      "short_description": "敵のリンクダメージを4分の1軽くする。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A043",
+    "name": "身軽な守り",
+    "category": "defense",
+    "effect": "空いている自由枠1つにつき敵リンクを1軽減、最大2",
+    "tactical_choice": "能力を詰めるか、空き枠を防御に使うか",
+    "trigger": "敵リンクのダメージ確定前：CountEmptyFlexibleSlots",
+    "target": "自分のHP",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "CountEmptyFlexibleSlots",
+      "ReduceHitBy(emptySlots)"
+    ],
+    "hooks": [
+      "敵リンクのダメージ確定前"
+    ],
+    "state": [],
+    "event_order": "敵のリンク予定量→置換/加算→本案の軽減→実HP損失→実損失分ゲージ。即死相当は別経路",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "このスキル自体が1枠を占めるため通常の上限は1。拡張枠は別定義"
+    ],
+    "test_ideas": [
+      "固定枠を空きと数えない、消耗品消費後の敵手で増える"
+    ],
+    "mechanical_signature": "defense:CountEmptyFlexibleSlots:ReduceHitBy(emptySlots)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "low",
+    "difficulty_reason": "既存スナップショットを読む純粋な条件と数量修飾に局所化できる",
+    "composition_primitives": [
+      "CountEmptyFlexibleSlots",
+      "ReduceHitBy(emptySlots)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "防御量の修飾",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "パッシブ・量の修飾",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "現在の空き枠0〜2だけを見ればよく、複雑な盤面条件を要求しない。",
+      "short_description": "空いている自由枠があると、守りが少し強くなる。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A049",
+    "name": "吸収の刃",
+    "category": "healing",
+    "effect": "自分の通常リンクで実際に減らした敵HPの4分の1を切り捨てて回復、1投入の合計上限3",
+    "tactical_choice": "火力と小回復を同時に得る",
+    "trigger": "自分の通常リンクによる敵の実HP損失確定後",
+    "target": "自分のHP（通常リンクの敵実HP損失を参照）",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "new_definition",
+    "primitives": [
+      "PrimaryLinkActualHpLoss>0",
+      "HealFromActualDamage(floor(actual/4),originCap3)"
+    ],
+    "hooks": [
+      "afterPrimaryLinkDamageResolved"
+    ],
+    "state": [
+      "origin内の吸収残予算"
+    ],
+    "event_order": "通常リンクのHP適用→実損失を参照して吸収回復→青変化の連動を一度→次の軸。形→リンク→変化の骨格は変えない",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "オーバーキル・形・魔法弾・青連動は吸収の発動源にしない。青連動から吸収へ戻らない"
+    ],
+    "test_ideas": [
+      "敵残HP1へ20でも回復0、青連動から再回復0"
+    ],
+    "mechanical_signature": "healing:PrimaryLinkActualHpLoss>0:HealFromActualDamage(floor(actual/4),originCap3)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "medium",
+    "difficulty_reason": "複数一致・一時状態・新しい条件/合成順の定義と回帰検証が必要",
+    "composition_primitives": [
+      "PrimaryLinkActualHpLoss>0",
+      "HealFromActualDamage(floor(actual/4),originCap3)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "追加定義が必要な案",
+    "category_label": "回復量と連動",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "パッシブ・量の修飾",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "攻撃と回復がその場で結びつく馴染みのある効果。割合/上限は表示で補助できる。",
+      "short_description": "リンクで実際に削ったHPの一部を吸収する。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A051",
+    "name": "相互の手当",
+    "category": "healing",
+    "effect": "自分の回復設定量を＋4する代わりに、両者が生きていれば敵も設定量2回復する",
+    "tactical_choice": "回復効率を上げる代わりに撃破を遅らせる",
+    "trigger": "自分の回復量確定前：PlayerHealPrimary && bothAlive",
+    "target": "自分の設定回復量と、生存している敵のHP",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "new_definition",
+    "primitives": [
+      "PlayerHealPrimary && bothAlive",
+      "HealPlayerModifiedThenHealEnemy2"
+    ],
+    "hooks": [
+      "beforeRequestedHealFinalized",
+      "afterPlayerHealAndBlueReaction"
+    ],
+    "state": [],
+    "event_order": "自分の設定回復量＋4→実回復→青変化連動→両者生存時だけ敵回復2。敵KOを回復で取り消さない",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "青連動で敵KOになれば敵回復は行わず復活させない。敵回復は本案を再発動しない"
+    ],
+    "test_ideas": [
+      "青連動で敵撃破時は報酬へ、敵の回復予定からプレイヤー回復なし"
+    ],
+    "mechanical_signature": "healing:PlayerHealPrimary && bothAlive:HealPlayerModifiedThenHealEnemy2",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "medium",
+    "difficulty_reason": "複数一致・一時状態・新しい条件/合成順の定義と回帰検証が必要",
+    "composition_primitives": [
+      "PlayerHealPrimary && bothAlive",
+      "HealPlayerModifiedThenHealEnemy2"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "追加定義が必要な案",
+    "category_label": "回復量と連動",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "パッシブ・量の修飾",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "今行う回復の得失が同時に見える。数手先の仕込みではない。",
+      "short_description": "自分の回復を強める代わりに、敵も少し回復する。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A057",
+    "name": "会心の抽選",
+    "category": "combat_formula",
+    "effect": "各能動投入で1回だけ25%抽選し、当選ならその投入の最初のリンクを2倍にする",
+    "tactical_choice": "平均値より上振れを取る",
+    "trigger": "能動投入のリンク攻撃量確定前：OriginWithEligibleLinks && seededRollOnce",
+    "target": "敵HPへ向かう当該攻撃",
+    "cost": "通常の装備枠。別記がなければ追加費用なし",
+    "duration": "装備中。計算用の一時値は当該投入/効果だけ",
+    "classification": "new_definition",
+    "primitives": [
+      "OriginWithEligibleLinks && seededRollOnce",
+      "ScaleFirstHitOnCritical(2)"
+    ],
+    "hooks": [
+      "能動投入のリンク攻撃量確定前"
+    ],
+    "state": [
+      "originごとの抽選結果、戦闘用乱数ストリーム"
+    ],
+    "event_order": "配置後の同一スナップショットで条件を確定→所持順の形→縦・横・斜めのリンク→双方生存時だけ既存の変化判定",
+    "recursion_guard": "originId+skillInstanceId+phaseで1回。計算修飾は新しい投入/形/リンク判定を作らない。派生ダメージは発動元へ再入しない",
+    "interactions": [
+      "赤の無料投入は独立originとして同じ条件判定。手番終了ではない",
+      "攻撃側KOで中断、敵KO後も確定済み攻撃列は既存規則どおり継続"
+    ],
+    "edge_cases": [
+      "プレビューは抽選しない。不成立なら乱数を消費しない。独立乱数の追加は再現性仕様を要定義"
+    ],
+    "test_ideas": [
+      "同seed同入力一致、取消/表示更新で引き直しなし"
+    ],
+    "mechanical_signature": "combat_formula:OriginWithEligibleLinks && seededRollOnce:ScaleFirstHitOnCritical(2)",
+    "status": "未実装・未採用の設計案",
+    "balance": "数値は挙動を説明する例。採用・バランス調整は未承認",
+    "difficulty": "medium",
+    "difficulty_reason": "複数一致・一時状態・新しい条件/合成順の定義と回帰検証が必要",
+    "composition_primitives": [
+      "OriginWithEligibleLinks && seededRollOnce",
+      "ScaleFirstHitOnCritical(2)"
+    ],
+    "implementation_notes": "現在のactiveDrop.tsは形・リンクを配置直後に取得。数量修飾を純粋関数へ分離し、effectDispatcher/共通DamageContextへ段階的に合成する設計案。既存IDの意味は変更しない",
+    "domain": "戦闘・形・リンク",
+    "classification_label": "追加定義が必要な案",
+    "category_label": "火力式・属性・確率",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "リンク・攻撃補助",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "発動条件の追加操作がなく、短く説明できる。乱数の実装難度や公平性は別軸で未承認。",
+      "short_description": "一定確率で最初のリンクが会心になる。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "B001",
+    "name": "精密接収",
+    "category": "所有権操作",
+    "effect": "敵箱を1個選び、現在所有者だけを自分へ変える。箱ID・種類・状態・位置は変えない。",
+    "tactical_choice": "敵の土台を奪うか、次戦に残したい上段を奪うかを選ぶ。",
+    "trigger": "自分の通常行動として対象を選択・確定",
+    "target": "現在敵所有の任意の箱",
+    "cost": "通常行動1回。追加の数値費用は試験調整",
+    "duration": "即時。変更後の箱配置・所有権は保持",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "対象選択",
+      "所有権変更"
+    ],
+    "hooks": [
+      "盤面行動の対象検証",
+      "盤面変更",
+      "受動整理",
+      "行動完了"
+    ],
+    "state": [
+      "今回の対象ID集合"
+    ],
+    "event_order": "対象を事前確定→変更を一括適用→下向き受動整理→HP結果→次手番",
+    "recursion_guard": "同一行動IDで1回だけ解決。受動整理を能動投入へ戻さない",
+    "interactions": [
+      "すべて未実装の設計案。受動変更・受動落下から形/リンク/変化は新規発動しない。継承は決着時の現在自箱を含む最上位の横1行の自箱だけを同列に残す。"
+    ],
+    "edge_cases": [
+      "敵箱がない場合は使用不可",
+      "所有権保護中の箱は候補から除外"
+    ],
+    "test_ideas": [
+      "離れた敵箱も指定できる",
+      "受動変換で完成した3連結は攻撃しない",
+      "最上位へ変換した箱が継承候補になる"
+    ],
+    "mechanical_signature": "単体指定による位置不変の所有権奪取",
+    "domain": "盤面・空間",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "所有権操作",
+    "status": "未実装・未採用の設計案",
+    "balance": "数量・費用・上限・期間は例示。現行カタログの承認値ではない",
+    "variants": [],
+    "record_kind": "board_ability",
+    "activation_type": "盤面スキル・配置操作",
+    "composition_primitives": [
+      "対象選択",
+      "所有権変更"
+    ],
+    "difficulty": "low",
+    "difficulty_reason": "既存の対象抽選/変換/削除の純粋処理で局所化しやすい",
+    "implementation_notes": "既存Coreの純粋操作と宣言的な条件/効果/状態へ分離する設計案。新しいIDとして導入し既存スキルの意味は変えない",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "対象1個にその場で作用する。将来の発動を予約せず、現在の敵配置へ直接干渉できる。",
+      "short_description": "選んだ敵箱1個を自分の箱にする。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "B009",
+    "name": "精密解体",
+    "category": "破壊・整理",
+    "effect": "指定した箱を1個だけ取り除く。HPダメージや自動追撃は付けない。",
+    "tactical_choice": "支持箱を抜いて配置をずらすか、上端を空けて投入先を戻すかを選ぶ。",
+    "trigger": "自分の通常行動として対象を選択・確定",
+    "target": "任意の箱1個",
+    "cost": "通常行動1回。追加の数値費用は試験調整",
+    "duration": "即時。変更後の箱配置・所有権は保持",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "対象選択",
+      "箱破壊",
+      "受動落下"
+    ],
+    "hooks": [
+      "盤面行動の対象検証",
+      "盤面変更",
+      "受動整理",
+      "行動完了"
+    ],
+    "state": [
+      "今回の対象ID集合"
+    ],
+    "event_order": "対象を事前確定→変更を一括適用→下向き受動整理→HP結果→次手番",
+    "recursion_guard": "同一行動IDで1回だけ解決。受動整理を能動投入へ戻さない",
+    "interactions": [
+      "すべて未実装の設計案。受動変更・受動落下から形/リンク/変化は新規発動しない。継承は決着時の現在自箱を含む最上位の横1行の自箱だけを同列に残す。"
+    ],
+    "edge_cases": [
+      "破壊保護の箱は保護規則に従う",
+      "地形は選択不可"
+    ],
+    "test_ideas": [
+      "上の箱だけが真下へ落ちる",
+      "破壊で開いた出現マスを再利用できる",
+      "落下でできた形が発動しない"
+    ],
+    "mechanical_signature": "単体除去による足場と投入口の編集",
+    "domain": "盤面・空間",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "破壊・整理",
+    "status": "未実装・未採用の設計案",
+    "balance": "数量・費用・上限・期間は例示。現行カタログの承認値ではない",
+    "variants": [],
+    "record_kind": "board_ability",
+    "activation_type": "盤面スキル・配置操作",
+    "composition_primitives": [
+      "対象選択",
+      "箱破壊",
+      "受動落下"
+    ],
+    "difficulty": "low",
+    "difficulty_reason": "既存の対象抽選/変換/削除の純粋処理で局所化しやすい",
+    "implementation_notes": "既存Coreの純粋操作と宣言的な条件/効果/状態へ分離する設計案。新しいIDとして導入し既存スキルの意味は変えない",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "対象と結果が明確な即時整理。仕込み印や後日の条件発火を使わない。",
+      "short_description": "選んだ箱1個を取り除く。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "B010",
+    "name": "塊の解体",
+    "category": "破壊・整理",
+    "effect": "指定した箱と同じ所有者で直交連結する箱をまとめて破壊する。",
+    "tactical_choice": "小さな敵塊を狙うか、大きな自箱群を捨てて空間を取り戻すかを選ぶ。",
+    "trigger": "自分の通常行動として対象を選択・確定",
+    "target": "指定箱を含む同一所有者の直交成分",
+    "cost": "通常行動1回。追加の数値費用は試験調整",
+    "duration": "即時。変更後の箱配置・所有権は保持",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "成分探索",
+      "一括破壊",
+      "受動整理"
+    ],
+    "hooks": [
+      "盤面行動の対象検証",
+      "盤面変更",
+      "受動整理",
+      "行動完了"
+    ],
+    "state": [
+      "今回の対象ID集合"
+    ],
+    "event_order": "対象を事前確定→変更を一括適用→下向き受動整理→HP結果→次手番",
+    "recursion_guard": "同一行動IDで1回だけ解決。受動整理を能動投入へ戻さない",
+    "interactions": [
+      "すべて未実装の設計案。受動変更・受動落下から形/リンク/変化は新規発動しない。継承は決着時の現在自箱を含む最上位の横1行の自箱だけを同列に残す。"
+    ],
+    "edge_cases": [
+      "斜めだけの箱は残る",
+      "成分全体を事前表示してから確定"
+    ],
+    "test_ideas": [
+      "混在する他所有者の箱を消さない",
+      "破壊後に近づいた同色箱へ再連鎖しない"
+    ],
+    "mechanical_signature": "接続構造を単位にした全塊除去",
+    "domain": "盤面・空間",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "破壊・整理",
+    "status": "未実装・未採用の設計案",
+    "balance": "数量・費用・上限・期間は例示。現行カタログの承認値ではない",
+    "variants": [],
+    "record_kind": "board_ability",
+    "activation_type": "盤面スキル・配置操作",
+    "composition_primitives": [
+      "成分探索",
+      "一括破壊",
+      "受動整理"
+    ],
+    "difficulty": "medium",
+    "difficulty_reason": "新しい対象集合・順序・拒否条件とプレビューが必要",
+    "implementation_notes": "既存Coreの純粋操作と宣言的な条件/効果/状態へ分離する設計案。新しいIDとして導入し既存スキルの意味は変えない",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "今見えているひと塊をその場で処理する。塊の範囲をハイライトすれば理解しやすい。",
+      "short_description": "同じ色でつながる箱の塊を取り除く。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "B011",
+    "name": "切断線",
+    "category": "破壊・整理",
+    "effect": "盤面内の直線区間を指定し、その区間の箱を所有者によらず破壊する。固定地形に当たった地点で切断範囲を止める。",
+    "tactical_choice": "空間を横断して複数の敵構築を崩すか、地形を盾に自箱を残すかを選ぶ。",
+    "trigger": "自分の通常行動として対象を選択・確定",
+    "target": "2端点で指定する水平・垂直・斜めの1区間",
+    "cost": "通常行動1回。追加の数値費用は試験調整",
+    "duration": "即時。変更後の箱配置・所有権は保持",
+    "classification": "existing_rule_extension",
+    "primitives": [
+      "区間走査",
+      "地形による遮断",
+      "一括破壊"
+    ],
+    "hooks": [
+      "盤面行動の対象検証",
+      "盤面変更",
+      "受動整理",
+      "行動完了"
+    ],
+    "state": [
+      "今回の対象ID集合"
+    ],
+    "event_order": "対象を事前確定→変更を一括適用→下向き受動整理→HP結果→次手番",
+    "recursion_guard": "同一行動IDで1回だけ解決。受動整理を能動投入へ戻さない",
+    "interactions": [
+      "すべて未実装の設計案。受動変更・受動落下から形/リンク/変化は新規発動しない。継承は決着時の現在自箱を含む最上位の横1行の自箱だけを同列に残す。"
+    ],
+    "edge_cases": [
+      "空きマスは通過するが地形は越えない",
+      "箱を横向きに射出する処理はない"
+    ],
+    "test_ideas": [
+      "地形より奥の箱が残る",
+      "途中が空いていても範囲内の後続箱は対象",
+      "選択区間外へ伸びない"
+    ],
+    "mechanical_signature": "射出ではない地形遮蔽付きの切断帯",
+    "domain": "盤面・空間",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "category_label": "破壊・整理",
+    "status": "未実装・未採用の設計案",
+    "balance": "数量・費用・上限・期間は例示。現行カタログの承認値ではない",
+    "variants": [],
+    "record_kind": "board_ability",
+    "activation_type": "盤面スキル・配置操作",
+    "composition_primitives": [
+      "区間走査",
+      "地形による遮断",
+      "一括破壊"
+    ],
+    "difficulty": "medium",
+    "difficulty_reason": "新しい対象集合・順序・拒否条件とプレビューが必要",
+    "implementation_notes": "既存Coreの純粋操作と宣言的な条件/効果/状態へ分離する設計案。新しいIDとして導入し既存スキルの意味は変えない",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "線を選ぶだけの即時整理。削除範囲をプレビューすれば長い説明を避けられる。",
+      "short_description": "選んだ直線上の箱を取り除く。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "B019",
+    "name": "位置交換",
+    "category": "既存箱の移動",
+    "effect": "任意の既存箱2個の座標を同時に交換する。所有者・種類・状態は各箱IDとともに動く。",
+    "tactical_choice": "特殊箱や敵箱そのものを位置ごと交換し、所有権だけの交換と使い分ける。",
+    "trigger": "自分の通常行動として対象を選択・確定",
+    "target": "異なる2個の箱",
+    "cost": "通常行動1回。追加の数値費用は試験調整",
+    "duration": "即時。変更後の箱配置・所有権は保持",
+    "classification": "new_definition",
+    "primitives": [
+      "座標同時交換",
+      "受動整理"
+    ],
+    "hooks": [
+      "盤面行動の対象検証",
+      "盤面変更",
+      "受動整理",
+      "行動完了"
+    ],
+    "state": [
+      "今回の対象ID集合"
+    ],
+    "event_order": "対象を事前確定→変更を一括適用→下向き受動整理→HP結果→次手番",
+    "recursion_guard": "同一行動IDで1回だけ解決。受動整理を能動投入へ戻さない",
+    "interactions": [
+      "すべて未実装の設計案。受動変更・受動落下から形/リンク/変化は新規発動しない。継承は決着時の現在自箱を含む最上位の横1行の自箱だけを同列に残す。"
+    ],
+    "edge_cases": [
+      "移動禁止の箱を含めると使用不可",
+      "同じ箱を二度指定できない"
+    ],
+    "test_ideas": [
+      "所有者を入れ替えるだけにならない",
+      "受動落下後も各IDの属性が保持される"
+    ],
+    "mechanical_signature": "物体の属性を随伴させる二点交換",
+    "domain": "盤面・空間",
+    "classification_label": "追加定義が必要な案",
+    "category_label": "既存箱の移動",
+    "status": "未実装・未採用の設計案",
+    "balance": "数量・費用・上限・期間は例示。現行カタログの承認値ではない",
+    "variants": [],
+    "record_kind": "board_ability",
+    "activation_type": "盤面スキル・配置操作",
+    "composition_primitives": [
+      "座標同時交換",
+      "受動整理"
+    ],
+    "difficulty": "high",
+    "difficulty_reason": "盤面トランザクション・支持関係・候補再生成・新しい状態の複合監査が必要",
+    "implementation_notes": "既存Coreの純粋操作と宣言的な条件/効果/状態へ分離する設計案。新しいIDとして導入し既存スキルの意味は変えない",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "2つの対象と直後の結果が見える。記録・予約・将来の再配置を条件にしない。",
+      "short_description": "箱2個の場所を入れ替える。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "D001",
+    "name": "瞑想",
+    "category": "timing",
+    "effect": "通常行動を使ってHP6回復。再使用まで自分の通常手番完了を3回待つ",
+    "tactical_choice": "回復の機会を計画して箱投入と使い分ける",
+    "trigger": "手動の通常行動選択",
+    "target": "自分のHPと当該スキルの再使用待ち",
+    "cost": "通常行動1回",
+    "duration": "装備中、使用回数無制限、再使用待ち3",
+    "classification": "new_definition",
+    "primitives": [
+      "ReusableActionWithCooldown(Heal6,3ownEnds)"
+    ],
+    "hooks": [
+      "手動の通常行動選択"
+    ],
+    "state": [
+      "readyAtOwnCompletion、最終使用actionId"
+    ],
+    "event_order": "既存の配置→形→リンク→生存確認後の変化を維持。本案のフックは独立した明記フェーズへ登録。撃破は1回確定して報酬待ちへ入り、報酬前に次戦開始処理をしない",
+    "recursion_guard": "sourceEffectId/rootActionIdを継承し、同じinstance+hookKeyは一度だけ実行。派生効果は原則二次派生の発動源にしない。新しい起点を作るのは合法な能動投入だけ",
+    "interactions": [
+      "通常行動・無料投入・手番開始/完了を別の時計として扱う",
+      "青変化の回復連動は設定回復量から一度。赤無料投入を通常手番完了と数えない",
+      "自HP0なら敗北。敵KO後に新規手番・回復・予約を開始しない"
+    ],
+    "edge_cases": [
+      "使用した当該完了を残り回数へ含めない。待機中は使用不可"
+    ],
+    "test_ideas": [
+      "赤ボーナスで待ちが減らず、取消でCDを開始しない"
+    ],
+    "mechanical_signature": "timing:手動の通常行動選択:ReusableActionWithCooldown(Heal6,3ownEnds)",
+    "status": "未実装・未採用の設計案",
+    "balance": "値は例示。状態・費用・解決位置を承認してから調整する",
+    "difficulty": "medium",
+    "difficulty_reason": "持続状態・期限・重複防止と表示/プレビューを追加する必要がある",
+    "composition_primitives": [
+      "ReusableActionWithCooldown(Heal6,3ownEnds)"
+    ],
+    "implementation_notes": "宣言的なTriggerSpec/Condition/EffectPlanと、instance単位のStateReducer・ExpiryPolicy・EventProvenanceで合成する設計案。時間や乱数はCoreの外部時計ではなく確定イベントから進める",
+    "global_defaults": {
+      "stacking": "特記なければ同一skillInstanceの同種状態は更新のみ、強さ加算なし",
+      "expiry": "装備解除/敵撃破/再開始で未解決予約を整理。持越しが明示されない状態はステージ内",
+      "new_status_requirement": "状態の正負、解除可否、付与者、root provenance、remaining clocks、重ね方を承認してから採用"
+    },
+    "domain": "時間・状態・履歴",
+    "classification_label": "追加定義が必要な案",
+    "category_label": "再使用待ち・予約・時間",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "手動・予約・状態スキル",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "display_name": "瞑想",
+    "aliases": [
+      "息継ぎ術"
+    ],
+    "internal_mechanic_label": "息継ぎ術",
+    "source_reference": {
+      "repository": "ImashiruGames/Game1",
+      "default_branch": "main",
+      "commit": "869769deedbc5e7aece8e841d3a1f17639188be6",
+      "commit_date_utc": "2025-03-01T04:38:25Z",
+      "file": "index.html",
+      "original_id": "meditation",
+      "original_name": "瞑想",
+      "line_start": 1441,
+      "line_end": 1454,
+      "url": "https://github.com/ImashiruGames/Game1/blob/869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L1441-L1454",
+      "supporting_urls": [
+        "https://github.com/ImashiruGames/Game1/blob/869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L2045-L2071"
+      ],
+      "verification": "GitHub接続でコミットを固定し静的読解。実行・プレイテスト・修理はしていない"
+    },
+    "original_effect": "元作の説明とonUseは手番を使って10回復。ただし非消耗カードとして定義され、現行クリック分岐は有効/無効の切替なので、この効果が実際に利用できたとは確認していない。",
+    "proposed_effect": "通常行動を使ってHP6回復。再使用まで自分の通常手番完了を3回待つ",
+    "adaptation_notes": [
+      "表示名の提案のみ更新。proposal_id、既存effect、trigger、数値、費用、期間は変更しない。元作効果そのものへの置換ではない。"
+    ],
+    "deduplication_notes": [
+      "既存案と効果の核が重なるため新しい独立提案として数えない。"
+    ],
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "回復は即時。再使用待ちはあるが、将来の箱配置を仕込む技能ではないので候補に残す。",
+      "short_description": "その手は回復に使う。少し待つとまた使える。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "D017",
+    "name": "終幕の灯",
+    "category": "timing",
+    "effect": "自分の通常行動で敵を倒せなかった時だけ、手番完了後に固定2直接ダメージを与える",
+    "tactical_choice": "僅差の削りを期待し、形/リンクの主火力と分ける",
+    "trigger": "通常手番完了後、双方生存",
+    "target": "生存している現ステージの敵HP",
+    "cost": "なし",
+    "duration": "1通常手番1回",
+    "classification": "experimental_new_concept",
+    "primitives": [
+      "PostCompletionDirectDamage(2)"
+    ],
+    "hooks": [
+      "通常手番完了後、双方生存"
+    ],
+    "state": [
+      "completionId guard"
+    ],
+    "event_order": "既存の配置→形→リンク→生存確認後の変化を維持。本案のフックは独立した明記フェーズへ登録。撃破は1回確定して報酬待ちへ入り、報酬前に次戦開始処理をしない",
+    "recursion_guard": "sourceEffectId/rootActionIdを継承し、同じinstance+hookKeyは一度だけ実行。派生効果は原則二次派生の発動源にしない。新しい起点を作るのは合法な能動投入だけ",
+    "interactions": [
+      "通常行動・無料投入・手番開始/完了を別の時計として扱う",
+      "青変化の回復連動は設定回復量から一度。赤無料投入を通常手番完了と数えない",
+      "自HP0なら敗北。敵KO後に新規手番・回復・予約を開始しない"
+    ],
+    "edge_cases": [
+      "変化判定を後へ動かさない。これで倒したら敵手番前に報酬へ。無料投入単独にはなし"
+    ],
+    "test_ideas": [
+      "攻撃後に変化済みでも適用、派生から再終幕なし"
+    ],
+    "mechanical_signature": "timing:通常手番完了後、双方生存:PostCompletionDirectDamage(2)",
+    "status": "未実装・未採用の設計案",
+    "balance": "値は例示。状態・費用・解決位置を承認してから調整する",
+    "difficulty": "high",
+    "difficulty_reason": "新しい任意ルールと複数フェーズ/表示/セーブの設計が必要",
+    "composition_primitives": [
+      "PostCompletionDirectDamage(2)"
+    ],
+    "implementation_notes": "宣言的なTriggerSpec/Condition/EffectPlanと、instance単位のStateReducer・ExpiryPolicy・EventProvenanceで合成する設計案。時間や乱数はCoreの外部時計ではなく確定イベントから進める",
+    "global_defaults": {
+      "stacking": "特記なければ同一skillInstanceの同種状態は更新のみ、強さ加算なし",
+      "expiry": "装備解除/敵撃破/再開始で未解決予約を整理。持越しが明示されない状態はステージ内",
+      "new_status_requirement": "状態の正負、解除可否、付与者、root provenance、remaining clocks、重ね方を承認してから採用"
+    },
+    "domain": "時間・状態・履歴",
+    "classification_label": "大きな任意ルール・新概念案",
+    "category_label": "再使用待ち・予約・時間",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "手動・予約・状態スキル",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "手順の記憶や難しい成立条件がない自動追撃。強さと終端処理は別途検討する。",
+      "short_description": "通常行動の終わりに、生きている敵へ小ダメージ。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "D024",
+    "name": "棘返し",
+    "category": "status_reaction",
+    "effect": "敵の通常リンクで実HPを失うと、敵へ2直接ダメージを返す。敵手番1回まで",
+    "tactical_choice": "攻めを受けて小さく反撃する",
+    "trigger": "敵primaryLinkの実HP損失後",
+    "target": "敵の通常リンクで自分が実HPを失った時の敵HP",
+    "cost": "なし",
+    "duration": "装備中、敵手番ごと1回",
+    "classification": "new_definition",
+    "primitives": [
+      "ReactWithTaggedDirectDamageOnce"
+    ],
+    "hooks": [
+      "敵primaryLinkの実HP損失後"
+    ],
+    "state": [
+      "retaliationUsedEnemyTurn"
+    ],
+    "event_order": "既存の配置→形→リンク→生存確認後の変化を維持。本案のフックは独立した明記フェーズへ登録。撃破は1回確定して報酬待ちへ入り、報酬前に次戦開始処理をしない",
+    "recursion_guard": "sourceEffectId/rootActionIdを継承し、同じinstance+hookKeyは一度だけ実行。派生効果は原則二次派生の発動源にしない。新しい起点を作るのは合法な能動投入だけ",
+    "interactions": [
+      "通常行動・無料投入・手番開始/完了を別の時計として扱う",
+      "青変化の回復連動は設定回復量から一度。赤無料投入を通常手番完了と数えない",
+      "自HP0なら敗北。敵KO後に新規手番・回復・予約を開始しない"
+    ],
+    "edge_cases": [
+      "反射/毒/自己費用から発動しない。自分KOなら反撃しない。反撃への反撃は禁止"
+    ],
+    "test_ideas": [
+      "相互棘でも有限、自HP1を失ってKOなら反撃なし"
+    ],
+    "mechanical_signature": "status_reaction:敵primaryLinkの実HP損失後:ReactWithTaggedDirectDamageOnce",
+    "status": "未実装・未採用の設計案",
+    "balance": "値は例示。状態・費用・解決位置を承認してから調整する",
+    "difficulty": "medium",
+    "difficulty_reason": "持続状態・期限・重複防止と表示/プレビューを追加する必要がある",
+    "composition_primitives": [
+      "ReactWithTaggedDirectDamageOnce"
+    ],
+    "implementation_notes": "宣言的なTriggerSpec/Condition/EffectPlanと、instance単位のStateReducer・ExpiryPolicy・EventProvenanceで合成する設計案。時間や乱数はCoreの外部時計ではなく確定イベントから進める",
+    "global_defaults": {
+      "stacking": "特記なければ同一skillInstanceの同種状態は更新のみ、強さ加算なし",
+      "expiry": "装備解除/敵撃破/再開始で未解決予約を整理。持越しが明示されない状態はステージ内",
+      "new_status_requirement": "状態の正負、解除可否、付与者、root provenance、remaining clocks、重ね方を承認してから採用"
+    },
+    "domain": "時間・状態・履歴",
+    "classification_label": "追加定義が必要な案",
+    "category_label": "反応効果",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "手動・予約・状態スキル",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "受けた攻撃へすぐ反応するパッシブ。先の配置や連続成功を狙う必要がない。",
+      "short_description": "リンクで傷つけられると、少しやり返す。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "D030",
+    "name": "治癒の反証",
+    "category": "status_reaction",
+    "effect": "敵が正の実回復をした時、その実回復の半分切捨てを直接ダメージで返す",
+    "tactical_choice": "敵の回復を完全阻止せず価値を減らす",
+    "trigger": "敵回復効果確定後",
+    "target": "正の実回復をした敵のHP",
+    "cost": "なし",
+    "duration": "装備中",
+    "classification": "new_definition",
+    "primitives": [
+      "ReactToEnemyActualHealingWithDamage"
+    ],
+    "hooks": [
+      "敵回復効果確定後"
+    ],
+    "state": [
+      "healEventId guard"
+    ],
+    "event_order": "既存の配置→形→リンク→生存確認後の変化を維持。本案のフックは独立した明記フェーズへ登録。撃破は1回確定して報酬待ちへ入り、報酬前に次戦開始処理をしない",
+    "recursion_guard": "sourceEffectId/rootActionIdを継承し、同じinstance+hookKeyは一度だけ実行。派生効果は原則二次派生の発動源にしない。新しい起点を作るのは合法な能動投入だけ",
+    "interactions": [
+      "通常行動・無料投入・手番開始/完了を別の時計として扱う",
+      "青変化の回復連動は設定回復量から一度。赤無料投入を通常手番完了と数えない",
+      "自HP0なら敗北。敵KO後に新規手番・回復・予約を開始しない"
+    ],
+    "edge_cases": [
+      "全快で実回復0なら反応なし。反応は敵回復を再生成しない"
+    ],
+    "test_ideas": [
+      "設定10実3なら1ダメージ、青連動とは別系統"
+    ],
+    "mechanical_signature": "status_reaction:敵回復効果確定後:ReactToEnemyActualHealingWithDamage",
+    "status": "未実装・未採用の設計案",
+    "balance": "値は例示。状態・費用・解決位置を承認してから調整する",
+    "difficulty": "medium",
+    "difficulty_reason": "持続状態・期限・重複防止と表示/プレビューを追加する必要がある",
+    "composition_primitives": [
+      "ReactToEnemyActualHealingWithDamage"
+    ],
+    "implementation_notes": "宣言的なTriggerSpec/Condition/EffectPlanと、instance単位のStateReducer・ExpiryPolicy・EventProvenanceで合成する設計案。時間や乱数はCoreの外部時計ではなく確定イベントから進める",
+    "global_defaults": {
+      "stacking": "特記なければ同一skillInstanceの同種状態は更新のみ、強さ加算なし",
+      "expiry": "装備解除/敵撃破/再開始で未解決予約を整理。持越しが明示されない状態はステージ内",
+      "new_status_requirement": "状態の正負、解除可否、付与者、root provenance、remaining clocks、重ね方を承認してから採用"
+    },
+    "domain": "時間・状態・履歴",
+    "classification_label": "追加定義が必要な案",
+    "category_label": "反応効果",
+    "variants": [],
+    "record_kind": "skill_proposal",
+    "activation_type": "手動・予約・状態スキル",
+    "approval_needed": "採用可否、具体値、装備/取得経路、重ね方、競合時の優先順を別途決める。新概念は標準ルールを変えない任意モードから検証する",
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "現在起きた敵の回復への自動反応。先の配置予約や複数状態コンボを必要としない。",
+      "short_description": "敵が回復した分の一部をダメージで返す。",
+      "future_placement_dependency": "none",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A061",
+    "name": "縁の下の力持ち",
+    "display_name": "縁の下の力持ち",
+    "aliases": [],
+    "internal_mechanic_label": "最下行占有数による初回リンク加算",
+    "category": "offense",
+    "category_label": "攻撃量の修飾",
+    "domain": "戦闘・形・リンク",
+    "activation_type": "リンク・攻撃補助",
+    "record_kind": "skill_proposal",
+    "status": "未実装・未採用の元作参照設計案",
+    "balance": "数値・上限・寿命・採用先は説明用の未承認設計値。元作のバランスや動作を検証済みとは扱わない。ゲーム未実装・未試験。",
+    "classification": "existing_rule_extension",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "difficulty": "low",
+    "difficulty_reason": "純粋な盤面条件と既存リンクの数量修飾。起点・攻撃回数・HP規則を変更しない",
+    "variants": [],
+    "approval_needed": "技能の採用、数値、上限、取得方法、通常/＋の差、他の修飾との順序を別途承認する。本資料の更新はゲーム実装の承認ではない。",
+    "source_reference": {
+      "repository": "ImashiruGames/Game1",
+      "default_branch": "main",
+      "commit": "869769deedbc5e7aece8e841d3a1f17639188be6",
+      "commit_date_utc": "2025-03-01T04:38:25Z",
+      "file": "index.html",
+      "original_id": "foundation",
+      "original_name": "縁の下の力持ち",
+      "line_start": 1347,
+      "line_end": 1381,
+      "url": "https://github.com/ImashiruGames/Game1/blob/869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L1347-L1381",
+      "supporting_urls": [
+        "https://github.com/ImashiruGames/Game1/blob/869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L2097-L2107"
+      ],
+      "verification": "GitHub接続でコミットを固定し静的読解。実行・プレイテスト・修理はしていない"
+    },
+    "original_effect": "元作は最下行の自箱数をダメージへ加算し、さらにattack自体をその個数に応じて増減する処理がある。内部の足場に接した箱ではなく、grid最終行だけを数える。",
+    "numeric_status": "illustrative_unapproved",
+    "tier_policy": "候補の通常版だけを例示。＋版差分は未決定。成長値や盤面数をtierとして扱わない",
+    "effect": "配置直後の盤面最下行にある現在所有者が自分の箱数を数え、上限3として、その能動投入の最初のリンク1打へ加算する。",
+    "tactical_choice": "高く積むだけでなく、底段を横に確保して維持する価値を作る。",
+    "trigger": "合法な自分の能動投入の配置後スナップショット確定→最初の一次リンクの加算フェーズ",
+    "target": "当該能動投入の確定軸順で最初に解決される一次リンク1打",
+    "cost": "自由通常枠1つ。追加HP/ゲージ/通常行動費用なし。固定1＋自由2の枠数は変えない。",
+    "duration": "装備中。snapshotと選択hitIdは当該origin内だけ。盤面に応じて毎投入再計算。",
+    "primitives": [
+      "SnapshotBoardAfterActiveLanding",
+      "CountOwnedBoxesAtAbsoluteBottomRow",
+      "ClampCount(0,3)",
+      "SelectFirstPrimaryLinkStableAxisOrder",
+      "AddToExistingHit"
+    ],
+    "hooks": [
+      "afterActiveLandingSnapshot",
+      "beforePrimaryLinkAdditiveModifiers"
+    ],
+    "state": [
+      "origin一時値: snapshotBottomCount、selectedHitId、appliedKey。恒久attackや3/4/5基礎火力表を変更しない。"
+    ],
+    "event_order": "配置直後にbottomCount=min(3,最下行自箱数)と縦→横→右下斜め→右上斜めの最初の成立リンクを固定→所持順の形→当該リンクの基礎置換→本案を加算項として1回足す→既定の他修飾/軽減/HP処理→後続軸。変化は従来どおり後。",
+    "recursion_guard": "originId+skillInstanceId+selectedHitIdで1回。加算はDamagePlanの数値変更だけで、別のDamageEvent/形/リンク/箱生成を発行しない。再描画・取消・同一イベント再送では値を増やさない。",
+    "interactions": [
+      "赤無料投入にも独立originとして適用するが通常手番時計は進めない。",
+      "グローファイアの置換後にもリンク1打の加算として適用できるが、成長用3火力自体へ書き込まない。",
+      "形ダメージ、青回復連動、魔法弾、盤面技、毒などの派生/直接ダメージには足さない。",
+      "敵KO後の既存確定列の継続、攻撃側KOによる中断を維持。中断された選択リンクの加算を別の打へ移さない。"
+    ],
+    "edge_cases": [
+      "最下行はboardの固定座標系でy=height-1。そこにある有効マスの自箱のみ。内部足場、内部区画の底、最も低い自箱の行へ読み替えない。",
+      "敵箱・中立箱・無効セル・固定地形は0。現在所有者で判定し、出生所有者は参照しない。",
+      "最下行が有効セルを持たなければ0。以後盤面範囲を拡張する案と併用時は投入スナップショットのheightを採用。",
+      "リンク不成立なら加算先なしで失効。複軸でも最初の1打だけ。",
+      "受動移動/変換/継承で底段数が変わっても発動しない。次の合法な能動投入時に読む。"
+    ],
+    "test_ideas": [
+      "最下行の自箱数0/1/2/3/6で加算0/1/2/3/3。",
+      "底段敵箱・中立箱・内部足場上の自箱だけでは加算0。",
+      "新しい起点が底段へ着地した場合はその箱も数える。",
+      "複軸成立時に先頭軸だけ加算、選択した軸が置換されても1打のまま。",
+      "赤無料投入と通常投入は別originで各1回、通常手番完了数は1回のまま。",
+      "所有者変換と受動落下だけでは攻撃/変化イベントが増えない。",
+      "同じorigin/hit再送とプレビューで二重加算しない。",
+      "攻撃側KOで選択打未実行なら加算0、HP復活や後続起点を作らない。"
+    ],
+    "mechanical_signature": "offense:absoluteBottomOwnedSnapshot:min3:firstPrimaryLinkPerActiveOrigin",
+    "implementation_notes": "宣言的Conditionとして絶対最下行の現在所有者数を読み、origin限定EffectPlanへ上限付き加算を保持する。既存の攻撃表/所持順/形リンクのスナップショットは保存し、Modifier加算段に合成する設計だけを示す。",
+    "adaptation_notes": [
+      "元作のダメージ加算とattack増加の二重経路は採らず、最初のリンク1打だけの加算へ整理。",
+      "上限3は現行HP30・3/4/5火力4/7/11を念頭に置いた説明値であり、プレイテスト済み調整ではない。"
+    ],
+    "deduplication_notes": [
+      "A032は全自箱総数、A024は成立形の支え条件。本案は絶対最下行の占有だけなので、底段確保という異なる配置目標を追加する。"
+    ],
+    "proposed_effect": "配置直後の盤面最下行にある現在所有者が自分の箱数を数え、上限3として、その能動投入の最初のリンク1打へ加算する。",
+    "composition_primitives": [
+      "SnapshotBoardAfterActiveLanding",
+      "CountOwnedBoxesAtAbsoluteBottomRow",
+      "ClampCount(0,3)",
+      "SelectFirstPrimaryLinkStableAxisOrder",
+      "AddToExistingHit"
+    ],
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "現在の底段だけを見る自動補正。特定の未来配置を予約・再現させず、元作の名前と意味も一致する。",
+      "short_description": "底段の自箱が多いと、最初のリンクが強くなる。",
+      "future_placement_dependency": "incidental_current_board_condition",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  },
+  {
+    "proposal_id": "A062",
+    "name": "鉄壁",
+    "display_name": "鉄壁",
+    "aliases": [],
+    "internal_mechanic_label": "既存2×2維持による被リンク軽減",
+    "category": "defense",
+    "category_label": "防御量の修飾",
+    "domain": "戦闘・形・リンク",
+    "activation_type": "パッシブ・量の修飾",
+    "record_kind": "skill_proposal",
+    "status": "未実装・未採用の元作参照設計案",
+    "balance": "数値・上限・寿命・採用先は説明用の未承認設計値。元作のバランスや動作を検証済みとは扱わない。ゲーム未実装・未試験。",
+    "classification": "existing_rule_extension",
+    "classification_label": "既存ルールの組合せ・拡張案",
+    "difficulty": "low",
+    "difficulty_reason": "純粋な盤面条件と既存リンクの数量修飾。起点・攻撃回数・HP規則を変更しない",
+    "variants": [],
+    "approval_needed": "技能の採用、数値、上限、取得方法、通常/＋の差、他の修飾との順序を別途承認する。本資料の更新はゲーム実装の承認ではない。",
+    "source_reference": {
+      "repository": "ImashiruGames/Game1",
+      "default_branch": "main",
+      "commit": "869769deedbc5e7aece8e841d3a1f17639188be6",
+      "commit_date_utc": "2025-03-01T04:38:25Z",
+      "file": "index.html",
+      "original_id": "iron-wall",
+      "original_name": "鉄壁",
+      "line_start": 1319,
+      "line_end": 1332,
+      "url": "https://github.com/ImashiruGames/Game1/blob/869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L1319-L1332",
+      "supporting_urls": [
+        "https://github.com/ImashiruGames/Game1/blob/869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L2077-L2095",
+        "https://github.com/ImashiruGames/Game1/blob/869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L1980-L1994"
+      ],
+      "verification": "GitHub接続でコミットを固定し静的読解。実行・プレイテスト・修理はしていない"
+    },
+    "original_effect": "元作は盤面内に自箱2×2があれば通常被攻撃処理で5軽減。別に有効化時の防御力2加算、解除時の2減算もある。説明と実装記述を分けて読む。",
+    "numeric_status": "illustrative_unapproved",
+    "tier_policy": "候補の通常版だけを例示。＋版差分は未決定。成長値や盤面数をtierとして扱わない",
+    "effect": "各敵一次リンクの軽減処理直前に、自箱で埋まった2×2が盤面内に1個以上あれば、その1打を2軽減する。四角が複数あっても本案の軽減は1打につき最大2。",
+    "tactical_choice": "四角を一度作って攻撃するだけでなく、その四角を崩さず守りの拠点として残す。",
+    "trigger": "敵由来の一次リンク1打のダメージ軽減フェーズ開始時。盤面存在条件を読むパッシブ。",
+    "target": "自分に向かう当該敵一次リンクの予定HP損失",
+    "cost": "自由通常枠1つ。追加行動/HP/ゲージ費用なし。",
+    "duration": "装備中、各被リンク直前に条件を評価。防御力の恒久増減や持続バフは作らない。",
+    "primitives": [
+      "SnapshotBoardBeforeIncomingPrimaryLink",
+      "ExistsOwned2x2OfValidCells",
+      "AddFlatReduction(2)",
+      "ClampFinalLossAtZero"
+    ],
+    "hooks": [
+      "beforeIncomingPrimaryLinkFlatReduction"
+    ],
+    "state": [
+      "hit一時値: boardSnapshotRevision、hasOwnedSquare、appliedKey。次のhitへ条件を保存しない。"
+    ],
+    "event_order": "既定の敵リンク基礎置換/加算/倍率が確定→この1打の軽減開始直前の盤面を読み2×2有無を固定→本案の軽減2を他の固定軽減と加算→損失下限0→HP適用→実損失に基づくゲージ/許可された反応→次の打。",
+    "recursion_guard": "skillInstanceId+incomingHitIdで1回。ExistsOwned2x2はイベントを発行しない純粋クエリ。shapeMatched/shapeActivatedを発行せず、起点・攻撃・回復・ゲージを新しく作らない。",
+    "interactions": [
+      "現行初撃の守りの対象選択と消費タイミングは維持。両方の対象になった打はそれぞれの固定軽減を足し、最終損失を0未満にしない。",
+      "敵の同じ投入の複数リンクには各hit1回。四角の個数・重なり・回転数では増やさない。",
+      "自己HP費用、味方盤面技の自己損失、形直撃、青連動、毒、棘、投入不能時の即死相当は対象外。",
+      "他の許可された盤面編集が先に確定していれば、その後の被リンクから存在条件が変わる。盤面編集自体から形/リンク発動は起こさない。"
+    ],
+    "edge_cases": [
+      "4マスは全て有効セルかつ現在所有者が自分の箱であること。中立・敵・空き・地形1マスでも不成立。",
+      "2×2は起点を含む必要がない。これは新規形スキルではなくパッシブ条件なので、受動生成が新しい攻撃起点になるわけではない。",
+      "プレビュー時は複製状態の同じ評価を使い、本番の軽減使用済み状態を更新しない。",
+      "敵/自分のKO判定と確定攻撃列の継続・中断は既定どおり。軽減はHP回復や蘇生を行わない。"
+    ],
+    "test_ideas": [
+      "四角なしで0軽減、四角1/2/重なり3個でも各打2だけ。",
+      "ダメージ1→0、2→0、3→1。初撃の守り2と合成した予定5→1。",
+      "四角の各1マスを敵/中立/空き/地形へ変更すると次の被リンクは軽減なし。",
+      "起点から離れた四角でも成立、L字だけでは不成立。",
+      "被リンク直前のsnapshot後にUI再描画しても条件・結果を変更しない。",
+      "同hit再送で軽減を累積しない。",
+      "受動変換で四角成立してもshapeイベント数0、次の被リンクの軽減だけ有効。",
+      "自己費用、直接ダメージ、毒、敵投入不能即死は軽減しない。"
+    ],
+    "mechanical_signature": "defense:passiveExistsOwn2x2BeforeEachEnemyPrimaryLink:flatReduction2NoShapeEvent",
+    "implementation_notes": "shapePatternsの発動検索やorigin生成へ接続せず、読み取り専用BoardPredicateとして2×2存在検査を分離する。DamageContextのsourceKindがprimaryLinkかつ敵由来の時だけ固定軽減へ合成する。",
+    "adaptation_notes": [
+      "元作の軽減5をそのまま使わず例示2とし、有効化時defense+2経路は廃止した設計候補。",
+      "防御力という新しい恒久パラメーターを導入しない。四角維持条件と一次リンク対象を説明欄へ明示する。"
+    ],
+    "deduplication_notes": [
+      "A044は最大自箱成分の大きさで敵最長リンク1打を軽減。本案は四角の有無で各一次リンクを軽減するため、条件・対象が異なる。",
+      "現行四角打ちは起点を含む成立時ダメージ。本案は存在条件のみの防御で、形技能の再発動ではない。"
+    ],
+    "proposed_effect": "各敵一次リンクの軽減処理直前に、自箱で埋まった2×2が盤面内に1個以上あれば、その1打を2軽減する。四角が複数あっても本案の軽減は1打につき最大2。",
+    "composition_primitives": [
+      "SnapshotBoardBeforeIncomingPrimaryLink",
+      "ExistsOwned2x2OfValidCells",
+      "AddFlatReduction(2)",
+      "ClampFinalLossAtZero"
+    ],
+    "product_fit": {
+      "selection": "priority",
+      "player_complexity": "low",
+      "reason": "2×2という小さく見分けやすい形の存在条件。複雑な図形や連続手順を要求しない。",
+      "short_description": "自分の四角が残っている間、リンクを受けにくくなる。",
+      "future_placement_dependency": "incidental_current_board_condition",
+      "reviewer_judgment": true,
+      "source_message_id": "Sentinel_bdb3ed2f6eb881919f817aa6f074cf8c",
+      "selection_is_approval": false
+    }
+  }
+]

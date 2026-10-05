@@ -1,0 +1,16 @@
+{
+  "description": "User-authorized PDF pages6–25 UI improvements; combat rules and balance untouched. Sentinel_4394fac988b081919560db845cad04ec",
+  "files": {
+    "src/next/meta/home.ts": "87cf2848c37ffb80ed2014248f164ca1cc50578ab2d92126ef119d45d340545e",
+    "src/next/meta/home.css": "06e8038f25c034029452883c93b952a83478deb6670fdf89af0c75b1beebdb05",
+    "src/next/meta/preparationPresentation.ts": "eb8f8f54f17b7c1750bf81e1fa8044b457b42efff26acee8c4f21180a8bf447c",
+    "src/next/ui/rewardPresentation.ts": "eb5d35983fe45088bcd9da7a0c90473a1d9123bef631308e89f50a18d66be052",
+    "src/next/ui/rewardPresentation.css": "059fd1e772b6f7cfea1c58f69d2ddf78213d6d4d3173def018786c54726b29de",
+    "src/next/ui/portraitViewer.ts": "26e054910c1a9102f7c53ae699afd21969d0f0746ffc2cf04cf15b3015961ebe",
+    "src/next/ui/portraitViewer.css": "3989dad38f9e464a13f20726e9344c91ded3e029db851b87cb3607097bc0f68a",
+    "src/next/version.ts": "f4f66afd88eae82fe6459fbb1aefd2c21b97d867ff7a10741e1aaa5ec5a709d7",
+    "scripts/docs/build-player-guide.mts": "c23868059bc03a7446da07456647c28dcb53ec0e3a4f61ed677f18aa65ca0d55",
+    "public/docs/game1_content_catalog_next.html": "5cc808fe0af0de3133d377db95852958f2ef7c88b4125b144ce848295e419b80",
+    "public/docs/game1_content_catalog_next.json": "98063aaa7cd7f5465b560d81b65b20f5eb616bd30efa777c2d457f70f5c91369"
+  }
+}

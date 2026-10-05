@@ -1,0 +1,9 @@
+{
+  "purpose": "Explicit stable-player return is a distinct terminal run outcome; original battle facts and per-defeat values remain unchanged. Forward-safe return save tag and exactly-once settlement reuse.",
+  "files": {
+    "src/next/app/BattleController.ts": "b5878df1aa2b82f25935fff071e9606e63e3984b5857ec2c28bda3d49d37a75b",
+    "src/next/app/BattleRun.ts": "5b32c5dc0fa1af0d374afbb208e165fdec46e44a2804dfa4ae0ccfed4c9d97c7",
+    "src/next/app/saveCheckpoint.ts": "79eb0945286ff844b44f7c1c804856fe54cff6ab653f3b1e809f472d115b7b32",
+    "src/next/meta/profile.ts": "0a1f28cfb687abdcc9c198c85a9233b70a7102cd693eb6886a197d21e50d8994"
+  }
+}

@@ -1,0 +1,1798 @@
+{
+  "schemaVersion": "1.0",
+  "commit": "c1f2c116a91ceb03d5672cd7260bf8060da686e7",
+  "date": "2026-10-02",
+  "warning": "Pure imported engine executions only. Synthetic fixtures and code-configured waits are not browser latency or human experience measurements.",
+  "records": [
+    {
+      "name": "Existing health-plus fixture, Blue transformed and full HP",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "drop",
+        "candidateId": "ceiling:0:0"
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "drop",
+          "actor": "player",
+          "box": {
+            "id": "drop:1",
+            "row": 2,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          "candidateId": "ceiling:0:0",
+          "spawn": {
+            "row": 0,
+            "col": 0
+          },
+          "landing": {
+            "row": 2,
+            "col": 0
+          },
+          "path": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 1,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 0
+            }
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "heal",
+          "actor": "player",
+          "target": "player",
+          "source": "health",
+          "amount": 0,
+          "requestedAmount": 15,
+          "hpBefore": 30,
+          "hpAfter": 30,
+          "shapeBoxIds": [
+            "fixture:2:1",
+            "fixture:1:1",
+            "fixture:3:1",
+            "drop:1",
+            "fixture:2:2"
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "damage",
+          "actor": "player",
+          "target": "enemy",
+          "source": "blue-transformation",
+          "damage": 15,
+          "hpBefore": 60,
+          "hpAfter": 45,
+          "shapeBoxIds": [
+            "fixture:2:1",
+            "fixture:1:1",
+            "fixture:3:1",
+            "drop:1",
+            "fixture:2:2"
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "attack",
+          "actor": "player",
+          "target": "enemy",
+          "axis": "horizontal",
+          "linkCount": 3,
+          "tier": 3,
+          "damage": 4,
+          "hpBefore": 45,
+          "hpAfter": 41,
+          "overkill": 0,
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "gauge",
+          "before": 0,
+          "after": 2,
+          "amount": 2,
+          "source": "link",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        },
+        {
+          "type": "gauge",
+          "before": 2,
+          "after": 3,
+          "amount": 1,
+          "source": "turn",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        }
+      ],
+      "links": [
+        {
+          "axis": "vertical",
+          "count": 1,
+          "boxIds": [
+            "drop:1"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "horizontal",
+          "count": 3,
+          "boxIds": [
+            "drop:1",
+            "fixture:2:1",
+            "fixture:2:2"
+          ],
+          "tier": 3
+        },
+        {
+          "axis": "diagonal-down",
+          "count": 2,
+          "boxIds": [
+            "drop:1",
+            "fixture:3:1"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-up",
+          "count": 2,
+          "boxIds": [
+            "drop:1",
+            "fixture:1:1"
+          ],
+          "tier": null
+        }
+      ],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "fixture:1:1",
+            "row": 1,
+            "col": 1,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:2:1",
+            "row": 2,
+            "col": 1,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:2:2",
+            "row": 2,
+            "col": 2,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:3:0",
+            "row": 3,
+            "col": 0,
+            "owner": "neutral",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:3:1",
+            "row": 3,
+            "col": 1,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:3:2",
+            "row": 3,
+            "col": 2,
+            "owner": "neutral",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 41,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "fixture:1:1",
+            "row": 1,
+            "col": 1,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:2:1",
+            "row": 2,
+            "col": 1,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:2:2",
+            "row": 2,
+            "col": 2,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:3:0",
+            "row": 3,
+            "col": 0,
+            "owner": "neutral",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:3:1",
+            "row": 3,
+            "col": 1,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "fixture:3:2",
+            "row": 3,
+            "col": 2,
+            "owner": "neutral",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:1",
+            "row": 2,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "carryPreview": [
+        {
+          "id": "fixture:1:1",
+          "row": 3,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Normal seed1 player column1 move1",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "drop",
+        "candidateId": "ceiling:0:0"
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "drop",
+          "actor": "player",
+          "box": {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          "candidateId": "ceiling:0:0",
+          "spawn": {
+            "row": 0,
+            "col": 0
+          },
+          "landing": {
+            "row": 7,
+            "col": 0
+          },
+          "path": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 1,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 0
+            }
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "gauge",
+          "before": 0,
+          "after": 1,
+          "amount": 1,
+          "source": "turn",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        }
+      ],
+      "links": [
+        {
+          "axis": "vertical",
+          "count": 1,
+          "boxIds": [
+            "drop:1"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "horizontal",
+          "count": 1,
+          "boxIds": [
+            "drop:1"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-down",
+          "count": 1,
+          "boxIds": [
+            "drop:1"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-up",
+          "count": 1,
+          "boxIds": [
+            "drop:1"
+          ],
+          "tier": null
+        }
+      ],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": []
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "carryPreview": [
+        {
+          "id": "drop:1",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Normal seed1 enemy response1",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "enemy"
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "drop",
+          "actor": "enemy",
+          "box": {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          "candidateId": "ceiling:1:0",
+          "spawn": {
+            "row": 0,
+            "col": 1
+          },
+          "landing": {
+            "row": 7,
+            "col": 1
+          },
+          "path": [
+            {
+              "row": 0,
+              "col": 1
+            },
+            {
+              "row": 1,
+              "col": 1
+            },
+            {
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 4,
+              "col": 1
+            },
+            {
+              "row": 5,
+              "col": 1
+            },
+            {
+              "row": 6,
+              "col": 1
+            },
+            {
+              "row": 7,
+              "col": 1
+            }
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        }
+      ],
+      "links": [
+        {
+          "axis": "vertical",
+          "count": 1,
+          "boxIds": [
+            "drop:2"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "horizontal",
+          "count": 1,
+          "boxIds": [
+            "drop:2"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-down",
+          "count": 1,
+          "boxIds": [
+            "drop:2"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-up",
+          "count": 1,
+          "boxIds": [
+            "drop:2"
+          ],
+          "tier": null
+        }
+      ],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "carryPreview": [
+        {
+          "id": "drop:1",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Normal seed1 player column1 move2",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "drop",
+        "candidateId": "ceiling:0:0"
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "drop",
+          "actor": "player",
+          "box": {
+            "id": "drop:3",
+            "row": 6,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          "candidateId": "ceiling:0:0",
+          "spawn": {
+            "row": 0,
+            "col": 0
+          },
+          "landing": {
+            "row": 6,
+            "col": 0
+          },
+          "path": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 1,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 0
+            }
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "gauge",
+          "before": 1,
+          "after": 2,
+          "amount": 1,
+          "source": "turn",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        }
+      ],
+      "links": [
+        {
+          "axis": "vertical",
+          "count": 2,
+          "boxIds": [
+            "drop:3",
+            "drop:1"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "horizontal",
+          "count": 1,
+          "boxIds": [
+            "drop:3"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-down",
+          "count": 1,
+          "boxIds": [
+            "drop:3"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-up",
+          "count": 1,
+          "boxIds": [
+            "drop:3"
+          ],
+          "tier": null
+        }
+      ],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:3",
+            "row": 6,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "carryPreview": [
+        {
+          "id": "drop:3",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Normal seed1 enemy response2",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "enemy"
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "drop",
+          "actor": "enemy",
+          "box": {
+            "id": "drop:4",
+            "row": 7,
+            "col": 2,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          "candidateId": "ceiling:2:0",
+          "spawn": {
+            "row": 0,
+            "col": 2
+          },
+          "landing": {
+            "row": 7,
+            "col": 2
+          },
+          "path": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 5,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 7,
+              "col": 2
+            }
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        }
+      ],
+      "links": [
+        {
+          "axis": "vertical",
+          "count": 1,
+          "boxIds": [
+            "drop:4"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "horizontal",
+          "count": 2,
+          "boxIds": [
+            "drop:2",
+            "drop:4"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-down",
+          "count": 1,
+          "boxIds": [
+            "drop:4"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-up",
+          "count": 1,
+          "boxIds": [
+            "drop:4"
+          ],
+          "tier": null
+        }
+      ],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:3",
+            "row": 6,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:3",
+            "row": 6,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:4",
+            "row": 7,
+            "col": 2,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "carryPreview": [
+        {
+          "id": "drop:3",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Normal seed1 player column1 move3",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "drop",
+        "candidateId": "ceiling:0:0"
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "drop",
+          "actor": "player",
+          "box": {
+            "id": "drop:5",
+            "row": 5,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          "candidateId": "ceiling:0:0",
+          "spawn": {
+            "row": 0,
+            "col": 0
+          },
+          "landing": {
+            "row": 5,
+            "col": 0
+          },
+          "path": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 1,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 5,
+              "col": 0
+            }
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "attack",
+          "actor": "player",
+          "target": "enemy",
+          "axis": "vertical",
+          "linkCount": 3,
+          "tier": 3,
+          "damage": 4,
+          "hpBefore": 60,
+          "hpAfter": 56,
+          "overkill": 0,
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "gauge",
+          "before": 2,
+          "after": 4,
+          "amount": 2,
+          "source": "link",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        },
+        {
+          "type": "gauge",
+          "before": 4,
+          "after": 5,
+          "amount": 1,
+          "source": "turn",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        }
+      ],
+      "links": [
+        {
+          "axis": "vertical",
+          "count": 3,
+          "boxIds": [
+            "drop:5",
+            "drop:3",
+            "drop:1"
+          ],
+          "tier": 3
+        },
+        {
+          "axis": "horizontal",
+          "count": 1,
+          "boxIds": [
+            "drop:5"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-down",
+          "count": 1,
+          "boxIds": [
+            "drop:5"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-up",
+          "count": 1,
+          "boxIds": [
+            "drop:5"
+          ],
+          "tier": null
+        }
+      ],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:3",
+            "row": 6,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:4",
+            "row": 7,
+            "col": 2,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 56,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:3",
+            "row": 6,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:4",
+            "row": 7,
+            "col": 2,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:5",
+            "row": 5,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "carryPreview": [
+        {
+          "id": "drop:5",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Normal seed1 enemy response3",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "enemy"
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "drop",
+          "actor": "enemy",
+          "box": {
+            "id": "drop:6",
+            "row": 7,
+            "col": 3,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          "candidateId": "ceiling:3:0",
+          "spawn": {
+            "row": 0,
+            "col": 3
+          },
+          "landing": {
+            "row": 7,
+            "col": 3
+          },
+          "path": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 2,
+              "col": 3
+            },
+            {
+              "row": 3,
+              "col": 3
+            },
+            {
+              "row": 4,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 3
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 7,
+              "col": 3
+            }
+          ],
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "attack",
+          "actor": "enemy",
+          "target": "player",
+          "axis": "horizontal",
+          "linkCount": 3,
+          "tier": 3,
+          "damage": 2,
+          "hpBefore": 30,
+          "hpAfter": 28,
+          "overkill": 0,
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "gauge",
+          "before": 5,
+          "after": 7,
+          "amount": 2,
+          "source": "damage",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        }
+      ],
+      "links": [
+        {
+          "axis": "vertical",
+          "count": 1,
+          "boxIds": [
+            "drop:6"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "horizontal",
+          "count": 3,
+          "boxIds": [
+            "drop:2",
+            "drop:4",
+            "drop:6"
+          ],
+          "tier": 3
+        },
+        {
+          "axis": "diagonal-down",
+          "count": 1,
+          "boxIds": [
+            "drop:6"
+          ],
+          "tier": null
+        },
+        {
+          "axis": "diagonal-up",
+          "count": 1,
+          "boxIds": [
+            "drop:6"
+          ],
+          "tier": null
+        }
+      ],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 56,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:3",
+            "row": 6,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:4",
+            "row": 7,
+            "col": 2,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:5",
+            "row": 5,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 28,
+            "max": 30
+          },
+          "enemy": {
+            "current": 56,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "drop:1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:2",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:3",
+            "row": 6,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:4",
+            "row": 7,
+            "col": 2,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:5",
+            "row": 5,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "drop:6",
+            "row": 7,
+            "col": 3,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "carryPreview": [
+        {
+          "id": "drop:5",
+          "row": 7,
+          "col": 0,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Synthetic Ember board-action fixture",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "board-skill",
+        "skillId": "ember"
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "board-skill",
+          "actor": "player",
+          "skillId": "ember",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        },
+        {
+          "type": "damage",
+          "actor": "player",
+          "target": "player",
+          "source": "ember",
+          "damage": 3,
+          "hpBefore": 30,
+          "hpAfter": 27,
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "gauge",
+          "before": 0,
+          "after": 3,
+          "amount": 3,
+          "source": "damage",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        },
+        {
+          "type": "boxes-converted",
+          "actor": "player",
+          "boxIds": [
+            "E1",
+            "E2"
+          ],
+          "from": "enemy",
+          "to": "player",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        },
+        {
+          "type": "gauge",
+          "before": 3,
+          "after": 4,
+          "amount": 1,
+          "source": "turn",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        }
+      ],
+      "links": [],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "E1",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "E2",
+            "row": 7,
+            "col": 2,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "E3",
+            "row": 7,
+            "col": 3,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 27,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "E1",
+            "row": 7,
+            "col": 1,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "E2",
+            "row": 7,
+            "col": 2,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "E3",
+            "row": 7,
+            "col": 3,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "carryPreview": [
+        {
+          "id": "E1",
+          "row": 7,
+          "col": 1,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        },
+        {
+          "id": "E2",
+          "row": 7,
+          "col": 2,
+          "owner": "player",
+          "type": "normal",
+          "status": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Synthetic row-clear fixture",
+      "kind": "pure_engine_fixture_not_browser_play",
+      "action": {
+        "type": "board-skill",
+        "skillId": "pain-shared",
+        "row": 7
+      },
+      "accepted": true,
+      "events": [
+        {
+          "type": "board-skill",
+          "actor": "player",
+          "skillId": "pain-shared",
+          "row": 7,
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        },
+        {
+          "type": "row-cleared",
+          "row": 7,
+          "boxIds": [
+            "P1",
+            "E1"
+          ],
+          "playerCount": 1,
+          "enemyCount": 1,
+          "neutralCount": 0,
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        },
+        {
+          "type": "damage",
+          "actor": "player",
+          "target": "enemy",
+          "source": "pain-shared",
+          "damage": 2,
+          "hpBefore": 60,
+          "hpAfter": 58,
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "damage",
+          "actor": "player",
+          "target": "player",
+          "source": "pain-shared",
+          "damage": 2,
+          "hpBefore": 30,
+          "hpAfter": 28,
+          "currentUI_hasLabel": true,
+          "currentUI_configuredWaitMs": 180,
+          "shortUI_configuredWaitMs": 15
+        },
+        {
+          "type": "gauge",
+          "before": 0,
+          "after": 2,
+          "amount": 2,
+          "source": "damage",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        },
+        {
+          "type": "gauge",
+          "before": 2,
+          "after": 3,
+          "amount": 1,
+          "source": "turn",
+          "currentUI_hasLabel": false,
+          "currentUI_configuredWaitMs": 0,
+          "shortUI_configuredWaitMs": 0
+        }
+      ],
+      "links": [],
+      "coreStateBefore": {
+        "hp": {
+          "player": {
+            "current": 30,
+            "max": 30
+          },
+          "enemy": {
+            "current": 60,
+            "max": 60
+          }
+        },
+        "boxes": [
+          {
+            "id": "P1",
+            "row": 7,
+            "col": 0,
+            "owner": "player",
+            "type": "normal",
+            "status": "normal"
+          },
+          {
+            "id": "E1",
+            "row": 7,
+            "col": 1,
+            "owner": "enemy",
+            "type": "normal",
+            "status": "normal"
+          }
+        ]
+      },
+      "coreStateAfter": {
+        "hp": {
+          "player": {
+            "current": 28,
+            "max": 30
+          },
+          "enemy": {
+            "current": 58,
+            "max": 60
+          }
+        },
+        "boxes": []
+      },
+      "carryPreview": []
+    }
+  ]
+}

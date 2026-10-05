@@ -1,0 +1,13 @@
+{
+  "purpose": "User-authorized frozen balance boundary and adopted one-own-turn Amber power form for new departures only. Absent snapshots retain exact1.4.2 behavior; two-turn variant remains an explicit offline candidate.",
+  "files": {
+    "src/next/app/saveCheckpoint.ts": "1b69450e75fd7028b8f64389c62e046140c2eb209f73ae99456ca41e2008bbba",
+    "src/next/core/activeDrop.ts": "ef092c72e3c47811552fccfd233c1fe2542e70656b86a710cf68a7c9e0b581d9",
+    "src/next/core/kitBoards.ts": "4bcd954a704b3f602488ce637012267192103fe349651af8eb35f5aef848b3e3",
+    "src/next/core/transformations.ts": "44d98c5914e98e3671ed548bfe98ea2af6aeda6abfa9c694606d8c1ac9d077f4",
+    "src/next/core/types.ts": "b210b5142ceed810790dc75df53efa8b4af551b46957239d1dbdc7060be5b0fd",
+    "src/next/core/validation.ts": "e63525ef138ee0c1b3168fc04769abc6083ca0fbcd348fe11ec04183b8bfa31d",
+    "src/next/meta/kits.ts": "7fcfb7f1e53a14dde4dec7cdf429a7ad56e529329696ce2a98b66d502edcea41",
+    "src/next/meta/kitBalance.ts": "146043316fe95ce4a523cdcb32a692211652433c2e1c018e54a489acaded80ad"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Flame Ascension",
+  "renderer": "Official JummBox Synth / unmodified source",
+  "sample_rate": 48000,
+  "channels": 2,
+  "bits": 16,
+  "frames": 38400,
+  "seconds": 0.8,
+  "bytes": 153644,
+  "peak": 0.06815852224826813,
+  "peak_dbfs": -23.32959668242688,
+  "rms_dbfs": -41.07598914689632,
+  "dc_left": -1.7549978881998703e-7,
+  "dc_right": -1.7549978881998703e-7,
+  "clipped_frames": 0,
+  "nan_frames": 0,
+  "boundary_delta_left": -3.020587557855947e-9,
+  "boundary_delta_right": -3.020587557855947e-9,
+  "parsed_channels": 4,
+  "parsed_notes": 4
+}

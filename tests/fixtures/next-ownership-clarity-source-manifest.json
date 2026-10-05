@@ -1,0 +1,13 @@
+{
+  "scope": "1.8.1/1.8.2 requested ownership, board-skill and passive-effect presentation clarity only; mechanics unchanged",
+  "files": {
+    "src/next/main.ts": "ed571cfcf411d9762efe1ec5a3b7c633550d136b6d3cb6e0a5026786dc232d44",
+    "src/next/meta/home.ts": "d29f0595e127a06f96111bcedd908df73d2a9c59a2cde51e4f54629f214b061d",
+    "src/next/meta/home.css": "4fe1a42e431ad7802762b64f23eeb50286bbd5be3628c3b31e1046fc95412e80",
+    "src/next/style.css": "7da6597651bae0b526bebef44b26714278cdc020e4ec618e71539818739196ce",
+    "src/next/ui/actionForecast.ts": "6f87b8a1cfb7d1e0071aff8953e974d8202e2434011bb53a875a05ef4092a57a",
+    "src/next/ui/boardSkillPresentation.ts": "e9bf68aa8d212a65c74bfafc5559918e9ac987a521ef8777fec779f88e811d3f",
+    "src/next/version.ts": "4280b1d33013b3ef772c1be97daab12cb5d3b9f8dfdb4f73276398daa4b9e7f7",
+    "src/next/ui/skillHud.ts": "17ecdfd58192c6a9716ddc256ba7c9757771d3efcf4d478ac390e42ebc1d29b8"
+  }
+}

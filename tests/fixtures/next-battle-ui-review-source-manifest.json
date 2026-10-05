@@ -1,0 +1,16 @@
+{
+  "description": "User-authorized PDF26\u201369 UI simplification (Sentinel_5511a4578f648191b51723e81a9a6192). No combat, persistence or balance changes. Current-rank shared card presentation only.",
+  "files": {
+    "src/next/main.ts": "ad92d6a3274f9c5147f5de23194d0c660f1f66c0bcd58dad1f0368c4e1bf3bdc",
+    "src/next/style.css": "0b6d3d766856402dce8f801a346644e8ca51f07fcbfe17ad725a328cdc6df91a",
+    "src/next/ui/skillHud.ts": "e95bb25a3018b37ea40c69bd7349486986c83d35b4d0f27f437385704e5a3127",
+    "src/next/ui/rewardPresentation.ts": "702a2440fa5805b6777d7fa52ff8997d5668160547e069e98232de5ae9bc4210",
+    "src/next/audio/presentationSettings.ts": "b4f19e16669f46799ccab312dc63b4e0f2e07dcc47da732a094387dfbd8ed074",
+    "src/next/audio/soundThemeSettings.ts": "0f7b736586f90fd5a6b9192c3fca5f8adabd6da50b8e9e00eee57ccdfcd35294",
+    "src/next/version.ts": "62c40b05cccb1eece0834c16e6b1c6c3bd76844c9ac1041a84a89e01f0928583",
+    "scripts/docs/build-player-guide.mts": "017f827c530c87883875896e004228e08cfc025d33412fdb50b141ac326520be",
+    "public/docs/game1_content_catalog_next.html": "cb96f8d0edea29c054f8c8fe995d43c63edb1629b4adfcb409e0764af2cf316f",
+    "public/docs/game1_content_catalog_next.json": "9706ee1bcf7c3a158b098e738a717c2762ba18f20865c64521b5f42e4e208e61",
+    "src/next/ui/boardFocus.ts": "cb40e552ecc1c1c964b0bbb56e59750280be697ab4fe82449a7f30d5e859439a"
+  }
+}

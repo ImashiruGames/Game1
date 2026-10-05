@@ -1,0 +1,413 @@
+{
+  "sourceCommit": "1dea74af79528de9c6378fe1272080b490d130c5",
+  "cases": [
+    {
+      "id": "standard/blue/1",
+      "hash": "d9c386575a98eef2bbef9c5b1c340d727ae48fbe0ec40147d2b74ace4e6bc643"
+    },
+    {
+      "id": "standard/blue/7",
+      "hash": "5011e2e5fbfe04f0582ba3d497e3d1b87bacdb92a7c6cf53d602b60b56533386"
+    },
+    {
+      "id": "standard/blue/42",
+      "hash": "251cc8409a9084d13bc1f49f79d03e4985af1a71f2b961045f90091a5ec2e150"
+    },
+    {
+      "id": "standard/red/1",
+      "hash": "ffe03c541f4136d706e4e26b6563c625dd174d0dd5312c4c1a3288c9ef7298a3"
+    },
+    {
+      "id": "standard/red/7",
+      "hash": "b2ef8061633858b4975651af74e18a91705a33d2d405150bc9cf9fe3790c2a8a"
+    },
+    {
+      "id": "standard/red/42",
+      "hash": "e44cba9c25a22bcdf3fb9a80f71316e8d870036f9675dde6baf529aca8a848f4"
+    },
+    {
+      "id": "internal-ceilings/blue/1",
+      "hash": "58f714026089d621a64ba95b1c025ec883d9fc996a29ea1d9ea3ce59142d0ff1"
+    },
+    {
+      "id": "internal-ceilings/blue/7",
+      "hash": "d99c18a1a77bf547e977255e2f8c0dffac63e138f6c7b3d976ffd9f92b92119f"
+    },
+    {
+      "id": "internal-ceilings/blue/42",
+      "hash": "4041048f55ab9b2e3b79d802732eb5eaf440a6853abbaa8188c9e28b3526eb72"
+    },
+    {
+      "id": "internal-ceilings/red/1",
+      "hash": "3b34ccc9afcbc3f6142e17dab32d9ef1535db479f0c74cc2f6728130cbe6abfb"
+    },
+    {
+      "id": "internal-ceilings/red/7",
+      "hash": "fb80d7148d42e62febea8ccaa43eb9ff32742fa93581fbef54e739cf908358c9"
+    },
+    {
+      "id": "internal-ceilings/red/42",
+      "hash": "d1496026d636dd1b51e5bf491182bded0e9b69cf7de138bd7a0b6aee59616c8a"
+    },
+    {
+      "id": "cross-attack/blue/1",
+      "hash": "8b3615218095e3e1ffb8a4d6e9673ebed6190daf67f978d4d64a29bd25eba862"
+    },
+    {
+      "id": "cross-attack/blue/7",
+      "hash": "c6ebe9e5e7ccbe6543f8df126590c20b4ed6e0f1e7cbb7c870390fe6907a975b"
+    },
+    {
+      "id": "cross-attack/blue/42",
+      "hash": "18b61aef257536dd4d4c8e3058cf9f71c1da4f53875b801e7cb9a71ddaa36bb0"
+    },
+    {
+      "id": "cross-attack/red/1",
+      "hash": "61a6a60fd3ad552cebce5de10f4d22d8537fefd179efeeb26d4eb471474d198a"
+    },
+    {
+      "id": "cross-attack/red/7",
+      "hash": "da3248846c523bf8424b5cc77a35566f3a69c85d12b382618604532456a5268f"
+    },
+    {
+      "id": "cross-attack/red/42",
+      "hash": "34104cc67fdad95a7886d2c44def0fd30b1e116323165ef23c48949ba209795a"
+    },
+    {
+      "id": "last-drop-win/blue/1",
+      "hash": "db307aa76f39da5d367def88d2a9a2e358ed277867ed89b0f5a11d716f361c12"
+    },
+    {
+      "id": "last-drop-win/blue/7",
+      "hash": "42f693810ed0fd83a55a936ffe5b696e4941a6bfc9985870885b9bc87716d23d"
+    },
+    {
+      "id": "last-drop-win/blue/42",
+      "hash": "e212fdbcece5ce401fbcc0f37f143b1715e6a5c386403d9df42bdc18632bd546"
+    },
+    {
+      "id": "last-drop-win/red/1",
+      "hash": "06bf59cd2d2e1f24e67d5f14a0e5f8e48ec68c8589873cdac941f3fe8e27c65c"
+    },
+    {
+      "id": "last-drop-win/red/7",
+      "hash": "5ccab16eaae8c57ea47c620905ebc123251ff268409c01eb4359fd87a6a8f5f4"
+    },
+    {
+      "id": "last-drop-win/red/42",
+      "hash": "2b9167767416152758fbb33b48ef7bd5a50180890973dc8fcc57e944b12ad5f9"
+    },
+    {
+      "id": "blocked-player/blue/1",
+      "hash": "30c2276b2c2927b3c541a149a029e1e2fdfeeb589176e7913ada161f94ef4573"
+    },
+    {
+      "id": "blocked-player/blue/7",
+      "hash": "9050bb37d11c77320f99c1a537d5be8f4db6fb48ca464effd8be96a741590831"
+    },
+    {
+      "id": "blocked-player/blue/42",
+      "hash": "b3924584b3fbfe6990045fb876675bf75788962b75c3c46d5e1fe4bfac25d934"
+    },
+    {
+      "id": "blocked-player/red/1",
+      "hash": "eef08e032ce6c7a5090cd5826322259583f4b1d104610b52130ab591faddfc7a"
+    },
+    {
+      "id": "blocked-player/red/7",
+      "hash": "47561796b4b2ab57ed9ae11780b3f93212215bdfaf7b6b33b4cf35ae3273f4c5"
+    },
+    {
+      "id": "blocked-player/red/42",
+      "hash": "d2a7c27b07ce6b173d7d9087d876073fec0a2810cc080484af5cefe51279ce8c"
+    },
+    {
+      "id": "enemy-attack/blue/1",
+      "hash": "53786bc73f559a5565cc0c2b0e524cb9baf5de4dd55787d8bfae1d8275c88ca6"
+    },
+    {
+      "id": "enemy-attack/blue/7",
+      "hash": "3df2b6d7c695967166b57a5168baf60ecfbc11c6898dace9eff9ebf3e4490cba"
+    },
+    {
+      "id": "enemy-attack/blue/42",
+      "hash": "a702afccddf3b896aed8b54de6fb9c38d66e5be105d5bad9e9bc94acf424dccd"
+    },
+    {
+      "id": "enemy-attack/red/1",
+      "hash": "f3a5e9d7924e07dcf4daf7af69f8c870dd17b60bb3556d55cea12e2a02636453"
+    },
+    {
+      "id": "enemy-attack/red/7",
+      "hash": "9216c979fd67b9c41037883953ae6fa6a7c0c11561b153c752008853b3f154d9"
+    },
+    {
+      "id": "enemy-attack/red/42",
+      "hash": "3c5ac2e1c81ef1c8347f61ee12fd088790818337d3f9d34c95a3cc56938938ce"
+    },
+    {
+      "id": "health-plus/blue/1",
+      "hash": "0423279cf2269bae140c0110e062ce2991a263a49d7b9b6ee6c76a2ab9eb73e1"
+    },
+    {
+      "id": "health-plus/blue/7",
+      "hash": "cc92d344efcd2d8699c316252f18c075918b8d2b3198ce04145df3afde29db9c"
+    },
+    {
+      "id": "health-plus/blue/42",
+      "hash": "6318401acb53faff04b6abfbee96bd16b8f3ff3e5438da5b99139e74020b92ff"
+    },
+    {
+      "id": "health-plus/red/1",
+      "hash": "35643a35332bef3ce345f96a9c0842badbe0fc58651cba49212fb74480170bc4"
+    },
+    {
+      "id": "health-plus/red/7",
+      "hash": "63b24592d4adbc6c8200ce376bf192ccc45ae9bacffd40e9fdeb3515e4eabaa2"
+    },
+    {
+      "id": "health-plus/red/42",
+      "hash": "d113ffa05053a49e63dbdf9a47991b2c646c49adee02ca16b2edd0f19ac7fc26"
+    },
+    {
+      "id": "grow-fire/blue/1",
+      "hash": "d96ff7e2fdb6faf45f1a531611026c9b704c5b5715f91517980412a98a6f8752"
+    },
+    {
+      "id": "grow-fire/blue/7",
+      "hash": "102f6a499c5e343fc7efe86ffe45bf09a4fb1995335dd216bf7f19ce5ba807fd"
+    },
+    {
+      "id": "grow-fire/blue/42",
+      "hash": "31bcfbaa8531c2723b7ffcc8d9b51b0282fc59fdc4a05a17894d8ef724a05871"
+    },
+    {
+      "id": "grow-fire/red/1",
+      "hash": "e1381413aaa67fa1379cde9766f9a222d15a0da4d254f6c8165fbea2412c449f"
+    },
+    {
+      "id": "grow-fire/red/7",
+      "hash": "b6b68ab05625436799791eb1256f9ffe386b8a013da948ea316df3acea01108f"
+    },
+    {
+      "id": "grow-fire/red/42",
+      "hash": "f0e53b96fc4e291239f7db145fa0915abc167299158b9df1a3ebcd1d126e43cd"
+    },
+    {
+      "id": "transform-blue/blue/1",
+      "hash": "e96f4450925a69c8a6e7f647bbd3af28dc3ed969643241fc097d63196fdf4030"
+    },
+    {
+      "id": "transform-blue/blue/7",
+      "hash": "ddbcc4e3ccd9b87c7bff9e3c039cf8d3c719c318a605de4cef984bd3c0cc464d"
+    },
+    {
+      "id": "transform-blue/blue/42",
+      "hash": "5cba23dcc17ccd7bcaa8d34f4b668214ccbc6e9b60e0ab60703c073508acbb67"
+    },
+    {
+      "id": "transform-blue/red/1",
+      "hash": "9202ead83675cef0b220e17bbcf68513f87def52c8d1e869b720480c8e137ff2"
+    },
+    {
+      "id": "transform-blue/red/7",
+      "hash": "53eef73d7a1edc5c8521f0bc71a29e4f8f1cd78d06d453c2bc36a100dd1759d3"
+    },
+    {
+      "id": "transform-blue/red/42",
+      "hash": "9f630cc000e20dd994fdd738c43b3f5deb4f16bf38d4178855aeb3092af735db"
+    },
+    {
+      "id": "transform-red/blue/1",
+      "hash": "297b99b9a3621573c56e279aab0b776281f0b6ff858ceffbc568254d7489eb30"
+    },
+    {
+      "id": "transform-red/blue/7",
+      "hash": "b619e6717eff475b02748080d57780f9872936e084bbdbe157b5cb17fcad72f6"
+    },
+    {
+      "id": "transform-red/blue/42",
+      "hash": "d226802cb2d2bcf17f38d5bee4cd8bc3ef738f0bce70b14e20f18b22e5faf2e3"
+    },
+    {
+      "id": "transform-red/red/1",
+      "hash": "e118adee2840c139bc02b2c115ae5bf9b62791c5276880160dbe91e18a3dc9f3"
+    },
+    {
+      "id": "transform-red/red/7",
+      "hash": "77e22fdb33c3e26d2d278e792f4665ce4e927f1f3014ee4413493d619124c6b4"
+    },
+    {
+      "id": "transform-red/red/42",
+      "hash": "46b75443cf78f534395aef56bcf40293e61c9f1c49051c70012241d44243df72"
+    },
+    {
+      "id": "transformed-health/blue/1",
+      "hash": "5bc442721e8951bdbde470eb38ee79cf296b9a7e7ab98857be17d0797e7b6ba6"
+    },
+    {
+      "id": "transformed-health/blue/7",
+      "hash": "1fc12550ff243a6414bdbcd81bc7e8d23d75269902745e1bf07df398eb6634a2"
+    },
+    {
+      "id": "transformed-health/blue/42",
+      "hash": "fdbe54b437f127ec2e0f8b601552dbc2d77bd62d94f1be912ce0774c6d9cf845"
+    },
+    {
+      "id": "transformed-health/red/1",
+      "hash": "07731db492b85ca73690f8e40591559d0b3ff982be8153e27fb61ed88b1ff44a"
+    },
+    {
+      "id": "transformed-health/red/7",
+      "hash": "212d8a9285e3568c9cab04a7ab6dac9283d9e5a1097be7f5a853b63a038d051c"
+    },
+    {
+      "id": "transformed-health/red/42",
+      "hash": "cc57f97c5380d0670e842448c83e140dfb0e8034cec4ba2c06883cf77d69a5b8"
+    },
+    {
+      "id": "transformed-red/blue/1",
+      "hash": "3b5645005f1bee9ab78df1805fc5a9f02add5daea6dbd0ea9f652c0aef372bab"
+    },
+    {
+      "id": "transformed-red/blue/7",
+      "hash": "01bacd1a9c0d23ef4dd118f54f3bf915c9f3977ac867b5d74e291c296d1bbd75"
+    },
+    {
+      "id": "transformed-red/blue/42",
+      "hash": "8dc88b0f13745691e1d0bddef62573eccd117bd4bf521c99827bb5b6583bdb9a"
+    },
+    {
+      "id": "transformed-red/red/1",
+      "hash": "8a376e7856ae2ed3d5b6fd3b61391aae8f43ec7560a9d1e21fff4fdc554df7d4"
+    },
+    {
+      "id": "transformed-red/red/7",
+      "hash": "04cc1fee84b9f3709268c61a3c2b0933fd80a8e400b53889083b5f08574cb66a"
+    },
+    {
+      "id": "transformed-red/red/42",
+      "hash": "c33abd3848f5848a271bfadc7a970d95fdceffe8285d92ece0b029771d5d8e09"
+    },
+    {
+      "id": "reward-lab/blue/1",
+      "hash": "4acd00557c7e0e09f7dd5d1791526650824ed1a7686cf9c4857da98e25828049"
+    },
+    {
+      "id": "reward-lab/blue/7",
+      "hash": "d7848fb47db5423ff68a11b5406673aca8342255ec55238e89e57da8e9efa008"
+    },
+    {
+      "id": "reward-lab/blue/42",
+      "hash": "9b3b36d0c4743dec6995974bd8b26b74b497b88775dd2a882f1a8609214cb369"
+    },
+    {
+      "id": "reward-lab/red/1",
+      "hash": "9bdc4cd23a90ccec83d298fb11c2fcc3c50616ff9c55cde036f3f3addeb7b43e"
+    },
+    {
+      "id": "reward-lab/red/7",
+      "hash": "30c3afb41822fe1f2f69433167e6895378151db7dbe92ee307158d8a30acf236"
+    },
+    {
+      "id": "reward-lab/red/42",
+      "hash": "725b9072b5553725cfcb45c36ca1436feea915bd4a34a25f2822723e304e86ac"
+    },
+    {
+      "id": "reward-replace/blue/1",
+      "hash": "5531d67ed5090d30f934b2e531e1ad1e3ee8110acfe04ec2907cf9fe9dc3e244"
+    },
+    {
+      "id": "reward-replace/blue/7",
+      "hash": "06f3f358482d0e22cb5de6f0b10fcc14ad795935824c402e2a7d222fc880839b"
+    },
+    {
+      "id": "reward-replace/blue/42",
+      "hash": "d35e9caa44054919a4ef952a181a76898943a8cb4961841929e98d5cec3bfcdc"
+    },
+    {
+      "id": "reward-replace/red/1",
+      "hash": "5ae8c147d50574fdc9328577d400e9693597eba8aa58895c1a82648f1ee02e1d"
+    },
+    {
+      "id": "reward-replace/red/7",
+      "hash": "5f314d8909ee0f9673d0a3f4620f4e8b3dda5cb29ffec8a3915dc1f1cecaff1b"
+    },
+    {
+      "id": "reward-replace/red/42",
+      "hash": "c0699fa7b370673df16961dbf9c7a537c538608d4f8905fd92cc9eeacedf3d8d"
+    },
+    {
+      "id": "consumable-lab/blue/1",
+      "hash": "f4e84c7a38f0843b8f052f09f949850e382a43a0996567e27515e0665f19f710"
+    },
+    {
+      "id": "consumable-lab/blue/7",
+      "hash": "9b25fe51e78d008910906546242331648a4c89b2f7e4832ba35b744b67d3b81f"
+    },
+    {
+      "id": "consumable-lab/blue/42",
+      "hash": "8b46fb95112e2f31f5b51a49afd7f61ffca0f81bf5c103596f7b01185c58f81d"
+    },
+    {
+      "id": "consumable-lab/red/1",
+      "hash": "95f533f80caa35c80e56f6008e09eb89484c648f693dade6cdcab892751cc1df"
+    },
+    {
+      "id": "consumable-lab/red/7",
+      "hash": "fb983b732f2d0fe6215d975d4f59c6e21a64bcc0923d99ed83b3f84533877b6d"
+    },
+    {
+      "id": "consumable-lab/red/42",
+      "hash": "bdfd0cdbb4c5f34fac91bcbc8cd54ac160cb5793447fa07c9f03fdd3d8ec4f7a"
+    },
+    {
+      "id": "shape-skills-lab/blue/1",
+      "hash": "45acbf07abae6cec42ec0e1a6356bd1da48468ff6c40257cebee111d1c66d5a5"
+    },
+    {
+      "id": "shape-skills-lab/blue/7",
+      "hash": "6b7e40684b95aca7772cf293a97feaba3808f3d3c5972d91473b40202bcb0ecf"
+    },
+    {
+      "id": "shape-skills-lab/blue/42",
+      "hash": "99df0cb50f9d265c40b598f4a01c8e6b66620c426e089fd10117786be8c485f4"
+    },
+    {
+      "id": "shape-skills-lab/red/1",
+      "hash": "654cf22d77f52034da93f4e0ff5c248e4f2bc0152c45e31b2caf028c586308b3"
+    },
+    {
+      "id": "shape-skills-lab/red/7",
+      "hash": "19ca9ff8ff8259838840488d8c7c8cf54b375aa54f52d58a83fd7f192495a1df"
+    },
+    {
+      "id": "shape-skills-lab/red/42",
+      "hash": "d1193baf187ffabd59cc17c782b4d378444f5bd323a61fea338dcdc4423ce6d8"
+    },
+    {
+      "id": "bonus-reward-lab/blue/1",
+      "hash": "46051013e8a9f23e3e2f34211d2c5f0a17039f8e91f81d2677223fad32de6e77"
+    },
+    {
+      "id": "bonus-reward-lab/blue/7",
+      "hash": "8c3b96f55c5a66b720db26583ca0dc3d3f15b3745ae8bbff55b7d30a15b1b960"
+    },
+    {
+      "id": "bonus-reward-lab/blue/42",
+      "hash": "711410d635a0f93e764c14ffeb1098e81eea47e7daec99910ba253865c158d8b"
+    },
+    {
+      "id": "bonus-reward-lab/red/1",
+      "hash": "4e1971ed6a893c6e3838e7aadc501d8931246b1be46c5e20a62d734c03115555"
+    },
+    {
+      "id": "bonus-reward-lab/red/7",
+      "hash": "eeca38cef42d642f8dda82eda2dbddfcb9690fdad0122e5571a7d67d1c786e5f"
+    },
+    {
+      "id": "bonus-reward-lab/red/42",
+      "hash": "9b2081875004e5fdaf4b4285a70561250a970a8d75c07daceddfa64709f5f3f7"
+    }
+  ]
+}

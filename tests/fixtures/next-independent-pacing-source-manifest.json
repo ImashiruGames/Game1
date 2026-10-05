@@ -1,0 +1,22 @@
+{
+  "revision": "1.12.6",
+  "scope": "User-approved independent visual reduction and slow/medium/fast pacing. No game mechanics edits.",
+  "files": {
+    "src/next/audio/presentationSettings.ts": "3c795a306c9d26731daec50cdb5f1b9be8416c1331db5caffda77d4bf0189da1",
+    "src/next/main.ts": "9ca545c88e694fa2f9cdb8f08eaf50f2513d1ca5a021f6234034a11d9e60218a",
+    "src/next/ui/animationTimeline.ts": "0152a732fdfe1ed4d12576112af8748f6a9b2f4ea404ebe1dd15fb54355840c6",
+    "src/next/ui/battleAnimator.ts": "1507543ad5788c8b8792f892a39591ffeaaea541ed9e648be79cf906fbfd2152",
+    "src/next/ui/battleSpeed.ts": "7ddf33d4bfeed668fe5ce53506b573f9e983fc98677161c487efcf6f68ffac0d",
+    "src/next/ui/boardSkillPresentation.ts": "a571a5b35db3f9011e4f511f8a9560560c8e7542d075c49e94611bb2d792d0b9",
+    "src/next/ui/dropMotion.ts": "77b216a0ca259ad672ea39c374e59c2a14900a095a0a4ffc1eff3a8075629bcd",
+    "src/next/ui/energyLinks.ts": "495f938b607c5c395f4fd84cc0cc3f7717d09cd78404e9c1a87a4da443112855",
+    "src/next/ui/portraitReactions.ts": "81fffc77e9382ed407acb9e4965896b70038f8da29ed6c5ca02657230e9432d4",
+    "src/next/ui/stageNumberCinematic.css": "690952a0ed16c04510dcdfcb019c303764ace0daf930964166b970ad2dda9393",
+    "src/next/ui/stageNumberCinematic.ts": "af3fade5db8e913f3052b790030b46e1519abc5bdfde94d252eda31fe0c2e290",
+    "src/next/ui/transformationCinematic.css": "a705315c9ad17ec8c546138e12b2a5305abf01c701e7bbc699c09822eeb60fbd",
+    "src/next/ui/transformationCinematic.ts": "3e7e55f3609a4eb9f78e48c198df77f9a29448e6abdec64da1113b48b087cc38",
+    "src/next/version.ts": "72287e024221039ab4fde70538ac87c919cf2601d869c2c3011ebae00c2c39da",
+    "public/docs/game1_content_catalog_next.html": "eb777798f3c3dd3c46eefca748cb4afa91ead036a4354d4507fdf714772fb5fe",
+    "public/docs/game1_content_catalog_next.json": "f8cf4b3b326e31a5e2e9f9f2516d8696d8707354704c17516365b9c90b055a2b"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "renderer": "Unmodified official JummBox Synth",
+  "commit": "f745b1c83e46359227a7e324d5f05075c306ac3b",
+  "sampleRate": 48000,
+  "bars": 16,
+  "bpm": 80,
+  "cycleFrames": 2304000,
+  "rawPeakDbfs": -20.807066989305817,
+  "nonfinite": 0,
+  "nativeCompactRoundtripPassed": true,
+  "sourceSha256": "1d4808d600db852399100a314be82b120df1bb8c55144a57ab7835258b0bf4d6"
+}

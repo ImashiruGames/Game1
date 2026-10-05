@@ -1,0 +1,7 @@
+{
+  "purpose": "Presentation-only active-feedback corrections: legacy caster labels and preserved box types during ownership conversion. No battle, balance or save changes.",
+  "files": {
+    "src/next/main.ts": "a882b06613beb7591e4ed388c6681ac305995fd7d375e9a90daff2d76e37339d",
+    "src/next/ui/boardSkillPresentation.ts": "86720dfa021c08552d3a40ff16d793116e986087278c8a8224864f0c645be2e8"
+  }
+}

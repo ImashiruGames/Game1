@@ -1,0 +1,423 @@
+{
+  "name": "Cognitive Ascension",
+  "format": "JummBox",
+  "version": 6,
+  "scale": "Free",
+  "key": "C",
+  "introBars": 0,
+  "loopBars": 1,
+  "beatsPerBar": 4,
+  "ticksPerBeat": 24,
+  "beatsPerMinute": 300,
+  "reverb": 0,
+  "masterGain": 0.6,
+  "compressionThreshold": 1,
+  "limitThreshold": 1,
+  "limitDecay": 4,
+  "limitRise": 4000,
+  "limitRatio": 1,
+  "compressionRatio": 1,
+  "layeredInstruments": false,
+  "patternInstruments": false,
+  "channels": [
+    {
+      "type": "pitch",
+      "name": "Lens charge rises",
+      "instruments": [
+        {
+          "type": "FM",
+          "volume": -10,
+          "eqFilter": [
+            {
+              "type": "high-pass",
+              "cutoffHz": 210.22,
+              "linearGain": 1
+            },
+            {
+              "type": "low-pass",
+              "cutoffHz": 4000,
+              "linearGain": 1
+            }
+          ],
+          "eqFilterType": false,
+          "eqSimpleCut": 10,
+          "eqSimplePeak": 0,
+          "envelopeSpeed": 12,
+          "discreteEnvelope": false,
+          "effects": [
+            "panning"
+          ],
+          "pan": 0,
+          "panDelay": 0,
+          "fadeInSeconds": 0,
+          "fadeOutTicks": -1,
+          "algorithm": "1←(2 3 4)",
+          "feedbackType": "1⟲",
+          "feedbackAmplitude": 1,
+          "operators": [
+            {
+              "frequency": "1×",
+              "amplitude": 15,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "5×",
+              "amplitude": 8,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "~2×",
+              "amplitude": 1,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "1×",
+              "amplitude": 0,
+              "waveform": "sine",
+              "pulseWidth": 5
+            }
+          ],
+          "envelopes": []
+        }
+      ],
+      "patterns": [
+        {
+          "notes": [
+            {
+              "pitches": [
+                48
+              ],
+              "points": [
+                {
+                  "tick": 0,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                },
+                {
+                  "tick": 6,
+                  "pitchBend": 1,
+                  "volume": 33,
+                  "forMod": false
+                },
+                {
+                  "tick": 18,
+                  "pitchBend": 5,
+                  "volume": 50,
+                  "forMod": false
+                },
+                {
+                  "tick": 36,
+                  "pitchBend": 12,
+                  "volume": 83,
+                  "forMod": false
+                },
+                {
+                  "tick": 44,
+                  "pitchBend": 14,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ],
+              "continuesLastPattern": false
+            }
+          ]
+        }
+      ],
+      "sequence": [
+        1
+      ],
+      "octaveScrollBar": 2
+    },
+    {
+      "type": "pitch",
+      "name": "Ascending logic steps",
+      "instruments": [
+        {
+          "type": "FM",
+          "volume": -16,
+          "eqFilter": [
+            {
+              "type": "high-pass",
+              "cutoffHz": 74.33,
+              "linearGain": 1
+            },
+            {
+              "type": "low-pass",
+              "cutoffHz": 1000,
+              "linearGain": 1
+            }
+          ],
+          "eqFilterType": false,
+          "eqSimpleCut": 10,
+          "eqSimplePeak": 0,
+          "envelopeSpeed": 12,
+          "discreteEnvelope": false,
+          "effects": [
+            "panning"
+          ],
+          "pan": 0,
+          "panDelay": 0,
+          "fadeInSeconds": 0,
+          "fadeOutTicks": -1,
+          "algorithm": "1←(2 3 4)",
+          "feedbackType": "1⟲",
+          "feedbackAmplitude": 0,
+          "operators": [
+            {
+              "frequency": "1×",
+              "amplitude": 15,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "1×",
+              "amplitude": 3,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "~2×",
+              "amplitude": 1,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "1×",
+              "amplitude": 0,
+              "waveform": "sine",
+              "pulseWidth": 5
+            }
+          ],
+          "envelopes": []
+        }
+      ],
+      "patterns": [
+        {
+          "notes": [
+            {
+              "pitches": [
+                60
+              ],
+              "points": [
+                {
+                  "tick": 6,
+                  "pitchBend": 0,
+                  "volume": 67,
+                  "forMod": false
+                },
+                {
+                  "tick": 11,
+                  "pitchBend": 0,
+                  "volume": 50,
+                  "forMod": false
+                },
+                {
+                  "tick": 16,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ]
+            },
+            {
+              "pitches": [
+                64
+              ],
+              "points": [
+                {
+                  "tick": 16,
+                  "pitchBend": 0,
+                  "volume": 67,
+                  "forMod": false
+                },
+                {
+                  "tick": 21,
+                  "pitchBend": 0,
+                  "volume": 50,
+                  "forMod": false
+                },
+                {
+                  "tick": 26,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ]
+            },
+            {
+              "pitches": [
+                67
+              ],
+              "points": [
+                {
+                  "tick": 26,
+                  "pitchBend": 0,
+                  "volume": 67,
+                  "forMod": false
+                },
+                {
+                  "tick": 31,
+                  "pitchBend": 0,
+                  "volume": 50,
+                  "forMod": false
+                },
+                {
+                  "tick": 36,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ]
+            },
+            {
+              "pitches": [
+                72
+              ],
+              "points": [
+                {
+                  "tick": 36,
+                  "pitchBend": 0,
+                  "volume": 67,
+                  "forMod": false
+                },
+                {
+                  "tick": 41,
+                  "pitchBend": 0,
+                  "volume": 50,
+                  "forMod": false
+                },
+                {
+                  "tick": 46,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sequence": [
+        1
+      ],
+      "octaveScrollBar": 2
+    },
+    {
+      "type": "pitch",
+      "name": "Prism opens",
+      "instruments": [
+        {
+          "type": "FM",
+          "volume": -13,
+          "eqFilter": [
+            {
+              "type": "high-pass",
+              "cutoffHz": 210.22,
+              "linearGain": 1
+            },
+            {
+              "type": "low-pass",
+              "cutoffHz": 4000,
+              "linearGain": 1
+            }
+          ],
+          "eqFilterType": false,
+          "eqSimpleCut": 10,
+          "eqSimplePeak": 0,
+          "envelopeSpeed": 12,
+          "discreteEnvelope": false,
+          "effects": [
+            "panning"
+          ],
+          "pan": 0,
+          "panDelay": 0,
+          "fadeInSeconds": 0,
+          "fadeOutTicks": -1,
+          "algorithm": "1←(2 3 4)",
+          "feedbackType": "1⟲",
+          "feedbackAmplitude": 1,
+          "operators": [
+            {
+              "frequency": "1×",
+              "amplitude": 15,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "5×",
+              "amplitude": 8,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "~2×",
+              "amplitude": 1,
+              "waveform": "sine",
+              "pulseWidth": 5
+            },
+            {
+              "frequency": "1×",
+              "amplitude": 0,
+              "waveform": "sine",
+              "pulseWidth": 5
+            }
+          ],
+          "envelopes": []
+        }
+      ],
+      "patterns": [
+        {
+          "notes": [
+            {
+              "pitches": [
+                60,
+                67,
+                72
+              ],
+              "points": [
+                {
+                  "tick": 43,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                },
+                {
+                  "tick": 46,
+                  "pitchBend": 0,
+                  "volume": 83,
+                  "forMod": false
+                },
+                {
+                  "tick": 54,
+                  "pitchBend": 0,
+                  "volume": 67,
+                  "forMod": false
+                },
+                {
+                  "tick": 69,
+                  "pitchBend": 0,
+                  "volume": 33,
+                  "forMod": false
+                },
+                {
+                  "tick": 84,
+                  "pitchBend": 0,
+                  "volume": 0,
+                  "forMod": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sequence": [
+        1
+      ],
+      "octaveScrollBar": 2
+    }
+  ]
+}

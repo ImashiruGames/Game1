@@ -1,0 +1,1782 @@
+{
+  "revision": "1.12",
+  "updated": "2026-10-04",
+  "scope": "/next/",
+  "title": "Game1 プレイガイド・育成と8人の仲間",
+  "currentRun": [
+    "標準ランは50階の撃破で終了。最終報酬を出さず、結果を保存する",
+    "同じ端末・ブラウザに自動保存。行動の全解決後とカテゴリ・報酬確定を保持し、再開で再抽選しない",
+    "1.1.1の既に開いているランには遡って保存できない。以前の検証用保存は別ルールとして拒否し、確認なしに削除しない",
+    "結果は保存済みの階数・撃破数・HP・ビルド・開始seedを表示。検証途中開始は明記する",
+    "盤面に赤いダメージと緑の実回復量を表示。青の名目回復反射と自己HPコストは別に表示",
+    "攻撃計算・形スキルの数値・ヘルスの回数制限なしは従来どおり"
+  ],
+  "correction": "ヘルスを固有通常スキルへ訂正。初期固定枠の所持者のみ通常報酬で＋強化できる。非初期所持者には提示・新規取得させない。",
+  "historicalScope": "ver1.0のHTML/PDF/Word、ルートのゲーム、25スキル実験は当時の比較資料。この訂正はnextだけに適用する。",
+  "preserved": [
+    "ヘルス15／20回復、能動投入の起点を含む＋形、1投入につき1回",
+    "戦闘内の回数上限なし。青の名目回復量による連動攻撃を維持",
+    "赤の成長する火は共有報酬のまま。青も取得可能",
+    "回復報酬10、最大HP＋5に現在HP＋5が付随する仕様を維持"
+  ],
+  "futureOnly": "中ボス撃破時やショップでの固有スキル特別強化は将来案。今回実装しない。",
+  "recoveryPolicy": {
+    "principle": "今後の回復スキルは厳しく評価し、連戦の消耗を容易に帳消しにする量・頻度・組み合わせを避ける。",
+    "reviewAxes": [
+      "単体回復量と発動頻度",
+      "通常行動のコストと装備枠の機会費用",
+      "自傷コストの相殺",
+      "追加投入による発動増加",
+      "名目回復量に反応する青の連動攻撃",
+      "入手性・強化・再入手"
+    ],
+    "evidence": "実回復、過剰回復、発動回数、敵からの実HP損失を分け、通常戦・長期戦・ボス・周回で確認する。勝率だけでは判断しない。",
+    "boundary": "回復の一律禁止や未承認の回数制限を意味しない。"
+  },
+  "fixedPassives": [
+    {
+      "id": "poison-craft",
+      "name": "毒盛り術",
+      "rewardAccess": "never",
+      "initialRewardEligible": {
+        "blue": false,
+        "red": false
+      },
+      "effects": [
+        "現在の自箱2×2の数だけ、自分が付与したどく・もうどく1箱あたりのダメージ＋1（常時・累積しない）"
+      ],
+      "initialFixedHolders": [
+        "violet"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "health",
+      "name": "ヘルス",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": false
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "starter-upgrade-only",
+      "baseValues": [
+        15,
+        20
+      ],
+      "effects": [
+        "＋形でHP15回復",
+        "＋形でHP20回復"
+      ]
+    },
+    {
+      "id": "grow-fire",
+      "name": "成長する火",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "縦3以上：3リンク火力＋3、成長＋1",
+        "縦3以上：3リンク火力＋5、成長＋1"
+      ]
+    },
+    {
+      "id": "charge",
+      "name": "蓄勢",
+      "kind": "passive",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        3
+      ],
+      "effects": [
+        "手番終了のゲージ獲得を合計3にする",
+        "手番終了のゲージ獲得を合計4にする"
+      ]
+    },
+    {
+      "id": "first-guard",
+      "name": "初撃の守り",
+      "kind": "passive",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        3
+      ],
+      "effects": [
+        "敵手番の最初のリンク被害−2",
+        "敵手番の最初のリンク被害−3"
+      ]
+    },
+    {
+      "id": "horizontal-slash",
+      "name": "横薙ぎ",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        4
+      ],
+      "effects": [
+        "横3以上のリンク火力＋2",
+        "横3以上のリンク火力＋4"
+      ]
+    },
+    {
+      "id": "diagonal-shot",
+      "name": "斜め撃ち",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        3
+      ],
+      "effects": [
+        "斜め3以上のリンク火力＋2",
+        "斜め3以上のリンク火力＋3"
+      ]
+    },
+    {
+      "id": "corner-strike",
+      "name": "角打ち",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "L形で3ダメージ・回転可",
+        "L形で5ダメージ・回転可"
+      ]
+    },
+    {
+      "id": "square-strike",
+      "name": "四角打ち",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        5,
+        8
+      ],
+      "effects": [
+        "2×2で5ダメージ・回転可",
+        "2×2で8ダメージ・回転可"
+      ]
+    },
+    {
+      "id": "healing-potion",
+      "name": "回復ポーション",
+      "kind": "instant",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        5,
+        10
+      ],
+      "effects": [
+        "HP5回復・1回限り・1手消費",
+        "HP10回復・1回限り・1手消費"
+      ]
+    },
+    {
+      "id": "magic-bullet",
+      "name": "魔法弾",
+      "kind": "instant",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        3
+      ],
+      "effects": [
+        "現在の4リンク火力×2・1回限り・1手消費",
+        "現在の4リンク火力×3・1回限り・1手消費"
+      ]
+    },
+    {
+      "id": "rescue-kit",
+      "name": "救急箱",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        10,
+        10
+      ],
+      "effects": [
+        "上段は自箱・任意・自箱、下段は自箱3個でHP10回復・向き固定・強化なし"
+      ]
+    },
+    {
+      "id": "heavy-swing",
+      "name": "大振り攻撃",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        50,
+        100
+      ],
+      "effects": [
+        "5個以上の各リンクに現在の5リンク基礎火力×0.5を加算（端数切捨て）",
+        "5個以上の各リンクに現在の5リンク基礎火力×1を加算（端数切捨て）"
+      ]
+    },
+    {
+      "id": "clear-column",
+      "name": "澄んだ支柱",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "投入列に箱が3個以上あり全て自箱なら各リンク火力＋3",
+        "投入列に箱が3個以上あり全て自箱なら各リンク火力＋5"
+      ]
+    },
+    {
+      "id": "pincer-strike",
+      "name": "挟撃",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "投入箱と自箱で上下左右の敵箱1個を挟むと各リンク火力＋3（重複しない）",
+        "投入箱と自箱で上下左右の敵箱1個を挟むと各リンク火力＋5（重複しない）"
+      ]
+    },
+    {
+      "id": "twin-diagonal",
+      "name": "双斜線",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        4,
+        6
+      ],
+      "effects": [
+        "同時に両方の斜め3リンク以上が成立すると各リンク火力＋4",
+        "同時に両方の斜め3リンク以上が成立すると各リンク火力＋6"
+      ]
+    },
+    {
+      "id": "square-conduit",
+      "name": "方陣連結",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        2,
+        3
+      ],
+      "effects": [
+        "現在の自箱2×2に接続する各リンク火力＋2（1箱以上共有・重複しない）",
+        "現在の自箱2×2に接続する各リンク火力＋3（1箱以上共有・重複しない）"
+      ]
+    },
+    {
+      "id": "venom-edge",
+      "name": "毒際攻め",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "投入箱の上下左右にどく・げきどくの敵箱があれば各リンク火力＋3（重複しない）",
+        "投入箱の上下左右にどく・げきどくの敵箱があれば各リンク火力＋5（重複しない）"
+      ]
+    },
+    {
+      "id": "frost-edge",
+      "name": "氷際攻め",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "投入箱の上下左右にフローズン・絶対零度の敵箱があれば各リンク火力＋3（重複しない）",
+        "投入箱の上下左右にフローズン・絶対零度の敵箱があれば各リンク火力＋5（重複しない）"
+      ]
+    },
+    {
+      "id": "exact-four",
+      "name": "四拍子",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "ちょうど4個の各リンク火力＋3",
+        "ちょうど4個の各リンク火力＋5"
+      ]
+    },
+    {
+      "id": "shiny-relay",
+      "name": "輝き継ぎ",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": true,
+      "rewardAccess": "trophy",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "輝き箱2個以上を含む各リンク火力＋3（輝き倍率の前に加算）",
+        "輝き箱2個以上を含む各リンク火力＋5（輝き倍率の前に加算）"
+      ]
+    },
+    {
+      "id": "t-strike",
+      "name": "T字打ち",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        6,
+        9
+      ],
+      "effects": [
+        "自箱4個のT字で6ダメージ・回転可",
+        "自箱4個のT字で9ダメージ・回転可"
+      ]
+    },
+    {
+      "id": "zigzag-strike",
+      "name": "稲妻打ち",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        6,
+        9
+      ],
+      "effects": [
+        "自箱4個の稲妻形で6ダメージ・回転可（鏡像は別）",
+        "自箱4個の稲妻形で9ダメージ・回転可（鏡像は別）"
+      ]
+    },
+    {
+      "id": "cup-strike",
+      "name": "コの字打ち",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        8,
+        12
+      ],
+      "effects": [
+        "自箱5個のコの字で8ダメージ・回転可",
+        "自箱5個のコの字で12ダメージ・回転可"
+      ]
+    },
+    {
+      "id": "diamond-strike",
+      "name": "ひし形打ち",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        7,
+        10
+      ],
+      "effects": [
+        "自箱4個のひし形で7ダメージ（中央は不要）",
+        "自箱4個のひし形で10ダメージ（中央は不要）"
+      ]
+    },
+    {
+      "id": "cross-strike",
+      "name": "X字打ち",
+      "kind": "shape",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        9,
+        13
+      ],
+      "effects": [
+        "自箱5個のX字で9ダメージ",
+        "自箱5個のX字で13ダメージ"
+      ]
+    },
+    {
+      "id": "full-power",
+      "name": "フルパワー",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        3
+      ],
+      "effects": [
+        "投入後HP満タンなら各リンク火力＋2",
+        "投入後HP満タンなら各リンク火力＋3"
+      ]
+    },
+    {
+      "id": "foundation",
+      "name": "縁の下の力持ち",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        1,
+        2
+      ],
+      "effects": [
+        "最下段の自箱1個につき各リンク火力＋1（内部足場は対象外）",
+        "最下段の自箱1個につき各リンク火力＋2（内部足場は対象外）"
+      ]
+    },
+    {
+      "id": "snake-line",
+      "name": "長蛇の列",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        4,
+        6
+      ],
+      "effects": [
+        "5個以上の各リンク火力＋4",
+        "5個以上の各リンク火力＋6"
+      ]
+    },
+    {
+      "id": "edge-strike",
+      "name": "端攻め",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        3
+      ],
+      "effects": [
+        "左端か右端を含む各リンク火力＋2",
+        "左端か右端を含む各リンク火力＋3"
+      ]
+    },
+    {
+      "id": "siege",
+      "name": "包囲攻撃",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        1,
+        2
+      ],
+      "effects": [
+        "投入箱に上下左右で接する敵箱1個につき各リンク火力＋1",
+        "投入箱に上下左右で接する敵箱1個につき各リンク火力＋2"
+      ]
+    },
+    {
+      "id": "crossfire",
+      "name": "交差砲火",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        3
+      ],
+      "effects": [
+        "同時に2軸以上の3リンクが成立すると各リンク火力＋2",
+        "同時に2軸以上の3リンクが成立すると各リンク火力＋3"
+      ]
+    },
+    {
+      "id": "last-stand",
+      "name": "背水の陣",
+      "kind": "link",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        3,
+        5
+      ],
+      "effects": [
+        "投入後HP半分以下なら各リンク火力＋3",
+        "投入後HP半分以下なら各リンク火力＋5"
+      ]
+    },
+    {
+      "id": "iron-wall",
+      "name": "鉄壁",
+      "kind": "passive",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        1,
+        2
+      ],
+      "effects": [
+        "現在の自箱2×2があれば敵の各リンク被害−1（毒・固定攻撃は対象外）",
+        "現在の自箱2×2があれば敵の各リンク被害−2（毒・固定攻撃は対象外）"
+      ]
+    },
+    {
+      "id": "capacitor",
+      "name": "充填カプセル",
+      "kind": "instant",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        12,
+        20
+      ],
+      "effects": [
+        "ゲージ＋12（上限まで）・1回限り・1手消費",
+        "ゲージ＋20（上限まで）・1回限り・1手消費"
+      ]
+    },
+    {
+      "id": "solvent",
+      "name": "浄化溶剤",
+      "kind": "instant",
+      "initialRewardEligible": {
+        "blue": true,
+        "red": true
+      },
+      "requiresTrophy": false,
+      "rewardAccess": "shared",
+      "baseValues": [
+        2,
+        4
+      ],
+      "effects": [
+        "上・左から自箱のどく・もうどく・フローズンを最大2個ノーマルへ・1回限り・1手消費",
+        "上・左から自箱のどく・もうどく・フローズンを最大4個ノーマルへ・1回限り・1手消費"
+      ]
+    }
+  ],
+  "presentationSupplement": {
+    "revision": "1.12.6",
+    "updated": "2026-10-04",
+    "scope": "通常スキル基礎値は1.2を保持。新出発はホーム個別設定、保存済みランは戦闘詳細が適用値。",
+    "growth": "新育成Lv12/24ポイント。過去のレベル・ポイント・EXPを保持。ラン終了精算後、次の出発に反映。"
+  },
+  "explicitReturn": {
+    "scope": "stable active player-decision only; never pending reward or automatic resolution",
+    "payout": "registered eligible run:5coins and10EXP per recorded defeated enemy, exactly once",
+    "zeroDefeats": 0,
+    "clearBonus": false,
+    "trophies": false,
+    "requiresConfirmation": true,
+    "continuesAfterReturn": false,
+    "autoStartsNewRun": false
+  },
+  "playerGuide": {
+    "version": "1.12.6",
+    "encounters": {
+      "bands": [
+        {
+          "id": "basic",
+          "from": 1,
+          "to": 24,
+          "pool": [
+            {
+              "enemyId": "marujiro",
+              "weight": 3
+            },
+            {
+              "enemyId": "hikikizan",
+              "weight": 2
+            },
+            {
+              "enemyId": "merarun",
+              "weight": 2
+            },
+            {
+              "enemyId": "twin-core",
+              "weight": 3
+            },
+            {
+              "enemyId": "needle-core",
+              "weight": 2
+            }
+          ]
+        },
+        {
+          "id": "gimmick",
+          "from": 26,
+          "to": 39,
+          "pool": [
+            {
+              "enemyId": "nigirin",
+              "weight": 2
+            },
+            {
+              "enemyId": "frost-core",
+              "weight": 3
+            },
+            {
+              "enemyId": "thorn-core",
+              "weight": 3
+            }
+          ]
+        },
+        {
+          "id": "advanced",
+          "from": 41,
+          "to": 49,
+          "pool": [
+            {
+              "enemyId": "rime-crown",
+              "weight": 1
+            },
+            {
+              "enemyId": "briar-wheel",
+              "weight": 1
+            },
+            {
+              "enemyId": "devilmon",
+              "weight": 1
+            },
+            {
+              "enemyId": "shashark",
+              "weight": 1
+            }
+          ]
+        }
+      ],
+      "bosses": {
+        "25": "speed-core",
+        "40": "speed-core",
+        "50": "mother-core"
+      }
+    },
+    "monsters": [
+      {
+        "id": "devilmon",
+        "label": "デビルモン",
+        "maxHp": 48,
+        "attacks": {
+          "3": 4,
+          "4": 8,
+          "5": 12
+        },
+        "note": "ちょうど4連の敵リンクごとに、タイプなしの自箱1個をランダムでどくにします。5連以上では発動しません。対象がなければ不発。"
+      },
+      {
+        "id": "shashark",
+        "label": "シャシャーク",
+        "maxHp": 52,
+        "attacks": {
+          "3": 4,
+          "4": 12,
+          "5": 20
+        },
+        "note": "3 / 4 / 5連以上で4 / 12 / 20の基礎火力。通常投入だけを行います。"
+      },
+      {
+        "id": "twin-core",
+        "label": "ツインコア",
+        "maxHp": 42,
+        "attacks": {
+          "3": 4,
+          "4": 5,
+          "5": 7
+        },
+        "note": "短い3連が得意な通常攻撃型。現在の火力は上の表で確認できます。特殊効果はありません。"
+      },
+      {
+        "id": "needle-core",
+        "label": "ニードルコア",
+        "maxHp": 25,
+        "attacks": {
+          "3": 2,
+          "4": 6,
+          "5": 13
+        },
+        "note": "低めのHP、5連以上が得意な通常攻撃型。長い敵列を作らせないことが大切です。"
+      },
+      {
+        "id": "frost-core",
+        "label": "フロストコア",
+        "maxHp": 36,
+        "attacks": {
+          "3": 3,
+          "4": 5,
+          "5": 8
+        },
+        "note": "4回目の自手番は投入せず、自箱を最大1個フローズンにします。"
+      },
+      {
+        "id": "thorn-core",
+        "label": "ソーンコア",
+        "maxHp": 40,
+        "attacks": {
+          "3": 2,
+          "4": 4,
+          "5": 7
+        },
+        "note": "4回目の自手番は通常箱の代わりにトゲ箱を1個投入します。"
+      },
+      {
+        "id": "rime-crown",
+        "label": "ライムクラウン",
+        "maxHp": 48,
+        "attacks": {
+          "3": 3,
+          "4": 6,
+          "5": 9
+        },
+        "note": "3回目の自手番は投入せず、自箱を最大2個フローズンにします。氷結だけに特化した上位種。"
+      },
+      {
+        "id": "briar-wheel",
+        "label": "ブライアホイール",
+        "maxHp": 52,
+        "attacks": {
+          "3": 3,
+          "4": 5,
+          "5": 8
+        },
+        "note": "3回目の自手番にトゲ箱を1個投入します。トゲを作る間隔が短い上位種。"
+      },
+      {
+        "id": "marujiro",
+        "label": "マルジロ",
+        "maxHp": 60,
+        "attacks": {
+          "3": 2,
+          "4": 4,
+          "5": 6
+        },
+        "note": "高いHPと控えめなリンク火力。通常投入だけを行います。"
+      },
+      {
+        "id": "hikikizan",
+        "label": "ヒキキザン",
+        "maxHp": 30,
+        "attacks": {
+          "3": 3,
+          "4": 10,
+          "5": 15
+        },
+        "note": "4連から急に高火力になる通常攻撃型。長い敵列に注意。"
+      },
+      {
+        "id": "nigirin",
+        "label": "ニギリン",
+        "maxHp": 30,
+        "attacks": {
+          "3": 2,
+          "4": 4,
+          "5": 6
+        },
+        "healEveryOwnTurns": 5,
+        "healAmount": 10,
+        "note": "5回目の自手番は投入せず回復します。回復量は今回の調整値を使います。"
+      },
+      {
+        "id": "merarun",
+        "label": "メラルン",
+        "maxHp": 30,
+        "attacks": {
+          "3": 3,
+          "4": 6,
+          "5": 9
+        },
+        "note": "3・4・5連で段階的に火力が上がる通常攻撃型。特殊効果はありません。"
+      },
+      {
+        "id": "speed-core",
+        "label": "スピードコア",
+        "maxHp": 50,
+        "attacks": {
+          "3": 6,
+          "4": 7,
+          "5": 9
+        },
+        "note": "5回目の自手番に固定攻撃、その後に通常投入します。"
+      },
+      {
+        "id": "mother-core",
+        "label": "マザーコア",
+        "maxHp": 150,
+        "attacks": {
+          "3": 5,
+          "4": 8,
+          "5": 12
+        },
+        "note": "通常の7手周期と、HP20%以下の2手周期を持つ大ボスです。"
+      }
+    ],
+    "levels": [
+      {
+        "level": 1,
+        "xp": 0,
+        "points": 2
+      },
+      {
+        "level": 2,
+        "xp": 40,
+        "points": 4
+      },
+      {
+        "level": 3,
+        "xp": 100,
+        "points": 6
+      },
+      {
+        "level": 4,
+        "xp": 180,
+        "points": 8
+      },
+      {
+        "level": 5,
+        "xp": 280,
+        "points": 10
+      },
+      {
+        "level": 6,
+        "xp": 400,
+        "points": 12
+      },
+      {
+        "level": 7,
+        "xp": 540,
+        "points": 14
+      },
+      {
+        "level": 8,
+        "xp": 700,
+        "points": 16
+      },
+      {
+        "level": 9,
+        "xp": 880,
+        "points": 18
+      },
+      {
+        "level": 10,
+        "xp": 1080,
+        "points": 20
+      },
+      {
+        "level": 11,
+        "xp": 1300,
+        "points": 22
+      },
+      {
+        "level": 12,
+        "xp": 1540,
+        "points": 24
+      }
+    ],
+    "economy": {
+      "schema": 2,
+      "initialPoints": 2,
+      "pointsPerLevel": 2,
+      "maxLevel": 12,
+      "xpBase": 40,
+      "xpStep": 20,
+      "xpPerEnemy": 10,
+      "coinsPerEnemy": 5,
+      "clearXp": 250,
+      "clearCoins": 200,
+      "poolMin": 6,
+      "poolMax": 20,
+      "gachaCost": 100,
+      "energyXp": 50,
+      "characterRate": 20,
+      "skillRate": 40,
+      "energyRate": 40,
+      "duplicateCharacterEnergy": 3,
+      "duplicateSkillCoins": 20
+    },
+    "tree": {
+      "rewardHeal": {
+        "name": "報酬の即時回復",
+        "description": "BUILD REWARDの即時回復＋2 / 段階（他の回復は対象外）",
+        "max": 5,
+        "cost": 1
+      },
+      "three": {
+        "name": "3リンク基礎火力",
+        "description": "初期火力＋1 / 段階",
+        "max": 5,
+        "cost": 1
+      },
+      "four": {
+        "name": "4リンク基礎火力",
+        "description": "初期火力＋1 / 段階",
+        "max": 5,
+        "cost": 1
+      },
+      "five": {
+        "name": "5以上リンク基礎火力",
+        "description": "初期火力＋2 / 段階",
+        "max": 5,
+        "cost": 1
+      },
+      "slots": {
+        "name": "通常スキル自由枠",
+        "description": "自由枠＋1 / 段階（最大4枠）",
+        "max": 2,
+        "cost": 3
+      },
+      "board": {
+        "name": "専用盤面スキルの解放",
+        "description": "このキャラ専用の新しい盤面スキル2種類と追加技を選択可能",
+        "max": 1,
+        "cost": 3
+      }
+    },
+    "characters": [
+      {
+        "id": "blue",
+        "name": "青の子",
+        "subtitle": "プリズムの賢者",
+        "color": "#65c8ed",
+        "archetype": "blue",
+        "starter": "health",
+        "board": "pain-shared",
+        "hp": 30,
+        "attacks": {
+          "3": 4,
+          "4": 7,
+          "5": 11
+        },
+        "prototype": false,
+        "role": "テクニカル",
+        "fixedName": "ヘルス",
+        "form": "青の変化：この戦闘中、回復予定量と同じダメージを敵へ。HP満タンで実回復0でも反応します。戦闘外の回復報酬は対象外。 ゲージ80・上限120。手動発動は通常行動を消費しません。",
+        "boards": [
+          {
+            "id": "pain-shared",
+            "name": "痛みはお互いに",
+            "access": "初期装備",
+            "description": "選んだ横一列を消去。消去前の自箱は敵へ、敵箱は自分へ、1個につき2ダメージ。中立箱はダメージなし。通常行動1手。落下でリンク・形は発動しません。"
+          },
+          {
+            "id": "blue-freeze",
+            "name": "凍てつく光",
+            "access": "ツリー3ptで解放",
+            "description": "未凍結の敵箱1個をフローズンへ上書き。 ゲージ10・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "blue-crosscut",
+            "name": "十字の透視",
+            "access": "ツリー3ptで解放",
+            "description": "上端を選び、十字形の5箱を消す。所有者は問わず、5箱すべて必要。 ゲージ35・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "blue-plumb",
+            "name": "水脈をひらく",
+            "access": "ツリー3ptで解放",
+            "description": "選択位置から縦3箱を消す。所有者は問わず、3箱すべて必要。 ゲージ15・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          }
+        ]
+      },
+      {
+        "id": "red",
+        "name": "赤の子",
+        "subtitle": "炎の育て手",
+        "color": "#ee777d",
+        "archetype": "red",
+        "starter": "grow-fire",
+        "board": "ember",
+        "hp": 30,
+        "attacks": {
+          "3": 4,
+          "4": 7,
+          "5": 11
+        },
+        "prototype": false,
+        "role": "フィジカル",
+        "fixedName": "成長する火",
+        "form": "赤の変化：次の自手番開始から、追加投入を2回。今の手番には追加しません。投入不能でもその回数は消費。残り回数は次の戦闘へ持ち越します。 ゲージ100・上限150。手動発動は通常行動を消費しません。",
+        "boards": [
+          {
+            "id": "ember",
+            "name": "ほむらの火種",
+            "access": "初期装備",
+            "description": "自HP3を先に支払い、生存時だけ敵箱をランダムに最大2個、自箱へ。タイプは維持。通常行動1手。変換や落下でリンク・形は発動しません。"
+          },
+          {
+            "id": "red-capture",
+            "name": "炎の占領",
+            "access": "ツリー3ptで解放",
+            "description": "自HP2を先に支払い、生存時だけ敵箱1個を自箱へ。タイプは維持。 ゲージ0・HP2・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "red-frontline",
+            "name": "紅蓮の前線",
+            "access": "ツリー3ptで解放",
+            "description": "横に隣接する敵箱2個を自箱へ変える。タイプは維持。HP費用を先に支払い、生存時だけ変換。 ゲージ15・HP3・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "red-brand",
+            "name": "焼き印の占領",
+            "access": "ツリー3ptで解放",
+            "description": "敵箱1個を自箱にして、タイプをトゲへ上書き。HP費用を先に支払い、生存時だけ変更。トゲは近くの自分の投入にも反応。 ゲージ20・HP2・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          }
+        ]
+      },
+      {
+        "id": "mint",
+        "name": "ミント",
+        "subtitle": "角を読む観測者",
+        "color": "#80d6b8",
+        "archetype": "red",
+        "starter": "corner-strike",
+        "board": "mint-observe",
+        "hp": 32,
+        "attacks": {
+          "3": 4,
+          "4": 7,
+          "5": 10
+        },
+        "prototype": true,
+        "role": "テクニカル",
+        "fixedName": "角打ち",
+        "form": "全点観測：この戦闘中、角打ちのダメージ＋3。 ゲージ100・上限150。手動発動は通常行動を消費しません。",
+        "boards": [
+          {
+            "id": "mint-observe",
+            "name": "一点観測",
+            "access": "初期装備",
+            "description": "L形の3箱を消す。所有者は問わず、落下は受動。 ゲージ10・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "mint-diagonal",
+            "name": "斜線の観測",
+            "access": "ツリー3ptで解放",
+            "description": "斜めに並ぶ3箱を消す。右下・左下の2方向を選択。所有者は問わず、3箱すべて必要。 ゲージ15・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "mint-frame",
+            "name": "観測窓を抜く",
+            "access": "ツリー3ptで解放",
+            "description": "左上を選び、2×2の4箱を消す。所有者は問わず、4箱すべて必要。 ゲージ25・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          }
+        ]
+      },
+      {
+        "id": "amber",
+        "name": "アンバー",
+        "subtitle": "四角の造形師",
+        "color": "#e9bb68",
+        "archetype": "red",
+        "starter": "square-strike",
+        "board": "amber-convert",
+        "hp": 28,
+        "attacks": {
+          "3": 6,
+          "4": 9,
+          "5": 13
+        },
+        "prototype": true,
+        "role": "フィジカル・パワー",
+        "fixedName": "四角打ち",
+        "form": "力の解放：発動した手番を含む1自手番、リンクダメージ×2。形・毒・直接攻撃・回復・ゲージ獲得は変わりません。戦闘終了で解除。 ゲージ100・上限150。手動発動は通常行動を消費しません。",
+        "boards": [
+          {
+            "id": "amber-convert",
+            "name": "力で塗り替える",
+            "access": "初期装備",
+            "description": "敵箱1個を自箱へ変更。タイプは維持。 ゲージ20・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "amber-squarepress",
+            "name": "方陣の制圧",
+            "access": "ツリー3ptで解放",
+            "description": "左上を選び、2×2に並ぶ敵箱4個をすべて自箱へ変える。タイプは維持。4箱すべて敵箱が必要。 ゲージ65・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "amber-rubble",
+            "name": "砕石の槌",
+            "access": "ツリー3ptで解放",
+            "description": "ガレキではない敵箱1個をガレキへ上書き。所有者は維持。直上に2箱積まれると崩れる。 ゲージ10・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          }
+        ]
+      },
+      {
+        "id": "violet",
+        "name": "バイオレット",
+        "subtitle": "毒を操るアサシン",
+        "color": "#b299de",
+        "archetype": "red",
+        "starter": "poison-craft",
+        "board": "violet-poison",
+        "hp": 28,
+        "attacks": {
+          "3": 1,
+          "4": 2,
+          "5": 3
+        },
+        "prototype": true,
+        "role": "アサシン",
+        "fixedName": "毒盛り術",
+        "form": "毒の雨：げきどく以外の敵箱を、上の行から・同じ行なら左から最大2個、げきどくへ上書き。1回だけ付与し、タイプは手番後も残ります。対象がない時は使用不可。 ゲージ100・上限150。手動発動は通常行動を消費しません。",
+        "boards": [
+          {
+            "id": "violet-poison",
+            "name": "毒矢",
+            "access": "初期装備",
+            "description": "どく・げきどく以外の敵箱1個をどくへ上書き。自分を毒の付与者として記録。 ゲージ20・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "violet-venom",
+            "name": "毒の凝縮",
+            "access": "ツリー3ptで解放",
+            "description": "どく状態の敵箱1個をげきどくへ。自分を付与者として記録し、毒盛り術は毒精算時の自箱2×2を参照。 ゲージ20・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "violet-sting",
+            "name": "双毒針",
+            "access": "ツリー3ptで解放",
+            "description": "横に隣接する敵箱2個をどくへ。2個ともどく・げきどく以外が必要。自分を付与者として記録。 ゲージ35・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          }
+        ]
+      },
+      {
+        "id": "silver",
+        "name": "シルバー",
+        "subtitle": "最初の盾",
+        "color": "#bbcad2",
+        "archetype": "red",
+        "starter": "first-guard",
+        "board": "silver-freeze",
+        "hp": 34,
+        "attacks": {
+          "3": 3,
+          "4": 7,
+          "5": 11
+        },
+        "prototype": true,
+        "role": "フィジカル・ガード",
+        "fixedName": "初撃の守り",
+        "form": "鋼の守り：バリアを12にする（加算ではない）。敵のリンク・固定攻撃だけを軽減。この戦闘中、使い切るまで持続。毒・トゲ・自己コスト・投入不能は防ぎません。満タンでは使用不可。 ゲージ100・上限150。手動発動は通常行動を消費しません。",
+        "boards": [
+          {
+            "id": "silver-freeze",
+            "name": "氷結の守り",
+            "access": "初期装備",
+            "description": "選んだ列の未凍結の敵箱を、上から最大2個フローズンへ上書き。 ゲージ15・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "silver-frostbind",
+            "name": "斜氷の鎖",
+            "access": "ツリー3ptで解放",
+            "description": "斜めに隣接する敵箱2個をフローズンへ。右下・左下の2方向。2個とも未凍結が必要。 ゲージ20・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "silver-thornwall",
+            "name": "荊の防壁",
+            "access": "ツリー3ptで解放",
+            "description": "横に隣接する自箱2個をトゲへ。2個ともトゲ以外が必要。トゲは近くの自分の投入にも反応。 ゲージ25・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          }
+        ]
+      },
+      {
+        "id": "rose",
+        "name": "ローズ",
+        "subtitle": "横列の剣士",
+        "color": "#e2a0ba",
+        "archetype": "red",
+        "starter": "horizontal-slash",
+        "board": "rose-slice",
+        "hp": 30,
+        "attacks": {
+          "3": 5,
+          "4": 6,
+          "5": 10
+        },
+        "prototype": true,
+        "role": "テクニカル",
+        "fixedName": "横薙ぎ",
+        "form": "横一閃：発動した今の自手番が終わるまで、横リンクのダメージ＋12。 ゲージ100・上限150。手動発動は通常行動を消費しません。",
+        "boards": [
+          {
+            "id": "rose-slice",
+            "name": "払いの構え",
+            "access": "初期装備",
+            "description": "選んだ横3箱を消す。所有者は問わず、落下は受動。 ゲージ10・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "rose-longcut",
+            "name": "長薙ぎ",
+            "access": "ツリー3ptで解放",
+            "description": "選択位置から横4箱を消す。所有者は問わず、4箱すべて必要。 ゲージ25・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "rose-twincut",
+            "name": "返しの二段斬り",
+            "access": "ツリー3ptで解放",
+            "description": "選択位置から縦2箱を消す。横列を整えるための短い縦斬り。所有者は問わず、2箱すべて必要。 ゲージ10・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          }
+        ]
+      },
+      {
+        "id": "imashiru",
+        "name": "イマシルちゃん",
+        "subtitle": "ピコーン閃いた！",
+        "color": "#b099e5",
+        "archetype": "red",
+        "starter": "charge",
+        "board": "imashiru-insight",
+        "hp": 30,
+        "attacks": {
+          "3": 4,
+          "4": 7,
+          "5": 11
+        },
+        "prototype": false,
+        "role": "閃き・タイプ操作",
+        "fixedName": "蓄勢",
+        "form": "ピコーン閃いた！：自箱全部を即時に輝きへ上書き。発動した今の自手番が終わるまで、自箱の能動投入も輝き。箱のタイプは手番後も残ります。輝きが発動するリンク・形に含まれると、ダメージ・形の回復量・リンクのゲージ獲得が2倍。複数でも重複しません。 ゲージ200・上限300。手動発動は通常行動を消費しません。",
+        "boards": [
+          {
+            "id": "imashiru-insight",
+            "name": "いま、知りたい！",
+            "access": "初期装備",
+            "description": "ゲージ30・通常行動1手。次に成功する自箱の能動投入1個を輝きに。予約中は再使用不可。予約は投入成功まで保持します。"
+          },
+          {
+            "id": "imashiru-focus",
+            "name": "ここが気になる！",
+            "access": "ツリー3ptで解放",
+            "description": "輝きではない自箱1個をすぐ輝きへ上書き。次の投入予約は消費しません。 ゲージ40・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "imashiru-polish",
+            "name": "ふたりでピカーン！",
+            "access": "ツリー3ptで解放",
+            "description": "横に隣接する自箱2個をすぐ輝きへ。2個とも輝き以外が必要。次の投入予約は消費しない。 ゲージ65・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          },
+          {
+            "id": "imashiru-reset",
+            "name": "まっさらにしよう！",
+            "access": "ツリー3ptで解放",
+            "description": "通常以外の箱1個を通常へ戻す。所有者は問わず維持。毒の付与者情報も消す。 ゲージ15・HP0・通常行動1手。変更・消去・その後の落下ではリンクや形は発動しません。"
+          }
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "id": "poison-craft",
+        "name": "毒盛り術",
+        "access": "never",
+        "base": "現在の自箱2×2の数だけ、自分が付与したどく・もうどく1箱あたりのダメージ＋1（常時・累積しない）",
+        "plus": null
+      },
+      {
+        "id": "health",
+        "name": "ヘルス",
+        "access": "starter-upgrade-only",
+        "base": "＋形でHP15回復",
+        "plus": "＋形でHP20回復"
+      },
+      {
+        "id": "grow-fire",
+        "name": "成長する火",
+        "access": "shared",
+        "base": "縦3以上：3リンク火力＋3、成長＋1",
+        "plus": "縦3以上：3リンク火力＋5、成長＋1"
+      },
+      {
+        "id": "charge",
+        "name": "蓄勢",
+        "access": "shared",
+        "base": "手番終了のゲージ獲得を合計3にする",
+        "plus": "手番終了のゲージ獲得を合計4にする"
+      },
+      {
+        "id": "first-guard",
+        "name": "初撃の守り",
+        "access": "shared",
+        "base": "敵手番の最初のリンク被害−2",
+        "plus": "敵手番の最初のリンク被害−3"
+      },
+      {
+        "id": "horizontal-slash",
+        "name": "横薙ぎ",
+        "access": "shared",
+        "base": "横3以上のリンク火力＋2",
+        "plus": "横3以上のリンク火力＋4"
+      },
+      {
+        "id": "diagonal-shot",
+        "name": "斜め撃ち",
+        "access": "shared",
+        "base": "斜め3以上のリンク火力＋2",
+        "plus": "斜め3以上のリンク火力＋3"
+      },
+      {
+        "id": "corner-strike",
+        "name": "角打ち",
+        "access": "shared",
+        "base": "L形で3ダメージ・回転可",
+        "plus": "L形で5ダメージ・回転可"
+      },
+      {
+        "id": "square-strike",
+        "name": "四角打ち",
+        "access": "shared",
+        "base": "2×2で5ダメージ・回転可",
+        "plus": "2×2で8ダメージ・回転可"
+      },
+      {
+        "id": "healing-potion",
+        "name": "回復ポーション",
+        "access": "shared",
+        "base": "HP5回復・1回限り・1手消費",
+        "plus": "HP10回復・1回限り・1手消費"
+      },
+      {
+        "id": "magic-bullet",
+        "name": "魔法弾",
+        "access": "shared",
+        "base": "現在の4リンク火力×2・1回限り・1手消費",
+        "plus": "現在の4リンク火力×3・1回限り・1手消費"
+      },
+      {
+        "id": "rescue-kit",
+        "name": "救急箱",
+        "access": "trophy",
+        "base": "上段は自箱・任意・自箱、下段は自箱3個でHP10回復・向き固定・強化なし",
+        "plus": null
+      },
+      {
+        "id": "heavy-swing",
+        "name": "大振り攻撃",
+        "access": "trophy",
+        "base": "5個以上の各リンクに現在の5リンク基礎火力×0.5を加算（端数切捨て）",
+        "plus": "5個以上の各リンクに現在の5リンク基礎火力×1を加算（端数切捨て）"
+      },
+      {
+        "id": "clear-column",
+        "name": "澄んだ支柱",
+        "access": "trophy",
+        "base": "投入列に箱が3個以上あり全て自箱なら各リンク火力＋3",
+        "plus": "投入列に箱が3個以上あり全て自箱なら各リンク火力＋5"
+      },
+      {
+        "id": "pincer-strike",
+        "name": "挟撃",
+        "access": "trophy",
+        "base": "投入箱と自箱で上下左右の敵箱1個を挟むと各リンク火力＋3（重複しない）",
+        "plus": "投入箱と自箱で上下左右の敵箱1個を挟むと各リンク火力＋5（重複しない）"
+      },
+      {
+        "id": "twin-diagonal",
+        "name": "双斜線",
+        "access": "trophy",
+        "base": "同時に両方の斜め3リンク以上が成立すると各リンク火力＋4",
+        "plus": "同時に両方の斜め3リンク以上が成立すると各リンク火力＋6"
+      },
+      {
+        "id": "square-conduit",
+        "name": "方陣連結",
+        "access": "trophy",
+        "base": "現在の自箱2×2に接続する各リンク火力＋2（1箱以上共有・重複しない）",
+        "plus": "現在の自箱2×2に接続する各リンク火力＋3（1箱以上共有・重複しない）"
+      },
+      {
+        "id": "venom-edge",
+        "name": "毒際攻め",
+        "access": "trophy",
+        "base": "投入箱の上下左右にどく・げきどくの敵箱があれば各リンク火力＋3（重複しない）",
+        "plus": "投入箱の上下左右にどく・げきどくの敵箱があれば各リンク火力＋5（重複しない）"
+      },
+      {
+        "id": "frost-edge",
+        "name": "氷際攻め",
+        "access": "trophy",
+        "base": "投入箱の上下左右にフローズン・絶対零度の敵箱があれば各リンク火力＋3（重複しない）",
+        "plus": "投入箱の上下左右にフローズン・絶対零度の敵箱があれば各リンク火力＋5（重複しない）"
+      },
+      {
+        "id": "exact-four",
+        "name": "四拍子",
+        "access": "trophy",
+        "base": "ちょうど4個の各リンク火力＋3",
+        "plus": "ちょうど4個の各リンク火力＋5"
+      },
+      {
+        "id": "shiny-relay",
+        "name": "輝き継ぎ",
+        "access": "trophy",
+        "base": "輝き箱2個以上を含む各リンク火力＋3（輝き倍率の前に加算）",
+        "plus": "輝き箱2個以上を含む各リンク火力＋5（輝き倍率の前に加算）"
+      },
+      {
+        "id": "t-strike",
+        "name": "T字打ち",
+        "access": "shared",
+        "base": "自箱4個のT字で6ダメージ・回転可",
+        "plus": "自箱4個のT字で9ダメージ・回転可"
+      },
+      {
+        "id": "zigzag-strike",
+        "name": "稲妻打ち",
+        "access": "shared",
+        "base": "自箱4個の稲妻形で6ダメージ・回転可（鏡像は別）",
+        "plus": "自箱4個の稲妻形で9ダメージ・回転可（鏡像は別）"
+      },
+      {
+        "id": "cup-strike",
+        "name": "コの字打ち",
+        "access": "shared",
+        "base": "自箱5個のコの字で8ダメージ・回転可",
+        "plus": "自箱5個のコの字で12ダメージ・回転可"
+      },
+      {
+        "id": "diamond-strike",
+        "name": "ひし形打ち",
+        "access": "shared",
+        "base": "自箱4個のひし形で7ダメージ（中央は不要）",
+        "plus": "自箱4個のひし形で10ダメージ（中央は不要）"
+      },
+      {
+        "id": "cross-strike",
+        "name": "X字打ち",
+        "access": "shared",
+        "base": "自箱5個のX字で9ダメージ",
+        "plus": "自箱5個のX字で13ダメージ"
+      },
+      {
+        "id": "full-power",
+        "name": "フルパワー",
+        "access": "shared",
+        "base": "投入後HP満タンなら各リンク火力＋2",
+        "plus": "投入後HP満タンなら各リンク火力＋3"
+      },
+      {
+        "id": "foundation",
+        "name": "縁の下の力持ち",
+        "access": "shared",
+        "base": "最下段の自箱1個につき各リンク火力＋1（内部足場は対象外）",
+        "plus": "最下段の自箱1個につき各リンク火力＋2（内部足場は対象外）"
+      },
+      {
+        "id": "snake-line",
+        "name": "長蛇の列",
+        "access": "shared",
+        "base": "5個以上の各リンク火力＋4",
+        "plus": "5個以上の各リンク火力＋6"
+      },
+      {
+        "id": "edge-strike",
+        "name": "端攻め",
+        "access": "shared",
+        "base": "左端か右端を含む各リンク火力＋2",
+        "plus": "左端か右端を含む各リンク火力＋3"
+      },
+      {
+        "id": "siege",
+        "name": "包囲攻撃",
+        "access": "shared",
+        "base": "投入箱に上下左右で接する敵箱1個につき各リンク火力＋1",
+        "plus": "投入箱に上下左右で接する敵箱1個につき各リンク火力＋2"
+      },
+      {
+        "id": "crossfire",
+        "name": "交差砲火",
+        "access": "shared",
+        "base": "同時に2軸以上の3リンクが成立すると各リンク火力＋2",
+        "plus": "同時に2軸以上の3リンクが成立すると各リンク火力＋3"
+      },
+      {
+        "id": "last-stand",
+        "name": "背水の陣",
+        "access": "shared",
+        "base": "投入後HP半分以下なら各リンク火力＋3",
+        "plus": "投入後HP半分以下なら各リンク火力＋5"
+      },
+      {
+        "id": "iron-wall",
+        "name": "鉄壁",
+        "access": "shared",
+        "base": "現在の自箱2×2があれば敵の各リンク被害−1（毒・固定攻撃は対象外）",
+        "plus": "現在の自箱2×2があれば敵の各リンク被害−2（毒・固定攻撃は対象外）"
+      },
+      {
+        "id": "capacitor",
+        "name": "充填カプセル",
+        "access": "shared",
+        "base": "ゲージ＋12（上限まで）・1回限り・1手消費",
+        "plus": "ゲージ＋20（上限まで）・1回限り・1手消費"
+      },
+      {
+        "id": "solvent",
+        "name": "浄化溶剤",
+        "access": "shared",
+        "base": "上・左から自箱のどく・もうどく・フローズンを最大2個ノーマルへ・1回限り・1手消費",
+        "plus": "上・左から自箱のどく・もうどく・フローズンを最大4個ノーマルへ・1回限り・1手消費"
+      }
+    ],
+    "types": [
+      {
+        "id": "normal",
+        "name": "通常"
+      },
+      {
+        "id": "shiny",
+        "name": "輝き"
+      },
+      {
+        "id": "frozen",
+        "name": "フローズン"
+      },
+      {
+        "id": "absolute-zero",
+        "name": "絶対零度"
+      },
+      {
+        "id": "poison",
+        "name": "どく"
+      },
+      {
+        "id": "deadly-poison",
+        "name": "げきどく"
+      },
+      {
+        "id": "rubble",
+        "name": "ガレキ"
+      },
+      {
+        "id": "thorn",
+        "name": "トゲ"
+      }
+    ]
+  },
+  "trophies": [
+    {
+      "id": "clear50:first",
+      "name": "はじめての50階クリア",
+      "condition": "正式ランを1階から50階までクリア"
+    },
+    {
+      "id": "damage100:turn",
+      "name": "一手番の猛攻",
+      "condition": "1回の自手番中に敵HPを実際に100以上減らす（敵手番の毒・過剰ダメージは除外）",
+      "skill": "heavy-swing"
+    },
+    {
+      "id": "maxhp100:run",
+      "name": "大きな生命力",
+      "condition": "正式ラン中の最大HPが100以上に到達",
+      "skill": "rescue-kit"
+    },
+    {
+      "id": "clear50:blue",
+      "name": "青の子で50階クリア",
+      "condition": "このキャラで正式ランを1階から50階までクリア",
+      "skill": "clear-column"
+    },
+    {
+      "id": "clear50:red",
+      "name": "赤の子で50階クリア",
+      "condition": "このキャラで正式ランを1階から50階までクリア",
+      "skill": "pincer-strike"
+    },
+    {
+      "id": "clear50:mint",
+      "name": "ミントで50階クリア",
+      "condition": "このキャラで正式ランを1階から50階までクリア",
+      "skill": "twin-diagonal"
+    },
+    {
+      "id": "clear50:amber",
+      "name": "アンバーで50階クリア",
+      "condition": "このキャラで正式ランを1階から50階までクリア",
+      "skill": "square-conduit"
+    },
+    {
+      "id": "clear50:violet",
+      "name": "バイオレットで50階クリア",
+      "condition": "このキャラで正式ランを1階から50階までクリア",
+      "skill": "venom-edge"
+    },
+    {
+      "id": "clear50:silver",
+      "name": "シルバーで50階クリア",
+      "condition": "このキャラで正式ランを1階から50階までクリア",
+      "skill": "frost-edge"
+    },
+    {
+      "id": "clear50:rose",
+      "name": "ローズで50階クリア",
+      "condition": "このキャラで正式ランを1階から50階までクリア",
+      "skill": "exact-four"
+    },
+    {
+      "id": "clear50:imashiru",
+      "name": "イマシルちゃんで50階クリア",
+      "condition": "このキャラで正式ランを1階から50階までクリア",
+      "skill": "shiny-relay"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+/* Fixed corner ticks, never a second attack highlight or a hit animation. */
+.cell.carry-candidate::after{content:"";position:absolute;inset:4px;pointer-events:none;opacity:.85;background:linear-gradient(#d4e4ec,#d4e4ec) left top/6px 2px no-repeat,linear-gradient(#d4e4ec,#d4e4ec) left top/2px 6px no-repeat,linear-gradient(#d4e4ec,#d4e4ec) right bottom/6px 2px no-repeat,linear-gradient(#d4e4ec,#d4e4ec) right bottom/2px 6px no-repeat}
+.cell.carry-candidate.hit::after,.cell.carry-candidate.row-target::after{opacity:.35}
+.carry-legend{min-height:14px;font-size:10px;line-height:14px;color:#afc1cd;text-align:center;white-space:nowrap;pointer-events:none}
+@media(min-width:700px){.carry-legend{font-size:11px}}
