@@ -1,0 +1,8 @@
+{
+ "revision": "1.13",
+ "scope": "Authorized source changes for the 1.13 home design unification and content additions.",
+ "files": {
+  "src/next/meta/home.css": "959112d96bf024f569d333f19f4b3df1b88a2c2bd701fe09450404990c3b7a47",
+  "src/next/meta/home.ts": "965429eda0416a745aa46cef98100af2a59e0a4657007144b8510bf6ef715053"
+ }
+}
