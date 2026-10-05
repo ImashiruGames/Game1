@@ -84,3 +84,7 @@ body[data-reduced-motion=true] .eb-type-raster,body[data-energy-short=true] .eb-
 [data-energy-theme=hoshimimi]{--ink:#d4c2ff;--deep:#c9962a}
 [data-energy-theme=mokousagi]{--ink:#ffd3e6;--deep:#b78aa0}
 [data-energy-theme=hinobou]{--ink:#ffa24d;--deep:#d1401c}
+/* 日本語: 箱の効果を「効果・解除・対象外」の同じ並びで。English: Same labeled rows for every box type. */
+.box-inspection-rows{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 10px;margin:10px 0 8px;font-size:13px;line-height:1.55}
+.box-inspection-rows dt{font:700 10px ui-monospace,monospace;letter-spacing:.08em;color:var(--cyan,#7eced4);padding-top:3px;white-space:nowrap}
+.box-inspection-rows dd{margin:0;color:#dfe8ee}

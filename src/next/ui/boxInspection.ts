@@ -1,5 +1,5 @@
 import type {Box,BattleState} from '../core/types.ts';
-import {boxTypeInformation} from './boxTypeInformation.ts';
+import {boxTypeInformation,boxTypeRows} from './boxTypeInformation.ts';
 /** 日本語: 長押し・ドラッグの指を離しても投入しない。次の新しい操作だけを許可。
  * English: A consumed/cancelled gesture never becomes a gameplay click; only a new gesture resets it. */
 export function createInspectionGesture(){
@@ -22,7 +22,7 @@ export function installBoxInspection(root:HTMLElement,options:{state:()=>BattleS
   if(!options.ready()||root.querySelector('dialog[open]'))return;
   const state=options.state(),box=state.boxes.find((b:Box)=>b.id===target.dataset.boxId);if(!box)return;
   const rect=target.getBoundingClientRect(),info=boxTypeInformation(box,state);trigger=target;gesture.consume();stop();setMode(false);options.clearSelection();
-  dialog.replaceChildren();const top=document.createElement('div');top.className='box-inspection-top';const heading=document.createElement('h2');heading.id='box-inspection-name';heading.textContent=`${info.name}タイプ`;const closeButton=document.createElement('button');closeButton.type='button';closeButton.textContent='閉じる';closeButton.onclick=close;top.append(heading,closeButton);const effect=document.createElement('p');effect.textContent=info.effect;const context=document.createElement('p');context.className='box-inspection-context';context.textContent=info.context;dialog.append(top,effect,context);dialog.showModal();
+  dialog.replaceChildren();const top=document.createElement('div');top.className='box-inspection-top';const heading=document.createElement('h2');heading.id='box-inspection-name';heading.textContent=`${info.name}タイプ`;const closeButton=document.createElement('button');closeButton.type='button';closeButton.textContent='閉じる';closeButton.onclick=close;top.append(heading,closeButton);const effect=document.createElement('dl');effect.className='box-inspection-rows';effect.setAttribute('aria-label',info.effect);for(const row of boxTypeRows(box,state)){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=row.label;dd.textContent=row.text;effect.append(dt,dd);}const context=document.createElement('p');context.className='box-inspection-context';context.textContent=info.context;dialog.append(top,effect,context);dialog.showModal();
   const width=Math.min(340,window.innerWidth-24);dialog.style.width=`${width}px`;dialog.style.left=`${Math.max(12,Math.min(window.innerWidth-width-12,rect.left+rect.width/2-width/2))}px`;const height=dialog.getBoundingClientRect().height;dialog.style.top=`${Math.max(12,Math.min(window.innerHeight-height-12,rect.top-height-10>12?rect.top-height-10:rect.bottom+10))}px`;closeButton.focus({preventScroll:true});
  };
  modeButton.addEventListener('click',()=>{if(!options.ready())return;options.clearSelection();setMode(!mode);});
