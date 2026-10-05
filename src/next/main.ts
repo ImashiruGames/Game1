@@ -431,10 +431,11 @@ async function startTutorial(first:boolean):Promise<void>{
  tutorialStarting=true;
  try{
   home.hide();saveDialog.close();details.close();rewardDialog.reset();el<HTMLDialogElement>('end').close();selected=null;
-  await askTutorialSound();
+  // 日本語: audio.reset() などの初期化は音の許可より前に済ませる（後だと読込中の音が無効化され「再開」表示になる）。
   realController=controller;
-  tutorial=new TutorialController(view,first);controller=tutorial;tutorialUi.attach(tutorial);view.reset?.();
-  void musicScene.enterBattle('tutorial-star');void tutorial.play();
+  const t=new TutorialController(view,first);controller=t;view.reset?.();void musicScene.enterBattle('tutorial-star');
+  await askTutorialSound();
+  tutorial=t;tutorialUi.attach(t);void t.play();
  }finally{tutorialStarting=false;}
 }
 function endTutorial(completed:boolean):void{
