@@ -6,6 +6,7 @@ import type { EnemyId, EnemyDefinition } from './types.ts';
 export const enemyDefinitions: Readonly<Record<EnemyId, EnemyDefinition>> = freeze({
   devilmon: { id:'devilmon', label:'デビルモン', ...defaultTuning.enemies.devilmon },
   shashark: { id:'shashark', label:'シャシャーク', ...defaultTuning.enemies.shashark },
+  biribiriman: { id:'biribiriman', label:'ビリビリマン', ...defaultTuning.enemies.biribiriman },
   'twin-core': { id:'twin-core', label:'ツインコア', ...defaultTuning.enemies['twin-core'] },
   'needle-core': { id:'needle-core', label:'ニードルコア', ...defaultTuning.enemies['needle-core'] },
   'frost-core': { id:'frost-core', label:'フロストコア', ...defaultTuning.enemies['frost-core'] },

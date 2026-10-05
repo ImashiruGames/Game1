@@ -10,6 +10,7 @@ export const playerPortraits = {
 export const enemyPortraits = {
   ...originals,
   devilmon: {label:'デビルモン',alt:'紫の翼と角、星の印を持つデビルモン',src:new URL('./assets/monsters/devilmon-transparent.webp',import.meta.url).href},
+  biribiriman: {label:'ビリビリマン',alt:'稲妻をまとった黄色い拳闘家、ビリビリマン',src:new URL('./assets/monsters/biribiriman-transparent.webp',import.meta.url).href},
   shashark: {label:'シャシャーク',alt:'青緑の水の輪をまとったサメ、シャシャーク',src:new URL('./assets/monsters/shashark-transparent.webp',import.meta.url).href},
   'twin-core': {label:'ツインコア',alt:'二つの核を持つツインコア',src:new URL('./assets/monsters/twin-core.webp',import.meta.url).href},
   'needle-core': {label:'ニードルコア',alt:'細長い槍状のニードルコア',src:new URL('./assets/monsters/needle-core.webp',import.meta.url).href},

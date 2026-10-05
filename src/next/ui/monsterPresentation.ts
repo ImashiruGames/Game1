@@ -7,6 +7,7 @@ import type { BattleState, EnemyId } from '../core/types.ts';
 export const monsterNotes:Readonly<Record<EnemyId,string>> = {
  devilmon:'ちょうど4連の敵リンクごとに、タイプなしの自箱1個をランダムでどくにします。5連以上では発動しません。対象がなければ不発。',
  shashark:'3 / 4 / 5連以上で4 / 12 / 20の基礎火力。通常投入だけを行います。',
+ biribiriman:'3連は弱いが、4連15・5連以上25と大きく跳ね上がる深層の拳闘家。敵の4連を作らせないことが最優先です。',
  marujiro:'高いHPと控えめなリンク火力。通常投入だけを行います。',
  hikikizan:'4連から急に高火力になる通常攻撃型。長い敵列に注意。',
  merarun:'3・4・5連で段階的に火力が上がる通常攻撃型。特殊効果はありません。',

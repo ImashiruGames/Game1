@@ -217,7 +217,7 @@ export class BattleController {
   private copyOptions(options: BattleControllerOptions): BattleControllerOptions {
     if(options.run?.startStage!==undefined&&(!Number.isSafeInteger(options.run.startStage)||options.run.startStage<1))throw new Error('Invalid initial stage');
     if(options.run?.finishAtStage!==undefined&&(!Number.isSafeInteger(options.run.finishAtStage)||options.run.finishAtStage<1||(options.run.startStage??1)>options.run.finishAtStage))throw new Error('Invalid run finish stage');
-    if(options.run?.encounterVersion!==undefined&&(!['bands-v1','bands-v2'].includes(options.run.encounterVersion)||options.run.route!=='boss-loop'))throw new Error('Invalid encounter version');
+    if(options.run?.encounterVersion!==undefined&&(!['bands-v1','bands-v2','deep-v1'].includes(options.run.encounterVersion)||options.run.route!=='boss-loop'))throw new Error('Invalid encounter version');
     if(options.run?.route!==undefined&&!['standard','boss-loop'].includes(options.run.route))throw new Error('Invalid run route');
     return Object.freeze(options.run ? { run: Object.freeze({
       ...(options.run.encounterVersion ? { encounterVersion:options.run.encounterVersion } : {}),

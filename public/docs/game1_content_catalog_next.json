@@ -836,6 +836,17 @@
         "note": "3 / 4 / 5連以上で4 / 12 / 20の基礎火力。通常投入だけを行います。"
       },
       {
+        "id": "biribiriman",
+        "label": "ビリビリマン",
+        "maxHp": 40,
+        "attacks": {
+          "3": 3,
+          "4": 15,
+          "5": 25
+        },
+        "note": "3連は弱いが、4連15・5連以上25と大きく跳ね上がる深層の拳闘家。敵の4連を作らせないことが最優先です。"
+      },
+      {
         "id": "twin-core",
         "label": "ツインコア",
         "maxHp": 42,
@@ -1046,6 +1057,10 @@
       "poolMin": 6,
       "poolMax": 20,
       "gachaCost": 100,
+      "deepXpPerEnemy": 15,
+      "deepCoinsPerEnemy": 8,
+      "deepClearXp": 500,
+      "deepClearCoins": 400,
       "energyXp": 50,
       "characterRate": 20,
       "skillRate": 40,

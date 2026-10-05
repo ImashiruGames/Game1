@@ -19,7 +19,7 @@ export function trialFixture(kind: TrialFixture, character: CharacterId, enemy: 
 import { bossLoopEncounter, endlessEncounter } from './app/progression.ts';
 import type { BattleControllerOptions } from './app/BattleController.ts';
 export type TrialSetupFixture = TrialFixture | 'speed-pulse' | 'mother-wait' | 'mother-double' | 'mother-critical';
-export interface TrialSetup { readonly character:CharacterId;readonly firstEnemy:EnemyId;readonly seed:number;readonly mode:'manual'|'automatic';readonly stage:number;readonly fixture:TrialSetupFixture;readonly route:'standard'|'boss-loop';readonly encounterVersion?:'bands-v1'|'bands-v2'|'legacy-v0';readonly ending?:'clear50'|'legacy-endless' }
+export interface TrialSetup { readonly character:CharacterId;readonly firstEnemy:EnemyId;readonly seed:number;readonly mode:'manual'|'automatic';readonly stage:number;readonly fixture:TrialSetupFixture;readonly route:'standard'|'boss-loop';readonly encounterVersion?:'bands-v1'|'bands-v2'|'deep-v1'|'legacy-v0';readonly ending?:'clear50'|'deep100'|'legacy-endless' }
 /** 日本語: 検証用ステージ/手番は開始設定でのみ指定。戦闘中の操作には混ぜない。
  * English: Test stage and phase seeds live only in setup, never in ordinary battle actions. */
 export function prepareTrialSetup(setup:TrialSetup):{config:BattleConfig;options:BattleControllerOptions} {
@@ -31,14 +31,16 @@ export function prepareTrialSetup(setup:TrialSetup):{config:BattleConfig;options
   if(setup.fixture.startsWith('mother-')&&local!==50)stage=50;
   const route=bossFixture?'boss-loop':setup.route;
   const ending=setup.ending??'clear50';
-  if(ending!=='clear50'&&ending!=='legacy-endless')throw new Error('ランの終了方式が不正です');
+  if(ending!=='clear50'&&ending!=='deep100'&&ending!=='legacy-endless')throw new Error('ランの終了方式が不正です');
   if(ending==='clear50'&&stage>50)throw new Error('標準ランは50階で終了します。開始階は50以下にしてください');
-  const encounterVersion=setup.encounterVersion==='legacy-v0'||ending==='legacy-endless'?undefined:setup.encounterVersion??'bands-v2';
+  // 日本語: 深層は51〜100階の別ステージ。出現表は deep-v1 に固定。English: Deep is a separate 51–100 stage pinned to deep-v1.
+  if(ending==='deep100'&&(stage<51||stage>100||route!=='boss-loop'))throw new Error('深層は51〜100階・ボス経路で開始してください');
+  const encounterVersion=ending==='deep100'?'deep-v1':setup.encounterVersion==='legacy-v0'||ending==='legacy-endless'?undefined:setup.encounterVersion==='deep-v1'?'bands-v2':setup.encounterVersion??'bands-v2';
   const encounter=route==='boss-loop'?bossLoopEncounter(stage,setup.firstEnemy,trialTuning,encounterVersion?{version:encounterVersion,seed:setup.seed}:undefined):endlessEncounter(stage,setup.firstEnemy,trialTuning);
   const basic:TrialFixture=setup.fixture==='charged'||setup.fixture==='reward'?setup.fixture:'normal';
   const base=trialFixture(basic,setup.character,encounter.enemyId,setup.seed,setup.mode);
   const fixed='fixedDamageBonus'in encounter?encounter.fixedDamageBonus:0;
   const config:BattleConfig={...base,frozenRule:'half-melt-v1',enemyFixedDamageBonus:fixed,firstActor:bossFixture?'enemy':'player',initialEnemyTurnCount:setup.fixture==='speed-pulse'||setup.fixture==='mother-wait'?4:setup.fixture==='mother-double'?5:0,
     combatants:{...base.combatants,enemy:{...base.combatants.enemy,maxHp:encounter.maxHp,initialHp:basic==='reward'?1:setup.fixture==='mother-critical'?Math.max(1,Math.floor(encounter.maxHp*trialTuning.bosses.motherThresholdPercent/100)):encounter.maxHp,...('attacks'in encounter?{attacks:encounter.attacks}:{})}}};
-  return {config,options:{run:{mode:'endless',rewards:true,rewardMode:'categories',...(route==='boss-loop'&&encounterVersion?{encounterVersion}:{}),route,startStage:stage,rotationStart:setup.firstEnemy,...(ending==='clear50'?{finishAtStage:50}:{})}}};
+  return {config,options:{run:{mode:'endless',rewards:true,rewardMode:'categories',...(route==='boss-loop'&&encounterVersion?{encounterVersion}:{}),route,startStage:stage,rotationStart:setup.firstEnemy,...(ending==='clear50'?{finishAtStage:50}:ending==='deep100'?{finishAtStage:100}:{})}}};
 }

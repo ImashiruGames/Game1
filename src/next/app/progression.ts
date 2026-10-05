@@ -1,4 +1,4 @@
-import { selectEncounter } from './encounters.ts';
+import { selectEncounter, DEEP_ENCOUNTER_VERSION } from './encounters.ts';
 import type { EncounterVersion } from './encounters.ts';
 import { getEnemyDefinition } from '../core/definitions.ts';
 import { defaultTuning } from '../core/tuning.ts';
@@ -24,6 +24,14 @@ export interface LoopEncounter { readonly stage: number; readonly localStage: nu
  * English: Scale the first-loop encounter at the same local stage; never double-count absolute stage growth. */
 export function bossLoopEncounter(stage: number, first: EnemyId = 'marujiro', tuning: GameTuning = defaultTuning, selection?: {readonly version:EncounterVersion;readonly seed:number}): LoopEncounter {
   if(!Number.isSafeInteger(stage)||stage<1)throw new Error('Stage must be a positive safe integer');
+  if(selection?.version===DEEP_ENCOUNTER_VERSION){
+    // 日本語: 深層は周回倍率なし。HPは既存と同じ「基本HP＋1階ごとの上乗せ」を絶対階で計算。
+    // English: Deep floors never apply loop multipliers; HP uses the same base + per-floor growth on the absolute floor.
+    const enemyId=selectEncounter(stage,selection.seed,selection.version),definition=getEnemyDefinition(enemyId,tuning);
+    const maxHp=definition.maxHp+(stage-1)*tuning.progression.hpPerStage;
+    if(!Number.isSafeInteger(maxHp))throw new Error('Enemy HP exceeded exact integer range');
+    return freeze({stage,localStage:stage,loopIndex:0,enemyId,baseMaxHp:definition.maxHp,firstLoopMaxHp:maxHp,maxHp,hpMultiplier:1,attacks:{...definition.attacks},fixedDamageBonus:0});
+  }
   const rules=tuning.progression, loopIndex=Math.floor((stage-1)/rules.loopLength),localStage=(stage-1)%rules.loopLength+1;
   const start=Math.max(0,endlessRoster.indexOf(first as typeof endlessRoster[number]));
   const enemyId:EnemyId=selection?selectEncounter(stage,selection.seed,selection.version):localStage===25||localStage===40?'speed-core':localStage===50?'mother-core':endlessRoster[(start+localStage-1)%endlessRoster.length]!;

@@ -24,6 +24,8 @@ export const defaultTuning: GameTuning = freeze({
   enemies: {
     devilmon: { maxHp: 48, attacks: { 3: 4, 4: 8, 5: 12 } },
     shashark: { maxHp: 52, attacks: { 3: 4, 4: 12, 5: 20 } },
+    // 日本語: 深層（51階〜）。4リンク以上が極端に重い。English: Deep floors; very heavy 4+ links.
+    biribiriman: { maxHp: 40, attacks: { 3: 3, 4: 15, 5: 25 } },
     'twin-core': { maxHp: 42, attacks: { 3: 4, 4: 5, 5: 7 } },
     'needle-core': { maxHp: 25, attacks: { 3: 2, 4: 6, 5: 13 } },
     'frost-core': { maxHp: 36, attacks: { 3: 3, 4: 5, 5: 8 } },
@@ -86,7 +88,7 @@ export function validateTuning(tuning: GameTuning): void {
     const enemy = tuning.enemies[id];
     // 日本語: 旧セーブの完全な調整表には追加敵がない。既存6体の欠落は許容しない。
     // English: Old full tuning snapshots lack added IDs, but must retain every original enemy.
-    if (!enemy && ['devilmon','shashark','twin-core','needle-core','frost-core','thorn-core','rime-crown','briar-wheel'].includes(id)) continue;
+    if (!enemy && ['devilmon','shashark','twin-core','needle-core','frost-core','thorn-core','rime-crown','briar-wheel','biribiriman'].includes(id)) continue;
     record(enemy, `enemies.${id}`); record(enemy.attacks, `enemies.${id}.attacks`); integer(enemy.maxHp, 1);
     for (const tier of [3, 4, 5] as const) integer(enemy.attacks[tier]);
     if (enemy.healEveryOwnTurns !== undefined) { integer(enemy.healEveryOwnTurns, 1); integer(enemy.healAmount!); }

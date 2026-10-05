@@ -7,7 +7,7 @@ export interface Cell { readonly row: number; readonly col: number }
 export type Actor = 'player' | 'enemy';
 export type Owner = Actor | 'neutral';
 export type CharacterId = 'blue' | 'red';
-export type EnemyId = 'marujiro' | 'hikikizan' | 'nigirin' | 'merarun' | 'speed-core' | 'mother-core' | 'twin-core' | 'needle-core' | 'frost-core' | 'thorn-core' | 'rime-crown' | 'briar-wheel' | 'devilmon' | 'shashark';
+export type EnemyId = 'marujiro' | 'hikikizan' | 'nigirin' | 'merarun' | 'speed-core' | 'mother-core' | 'twin-core' | 'needle-core' | 'frost-core' | 'thorn-core' | 'rime-crown' | 'briar-wheel' | 'devilmon' | 'shashark' | 'biribiriman';
 export type BoardSkillId = 'blue-crosscut' | 'blue-plumb' | 'red-frontline' | 'red-brand' | 'mint-diagonal' | 'mint-frame' | 'amber-squarepress' | 'amber-rubble' | 'violet-venom' | 'violet-sting' | 'silver-frostbind' | 'silver-thornwall' | 'rose-longcut' | 'rose-twincut' | 'imashiru-polish' | 'imashiru-reset' | 'pain-shared' | 'ember' | 'imashiru-insight' | 'mint-observe' | 'rose-slice' | 'amber-convert' | 'violet-poison' | 'silver-freeze' | 'blue-freeze' | 'red-capture' | 'imashiru-focus';
 export type ExpansionShapeId = 't-strike' | 'zigzag-strike' | 'cup-strike' | 'diamond-strike' | 'cross-strike';
 export type ExpansionLinkId = 'full-power' | 'foundation' | 'snake-line' | 'edge-strike' | 'siege' | 'crossfire' | 'last-stand';

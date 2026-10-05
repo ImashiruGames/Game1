@@ -2,7 +2,22 @@
  "revision": "1.13",
  "scope": "Authorized source changes for the 1.13 home design unification and content additions.",
  "files": {
-  "src/next/meta/home.css": "959112d96bf024f569d333f19f4b3df1b88a2c2bd701fe09450404990c3b7a47",
-  "src/next/meta/home.ts": "965429eda0416a745aa46cef98100af2a59e0a4657007144b8510bf6ef715053"
+  "public/docs/game1_content_catalog_next.html": "754ec091a571c851589c6d756bd4f0c53f721f789b764c602da6f8298f8eaf5a",
+  "public/docs/game1_content_catalog_next.json": "f23405c2936aa9bbda1e13a0a2ff40e5c4c794e141e80c69f1f42a8f55401b52",
+  "src/next/app/BattleController.ts": "7fb68726347498fe5e07568e996ea5007fd9b3eb5ac9821cf60b6b3d54aa5ac4",
+  "src/next/app/encounters.ts": "dd45a77d66b955fb9798aa6aff4dd9928893f4dcbb38bd4a45fd73e5524ac28e",
+  "src/next/app/progression.ts": "cbaf038a171d49faf33bbfc20babb416060258e04255a872573c2ea1d78ebd89",
+  "src/next/app/saveCheckpoint.ts": "e4d2612cd58feec723bbd74e0ddcd94ddbc33b7c847f88017b14b5fd21ce0aaa",
+  "src/next/config.ts": "3701d4ff719d0b60ff2754d850dd3f6a533b4b7cc0e4ef3c813ea31fc1b9be32",
+  "src/next/core/monsters.ts": "d608c3f95bd6a4e8a6c733865b764e5e23aeefc6b7a2a50516410c005c1dd535",
+  "src/next/core/tuning.ts": "dc5bf900c64d93e3381c5b06a9ebdebf640cc27fb9f6b0f6edf5caa8cb75823a",
+  "src/next/core/types.ts": "0e65e2201b51e6187caeb36de68aef66241fa5467150bd3101fb995f83a825b9",
+  "src/next/main.ts": "9c3f88fda7c2cfa305919daabf3559e53124bbdaa74c3428a029a4d5dec9dc4d",
+  "src/next/meta/departure.ts": "0a83f3284758dc5bd21ef00b670287a14c24af3985465fa1fd4341e7cb6856a9",
+  "src/next/meta/home.css": "84b3d4a8b84aee1917587fbb369fa1fe70610080e458ac4529824a0ae6a0dbe7",
+  "src/next/meta/home.ts": "42e9fdf4985cd65eabc8cbe89a0878ecc82f0decdf6d1c74ab9c5b56ce2736ab",
+  "src/next/meta/profile.ts": "8855e2feb20865aecdc24f1acc01dda7970366e3119b98b00f7e19bc84d803db",
+  "src/next/portraits.ts": "e6ff2251c9c026f9d4f38380dd5b17e6cce1cc910eda673ba5c028b3db7aee64",
+  "src/next/ui/monsterPresentation.ts": "3c0c4aad851c67ec06ae485a45c14cfe449f78c0360d214cb61dbf54e9343393"
  }
 }

@@ -84,3 +84,16 @@ body[data-reduced-motion=true] .capsule-machine *,body[data-reduced-motion=true]
 @media(max-width:400px){#meta-panel .skill-card-surface{padding:10px}#meta-panel .preparation-card-grid{gap:10px}#meta-panel .skill-card-surface .build-reward-card{padding:12px 8px;min-height:240px}#meta-panel .reward-card-name{font-size:15px}#meta-panel .reward-card-metric{font-size:24px}#meta-panel .departure-effect summary{grid-template-columns:72px minmax(0,1fr) 18px}#meta-panel .departure-hero>img{height:215px}}
 @media(prefers-reduced-motion:reduce){#meta-panel .tree-dots i.pulse{animation:none}}
 body[data-reduced-motion=true] #meta-panel .tree-dots i.pulse{animation:none}
+
+/* 日本語: 深層への入口。戦闘側の暗い紺とシアンを先取りして、下の世界へ降りる感覚に。
+   English: Deep entrance borrows the battle side's navy and cyan, reading as a descent below the home. */
+#meta-home .home-deep{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;min-height:44px;padding:6px 14px;border:1px solid #2f4258;border-radius:2px 2px 12px 2px;background:linear-gradient(110deg,#141c28,#24344a 70%,#1b2a3c);color:#e8f4ff;font-weight:800;font-size:14px;letter-spacing:.04em;text-align:left;box-shadow:0 3px 0 #0f172322;position:relative;overflow:hidden}
+#meta-home .home-deep small{font:600 9px ui-monospace,monospace;letter-spacing:.2em;color:#79d4f0;border:1px solid #3d6a82;padding:2px 5px;border-radius:2px}
+#meta-home .home-deep span{font:600 11px ui-monospace,monospace;letter-spacing:.08em;color:#9fc3dc}
+#meta-home .home-deep::after{content:'';position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,#79d4f0aa,transparent)}
+#meta-home .home-deep:disabled{opacity:.45}
+.home-deep-lock{margin:0!important;font-size:10px!important;color:#7d8f88!important;text-align:left!important;padding-left:2px}
+.home-deep-lock:empty{display:none}
+#meta-panel .departure-deep-note{display:flex;gap:10px;align-items:baseline;margin:0 0 12px;padding:10px 12px;background:linear-gradient(110deg,#141c28,#24344a);color:#cfe3f2!important;border-radius:2px 2px 12px 2px;font-size:12px}
+#meta-panel .departure-deep-note b{font:700 11px ui-monospace,monospace;letter-spacing:.12em;color:#79d4f0;white-space:nowrap}
+#meta-panel[data-route=deep] .departure-actions [data-departure-confirm]{background:linear-gradient(110deg,#141c28,#2c4260)!important}
