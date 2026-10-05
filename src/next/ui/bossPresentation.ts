@@ -19,7 +19,7 @@ export function bossCue(state:BattleState):BossCue|null {
  const rules=tuningOf(state.config).bosses,bonus=state.config.enemyFixedDamageBonus??0;
  if(kind==='speed')return {kind,phase:'normal',danger:false,symbol:'◆',mark:'BOSS',description:`中ボス · 自身${rules.speedPulseEvery}手番ごと固定${rules.speedPulseDamage+bonus}ダメージ＋投入`};
  const intent=getEnemyIntent(state),critical=intent.type==='sequence'&&intent.phase==='critical';
- if(!critical)return {kind,phase:'normal',danger:false,symbol:'◆',mark:'BOSS',description:`大ボス · HP${rules.motherThresholdPercent}%以下で、次の相手手番から低HPループ`};
+ if(!critical)return {kind,phase:'normal',danger:false,symbol:'◆',mark:'BOSS',description:`大ボス · HP${rules.motherThresholdPercent}%以下で次の相手手番から低HPループ`};
  const pending=state.enemyPhase?.phase!=='critical';
  const cycle=`固定${rules.motherPulseDamage+bonus}ダメージ＋投入 → 投入（相手手番ごとに交互）`;
  return {kind,phase:pending?'pending':'critical',danger:true,symbol:'▲',mark:pending?'予告':'低HP',description:pending?`HP${rules.motherThresholdPercent}%以下 · 次の相手手番から ${cycle}`:`低HPループ · ${cycle}`};

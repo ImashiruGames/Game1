@@ -49,15 +49,15 @@ export function enemyIntentView(state: BattleState, activeEnemyState: BattleStat
     cycle = { ...cycle, steps: Array.from({ length: Math.min(cycle.length,32) }, (_, index) => enemyActionLabel(getEnemyIntent({ ...source, enemyTurnCount: index, enemyPhase: phase === 'speed'||phase==='monster' ? undefined : { phase, completedTurns: index } }))) };
   }
   const phaseText = cycle?.phase === 'critical' ? '低HP周期' : cycle?.phase === 'normal' ? '通常周期' : '周期';
-  const targetText=freezeStep?`凍結対象：${targets.length?targets.map(b=>`${b.col+1}列・上から${b.row+1}段`).join('、'):'なし（今回は何もせず手番終了）'}。自分の操作で箱が変われば対象も更新します。`:behavior?.skill==='thorn'?'トゲは周囲8マスの能動投入に反応し、投入した側にダメージ。敵自身も対象です。':'';
-  const detail = `${targetText}敵自身の${ownTurn}手番目${cycle ? `、${phaseText}${cycle.position}/${cycle.length}` : ''}。${active ? '実行中の予定' : '次の予定'}：${action}。${source.config.enemyId === 'mother-core' ? `HP${rules.motherThresholdPercent}%以下へ入ると次の敵手番から2手周期です。` : ''}投入×2は1手番の中で1回ずつ順に解決します。途中でKOなら残りは中止します。投入先の列は、行動時に決まります。`;
+  const targetText=freezeStep?`凍結対象：${targets.length?targets.map(b=>`${b.col+1}列・上から${b.row+1}段`).join('、'):'なし（今回は何もせず手番終了）'}。自分の操作で箱が変われば対象も更新します。`:behavior?.skill==='thorn'?'トゲは周囲8マスの能動投入に反応し投入した側にダメージ。敵自身も対象です。':'';
+  const detail = `${targetText}敵自身の${ownTurn}手番目${cycle ? `、${phaseText}${cycle.position}/${cycle.length}` : ''}。${active ? '実行中の予定' : '次の予定'}：${action}。${source.config.enemyId === 'mother-core' ? `HP${rules.motherThresholdPercent}%以下へ入ると次の敵手番から2手周期です。` : ''}投入×2は1手番の中で1回ずつ順に解決します。途中でKOなら残りは中止します。投入先の列は行動時に決まります。`;
   return { label: `${prefix}${cycle ? ` ${cycle.position}/${cycle.length}` : ''} ${action}`, detail, ownTurn, action, cycle, active };
 }
 
 export function enemyIntentDetailsHtml(state: BattleState, activeEnemyState: BattleState | null = null): string {
   const view = enemyIntentView(state, activeEnemyState);
   if (!view.cycle) return '';
-  return `<section class="skill-card boss-cycle-details"><h3>${view.cycle.phase==='monster'?'敵の行動周期':'ボスの行動周期'}</h3><p>${view.detail}</p><ol>${view.cycle.steps.map((step, index) => `<li${index + 1 === view.cycle!.position ? ' class="current" aria-current="step"' : ''}><span>${index + 1}</span>${step}${index + 1 === view.cycle!.position ? `<b>${view.active ? '実行中' : '次'}</b>` : ''}</li>`).join('')}</ol>${view.cycle.steps.length<view.cycle.length?`<p>長い周期のため、一覧は先頭${view.cycle.steps.length}手だけ表示しています。周期全体は${view.cycle.length}手です。</p>`:''}<p>敵自身の完了手番：${view.ownTurn - 1}。画面の全体手数や投入した箱数では数えません。通常周期の予告は現在のHPを基準にしています。</p></section>`;
+  return `<section class="skill-card boss-cycle-details"><h3>${view.cycle.phase==='monster'?'敵の行動周期':'ボスの行動周期'}</h3><p>${view.detail}</p><ol>${view.cycle.steps.map((step, index) => `<li${index + 1 === view.cycle!.position ? ' class="current" aria-current="step"' : ''}><span>${index + 1}</span>${step}${index + 1 === view.cycle!.position ? `<b>${view.active ? '実行中' : '次'}</b>` : ''}</li>`).join('')}</ol>${view.cycle.steps.length<view.cycle.length?`<p>長い周期のため一覧は先頭${view.cycle.steps.length}手だけ表示しています。周期全体は${view.cycle.length}手です。</p>`:''}<p>敵自身の完了手番：${view.ownTurn - 1}。画面の全体手数や投入した箱数では数えません。通常周期の予告は現在のHPを基準にしています。</p></section>`;
 }
 
 export function renderEnemyIntent(host: HTMLElement, state: BattleState, activeEnemyState: BattleState | null = null): void {

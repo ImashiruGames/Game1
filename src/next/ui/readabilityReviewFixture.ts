@@ -5,9 +5,9 @@ import type { BattleControllerOptions } from '../app/BattleController.ts';
 
 /** Optional explicit buttons on /night-qa/ only. Never a default/new-run configuration. */
 export const readabilityReviewCases = [
-  { id: 'consumable-potion', button: '検証用：自由2の回復ポーション', instructions: '詳細から自由2を選び、残り1回と使用後の空きを確認します。' },
-  { id: 'consumable-bullet', button: '検証用：自由2の魔法弾', instructions: '詳細から自由2を選び、残り1回と使用後の空きを確認します。' },
-  { id: 'health', button: '検証用：満HPヘルスと青反射', instructions: '先に「変化する」、次に2列目へ投入。実回復0・名目15・青反射15・縦3の4ダメージを確認します。' },
+  { id: 'consumable-potion', button: '検証用：自由2の回復ポーション', instructions: '詳細から自由2を選び残り1回と使用後の空きを確認します。' },
+  { id: 'consumable-bullet', button: '検証用：自由2の魔法弾', instructions: '詳細から自由2を選び残り1回と使用後の空きを確認します。' },
+  { id: 'health', button: '検証用：満HPヘルスと青反射', instructions: '先に「変化する」次に2列目へ投入。実回復0・名目15・青反射15・縦3の4ダメージを確認します。' },
   { id: 'corner', button: '検証用：3箱L字の角打ち', instructions: '2列目へ投入。角打ち3ダメージと3箱L字の表示を確認します。' },
   { id: 'square', button: '検証用：2×2の四角打ち', instructions: '3列目へ投入。四角打ち5ダメージと2×2の表示を確認します。' },
 ] as const;

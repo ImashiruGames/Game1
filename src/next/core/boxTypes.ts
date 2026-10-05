@@ -46,7 +46,7 @@ export function frozenLinkAmount(state:BattleState,ids:readonly string[],amount:
  return Math.max(0,state.config.frozenRule==='half-melt-v1'?((count||absolute)?Math.floor(amount/2):amount):(absolute?Math.floor(amount/2):amount)-count);
 }
 
-export function frozenRuleDescription(config:BattleState['config']):string{return config.frozenRule==='half-melt-v1'?'リンクに1個でも含まれると、そのリンクの攻撃力が半減します（小数点以下切り捨て）。複数でも半減は1回。このリンクの攻撃後、含まれるフローズンは通常タイプへ戻ります。後のリンクでは通常通りです。輝き・リンク補正の後、防御の前に計算し、形状スキル・回復・ゲージには影響しません。':'このランは旧ルールです。リンクに含まれるフローズン1個につき、リンク攻撃力が1減ります（輝きの計算後、最低0）。形状スキル・回復・ゲージには影響しません。';}
+export function frozenRuleDescription(config:BattleState['config']):string{return config.frozenRule==='half-melt-v1'?'リンクに1個でも含まれるとそのリンクの攻撃力が半減します（小数点以下切り捨て）。複数でも半減は1回。このリンクの攻撃後含まれるフローズンは通常タイプへ戻ります。後のリンクでは通常通りです。輝き・リンク補正の後防御の前に計算し形状スキル・回復・ゲージには影響しません。':'このランは旧ルールです。リンクに含まれるフローズン1個につきリンク攻撃力が1減ります（輝きの計算後最低0）。形状スキル・回復・ゲージには影響しません。';}
 
 /** 日本語: 各有効リンクの攻撃後に解凍。絶対零度と旧ランは溶けない。
  * English: Thaw only participating frozen boxes after a qualifying link, preserving ownership and IDs. */

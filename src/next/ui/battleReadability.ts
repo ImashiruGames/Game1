@@ -22,7 +22,7 @@ export function recentDropView(current: RecentDrop | null, boxes: readonly Box[]
   return current && box ? { ...current, row: box.row, col: box.col, label: `直近の投入：${current.actor === 'player' ? '自分' : '敵'}` } : null;
 }
 export function recentDropLegendHtml(): string {
-  return '<p class="recent-drop-note">下角の印＝直近の投入（黄◆ 自分 / 紫■ 敵）。印は投入した側。丸いコア＝現在の自箱、菱形＝敵箱、四角＝中立箱です。白い角枠は次戦への持越し候補です。</p>';
+  return '<p class="recent-drop-note">下角の印＝直近の投入（黄◆ 自分 / 紫■ 敵）。印は投入した側。丸いコア＝現在の自箱／菱形＝敵箱／四角＝中立箱です。白い角枠は次戦への持越し候補です。</p>';
 }
 const recentAria = / · 直近の投入：(自分|敵)/g;
 /** A separate static lower-left pixel, leaving carry corners, targets and hit outlines intact. */
@@ -134,7 +134,7 @@ const targetName = (target: Actor) => target === 'player' ? '自分' : '敵';
 export function actionBreakdownHtml(view: ActionBreakdown | null, actor?: Actor): string {
   if (!view) return `<section class="skill-card action-breakdown"><h3>直前の1行動${actor ? ` · ${targetName(actor)}` : ''}</h3><p>未記録。この画面で次に解決した行動から表示します。</p></section>`;
   const rows = view.rows.map(row => `<li data-contribution="${row.kind}"><span>${escape(row.label)}${row.count > 1 ? ` ×${row.count}` : ''} → ${targetName(row.target)}</span><strong>${row.kind === 'heal' ? `実回復 ＋${row.actual}` : `実HP減少 −${row.actual}`}</strong><small>${row.kind === 'heal' ? `名目 ${row.nominal} / 上限で未回復 ${row.capped}` : `ダメージ値 ${row.damage} / 超過 ${row.overkill}`}</small></li>`).join('');
-  return `<section class="skill-card action-breakdown"><h3>直前の1行動 · ${targetName(view.actor)}の${view.label}</h3><p>${view.turn}手目 · 実HP減少：敵 ${view.lost.enemy} / 自分 ${view.lost.player}${view.healed.player || view.healed.enemy ? ` · 実回復：自分 ${view.healed.player} / 敵 ${view.healed.enemy}` : ''}</p>${rows ? `<ul>${rows}</ul><p class="action-breakdown-note">軸・形・反射は別集計。超過は残りHPを上回った分です。名目回復は実回復と異なり、青の反射にも使われます。</p>` : '<p>この行動のHP変化はありません。</p>'}</section>`;
+  return `<section class="skill-card action-breakdown"><h3>直前の1行動 · ${targetName(view.actor)}の${view.label}</h3><p>${view.turn}手目 · 実HP減少：敵 ${view.lost.enemy} / 自分 ${view.lost.player}${view.healed.player || view.healed.enemy ? ` · 実回復：自分 ${view.healed.player} / 敵 ${view.healed.enemy}` : ''}</p>${rows ? `<ul>${rows}</ul><p class="action-breakdown-note">軸・形・反射は別集計。超過は残りHPを上回った分です。名目回復は実回復と異なり青の反射にも使われます。</p>` : '<p>この行動のHP変化はありません。</p>'}</section>`;
 }
 
 export type LastActionBreakdowns = Readonly<Record<Actor, ActionBreakdown | null>>;
@@ -148,6 +148,6 @@ export function recordActionBreakdown(previous: LastActionBreakdowns, resolution
   return { ...previous, [resolution.actor]: actionBreakdown(resolution, turn) };
 }
 export function lastActionBreakdownsHtml(previous: LastActionBreakdowns): string {
-  return '<div class="last-action-breakdowns"><p class="action-breakdowns-scope">自分・敵それぞれ最後の1行動だけです。累計ではありません。投入やHP効果のない開始処理は除き、赤の追加投入は別の1行動として記録します。次の戦闘・再開始・保存からの再開では未記録に戻ります。</p>'
+  return '<div class="last-action-breakdowns"><p class="action-breakdowns-scope">自分・敵それぞれ最後の1行動だけです。累計ではありません。投入やHP効果のない開始処理は除き赤の追加投入は別の1行動として記録します。次の戦闘・再開始・保存からの再開では未記録に戻ります。</p>'
     + actionBreakdownHtml(previous.player, 'player') + actionBreakdownHtml(previous.enemy, 'enemy') + '</div>';
 }

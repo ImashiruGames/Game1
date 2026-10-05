@@ -55,7 +55,7 @@ export function skillDescription(id: NormalSkillId, rank: 1 | 2, tuning: GameTun
   const n = skillValue(id, rank, tuning);
   switch (id) {
     case 'heavy-swing': return `5個以上の各リンクに現在の5リンク基礎火力×${n / 100}を加算（端数切捨て）`;
-    case 'rescue-kit': return '上段は自箱・任意・自箱、下段は自箱3個でHP10回復・向き固定・強化なし';
+    case 'rescue-kit': return '上段は自箱・任意・自箱／下段は自箱3個でHP10回復・向き固定・強化なし';
     case 'clear-column': return `投入列に箱が3個以上あり全て自箱なら各リンク火力＋${n}`;
     case 'pincer-strike': return `投入箱と自箱で上下左右の敵箱1個を挟むと各リンク火力＋${n}（重複しない）`;
     case 'twin-diagonal': return `同時に両方の斜め3リンク以上が成立すると各リンク火力＋${n}`;
@@ -79,9 +79,9 @@ export function skillDescription(id: NormalSkillId, rank: 1 | 2, tuning: GameTun
     case 'iron-wall': return `現在の自箱2×2があれば敵の各リンク被害−${n}（毒・固定攻撃は対象外）`;
     case 'capacitor': return `ゲージ＋${n}（上限まで）・1回限り・1手消費`;
     case 'solvent': return `上・左から自箱のどく・もうどく・フローズンを最大${n}個ノーマルへ・1回限り・1手消費`;
-    case 'poison-craft': return '現在の自箱2×2の数だけ、自分が付与したどく・もうどく1箱あたりのダメージ＋1（常時・累積しない）';
+    case 'poison-craft': return '現在の自箱2×2の数だけ自分が付与したどく・もうどく1箱あたりのダメージ＋1（常時・累積しない）';
     case 'health': return `＋形でHP${n}回復`;
-    case 'grow-fire': return `縦3以上：3リンク火力＋${n}、成長＋${tuning.links.growFireGrowth}`;
+    case 'grow-fire': return `縦3以上：3リンク火力＋${n}成長＋${tuning.links.growFireGrowth}`;
     case 'charge': return `手番終了のゲージ獲得を合計${n + tuning.gauge.turnGain}にする`;
     case 'first-guard': return `敵手番の最初のリンク被害−${n}`;
     case 'horizontal-slash': return `横3以上のリンク火力＋${n}`;

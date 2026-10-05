@@ -61,7 +61,7 @@ export function createPortraitViewer(host:HTMLElement,options:PortraitViewerOpti
    listen(dialog,'close',()=>finish(true));
    listen(win,'pagehide',()=>finish(false));
    listen(image,'load',()=>{status.hidden=true;});
-   listen(image,'error',()=>{image.hidden=true;status.hidden=false;status.textContent='画像を読み込めませんでした。閉じて、もう一度お試しください。';});
+   listen(image,'error',()=>{image.hidden=true;status.hidden=false;status.textContent='画像を読み込めませんでした。閉じてもう一度お試しください。';});
    try{
     current={dialog,finish};image.src=request.src;host.append(dialog);dialog.showModal();close.focus({preventScroll:true});
     if(image.complete&&image.naturalWidth>0)status.hidden=true;

@@ -23,7 +23,7 @@ export function enemyPowerHudHtml(state: BattleState): string {
 
 export function enemyPowerDetailsHtml(state: BattleState): string {
   const view = enemyPowerView(state);
-  return `<section class="skill-card enemy-power-details"><h3>今回の敵火力</h3><table><caption>リンク1軸ごとの基本ダメージ</caption><thead><tr><th scope="col">3連</th><th scope="col">4連</th><th scope="col">5連以上</th></tr></thead><tbody><tr>${view.tiers.map(value => `<td${value.emphasized ? ' class="enemy-power-sharp"' : ''}>${value.damage}</td>`).join('')}</tr></tbody></table>${view.warning ? `<p class="enemy-power-warning">⚠ ヒキキザンは4連で${view.tiers[1]!.damage}、5連以上で${view.tiers[2]!.damage}。敵箱の長い列に注意。</p>` : ''}<p>同じ投入で複数の軸が成立すると、各軸を1つずつ攻撃します。初撃ガードの軽減などは別途適用します。ボスの固定ダメージ・回復はこの表に含みません。</p><p>いま戦っている敵の値です。周回などの補正がある場合も、補正後の火力を表示します。</p></section>`;
+  return `<section class="skill-card enemy-power-details"><h3>今回の敵火力</h3><table><caption>リンク1軸ごとの基本ダメージ</caption><thead><tr><th scope="col">3連</th><th scope="col">4連</th><th scope="col">5連以上</th></tr></thead><tbody><tr>${view.tiers.map(value => `<td${value.emphasized ? ' class="enemy-power-sharp"' : ''}>${value.damage}</td>`).join('')}</tr></tbody></table>${view.warning ? `<p class="enemy-power-warning">⚠ ヒキキザンは4連で${view.tiers[1]!.damage}／5連以上で${view.tiers[2]!.damage}。敵箱の長い列に注意。</p>` : ''}<p>同じ投入で複数の軸が成立すると各軸を1つずつ攻撃します。初撃ガードの軽減などは別途適用します。ボスの固定ダメージ・回復はこの表に含みません。</p><p>いま戦っている敵の値です。周回などの補正がある場合も補正後の火力を表示します。</p></section>`;
 }
 
 /** The whole compact row opens the existing Details dialog; no new game action. */

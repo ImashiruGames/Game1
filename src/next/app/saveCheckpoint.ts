@@ -107,7 +107,7 @@ export function encodeSave(checkpoint:RunCheckpoint,revision:number,savedAt=Date
  const body={format:SAVE_FORMAT,schema:SAVE_SCHEMA,rules:saveRulesFor(checkpoint),revision,savedAt,checkpoint};const raw=JSON.stringify({...body,checksum:checksum(JSON.stringify(body))});require(raw.length<=MAX_SAVE_LENGTH,'保存サイズ');return raw;
 }
 export function decodeSave(raw:string):SaveEnvelope {
- require(typeof raw==='string'&&raw.length<=MAX_SAVE_LENGTH,'保存サイズ');let data:unknown;try{data=JSON.parse(raw);}catch{throw new Error('セーブ内容が壊れています。自動で消去せず、そのまま保持しました。');}
+ require(typeof raw==='string'&&raw.length<=MAX_SAVE_LENGTH,'保存サイズ');let data:unknown;try{data=JSON.parse(raw);}catch{throw new Error('セーブ内容が壊れています。自動で消去せずそのまま保持しました。');}
  require(record(data),'保存形式');const e=data as unknown as SaveEnvelope;
  if(e.format!==SAVE_FORMAT||e.schema!==SAVE_SCHEMA||(e.rules!==SAVE_RULES&&e.rules!==SNAPSHOT_SAVE_RULES&&e.rules!==PROGRESSION_SAVE_RULES&&e.rules!==RETIRED_SAVE_RULES&&e.rules!==ENCOUNTER_SAVE_RULES&&e.rules!==LATE_SAVE_RULES&&e.rules!==DEEP_SAVE_RULES))throw new Error('この版では読めないセーブです。元の保存は変更していません。');
  require(integer(e.revision,1)&&integer(e.savedAt),'保存時刻');

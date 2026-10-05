@@ -26,7 +26,7 @@ export class LocalSave {
  get latest():SaveEnvelope|null{return this.envelope;}
  guard():void {
   this.owner();if(this.expected===undefined)throw new Error('保存内容をまだ確認できていません。');
-  let raw:string|null;try{raw=this.storage.getItem(SAVE_KEY);}catch{throw new Error('保存領域を読めないため、進行を停止しました。');}
+  let raw:string|null;try{raw=this.storage.getItem(SAVE_KEY);}catch{throw new Error('保存領域を読めないため進行を停止しました。');}
   if(raw!==this.expected){if(raw!==null&&raw===this.attempted){this.envelope=decodeSave(raw);this.expected=raw;this.attempted=null;}else throw new Error('別の操作でセーブが変更されました。上書きを止めました。ページを開き直して確認してください。');}
  }
  write(checkpoint:RunCheckpoint):SaveEnvelope {

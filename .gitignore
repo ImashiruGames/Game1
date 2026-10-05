@@ -1,4 +1,8 @@
 node_modules/
 dist/
-.DS_Store
-balance-autoplay.json
+*.log
+dist-save-preview/
+
+dist-build-card-preview/
+dist-build-ui-preview/
+dist-audio-asset-preview/

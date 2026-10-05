@@ -17,7 +17,7 @@ export function carryPreview(state: BattleState, hasNextStage = true): CarryPrev
   return {
     candidates, sourceRow,
     label: `角枠＝持越し候補 ${candidates.length}箱`,
-    explanation: 'いま最も上にある自箱を含む横1行の自箱だけが候補です。奪った自箱も含みます。撃破時に確定し、同じ列のまま次戦で重力落下します。各列の最上箱を集めるルールではありません。',
+    explanation: 'いま最も上にある自箱を含む横1行の自箱だけが候補です。奪った自箱も含みます。撃破時に確定し同じ列のまま次戦で重力落下します。各列の最上箱を集めるルールではありません。',
   };
 }
 

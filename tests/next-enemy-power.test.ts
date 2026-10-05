@@ -10,7 +10,7 @@ test('enemy HUD reads actual encounter attacks rather than base enemy definition
  assert.deepEqual(enemyPowerView(s).tiers.map(v=>v.damage),[8,9,11]);assert.match(enemyPowerDetailsHtml(s),/>8<\/td>/);assert.equal(JSON.stringify(s),before);
 });
 test('Hikikizan4/5+ danger is explicit; ordinary and non-increasing custom tables are not mislabeled',()=>{
- const s=createBattle(createTrialConfig('blue','hikikizan'));assert.deepEqual(enemyPowerView(s).tiers.map(v=>v.damage),[3,10,15]);assert.deepEqual(enemyPowerView(s).tiers.map(v=>v.emphasized),[false,true,true]);assert.match(enemyPowerHudHtml(s),/4連〜注意/);assert.match(enemyPowerDetailsHtml(s),/4連で10、5連以上で15/);
+ const s=createBattle(createTrialConfig('blue','hikikizan'));assert.deepEqual(enemyPowerView(s).tiers.map(v=>v.damage),[3,10,15]);assert.deepEqual(enemyPowerView(s).tiers.map(v=>v.emphasized),[false,true,true]);assert.match(enemyPowerHudHtml(s),/4連〜注意/);assert.match(enemyPowerDetailsHtml(s),/4連で10／5連以上で15/);
  assert.equal(enemyPowerView(createBattle(createTrialConfig('blue','marujiro'))).warning,'');
  assert.equal(enemyPowerView({...s,config:{...s.config,combatants:{...s.config.combatants,enemy:{...s.config.combatants.enemy,attacks:{3:10,4:7,5:8}}}}}).warning,'');
 });

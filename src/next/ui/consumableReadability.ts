@@ -23,7 +23,7 @@ export function consumableUseView(skill: SkillInstance | null | undefined, slot:
     previewLabel: `使用を確認（残${uses}回）`,
     confirmLabel: `使う（残${uses}回）`,
     actionHint: uses === 0 ? '残り0回 · 使用できません' : `残${uses}回 · 1手消費 · ${opensSlot ? `${label}が空く` : `使用後は残${uses - 1}回`}`,
-    details: uses === 0 ? '残り0回。使用できません。' : `残り${uses}回。使用は1手。${opensSlot ? `使用後は${label}が空き、新しいスキルを入れられます。` : `使用後は残り${uses - 1}回になり、この枠に残ります。`}`,
+    details: uses === 0 ? '残り0回。使用できません。' : `残り${uses}回。使用は1手。${opensSlot ? `使用後は${label}が空き新しいスキルを入れられます。` : `使用後は残り${uses - 1}回になりこの枠に残ります。`}`,
   };
 }
 export function consumableDetailsHtml(skill: SkillInstance | null | undefined, slot: number, capacity=2): string {

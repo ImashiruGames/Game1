@@ -15,7 +15,7 @@ export function installBoxInspection(root:HTMLElement,options:{state:()=>BattleS
  const gesture=createInspectionGesture();let timer:ReturnType<typeof setTimeout>|null=null;let trigger:HTMLElement|null=null,mode=false;
  const stop=()=>{if(timer!==null)clearTimeout(timer);timer=null;};
  const cell=(target:EventTarget|null)=>(target instanceof Element?target.closest<HTMLElement>('#board [data-box-id]'):null);
- const modeButton=document.createElement('button');modeButton.type='button';modeButton.className='box-inspection-toggle';modeButton.textContent='箱の効果';modeButton.setAttribute('aria-pressed','false');modeButton.setAttribute('aria-label','箱の効果を調べる。選択後に箱を押す。箱を長押し、または箱にフォーカスして I キーでも表示');root.querySelector('.hint-line')!.append(modeButton);
+ const modeButton=document.createElement('button');modeButton.type='button';modeButton.className='box-inspection-toggle';modeButton.textContent='箱の効果';modeButton.setAttribute('aria-pressed','false');modeButton.setAttribute('aria-label','箱の効果を調べる。選択後に箱を押す。箱を長押しまたは箱にフォーカスして I キーでも表示');root.querySelector('.hint-line')!.append(modeButton);
  const setMode=(value:boolean)=>{mode=value;modeButton.setAttribute('aria-pressed',String(value));modeButton.textContent=value?'箱を選んで確認':'箱の効果';root.classList.toggle('inspecting-boxes',value);};
  const close=()=>{stop();if(dialog.open)dialog.close();const id=trigger?.dataset.boxId;root.querySelector<HTMLElement>(`[data-box-id="${CSS.escape(id??'')}"]`)?.focus({preventScroll:true});};
  const open=(target:HTMLElement)=>{

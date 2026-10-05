@@ -4,8 +4,8 @@ import type { BattleControllerOptions } from '../app/BattleController.ts';
 
 /** Explicit /night-qa/ buttons only; never used by normal/new-run setup. Row labels are 1-based. */
 export const rowProjectionReviewCases = [
-  { id: 'barriers', row: 3, button: '検証用：地形と無効マスの落下', instructions: '4行目を選択。消去後は3行目の自箱・敵箱・中立箱が4行目へ。5行目の地形・無効マスを越えず、最下段は動きません。' },
-  { id: 'reconnect', row: 6, button: '検証用：敵箱の再接続', instructions: '7行目の中立箱を選択。消去後は4列目の敵箱が6～8行目で縦3に接続しますが、受動落下では攻撃しません。' },
+  { id: 'barriers', row: 3, button: '検証用：地形と無効マスの落下', instructions: '4行目を選択。消去後は3行目の自箱・敵箱・中立箱が4行目へ。5行目の地形・無効マスを越えず最下段は動きません。' },
+  { id: 'reconnect', row: 6, button: '検証用：敵箱の再接続', instructions: '7行目の中立箱を選択。消去後は4列目の敵箱が6～8行目で縦3に接続しますが受動落下では攻撃しません。' },
 ] as const;
 export type RowProjectionReviewCase = typeof rowProjectionReviewCases[number]['id'];
 

@@ -19,7 +19,7 @@ export function mountSampleControl(control:SoundControl,host:HTMLElement,options
   button.setAttribute('aria-pressed',String(control.enabled));
   button.setAttribute('aria-busy',String(pending||control.status==='loading'));
   button.setAttribute('aria-label',`${options.label} ${state}。${!control.enabled?'タップで開始':pending||control.status==='loading'||control.status==='ready'?'タップで停止':'タップで再開'}`);
-  button.title=state==='再試行'?`${options.label}の音源を読み込めないか、再生を開始できませんでした。もう一度タップして再試行できます。`:state==='再開'?`${options.label}は中断しています。タップして再開できます。`:options.description;
+  button.title=state==='再試行'?`${options.label}の音源を読み込めないか再生を開始できませんでした。もう一度タップして再試行できます。`:state==='再開'?`${options.label}は中断しています。タップして再開できます。`:options.description;
  };
  const click=()=>{
   if(control.enabled&&(pending||control.status==='loading'||control.status==='ready')){request++;pending=false;control.setEnabled(false);update();return;}

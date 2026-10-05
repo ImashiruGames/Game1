@@ -47,5 +47,5 @@ export function forecastDetailsHtml(view:ActionForecast|null):string{
  * English: Explain zero-target and lethal casts from the existing forecast without changing legality or RNG. */
 export function emberForecastText(view:ActionForecast):{primary:string;secondary:string;confirm:string}{
  const count=view.conversions??0;
- return {primary:`自HP −${view.selfLoss} → 敵箱${count}個を自箱へ${view.result==='loss'?' · 敗北':''}`,secondary:view.result==='loss'?(count===0?'この行動で敗北 · 変換なし':'変換後、この行動で敗北します'):count===0?'対象なし · HPと1手を消費します':'ランダム変換 · 1手消費 · リンクは発動しません',confirm:view.result==='loss'?'敗北を承知で使う':count===0?'対象なしで使う':'火種を使う'};
+ return {primary:`自HP −${view.selfLoss} → 敵箱${count}個を自箱へ${view.result==='loss'?' · 敗北':''}`,secondary:view.result==='loss'?(count===0?'この行動で敗北 · 変換なし':'変換後この行動で敗北します'):count===0?'対象なし · HPと1手を消費します':'ランダム変換 · 1手消費 · リンクは発動しません',confirm:view.result==='loss'?'敗北を承知で使う':count===0?'対象なしで使う':'火種を使う'};
 }
