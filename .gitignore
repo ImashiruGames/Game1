@@ -1,3 +1,4 @@
-node_modules/
-dist/
 .DS_Store
+balance-autoplay.json
+dist/
+node_modules/
