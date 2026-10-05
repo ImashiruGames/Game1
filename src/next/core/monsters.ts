@@ -13,6 +13,7 @@ export const enemyDefinitions: Readonly<Record<EnemyId, EnemyDefinition>> = free
   hoshimimi: { id:'hoshimimi', label:'ホシミミ', ...defaultTuning.enemies.hoshimimi },
   mokousagi: { id:'mokousagi', label:'モコウサギ', ...defaultTuning.enemies.mokousagi },
   hinobou: { id:'hinobou', label:'ヒノボウ', ...defaultTuning.enemies.hinobou },
+  'tutorial-star': { id:'tutorial-star', label:'チュートリアル星人', ...defaultTuning.enemies['tutorial-star'] },
   'twin-core': { id:'twin-core', label:'ツインコア', ...defaultTuning.enemies['twin-core'] },
   'needle-core': { id:'needle-core', label:'ニードルコア', ...defaultTuning.enemies['needle-core'] },
   'frost-core': { id:'frost-core', label:'フロストコア', ...defaultTuning.enemies['frost-core'] },

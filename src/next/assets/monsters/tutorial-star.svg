@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" role="img" aria-label="チュートリアル星人">
+  <!-- 日本語: 紫と白の歯のような練習相手。English: A purple-and-white, tooth-like practice opponent. -->
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.62" stop-color="#efe9fb"/>
+      <stop offset="1" stop-color="#cdbdf2"/>
+    </linearGradient>
+    <linearGradient id="star" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b996f5"/>
+      <stop offset="1" stop-color="#7a47d1"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="206" rx="58" ry="8" fill="#2a1a4a" opacity=".35"/>
+  <!-- roots as little legs -->
+  <path d="M58 146 C50 176 52 198 66 200 C80 202 86 184 90 160 Z" fill="url(#body)" stroke="#5b3a9b" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M142 146 C150 176 148 198 134 200 C120 202 114 184 110 160 Z" fill="url(#body)" stroke="#5b3a9b" stroke-width="4" stroke-linejoin="round"/>
+  <!-- tooth body -->
+  <path d="M36 74 C34 40 62 30 84 40 C94 44 106 44 116 40 C138 30 166 40 164 74 C163 100 154 118 148 142 C142 160 120 160 112 142 C108 134 92 134 88 142 C80 160 58 160 52 142 C46 118 37 100 36 74 Z" fill="url(#body)" stroke="#5b3a9b" stroke-width="5" stroke-linejoin="round"/>
+  <!-- purple shading on the crown -->
+  <path d="M44 62 C50 46 66 40 80 46 C70 56 58 66 52 84 C46 78 43 70 44 62 Z" fill="#9a73e6" opacity=".5"/>
+  <path d="M156 62 C150 46 134 40 120 46 C130 56 142 66 148 84 C154 78 157 70 156 62 Z" fill="#9a73e6" opacity=".5"/>
+  <!-- star on top -->
+  <path d="M100 4 L108 24 L129 25 L112 38 L118 58 L100 46 L82 58 L88 38 L71 25 L92 24 Z" fill="url(#star)" stroke="#4a2a85" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- face -->
+  <ellipse cx="76" cy="88" rx="13" ry="16" fill="#2c1a4f"/>
+  <ellipse cx="124" cy="88" rx="13" ry="16" fill="#2c1a4f"/>
+  <circle cx="80" cy="82" r="5" fill="#fff"/>
+  <circle cx="128" cy="82" r="5" fill="#fff"/>
+  <circle cx="72" cy="94" r="2.6" fill="#fff" opacity=".8"/>
+  <circle cx="120" cy="94" r="2.6" fill="#fff" opacity=".8"/>
+  <ellipse cx="58" cy="108" rx="9" ry="5.5" fill="#d9a0f0" opacity=".75"/>
+  <ellipse cx="142" cy="108" rx="9" ry="5.5" fill="#d9a0f0" opacity=".75"/>
+  <path d="M82 114 Q100 130 118 114" fill="#fff" stroke="#2c1a4f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -36,13 +36,13 @@ export interface PersistenceHooks {
  * Animation timing never participates in damage, random choices, or victory rules.
  */
 export class BattleController {
-  private state: BattleState;
-  private initialConfig: BattleConfig;
+  protected state: BattleState;
+  protected initialConfig: BattleConfig;
   private options: BattleControllerOptions;
   private enemyOrder: ReturnType<typeof prepareEnemyOrder>;
-  private run: BattleRunState | null;
-  private view: BattleView;
-  private resolving = false;
+  protected run: BattleRunState | null;
+  protected view: BattleView;
+  protected resolving = false;
   private generation = 0;
   private animation = new AbortController();
   private destroyed = false;
@@ -249,13 +249,13 @@ export class BattleController {
     try { this.view.reportError?.(error); } catch { /* Presentation-only failure. */ }
   }
 
-  private present(callback: () => void): void {
+  protected present(callback: () => void): void {
     try { callback(); } catch (error) { this.report(error); }
   }
 
-  private emit(): void { this.present(() => this.view.render(this.state, this.resolving||this.saveBlocked||!!this.resumeReward, this.run)); }
+  protected emit(): void { this.present(() => this.view.render(this.state, this.resolving||this.saveBlocked||!!this.resumeReward, this.run)); }
 
-  private automaticAction(): BattleAction | null {
+  protected automaticAction(): BattleAction | null {
     if (this.run?.status==='retired'||this.state.result) return null;
     if (needsTurnStart(this.state)) return { type: 'start-turn' };
     if (this.state.actor === 'enemy') return { type: 'enemy' };
@@ -283,6 +283,9 @@ export class BattleController {
     } else this.run = Object.freeze({ ...this.run, defeatedCount, status: continues ? 'transitioning' : 'cleared' });
   }
 
+  /** 日本語: 次の戦闘の設定を差し替える拡張点（既定は何もしない）。English: Extension point for the next stage's config; the default is identity. */
+  protected prepareStage(config: BattleConfig, _stage: number): BattleConfig { return config; }
+
   private async advanceStage(generation: number, signal: AbortSignal): Promise<void> {
     if (!this.current(generation, signal) || !this.run || !this.enemyOrder || this.state.result?.winner !== 'player' || this.run.status !== 'transitioning') return;
     const before = this.state;
@@ -291,7 +294,8 @@ export class BattleController {
     const encounter = loop ?? (this.options.run?.mode === 'endless' ? endlessEncounter(stage, this.options.run?.rotationStart ?? this.initialConfig.enemyId!, tuningOf(this.initialConfig)) : null);
     const enemyId = encounter?.enemyId ?? this.enemyOrder[stage - 1]!;
     const config = createNextStageConfig(this.initialConfig, before, enemyId, stage);
-    const scaled = encounter ? { ...config, combatants: { ...config.combatants, enemy: { ...config.combatants.enemy, maxHp: encounter.maxHp, initialHp: encounter.maxHp, ...(loop ? { attacks: loop.attacks } : {}) } }, ...(loop ? { enemyFixedDamageBonus: loop.fixedDamageBonus } : {}) } : config;
+    const scaled0 = encounter ? { ...config, combatants: { ...config.combatants, enemy: { ...config.combatants.enemy, maxHp: encounter.maxHp, initialHp: encounter.maxHp, ...(loop ? { attacks: loop.attacks } : {}) } }, ...(loop ? { enemyFixedDamageBonus: loop.fixedDamageBonus } : {}) } : config;
+    const scaled = this.prepareStage(scaled0, stage);
     const next = carryTransformationState(createBattle(scaled), before);
     this.state = next;
     this.run = Object.freeze({ ...this.run, stage, currentEnemyId: enemyId, status: 'transitioning' });
@@ -306,7 +310,7 @@ export class BattleController {
     this.run = Object.freeze({ ...this.run!, status: 'active' });
   }
 
-  private async runSequence(firstAction: BattleAction): Promise<boolean> {
+  protected async runSequence(firstAction: BattleAction): Promise<boolean> {
     if(!this.beforeMutation())return false;
     const generation = this.generation;
     const signal = this.animation.signal;

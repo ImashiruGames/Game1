@@ -1,0 +1,19 @@
+/* 日本語: チュートリアルの台詞パネルと目印。English: Tutorial speech panel and glow hints. */
+.tutorial-panel{position:absolute;left:4px;right:4px;top:var(--tut-top,40px);z-index:40;display:grid;grid-template-columns:46px minmax(0,1fr);gap:8px;padding:8px 10px;border:2px solid var(--gold,#f4c77b);border-radius:12px;background:#0d1822f2;color:#eef3f6;box-shadow:0 6px 18px #000a;pointer-events:auto}
+.tutorial-panel[hidden]{display:none}
+.tutorial-panel.in-dialog{position:sticky;top:0;left:auto;right:auto;margin:0 0 8px;z-index:60}
+.tutorial-avatar{width:46px;height:52px;object-fit:contain;align-self:start}
+.tutorial-body{min-width:0;display:grid;gap:4px}
+.tutorial-head{display:flex;align-items:center;gap:8px;font-size:11px}
+.tutorial-who{color:var(--gold,#f4c77b);font-weight:700;font-size:12px}
+.tutorial-count{color:#9caeba;margin-right:auto}
+.tutorial-skip{padding:2px 8px;font-size:11px;min-height:0;background:#0000;border:1px solid #7d8e99;color:#b9c8d1;border-radius:6px}
+.tutorial-text{margin:0;font-size:14px;line-height:1.5;word-break:auto-phrase;overflow-wrap:anywhere}
+.tutorial-foot{display:flex;justify-content:flex-end;align-items:center;min-height:30px}
+.tutorial-guide{font-size:12px;color:#ffd78a;margin-right:auto}
+.tutorial-next{padding:5px 16px;font-size:14px;font-weight:700;background:var(--gold,#f4c77b);border-color:var(--gold,#f4c77b);color:#27241d;border-radius:8px;min-height:32px}
+@keyframes tutorial-glow{from{box-shadow:0 0 4px 1px #ffd36b88}to{box-shadow:0 0 16px 4px #ffd36b}}
+.tutorial-glow{outline:3px solid #ffd36b!important;outline-offset:-2px;animation:tutorial-glow .9s ease-in-out infinite alternate;z-index:2;position:relative}
+.tutorial-dim{opacity:.3!important}
+@media(prefers-reduced-motion:reduce){.tutorial-glow{animation:none}}
+.home-wallet .home-help{min-width:32px;font-weight:700}
