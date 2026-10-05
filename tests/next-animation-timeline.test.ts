@@ -30,7 +30,8 @@ test('conversion tail is finished before completion/input unlock for normal and 
    complete(){assert(elapsed>=visualEnd,'the old implementation unlocked with 240/420ms still running');complete=true;}};
   await createBattleAnimator(hooks)(result.resolution,before,result.state,new AbortController().signal);
   assert(complete&&ended);assert.deepEqual(seen,result.resolution.events.map(e=>e.type));assert.equal(JSON.stringify(result),snapshot);
-  assert.equal(elapsed,short?390:1020);
+  // 日本語: 発動の演出(760/240ms)が終わってから効果を出すので、その分だけ全体が長くなる。
+  assert.equal(elapsed,short?390+240:1020+760);
  }
 });
 

@@ -40,7 +40,12 @@ export interface BattleAnimationHooks {
     }>, resolution: Resolution, index: number, signal: AbortSignal, motion: AnimationMotion, before: BattleState): Promise<unknown>;
     complete(resolution: Resolution, turn: number): void;
     pause?(milliseconds: number, signal: AbortSignal): Promise<void>;
+    /** 日本語: 箱が消える前の「Vanish状態」の表示。ids=空で解除。English: Show boxes in the Vanish state; empty ids clears it. */
+    vanish?(ids: readonly string[], phase: 'marked' | 'fading', milliseconds: number): void;
 }
+/** 日本語: 消える箱を描画の最後まで残してよい解決か（あとから箱を足す・書き換える出来事がないとき）。 */
+const VANISH_BLOCKERS = new Set(['drop', 'boxes-converted', 'boxes-shining', 'enemy-box-changed', 'kit-board-changed', 'row-cleared', 'rubble-crushed', 'transformation', 'turn-start']);
+export const VANISH_MS = Object.freeze({ full: 900, short: 160 });
 /** 日本語: 中断は待ち時間だけを終える。計算や保存を再実行しない。
  * English: Aborting releases presentation waits; it never recomputes or saves a battle. */
 export function pauseAnimation(milliseconds: number, signal: AbortSignal): Promise<void> {
@@ -63,6 +68,8 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
         const motion = captureAnimationMotion(hooks.motion(),timing.dropHoldMs,timing.shortDropHoldMs);
         const profile=motion.timeline!,short=profile.short;
         let elapsed=0,skillEnd=0;
+        const vanishing:string[]=[];
+        const canDefer=(index:number)=>!resolution.events.slice(index+1).some(item=>VANISH_BLOCKERS.has(item.type));
         const wait=async(ms:number)=>{await pause(ms,signal);elapsed+=ms;};
         hooks.begin?.(motion);
         try {
@@ -108,13 +115,28 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
                 shown = { ...shown, transformation: after.transformation, playerTurnStarted: true };
             if(event.type==='shiny-prepared')shown={...shown,gauge:before.gauge-30,shinyNextDrop:true};
             if(event.type==='boxes-thawed'){const ids=new Set(event.boxIds);shown={...shown,boxes:shown.boxes.map(box=>ids.has(box.id)?{...box,type:'normal'}:box)};}
-            if(event.type==='rubble-crushed'){const removed=new Set(event.boxIds);shown={...shown,boxes:settleBoxes(shown.config.board,shown.boxes.filter(box=>!removed.has(box.id)))};}
-            if (event.type === 'row-cleared' || event.type === 'boxes-converted'||event.type==='boxes-shining'||event.type==='kit-board-changed'||event.type==='enemy-box-changed')
-                shown = { ...shown, boxes: after.boxes };
+            // 日本語: 消える箱はVanish状態にして残し、計算がすべて終わってからゆっくり消す。
+            // English: Boxes to be removed enter the Vanish state and leave only after every calculation, slowly.
+            const gone=event.type==='kit-board-changed'?event.boxIds.filter(id=>!after.boxes.some(box=>box.id===id)):[];
+            if((event.type==='row-cleared'||event.type==='rubble-crushed'||gone.length>0)&&hooks.vanish&&canDefer(eventIndex)){
+                const removing=event.type==='row-cleared'||event.type==='rubble-crushed'?event.boxIds:gone;
+                for(const id of removing)if(!vanishing.includes(id)&&shown.boxes.some(box=>box.id===id))vanishing.push(id);
+                hooks.vanish(vanishing,'marked',0);
+            }
+            else{
+                if(event.type==='rubble-crushed'){const removed=new Set(event.boxIds);shown={...shown,boxes:settleBoxes(shown.config.board,shown.boxes.filter(box=>!removed.has(box.id)))};}
+                if (event.type === 'row-cleared' || event.type === 'boxes-converted'||event.type==='boxes-shining'||event.type==='kit-board-changed'||event.type==='enemy-box-changed')
+                    shown = { ...shown, boxes: after.boxes };
+            }
             hooks.render(shown, resolution.actor === 'enemy' ? before : null);
             const skillDuration=hooks.boardSkill?.(event, resolution, before, signal, motion);
             // A replacing skill cue owns its own tail; never unlock input with a cue still running.
-            if(typeof skillDuration==='number')skillEnd=elapsed+skillDuration;
+            if(typeof skillDuration==='number'){
+                // 日本語: 盤面スキルは発動の演出が終わってから効果を出す（消去・落下・ダメージを待たせる）。
+                if(event.type==='board-skill')await wait(skillDuration);
+                else skillEnd=elapsed+skillDuration;
+                if (signal.aborted) return;
+            }
             if (event.type === 'drop')
                 hooks.drop(event, signal, motion);
             if (feedback)
@@ -135,6 +157,15 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
         if(skillEnd>elapsed)await wait(skillEnd-elapsed);
         if (signal.aborted)
             return;
+        if(vanishing.length){
+            // 日本語: ここで計算は全て終了。Vanish状態の箱をゆっくり消してから、落下後の盤面へ。
+            const ms=short||motion.lowMotion?VANISH_MS.short:VANISH_MS.full;
+            hooks.vanish?.(vanishing,'fading',ms);
+            await wait(ms);
+            if (signal.aborted)
+                return;
+            hooks.vanish?.([],'marked',0);
+        }
         hooks.complete(resolution, before.turn);
         hooks.highlight([]);
         hooks.render(after);

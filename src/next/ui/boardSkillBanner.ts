@@ -8,8 +8,8 @@ export function createBoardSkillBanner(root: HTMLElement) {
   let current: { finish: () => void } | undefined;
   const clear = (): void => current?.finish();
   return {
-    play(skillId: string, name: string, options: { motion: AnimationMotion; signal?: AbortSignal }): void {
-      if (!area || options.signal?.aborted) return;
+    play(skillId: string, name: string, options: { motion: AnimationMotion; signal?: AbortSignal }): number {
+      if (!area || options.signal?.aborted) return 0;
       clear();
       const reduced = options.motion.timeline?.short || options.motion.lowMotion || document.body?.dataset.reducedMotion === 'true' || !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
       const duration = reduced ? 600 : Math.max(700, options.motion.timeline?.skill.name ?? 760) + 120;
@@ -44,6 +44,7 @@ export function createBoardSkillBanner(root: HTMLElement) {
       const timer = setTimeout(finish, duration);
       options.signal?.addEventListener('abort', finish, { once: true });
       current = { finish };
+      return duration;
     },
     clear,
   };

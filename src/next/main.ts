@@ -21,6 +21,8 @@ import type {RunMeta} from './meta/profile.ts';
 import {prepareDeparture} from './meta/departure.ts';
 import {roster} from './meta/roster.ts';
 import './style.css';
+import './ui/boxVanish.css';
+import {warmArt} from './ui/artWarmup.ts';
 import {createBoardSkillBanner} from './ui/boardSkillBanner.ts';
 import {TutorialController} from './tutorial/controller.ts';
 import {createTutorialUi} from './tutorial/ui.ts';
@@ -152,6 +154,8 @@ let lastActions:LastActionBreakdowns=emptyActionBreakdowns();
 let readabilityStage:number|null=null;
 function resetReadability():void{recentDrop=null;lastActions=emptyActionBreakdowns();readabilityStage=null;}
 let highlights:readonly string[]=[];
+let vanishing:{ids:ReadonlySet<string>;phase:'marked'|'fading'}|null=null;
+let lastEnemyAction:BattleState|null=null;
 let highlightTone:'damage'|'heal'|'cost'='damage';
 const history:string[]=[];
 const details=el<HTMLDialogElement>('details'), reward=el<HTMLDialogElement>('reward');
@@ -197,7 +201,7 @@ function renderBoard(s:BattleState):void{
  for(let row=0;row<s.config.board.height;row++)for(let col=0;col<s.config.board.width;col++){
   const box=boardBoxes.find(b=>b.row===row&&b.col===col),terrain=s.config.board.terrain.some(c=>c.row===row&&c.col===col),invalid=s.config.board.invalidCells.some(c=>c.row===row&&c.col===col);
   const ghost=landing?.row===row&&landing.col===col;const own=box?.owner;
-  const cls=['cell',!projection&&box&&arrivingMaterials.has(box.id)?'type-arriving':'',box&&kitTargets.includes(box.id)?'kit-target':'',own??'',terrain?'terrain':'',invalid?'invalid':'',ghost?'ghost':'',!projection&&selected?.kind==='row'&&selected.row===row?'row-target':'',!projection&&box&&highlights.includes(box.id)?`hit hit-${highlightTone}`:'',box&&moves.has(box.id)?'projection-moved':''].join(' ');
+  const cls=['cell',!projection&&box&&arrivingMaterials.has(box.id)?'type-arriving':'',box&&kitTargets.includes(box.id)?'kit-target':'',own??'',terrain?'terrain':'',invalid?'invalid':'',ghost?'ghost':'',!projection&&selected?.kind==='row'&&selected.row===row?'row-target':'',!projection&&box&&highlights.includes(box.id)?`hit hit-${highlightTone}`:'',box&&moves.has(box.id)?'projection-moved':'',!projection&&box&&vanishing?.ids.has(box.id)?`is-vanishing vanish-${vanishing.phase}`:''].join(' ');
   cells+=`<button class="${cls}" data-cell-row="${row}" data-cell-col="${col}" ${box?`data-box-id="${escape(box.id)}"`:""} aria-label="${projection?'予告 ':''}${row+1}行${col+1}列 ${own==='player'?'自箱':own==='enemy'?'敵箱':own==='neutral'?'中立箱':terrain?'地形':'空き'}${box&&box.type!=='normal'?`・${boxTypeLabels[box.type]}タイプ`:''}${box&&moves.has(box.id)?` · ${moves.get(box.id)!.from.row+1}行から落下`:''}" ${(!can||!!projection||invalid||terrain)&&!box?'disabled':''} ${box?'aria-keyshortcuts="I Shift+F10"':''}>${box?energyBoxMarkup(box,energyAppearance(s)):ghost?energyBoxMarkup({owner:'player',row,col,...(s.shinyNextDrop||s.transformation?.character==='imashiru'?{type:'shiny' as const}:{})},energyAppearance(s)):terrain?'▪':''}${target&&!projection&&col===0?`<small>${row+1}</small>`:''}${box&&moves.has(box.id)?'<span class="projection-fall" aria-hidden="true">↓</span>':''}</button>`;
  }
  el('board').innerHTML=cells;
@@ -265,6 +269,7 @@ function render(s:BattleState,resolving:boolean,run:BattleRunState|null,enemyAct
  displayed=s;locked=resolving;currentRun=run;
  if(resolving&&!controller?.persistenceBlocked)el('save-status').textContent='保存待ち';
  const rosterId=s.config.meta?.rosterId;const portrait=rosterId&&(roster[rosterId].prototype||rosterId==='imashiru')?rosterPortrait(rosterId,!!s.transformation):s.transformation?transformedPortraits[s.config.characterId!]:playerPortraits[s.config.characterId!];const enemy=enemyPortraits[s.config.enemyId!];
+ {const warmId=s.config.meta?.rosterId??s.config.characterId??'blue';warmArt([rosterPortrait(warmId).src,rosterPortrait(warmId,true).src]);}
  for(const [id,src,alt] of [['player-image',portrait.src,portrait.alt],['enemy-image',enemy.src,enemy.alt]]){
   const img=el<HTMLImageElement>(id!);img.src=src!;img.alt=alt!;
   const inspect=el<HTMLButtonElement>(id!.replace('-image','-portrait'));
@@ -339,15 +344,16 @@ const view:BattleView={
  animate:createBattleAnimator({
   motion:presentationMotion,
   begin:motion=>{activeAnimationMotion=motion;},
-  end:()=>{activeAnimationMotion=undefined;dropMotion.clear();portraitReactions.clear();boardSkillPresentation.clear();energyLinks.clear();},
+  end:()=>{vanishing=null;activeAnimationMotion=undefined;dropMotion.clear();portraitReactions.clear();boardSkillPresentation.clear();energyLinks.clear();},
   playSound:(event,resolution,index,signal,before)=>audio.playEvent(event,resolution,index,signal,{playerCharacterId:before.config.characterId??'blue'}),
   describe(event,before){const label=describe(event,before);if(label){last=label;history.push(`${before.turn}手目 ${label}`);}},
   observe:event=>{recentDrop=observeRecentDrop(recentDrop,event);},
   highlight(ids,tone){if(!ids.length)energyLinks.clear();highlights=ids;if(tone)highlightTone=tone;},
-  render:(state,enemyAction=null)=>render(state,true,controller.runSnapshot,enemyAction),
+  render:(state,enemyAction=null)=>{lastEnemyAction=enemyAction;render(state,true,controller.runSnapshot,enemyAction);},
+  vanish:(ids,phase,ms)=>{vanishing=ids.length?{ids:new Set(ids),phase}:null;root.style.setProperty('--vanish-ms',`${ms}ms`);render(displayed,true,controller.runSnapshot,lastEnemyAction);},
   drop:(event,signal,motion)=>dropMotion.play(event,{signal,motion}),
   react:(event,signal,motion)=>portraitReactions.play(event,{signal,motion}),
-  boardSkill:(event,resolution,before,signal,motion)=>{if(event.type==='board-skill'&&event.actor==='player')boardSkillBanner.play(event.skillId,boardSkillName(event.skillId),{motion,signal});if(boardSkillPresentation.play(event,resolution,before,{signal,motion}))return event.type==='board-skill'?motion.timeline!.skill.name:motion.timeline!.skill.effect;},
+  boardSkill:(event,resolution,before,signal,motion)=>{const banner=event.type==='board-skill'&&event.actor==='player'?boardSkillBanner.play(event.skillId,boardSkillName(event.skillId),{motion,signal}):0;if(boardSkillPresentation.play(event,resolution,before,{signal,motion}))return Math.max(banner,event.type==='board-skill'?motion.timeline!.skill.name:motion.timeline!.skill.effect);if(banner)return banner;},
   energy:(event,links,state,signal,motion)=>{energyLinks.play(event,links,state,signal,motion);},
   impact:event=>energyLinks.impact(event),
   feedback:showFeedback,
