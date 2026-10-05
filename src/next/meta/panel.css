@@ -140,3 +140,96 @@
 @media(prefers-reduced-motion:reduce){#meta-panel .is-drawing *{animation:none!important}#meta-panel .is-drawing .gm-drop{transform:none}}
 body[data-reduced-motion=true] #meta-panel .is-drawing *{animation:none!important}
 body[data-reduced-motion=true] #meta-panel .is-drawing .gm-drop{transform:none}
+
+/* ── Skill cards in home panels: light "specimen card" variant ───────────
+   日本語: 戦闘の報酬カードと同じ部品を、ホーム側では淡色の標本カードとして描く。
+   English: Same card markup as battle rewards, drawn as pale specimen cards inside the home. */
+#meta-panel .skill-card-surface{margin:12px 0;padding:0;background:none;border-radius:0;color:var(--ink)}
+#meta-panel .preparation-card-grid{gap:10px}
+#meta-panel .skill-card-surface .build-reward-card{
+ --tone-ink:#8a3d6a;--tone-fill:#e9c3d8;
+ min-height:228px;padding:12px 10px 10px;border:1px solid #c9d4cf;border-radius:3px 3px 14px 3px;
+ background:linear-gradient(180deg,#ffffff,#f7faf8);color:var(--ink);box-shadow:none;font-size:13px;isolation:isolate;transition:border-color .15s,box-shadow .15s}
+#meta-panel .skill-card-surface .tone-pink{--tone-ink:#b0306f;--tone-fill:#f4bcd6}
+#meta-panel .skill-card-surface .tone-mint{--tone-ink:#2b8460;--tone-fill:#b8e8cf}
+#meta-panel .skill-card-surface .tone-blue{--tone-ink:#2a77a0;--tone-fill:#bfe2f3}
+#meta-panel .skill-card-surface .tone-gold{--tone-ink:#9a6a12;--tone-fill:#f2dca6}
+#meta-panel .skill-card-surface .pixel-card::before,#meta-panel .skill-card-surface .pixel-card::after{width:5px;height:5px;background:var(--line-strong);box-shadow:none}
+#meta-panel .skill-card-surface .build-reward-card:hover:not(:disabled){background:#fff;border-color:var(--tone-ink)}
+#meta-panel .skill-card-surface .reward-card-top{color:var(--faint);font:600 10px var(--mono);letter-spacing:.1em}
+#meta-panel .skill-card-surface .selection-mark{color:var(--plum-2)}
+#meta-panel .skill-card-surface .reward-art{background:var(--paper-2);border:1px solid #dce7e2;border-radius:2px;width:100%;max-width:150px;height:86px;display:grid;place-items:center;margin:4px auto 8px;box-shadow:none}
+#meta-panel .skill-card-surface .reward-pixel-icon{color:var(--tone-ink);filter:none}
+#meta-panel .skill-card-surface .reward-shape i{background:#e1e9e5;border:1px solid #cfdcd6;box-shadow:none;border-radius:1px}
+#meta-panel .skill-card-surface .reward-shape i.filled{background:var(--tone-fill);border-color:var(--tone-ink);box-shadow:inset 0 0 0 2px #ffffff80}
+#meta-panel .skill-card-surface .shape-orientation{color:var(--muted);font-size:10px}
+#meta-panel .skill-card-surface .reward-card-name{font-size:15px;font-weight:850;color:var(--ink)}
+#meta-panel .skill-card-surface .reward-card-metric{color:var(--tone-ink);text-shadow:none;font-family:var(--mono)}
+#meta-panel .skill-card-surface .reward-card-effect{color:var(--muted);font-size:11px;line-height:1.5}
+#meta-panel .skill-card-surface .reward-card-family{color:var(--faint);font:600 9px var(--mono);letter-spacing:.12em}
+#meta-panel .skill-card-surface .reward-card-footer{margin-top:auto;width:100%;box-sizing:border-box;border:1px solid #c9d4cf;border-radius:2px;background:#fff;color:var(--muted);font-size:11px;padding:6px 4px;min-height:28px}
+#meta-panel .skill-card-surface .build-reward-card.is-selected{border-color:var(--plum-2);box-shadow:inset 0 3px 0 var(--plum-2);background:linear-gradient(180deg,#fdf6fa,#fff)}
+#meta-panel .skill-card-surface .build-reward-card.is-selected .reward-card-footer{background:var(--plum-2);border-color:var(--plum-2);color:#fff;font-weight:700}
+#meta-panel .skill-card-surface .build-reward-card.is-fixed-skill{border:1px solid #c9a55a;background:linear-gradient(180deg,#fffaf0,#fff);box-shadow:inset 0 3px 0 #c9a55a}
+#meta-panel .is-fixed-skill .reward-card-top,#meta-panel .is-fixed-skill .reward-card-footer{color:#8a6416}
+#meta-panel .skill-card-surface .build-reward-card.is-fixed-skill .reward-card-footer{background:#fbf1d9;border-color:#e2c98e}
+#meta-panel .skill-card-surface .build-reward-card:focus-visible{outline:3px solid var(--plum);outline-offset:2px}
+#meta-panel .gacha-skill-card{max-width:240px;margin:10px auto}
+
+/* ── Growth tree ─────────────────────────────────────────── */
+#meta-panel .meta-balance{background:none;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line);border-radius:0;padding:10px 0;margin-bottom:6px}
+#meta-panel .meta-balance strong{font-size:20px;color:var(--plum);font-variant-numeric:tabular-nums}
+#meta-panel .meta-balance button{min-height:36px;font-size:11px!important}
+#meta-panel .meta-tree{gap:0;margin:4px 0 0;counter-reset:node}
+#meta-panel .meta-tree article{counter-increment:node;grid-template-columns:34px minmax(0,1fr) 44px 44px;gap:8px;padding:12px 0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0}
+#meta-panel .meta-tree .tree-line{font-size:0;align-self:start;padding-top:2px;color:var(--faint)}
+#meta-panel .meta-tree .tree-line::before{content:counter(node,decimal-leading-zero);font:600 10px var(--mono);letter-spacing:.1em}
+#meta-panel .meta-tree h3{font-size:14px;font-weight:800}
+#meta-panel .meta-tree p{font-size:11px!important;color:var(--muted)!important}
+#meta-panel .meta-tree div>small{font:600 10px var(--mono);color:var(--faint)}
+#meta-panel .meta-tree article>button{min-height:40px;font-size:18px;padding:0;font-weight:600}
+#meta-panel .meta-tree article>button:last-child:not(:disabled){border-color:var(--plum-2);color:var(--plum)}
+#meta-panel .tree-dots{gap:4px}
+#meta-panel .tree-dots i{width:14px;height:6px;border-radius:1px;border-color:#b9c9c2;background:#e8efeb}
+#meta-panel .tree-dots i.lit{background:var(--plum-2);border-color:var(--plum);box-shadow:none}
+
+/* ── Departure check ─────────────────────────────────────── */
+#meta-panel .departure-hero{background:linear-gradient(0deg,#dfece8 0,transparent 40%);border-bottom:1px solid var(--line-strong);min-height:210px;margin-bottom:6px}
+#meta-panel .departure-stats h3{font-size:24px;font-weight:850}
+#meta-panel .departure-stats dl>div{border-bottom:1px solid var(--line);border-top:0;background:none;border-radius:0;padding:6px 0}
+#meta-panel .departure-stats dt{font:600 10px var(--mono);letter-spacing:.08em;color:var(--faint)}
+#meta-panel .departure-stats dd{font:800 24px system-ui,sans-serif;color:var(--plum);font-variant-numeric:tabular-nums}
+#meta-panel .departure-effect{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;padding:0;margin:0}
+#meta-panel .departure-effect summary{border-top:0;padding-top:0;grid-template-columns:86px minmax(0,1fr) 20px}
+#meta-panel .departure-effect summary::before{display:none}
+#meta-panel .departure-effect summary small{font:600 10px var(--mono);letter-spacing:.06em;color:var(--faint)}
+#meta-panel .departure-effect summary strong{font-size:14px}
+#meta-panel .departure-effect summary span{color:var(--plum-2);font-size:11px;transition:transform .15s}
+#meta-panel .departure-effect p{margin:0 0 12px 92px;font-size:12px}
+#meta-panel .departure-candidates{margin-top:10px}
+#meta-panel .departure-actions{margin-top:16px;gap:10px}
+#meta-panel .departure-actions button{min-height:50px}
+
+/* ── Records, trophies, backup, energy, art ──────────────── */
+#meta-panel .meta-record-actions{gap:0;border-top:1px solid var(--line-strong)}
+#meta-panel .meta-record-actions button{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;text-align:left;padding:14px 4px;font-size:15px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+#meta-panel .meta-record-actions button::after{content:'›';color:var(--plum-2);font-size:20px;font-weight:400}
+#meta-panel .meta-trophies{gap:0;border-top:1px solid var(--line-strong)}
+#meta-panel .meta-trophies article{background:none;border-radius:0;border-bottom:1px solid var(--line);padding:12px 2px;color:var(--muted);gap:14px}
+#meta-panel .meta-trophies article>span{width:34px;height:34px;flex:none;display:grid;place-items:center;font-size:16px;border:1px dashed var(--line-strong);border-radius:50%;color:var(--faint)}
+#meta-panel .meta-trophies .earned>span{border:1px solid #c9a55a;background:#fbf1d9;color:#9a6a12}
+#meta-panel .meta-trophies .earned{color:var(--ink);background:none}
+#meta-panel .meta-trophies h3{font-size:14px;color:var(--ink)}
+#meta-panel .meta-trophies small{font-size:10px;color:var(--faint)}
+#meta-panel .meta-energy{border:0;border-top:1px solid var(--line-strong);border-radius:0;background:none;padding:14px 0 0;margin-top:6px}
+#meta-panel .meta-energy h3{font-size:20px;color:var(--plum)}
+#meta-panel .meta-energy button{min-height:50px;border-color:var(--plum-2);color:var(--plum);font-weight:700}
+#meta-panel[data-page=backup] button{width:100%;min-height:46px;margin:4px 0}
+#meta-panel[data-page=backup] label{display:block;margin-top:14px;padding:12px;border:1px dashed var(--line-strong);border-radius:3px;font-size:12px;color:var(--muted)}
+#meta-panel .meta-art-tabs{justify-content:flex-start;gap:0;border-bottom:1px solid var(--line-strong)}
+#meta-panel .meta-art-tabs button{border:0;border-radius:0;background:none;border-bottom:2px solid transparent;margin-bottom:-1px;padding:8px 18px;min-height:40px}
+#meta-panel .meta-art-tabs button[aria-pressed=true]{background:none!important;border-color:var(--plum-2)!important;color:var(--plum);font-weight:700}
+#meta-panel .meta-art-frame{border-radius:0;background:linear-gradient(0deg,#dfece8,transparent 45%),repeating-linear-gradient(0deg,transparent 0,transparent 43px,#aec3bc1c 44px,#aec3bc1c 45px);border-bottom:1px solid var(--line-strong)}
+@media(max-width:520px){#meta-panel .departure-effect p{margin-left:0}#meta-panel .skill-card-surface .build-reward-card{min-height:200px;padding:10px 6px 8px}}
+#meta-panel .skill-card-surface .build-reward-card.is-fixed-skill.is-selected .reward-card-footer,#meta-panel .skill-card-surface .build-reward-card.is-fixed-skill .reward-card-footer{background:#fbf1d9;border-color:#e2c98e;color:#7a5512;font-weight:700}
+#meta-panel .meta-panel-header+.meta-balance,#meta-panel .meta-panel-header+p+.meta-balance{border-top:0}
