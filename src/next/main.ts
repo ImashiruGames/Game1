@@ -1,4 +1,5 @@
 import {preserveBoardTargetFocus} from './ui/boardFocus.ts';
+import {stageLabel,setDeepStage} from './ui/stageLabel.ts';
 import {controlIcon} from './ui/controlIcons.ts';
 import {createBoxMaterialArrival} from './ui/boxMaterialArrival.ts';
 import {installBoxInspection} from './ui/boxInspection.ts';
@@ -269,7 +270,7 @@ function render(s:BattleState,resolving:boolean,run:BattleRunState|null,enemyAct
  el('player-name').textContent=rosterId?roster[rosterId].name:playerPortraits[s.config.characterId!].label;el('enemy-name').textContent=enemy.label;
  for(const actor of ['player','enemy'] as const){const hp=s.hp[actor];el(`${actor}-hp`).innerHTML=`${Math.max(0,hp.current)}<small> / ${hp.max}</small>`;el(`${actor}-hp`).title=`${Math.max(0,hp.current)} / ${hp.max}`;el(`${actor}-fill`).style.width=`${Math.max(0,hp.current)/hp.max*100}%`;}
  const gauge=gaugeDefinition(s.config.characterId,tuningOf(s.config))!;el('gauge-text').textContent=`変化 ${s.gauge}/${gauge.cost}`;el('gauge-fill').style.width=`${Math.min(1,s.gauge/gauge.cost)*100}%`;
- renderEnemyIntent(el('intent'),s,enemyAction);el('form').textContent=formText(s)+(s.shinyNextDrop?' · 次の自箱：輝き':'');el('stage').textContent=`STAGE ${run?.stage??1}`;el('turn').textContent=`${s.turn}手目`;
+ renderEnemyIntent(el('intent'),s,enemyAction);el('form').textContent=formText(s)+(s.shinyNextDrop?' · 次の自箱：輝き':'');setDeepStage(controller.runOrigin.deep);el('stage').textContent=stageLabel(run?.stage??1);el('turn').textContent=`${s.turn}手目`;
  renderPlayerPower(root.querySelector<HTMLElement>('.player-hud>div')!,s);
  renderEnemyPower(root.querySelector<HTMLElement>('.enemy-hud>div')!,s);
  el('latest').textContent=last;el('skill-hud').innerHTML=skillHudHtml(s,available(s));renderBoard(s);renderActions(s);rewardDialog.render(s,run,locked);
@@ -350,7 +351,7 @@ const view:BattleView={
  }),
  async animateStageTransition(_before,after,run,signal){
   boardSkillPresentation.clear();energyLinks.clear();
-  last=`STAGE ${run.stage} · 次の戦闘`;render(after,true,run);
+  last=`${stageLabel(run.stage)} · 次の戦闘`;render(after,true,run);
   const restored=suppressRestoredTransitionTo===run.stage;if(restored)suppressRestoredTransitionTo=null;
   await stageNumberCinematic.play({eventId:after,event:{type:'stage-transition',fromStage:run.stage-1,toStage:run.stage},restored,signal,motion:presentationMotion()});
  },

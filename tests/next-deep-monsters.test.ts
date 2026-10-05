@@ -18,9 +18,9 @@ test('user-specified deep stats are exact and every deep monster has art and a n
  for(const id of DEEP){const d=getEnemyDefinition(id),[hp,a3,a4,a5]=expected[id]!;assert.equal(d.maxHp,hp,id);assert.deepEqual(d.attacks,{3:a3,4:a4,5:a5},id);assert(monsterNotes[id].length>10);assert.match((enemyPortraits as Record<string,{src:string}>)[id]!.src,/-transparent\.webp/);}
 });
 
-test('deep bands follow the plan: zeroguard-x only from floor 90, every deep monster appears',()=>{
+test('deep bands follow the plan: zeroguard-x only from floor 40, every deep monster appears',()=>{
  const seen=new Set<EnemyId>();
- for(let seed=0;seed<300;seed++)for(let stage=51;stage<=99;stage++){if(stage===75)continue;const id=selectEncounter(stage,seed,DEEP_ENCOUNTER_VERSION);seen.add(id);if(id==='zeroguard-x')assert(stage>=90);if(id==='hinobou')assert(stage<=74);}
+ for(let seed=0;seed<300;seed++)for(let stage=1;stage<=49;stage++){if(stage===25)continue;const id=selectEncounter(stage,seed,DEEP_ENCOUNTER_VERSION);seen.add(id);if(id==='zeroguard-x')assert(stage>=40);if(id==='hinobou')assert(stage<=24);}
  for(const id of DEEP)assert(seen.has(id),id);
  assert.equal(deepEncounterV1.bands.find(b=>b.id==='deep-3')!.pool[0]!.enemyId,'zeroguard-x');
 });

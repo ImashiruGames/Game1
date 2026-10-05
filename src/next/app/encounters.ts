@@ -4,9 +4,10 @@ import { sampleUniformIndex } from '../core/random.ts';
 import type { EnemyId } from '../core/types.ts';
 export const CURRENT_ENCOUNTER_VERSION = 'bands-v2' as const;
 export type EncounterVersion = 'bands-v1' | typeof CURRENT_ENCOUNTER_VERSION | typeof DEEP_ENCOUNTER_VERSION;
-/** 日本語: 深層（51〜100階）は別の出現表。50階ランの表とは混ぜない。English: Deep floors use their own table. */
-export const DEEP_ENCOUNTER_VERSION = 'deep-v1' as const;
-export const DEEP_FIRST_STAGE = 51, DEEP_FINISH_STAGE = 100;
+/** 日本語: 深層（1〜50階）は別の出現表。50階ランの表とは混ぜない。English: Deep floors use their own table. */
+export const DEEP_ENCOUNTER_VERSION = 'deep-v2' as const;
+// 日本語: 深層は1階から始まる別ステージ（51階の続きではない）。English: Deep is its own stage from floor 1, not a continuation at 51.
+export const DEEP_FIRST_STAGE = 1, DEEP_FINISH_STAGE = 50;
 export interface EncounterBand { readonly id:string; readonly from:number; readonly to:number; readonly pool:readonly {readonly enemyId:EnemyId;readonly weight:number}[] }
 export interface EncounterTable { readonly bands:readonly EncounterBand[];readonly bosses:Readonly<Record<number,EnemyId>> }
 /** 日本語: 1–24階は基本攻撃のみ。回復もギミックとして26階以降へ分離。
@@ -34,14 +35,14 @@ export function validateEncounterTable(table:EncounterTable):void {
  }
  for(let stage=1;stage<=50;stage++)if(!table.bosses[stage]&&table.bands.filter(b=>stage>=b.from&&stage<=b.to).length!==1)throw new Error('Encounter bands have a gap or overlap');
 }
-/** 日本語: 深層の帯（ユーザー提供の7体）。75・100階のボスは届くまで既存ボスの仮置き。
- * English: Deep bands of the seven user-provided monsters; floors 75/100 keep provisional existing bosses. */
+/** 日本語: 深層の帯（ユーザー提供の7体）。25・50階のボスは届くまで既存ボスの仮置き。ゼロガード・Xは旧90階＝40階以降。
+ * English: Deep bands of the seven user-provided monsters; floors 25/50 keep provisional bosses. Zeroguard-X from floor 40. */
 export const deepEncounterV1:EncounterTable = freeze({
  bands:[
-  {id:'deep-1',from:51,to:74,pool:[{enemyId:'biribiriman',weight:2},{enemyId:'hyokuru',weight:2},{enemyId:'hanabell',weight:2},{enemyId:'hinobou',weight:2},{enemyId:'hoshimimi',weight:2}]},
-  {id:'deep-2',from:76,to:89,pool:[{enemyId:'hanabell',weight:2},{enemyId:'hoshimimi',weight:2},{enemyId:'biribiriman',weight:2},{enemyId:'hyokuru',weight:2},{enemyId:'mokousagi',weight:2}]},
-  {id:'deep-3',from:90,to:99,pool:[{enemyId:'zeroguard-x',weight:3},{enemyId:'mokousagi',weight:1},{enemyId:'biribiriman',weight:1}]},
- ], bosses:{75:'speed-core',100:'mother-core'},
+  {id:'deep-1',from:1,to:24,pool:[{enemyId:'biribiriman',weight:2},{enemyId:'hyokuru',weight:2},{enemyId:'hanabell',weight:2},{enemyId:'hinobou',weight:2},{enemyId:'hoshimimi',weight:2}]},
+  {id:'deep-2',from:26,to:39,pool:[{enemyId:'hanabell',weight:2},{enemyId:'hoshimimi',weight:2},{enemyId:'biribiriman',weight:2},{enemyId:'hyokuru',weight:2},{enemyId:'mokousagi',weight:2}]},
+  {id:'deep-3',from:40,to:49,pool:[{enemyId:'zeroguard-x',weight:3},{enemyId:'mokousagi',weight:1},{enemyId:'biribiriman',weight:1}]},
+ ], bosses:{25:'speed-core',50:'mother-core'},
 });
 export function validateDeepEncounterTable(table:EncounterTable):void {
  const known=(id:EnemyId)=>enemyRoster.includes(id);
@@ -63,7 +64,7 @@ validateEncounterTable(encounterBandsV2);
 export function selectEncounter(stage:number,seed:number,version:EncounterVersion=CURRENT_ENCOUNTER_VERSION,table:EncounterTable=version==='bands-v1'?encounterBandsV1:version===DEEP_ENCOUNTER_VERSION?deepEncounterV1:encounterBandsV2):EnemyId {
  if(!Number.isSafeInteger(stage)||stage<1||!Number.isInteger(seed)||seed<0||seed>0xffff_ffff)throw new Error('Invalid encounter seed or stage');
  if(version!=='bands-v1'&&version!==CURRENT_ENCOUNTER_VERSION&&version!==DEEP_ENCOUNTER_VERSION)throw new Error('Unsupported encounter version');
- if(version===DEEP_ENCOUNTER_VERSION&&(stage<DEEP_FIRST_STAGE||stage>DEEP_FINISH_STAGE))throw new Error('Deep floors are 51–100');
+ if(version===DEEP_ENCOUNTER_VERSION&&(stage<DEEP_FIRST_STAGE||stage>DEEP_FINISH_STAGE))throw new Error('Deep floors are 1–50');
  // 日本語: 深層は絶対階で引く（50で折り返さない）。English: Deep uses absolute floors, never the 50-floor wrap.
  const local=version===DEEP_ENCOUNTER_VERSION?stage:(stage-1)%50+1;
  if(table.bosses[local])return table.bosses[local]!;

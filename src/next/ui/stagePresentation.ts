@@ -1,4 +1,5 @@
 import type {BattleState} from '../core/types.ts';
+import {stageLabel} from './stageLabel.ts';
 import type {BattleRunState} from '../app/BattleRun.ts';
 import {carryTopPlayerRow} from '../app/BattleRun.ts';
 
@@ -8,10 +9,10 @@ export function stageCue(state:BattleState,run:BattleRunState|null,origin:{seed:
  const key=`${origin.seed}/${origin.startStage}/${run.stage}/${run.defeatedCount}/${run.status}`;
  if(run.status==='reward'){
   const count=carryTopPlayerRow(state).length;
-  return {key,kind:'reward',title:`STAGE ${run.stage} 突破`,detail:`報酬を選んで次の階へ · ${count?`自箱${count}個を引継ぎ`:'自箱の引継ぎなし'}`};
+  return {key,kind:'reward',title:`${stageLabel(run.stage)} 突破`,detail:`報酬を選んで次の階へ · ${count?`自箱${count}個を引継ぎ`:'自箱の引継ぎなし'}`};
  }
  if(run.status!=='cleared')return null;
- if(origin.startStage>1)return {key,kind:'test-clear',title:`STAGE ${run.stage} 検証完了`,detail:`${origin.startStage}階から開始した検証ラン`};
+ if(origin.startStage>1)return {key,kind:'test-clear',title:`${stageLabel(run.stage)} 検証完了`,detail:`${origin.startStage}階から開始した検証ラン`};
  return {key,kind:'clear',title:run.stage===50?'50階 踏破':`${run.stage}階 完了`,detail:'最後の敵を撃破 · このランの終着点'};
 }
 const icon='<svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 15 24 7l16 8-16 8Z M8 15v19l16 8 16-8V15 M24 23v19"/><path class="seal-check" d="m16 26 6 6 13-14"/></svg>';

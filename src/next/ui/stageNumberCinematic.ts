@@ -1,4 +1,5 @@
 import {paceScale,resolveBattlePace,type AnimationMotion} from './animationTimeline.ts';
+import {stageLabel} from './stageLabel.ts';
 /** 日本語: 報酬確定後のステージ移行だけに表示。render やセーブ復帰から再生しない。 */
 /** Presentation only. Await from the committed stage-transition callback while input is locked. */
 export interface StageNumberEvent {
@@ -43,7 +44,7 @@ function makeDialog(doc:Document,request:StageNumberRequest,short:boolean):HTMLD
  dialog.className='stage-number-cinematic';
  dialog.dataset.motion=short?'short':'full';
  dialog.dataset.phase=short?'arrived':'before';
- dialog.setAttribute('aria-label',`STAGE ${request.event.fromStage} から STAGE ${request.event.toStage}、次の戦闘`);
+ dialog.setAttribute('aria-label',`${stageLabel(request.event.fromStage)} から ${stageLabel(request.event.toStage)}、次の戦闘`);
  dialog.setAttribute('aria-modal','true');
  dialog.innerHTML='<div class="snc-world" aria-hidden="true"><div class="snc-grid"></div><div class="snc-glow"></div><div class="snc-line snc-line-a"></div><div class="snc-line snc-line-b"></div></div>'
   +'<div class="snc-heading"><span class="snc-eyebrow">NEXT ENCOUNTER</span><span class="snc-route"></span></div>'
@@ -51,7 +52,7 @@ function makeDialog(doc:Document,request:StageNumberRequest,short:boolean):HTMLD
   +'<div class="snc-bottom"><span class="snc-progress" aria-hidden="true"></span><button class="snc-skip" type="button" aria-label="ステージ移行の演出を省略">タップで省略 <span aria-hidden="true">↵</span></button></div>';
  dialog.querySelector('.snc-before')!.textContent=String(request.event.fromStage);
  dialog.querySelector('.snc-after')!.textContent=String(request.event.toStage);
- dialog.querySelector('.snc-route')!.textContent=`STAGE ${request.event.fromStage} → STAGE ${request.event.toStage}`;
+ dialog.querySelector('.snc-route')!.textContent=`${stageLabel(request.event.fromStage)} → ${stageLabel(request.event.toStage)}`;
  return dialog;
 }
 
