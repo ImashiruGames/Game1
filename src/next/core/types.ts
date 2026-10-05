@@ -73,6 +73,8 @@ export interface EnemyDefinition {
 export interface GameplayStrategy { readonly transformation: 'automatic-link' | 'manual-charge'; readonly gauge: 'per-box' | 'bands' }
 export interface BattleConfig {
   readonly frozenRule?: 'half-melt-v1';
+  /** 日本語: 新規ランのトゲ規則（自分の箱のトゲは無害・上下左右5%・斜め1%）。未指定の旧ランは従来どおり。 */
+  readonly thornRule?: 'owner-safe-v2';
   /** Immutable departure snapshot; absent on legacy saves and fixtures. */
   readonly meta?: RunMeta;
   readonly strategy?: GameplayStrategy;

@@ -40,7 +40,7 @@ export function prepareTrialSetup(setup:TrialSetup):{config:BattleConfig;options
   const basic:TrialFixture=setup.fixture==='charged'||setup.fixture==='reward'?setup.fixture:'normal';
   const base=trialFixture(basic,setup.character,encounter.enemyId,setup.seed,setup.mode);
   const fixed='fixedDamageBonus'in encounter?encounter.fixedDamageBonus:0;
-  const config:BattleConfig={...base,frozenRule:'half-melt-v1',enemyFixedDamageBonus:fixed,firstActor:bossFixture?'enemy':'player',initialEnemyTurnCount:setup.fixture==='speed-pulse'||setup.fixture==='mother-wait'?4:setup.fixture==='mother-double'?5:0,
+  const config:BattleConfig={...base,frozenRule:'half-melt-v1',thornRule:'owner-safe-v2',enemyFixedDamageBonus:fixed,firstActor:bossFixture?'enemy':'player',initialEnemyTurnCount:setup.fixture==='speed-pulse'||setup.fixture==='mother-wait'?4:setup.fixture==='mother-double'?5:0,
     combatants:{...base.combatants,enemy:{...base.combatants.enemy,maxHp:encounter.maxHp,initialHp:basic==='reward'?1:setup.fixture==='mother-critical'?Math.max(1,Math.floor(encounter.maxHp*trialTuning.bosses.motherThresholdPercent/100)):encounter.maxHp,...('attacks'in encounter?{attacks:encounter.attacks}:{})}}};
   return {config,options:{run:{mode:'endless',rewards:true,rewardMode:'categories',...(route==='boss-loop'&&encounterVersion?{encounterVersion}:{}),route,startStage:stage,rotationStart:setup.firstEnemy,...(ending==='clear50'||ending==='deep50'?{finishAtStage:50}:{})}}};
 }

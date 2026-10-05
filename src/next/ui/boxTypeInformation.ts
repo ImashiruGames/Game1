@@ -1,4 +1,4 @@
-import {boxTypeLabels,frozenRuleDescription,THORN,ownSquareCount} from '../core/boxTypes.ts';
+import {boxTypeLabels,frozenRuleDescription,THORN,THORN_V2,ownSquareCount} from '../core/boxTypes.ts';
 import type {Box,BattleState} from '../core/types.ts';
 /** 日本語: タイプは所有者の見た目と分離し、説明は現行ルールから生成。
  * English: Type is independent of ownership; describe current rules, including frozen run bonuses. */
@@ -15,7 +15,7 @@ export function boxTypeRows(box:Box,state:BattleState):BoxTypeRow[]{
   case 'poison':return [{label:'効果',text:'所有者の手番の終わりに、所有者へ1ダメージ。'},{label:'解除',text:'残り続けます。中立の箱では発生しません。'}];
   case 'deadly-poison':return [{label:'効果',text:'所有者の手番の終わりに、所有者へ2ダメージ。'},{label:'解除',text:'残り続けます。中立の箱では発生しません。'}];
   case 'rubble':return [{label:'効果',text:'真上に2箱積まれると崩れます。'},{label:'解除',text:'崩れると消えます。その落下では新しいリンクは発動しません。'}];
-  case 'thorn':return [{label:'効果',text:`周囲8マスへ能動的に投入すると、投入した側に最大HPの${THORN.percentOfMaxHp}%（最低${THORN.minimumDamage}）ダメージ。リンクより先に発生。`},{label:'解除',text:'残り続けます。落下だけでは発動しません。'}];
+  case 'thorn':return state.config.thornRule==='owner-safe-v2'?[{label:'効果',text:`相手のトゲの隣へ能動的に投入すると、投入した側にダメージ。上下左右は最大HPの${THORN_V2.orthogonalPercent}%、斜めは${THORN_V2.diagonalPercent}%（各トゲ最低${THORN_V2.minimumDamage}）。リンクより先に発生。`},{label:'解除',text:'残り続けます。自分の箱のトゲには反応せず、落下だけでも発動しません。中立のトゲは誰にでも反応します。'}]:[{label:'効果',text:`周囲8マスへ能動的に投入すると、投入した側に最大HPの${THORN.percentOfMaxHp}%（最低${THORN.minimumDamage}）ダメージ。リンクより先に発生。`},{label:'解除',text:'残り続けます。落下だけでは発動しません。'}];
  }
 }
 export function boxTypeInformation(box:Box,state:BattleState):{name:string;effect:string;context:string}{
@@ -27,5 +27,6 @@ export function boxTypeInformation(box:Box,state:BattleState):{name:string;effec
   const art=state.config.meta?.kitVersion===2&&state.build?.fixed.id==='poison-craft';
   if(art&&box.poisonSource==='player')context+=`。自分が付与した毒：毒盛り術により、自箱の2×2正方形の数だけ追加（現在＋${ownSquareCount(state.boxes,'player')}）`;
  }
- return {name:boxTypeLabels[box.type],effect:effects[box.type],context};
+ const effect=box.type==='thorn'&&state.config.thornRule==='owner-safe-v2'?boxTypeRows(box,state).map(r=>r.text).join(''):effects[box.type];
+ return {name:boxTypeLabels[box.type],effect,context};
 }

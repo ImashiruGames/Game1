@@ -6,6 +6,15 @@ import type {Actor,BattleState,BattleTransition,BoardDefinition,Box} from './typ
 /** 日本語: 所有者とは独立した単一タイプ。付与は上書き。English: Exactly one type; assignment replaces it. */
 export const boxTypeIds=['normal','shiny','frozen','absolute-zero','poison','deadly-poison','rubble','thorn'] as const;
 export const THORN={percentOfMaxHp:2,minimumDamage:1,rounding:'floor-per-thorn',timing:'after-insertion-before-shape-link'} as const;
+/** 日本語: 新トゲ（owner-safe-v2）。投入した側と同じ所有者のトゲは無害。上下左右は5%、斜めは1%。各トゲごとに切り捨て・最低1。中立のトゲは誰にでも反応。
+ * English: owner-safe-v2 thorns. Same-owner thorns are harmless; orthogonal 5%, diagonal 1%; floor per thorn, minimum 1. Neutral thorns affect anyone. */
+export const THORN_V2={orthogonalPercent:5,diagonalPercent:1,minimumDamage:1} as const;
+export function thornDamage(config:BattleState['config'],maxHp:number,thorn:Box,inserted:Box,actor:'player'|'enemy'):number{
+ if(config.thornRule!=='owner-safe-v2')return Math.max(THORN.minimumDamage,Math.floor(maxHp*THORN.percentOfMaxHp/100));
+ if(thorn.owner===actor)return 0;
+ const diagonal=thorn.row!==inserted.row&&thorn.col!==inserted.col;
+ return Math.max(THORN_V2.minimumDamage,Math.floor(maxHp*(diagonal?THORN_V2.diagonalPercent:THORN_V2.orthogonalPercent)/100));
+}
 export type BoxType=typeof boxTypeIds[number];
 export const boxTypeLabels:Record<BoxType,string>={normal:'通常',shiny:'輝き',frozen:'フローズン','absolute-zero':'絶対零度',poison:'どく','deadly-poison':'げきどく',rubble:'ガレキ',thorn:'トゲ'};
 export function assignBoxType(box:Box,type:BoxType,source?:Actor):Box{const {poisonSource:_source,...rest}=box;return {...rest,type,...((type==='poison'||type==='deadly-poison')&&source?{poisonSource:source}:{})};}
@@ -21,8 +30,8 @@ export function settleBoxTypes(board:BoardDefinition,initial:readonly Box[]):{bo
 export function resolveThornInsertion(initial:BattleState,inserted:Box):BattleTransition {
  const adjacent=initial.boxes.filter(b=>b.id!==inserted.id&&b.type==='thorn'&&Math.abs(b.row-inserted.row)<=1&&Math.abs(b.col-inserted.col)<=1);
  if(!adjacent.length)return {state:initial,events:[]};let state=initial;const events:BattleTransition['events'][number][]=[];
- const actor=initial.actor,amount=Math.max(THORN.minimumDamage,Math.floor(initial.hp[actor].max*THORN.percentOfMaxHp/100));
- for(const thorn of adjacent){if(state.hp[actor].current<=0)break;const change=damageHp(state.hp[actor],amount);state={...state,hp:{...state.hp,[actor]:change.hp}};
+ const actor=initial.actor;
+ for(const thorn of adjacent){if(state.hp[actor].current<=0)break;const amount=thornDamage(initial.config,initial.hp[actor].max,thorn,inserted,actor);if(amount<=0)continue;const change=damageHp(state.hp[actor],amount);state={...state,hp:{...state.hp,[actor]:change.hp}};
   events.push({type:'type-damage',actor,target:actor,source:'thorn',sourceBoxIds:[thorn.id],damage:amount,hpBefore:change.before,hpAfter:change.after});
   if(actor==='player'){const charged=gainGauge(state,change.actual*tuningOf(state.config).gauge.damagePerHp,'damage');state=charged.state;events.push(...charged.events);}
  }

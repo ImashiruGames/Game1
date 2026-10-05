@@ -49,3 +49,20 @@ test('standard-board MotherCore second insertion uses the post-crush landing row
  const base=createTrialConfig('blue','mother-core');const before=createBattle({...base,seed:1972,firstActor:'enemy',initialEnemyTurnCount:5,combatants:{player:{...base.combatants.player,maxHp:1000,initialHp:1000},enemy:{...base.combatants.enemy,maxHp:1000,initialHp:1000}},initialBoxes:[b(7,0,'rubble','enemy'),b(6,0,'normal','enemy')]});
  const result=applyAction(before,{type:'enemy'}),events=result.resolution!.events;assert.deepEqual(events.filter(e=>e.type==='drop').map(e=>[e.box.row,e.box.col]),[[5,0],[5,0]]);assert.deepEqual(events.filter(e=>e.type==='attack').map(e=>e.damage),[5,5]);assert.equal(result.state.hp.player.current,990);assert.equal(result.state.result,null);
 });
+
+test('owner-safe-v2 thorns: same-owner thorns are harmless, orthogonal 5%, diagonal 1%, neutral hurts anyone; legacy runs keep 2% all around',async()=>{
+ const {thornDamage,resolveThornInsertion}=await import('../src/next/core/boxTypes.ts');const {createBattle}=await import('../src/next/core/battle.ts');const {createTrialConfig,prepareTrialSetup}=await import('../src/next/config.ts');
+ const at=(row:number,col:number,owner:'player'|'enemy'|'neutral',type:'thorn'|'normal'='thorn')=>({id:`t${row}:${col}`,row,col,owner,type,status:'normal' as const});
+ const v2={...createTrialConfig('blue'),thornRule:'owner-safe-v2' as const},legacy=createTrialConfig('blue');
+ const dropped=at(5,2,'player','normal');
+ assert.equal(thornDamage(v2,100,at(5,3,'enemy'),dropped,'player'),5);
+ assert.equal(thornDamage(v2,100,at(4,3,'enemy'),dropped,'player'),1);
+ assert.equal(thornDamage(v2,100,at(5,3,'player'),dropped,'player'),0);
+ assert.equal(thornDamage(v2,100,at(5,3,'neutral'),dropped,'player'),5);
+ assert.equal(thornDamage(v2,30,at(5,3,'enemy'),dropped,'player'),1,'floor 1.5 → 1 (minimum 1)');
+ assert.equal(thornDamage(legacy,100,at(5,3,'player'),dropped,'player'),2,'legacy: own thorns still hurt, 2%');
+ // Integrated: one enemy thorn beside, one own thorn diagonal, one enemy thorn diagonal → 5 + 0 + 1.
+ const s=createBattle({...v2,combatants:{...v2.combatants,player:{...v2.combatants.player,maxHp:100,initialHp:100}},initialBoxes:[at(5,3,'enemy'),at(4,1,'player'),at(4,3,'enemy')]});
+ const r=resolveThornInsertion(s,dropped);assert.equal(r.state.hp.player.current,94);assert.equal(r.events.filter(e=>e.type==='type-damage').length,2);
+ assert.equal(prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:1,fixture:'normal',route:'boss-loop'}).config.thornRule,'owner-safe-v2','new runs adopt the new rule');
+});

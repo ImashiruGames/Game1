@@ -20,6 +20,7 @@ export function validateConfig(config: BattleConfig): void {
     if (!condition) throw new Error(`Battle config: ${message}`);
   };
   require(config.frozenRule===undefined||config.frozenRule==='half-melt-v1','invalid frozen rule');
+  require(config.thornRule===undefined||config.thornRule==='owner-safe-v2','invalid thorn rule');
   require(Number.isSafeInteger(board.width) && board.width > 0, 'width must be a positive integer');
   require(Number.isSafeInteger(board.height) && board.height > 0, 'height must be a positive integer');
   require(Number.isSafeInteger(board.width * board.height), 'board area must be a safe integer');
