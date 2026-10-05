@@ -26,6 +26,12 @@ export const defaultTuning: GameTuning = freeze({
     shashark: { maxHp: 52, attacks: { 3: 4, 4: 12, 5: 20 } },
     // 日本語: 深層（51階〜）。4リンク以上が極端に重い。English: Deep floors; very heavy 4+ links.
     biribiriman: { maxHp: 40, attacks: { 3: 3, 4: 15, 5: 25 } },
+    hyokuru: { maxHp: 35, attacks: { 3: 5, 4: 7, 5: 13 } },
+    hanabell: { maxHp: 70, attacks: { 3: 4, 4: 6, 5: 12 } },
+    'zeroguard-x': { maxHp: 150, attacks: { 3: 4, 4: 6, 5: 16 } },
+    hoshimimi: { maxHp: 45, attacks: { 3: 3, 4: 7, 5: 11 } },
+    mokousagi: { maxHp: 90, attacks: { 3: 2, 4: 5, 5: 9 } },
+    hinobou: { maxHp: 40, attacks: { 3: 4, 4: 8, 5: 14 } },
     'twin-core': { maxHp: 42, attacks: { 3: 4, 4: 5, 5: 7 } },
     'needle-core': { maxHp: 25, attacks: { 3: 2, 4: 6, 5: 13 } },
     'frost-core': { maxHp: 36, attacks: { 3: 3, 4: 5, 5: 8 } },
@@ -88,7 +94,7 @@ export function validateTuning(tuning: GameTuning): void {
     const enemy = tuning.enemies[id];
     // 日本語: 旧セーブの完全な調整表には追加敵がない。既存6体の欠落は許容しない。
     // English: Old full tuning snapshots lack added IDs, but must retain every original enemy.
-    if (!enemy && ['devilmon','shashark','twin-core','needle-core','frost-core','thorn-core','rime-crown','briar-wheel','biribiriman'].includes(id)) continue;
+    if (!enemy && ['devilmon','shashark','twin-core','needle-core','frost-core','thorn-core','rime-crown','briar-wheel','biribiriman','hyokuru','hanabell','zeroguard-x','hoshimimi','mokousagi','hinobou'].includes(id)) continue;
     record(enemy, `enemies.${id}`); record(enemy.attacks, `enemies.${id}.attacks`); integer(enemy.maxHp, 1);
     for (const tier of [3, 4, 5] as const) integer(enemy.attacks[tier]);
     if (enemy.healEveryOwnTurns !== undefined) { integer(enemy.healEveryOwnTurns, 1); integer(enemy.healAmount!); }

@@ -10,6 +10,12 @@ export const playerPortraits = {
 export const enemyPortraits = {
   ...originals,
   devilmon: {label:'デビルモン',alt:'紫の翼と角、星の印を持つデビルモン',src:new URL('./assets/monsters/devilmon-transparent.webp',import.meta.url).href},
+  hyokuru: {label:'ヒョクル',alt:'青いマフラーを巻き、氷のそりに乗ったペンギン、ヒョクル',src:new URL('./assets/monsters/hyokuru-transparent.webp',import.meta.url).href},
+  hanabell: {label:'ハナベル',alt:'桃色のつぼみと黄色い鐘、つるを持つ花、ハナベル',src:new URL('./assets/monsters/hanabell-transparent.webp',import.meta.url).href},
+  'zeroguard-x': {label:'ゼロガード・X',alt:'黒い石の装甲と大盾を持つ巨人、ゼロガード・X',src:new URL('./assets/monsters/zeroguard-x-transparent.webp',import.meta.url).href},
+  hoshimimi: {label:'ホシミミ',alt:'耳先に星を付けた紫のうさぎ、ホシミミ',src:new URL('./assets/monsters/hoshimimi-transparent.webp',import.meta.url).href},
+  mokousagi: {label:'モコウサギ',alt:'クリーム色と桃色のもこもこうさぎ、モコウサギ',src:new URL('./assets/monsters/mokousagi-transparent.webp',import.meta.url).href},
+  hinobou: {label:'ヒノボウ',alt:'頭と尾に炎をともしたオレンジの子、ヒノボウ',src:new URL('./assets/monsters/hinobou-transparent.webp',import.meta.url).href},
   biribiriman: {label:'ビリビリマン',alt:'稲妻をまとった黄色い拳闘家、ビリビリマン',src:new URL('./assets/monsters/biribiriman-transparent.webp',import.meta.url).href},
   shashark: {label:'シャシャーク',alt:'青緑の水の輪をまとったサメ、シャシャーク',src:new URL('./assets/monsters/shashark-transparent.webp',import.meta.url).href},
   'twin-core': {label:'ツインコア',alt:'二つの核を持つツインコア',src:new URL('./assets/monsters/twin-core.webp',import.meta.url).href},

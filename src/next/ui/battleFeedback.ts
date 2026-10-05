@@ -18,6 +18,8 @@ function sourceName(source:string):string {
  * English: Read committed effects only; never rerun geometry, RNG, damage or healing. */
 export function feedbackForEvent(event:BattleEvent,links:readonly Link[]):BattleFeedback|null {
  if(event.type==='enemy-box-changed'&&event.boxType==='poison')return {text:`どく ${event.boxIds.length}個`,detail:'デビルモンの4リンク・タイプなしの自箱をどくへ',tone:'cost',boxIds:event.boxIds,anchor:'player'};
+ if(event.type==='enemy-box-changed'&&event.boxType==='absolute-zero')return {text:event.boxIds.length?`絶対零度 ${event.boxIds.length}個`:'絶対零度 対象なし',detail:'ヒョクルの冷気・自箱を絶対零度へ',tone:'cost',boxIds:event.boxIds,anchor:'player'};
+ if(event.type==='enemy-box-changed'&&event.boxType==='neutral')return {text:event.boxIds.length?`中立化 ${event.boxIds.length}個`:'もこもこ 対象なし',detail:'モコウサギが自箱を中立箱に変えた',tone:'cost',boxIds:event.boxIds,anchor:'player'};
  if(event.type==='enemy-box-changed')return {text:event.boxIds.length?`凍結 ${event.boxIds.length}個`:'凍結 対象なし',detail:'敵の氷結・今回は投入なし',tone:'cost',boxIds:event.boxIds,anchor:'player'};
  if(event.type==='attack')return {text:`${event.damage}ダメージ`,detail:`${event.actor==='player'?'自分':'敵'}の${axes[event.axis]}${event.linkCount}リンク${event.skillId?`・${sourceName(event.skillId)}`:''}`,tone:'damage',boxIds:links.find(link=>link.axis===event.axis)?.boxIds??[],anchor:event.actor};
  if(event.type==='heal')return {text:`${event.amount}回復`,detail:`${event.target==='player'?'自分':'敵'}・${sourceName(event.source)}${event.amount!==event.requestedAmount?`（予定${event.requestedAmount}）`:''}`,tone:'heal',boxIds:event.shapeBoxIds??[],anchor:event.target};

@@ -1,4 +1,4 @@
-import {devilmonFourLink} from './monsterBehavior.ts';
+import {devilmonFourLink, deepTraits, hinobouRage } from './monsterBehavior.ts';
 import {normalLinkBonus,normalLinkGuard} from './normalSkillEffects.ts';
 import {kitBalanceOf} from '../meta/kitBalance.ts';
 import {absorbBarrier} from './kitBoards.ts';
@@ -19,7 +19,7 @@ import type { BattleEvent, BattleState, BattleTransition, Box, DropOption, Link 
 export interface ActiveDropTransition extends BattleTransition { readonly originBoxId: string; readonly links: readonly Link[]; readonly firstGuardUsed: boolean }
 /** 日本語: 通常投入と追加投入で共有する能動処理。手番はここで進めない。
  * English: A reusable active insertion has its own origin/snapshot and never spends a turn. */
-export function resolveActiveDrop(initial: BattleState, option: DropOption, firstGuardUsed = false, enemyBoxType?: 'thorn'): ActiveDropTransition {
+export function resolveActiveDrop(initial: BattleState, option: DropOption, firstGuardUsed = false, enemyBoxType?: 'thorn' | 'shiny'): ActiveDropTransition {
   if (!option.available || !option.landing) throw new Error('Active insertion requires a legal ceiling');
   let nextBoxId = initial.nextBoxId;
   while (initial.boxes.some(box => box.id === `drop:${nextBoxId}`)) nextBoxId += 1;
@@ -40,6 +40,11 @@ export function resolveActiveDrop(initial: BattleState, option: DropOption, firs
       else if (skillCatalog[skill.id].kind === 'shape') accept(applyDamageEffect(state, 'enemy', shinyAmount(state,ids,skillValue(skill.id, skill.rank, tuningOf(state.config))+(skill.id==='corner-strike'&&state.transformation?.character==='mint'?kitBalanceOf(state.config).mintShapeBonus:0)), skill.id as import('./types.ts').ShapeSkillId, ids));
     }
   }
+  if (state.actor === 'enemy' && state.config.enemyId === 'hanabell' && state.hp.enemy.current > 0 && state.hp.player.current > 0) {
+    // 日本語: ハナベルは敵箱の十字形でヘルスと同じ回復（輝きを含めば2倍）。English: Hanabell heals like Health on an enemy-owned cross (doubled by shiny).
+    const ids = findPlusShapes(state.config.board, state.boxes, box.id, 'enemy')[0]?.boxIds;
+    if (ids) accept(applyHealingEffect(state, 'enemy', shinyAmount(state, ids, deepTraits.hanabellCrossHeal), 'enemy-pattern', ids));
+  }
   let guarded = firstGuardUsed;
   const target = state.actor === 'player' ? 'enemy' : 'player';
   for (const link of links) {
@@ -51,6 +56,7 @@ export function resolveActiveDrop(initial: BattleState, option: DropOption, firs
     if (state.actor === 'player' && link.axis === 'horizontal' && skillRank(state, 'horizontal-slash')) { amount += activeSkillValue(state, 'horizontal-slash'); skillId = 'horizontal-slash'; }
     if (state.actor === 'player' && link.axis.startsWith('diagonal') && skillRank(state, 'diagonal-shot')) { amount += activeSkillValue(state, 'diagonal-shot'); skillId = 'diagonal-shot'; }
     if(state.actor==='player')amount+=normalLinkBonus(state,box,link,links);
+    if(state.actor==='enemy'&&hinobouRage(state))amount+=deepTraits.hinobouRageBonus;
     if(state.actor==='player'&&link.axis==='horizontal'&&state.transformation?.character==='rose')amount+=kitBalanceOf(state.config).roseHorizontalBonus;
     if(state.actor==='player'&&state.transformation?.character==='amber'&&kitBalanceOf(state.config).amber.mode==='link-power')amount*=kitBalanceOf(state.config).amber.multiplier;
     amount=frozenLinkAmount(state,link.boxIds,shinyAmount(state,link.boxIds,amount));

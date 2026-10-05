@@ -47,9 +47,9 @@ export function getEnemyIntent(state: BattleState): EnemyIntent {
 /** 日本語: 能動投入の起点を含む5個の＋形だけ。起点は中央でも腕でもよい。受動時は呼ばない。
  * English: Only five-cell '+' shapes containing this active origin are eligible.
  * The origin may be the center or any arm. No whole-board passive rescan occurs. */
-export function findPlusShapes(board: BoardDefinition, boxes: readonly Box[], originBoxId: string): readonly PlusShape[] {
+export function findPlusShapes(board: BoardDefinition, boxes: readonly Box[], originBoxId: string, owner: 'player' | 'enemy' = 'player'): readonly PlusShape[] {
   const origin = boxes.find(box => box.id === originBoxId);
-  if (!origin || origin.owner !== 'player' || !isPlayable(board, origin)) return freeze([]);
+  if (!origin || origin.owner !== owner || !isPlayable(board, origin)) return freeze([]);
   const occupied = new Map(boxes.map(box => [cellKey(box), box]));
   const offsets = [{ row: 0, col: 0 }, { row: -1, col: 0 }, { row: 1, col: 0 }, { row: 0, col: -1 }, { row: 0, col: 1 }];
   const shapes: PlusShape[] = [];
@@ -58,7 +58,7 @@ export function findPlusShapes(board: BoardDefinition, boxes: readonly Box[], or
     const cells = offsets.map(part => ({ row: center.row + part.row, col: center.col + part.col }));
     if (cells.some(cell => !isPlayable(board, cell))) continue;
     const parts = cells.map(cell => occupied.get(cellKey(cell)));
-    if (parts.every((part): part is Box => part?.owner === 'player')) shapes.push({ center, boxIds: parts.map(part => part.id) });
+    if (parts.every((part): part is Box => part?.owner === owner)) shapes.push({ center, boxIds: parts.map(part => part.id) });
   }
   return freeze(shapes);
 }

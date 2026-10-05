@@ -76,3 +76,11 @@ body[data-reduced-motion=true] .energy-attack-particle{display:none}
 .cell.ghost .eb-type-raster,.row-projected .eb-type-raster,.kinetic-drop-box .eb-type-raster,.energy-conversion .eb-type-raster{animation:none}
 body[data-reduced-motion=true] .eb-type-raster,body[data-energy-short=true] .eb-type-raster,body[data-low-performance=true] .eb-type-raster{animation:none!important}
 @media(prefers-reduced-motion:reduce){.eb-type-raster{animation:none!important}}
+/* 日本語: 深層の敵の箱色。立ち絵の主色から。English: Deep enemy core colors, taken from each portrait's main hue. */
+[data-energy-theme=biribiriman]{--ink:#ffe066;--deep:#b8860b}
+[data-energy-theme=hyokuru]{--ink:#a9dcff;--deep:#3b5fae}
+[data-energy-theme=hanabell]{--ink:#ff9fd0;--deep:#3f8f4a}
+[data-energy-theme=zeroguard-x]{--ink:#b9c6d6;--deep:#4a5566}
+[data-energy-theme=hoshimimi]{--ink:#d4c2ff;--deep:#c9962a}
+[data-energy-theme=mokousagi]{--ink:#ffd3e6;--deep:#b78aa0}
+[data-energy-theme=hinobou]{--ink:#ffa24d;--deep:#d1401c}

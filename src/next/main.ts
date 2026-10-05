@@ -294,6 +294,8 @@ function closeBattleLog():void{
  if(!home.active){details.showModal();details.querySelector<HTMLButtonElement>('[data-battle-log]')?.focus({preventScroll:true});}
 }
 function describe(event:BattleEvent,before?:BattleState):string|null{
+ if(event.type==='enemy-box-changed'&&event.boxType==='absolute-zero')return event.boxIds.length?`敵が自箱${event.boxIds.length}個を絶対零度に変更`:'敵の冷気：対象なし';
+ if(event.type==='enemy-box-changed'&&event.boxType==='neutral')return event.boxIds.length?`敵が自箱${event.boxIds.length}個を中立箱に変更`:'敵のもこもこ：対象なし';
  if(event.type==='enemy-box-changed')return event.boxIds.length?`敵が自箱${event.boxIds.length}個をフローズンに変更`:'敵の凍結：対象なし';
  if(event.type==='enemy-wait')return '敵は待機';
  if(event.type==='enemy-phase')return 'マザーコア：低HPの行動へ移行';

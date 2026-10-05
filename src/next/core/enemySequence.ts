@@ -1,4 +1,4 @@
-import { freezeTargets } from './monsterBehavior.ts';
+import { freezeTargets, randomPlayerBoxes } from './monsterBehavior.ts';
 import { assignBoxType } from './boxTypes.ts';
 import {absorbBarrier} from './kitBoards.ts';
 import { freeze } from './immutable.ts';
@@ -55,6 +55,23 @@ export function resolveEnemySequence(initial: BattleState, intent: Extract<Enemy
       const ids=freezeTargets(state,step.count).map(b=>b.id), targets=new Set(ids);
       state={...state,boxes:state.boxes.map(b=>targets.has(b.id)?assignBoxType(b,'frozen'):b)};
       events.push({type:'enemy-box-changed',boxIds:ids,boxType:'frozen'});continue;
+    }
+    if(step.type==='absolute-zero'||step.type==='neutralize'){
+      // 日本語: ヒョクル=絶対零度へ上書き、モコウサギ=中立化（タイプは維持）。English: Hyokuru overwrites to absolute zero; Mokousagi neutralizes ownership, keeping type.
+      const pick=randomPlayerBoxes(state,step.count,b=>step.type==='absolute-zero'?b.type!=='absolute-zero':true),targets=new Set(pick.ids);
+      state={...state,rngState:pick.rngState,boxes:state.boxes.map(b=>!targets.has(b.id)?b:step.type==='absolute-zero'?assignBoxType(b,'absolute-zero'):{...b,owner:'neutral' as const})};
+      events.push({type:'enemy-box-changed',boxIds:pick.ids,boxType:step.type==='absolute-zero'?'absolute-zero':'neutral'});continue;
+    }
+    if(step.type==='rubble-drop'){
+      // 日本語: ゼロガード・X。ランダムな放出点からガレキの中立箱。リンク・形・トゲは発生しない受動的な落下。
+      // English: Zeroguard-X drops a neutral rubble box from a random emitter; passive, so no links, shapes or thorns.
+      const open=getDropOptions(state).filter(o=>o.available&&o.landing);if(!open.length){events.push({type:'enemy-wait',actor:'enemy'});continue;}
+      const roll=sampleUniformIndex(state.rngState,open.length),option=open[roll.index]!;let next=state.nextBoxId;while(state.boxes.some(b=>b.id===`drop:${next}`))next+=1;
+      const box={id:`drop:${next}`,...option.landing!,owner:'neutral' as const,type:'rubble' as const,status:'normal' as const};
+      state={...state,rngState:roll.rngState,nextBoxId:next+1,boxes:[...state.boxes,box]};
+      events.push({type:'drop',actor:'enemy',box,candidateId:option.id,spawn:option.spawn,landing:option.landing!,path:option.path});
+      const settled=settleBoxTypes(state.config.board,state.boxes);state={...state,boxes:settled.boxes};if(settled.crushed.length)events.push({type:'rubble-crushed',boxIds:settled.crushed});
+      continue;
     }
     const legal=getDropOptions(state).filter(o=>o.available);
     if(!legal.length){

@@ -89,6 +89,9 @@ function actionLabel(events: readonly BattleEvent[]): string {
   if (events.some(event => event.type === 'turn-start')) return events.some(event => event.type === 'drop') ? '手番開始の追加投入' : '手番開始';
   if (events.some(event => event.type === 'drop')) return '投入';
   if (events.some(event => event.type === 'enemy-box-changed'&&event.boxType==='poison')) return 'どく付与';
+  if (events.some(event => event.type === 'enemy-box-changed'&&event.boxType==='absolute-zero')) return '絶対零度';
+  if (events.some(event => event.type === 'enemy-box-changed'&&event.boxType==='neutral')) return '中立化';
+  if (events.some(event => event.type === 'drop'&&event.box.owner==='neutral'&&event.box.type==='rubble')) return 'ガレキ落下';
   if (events.some(event => event.type === 'enemy-box-changed')) return '凍結';
   if (events.some(event => event.type === 'enemy-wait')) return '待機';
   if (events.some(event => event.type === 'transformation')) return '変化';

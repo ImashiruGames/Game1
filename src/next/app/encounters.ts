@@ -34,13 +34,13 @@ export function validateEncounterTable(table:EncounterTable):void {
  }
  for(let stage=1;stage<=50;stage++)if(!table.bosses[stage]&&table.bands.filter(b=>stage>=b.from&&stage<=b.to).length!==1)throw new Error('Encounter bands have a gap or overlap');
 }
-/** 日本語: 深層の帯。届いた敵から順に差し替える（現時点は一部が既存上位種の仮置き）。
- * English: Deep bands, filled as new monsters arrive; some slots are provisional existing elites. */
+/** 日本語: 深層の帯（ユーザー提供の7体）。75・100階のボスは届くまで既存ボスの仮置き。
+ * English: Deep bands of the seven user-provided monsters; floors 75/100 keep provisional existing bosses. */
 export const deepEncounterV1:EncounterTable = freeze({
  bands:[
-  {id:'deep-1',from:51,to:74,pool:[{enemyId:'biribiriman',weight:3},{enemyId:'devilmon',weight:2},{enemyId:'shashark',weight:2},{enemyId:'rime-crown',weight:1}]},
-  {id:'deep-2',from:76,to:89,pool:[{enemyId:'biribiriman',weight:3},{enemyId:'shashark',weight:2},{enemyId:'briar-wheel',weight:2},{enemyId:'devilmon',weight:1}]},
-  {id:'deep-3',from:90,to:99,pool:[{enemyId:'biribiriman',weight:3},{enemyId:'shashark',weight:2},{enemyId:'rime-crown',weight:2}]},
+  {id:'deep-1',from:51,to:74,pool:[{enemyId:'biribiriman',weight:2},{enemyId:'hyokuru',weight:2},{enemyId:'hanabell',weight:2},{enemyId:'hinobou',weight:2},{enemyId:'hoshimimi',weight:2}]},
+  {id:'deep-2',from:76,to:89,pool:[{enemyId:'hanabell',weight:2},{enemyId:'hoshimimi',weight:2},{enemyId:'biribiriman',weight:2},{enemyId:'hyokuru',weight:2},{enemyId:'mokousagi',weight:2}]},
+  {id:'deep-3',from:90,to:99,pool:[{enemyId:'zeroguard-x',weight:3},{enemyId:'mokousagi',weight:1},{enemyId:'biribiriman',weight:1}]},
  ], bosses:{75:'speed-core',100:'mother-core'},
 });
 export function validateDeepEncounterTable(table:EncounterTable):void {

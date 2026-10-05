@@ -16,7 +16,7 @@ export function enemyActionLabel(intent: EnemyIntent): string {
   if (intent.type === 'drop') return '投入';
   if (intent.type === 'heal') return `HP+${intent.amount}`;
   if (intent.steps.length === 2 && intent.steps.every(step => step.type === 'drop')) return '投入×2';
-  return intent.steps.map(step => step.type === 'freeze' ? `凍結 最大${step.count}` : step.type==='drop'&&step.boxType==='thorn' ? 'トゲ投入' : step.type === 'fixed-damage' ? `固定${step.amount}` : step.type === 'wait' ? '待機' : '投入').join('→');
+  return intent.steps.map(step => step.type === 'freeze' ? `凍結 最大${step.count}` : step.type==='drop'&&step.boxType==='thorn' ? 'トゲ投入' : step.type==='drop'&&step.boxType==='shiny' ? '輝き投入' : step.type==='absolute-zero' ? `絶対零度 ${step.count}個` : step.type==='neutralize' ? `中立化 ${step.count}個` : step.type==='rubble-drop' ? 'ガレキ落下' : step.type === 'fixed-damage' ? `固定${step.amount}` : step.type === 'wait' ? '待機' : '投入').join('→');
 }
 
 /** The active plan may be a pre-action snapshot. Neither branch simulates a drop or advances RNG. */

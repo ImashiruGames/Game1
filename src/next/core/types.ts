@@ -7,7 +7,7 @@ export interface Cell { readonly row: number; readonly col: number }
 export type Actor = 'player' | 'enemy';
 export type Owner = Actor | 'neutral';
 export type CharacterId = 'blue' | 'red';
-export type EnemyId = 'marujiro' | 'hikikizan' | 'nigirin' | 'merarun' | 'speed-core' | 'mother-core' | 'twin-core' | 'needle-core' | 'frost-core' | 'thorn-core' | 'rime-crown' | 'briar-wheel' | 'devilmon' | 'shashark' | 'biribiriman';
+export type EnemyId = 'marujiro' | 'hikikizan' | 'nigirin' | 'merarun' | 'speed-core' | 'mother-core' | 'twin-core' | 'needle-core' | 'frost-core' | 'thorn-core' | 'rime-crown' | 'briar-wheel' | 'devilmon' | 'shashark' | 'biribiriman' | 'hyokuru' | 'hanabell' | 'zeroguard-x' | 'hoshimimi' | 'mokousagi' | 'hinobou';
 export type BoardSkillId = 'blue-crosscut' | 'blue-plumb' | 'red-frontline' | 'red-brand' | 'mint-diagonal' | 'mint-frame' | 'amber-squarepress' | 'amber-rubble' | 'violet-venom' | 'violet-sting' | 'silver-frostbind' | 'silver-thornwall' | 'rose-longcut' | 'rose-twincut' | 'imashiru-polish' | 'imashiru-reset' | 'pain-shared' | 'ember' | 'imashiru-insight' | 'mint-observe' | 'rose-slice' | 'amber-convert' | 'violet-poison' | 'silver-freeze' | 'blue-freeze' | 'red-capture' | 'imashiru-focus';
 export type ExpansionShapeId = 't-strike' | 'zigzag-strike' | 'cup-strike' | 'diamond-strike' | 'cross-strike';
 export type ExpansionLinkId = 'full-power' | 'foundation' | 'snake-line' | 'edge-strike' | 'siege' | 'crossfire' | 'last-stand';
@@ -55,7 +55,8 @@ export interface CombatantDefinition {
   readonly initialHp: number;
   readonly attacks: Readonly<Record<3 | 4 | 5, number>>;
 }
-export type EnemyStep = { readonly type: 'freeze'; readonly count: number } | { readonly type: 'drop'; readonly boxType?: 'thorn' } | { readonly type: 'fixed-damage'; readonly amount: number } | { readonly type: 'wait' };
+export type EnemyStep = { readonly type: 'freeze'; readonly count: number } | { readonly type: 'drop'; readonly boxType?: 'thorn' | 'shiny' }
+  | { readonly type: 'absolute-zero'; readonly count: number } | { readonly type: 'neutralize'; readonly count: number } | { readonly type: 'rubble-drop' } | { readonly type: 'fixed-damage'; readonly amount: number } | { readonly type: 'wait' };
 export interface EnemyPhaseState { readonly phase: 'normal' | 'critical'; readonly completedTurns: number }
 export type EnemyIntent = { readonly type: 'drop' } | { readonly type: 'heal'; readonly amount: number }
   | { readonly type: 'sequence'; readonly steps: readonly EnemyStep[]; readonly phase?: EnemyPhaseState['phase']; readonly phaseChanged?: boolean };
@@ -193,7 +194,7 @@ export interface HealEvent {
   readonly hpAfter: number;
   readonly shapeBoxIds?: readonly string[];
 }
-export type BattleEvent = { readonly type: 'enemy-box-changed'; readonly boxIds: readonly string[]; readonly boxType: 'frozen' | 'poison' } | DropEvent | AttackEvent | HealEvent
+export type BattleEvent = { readonly type: 'enemy-box-changed'; readonly boxIds: readonly string[]; readonly boxType: 'frozen' | 'poison' | 'absolute-zero' | 'neutral' } | DropEvent | AttackEvent | HealEvent
   | { readonly type: 'instant-skill'; readonly skillId: InstantSkillId; readonly rank: 1 | 2 }
   | { readonly type: 'gauge'; readonly before: number; readonly after: number; readonly amount: number; readonly source: 'link' | 'damage' | 'turn' }
   | { readonly type: 'transformation'; readonly character: CharacterId | 'imashiru'|'mint'|'amber'|'violet'|'silver'|'rose'; readonly before: number; readonly after: number; readonly cost: number }
