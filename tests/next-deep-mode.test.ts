@@ -46,7 +46,7 @@ test('a deep victory advances to deep floor 2 and saves under the deep rules',as
  const offerId=c.runSnapshot!.offer!.id;await c.chooseCategory(offerId,'heal');if(c.runSnapshot!.status==='reward')await c.chooseReward(offerId,'immediate-heal');
  const env=decodeSave(raw!);assert.equal(env.rules,DEEP_SAVE_RULES);validateCheckpoint(env.checkpoint);
  assert.equal(c.runSnapshot!.status,'active');assert.equal(c.runSnapshot!.stage,2);
- const e=bossLoopEncounter(2,'marujiro',defaultTuning,{version:DEEP_ENCOUNTER_VERSION,seed:7});assert.equal(c.snapshot.hp.enemy.max,e.maxHp);
+ const e=bossLoopEncounter(2,'marujiro',s.config.tuning!,{version:DEEP_ENCOUNTER_VERSION,seed:7});assert.equal(c.snapshot.hp.enemy.max,e.maxHp);
 });
 
 test('deep floor 50 clears the deep stage, says so, and restores as terminal',async()=>{

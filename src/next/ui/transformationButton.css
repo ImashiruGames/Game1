@@ -1,0 +1,11 @@
+/* 日本語: ラベルを読める半透明にし、使用可能時だけ3秒ごとに穏やかに発光。速度設定とは独立。
+   English: Keep translucent labels legible; pulse only when usable, every three real seconds regardless of battle speed. */
+.actions .transform-button{color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px}
+.actions .transform-button:disabled{opacity:.7;background:#21313f;box-shadow:none;animation:none}
+.actions .transform-button small{font-size:9px;line-height:1.15}
+.actions .transform-button[data-ready=true]:not(:disabled){opacity:1;box-shadow:0 0 0 1px #d1a5ef55;animation:transform-ready-pulse 3s ease-in-out infinite}
+@keyframes transform-ready-pulse{0%,40%,100%{box-shadow:0 0 0 1px #d1a5ef55}20%{box-shadow:0 0 12px 2px #d1a5ef99,inset 0 0 8px #e3beff33}}
+/* 日本語: 動き低減では明滅せず、静的な枠と「変化可能！」の文字を保つ。
+   English: Reduced motion uses a steady outline and explicit availability text instead of animation. */
+body[data-reduced-motion=true] .actions .transform-button[data-ready=true]:not(:disabled){animation:none;box-shadow:0 0 0 2px #d1a5ef,0 0 8px #d1a5ef55}
+@media(prefers-reduced-motion:reduce){.actions .transform-button[data-ready=true]:not(:disabled){animation:none;box-shadow:0 0 0 2px #d1a5ef,0 0 8px #d1a5ef55}}

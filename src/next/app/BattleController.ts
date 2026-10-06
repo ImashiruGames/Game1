@@ -50,6 +50,7 @@ export class BattleController {
   private runId: string = crypto.randomUUID();
   private persistence?: PersistenceHooks;
   private saveBlocked = false;
+  private initialStagePresented = false;
   private resumeReward?: PendingReward;
   private retryCheckpoint?: RunCheckpoint;
   private achievements?:RunAchievements;
@@ -71,7 +72,7 @@ export class BattleController {
     const data=freeze(structuredClone(checkpoint));
     const c=new BattleController(data.initialConfig,view,data.options,persistence);
     c.state=data.state;c.run=data.run;c.enemyOrder=data.enemyOrder;c.rewardRng=data.rewardRng;c.runId=data.runId;
-    c.resumeReward=data.pendingReward;c.achievements=data.achievements;
+    c.resumeReward=data.pendingReward;c.achievements=data.achievements;c.initialStagePresented=true;
     return c;
   }
 
@@ -96,11 +97,19 @@ export class BattleController {
   get runOrigin(): {seed:number;startStage:number;deep:boolean} {return {seed:this.initialConfig.seed,startStage:this.options.run?.startStage??1,deep:this.options.run?.encounterVersion==='deep-v2'};}
   get isResolving(): boolean { return this.resolving; }
 
-  async start(): Promise<void> {
+  async start(options:{showInitialStage?:boolean}={}): Promise<void> {
     if (this.destroyed || this.resolving || !this.beforeMutation()) return;
     const generation = this.generation;
     this.emit();
     if (generation !== this.generation || this.destroyed) return;
+    // 日本語: ラン開始時も同じSTAGE演出で入力をロック。復帰・二重startでは再生しない。
+    // English: Reuse the stage presentation at a new departure, locking input; never replay on restore or repeated start.
+    if(options.showInitialStage&&!this.initialStagePresented&&this.run?.stage===1){
+      this.initialStagePresented=true;this.resolving=true;this.emit();const signal=this.animation.signal;
+      try{await this.view.animateStageTransition?.(this.state,this.state,this.run,signal);}catch(error){if(!signal.aborted)this.report(error);}
+      if(!this.current(generation,signal))return;
+      this.resolving=false;this.emit();
+    }
     if(this.resumeReward){const intent=this.resumeReward;await this.chooseReward(intent.offerId,intent.rewardId,intent.replacement);return;}
     if(this.run?.offer?.category==='heal'){await this.chooseReward(this.run.offer.id,'immediate-heal');return;}
     const next = this.automaticAction();

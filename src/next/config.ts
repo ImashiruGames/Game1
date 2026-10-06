@@ -36,11 +36,14 @@ export function prepareTrialSetup(setup:TrialSetup):{config:BattleConfig;options
   // 日本語: 深層は1〜50階の別ステージ。出現表は deep-v2 に固定。English: Deep is its own 1–50 stage pinned to deep-v2.
   if(ending==='deep50'&&(stage<1||stage>50||route!=='boss-loop'))throw new Error('深層は1〜50階・ボス経路で開始してください');
   const encounterVersion=ending==='deep50'?'deep-v2':setup.encounterVersion==='legacy-v0'||ending==='legacy-endless'?undefined:setup.encounterVersion==='deep-v2'?'bands-v2':setup.encounterVersion??'bands-v2';
-  const encounter=route==='boss-loop'?bossLoopEncounter(stage,setup.firstEnemy,trialTuning,encounterVersion?{version:encounterVersion,seed:setup.seed}:undefined):endlessEncounter(stage,setup.firstEnemy,trialTuning);
+  // 日本語: 新規深層だけ毎階HP+15。保存済みランは凍結済みtuningを使い続ける。
+  // English: New deep runs gain 15 HP per floor; saved runs keep their frozen tuning.
+  const runTuning=ending==='deep50'?createTuning({...trialTuning,progression:{...trialTuning.progression,hpPerStage:15}}):trialTuning;
+  const encounter=route==='boss-loop'?bossLoopEncounter(stage,setup.firstEnemy,runTuning,encounterVersion?{version:encounterVersion,seed:setup.seed}:undefined):endlessEncounter(stage,setup.firstEnemy,trialTuning);
   const basic:TrialFixture=setup.fixture==='charged'||setup.fixture==='reward'?setup.fixture:'normal';
   const base=trialFixture(basic,setup.character,encounter.enemyId,setup.seed,setup.mode);
   const fixed='fixedDamageBonus'in encounter?encounter.fixedDamageBonus:0;
-  const config:BattleConfig={...base,frozenRule:'half-melt-v1',thornRule:'owner-safe-v2',enemyFixedDamageBonus:fixed,firstActor:bossFixture?'enemy':'player',initialEnemyTurnCount:setup.fixture==='speed-pulse'||setup.fixture==='mother-wait'?4:setup.fixture==='mother-double'?5:0,
+  const config:BattleConfig={...base,tuning:runTuning,frozenRule:'half-melt-v1',thornRule:'owner-safe-v2',enemyFixedDamageBonus:fixed,firstActor:bossFixture?'enemy':'player',initialEnemyTurnCount:setup.fixture==='speed-pulse'||setup.fixture==='mother-wait'?4:setup.fixture==='mother-double'?5:0,
     combatants:{...base.combatants,enemy:{...base.combatants.enemy,maxHp:encounter.maxHp,initialHp:basic==='reward'?1:setup.fixture==='mother-critical'?Math.max(1,Math.floor(encounter.maxHp*trialTuning.bosses.motherThresholdPercent/100)):encounter.maxHp,...('attacks'in encounter?{attacks:encounter.attacks}:{})}}};
   return {config,options:{run:{mode:'endless',rewards:true,rewardMode:'categories',...(route==='boss-loop'&&encounterVersion?{encounterVersion}:{}),route,startStage:stage,rotationStart:setup.firstEnemy,...(ending==='clear50'||ending==='deep50'?{finishAtStage:50}:{})}}};
 }

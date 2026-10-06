@@ -1,6 +1,6 @@
 import {paceScale,resolveBattlePace,type AnimationMotion} from './animationTimeline.ts';
 import {stageLabel} from './stageLabel.ts';
-/** 日本語: 報酬確定後のステージ移行だけに表示。render やセーブ復帰から再生しない。 */
+/** 日本語: 新規ラン開始と報酬確定後のステージ移行に表示。render やセーブ復帰から再生しない。 */
 /** Presentation only. Await from the committed stage-transition callback while input is locked. */
 export interface StageNumberEvent {
  readonly type:'stage-transition';
@@ -37,7 +37,7 @@ export function stageNumberIsShort(request:StageNumberRequest,systemReduced=fals
 }
 export function validStageNumberEvent(event:StageNumberEvent):boolean {
  return !!event&&event.type==='stage-transition'&&Number.isSafeInteger(event.fromStage)
-  &&Number.isSafeInteger(event.toStage)&&event.fromStage>=1&&event.toStage===event.fromStage+1&&event.toStage<=50;
+  &&Number.isSafeInteger(event.toStage)&&event.fromStage>=0&&event.toStage===event.fromStage+1&&event.toStage<=50;
 }
 function makeDialog(doc:Document,request:StageNumberRequest,short:boolean):HTMLDialogElement {
  const dialog=doc.createElement('dialog');
@@ -50,9 +50,10 @@ function makeDialog(doc:Document,request:StageNumberRequest,short:boolean):HTMLD
   +'<div class="snc-heading"><span class="snc-eyebrow">NEXT ENCOUNTER</span><span class="snc-route"></span></div>'
   +'<div class="snc-center" aria-hidden="true"><span class="snc-label">STAGE</span><div class="snc-number-frame"><span class="snc-bracket snc-bracket-left"></span><div class="snc-number-window"><strong class="snc-number snc-before"></strong><strong class="snc-number snc-after"></strong></div><span class="snc-bracket snc-bracket-right"></span></div><span class="snc-caption">次の戦闘へ</span></div>'
   +'<div class="snc-bottom"><span class="snc-progress" aria-hidden="true"></span><button class="snc-skip" type="button" aria-label="ステージ移行の演出を省略">タップで省略 <span aria-hidden="true">↵</span></button></div>';
- dialog.querySelector('.snc-before')!.textContent=String(request.event.fromStage);
+ dialog.querySelector('.snc-before')!.textContent=request.event.fromStage===0?'':String(request.event.fromStage);
  dialog.querySelector('.snc-after')!.textContent=String(request.event.toStage);
- dialog.querySelector('.snc-route')!.textContent=`${stageLabel(request.event.fromStage)} → ${stageLabel(request.event.toStage)}`;
+ dialog.querySelector('.snc-route')!.textContent=request.event.fromStage===0?`${stageLabel(1)} · ラン開始`:`${stageLabel(request.event.fromStage)} → ${stageLabel(request.event.toStage)}`;
+ if(request.event.fromStage===0)dialog.querySelector('.snc-caption')!.textContent='戦闘開始';
  return dialog;
 }
 

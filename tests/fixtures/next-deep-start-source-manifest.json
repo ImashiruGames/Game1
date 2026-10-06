@@ -1,0 +1,16 @@
+{
+  "revision": "deep-hp-start-1.13.4",
+  "baseCommit": "66c0b2f39d730bcc5037846d642fa50d0d7d8ca2",
+  "files": {
+    "public/docs/game1_content_catalog_next.html": "1e04cc620b9bbc92a083f76e4eaca0ce0ef454a7537b4705d61b370fd7a8ca83",
+    "public/docs/game1_content_catalog_next.json": "740ed399ad2b1437eafe5ae2099b8f7e3641226e6ffa2378be77a39d5a1e2b65",
+    "src/next/app/BattleController.ts": "a370848a0c6f6826b469d8bbc15fdd0d3ba1839718489392476fbf7caa8b8969",
+    "src/next/config.ts": "b93173bbc13d600133479243ed29dda2af3988295a4c8c83e3980da97162d35d",
+    "src/next/main.ts": "6e8b90740bd3eb39d2757f0c34a01af845ac68e33e226bdd13bb193917d6b2b7",
+    "src/next/ui/stageNumberCinematic.ts": "98fffddb181b30395daa4c7e59d68e0689f7490dd58cf4a67311755be9537e77",
+    "src/next/version.ts": "73eb66ad8e63d4abf4109545e3a091a425dce781af5a5e462dafdba483a15153",
+    "src/next/ui/transformationButton.ts": "8449ad1f4c13401ccf884ef905b6af84a2eb1da27448f46ba7df33d4cc0a50eb",
+    "src/next/ui/transformationButton.css": "80fd66f3e1d53161d027a40ed95179f22b571c61aa0b7eac7f51716f3e764ee0",
+    "src/next/ui/equippedBoardName.ts": "3f33ac42abeb6451fe1c94ac675d2b7c5555fc4b934ca3cf3dc7e6057e511a6f"
+  }
+}

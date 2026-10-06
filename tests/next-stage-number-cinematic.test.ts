@@ -20,7 +20,7 @@ test('9 → 10 and 49 → 50 use whole tabular numbers without emitting a 51st s
  const h=setup();t.after(h.restore);const c=createStageNumberCinematic();
  for(const from of [9,49]){const p=c.play(request(from,from));assert.equal(h.dialog().querySelector('.snc-after')!.textContent,String(from+1));h.win.tick(timing.total);assert.equal((await p).status,'completed');clean(h);}
  assert.equal((await c.play(request(50,50))).status,'invalid');clean(h);
- for(const [fromStage,toStage] of [[0,1],[5,7],[NaN,6],[5,Infinity],[5.1,6.1],[Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER+1]])assert.equal(validStageNumberEvent({type:'stage-transition',fromStage:fromStage!,toStage:toStage!}),false);
+ for(const [fromStage,toStage] of [[-1,0],[0,2],[5,7],[NaN,6],[5,Infinity],[5.1,6.1],[Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER+1]])assert.equal(validStageNumberEvent({type:'stage-transition',fromStage:fromStage!,toStage:toStage!}),false);
 });
 test('event IDs never replay during play, after completion, or following a UI reset',async t=>{
  const h=setup();t.after(h.restore);const c=createStageNumberCinematic();const id={};const p=c.play(request(id));
@@ -106,3 +106,12 @@ test('source is presentation-only; CSS clips the carousel and covers all reduced
  assert.equal(h.dialog().dataset.motion,'short');h.win.tick(1649);assert(c.active);h.win.tick(1);assert.equal((await p).status,'completed');clean(h);
  const p2=c.play({...request('slow-skip'),motion:{speed:'slow',short:false,lowMotion:true}});h.win.tick(200);h.doc.dispatchEvent(new Event('click',{cancelable:true}));h.win.tick(120);assert.equal((await p2).status,'skipped');clean(h);
  });
+
+test('initial stage displays1 without a fictional STAGE0 using every pace and reduced-motion mode',async t=>{
+ const h=setup();t.after(h.restore);const c=createStageNumberCinematic();
+ for(const speed of ['slow','medium','fast'] as const)for(const lowMotion of [false,true]){
+  const r={...request({},0),motion:{speed,short:false,lowMotion}},p=c.play(r);
+  assert.equal(h.dialog().querySelector('.snc-before')!.textContent,'');assert.equal(h.dialog().querySelector('.snc-after')!.textContent,'1');assert.match(h.dialog().querySelector('.snc-route')!.textContent??'',/STAGE 1/);assert.doesNotMatch(h.dialog().querySelector('.snc-route')!.textContent??'',/STAGE 0/);
+  h.win.tick(5000);assert.equal((await p).status,'completed');clean(h);
+ }
+});

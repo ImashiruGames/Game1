@@ -1,3 +1,6 @@
+import {equippedBoardName} from './ui/equippedBoardName.ts';
+import {transformationButton} from './ui/transformationButton.ts';
+import './ui/transformationButton.css';
 import {preserveBoardTargetFocus} from './ui/boardFocus.ts';
 import {stageLabel,setDeepStage} from './ui/stageLabel.ts';
 import {controlIcon} from './ui/controlIcons.ts';
@@ -9,7 +12,7 @@ import {transformationIdentity} from './ui/transformationIdentity.ts';
 import {isTerminalRun} from './app/BattleRun.ts';
 import {canRetireCheckpoint,prepareRetiredCheckpoint} from './app/saveCheckpoint.ts';
 import {boardSkillName} from './ui/kitInformation.ts';
-import {kitBoardDefinition,kitBoardCatalog,isKitBoard,kitBoardTargets,canUseKitBoard,kitBoardOrientations} from './core/kitBoards.ts';
+import {kitBoardDefinition,isKitBoard,kitBoardTargets,canUseKitBoard,kitBoardOrientations} from './core/kitBoards.ts';
 import type {BoardTarget} from './core/kitBoards.ts';
 import {PRESENTATION_VERSION} from './version.ts';
 import {reconcileSavedProgress} from './meta/reconciliation.ts';
@@ -245,7 +248,7 @@ function renderActions(s:BattleState):void{
   if(selected?.kind==='drop'){
    hint='着地点を確認してください';
   }
-  markup=button(s.config.meta&&kitBoardCatalog[s.config.meta.board]?kitBoardCatalog[s.config.meta.board]!.name:s.config.meta?.board==='imashiru-insight'?'いま、知りたい！':getAvailableBoardSkills(s)[0]==='ember'?'ほむらの火種':'痛みはお互いに','data-board="true"',!can||!getAvailableBoardSkills(s).length)+button('変化する','data-transform="true" class="transform-button"',!can||!canManualTransform(s))+button(controlIcon('settings'),'data-details="true" class="settings-icon-button" aria-label="スキルと設定" title="スキルと設定"');
+  markup=button(escape(equippedBoardName(s.config)),'data-board="true"',!can||!getAvailableBoardSkills(s).length)+transformationButton(s,can)+button(controlIcon('settings'),'data-details="true" class="settings-icon-button" aria-label="スキルと設定" title="スキルと設定"');
  }
  if(locked)hint='解決中…';else if(s.result)hint=currentRun?.status==='reward'?'撃破報酬を選択':s.result.winner==='enemy'?'ラン終了':'撃破';else if(s.actor==='enemy')hint='相手の手番';
  // 日本語: 盤面の着地点・白い行選択を残し、投入と行消去の予測欄は省く。
@@ -366,7 +369,7 @@ const view:BattleView={
  }),
  async animateStageTransition(_before,after,run,signal){
   boardSkillPresentation.clear();energyLinks.clear();
-  last=`${stageLabel(run.stage)} · 次の戦闘`;render(after,true,run);
+  last=`${stageLabel(run.stage)} · ${run.stage===1?'ラン開始':'次の戦闘'}`;render(after,true,run);
   const restored=suppressRestoredTransitionTo===run.stage;if(restored)suppressRestoredTransitionTo=null;
   await stageNumberCinematic.play({eventId:after,event:{type:'stage-transition',fromStage:run.stage-1,toStage:run.stage},restored,signal,motion:presentationMotion()});
  },
@@ -484,7 +487,7 @@ async function newRun(setup=initialSetup):Promise<void>{
  if(save.hasExisting&&!save.latest&&!window.confirm('読めないセーブを退避して新しいランを始めますか？元の保存を端末内に1世代残します。'))return;
  const active=save.latest?.checkpoint.run&&!isTerminalRun(save.latest.checkpoint.run);
  if(active&&!window.confirm('進行中のランを終了し新しいランに置き換えますか？途中終了では成長報酬は獲得できません。'))return;
- try{reconcileSavedSettlement();const next=new BattleController(setup.config,view,setup.options,persistence);const checkpoint=setup.config.meta?next.exportCheckpoint():null;if(save.hasExisting)localStorage.setItem(SAVE_KEY+'.previous-run-backup',localStorage.getItem(SAVE_KEY)!);if(checkpoint){profileStore!.register(checkpoint);save.write(checkpoint);}home.hide();controller?.destroy();controller=next;selected=null;view.reset?.();void musicScene.enterBattle(controller.snapshot.config.enemyId);await controller.start();if(!controller.persistenceBlocked)saveDialog.close();}
+ try{reconcileSavedSettlement();const next=new BattleController(setup.config,view,setup.options,persistence);const checkpoint=setup.config.meta?next.exportCheckpoint():null;if(save.hasExisting)localStorage.setItem(SAVE_KEY+'.previous-run-backup',localStorage.getItem(SAVE_KEY)!);if(checkpoint){profileStore!.register(checkpoint);save.write(checkpoint);}home.hide();controller?.destroy();controller=next;selected=null;view.reset?.();void musicScene.enterBattle(controller.snapshot.config.enemyId);await controller.start({showInitialStage:true});if(!controller.persistenceBlocked)saveDialog.close();}
  catch(error){saveRecovery='boot';reportSaveError(error);}
 }
 saveDialog.addEventListener('cancel',event=>event.preventDefault());

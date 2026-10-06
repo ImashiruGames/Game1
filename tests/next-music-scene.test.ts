@@ -55,5 +55,5 @@ test('actual navigation uses explicit scenes and battle renders cannot select mu
  assert.match(main,/function render\([\s\S]*?musicScene\.updateBattle\(s\.config\.enemyId\)/);
  assert.doesNotMatch(main,/audio\.setMusicAsset|musicForEnemy/);
  assert.match(main,/continue\(\)\{saveDialog.close\(\);void musicScene.enterBattle\(controller.snapshot.config.enemyId\);void controller.start\(\)/);
- assert.match(main,/view.reset\?\.\(\);void musicScene.enterBattle\(controller.snapshot.config.enemyId\);await controller.start\(\)/);
+ assert.match(main,/view.reset\?\.\(\);void musicScene.enterBattle\(controller.snapshot.config.enemyId\);await controller.start\(\{showInitialStage:true\}\)/);
 });
