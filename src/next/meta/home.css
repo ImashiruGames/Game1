@@ -97,3 +97,12 @@ body[data-reduced-motion=true] #meta-panel .tree-dots i.pulse{animation:none}
 #meta-panel .departure-deep-note{display:flex;gap:10px;align-items:baseline;margin:0 0 12px;padding:10px 12px;background:linear-gradient(110deg,#141c28,#24344a);color:#cfe3f2!important;border-radius:2px 2px 12px 2px;font-size:12px}
 #meta-panel .departure-deep-note b{font:700 11px ui-monospace,monospace;letter-spacing:.12em;color:#79d4f0;white-space:nowrap}
 #meta-panel[data-route=deep] .departure-actions [data-departure-confirm]{background:linear-gradient(110deg,#141c28,#2c4260)!important}
+/* 日本語: 低い画面では立ち絵内の育成入口に必要な高さを確保し、ホーム全体をスクロールする。出発ボタンを入口へ重ねない。
+   English: Reserve room for preparation controls on short screens; scroll the home instead of overlapping them with departure. */
+@media(max-height:600px) and (max-width:699px){
+ #meta-home{overflow-y:auto;overflow-x:hidden;grid-template-rows:42px minmax(300px,1fr) 54px 18px 64px auto 0;align-content:start}
+}
+@media(max-height:600px) and (min-width:700px){
+ #meta-home{overflow-y:auto;overflow-x:hidden;grid-template-rows:50px minmax(390px,1fr) 65px 25px;align-content:start}
+ .home-departure{position:relative;bottom:auto;right:auto;width:auto;grid-column:2;grid-row:2;align-self:end;margin-bottom:15px}
+}

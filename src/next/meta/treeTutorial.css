@@ -1,0 +1,16 @@
+/* 日本語: 既存の台詞・光る目印を再利用。小画面でも対象と閉じる操作を塞がない。
+   English: Reuse speech/glow assets and keep controls reachable on small screens. */
+#meta-panel .tree-tutorial{position:fixed;top:0;left:12px;transform:none;width:100%;margin:0 0 12px;z-index:5;max-height:45dvh;overflow:auto}
+#meta-panel .tree-tutorial .tutorial-foot{flex-wrap:wrap}
+#meta-panel .meta-tree article{scroll-margin-top:210px;scroll-margin-bottom:30px}
+#meta-panel .tree-tutorial button{min-height:40px}
+#meta-panel .tree-tutorial .tutorial-text{font-size:14px}
+body[data-reduced-motion=true] #meta-panel .tutorial-glow{animation:none}
+
+#meta-panel .tree-tutorial p{color:#eef3f6} #meta-panel .tree-tutorial .tutorial-next{background:var(--gold,#f4c77b);color:#27241d} #meta-panel .tree-tutorial{padding-top:max(8px,env(safe-area-inset-top));padding-bottom:max(8px,env(safe-area-inset-bottom))}
+
+#meta-panel .tree-tutorial{background:#0d1822;border-radius:12px}
+#meta-panel .tree-tutorial .tutorial-head{gap:5px;flex-wrap:wrap}
+#meta-panel .tree-tutorial .tutorial-who{white-space:nowrap}
+#meta-panel .tree-tutorial .tutorial-skip{background:transparent;color:#b9c8d1;border:1px solid #7d8e99;border-radius:6px;font-size:11px;padding:2px 8px;min-height:32px}
+#meta-panel .tree-tutorial .tutorial-count{white-space:nowrap}

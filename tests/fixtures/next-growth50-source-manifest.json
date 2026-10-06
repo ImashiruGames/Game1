@@ -1,0 +1,20 @@
+{
+  "revision": "growth-level50-1.13.3",
+  "baseCommit": "a4e695299023d7c82b35ddec385d6aae30aea0b5",
+  "scope": "Lv50, graduated growth and board costs, one-time respec and tree tutorial; combat rules unchanged",
+  "files": {
+    "public/docs/game1_content_catalog_next.html": "ad2b6ba4359b48cc5e20c0d21a615ee8e234d53a53c7de22dd6e48b5f85bbb9d",
+    "public/docs/game1_content_catalog_next.json": "1a487bccaf185eb98fe44e6118d3d692a314012196c58219593eeddb4b88b078",
+    "scripts/docs/build-player-guide.mts": "74f3dc53315ca0c716968d96e9f9df4c68f28f5a15f6703591cffe0a67f21e15",
+    "src/next/core/validation.ts": "30c81a1af7ebf934525b0f3021b17aebaedf0c91832fb558b9e63d60efde9812",
+    "src/next/meta/home.ts": "c19ccef7db97203954b4a8e47f84af1955bdb0da0e4d4e9c4768526d1e47abbf",
+    "src/next/meta/profile.ts": "d8e3e0a4b90b6f51a8919691c65e618e534cd7ae3065e81e6298ffbe99e5e12d",
+    "src/next/version.ts": "7f33a34c5d055cfe20715f8c230b3290c081a2128eadcc3bfb1ab369eebfbb37",
+    "src/next/meta/treePricing.ts": "a1149806fe45cdbc9875c77264c13fc262430fe4bfa3709534ce246561e440f5",
+    "src/next/meta/boardUnlockStages.ts": "a9d0bf70391cfe75e897975b1dfc4b99d787dce72e56081880f59ca5c2608ef9",
+    "src/next/meta/treeTutorial.ts": "662f8b88d7e041e396a367133b00eca0516bea3d80676a2f43b3a5cf90fa2018",
+    "src/next/meta/treeTutorialPlacement.ts": "0f55dd6b95673b8731c00cc6ddaab13ba912c196ec0b59020adbf6976c8fd221",
+    "src/next/meta/treeTutorial.css": "92a391d9a822a279f4942dcf39f9bbe05892c43e928033792e382b5def670efa",
+    "src/next/meta/home.css": "e94249ed49761ff3aa95798415d0e4094cf5ef851179487ba8e253810dd3ef13"
+  }
+}

@@ -1,3 +1,5 @@
+import {boardUnlockStages,sequentialBoardChoices} from '../meta/boardUnlockStages.ts';
+import {paidTreePoints} from '../meta/treePricing.ts';
 import { enemyRoster } from './monsters.ts';
 import {validateKitBalance,validateBoardBalance,kitBalanceOf} from '../meta/kitBalance.ts';
 import {BOARD_CATALOG_VERSION,characterBoardChoices,legacyBoardChoices} from '../meta/kits.ts';
@@ -56,12 +58,13 @@ export function validateConfig(config: BattleConfig): void {
     require(m.boardCatalogVersion===undefined?m.boardBalance===undefined:m.kitVersion===2&&m.boardBalance!==undefined,'board balance requires current catalog');
     if(m.boardBalance!==undefined)validateBoardBalance(m.boardBalance);
     require((m.kitVersion===undefined||m.kitVersion===2)&&m.version===1&&isRosterId(m.rosterId)&&roster[m.rosterId].archetype===config.characterId,'invalid roster identity');
-    require(Number.isSafeInteger(m.level)&&m.level>=1&&m.level<=30&&typeof m.eligible==='boolean','invalid progression snapshot');
+    require(Number.isSafeInteger(m.level)&&m.level>=1&&m.level<=(m.treeCostVersion===2?50:30)&&typeof m.eligible==='boolean','invalid progression snapshot');
     require(!!m.tree&&['three','four','five','slots','board'].every(k=>Number.isSafeInteger(m.tree[k as keyof typeof m.tree])&&(m.tree[k as keyof typeof m.tree]??-1)>=0),'invalid tree');
     require(m.slots===2+m.tree.slots&&m.slots>=2&&m.slots<=4,'invalid slot capacity');
-    require([m.tree.three,m.tree.four,m.tree.five].every(n=>n<=5+(m.treeVersion===2?Math.floor(m.level/5):0))&&m.tree.board<=1&&(m.tree.rewardHeal===undefined||Number.isSafeInteger(m.tree.rewardHeal)&&m.tree.rewardHeal>=0&&m.tree.rewardHeal<=(m.treeVersion===2?5+Math.floor(m.level/5):0)),'invalid tree ranks');
-    require((m.tree.rewardHeal??0)+m.tree.three+m.tree.four+m.tree.five+3*m.tree.slots+3*m.tree.board<=2+(m.level-1)*2,'overspent tree');
-    const allowedBoards=m.boardCatalogVersion===BOARD_CATALOG_VERSION?characterBoardChoices(m.rosterId,!!m.tree.board):legacyBoardChoices(m.rosterId,!!m.tree.board,m.kitVersion===2);require(allowedBoards.includes(m.board),'locked board skill');
+    require([m.tree.three,m.tree.four,m.tree.five].every(n=>n<=5+(m.treeVersion===2?Math.floor(m.level/5):0))&&m.tree.board<=(m.treeCostVersion===2?boardUnlockStages(m.rosterId).filter(s=>s.skill).length:1)&&(m.tree.rewardHeal===undefined||Number.isSafeInteger(m.tree.rewardHeal)&&m.tree.rewardHeal>=0&&m.tree.rewardHeal<=(m.treeVersion===2?5+Math.floor(m.level/5):0)),'invalid tree ranks');
+    require(m.treeCostVersion===undefined||m.treeCostVersion===2,'invalid tree pricing');
+    require(paidTreePoints(m.tree,m.treeCostVersion)<=2+(m.level-1)*2,'overspent tree');
+    const allowedBoards=m.boardCatalogVersion===BOARD_CATALOG_VERSION?(m.treeCostVersion===2?sequentialBoardChoices(m.rosterId,m.tree.board):characterBoardChoices(m.rosterId,!!m.tree.board)):legacyBoardChoices(m.rosterId,!!m.tree.board,m.kitVersion===2);require(allowedBoards.includes(m.board),'locked board skill');
     require(Array.isArray(m.pool)&&m.pool.length>=6&&m.pool.length<=20&&new Set(m.pool).size===m.pool.length&&m.pool.every(id=>normalSkillIds.includes(id)&&skillCatalog[id].rewardAccess!=='never'&&(skillCatalog[id].rewardAccess!=='starter-upgrade-only'||roster[m.rosterId].starter===id)),'invalid frozen reward pool');
   }
   if (config.initialBuild) validatePlayerBuild(config.initialBuild, config);

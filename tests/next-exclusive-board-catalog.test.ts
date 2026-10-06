@@ -1,3 +1,4 @@
+import {boardUnlockStages} from '../src/next/meta/boardUnlockStages.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createProfile,availableBoards,freezeRunMeta,migrateProfile,validateProfile,ProfileStore} from '../src/next/meta/profile.ts';
@@ -16,7 +17,7 @@ import {encodeSave,decodeSave} from '../src/next/app/saveCheckpoint.ts';
 import type {BoardSkillId,Box,BattleConfig} from '../src/next/core/types.ts';
 import type {BoardTarget} from '../src/next/core/kitBoards.ts';
 const b=(row:number,col:number,owner:Box['owner']='enemy',type:Box['type']='normal',poisonSource?:Box['poisonSource']):Box=>({id:`${row}:${col}`,row,col,owner,type,status:'normal',...(poisonSource?{poisonSource}:{})});
-function setup(id:RosterId,board:BoardSkillId){const p=createProfile(7);p.ownedCharacters=[...rosterIds];p.characters[id].xp=100;p.characters[id].tree.board=1;p.characters[id].board=board;return prepareDeparture(freezeRunMeta(p,id,false),23);}
+function setup(id:RosterId,board:BoardSkillId){const p=createProfile(7);p.ownedCharacters=[...rosterIds];p.characters[id].xp=25480;p.characters[id].tree.board=boardUnlockStages(id).filter(s=>s.skill).length;p.characters[id].board=board;return prepareDeparture(freezeRunMeta(p,id,false),23);}
 function config(id:RosterId,board:BoardSkillId,boxes:Box[],gauge=100):BattleConfig{return {...setup(id,board).config,initialBoxes:boxes,initialGauge:gauge};}
 const cases:{id:RosterId;board:typeof expandedBoardIds[number];boxes:Box[];target:BoardTarget;remove?:true;owner?:Box['owner'];type?:Box['type'];source?:Box['poisonSource']}[]=[
  {id:'blue',board:'blue-crosscut',boxes:[b(3,2),b(4,1,'player'),b(4,2,'neutral'),b(4,3),b(5,2)],target:{row:3,col:2},remove:true},
@@ -38,7 +39,7 @@ const cases:{id:RosterId;board:typeof expandedBoardIds[number];boxes:Box[];targe
 ];
 test('all eight characters receive two genuinely exclusive new unlocks and keep their native starters',()=>{
  assert.equal(new Set(Object.values(UNLOCK_BOARDS).flat()).size,16);
- for(const id of rosterIds){const p=createProfile(1),c=p.characters[id];assert.deepEqual(availableBoards(c.tree,id),[roster[id].board]);assert.equal(c.board,NATIVE_BOARDS[id]);c.tree.board=1;
+ for(const id of rosterIds){const p=createProfile(1),c=p.characters[id];assert.deepEqual(availableBoards(c.tree,id),[roster[id].board]);assert.equal(c.board,NATIVE_BOARDS[id]);c.tree.board=boardUnlockStages(id).filter(s=>s.skill).length;
   const choices=availableBoards(c.tree,id);assert.equal(choices.length,EXTRA_BOARDS[id]?4:3);assert(UNLOCK_BOARDS[id].every(b=>choices.includes(b)));
   for(const other of rosterIds.filter(x=>x!==id))for(const board of [...UNLOCK_BOARDS[other],NATIVE_BOARDS[other]])assert(!choices.includes(board),`${id} must not borrow ${board}`);
   for(const board of choices)assert(isCharacterBoard(board,id));
@@ -84,17 +85,17 @@ test('new departures detach the complete board snapshot and resume the exact sel
  assert.equal(s.config.meta!.boardCatalogVersion,BOARD_CATALOG_VERSION);assert(Object.isFrozen(s.config.meta!.boardBalance!.boards));assert.equal(encodeSave(restored.exportCheckpoint(),1,1),raw);assert.equal(kitBoardDefinition(s.config,'imashiru-polish')!.gauge,7);const r=applyAction({...s,shinyNextDrop:true},{type:'board-skill',skillId:'imashiru-polish',target:{row:7,col:0}});assert(r.accepted);assert.equal(r.resolution!.events.find(e=>e.type==='gauge-spent')!.amount,7);assert(r.state.shinyNextDrop);assert.equal(CURRENT_BOARD_BALANCE.boards['imashiru-polish'].gauge,65);
 });
 const foreign:Record<RosterId,BoardSkillId>={blue:'ember',red:'pain-shared',mint:'ember',amber:'pain-shared',violet:'ember',silver:'ember',rose:'pain-shared',imashiru:'pain-shared'};
-function oldProfile():Profile{const p=createProfile(55);delete p.boardCatalogVersion;p.coins=1234;p.energy=4;p.ownedCharacters=[...rosterIds];for(const id of rosterIds){p.characters[id].xp=777;p.characters[id].tree.board=1;p.characters[id].board=foreign[id];}p.trophies={'clear50:first':42};p.receipts['prior-run']={runId:'prior-run',character:'blue',xp:10,coins:5,defeated:1,clear:false,trophies:[],at:2};p.launches['active-run']={character:'blue',snapshot:'unchanged-old-run-snapshot'};return p;}
+function oldProfile():Profile{const p=createProfile(55);delete p.growthVersion;for(const c of Object.values(p.characters))delete c.treeCostVersion;delete p.boardCatalogVersion;p.coins=1234;p.energy=4;p.ownedCharacters=[...rosterIds];for(const id of rosterIds){p.characters[id].xp=777;p.characters[id].tree.board=1;p.characters[id].board=foreign[id];}p.trophies={'clear50:first':42};p.receipts['prior-run']={runId:'prior-run',character:'blue',xp:10,coins:5,defeated:1,clear:false,trophies:[],at:2};p.launches['active-run']={character:'blue',snapshot:'unchanged-old-run-snapshot'};return p;}
 test('saved cross-character selections migrate once without losing XP, currency, ranks or old run records',()=>{
  const p=oldProfile(),raw=JSON.stringify(p);validateProfile(p);const n=migrateProfile(p);assert.equal(JSON.stringify(p),raw);assert.equal(n.boardCatalogVersion,2);assert.equal(migrateProfile(n),n);
- for(const id of rosterIds){assert.equal(n.characters[id].board,roster[id].board);assert.deepEqual({...n.characters[id],board:p.characters[id].board},p.characters[id]);}
- const {boardCatalogVersion:_v,characters:_c,...other}=n,{characters:_old,...prior}=p;assert.deepEqual(other,prior);assert.equal(freezeRunMeta(p,'blue',true).board,'pain-shared');
- const own=oldProfile();own.characters.red.board='red-capture';assert.equal(migrateProfile(own).characters.red.board,'red-capture');
+ for(const id of rosterIds){assert.equal(n.characters[id].board,roster[id].board);assert.equal(n.characters[id].xp,p.characters[id].xp);assert(Object.values(n.characters[id].tree).every(rank=>rank===0));}
+ const {growthVersion:_g,boardCatalogVersion:_v,characters:_c,...other}=n,{characters:_old,...prior}=p;assert.deepEqual(other,prior);assert.equal(freezeRunMeta(p,'blue',true).board,'pain-shared');
+ const own=oldProfile();own.characters.red.board='red-capture';assert.equal(migrateProfile(own).characters.red.board,'ember');
 });
 class Storage {data=new Map<string,string>();failOnMain=false;getItem(k:string){return this.data.get(k)??null;}setItem(k:string,v:string){if(this.failOnMain&&!k.endsWith('.before-board-catalog-v2'))throw new Error('write failed');this.data.set(k,v);}}
 test('profile read backs up exact pre-catalog bytes and migration write failure preserves the usable old profile',()=>{
  const p=oldProfile(),raw=JSON.stringify(p),storage=new Storage(),store=new ProfileStore(storage,()=>true);storage.data.set(store.key,raw);storage.failOnMain=true;assert.throws(()=>store.read());assert.equal(storage.getItem(store.key),raw);assert.equal(storage.getItem(store.key+'.before-board-catalog-v2'),raw);storage.failOnMain=false;const restored=new ProfileStore(storage,()=>true).read();validateProfile(restored);assert.equal(restored.coins,p.coins);assert.equal(restored.characters.blue.board,'pain-shared');assert.deepEqual(restored.launches,p.launches);
 });
 test('legacy active runs keep borrowed boards and serialize byte-for-byte while future departures migrate',()=>{
- const x=setup('blue','blue-plumb'),meta={...x.config.meta!,boardCatalogVersion:undefined,boardBalance:undefined,board:'ember' as const},legacy={...x.config,meta},controller=new BattleController(legacy,{render(){},async animate(){}},x.options),cp=controller.exportCheckpoint(),raw=encodeSave(cp,1,1);const p=oldProfile();p.launches[cp.runId]={character:'blue',snapshot:JSON.stringify(meta)};const migrated=migrateProfile(p);assert.equal(migrated.launches[cp.runId]!.snapshot,JSON.stringify(meta));assert.equal(encodeSave(decodeSave(raw).checkpoint,1,1),raw);const restored=BattleController.restore(decodeSave(raw).checkpoint,{render(){},async animate(){}});assert.equal(restored.snapshot.config.meta!.board,'ember');assert.equal(restored.snapshot.config.meta!.boardCatalogVersion,undefined);assert.equal(freezeRunMeta(migrated,'blue',true).board,'pain-shared');
+ const x=setup('blue','blue-plumb'),meta={...x.config.meta!,treeCostVersion:undefined,level:30,tree:{...x.config.meta!.tree,board:1},boardCatalogVersion:undefined,boardBalance:undefined,board:'ember' as const},legacy={...x.config,meta},controller=new BattleController(legacy,{render(){},async animate(){}},x.options),cp=controller.exportCheckpoint(),raw=encodeSave(cp,1,1);const p=oldProfile();p.launches[cp.runId]={character:'blue',snapshot:JSON.stringify(meta)};const migrated=migrateProfile(p);assert.equal(migrated.launches[cp.runId]!.snapshot,JSON.stringify(meta));assert.equal(encodeSave(decodeSave(raw).checkpoint,1,1),raw);const restored=BattleController.restore(decodeSave(raw).checkpoint,{render(){},async animate(){}});assert.equal(restored.snapshot.config.meta!.board,'ember');assert.equal(restored.snapshot.config.meta!.boardCatalogVersion,undefined);assert.equal(freezeRunMeta(migrated,'blue',true).board,'pain-shared');
 });
