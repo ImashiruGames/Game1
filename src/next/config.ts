@@ -1,8 +1,9 @@
+import {revisedSkillTuning} from './core/tuning.ts';
 import { createCharacterBattleConfig, defaultConfig, createTuning } from './core/index.ts';
 import type { BattleConfig, CharacterId, EnemyId } from './core/types.ts';
 /** 日本語: 今回の試作値を一箇所に集約。旧方式は引き続き選択可能。
  * English: Trial numbers are injected data; the original automatic strategy remains selectable. */
-export const trialTuning = createTuning({ gauge: { bands: { 3: 2, 4: 4, 5: 6, sixPlus: 30 } }, rewards: { immediateHeal: 10, maxHp: 5, threePower: 1, fourPower: 2, fivePower: 3 } });
+export const trialTuning = createTuning({ ...revisedSkillTuning, gauge: { bands: { 3: 2, 4: 4, 5: 6, sixPlus: 30 } }, rewards: { immediateHeal: 10, maxHp: 5, threePower: 1, fourPower: 2, fivePower: 3 } });
 export function createTrialConfig(character: CharacterId = 'blue', enemy: EnemyId = 'marujiro', base: BattleConfig = defaultConfig, mode: 'manual' | 'automatic' = 'manual'): BattleConfig {
   const config = createCharacterBattleConfig(character, enemy, base);
   return { ...config, strategy: { transformation: mode === 'manual' ? 'manual-charge' : 'automatic-link', gauge: mode === 'manual' ? 'bands' : 'per-box' }, tuning: trialTuning };

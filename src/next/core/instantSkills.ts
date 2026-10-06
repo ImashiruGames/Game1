@@ -1,5 +1,5 @@
 import {assignBoxType} from './boxTypes.ts';
-import {gainGauge} from './gauge.ts';
+import {gainGauge,gaugeDefinition} from './gauge.ts';
 import { tuningOf } from './tuning.ts';
 import { applyDamageEffect, applyHealingEffect } from './effectDispatcher.ts';
 import { basePlayerPower, useBuildSlot } from './playerBuild.ts';
@@ -11,7 +11,7 @@ export function resolveInstantSkill(state: BattleState, slot: number): BattleTra
   const id = skill.id as InstantSkillId; const value = skillValue(id, skill.rank, tuningOf(state.config));
   const consumed = { ...state, build };
   let result:BattleTransition;
-  if(id==='capacitor')result=gainGauge(consumed,value,'turn');
+  if(id==='capacitor')result=gainGauge(consumed,tuningOf(state.config).skillRevision===2?Math.floor((gaugeDefinition(state.config.characterId,tuningOf(state.config))?.cap??0)*value/100):value,'turn');
   else if(id==='solvent'){
     const ids=new Set(consumed.boxes.filter(b=>b.owner==='player'&&['poison','deadly-poison','frozen'].includes(b.type)).sort((a,b)=>a.row-b.row||a.col-b.col).slice(0,value).map(b=>b.id));
     result={state:{...consumed,boxes:consumed.boxes.map(b=>ids.has(b.id)?assignBoxType(b,'normal'):b)},events:[]};

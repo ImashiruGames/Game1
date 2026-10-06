@@ -7,6 +7,7 @@ const esc=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAl
 /** 日本語: 形とリンク数だけの定幅カード。条件付きリンクも最低成立数を表示し、詳細で条件を読む。
  * English: Fixed-size silhouettes show the shape or minimum link length; details retain exact conditions. */
 export function skillMiniArt(id:NormalSkillId):string {
+ if(id==='foundation')return rewardIconHtml('muscle');
  const definition=skillCatalog[id];
  if(definition.pattern)return rewardShapeHtml(definition.pattern);
  if(definition.kind==='link')return `<span class="skill-link-number" aria-hidden="true">${id==='heavy-swing'||id==='snake-line'?'5+':id==='exact-four'?'4':'3+'}</span>`;

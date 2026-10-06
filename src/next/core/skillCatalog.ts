@@ -1,6 +1,6 @@
 import { cornerPattern, plusPattern, squarePattern, tPattern, zigzagPattern, cupPattern, diamondPattern, crossPattern, rescueKitPattern } from './shapePatterns.ts';
 import type { ShapePattern } from './shapePatterns.ts';
-import { defaultTuning } from './tuning.ts';
+import { defaultTuning,revisedSkillTuning } from './tuning.ts';
 import type { GameTuning } from './tuning.ts';
 import { freeze } from './immutable.ts';
 import type { NormalSkillId } from './types.ts';
@@ -21,7 +21,7 @@ export const skillCatalog: Readonly<Record<NormalSkillId, SkillDefinition>> = fr
   'zigzag-strike':{id:'zigzag-strike',name:'稲妻打ち',kind:'shape',pattern:zigzagPattern},
   'cup-strike':{id:'cup-strike',name:'コの字打ち',kind:'shape',pattern:cupPattern},
   'diamond-strike':{id:'diamond-strike',name:'ひし形打ち',kind:'shape',pattern:diamondPattern},
-  'cross-strike':{id:'cross-strike',name:'X字打ち',kind:'shape',pattern:crossPattern},
+  'cross-strike':{id:'cross-strike',name:'Xエナジー',kind:'shape',pattern:crossPattern},
   'full-power':{id:'full-power',name:'フルパワー',kind:'link'},
   foundation:{id:'foundation',name:'縁の下の力持ち',kind:'link'},
   'snake-line':{id:'snake-line',name:'長蛇の列',kind:'link'},
@@ -51,7 +51,7 @@ export const legacyNormalSkillIds: readonly NormalSkillId[] = ['poison-craft','h
 export const normalSkillIds = [...legacyNormalSkillIds,...(Object.keys(skillCatalog) as NormalSkillId[]).filter(id=>!legacyNormalSkillIds.includes(id))];
 export function skillName(id: NormalSkillId, rank: 1 | 2): string { return skillCatalog[id].name + (rank === 2 && skillCatalog[id].upgradeable !== false ? '＋' : ''); }
 export function skillValue(id: NormalSkillId, rank: 1 | 2, tuning: GameTuning = defaultTuning): number { return id==='poison-craft'?1:(tuning.skills[id] ?? defaultTuning.skills[id])![rank - 1]!; }
-export function skillDescription(id: NormalSkillId, rank: 1 | 2, tuning: GameTuning = defaultTuning): string {
+export function skillDescription(id: NormalSkillId, rank: 1 | 2, tuning: GameTuning = revisedSkillTuning): string {
   const n = skillValue(id, rank, tuning);
   switch (id) {
     case 'heavy-swing': return `5個以上の各リンクに現在の5リンク基礎火力×${n / 100}を加算（端数切捨て）`;
@@ -66,18 +66,18 @@ export function skillDescription(id: NormalSkillId, rank: 1 | 2, tuning: GameTun
     case 'shiny-relay': return `輝き箱2個以上を含む各リンク火力＋${n}（輝き倍率の前に加算）`;
     case 't-strike': return `自箱4個のT字で${n}ダメージ・回転可`;
     case 'zigzag-strike': return `自箱4個の稲妻形で${n}ダメージ・回転可（鏡像は別）`;
-    case 'cup-strike': return `自箱5個のコの字で${n}ダメージ・回転可`;
+    case 'cup-strike': return `自箱5個のコの字で${n}${tuning.skillRevision===2&&rank===2?'＋相手最大HPの1%':''}ダメージ・回転可`;
     case 'diamond-strike': return `自箱4個のひし形で${n}ダメージ（中央は不要）`;
-    case 'cross-strike': return `自箱5個のX字で${n}ダメージ`;
+    case 'cross-strike': return tuning.skillRevision===2?`自箱5個のX字でランダムなリンク火力をこのラン中＋${n}`:`自箱5個のX字で${n}ダメージ`;
     case 'full-power': return `投入後HP満タンなら各リンク火力＋${n}`;
     case 'foundation': return `最下段の自箱1個につき各リンク火力＋${n}（内部足場は対象外）`;
     case 'snake-line': return `5個以上の各リンク火力＋${n}`;
     case 'edge-strike': return `左端か右端を含む各リンク火力＋${n}`;
     case 'siege': return `投入箱に上下左右で接する敵箱1個につき各リンク火力＋${n}`;
     case 'crossfire': return `同時に2軸以上の3リンクが成立すると各リンク火力＋${n}`;
-    case 'last-stand': return `投入後HP半分以下なら各リンク火力＋${n}`;
+    case 'last-stand': return `投入後HP半分以下なら各リンク火力${tuning.skillRevision===2?`×${n/100}`:`＋${n}`}`;
     case 'iron-wall': return `現在の自箱2×2があれば敵の各リンク被害−${n}（毒・固定攻撃は対象外）`;
-    case 'capacitor': return `ゲージ＋${n}（上限まで）・1回限り・1手消費`;
+    case 'capacitor': return `ゲージ${tuning.skillRevision===2?`最大値の${n}%回復`:`＋${n}`}（上限まで）・1回限り・1手消費`;
     case 'solvent': return `上・左から自箱のどく・もうどく・フローズンを最大${n}個ノーマルへ・1回限り・1手消費`;
     case 'poison-craft': return '現在の自箱2×2の数だけ自分が付与したどく・もうどく1箱あたりのダメージ＋1（常時・累積しない）';
     case 'health': return `＋形でHP${n}回復`;
@@ -86,8 +86,8 @@ export function skillDescription(id: NormalSkillId, rank: 1 | 2, tuning: GameTun
     case 'first-guard': return `敵手番の最初のリンク被害−${n}`;
     case 'horizontal-slash': return `横3以上のリンク火力＋${n}`;
     case 'diagonal-shot': return `斜め3以上のリンク火力＋${n}`;
-    case 'corner-strike': return `L形で${n}ダメージ・回転可`;
-    case 'square-strike': return `2×2で${n}ダメージ・回転可`;
+    case 'corner-strike': return `L形で${n}${tuning.skillRevision===2&&rank===2?'＋相手最大HPの1%':''}ダメージ・回転可`;
+    case 'square-strike': return `2×2で${n}${tuning.skillRevision===2&&rank===2?'＋相手最大HPの1%':''}ダメージ・回転可`;
     case 'healing-potion': return `HP${n}回復・1回限り・1手消費`;
     case 'magic-bullet': return `現在の4リンク火力×${n}・1回限り・1手消費`;
   }

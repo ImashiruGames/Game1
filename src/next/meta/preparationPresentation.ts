@@ -1,3 +1,4 @@
+import {revisedSkillTuning} from '../core/tuning.ts';
 import {createBattle} from '../core/battle.ts';
 import {defaultConfig} from '../core/definitions.ts';
 import {createSkill} from '../core/playerBuild.ts';
@@ -23,7 +24,7 @@ export function togglePreparationSkill(p:Profile,id:RosterId,skill:NormalSkillId
  p.characters[id].pool=has?pool.filter(s=>s!==skill):[...pool,skill];return p;
 }
 export function preparationSkillCard(id:NormalSkillId,options:{selected?:boolean;fixed?:boolean;interactive?:boolean;disabled?:boolean;index?:number}={}):string {
- const state=createBattle({...defaultConfig,characterId:'blue',initialBuild:{fixed:createSkill('health'),slots:[null,null],power:{3:0,4:0,5:0}}});
+ const state=createBattle({...defaultConfig,tuning:revisedSkillTuning,characterId:'blue',initialBuild:{fixed:createSkill('health'),slots:[null,null],power:{3:0,4:0,5:0}}});
  const view=rewardCardView(state,id,true),selected=!!options.selected,fixed=!!options.fixed;
  const family={shape:'形スキル',link:'リンクスキル',passive:'パッシブ',instant:'即時発動'}[skillCatalog[id].kind];
  const footer=fixed?'固有 · 常に装備':options.interactive?selected?'ON · タップでOFF':'OFF · タップでON':'';

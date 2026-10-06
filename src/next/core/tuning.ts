@@ -3,6 +3,7 @@ import type { BattleConfig, CharacterId, EnemyId, NormalSkillId, ExpansionSkillI
 export type AttackTable = Readonly<Record<3 | 4 | 5, number>>;
 export interface EnemyBalance { readonly maxHp: number; readonly attacks: AttackTable; readonly healEveryOwnTurns?: number; readonly healAmount?: number }
 export interface GameTuning {
+  readonly skillRevision?:2;
   readonly board: { readonly painPerBox: number; readonly emberCost: number; readonly emberConversions: number };
   readonly gauge: { readonly turnGain: number; readonly linkPerBox: number; readonly damagePerHp: number; readonly bands?: Readonly<Record<3 | 4 | 5 | 'sixPlus', number>>; readonly limits: Readonly<Record<CharacterId, { readonly cost: number; readonly cap: number }>> };
   readonly transformation: { readonly minimumLink: number; readonly redBonusStarts: number };
@@ -54,6 +55,7 @@ export const defaultTuning: GameTuning = freeze({
 });
 type EnemyPatch = Partial<Omit<EnemyBalance, 'attacks'>> & { attacks?: Partial<AttackTable> };
 export interface TuningOverrides {
+  readonly skillRevision?:2;
   readonly board?: Partial<GameTuning['board']>;
   readonly gauge?: Partial<Omit<GameTuning['gauge'], 'limits'>> & { limits?: Partial<Record<CharacterId, Partial<GameTuning['gauge']['limits'][CharacterId]>>> };
   readonly transformation?: Partial<GameTuning['transformation']>;
@@ -68,6 +70,7 @@ export interface TuningOverrides {
 export function createTuning(overrides: TuningOverrides = {}): GameTuning {
   const enemies = Object.fromEntries((Object.keys(defaultTuning.enemies) as EnemyId[]).map(id => [id, { ...defaultTuning.enemies[id], ...overrides.enemies?.[id], attacks: { ...defaultTuning.enemies[id].attacks, ...overrides.enemies?.[id]?.attacks } }])) as Record<EnemyId, EnemyBalance>;
   const tuning: GameTuning = {
+    ...(overrides.skillRevision===2?{skillRevision:2 as const}:{}),
     board: { ...defaultTuning.board, ...overrides.board },
     gauge: { ...defaultTuning.gauge, ...overrides.gauge, limits: { blue: { ...defaultTuning.gauge.limits.blue, ...overrides.gauge?.limits?.blue }, red: { ...defaultTuning.gauge.limits.red, ...overrides.gauge?.limits?.red } } },
     transformation: { ...defaultTuning.transformation, ...overrides.transformation },
@@ -83,6 +86,7 @@ export function validateTuning(tuning: GameTuning): void {
   const integer = (value: number, minimum = 0) => { if (!Number.isSafeInteger(value) || value < minimum) throw new Error('Tuning values must be safe nonnegative integers'); };
   const record = (value: unknown, name: string) => { if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(`Missing tuning record: ${name}`); };
   record(tuning, 'root');
+  if(tuning.skillRevision!==undefined&&tuning.skillRevision!==2)throw new Error('Unknown skill revision');
   for (const name of ['board', 'gauge', 'transformation', 'links', 'skills', 'enemies', 'bosses', 'progression', 'rewards'] as const) record(tuning[name], name);
   record(tuning.gauge.limits, 'gauge.limits');
   for (const key of ['painPerBox', 'emberCost', 'emberConversions'] as const) integer(tuning.board[key]);
@@ -107,3 +111,5 @@ export function validateTuning(tuning: GameTuning): void {
   integer(tuning.progression.hpPerStage); integer(tuning.rewards.choices, 1);
   for (const value of [tuning.rewards.threePower, tuning.rewards.largeFourPower, tuning.rewards.largeFivePower, tuning.rewards.immediateHeal, tuning.rewards.maxHp, tuning.rewards.fourPower, tuning.rewards.fivePower]) integer(value);
 }
+
+export const revisedSkillTuning=createTuning({skillRevision:2,skills:{'cup-strike':[8,15],'cross-strike':[1,2],'last-stand':[120,150],capacitor:[20,50]}});

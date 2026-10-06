@@ -81,3 +81,17 @@ dialog.end{width:min(490px,calc(100vw - 24px));max-height:calc(100svh - 24px);pa
 #skill-info .reward-card-name{font-size:20px}#skill-info .reward-card-effect{font-size:14px;line-height:1.6}#skill-info .reward-card-family{font-size:12px;display:block}#skill-info .reward-art{width:82px;height:78px}#skill-info .reward-card-top{font-size:12px}#skill-info .reward-card-top>span:first-child{max-width:none}#skill-info .reward-card-footer{font-size:14px}#skill-info .dialog-close-icon{width:48px;height:48px;font-size:30px;line-height:1;padding:0;flex:none}
 /* 日本語: 保存エラー時は再試行を先に目立たせる（SAVE-01）。English: Retry is the emphasized first action on save errors. */
 #save-actions .save-primary{background:#7eced4;color:#0d141d;border-color:#7eced4;font-weight:800;order:-1;flex:1 1 100%}
+
+/* Game surfaces suppress native text selection; editing and explicit copy remain native.
+   Keep pointer gestures, scrolling and the existing zoom policy unchanged. */
+#app, #app * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+#app :is(input, textarea, [contenteditable]:not([contenteditable="false"]), [data-selectable]),
+#app :is([contenteditable]:not([contenteditable="false"]), [data-selectable]) * {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}

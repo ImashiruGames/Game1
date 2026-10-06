@@ -1,0 +1,8 @@
+/* 日本語: 箱の核とタイプ枠を避けた小さな上昇矢印。速度設定とは独立し、動き低減時は静止。
+   English: A small rising arrow leaves the owner core and type frame visible; reduced motion is static and battle pace does not affect it. */
+.box-power-up{position:absolute;top:23%;font:bold 12px/1 sans-serif;text-shadow:0 1px 2px #07131e,0 0 2px #07131e;pointer-events:none;animation:foundation-rise 1.8s ease-in-out infinite;z-index:3}
+@keyframes foundation-rise{0%,100%{translate:0 2px;opacity:.7}60%{translate:0 -3px;opacity:1}}
+body[data-reduced-motion=true] .box-power-up{animation:none}
+@media(prefers-reduced-motion:reduce){.box-power-up{animation:none}}
+
+.foundation-up{right:17%;color:#ff7777}.defense-up{left:17%;color:#76bdff}

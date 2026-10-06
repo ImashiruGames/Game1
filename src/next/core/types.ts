@@ -197,6 +197,7 @@ export interface HealEvent {
   readonly shapeBoxIds?: readonly string[];
 }
 export type BattleEvent = { readonly type: 'enemy-box-changed'; readonly boxIds: readonly string[]; readonly boxType: 'frozen' | 'poison' | 'absolute-zero' | 'neutral' } | DropEvent | AttackEvent | HealEvent
+  | { readonly type:'power-boost';readonly tier:3|4|5;readonly amount:number;readonly boxIds:readonly string[] }
   | { readonly type: 'instant-skill'; readonly skillId: InstantSkillId; readonly rank: 1 | 2 }
   | { readonly type: 'gauge'; readonly before: number; readonly after: number; readonly amount: number; readonly source: 'link' | 'damage' | 'turn' }
   | { readonly type: 'transformation'; readonly character: CharacterId | 'imashiru'|'mint'|'amber'|'violet'|'silver'|'rose'; readonly before: number; readonly after: number; readonly cost: number }

@@ -1,3 +1,4 @@
+import {sampleUniformIndex} from './random.ts';
 import {enemyLinkPower} from './enemyPower.ts';
 import {devilmonFourLink, deepTraits } from './monsterBehavior.ts';
 import {normalLinkBonus,normalLinkGuard} from './normalSkillEffects.ts';
@@ -38,7 +39,14 @@ export function resolveActiveDrop(initial: BattleState, option: DropOption, firs
         : matchShape(state.config.board, state.boxes, box.id, skillCatalog[skill.id].pattern!)[0] }));
     for (const { skill, ids } of shapes) if (ids && state.hp.player.current > 0) {
       if (skill.id === 'health' || skill.id === 'rescue-kit') accept(applyHealingEffect(state, 'player', shinyAmount(state,ids,skillValue(skill.id, skill.rank, tuningOf(state.config))), skill.id, ids));
-      else if (skillCatalog[skill.id].kind === 'shape') accept(applyDamageEffect(state, 'enemy', shinyAmount(state,ids,skillValue(skill.id, skill.rank, tuningOf(state.config))+(skill.id==='corner-strike'&&state.transformation?.character==='mint'?kitBalanceOf(state.config).mintShapeBonus:0)), skill.id as import('./types.ts').ShapeSkillId, ids));
+      else if(skill.id==='cross-strike'&&tuningOf(state.config).skillRevision===2&&state.build){
+        // 日本語: X形は能動投入ごと1回、3/4/5+を等確率で強化。保存済みラン強化と乱数を同時に更新。
+        // English: One seeded uniform tier boost per active X; commit permanent run power and RNG together.
+        const draw=sampleUniformIndex(state.rngState,3),tier=([3,4,5] as const)[draw.index]!,amount=skillValue(skill.id,skill.rank,tuningOf(state.config));
+        events.push({type:'power-boost',tier,amount,boxIds:ids});
+        state={...state,rngState:draw.rngState,build:{...state.build,power:{...state.build.power,[tier]:state.build.power[tier]+amount}}};
+      }
+      else if (skillCatalog[skill.id].kind === 'shape') accept(applyDamageEffect(state, 'enemy', shinyAmount(state,ids,skillValue(skill.id, skill.rank, tuningOf(state.config))+(tuningOf(state.config).skillRevision===2&&skill.rank===2&&['corner-strike','square-strike','cup-strike'].includes(skill.id)?Math.floor(state.hp.enemy.max/100):0)+(skill.id==='corner-strike'&&state.transformation?.character==='mint'?kitBalanceOf(state.config).mintShapeBonus:0)), skill.id as import('./types.ts').ShapeSkillId, ids));
     }
   }
   if (state.actor === 'enemy' && state.config.enemyId === 'hanabell' && state.hp.enemy.current > 0 && state.hp.player.current > 0) {
@@ -59,6 +67,7 @@ export function resolveActiveDrop(initial: BattleState, option: DropOption, firs
     if(state.actor==='player')amount+=normalLinkBonus(state,box,link,links);
     if(state.actor==='player'&&link.axis==='horizontal'&&state.transformation?.character==='rose')amount+=kitBalanceOf(state.config).roseHorizontalBonus;
     if(state.actor==='player'&&state.transformation?.character==='amber'&&kitBalanceOf(state.config).amber.mode==='link-power')amount*=kitBalanceOf(state.config).amber.multiplier;
+    if(state.actor==='player'&&tuningOf(state.config).skillRevision===2&&state.hp.player.current*2<=state.hp.player.max&&skillRank(state,'last-stand'))amount=Math.floor(amount*activeSkillValue(state,'last-stand')/100);
     amount=frozenLinkAmount(state,link.boxIds,shinyAmount(state,link.boxIds,amount));
     if (state.actor === 'enemy' && amount > 0 && !guarded) {
       guarded = true;

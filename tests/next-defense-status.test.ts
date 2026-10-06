@@ -1,0 +1,14 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {defaultConfig,createBattle,createSkill} from '../src/next/core/index.ts';
+import {normalLinkGuard} from '../src/next/core/normalSkillEffects.ts';
+import {boxPowerStatuses,ownSquareMembers} from '../src/next/core/boxPowerStatus.ts';
+import {boxPowerStatusHtml} from '../src/next/ui/boxPowerStatus.ts';
+import {boxTypeRows} from '../src/next/ui/boxTypeInformation.ts';
+import {BattleController} from '../src/next/app/BattleController.ts';
+import type {Box,BattleConfig} from '../src/next/core/types.ts';
+const box=(row:number,col:number,type:Box['type']='normal'):Box=>({id:`${row}:${col}`,row,col,owner:'player',type,status:'normal'});
+const boxes=[box(6,0),box(6,1,'frozen'),box(6,2),box(7,0),box(7,1,'shiny'),box(7,2),box(7,5)];
+const config=(rank:1|2):BattleConfig=>({...defaultConfig,characterId:'blue' as const,initialBoxes:boxes,initialBuild:{fixed:createSkill('health'),slots:[createSkill('foundation'),createSkill('iron-wall',rank)],power:{3:0,4:0,5:0}}});
+test('overlapping squares share membership without stacking guard; bottom boxes can display both statuses',()=>{for(const rank of [1,2] as const){const s=createBattle(config(rank));assert.equal(normalLinkGuard(s),rank);assert.equal(ownSquareMembers(s).size,6);assert.deepEqual(boxPowerStatuses(s,boxes[0]!),['防御アップ']);assert.deepEqual(boxPowerStatuses(s,boxes[4]!),['火力アップ','防御アップ']);assert.deepEqual(boxPowerStatuses(s,boxes[6]!),['火力アップ']);assert(boxPowerStatusHtml(s,boxes[4]!).includes('defense-up'));assert.equal(boxTypeRows(boxes[4]!,s).filter(r=>r.label==='状態').length,2);}});
+test('shape breaks, owner conversion, deletion and lost skill remove only the relevant derived statuses',()=>{const s=createBattle(config(1)),raw=JSON.stringify(s);for(const owner of ['enemy','neutral'] as const){const changed={...s,boxes:s.boxes.map(b=>b.row===6?{...b,owner}:b)};assert.equal(normalLinkGuard(changed),0);assert.deepEqual(boxPowerStatuses(changed,boxes[4]!),['火力アップ']);}const removed={...s,boxes:s.boxes.filter(b=>b.row!==6)};assert.equal(normalLinkGuard(removed),0);assert.deepEqual(boxPowerStatuses(removed,boxes[0]!),[]);const noSkill={...s,build:{...s.build!,slots:[createSkill('foundation'),null] as const}};assert.equal(normalLinkGuard(noSkill),0);assert.deepEqual(boxPowerStatuses(noSkill,boxes[4]!),['火力アップ']);assert.equal(JSON.stringify(s),raw);});
+test('checkpoint resume preserves effects, types and derived defense status without schema mutation',()=>{const c=new BattleController(config(2),{render(){},async animate(){}}),cp=c.exportCheckpoint(),restored=BattleController.restore(cp,{render(){},async animate(){}});assert.deepEqual(restored.exportCheckpoint(),cp);assert.equal(normalLinkGuard(restored.snapshot),2);assert.deepEqual(boxPowerStatuses(restored.snapshot,boxes[4]!),['火力アップ','防御アップ']);assert.equal(restored.snapshot.boxes[4]!.type,'shiny');});

@@ -128,6 +128,7 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
                 if (event.type === 'row-cleared' || event.type === 'boxes-converted'||event.type==='boxes-shining'||event.type==='kit-board-changed'||event.type==='enemy-box-changed')
                     shown = { ...shown, boxes: after.boxes };
             }
+            if(event.type==='power-boost'&&shown.build)shown={...shown,build:{...shown.build,power:{...shown.build.power,[event.tier]:shown.build.power[event.tier]+event.amount}}};
             hooks.render(shown, resolution.actor === 'enemy' ? before : null);
             const skillDuration=hooks.boardSkill?.(event, resolution, before, signal, motion);
             // A replacing skill cue owns its own tail; never unlock input with a cue still running.

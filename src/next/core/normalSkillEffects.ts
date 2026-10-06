@@ -1,23 +1,22 @@
+import {tuningOf} from './tuning.ts';
+import {ownSquareMembers} from './boxPowerStatus.ts';
+import {foundationBonus} from './foundation.ts';
 import {activeSkillValue,playerPower} from './playerBuild.ts';
 import type {BattleState,Box,Link} from './types.ts';
 /** 日本語: 元作の分かりやすい盤面条件を採用。未来の連続回数・追加回復・基礎火力の永続変更は導入しない。
  * English: Adapt original Game1's readable current-board conditions, without future counters, more healing, or persistent base-power mutation.
  * Source: ImashiruGames/Game1@869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L1314-L1439
  */
-export function hasOwnSquare(state:Pick<BattleState,'boxes'>):boolean {
- const own=new Set(state.boxes.filter(b=>b.owner==='player').map(b=>`${b.row}:${b.col}`));
- return state.boxes.some(b=>b.owner==='player'&&own.has(`${b.row+1}:${b.col}`)&&own.has(`${b.row}:${b.col+1}`)&&own.has(`${b.row+1}:${b.col+1}`));
-}
+export function hasOwnSquare(state:Pick<BattleState,'boxes'>):boolean {return ownSquareMembers(state).size>0;}
 export function normalLinkBonus(state:BattleState,origin:Box,link:Link,links:readonly Link[]):number {
  const value=(id:Parameters<typeof activeSkillValue>[1])=>activeSkillValue(state,id);
- const bottom=state.boxes.filter(b=>b.owner==='player'&&b.row===state.config.board.height-1).length;
  const adjacent=state.boxes.filter(b=>b.owner==='enemy'&&Math.abs(b.row-origin.row)+Math.abs(b.col-origin.col)===1).length;
  const edge=state.boxes.some(b=>link.boxIds.includes(b.id)&&(b.col===0||b.col===state.config.board.width-1));
  return (state.hp.player.current===state.hp.player.max?value('full-power'):0)
-  +bottom*value('foundation')+(link.count>=5?value('snake-line'):0)
+  +foundationBonus(state)+(link.count>=5?value('snake-line'):0)
   +(edge?value('edge-strike'):0)+adjacent*value('siege')
   +(links.filter(l=>l.tier!==null).length>=2?value('crossfire'):0)
-  +(state.hp.player.current*2<=state.hp.player.max?value('last-stand'):0)
+  +(tuningOf(state.config).skillRevision!==2&&state.hp.player.current*2<=state.hp.player.max?value('last-stand'):0)
   +trophyLinkBonus(state,origin,link,links);
 }
 export function normalLinkGuard(state:BattleState):number {return hasOwnSquare(state)?activeSkillValue(state,'iron-wall'):0;}

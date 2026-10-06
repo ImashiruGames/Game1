@@ -27,7 +27,7 @@ export interface RewardCardView {
   readonly placement: string;
   readonly comparison: readonly { label: string; before: string; after: string }[];
   readonly tone: 'pink' | 'mint' | 'blue' | 'gold';
-  readonly icon: 'heart' | 'bolt' | 'shield' | 'sword' | 'potion' | 'shape' | 'fire';
+  readonly icon: 'muscle' | 'heart' | 'bolt' | 'shield' | 'sword' | 'potion' | 'shape' | 'fire';
   readonly pattern?: ShapePattern;
   readonly linkDirection?: 'vertical' | 'horizontal' | 'diagonal';
   readonly powerTier?: 3 | 4 | 5;
@@ -52,12 +52,19 @@ export function rewardCardView(state: BattleState, id: RewardId, asUnowned=false
   const placement = owned ? `${slot}で＋強化 · 枠はそのまま` : requiresReplacement(state.build!,id) ? '自由枠が満杯 · 入れ替えが必要' : `自由${state.build!.slots.findIndex(s=>s===null)+1}に装備`;
   const base = { ...common, title: skillName(id,rank), family: owned ? '同じスキルを＋へ' : '新しいスキル', upgrade: !!owned, placement, detail: skillDescription(id,rank,t), pattern: skillCatalog[id].pattern };
   const compare = (label:string, before:string, after:string) => [{label,before:owned?before:'未装備',after}];
+  if(t.skillRevision===2){
+    if(['corner-strike','square-strike','cup-strike'].includes(id)){const text=(value:number,plus:boolean)=>`${value}${plus?'＋最大HP1%':''}`;return {...base,icon:'shape',metric:text(n,rank===2),effect:'形のダメージ',comparison:compare('ダメージ',text(old,false),text(n,rank===2))};}
+    if(id==='cross-strike')return {...base,icon:'bolt',metric:`＋${n}`,effect:'ランダムなリンクを永続強化',comparison:compare('リンク火力',`＋${old}`,`＋${n}`)};
+    if(id==='last-stand')return {...base,icon:'sword',metric:`×${n/100}`,effect:'投入後HP半分以下',comparison:compare('リンク火力',`×${old/100}`,`×${n/100}`)};
+    if(id==='capacitor')return {...base,icon:'bolt',metric:`${n}%`,effect:'最大ゲージから回復・1回限り',comparison:compare('ゲージ回復',`${old}%`,`${n}%`)};
+  }
   switch(id) {
     case 'heavy-swing': return {...base,icon:'sword',metric:`5連 ×${n/100}`,effect:'5個以上リンクに火力加算',comparison:compare('現在の加算量',String(Math.floor(basePlayerPower(state,5)*old/100)),String(Math.floor(basePlayerPower(state,5)*n/100)))};
     case 'rescue-kit': return {...base,title:skillName(id,1),upgrade:false,family:'トロフィースキル · 強化なし',placement:owned?`${slot}に装備中 · 強化なし`:placement,tone:'pink',icon:'shape',metric:'HP 10',effect:'固定形で回復 · 中央上は任意',comparison:compare('回復量',String(old),'10')};
     case 'clear-column': case 'pincer-strike': case 'twin-diagonal': case 'square-conduit': case 'venom-edge': case 'frost-edge': case 'exact-four': case 'shiny-relay': return {...base,icon:'sword',metric:`+${n}`,effect:'現在の盤面条件でリンク強化',comparison:compare('条件成立時の加算',String(old),String(n))};
     case 't-strike': case 'zigzag-strike': case 'cup-strike': case 'diamond-strike': case 'cross-strike': return {...base,icon:'shape',metric:String(n),effect:'形のダメージ',comparison:compare('ダメージ',String(old),String(n))};
-    case 'full-power': case 'foundation': case 'snake-line': case 'edge-strike': case 'siege': case 'crossfire': case 'last-stand': return {...base,icon:'sword',metric:`+${n}`,effect:'現在の盤面条件でリンク強化',comparison:compare('条件成立時の加算単位',String(old),String(n))};
+    case 'foundation': return {...base,icon:'muscle',metric:`+${n}`,effect:'最下段の自箱でリンク強化',comparison:compare('自箱1個の加算量',String(old),String(n))};
+    case 'full-power': case 'snake-line': case 'edge-strike': case 'siege': case 'crossfire': case 'last-stand': return {...base,icon:'sword',metric:`+${n}`,effect:'現在の盤面条件でリンク強化',comparison:compare('条件成立時の加算単位',String(old),String(n))};
     case 'iron-wall': return {...base,icon:'shield',metric:`−${n}`,effect:'自箱2×2で敵リンク軽減',comparison:compare('軽減量',String(old),String(n))};
     case 'capacitor': return {...base,icon:'bolt',metric:`+${n}`,effect:'ゲージ・1回限り',comparison:compare('ゲージ獲得',String(old),String(n))};
     case 'solvent': return {...base,icon:'potion',metric:`${n}箱`,effect:'自箱の毒・氷をノーマルへ',comparison:compare('最大対象数',String(old),String(n))};
@@ -87,6 +94,7 @@ export function rewardIconHtml(icon: RewardCardView['icon']): string {
     heart: '<path d="M3 6h3V3h5v3h2V3h5v3h3v7h-3v3h-3v3h-3v3h-3v-3H6v-3H3z"/><path class="icon-shine" d="M6 6h3v3H6z"/>',
     bolt: '<path d="M13 1h7l-5 8h6L8 23l3-10H4z"/><path class="icon-shine" d="M13 4h3l-4 6H9z"/>',
     shield: '<path d="M3 3h6V1h6v2h6v12h-3v4h-3v3H9v-3H6v-4H3z"/><path class="icon-cut" d="M10 7h4v8h-4z"/>',
+    muscle: '<path d="M3 2h7v3H8v2H6v6h3v-3h3V8h5v2h3v3h2v6h-3v2H7v-2H4v-3H2V7h1z"/><path class="icon-cut" d="M5 15h3v3h10v-2h3v3h-3v1H8v-1H5zM6 5h3v2H6z"/><path class="icon-shine" d="M4 3h4v2H4zM12 10h4v2h-4z"/>',
     sword: '<path d="M17 1h6v6L12 18l-3-3zM5 12l7 7-3 3-7-7zM4 19l2 2-3 3-2-2z"/><path class="icon-shine" d="M19 3h2v2L11 15l-2-2z"/>',
     potion: '<path d="M8 1h8v3h-2v4l6 6v7H4v-7l6-6V4H8z"/><path class="icon-cut" d="M8 14h8v4H8z"/><path class="icon-shine" d="M7 12h3v3H7z"/>',
     fire: '<path d="M13 1v6h4v3h3v10h-3v3H7v-3H4v-8h3V8h3V4z"/><path class="icon-cut" d="M12 12v4h3v5H9v-6z"/>',

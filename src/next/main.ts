@@ -1,3 +1,6 @@
+import {boxPowerStatusHtml,boxPowerStatusLabel} from './ui/boxPowerStatus.ts';
+import './ui/foundation.css';
+import {completeBasicTutorial} from './meta/tutorialCatalog.ts';
 import {equippedBoardName} from './ui/equippedBoardName.ts';
 import {transformationButton} from './ui/transformationButton.ts';
 import './ui/transformationButton.css';
@@ -209,7 +212,7 @@ function renderBoard(s:BattleState):void{
   const box=boardBoxes.find(b=>b.row===row&&b.col===col),terrain=s.config.board.terrain.some(c=>c.row===row&&c.col===col),invalid=s.config.board.invalidCells.some(c=>c.row===row&&c.col===col);
   const ghost=landing?.row===row&&landing.col===col;const own=box?.owner;
   const cls=['cell',!projection&&box&&arrivingMaterials.has(box.id)?'type-arriving':'',box&&kitTargets.includes(box.id)?'kit-target':'',own??'',terrain?'terrain':'',invalid?'invalid':'',ghost?'ghost':'',!projection&&selected?.kind==='row'&&selected.row===row?'row-target':'',!projection&&box&&highlights.includes(box.id)?`hit hit-${highlightTone}`:'',box&&moves.has(box.id)?'projection-moved':'',!projection&&box&&vanishing?.ids.has(box.id)?`is-vanishing vanish-${vanishing.phase}`:''].join(' ');
-  cells+=`<button class="${cls}" data-cell-row="${row}" data-cell-col="${col}" ${box?`data-box-id="${escape(box.id)}"`:""} aria-label="${projection?'予告 ':''}${row+1}行${col+1}列 ${own==='player'?'自箱':own==='enemy'?'敵箱':own==='neutral'?'中立箱':terrain?'地形':'空き'}${box&&box.type!=='normal'?`・${boxTypeLabels[box.type]}タイプ`:''}${box&&moves.has(box.id)?` · ${moves.get(box.id)!.from.row+1}行から落下`:''}" ${(!can||!!projection||invalid||terrain)&&!box?'disabled':''} ${box?'aria-keyshortcuts="I Shift+F10"':''}>${box?energyBoxMarkup(box,energyAppearance(s)):ghost?energyBoxMarkup({owner:'player',row,col,...(s.shinyNextDrop||s.transformation?.character==='imashiru'?{type:'shiny' as const}:{})},energyAppearance(s)):terrain?'▪':''}${target&&!projection&&col===0?`<small>${row+1}</small>`:''}${box&&moves.has(box.id)?'<span class="projection-fall" aria-hidden="true">↓</span>':''}</button>`;
+  cells+=`<button class="${cls}" data-cell-row="${row}" data-cell-col="${col}" ${box?`data-box-id="${escape(box.id)}"`:""} aria-label="${projection?'予告 ':''}${row+1}行${col+1}列 ${own==='player'?'自箱':own==='enemy'?'敵箱':own==='neutral'?'中立箱':terrain?'地形':'空き'}${box&&box.type!=='normal'?`・${boxTypeLabels[box.type]}タイプ`:''}${box?boxPowerStatusLabel(s,box):''}${box&&moves.has(box.id)?` · ${moves.get(box.id)!.from.row+1}行から落下`:''}" ${(!can||!!projection||invalid||terrain)&&!box?'disabled':''} ${box?'aria-keyshortcuts="I Shift+F10"':''}>${box?energyBoxMarkup(box,energyAppearance(s)):ghost?energyBoxMarkup({owner:'player',row,col,...(s.shinyNextDrop||s.transformation?.character==='imashiru'?{type:'shiny' as const}:{})},energyAppearance(s)):terrain?'▪':''}${box?boxPowerStatusHtml(s,box):''}${target&&!projection&&col===0?`<small>${row+1}</small>`:''}${box&&moves.has(box.id)?'<span class="projection-fall" aria-hidden="true">↓</span>':''}</button>`;
  }
  el('board').innerHTML=cells;
  if(projection){
@@ -332,6 +335,7 @@ function describe(event:BattleEvent,before?:BattleState):string|null{
  if(event.type==='boxes-shining')return `自箱${event.boxIds.length}個を輝きに変換（この変換自体では攻撃しない）`;
  if(event.type==='turn-start'){const caster=before?transformationIdentity(before.config,'red').name:'ルビィ';return event.skipped?`${caster}：追加投入なし・残り回数を消費`:`${caster}の追加投入・残り${event.remainingStarts}回`;}
  if(event.type==='instant-kill')return '敵の投入不能：自分HP 0';
+ if(event.type==='power-boost')return `Xエナジー：${event.tier===5?'5+':event.tier}リンク火力＋${event.amount}`;
  if(event.type==='link-growth')return `成長する火：3リンク火力＋${event.amount}（この戦闘＋${event.after}）`;
  if(event.type==='boxes-converted')return `敵箱${event.boxIds.length}個を自箱へ変換（受動リンクは発動しない）`;
  if(event.type==='row-cleared')return `${event.row+1}行目を消去：自箱${event.playerCount}・敵箱${event.enemyCount}・中立${event.neutralCount}`;
@@ -459,12 +463,12 @@ function endTutorial(completed:boolean):void{
   profileStore.update(p=>{
    const key=completed?'tutorial-v1':'tutorial-skip';
    if(p.receipts['tutorial-v1']||(!completed&&p.receipts[key]))return p;
-   if(completed)p.coins+=100;
+   if(completed){completeBasicTutorial(p);return p;}
    p.receipts[key]={runId:key,character:'blue',xp:0,coins:completed?100:0,defeated:0,at:Date.now(),clear:completed,trophies:[]};
    return p;
   });
  }catch(error){saveRecovery='boot';reportSaveError(error);return;}
- void first;showHome();
+ showHome();if(!first)home.showTutorials();
 }
 async function boot():Promise<void>{
  profileReady=false;profileReadComplete=false;void musicScene.showHome();home.hide();portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();stageNumberCinematic.reset();suppressRestoredTransitionTo=null;cancelClickGuard.reset();rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();const epoch=++bootEpoch;controller?.destroy();turnPresentation.reset();bossPresentation.reset();stagePresentation.reset();el('feedback-layer').replaceChildren();const result=el<HTMLDialogElement>('end');if(result.open)result.close();selected=null;highlights=[];last='';history.length=0;if(details.open)details.close();rewardDialog.reset();

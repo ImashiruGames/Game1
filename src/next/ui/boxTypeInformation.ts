@@ -1,11 +1,13 @@
+import {boxPowerStatuses} from '../core/boxPowerStatus.ts';
 import {boxTypeLabels,frozenRuleDescription,THORN,THORN_V2,ownSquareCount} from '../core/boxTypes.ts';
 import type {Box,BattleState} from '../core/types.ts';
 /** 日本語: タイプは所有者の見た目と分離し、説明は現行ルールから生成。
  * English: Type is independent of ownership; describe current rules, including frozen run bonuses. */
-export interface BoxTypeRow { readonly label:'効果'|'解除'|'対象外'; readonly text:string }
+export interface BoxTypeRow { readonly label:'状態'|'効果'|'解除'|'対象外'; readonly text:string }
 /** 日本語: 種類ごとに同じ見出し（効果・解除・対象外）で並べる。フローズンと絶対零度の違いは「解除」の行で比べられる。
  * English: Every type uses the same rows, so frozen vs absolute zero differ in the same "release" row. */
-export function boxTypeRows(box:Box,state:BattleState):BoxTypeRow[]{
+export function boxTypeRows(box:Box,state:BattleState):BoxTypeRow[]{return [...typeRows(box,state),...boxPowerStatuses(state,box).map(text=>({label:'状態' as const,text}))];}
+function typeRows(box:Box,state:BattleState):BoxTypeRow[]{
  const half=state.config.frozenRule==='half-melt-v1',unaffected:BoxTypeRow={label:'対象外',text:'形状スキル・回復・ゲージには影響しません。'};
  switch(box.type){
   case 'normal':return [{label:'効果',text:'追加効果はありません。'}];

@@ -1,3 +1,4 @@
+import {tutorialCatalog} from './tutorialCatalog.ts';
 import {validTreeTutorial} from './treeTutorial.ts';
 import type {TreeTutorialProgress} from './treeTutorial.ts';
 import {paidTreePoints,nextTreeCost} from './treePricing.ts';
@@ -182,6 +183,9 @@ export class ProfileStore {private raw:string|null|undefined;private value:Profi
   const n=structuredClone(migrateProfile(profile));
   n.importedGrowthSources=[...new Set([...(current.importedGrowthSources??[]),...(n.importedGrowthSources??[]),...(profile.growthVersion!==3?[digest]:[])])];
   if(current.treeTutorial?.completed||!n.treeTutorial)n.treeTutorial=current.treeTutorial;
+  // 日本語: バックアップ復元で受領台帳を巻き戻さず、チュートリアル報酬の再受領を防ぐ。
+  // English: Preserve earned tutorial receipts across imports to prevent a second claim.
+  for(const t of tutorialCatalog)if(current.receipts[t.receipt])n.receipts[t.receipt]=current.receipts[t.receipt]!;
   for(const [suffix,raw] of [['.before-import',before!],...(profile.growthVersion!==3?[['.before-growth-import-v3',source]]:[])]){this.storage.setItem(this.key+suffix!,raw!);if(this.storage.getItem(this.key+suffix!)!==raw)throw new Error('復元前の退避を確認できません。元の保存を保持しています');}
   this.write(n);return true;
  }
