@@ -20,7 +20,7 @@ function paint(dom:ReturnType<typeof boardSkillDom>,state:BattleState){dom.root.
 const layer=(dom:ReturnType<typeof boardSkillDom>)=>dom.root.querySelector<KineticNode>('.energy-link-layer');
 const children=(dom:ReturnType<typeof boardSkillDom>,cls:string)=>layer(dom)?.children.filter(n=>n.classList.contains(cls))??[];
 
-test('unchanged Site79 sources and explicitly authorized 1.3/1.4/experimental balance extensions remain byte-frozen',()=>{
+test('unchanged Site79 sources and explicitly authorized 1.3/1.4/experimental balance extensions remain byte-frozen apart from the Ruby display-name rename',()=>{
  const manifest=JSON.parse(readFileSync(new URL('./fixtures/energy-site79-gameplay-manifest.json',import.meta.url),'utf8'));
  const extension=JSON.parse(readFileSync(new URL('./fixtures/next-1.3-authorized-source-manifest.json',import.meta.url),'utf8'));
  const kits=JSON.parse(readFileSync(new URL('./fixtures/next-1.4-authorized-source-manifest.json',import.meta.url),'utf8'));
@@ -43,7 +43,8 @@ test('unchanged Site79 sources and explicitly authorized 1.3/1.4/experimental ba
  const pacing=JSON.parse(readFileSync(new URL('./fixtures/next-independent-pacing-source-manifest.json',import.meta.url),'utf8'));
  // 日本語: 1.13のホーム画面統一・ステージ／スキル追加で許可した変更。English: Authorized 1.13 design/content changes.
  const design113=JSON.parse(readFileSync(new URL('./fixtures/next-1.13-design-source-manifest.json',import.meta.url),'utf8'));
- for(const [path,hash] of Object.entries({...manifest.files,...extension.files,...kits.files,...balance.files,...growth.files,...returns.files,...rosterPresentation.files,...activeFeedback.files,...interactionExpansion.files,...clarity.files,...monsters.files,...lateGrowth.files,...typeInspection.files,...trophySkills.files,...homeMusicControls.files,...visibleControls.files,...alignedTiming.files,...preparationReview.files,...battleUiReview.files,...pacing.files,...design113.files})){assert.equal(createHash('sha256').update(readFileSync(new URL(`../${path}`,import.meta.url))).digest('hex'),hash,path);}
+ // Only display names changed; preserve every other historical source byte.
+ for(const [path,hash] of Object.entries({...manifest.files,...extension.files,...kits.files,...balance.files,...growth.files,...returns.files,...rosterPresentation.files,...activeFeedback.files,...interactionExpansion.files,...clarity.files,...monsters.files,...lateGrowth.files,...typeInspection.files,...trophySkills.files,...homeMusicControls.files,...visibleControls.files,...alignedTiming.files,...preparationReview.files,...battleUiReview.files,...pacing.files,...design113.files})){assert.equal(createHash('sha256').update(['src/next/core/definitions.ts','src/next/main.ts','src/next/meta/home.ts','src/next/meta/roster.ts','src/next/portraits.ts','scripts/docs/build-player-guide.mts','public/docs/game1_content_catalog_next.html','public/docs/game1_content_catalog_next.json'].includes(path)?readFileSync(new URL(`../${path}`,import.meta.url),'utf8').replaceAll('ルビィ','赤の子'):readFileSync(new URL(`../${path}`,import.meta.url))).digest('hex'),hash,path);}
 });
 test('round own, diamond enemy and square neutral cores retain explicit independent theme data',()=>{
  const box={row:7,col:1,owner:'player' as const};const blue=energyBoxMarkup(box,{characterId:'blue'}),red=energyBoxMarkup(box,{characterId:'red'}),enemy=energyBoxMarkup({...box,owner:'enemy'},{enemyId:'mother-core'}),neutral=energyBoxMarkup({...box,owner:'neutral'},{});

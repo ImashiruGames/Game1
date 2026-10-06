@@ -8,7 +8,7 @@ export const playerPortraits = {
     height: '205%', anchorX: '44%', top: '2%',
   },
   red: {
-    label: '赤の子',
+    label: 'ルビィ',
     alt: '赤い髪のキャラクター。両手でアイスを持った上半身',
     src: new URL('../assets/characters/red.png', import.meta.url).href,
     height: '202%', anchorX: '50%', top: '2%',
@@ -37,5 +37,5 @@ export const enemyPortraits = {
 /** User-provided transformation portraits are displayed whole without source-pixel editing. */
 export const transformedPortraits = {
   blue: { ...playerPortraits.blue, alt: '変化した青の子。青髪のメイド姿', src: new URL('../assets/characters/blue-transformed.png', import.meta.url).href },
-  red: { ...playerPortraits.red, alt: '変化した赤の子。赤髪のメイド姿', src: new URL('../assets/characters/red-transformed.png', import.meta.url).href },
+  red: { ...playerPortraits.red, alt: '変化したルビィ。赤髪のメイド姿', src: new URL('../assets/characters/red-transformed.png', import.meta.url).href },
 } as const;

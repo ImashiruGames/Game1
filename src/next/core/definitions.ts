@@ -68,7 +68,7 @@ export const battleFixtures: readonly BattleConfig[] = freeze([
   },
   {
     ...defaultConfig, id: 'grow-fire', title: '赤：グローファイア',
-    description: '赤の子で中央へ投入すると縦3リンクで火力＋3の攻撃。火力が1成長し、続く横3リンクにも反映されます。',
+    description: 'ルビィで中央へ投入すると縦3リンクで火力＋3の攻撃。火力が1成長し、続く横3リンクにも反映されます。',
     board: rectangle(3, 4),
     initialBoxes: [box(1, 0), box(1, 2), box(2, 0, 'neutral'), box(2, 1), box(2, 2, 'neutral'),
       box(3, 0, 'neutral'), box(3, 1), box(3, 2, 'neutral')],
@@ -80,7 +80,7 @@ export const battleFixtures: readonly BattleConfig[] = freeze([
   },
   {
     ...defaultConfig, id: 'transform-red', title: '赤：変化直前・縦6',
-    description: '赤の子・ゲージ76。中央へ投入し、攻撃後に変化。次の自分の手番から追加投入します。',
+    description: 'ルビィ・ゲージ76。中央へ投入し、攻撃後に変化。次の自分の手番から追加投入します。',
     board: rectangle(3, 8), initialBoxes: [3, 4, 5, 6, 7].map(row => box(row, 1)), initialGauge: 76,
   },
   {

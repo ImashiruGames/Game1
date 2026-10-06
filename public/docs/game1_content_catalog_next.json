@@ -1231,7 +1231,7 @@
       },
       {
         "id": "red",
-        "name": "赤の子",
+        "name": "ルビィ",
         "subtitle": "炎の育て手",
         "color": "#ee777d",
         "archetype": "red",
@@ -1830,7 +1830,7 @@
     },
     {
       "id": "clear50:red",
-      "name": "赤の子で50階クリア",
+      "name": "ルビィで50階クリア",
       "condition": "このキャラで正式ランを1階から50階までクリア",
       "skill": "pincer-strike"
     },

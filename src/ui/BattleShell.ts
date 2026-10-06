@@ -267,7 +267,7 @@ export class BattleShell {
     this.busy = resolving;
     if (resolving || state.result || state.actor !== 'player') this.cancelSkill();
     this.updatePortrait(state.config.characterId === 'red' ? 'red' : 'blue', state.transformation !== null);
-    element(this.root, '#player-name').textContent = state.config.characterId === 'red' ? '赤の子' : state.config.characterId === 'blue' ? '青の子' : 'あなた';
+    element(this.root, '#player-name').textContent = state.config.characterId === 'red' ? 'ルビィ' : state.config.characterId === 'blue' ? '青の子' : 'あなた';
     const enemy = enemyPortraits[state.config.enemyId ?? 'merarun'];
     element(this.root, '#enemy-name').textContent = enemy.label;
     const enemyImage = element<HTMLImageElement>(this.root, '#enemy-portrait');

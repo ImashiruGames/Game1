@@ -36,5 +36,5 @@ export const enemyPortraits = {
  * English: Use the approved full-body originals only in next; preserve legacy transformation PNGs. */
 export const transformedPortraits = {
   blue: { ...originalTransformations.blue, alt: '変化した青の子。プリズムの賢者、全身', src: new URL('./assets/blue-transformed-prism-oracle.webp',import.meta.url).href },
-  red: { ...originalTransformations.red, alt: '変化した赤の子。炎メイド、全身', src: new URL('./assets/red-transformed-solar-flame-maid.webp',import.meta.url).href },
+  red: { ...originalTransformations.red, alt: '変化したルビィ。炎メイド、全身', src: new URL('./assets/red-transformed-solar-flame-maid.webp',import.meta.url).href },
 } as const;
