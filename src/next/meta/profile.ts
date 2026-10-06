@@ -10,7 +10,7 @@ import {normalSkillIds,skillCatalog} from '../core/skillCatalog.ts';
 import {sampleUniformIndex} from '../core/random.ts';
 import {saveNamespace} from '../app/localSave.ts';
 import type {SaveStorage} from '../app/localSave.ts';
-export const META={schema:2,initialPoints:2,pointsPerLevel:2,maxLevel:12,xpBase:40,xpStep:20,xpPerEnemy:10,coinsPerEnemy:5,clearXp:250,clearCoins:200,poolMin:6,poolMax:20,gachaCost:100,deepXpPerEnemy:15,deepCoinsPerEnemy:8,deepClearXp:500,deepClearCoins:400,energyXp:50,characterRate:20,skillRate:40,energyRate:40,duplicateCharacterEnergy:3,duplicateSkillCoins:20} as const;
+export const META={schema:2,initialPoints:2,pointsPerLevel:2,maxLevel:12,xpBase:40,xpStep:20,xpPerEnemy:10,coinsPerEnemy:5,clearXp:250,clearCoins:200,poolMin:6,poolMax:20,gachaCost:100,gachaBatchCost:900,deepXpPerEnemy:15,deepCoinsPerEnemy:8,deepClearXp:500,deepClearCoins:400,energyXp:50,characterRate:20,skillRate:40,energyRate:40,duplicateCharacterEnergy:3,duplicateSkillCoins:20} as const;
 export const starterInventory:readonly NormalSkillId[]=['grow-fire','corner-strike','square-strike','horizontal-slash','charge','first-guard'];
 export const REWARD_HEAL_PER_RANK=2;
 export const treeNodes={rewardHeal:{name:'報酬の即時回復',description:'BUILD REWARDの即時回復＋2 / 段階（他の回復は対象外）',max:5,cost:1},three:{name:'3リンク基礎火力',description:'初期火力＋1 / 段階',max:5,cost:1},four:{name:'4リンク基礎火力',description:'初期火力＋1 / 段階',max:5,cost:1},five:{name:'5以上リンク基礎火力',description:'初期火力＋2 / 段階',max:5,cost:1},slots:{name:'通常スキル自由枠',description:'自由枠＋1 / 段階（最大4枠）',max:2,cost:3},board:{name:'専用盤面スキルの解放',description:'このキャラ専用の新しい盤面スキル2種類と追加技を選択可能',max:1,cost:3}} as const;
@@ -18,6 +18,7 @@ export type TreeId=keyof typeof treeNodes;export type Tree=Record<Exclude<TreeId
 export interface CharacterProgress {legacyLevelFloor?:number;legacyPointFloor?:number;xp:number;tree:Tree;pool:NormalSkillId[];board:BoardSkillId}
 export interface Receipt {runId:string;character:RosterId;xp:number;coins:number;defeated:number;clear:boolean;trophies:string[];at:number}
 export interface DrawResult {id:number;kind:'character'|'skill'|'energy';item:string;duplicate:boolean;coins:number;energy:number}
+export interface GachaBatch {profile:Profile;results:DrawResult[]}
 export interface Profile {treeVersion?:2;schema:1|2;boardCatalogVersion?:2;progressionVersion?:2;revision:number;selected:RosterId;coins:number;energy:number;ownedCharacters:RosterId[];ownedSkills:NormalSkillId[];characters:Record<RosterId,CharacterProgress>;trophies:Record<string,number>;receipts:Record<string,Receipt>;launches:Record<string,{character:RosterId;snapshot:string}>;rng:number;drawCount:number;pendingDraw:boolean;lastDraw:DrawResult|null}
 export interface RunMeta {balanceVersion?:2;treeVersion?:2;version:1;boardCatalogVersion?:2;boardBalance?:BoardBalanceSnapshot;progressionVersion?:2;kitVersion?:2;kitBalance?:KitBalanceSnapshot;rosterId:RosterId;level:number;tree:Tree;pool:NormalSkillId[];board:BoardSkillId;slots:number;eligible:boolean}
 const emptyTree=():Tree=>({three:0,four:0,five:0,slots:0,board:0,rewardHeal:0});
@@ -36,8 +37,11 @@ export function characterGrowth(c:CharacterProgress,schema:1|2=2){const growth=s
 /** 日本語: 育成権利と旧盤面選択を一度だけ移行。経験値・通貨・精算・出発台帳は削らない。
  * English: Migrate entitlements and board selections once, preserving XP, currency and both ledgers. */
 export function migrateProfile(p:Profile):Profile{
- validateProfile(p);if(p.schema===2&&p.boardCatalogVersion===BOARD_CATALOG_VERSION&&p.treeVersion===2&&!missingTrophySkills(p).length)return p;
+ validateProfile(p);if(p.schema===2&&p.boardCatalogVersion===BOARD_CATALOG_VERSION&&p.treeVersion===2&&!p.pendingDraw&&!missingTrophySkills(p).length)return p;
  const n=structuredClone(p);
+ // 日本語: 旧確認待ちの獲得物は反映済み。確認待ちの印だけを消す。
+ // English: Legacy pending results were already granted. Clear only the obsolete acknowledgement flag.
+ n.pendingDraw=false;
  n.ownedSkills.push(...missingTrophySkills(n));
  n.treeVersion=2;for(const id of rosterIds)n.characters[id].tree.rewardHeal??=0;
  if(p.schema===1){n.schema=2;n.progressionVersion=PROGRESSION_VERSION;for(const id of rosterIds){const old=legacyLevelInfo(n.characters[id].xp);n.characters[id].legacyLevelFloor=old.level;n.characters[id].legacyPointFloor=old.points;}}
@@ -86,12 +90,51 @@ export function settleProfile(p:Profile,cp:RunCheckpoint,now=Date.now()):Profile
 /** 日本語: キャラ枠は未所持優先。保存済みの結果は変えず、次の抽選だけに適用する。
  * English: New character draws select unowned entries first; committed prior results never reroll. */
 export function characterDrawPool(p:Pick<Profile,'ownedCharacters'>):RosterId[]{const all=rosterIds.filter(id=>id!=='blue'&&id!=='red'),unowned=all.filter(id=>!p.ownedCharacters.includes(id));return unowned.length?unowned:all;}
-export function drawGacha(p:Profile):Profile {if(p.pendingDraw)throw new Error('先に前回のガチャ結果を確認してください');if(p.coins<META.gachaCost)throw new Error(`コインが${META.gachaCost}枚必要です`);const n=structuredClone(p);let r=sampleUniformIndex(n.rng,100);n.rng=r.rngState;n.coins-=META.gachaCost;const result:DrawResult={id:++n.drawCount,kind:'energy',item:'経験値エナジー ×2',duplicate:false,coins:0,energy:0};if(r.index<META.characterRate){const candidates=characterDrawPool(n);r=sampleUniformIndex(n.rng,candidates.length);n.rng=r.rngState;const id=candidates[r.index]!;result.kind='character';result.item=id;result.duplicate=n.ownedCharacters.includes(id);if(result.duplicate){result.energy=META.duplicateCharacterEnergy;n.energy+=result.energy;}else {n.ownedCharacters.push(id);if(n.characters[id].board===LEGACY_BOARDS[id])n.characters[id].board=roster[id].board;}}else if(r.index<META.characterRate+META.skillRate){const candidates=normalSkillIds.filter(id=>!['starter-upgrade-only','never','trophy'].includes(skillCatalog[id].rewardAccess??'shared'));r=sampleUniformIndex(n.rng,candidates.length);n.rng=r.rngState;const id=candidates[r.index]!;result.kind='skill';result.item=id;result.duplicate=n.ownedSkills.includes(id);if(result.duplicate){result.coins=META.duplicateSkillCoins;n.coins+=result.coins;}else n.ownedSkills.push(id);}else{result.energy=2;n.energy+=2;}n.lastDraw=result;n.pendingDraw=true;return n;}
+/** 日本語: 将来の交換ルール変更に備え重複スキルの補償を集約する。
+ * English: Keep duplicate skill compensation in one place for a future exchange-rule change. */
+function grantDuplicateSkill(p:Profile,result:DrawResult):void{result.coins=META.duplicateSkillCoins;p.coins+=result.coins;}
+/** 日本語: 1回分の抽選は取引内の作業用プロフィールだけを更新する。
+ * English: One sequential draw mutates only the transaction's private working profile. */
+function drawGachaResult(n:Profile):DrawResult {
+ let r=sampleUniformIndex(n.rng,100);n.rng=r.rngState;
+ const result:DrawResult={id:++n.drawCount,kind:'energy',item:'経験値エナジー ×2',duplicate:false,coins:0,energy:0};
+ if(r.index<META.characterRate){
+  const candidates=characterDrawPool(n);r=sampleUniformIndex(n.rng,candidates.length);n.rng=r.rngState;
+  const id=candidates[r.index]!;result.kind='character';result.item=id;result.duplicate=n.ownedCharacters.includes(id);
+  if(result.duplicate){result.energy=META.duplicateCharacterEnergy;n.energy+=result.energy;}
+  else {n.ownedCharacters.push(id);if(n.characters[id].board===LEGACY_BOARDS[id])n.characters[id].board=roster[id].board;}
+ }else if(r.index<META.characterRate+META.skillRate){
+  const candidates=normalSkillIds.filter(id=>!['starter-upgrade-only','never','trophy'].includes(skillCatalog[id].rewardAccess??'shared'));
+  r=sampleUniformIndex(n.rng,candidates.length);n.rng=r.rngState;
+  const id=candidates[r.index]!;result.kind='skill';result.item=id;result.duplicate=n.ownedSkills.includes(id);
+  if(result.duplicate)grantDuplicateSkill(n,result);else n.ownedSkills.push(id);
+ }else{result.energy=2;n.energy+=result.energy;}
+ return result;
+}
+/** 日本語: 一括で消費して保存済み乱数と最新の所持状況で順番に抽選する。
+ * 結果配列は表示専用。演出を始める前にプロフィールを一度だけ保存する。
+ * English: Charge once, then resolve in order using the persisted RNG and updated ownership.
+ * Results are presentation-only; commit profile once before showing any animation. */
+export function drawGachaBatch(p:Profile,count:1|10):GachaBatch {
+ if(count!==1&&count!==10)throw new Error('ガチャは1回または10連で引いてください');
+ const cost=count===10?META.gachaBatchCost:META.gachaCost;
+ if(p.coins<cost)throw new Error(`コインが${cost}枚必要です`);
+ const n=structuredClone(p);n.coins-=cost;n.pendingDraw=false;
+ const results:DrawResult[]=[];
+ for(let i=0;i<count;i++)results.push(drawGachaResult(n));
+ // 日本語: 表示用の配列は保存せず互換用の最終結果だけを維持する。
+ // English: Keep the legacy final-result field valid without persisting the presentation queue.
+ n.lastDraw={...results[results.length-1]!};
+ return {profile:n,results};
+}
+/** 日本語: 単発の更新済みプロフィールだけを使う呼び出し元との互換を保つ。
+ * English: Preserve compatibility for callers that need only the updated single-draw profile. */
+export function drawGacha(p:Profile):Profile{return drawGachaBatch(p,1).profile;}
 /** 日本語: 残高・抽選結果・精算台帳は一つの書込みで確定。ラン保存とは独立。
  * English: One durable value commits balance + draw/settlement atomically; the run save is separate. */
 export class ProfileStore {private raw:string|null|undefined;private value:Profile|null=null;private attempted:string|null=null;readonly key:string;private storage:SaveStorage;private owned:()=>boolean;constructor(storage:SaveStorage,owned:()=>boolean,pathname='/next/'){this.storage=storage;this.owned=owned;this.key=saveNamespace(pathname).key.replace('autosave.v1','profile.v1');}
  read():Profile{if(!this.owned())throw new Error('保存の操作権がありません');this.raw=this.storage.getItem(this.key);if(this.raw===null){this.value=createProfile();return this.write(this.value);}let p:Profile;try{p=JSON.parse(this.raw);}catch{throw new Error('成長データを読めません。保存は消去していません');}validateProfile(p);this.value=p;
-  if(p.schema===1||p.boardCatalogVersion!==BOARD_CATALOG_VERSION||p.treeVersion!==2||missingTrophySkills(p).length){this.guard();
+  if(p.schema===1||p.boardCatalogVersion!==BOARD_CATALOG_VERSION||p.treeVersion!==2||p.pendingDraw||missingTrophySkills(p).length){this.guard();
    // 日本語: 両移行とも元の生データを検証付きで退避し、既存ランの出発文字列は変えない。
    // English: Back up the exact source bytes before either migration; launch snapshot strings stay intact.
    for(const suffix of [...(p.schema===1?['.before-growth-v2']:[]),...(p.boardCatalogVersion!==BOARD_CATALOG_VERSION?['.before-board-catalog-v2']:[]),...(p.treeVersion!==2?['.before-tree-v2']:[])]){const backup=this.key+suffix;this.storage.setItem(backup,this.raw!);if(this.storage.getItem(backup)!==this.raw)throw new Error('成長データの退避を確認できません。元の保存を保持しています');}
@@ -100,6 +143,24 @@ export class ProfileStore {private raw:string|null|undefined;private value:Profi
  get current():Profile{if(!this.value)throw new Error('成長データ未読込');return structuredClone(this.value);}
  guard():void{if(!this.owned()||this.raw===undefined)throw new Error('成長データの操作権がありません');const raw=this.storage.getItem(this.key);if(raw!==this.raw){if(this.attempted&&raw===this.attempted){const p=JSON.parse(raw) as Profile;validateProfile(p);this.value=p;this.raw=raw;this.attempted=null;}else throw new Error('別の操作で成長データが変わりました。ページを開き直してください');}}
  write(profile:Profile):Profile{this.guard();const next=structuredClone(migrateProfile(profile));next.revision=(this.value?.revision??0)+1;validateProfile(next);const raw=JSON.stringify(next);if(raw.length>2_000_000)throw new Error('成長データの保存容量に達しました');this.attempted=raw;this.storage.setItem(this.key,raw);if(this.storage.getItem(this.key)!==raw)throw new Error('成長データを保存できません。操作を止めました');this.raw=raw;this.attempted=null;this.value=next;return structuredClone(next);}
+ /** 日本語: 全抽選の保存を確認してから表示用の結果を返す。
+  * 書き込み後の例外は保存内容の完全一致で成功を確認する。他タブの新しい保存を巻き戻さない。
+  * English: Gacha exposes results only after the entire draw is durably committed.
+  * A storage adapter may throw after a successful write; exact bytes prove success.
+  * Never restore older bytes here: another tab may have written a newer profile. */
+ drawGacha(count:1|10):GachaBatch {
+  this.guard();const batch=drawGachaBatch(this.current,count);
+  const expected=JSON.stringify({...migrateProfile(batch.profile),revision:this.current.revision+1});
+  let profile:Profile;
+  try{profile=this.write(batch.profile);}
+  catch(error){
+   try{
+    if(this.attempted!==expected||this.storage.getItem(this.key)!==expected)throw error;
+    this.guard();if(this.raw!==expected)throw error;profile=this.current;
+   }catch{throw error;}
+  }
+  return {profile,results:batch.results};
+ }
  update(fn:(p:Profile)=>Profile):Profile{this.guard();const current=this.current,before=JSON.stringify(current),next=fn(current);return JSON.stringify(next)===before?current:this.write(next);}
  settle(cp:RunCheckpoint):Receipt|null{this.guard();const p=this.current;const next=settleProfile(p,cp);if(next!==p)this.write(next);return this.current.receipts[cp.runId]??null;}
  register(cp:RunCheckpoint):void{if(!cp.initialConfig.meta?.eligible)return;this.update(p=>{p.launches[cp.runId]={character:cp.initialConfig.meta!.rosterId,snapshot:JSON.stringify(cp.initialConfig.meta)};return p;});}

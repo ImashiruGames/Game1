@@ -1,0 +1,15 @@
+{
+  "revision": "gacha-redesign-1.13.0",
+  "scope": "User-authorized coin gacha batch draws, commit-before-reveal presentation and generated guide only. Battle and other home panels remain frozen. Publication also updates the presentation version marker to 1.13.0; no save schema change.",
+  "baseCommit": "fb6b802cfd75c2889b2a2e7945cba7286b5494e1",
+  "files": {
+    "src/next/meta/profile.ts": "b37f4cb44609bf0bac996814c0685a25c5ab226a64c3b429ad7222285ca08407",
+    "src/next/meta/home.ts": "00eeebd3fe5c1e7ae3fd3239ed5136368d99d7c30e4d4c92eda58a5bf7fbd81d",
+    "public/docs/game1_content_catalog_next.html": "ab4f6015cdf5b2310feee9e4c60e7eea4bea8d8759ed89034debad4ef78300c4",
+    "public/docs/game1_content_catalog_next.json": "97c3829bce0829a46d24947e7351428128e4468fe146576c7532d97f053f09b6",
+    "scripts/docs/build-player-guide.mts": "2d25d9a2af823780fa9b52cb8b089b1b72e275c4d372256f0ebcac73f7f18954",
+    "src/next/meta/home.css": "fa58b921087267479edfc7c3c554a85e0e1de07be1cc9dadb498ee74caf9609e",
+    "src/next/meta/panel.css": "1f59c90d5e383ee6742f4fefb54b7531373911217e8bc9d73f4cda412c564a2d",
+    "src/next/version.ts": "cc985f692c6d6808625f7d3e6fe9b6f8afa57669613a344037bfabc7250d0136"
+  }
+}
