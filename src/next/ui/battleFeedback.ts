@@ -37,7 +37,8 @@ export function feedbackPosition(area:{width:number;height:number},boxes:readonl
  // 技名の帯がある時だけ数値を下へ避ける。Reserve visible cue space without changing the board layout.
  const inset=Math.max(0,Math.min(Number.isFinite(reservedTop)?reservedTop:0,Math.max(0,area.height-label.height-12)));
  const point={x:Math.max(half+6,Math.min(area.width-half-6,x)),y:Math.max(label.height+6+inset,Math.min(area.height-6,y))};
- return {...point,rise:Math.min(10,Math.max(0,point.y-label.height-6-inset))};
+ // 日本語: 数値も近くに留め、視線移動を従来の1/3に。English: Keep numbers nearby with one-third of the prior rise.
+ return {...point,rise:Math.min(10,Math.max(0,point.y-label.height-6-inset))/3};
 }
 export function feedbackTiming(reduced:boolean):{lead:number;hold:number}{return animationTimeline({short:reduced,lowMotion:false}).feedback;}
 

@@ -1,4 +1,5 @@
-import {devilmonFourLink, deepTraits, hinobouRage } from './monsterBehavior.ts';
+import {enemyLinkPower} from './enemyPower.ts';
+import {devilmonFourLink, deepTraits } from './monsterBehavior.ts';
 import {normalLinkBonus,normalLinkGuard} from './normalSkillEffects.ts';
 import {kitBalanceOf} from '../meta/kitBalance.ts';
 import {absorbBarrier} from './kitBoards.ts';
@@ -51,12 +52,11 @@ export function resolveActiveDrop(initial: BattleState, option: DropOption, firs
     if (state.hp[state.actor].current <= 0) break;
     if (link.tier === null) continue;
     const growFire = state.actor === 'player' && link.axis === 'vertical' && skillRank(state, 'grow-fire') > 0;
-    let amount = state.actor === 'player' ? growFire ? playerPower(state, 3) + activeSkillValue(state, 'grow-fire') : playerPower(state, link.tier) : state.config.combatants.enemy.attacks[link.tier];
+    let amount = state.actor === 'player' ? growFire ? playerPower(state, 3) + activeSkillValue(state, 'grow-fire') : playerPower(state, link.tier) : enemyLinkPower(state,link.tier);
     let skillId = growFire ? 'grow-fire' as const : undefined as import('./types.ts').LinkSkillId | undefined;
     if (state.actor === 'player' && link.axis === 'horizontal' && skillRank(state, 'horizontal-slash')) { amount += activeSkillValue(state, 'horizontal-slash'); skillId = 'horizontal-slash'; }
     if (state.actor === 'player' && link.axis.startsWith('diagonal') && skillRank(state, 'diagonal-shot')) { amount += activeSkillValue(state, 'diagonal-shot'); skillId = 'diagonal-shot'; }
     if(state.actor==='player')amount+=normalLinkBonus(state,box,link,links);
-    if(state.actor==='enemy'&&hinobouRage(state))amount+=deepTraits.hinobouRageBonus;
     if(state.actor==='player'&&link.axis==='horizontal'&&state.transformation?.character==='rose')amount+=kitBalanceOf(state.config).roseHorizontalBonus;
     if(state.actor==='player'&&state.transformation?.character==='amber'&&kitBalanceOf(state.config).amber.mode==='link-power')amount*=kitBalanceOf(state.config).amber.multiplier;
     amount=frozenLinkAmount(state,link.boxIds,shinyAmount(state,link.boxIds,amount));

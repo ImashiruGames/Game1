@@ -14,6 +14,13 @@ export function energyLinkCue(event:BattleEvent,links:readonly Link[],state:Batt
  if(ordered.some((box,index)=>{if(!index)return false;const prior=ordered[index-1]!;return event.axis==='horizontal'?box.row!==prior.row||box.col!==prior.col+1:event.axis==='vertical'?box.col!==prior.col||box.row!==prior.row+1:event.axis==='diagonal-down'?box.row!==prior.row+1||box.col!==prior.col+1:box.row!==prior.row+1||box.col!==prior.col-1;}))return null;
  return {actor:event.actor,target:event.target,theme:energyTheme(event.actor,energyAppearance(state)),boxes:ordered};
 }
+/** 日本語: 弾は対象まで届かせ、余分な弧の浮き上がりだけ1/3に。始点・着弾点・着弾時刻は変えない。
+ * English: Keep attacks reaching their target; reduce only extra arc lift to one third, preserving endpoints and impact timing. */
+export function attackParticleFrames(start:{x:number;y:number},target:{x:number;y:number}):Keyframe[]{
+ return [{transform:`translate(${start.x}px,${start.y}px)`,opacity:1},
+ {transform:`translate(${start.x+(target.x-start.x)*.35}px,${start.y+(target.y-start.y)*.5-12/3}px)`,opacity:1,offset:.4},
+ {transform:`translate(${target.x}px,${target.y}px)`,opacity:1}];
+}
 interface Rect {left:number;top:number;width:number;height:number}
 const valid=(r:Rect)=>[r.left,r.top,r.width,r.height].every(Number.isFinite)&&r.width>0&&r.height>0;
 const same=(a:Rect,b:Rect)=>['left','top','width','height'].every(key=>Math.abs(a[key as keyof Rect]-b[key as keyof Rect])<.5);
@@ -50,7 +57,7 @@ export function createEnergyLinks(root:HTMLElement){
      const node=document.createElement('span');node.className='energy-link-node';node.dataset.boxId=cue.boxes[index]!.id;node.style.left=`${p.x}px`;node.style.top=`${p.y}px`;layer.append(node);
      animate(node,[{opacity:0},{opacity:1}],{duration:20,delay,fill:'both'});
      if(index){const prior=points[index-1]!,dx=p.x-prior.x,dy=p.y-prior.y,line=document.createElement('span');line.className='energy-link-line';line.style.left=`${prior.x}px`;line.style.top=`${prior.y}px`;line.style.width=`${Math.hypot(dx,dy)}px`;const rotate=`rotate(${Math.atan2(dy,dx)}rad)`;line.style.transform=rotate;layer.append(line);animate(line,[{transform:`${rotate} scaleX(0)`,opacity:.2},{transform:`${rotate} scaleX(1)`,opacity:.85}],{duration:Math.max(15,80/(points.length-1)),delay:Math.max(0,delay-80/(points.length-1)),fill:'both',easing:'ease-out'});}
-     if(!reduced){const spark=document.createElement('i');spark.className='energy-attack-particle';spark.style.opacity='0';layer.append(spark);particles.push(spark);const launch=LINK_PARTICLE_LAUNCH_MS+index/Math.max(1,points.length-1)*LINK_PARTICLE_STAGGER_MS;animate(spark,[{transform:`translate(${p.x}px,${p.y}px)`,opacity:1},{transform:`translate(${p.x+(end.x-p.x)*.35}px,${p.y+(end.y-p.y)*.5-12}px)`,opacity:1,offset:.4},{transform:`translate(${end.x}px,${end.y}px)`,opacity:1}],{duration:budget.lead-launch,delay:launch,fill:'both',easing:'cubic-bezier(.4,0,.65,1)'});}
+     if(!reduced){const spark=document.createElement('i');spark.className='energy-attack-particle';spark.style.opacity='0';layer.append(spark);particles.push(spark);const launch=LINK_PARTICLE_LAUNCH_MS+index/Math.max(1,points.length-1)*LINK_PARTICLE_STAGGER_MS;animate(spark,attackParticleFrames(p,end),{duration:budget.lead-launch,delay:launch,fill:'both',easing:'cubic-bezier(.4,0,.65,1)'});}
     }
     area.append(layer);active={event,impact:()=>{if(finished)return;layer!.dataset.phase='impact';for(const particle of particles)particle.remove();},clear:finish,matches:()=>area.isConnected&&board.isConnected&&same(area.getBoundingClientRect(),bounds)&&same(board.getBoundingClientRect(),boardBounds)};
     signal.addEventListener('abort',finish,{once:true});timer=setTimeout(finish,duration);if(signal.aborted){finish();return false;}return true;

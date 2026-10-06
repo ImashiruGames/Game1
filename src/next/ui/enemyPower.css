@@ -8,3 +8,6 @@
    English: Reserve the warning label without truncating three-digit encounter HP on narrow screens. */
 @media(max-width:699px){.enemy-hud>div:has(.enemy-power-note)>#enemy-hp{padding-left:45px;font-size:18px}.enemy-hud>div:has(.enemy-power-note)>#enemy-hp small{font-size:11px}}
 @media(min-width:700px){.hud #enemy-name{font-size:13px;padding-left:125px}.enemy-power-meter,.hud .enemy-power-meter span{font-size:12px;line-height:17px}.enemy-power-values b{font-size:13px}.enemy-power-note{top:22px}.enemy-hud>div:has(.enemy-power-note)>#enemy-hp{padding-left:72px}}
+
+/* 日本語: 強化時だけ既存の注意欄に差分を表示し、未強化時の情報量と盤面高を保つ。English: Reuse the warning slot for boosts only; keep ordinary HUD density and board height. */
+.enemy-power-values .enemy-power-boosted b,.enemy-power-boost{color:#ffbd77}.enemy-power-boost{font-weight:700}.enemy-power-details .enemy-power-boosted{color:#ffbd77}.enemy-power-details td small{display:block;font:11px/1.4 system-ui;color:#ffcf99}

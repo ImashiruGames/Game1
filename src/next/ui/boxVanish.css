@@ -1,10 +1,11 @@
+/* 日本語: 消滅時も上昇を1/3に抑えて視線を盤面に保つ。English: One-third rise keeps attention on the board during removal. */
 /* 日本語: 消える箱の「Vanish状態」。待機中はうっすら明滅し、計算が終わるとゆっくり光って消える。 */
 .cell.is-vanishing>*:not(small){transform-origin:center}
 .cell.vanish-marked>*:not(small){animation:vanish-wait 1.1s ease-in-out infinite alternate}
 .cell.vanish-fading>*:not(small){animation:vanish-away var(--vanish-ms,900ms) ease-in forwards}
 .cell.vanish-fading::after{content:"";position:absolute;inset:3px;border-radius:50%;border:2px solid #ffffffcc;opacity:0;pointer-events:none;animation:vanish-ring var(--vanish-ms,900ms) ease-out forwards}
 @keyframes vanish-wait{from{opacity:1;filter:none}to{opacity:.6;filter:saturate(.5) brightness(1.15)}}
-@keyframes vanish-away{0%{opacity:.9;filter:saturate(.5) brightness(1.2);transform:scale(1)}30%{opacity:.85;filter:saturate(.3) brightness(1.9);transform:scale(1.04)}100%{opacity:0;filter:blur(3px) brightness(2.4);transform:scale(.8) translateY(-5px)}}
+@keyframes vanish-away{0%{opacity:.9;filter:saturate(.5) brightness(1.2);transform:scale(1)}30%{opacity:.85;filter:saturate(.3) brightness(1.9);transform:scale(1.04)}100%{opacity:0;filter:blur(3px) brightness(2.4);transform:scale(.8) translateY(calc(-5px / 3))}}
 @keyframes vanish-ring{0%{opacity:0;transform:scale(.5)}30%{opacity:.9}100%{opacity:0;transform:scale(1.5)}}
 @media(prefers-reduced-motion:reduce){.cell.vanish-marked>*:not(small),.cell.vanish-fading>*:not(small){animation:none;opacity:.5}.cell.vanish-fading::after{display:none}}
 body[data-reduced-motion=true] .cell.vanish-marked>*:not(small),body[data-reduced-motion=true] .cell.vanish-fading>*:not(small){animation:none;opacity:.5}

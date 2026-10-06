@@ -1,0 +1,17 @@
+{
+  "revision": "compact-attack-power-1.13.2-review",
+  "baseCommit": "a3af22c21c47c17064ad47b03bd822da4d854c08",
+  "scope": "User-authorized one-third extra attack arc lift with original launch/impact endpoints, compact feedback rise and current enemy power display. Damage rules, timing and saves unchanged. Review version1.13.2 and regenerated guide.",
+  "files": {
+    "src/next/core/activeDrop.ts": "3315ca2e14765212b56009dff6f2a1c8ba3ef94a51f72d9c5394c7a597712c82",
+    "src/next/core/enemyPower.ts": "cddff068c4f7f766223f65a7aef104c97dfb8d29785358ab8c8b2ce475ac3ac9",
+    "src/next/ui/energyLinks.ts": "afbe5575992ce74e01669c1f69f3c0eabd8f7fad06a59b04678df3c54dcf92be",
+    "src/next/ui/battleFeedback.ts": "dd6584c36541b8003deaf4ba3d98d3c95eedda3e8d83f71743e3a855511f1e77",
+    "src/next/ui/boxVanish.css": "14b470a0bc69063b7a230fd6f922c99b663ea38636378d7e77312a81d57fde08",
+    "src/next/ui/enemyPower.ts": "01228c7d963acde91097a3ba3c306b73e2ff5c63692ddb020b3c3d481cff3451",
+    "src/next/ui/enemyPower.css": "b41316e05a53d1817596e141b7984921d32852787636eb94558a5ffaa5edbc5c",
+    "src/next/version.ts": "fe3fe4a546bd47ac91025281bceadb2e8eb522d1422b213882206d49e83d0435",
+    "public/docs/game1_content_catalog_next.html": "d674a0c1dcca83441c449ce095587199bfdc422e9fc37bb743ded4bcdabc5eb7",
+    "public/docs/game1_content_catalog_next.json": "ed44e6569c3001dcc21e584c0678374c7bcffb2783c6a57231286b025d72f9ba"
+  }
+}
