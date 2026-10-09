@@ -1,0 +1,170 @@
+{
+  "verifiedAt": "2026-10-09T06:49:04.849Z",
+  "version": "1.14.12",
+  "adopted": true,
+  "selection": "A改：回復スキルへ波紋",
+  "preview": "http://127.0.0.1:5195/experiments/blue-transformation/",
+  "implementation": {
+    "src/next/core/skillEffects.ts": [
+      "SkillEffectTag",
+      "SkillEffectMetadata",
+      "definitionHasEffect"
+    ],
+    "src/next/core/skillCatalog.ts": [
+      "SkillDefinition.effectTags",
+      "skillHasEffect"
+    ],
+    "src/next/core/kitBoards.ts": [
+      "KitBoardDefinition extends shared SkillEffectMetadata"
+    ],
+    "src/next/ui/skillHud.ts": [
+      "skillHudHtml emits data-skill-effects from canonical catalog"
+    ],
+    "src/next/ui/healingSkillTargets.ts": [
+      "isHealingSkill",
+      "equippedHealingSlots",
+      "visibleHealingIcon",
+      "healingHudTargets"
+    ],
+    "src/next/ui/blueTransformationLight.ts": [
+      "Shared exact adopted painter and canvas lifecycle; preview re-exports this module"
+    ],
+    "src/next/ui/blueHealingLight.ts": [
+      "createBlueHealingLight",
+      "blueTransformationApplies",
+      "WeakSet event identity deduplication"
+    ],
+    "src/next/main.ts": [
+      "blue transform portrait -> awaited light",
+      "reset/error/home/stage/boot/cancel/Escape/pagehide cleanup"
+    ],
+    "src/next/ui/battleAnimator.ts": [
+      "Await entire transform hook before next event; abort guard immediately after"
+    ],
+    "src/next/version.ts": [
+      "PRESENTATION_VERSION=1.14.12"
+    ]
+  },
+  "metadata": {
+    "canonical": "effectTags on definitions only",
+    "hpTag": "hp-heal",
+    "gaugeTag": "gauge-gain",
+    "compositeExample": [
+      "damage",
+      "hp-heal"
+    ],
+    "hpSkills": [
+      {
+        "id": "health",
+        "name": "ヘルス",
+        "ranks": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "rescue-kit",
+        "name": "救急箱",
+        "ranks": [
+          1
+        ]
+      },
+      {
+        "id": "healing-potion",
+        "name": "回復ポーション",
+        "ranks": [
+          1,
+          2
+        ]
+      }
+    ],
+    "gaugeOnly": [
+      "capacitor",
+      "charge"
+    ],
+    "future": "Definition metadata is independent of display name and activation family; shared type also extends board definitions. Existing board/link/passive skills do not currently dispatch HP healing. A future board capability still needs a real visible HUD node before it can be targeted; no fictitious target is created.",
+    "consistency": "Tests compare tagged player skills with HealEvent.source and execute every shape/instant skill at supported ranks against real dispatchers. Preview no longer uses a generated event-source classification. Historical compatibility exports derive directly from the canonical catalog.",
+    "saveCompatibility": "No effectTags stored on SkillInstance or checkpoints; encode/decode roundtrip verified."
+  },
+  "appearance": {
+    "unchangedAcceptedFrames": 81,
+    "originalRendererHash": "4e3fd3f7c76b813aed79c00b25397434c07307434fd88ffca3122903041996cf",
+    "durationMs": {
+      "normal": 1300,
+      "slow": 1950,
+      "fast": 520,
+      "short": 520,
+      "reduced": 420
+    },
+    "targets": "Currently equipped, visible HP-healing HUD cards only; hidden/offscreen/stale/depleted/absent skipped, zero targets retains board ripple. No enemy-directed light in adopted variant."
+  },
+  "validation": {
+    "fullTests": 1472,
+    "passed": 1472,
+    "failed": 0,
+    "typecheck": "passed",
+    "previewTypeDiagnostics": 0,
+    "build": "passed",
+    "inlineScriptSyntax": "passed",
+    "diffCheck": "passed",
+    "coverage": [
+      "actual main transform hook for all roster identities and five motion settings",
+      "portrait -> blue ripple -> following committed event ordering",
+      "skip, cancellation during portrait/effect, actual showHome cleanup",
+      "duplicate event suppression and replacement",
+      "narrow viewport target centers, 0/1/3 targets fixed duration",
+      "resize/scroll/target move-hide-remove/pagehide/abort/pause/repeated play resource cleanup",
+      "exact pre-adoption draw command and color hashes across 81 frames",
+      "HP healing versus gauge gain, mixed tags, aliases, ranks and shared board metadata type",
+      "real skill effect dispatch and no save schema additions"
+    ]
+  },
+  "browser": {
+    "verified": false,
+    "reason": "CUA browser inventory empty; actual rendered browser pixels were not checked. Real core/animator tests use mocked DOM/Canvas."
+  },
+  "preservedSourceHashes": {
+    "src/next/ui/rubyDropFlame.ts": "306b6240ae159e15f0d9fe6d6a62dda79ac21f2def5bbffea27e3d62397a69ee",
+    "src/next/ui/dropMotion.ts": "5fd18313dab78d087049fadd410b6497a18778a05eaa7a45d66ee083a87081b9",
+    "src/next/ui/dropMotion.css": "5ecc1f5b6dee668c58dfdc13a1da7b810513ef03f4e358be4518cf5c5264e42f",
+    "src/next/ui/imashiruLight.ts": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "src/next/ui/rubyEruption.ts": "ac8f7c9479fea925f95708012c81067035d577e0093560f57dd6510a8a4b54d9",
+    "src/next/ui/skillActivationEffects.ts": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96",
+    "experiments/ruby-auto-drop/candidates.ts": "2476eefa40dece2b62543d669a443bcef28f2bb4b2e005c0b1ac667a652ad3e4",
+    "tests/fixtures/next-ruby-comet-accepted-style.json": "8e4e298f907d8a6a773b9a091f254f8ad23fd19011b44e75bc8e5b34784695e6"
+  },
+  "files": {
+    "src/next/main.ts": "e5e6ce0cb0f38fb1db02e7f39f331a31759d1d774fc09ca6c7c3ddcfaf35de35",
+    "src/next/ui/battleAnimator.ts": "b623f19fb0a963bf78cc1126d3fbadcd0dbf1cdfabf31e297b03f6c39c0b8aab",
+    "src/next/core/skillCatalog.ts": "921a266b759bc5e8825764479ace1411bc67157cedcb27426e43b2e81c6b6346",
+    "src/next/core/kitBoards.ts": "ffa1b9363cdd9d3513d43f47ab3c8bdc82f4df9c18bc226228569c51212a49a3",
+    "src/next/core/skillEffects.ts": "b6ecad0aa05524a76d44607397b0b6aded88d5220dda2abeeb7c2b5beb8da2ef",
+    "src/next/ui/skillHud.ts": "0d2161cde61caf2de5c6fd530dbb93ccf605cc964dba260da56c8883e76974f5",
+    "src/next/ui/healingSkillTargets.ts": "b27041c127861f7359b03bc196015dcbb4afbac7cfa8540953c4cc99f3853aca",
+    "src/next/ui/blueTransformationLight.ts": "8f51784ff19e4ddd970f99bf58612df2baa4f68379dad9c4e5f5de31132f7cd6",
+    "src/next/ui/blueHealingLight.ts": "b3d95ca6f074626275a4d0057af7976e366360c698db3691532a4a52e4f917dc",
+    "src/next/version.ts": "d8984b9752b059564d1dca4087180bf99169c875f9c4861ff9b82381f3fa0977",
+    "public/docs/game1_content_catalog_next.html": "77cb6a53d3170bfef116e9903f887cfdfd598bb48178a02f6ecbcb0d7d7e4650",
+    "public/docs/game1_content_catalog_next.json": "8b3b71c02a131d51e787544460bebe3fc92783bb3beb896142b5a6dbbe0c3102",
+    "experiments/blue-transformation/check.ts": "95e4e1a83f7970756d00caaaaf3c252d20021b5fd9999e0e15b4298bd4c4c4ea",
+    "experiments/blue-transformation/effect.ts": "ef813cb9fa69ff357b7eb12714a36388e26dcf5487ebaee06724d68c82267f8f",
+    "experiments/blue-transformation/healingTargets.ts": "9783076aa68f5d64bdae08dd6c96d640f19e1bebc662a5fdae6a04625a100805",
+    "experiments/blue-transformation/healingSources.ts": "f7eaf295d1f221f9c7513ffcdf4eb988d35286a664e1aa640a2dcb43000e3a47",
+    "experiments/blue-transformation/generate-healing-sources.mjs": "f3af36ab24d0ba38776ddfc5160838818ef8beb6995cf52c2c32c2037344d22d",
+    "experiments/blue-transformation/index.html": "17238098485f928bdb0c212df953cf2975337a21370985a5ba0029dc9049d04a",
+    "tests/next-blue-healing-adoption.test.ts": "7735189bfde839ac0d4f68169be567814e505b0b488cddd16095aefbb30f0bb9",
+    "tests/next-blue-transformation-preview.test.ts": "d35d52fb316fad5e6105822dd6f087007856b110d799f150144ce6371f6e2376",
+    "tests/next-main-transformation-integration.test.ts": "d64a1feadb05ed2fb52e0828f42be72a7415404071dfe1c5039fc57ed9f08772",
+    "tests/next-home-replacement-boundary.test.ts": "0617459c29e21a502814830832fe1510111111eafe5f7d02c7891e0acbb7616f",
+    "tests/next-ruby-drop-flame.test.ts": "f54c114ef72c7e87a94ad8588f1dbceebf0589bd3abf390f9a0f5ca7af83e10d",
+    "tests/next-energy-boxes.test.ts": "65d8beea6fadefb6e68b9387b461add7daf4a7b959f10ff03a8a21a571bb6ffd",
+    "tests/fixtures/next-blue-healing-source-manifest.json": "74322c8b30cb0c5ebdf2e92cf1581b1c844e3cbc00142d03fd86b84e66dacd55",
+    "tests/fixtures/next-blue-healing-accepted-frames.json": "c1f657ebd43a5113aa2d96b5040a3066f6eb7c569e0d474a64dc1c43ec153955"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-blue-adoption-final-check.log",
+    "modified": "2026-10-09T06:47:44.077Z",
+    "sha256": "c4d388a6b5ba581e2cbcfc57c088d5ff945925f39c7692920dee74d821249e55"
+  },
+  "protected": "Accepted Ruby B auto drop, five meteors, Imashiru and GrowFire unchanged. No changes to HP/damage algorithms, power, RNG, saved schema or app persistence. No server5195, normal play, save or old_game operations; no commit, push, publication or auth changes."
+}

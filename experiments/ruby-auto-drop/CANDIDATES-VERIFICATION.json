@@ -1,0 +1,72 @@
+{
+  "version": "1.14.10",
+  "previewRevision": 3,
+  "verifiedAt": "2026-10-09T05:21:11.177Z",
+  "status": "Three comparison-only candidates; no final main-game choice made.",
+  "scope": "Preview candidates, controls and tests only. All 8 production source hashes in VERIFICATION.json unchanged.",
+  "reference": {
+    "libraryFileId": "libfile_62c3bec8b37881918753627fe095e378",
+    "localMaterialization": "Failed: authorized helper download returned HTTP 403; no bypass attempted.",
+    "pixelsViewedInThisExecutor": false,
+    "basis": "Parent-confirmed screenshot description and current SVG source. Existing SVG contains two sharp tall tips and overlapping hard shapes."
+  },
+  "candidates": {
+    "A": {
+      "name": "球状ハロー",
+      "method": "CSS circular radial gradient with a white-gold center and multiple soft color stops; no path or stroke.",
+      "shape": "Compact symmetric round halo, 170% of box bounds."
+    },
+    "B": {
+      "name": "短い彗星光",
+      "method": "Two CSS elliptical radial gradients: near-round head and narrow soft upper tail; no pointed polygon.",
+      "shape": "Directional, smoothly fading short tail; 150% width x 190% height."
+    },
+    "C": {
+      "name": "発光球スプライト",
+      "method": "192x192 offscreen Canvas texture with round shaded body, soft radial rim, deterministic glow patches and offset highlight. PNG data URI cached once per preview instance; prepared before flight.",
+      "shape": "Broader red-orange volume with asymmetric highlight; 190% square. No per-frame painting."
+    }
+  },
+  "comparison": {
+    "url": "http://127.0.0.1:5195/experiments/ruby-auto-drop/",
+    "operation": [
+      "Reload preview; choose A/B/C under comparison light. Original pointed flame remains available as reference.",
+      "Normal battle speed + 1x observation rate tests original 120ms flight. Use 0.1x for 1200ms flight.",
+      "Click Middle: flight time 60%, then switch A/B/C to compare the same paused production frame.",
+      "Initial / Landing / slider / floor-stack-terrain / consecutive/manual comparison / reduced remain available."
+    ],
+    "invariants": "Same seeded core fixture, moving box DOM, path, background, document timeline and step-to-zero landing opacity. Candidate decoration replaces only the existing flame node contents/styles; no gameplay changes."
+  },
+  "validation": {
+    "newTests": 18,
+    "fullTests": 1342,
+    "passed": 1342,
+    "failed": 0,
+    "typecheck": "passed",
+    "build": "passed",
+    "previewTypeDiagnostics": 0,
+    "inlineControlsSyntax": "passed",
+    "diffCheck": "passed",
+    "coverage": [
+      "each candidate: normal flight clock, initial/intermediate/landing opacity keys",
+      "each candidate: abort, resize, clear",
+      "each candidate: manual, fast and reduced exclusion",
+      "C deterministic texture and one-build reuse",
+      "shared live and paused production path"
+    ],
+    "browserVisualCheck": false,
+    "limitation": "No CUA browsers connected. Tests use deterministic DOM/WAAPI/Canvas harnesses; actual small-size and normal-speed visual quality has not been inspected here."
+  },
+  "protected": "Accepted transformation meteor shower and Imashiru gathering unchanged. No 5195 server operation, normal save/tab access, old_game changes, commit, push or publication.",
+  "files": {
+    "experiments/ruby-auto-drop/candidates.ts": "e87079b29f950520ea5e47ae04556bf4b53d57b7782332aa76cce47ef710f360",
+    "experiments/ruby-auto-drop/check.ts": "7661ae647fc006cc2100e9af92f3375dcd3688183c432492f23b14376d336fb2",
+    "experiments/ruby-auto-drop/index.html": "67e6925f8cfcd27fd13ed5aa78156937e907c7a75db0e03b36e35b824c7b2473",
+    "tests/next-ruby-drop-candidates.test.ts": "ee480e5caf884b22386f38079fe2cb5c49c8e68405c6ba3355e2655f400d4c4b"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-ruby-drop-candidates-final-check.log",
+    "modified": "2026-10-09T05:20:22.483Z",
+    "sha256": "6ba1314a11b6822e0f7d635a07b0e4d5fe0fb782dfa8ce3739f33e494e35e1f3"
+  }
+}

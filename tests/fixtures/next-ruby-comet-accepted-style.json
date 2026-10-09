@@ -1,0 +1,17 @@
+{
+  "source": "User-approved B preview, captured before extraction into shared production code.",
+  "style": {
+    "pointerEvents": "none",
+    "backgroundRepeat": "no-repeat",
+    "backgroundSize": "100% 100%",
+    "border": "0",
+    "borderRadius": "0",
+    "filter": "none",
+    "mixBlendMode": "normal",
+    "left": "-25%",
+    "top": "-95%",
+    "width": "150%",
+    "height": "190%",
+    "backgroundImage": "radial-gradient(ellipse 28% 24% at 50% 76%,rgba(255,255,244,.94) 0%,rgba(255,233,161,.78) 24%,rgba(255,166,76,.32) 60%,rgba(255,118,41,0) 100%),radial-gradient(ellipse 17% 54% at 50% 61%,rgba(255,206,126,.60) 0%,rgba(255,159,71,.33) 38%,rgba(255,116,36,.09) 73%,rgba(255,99,31,0) 100%)"
+  }
+}

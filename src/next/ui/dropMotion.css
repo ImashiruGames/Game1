@@ -8,3 +8,6 @@
 body[data-reduced-motion=true] .kinetic-drop-layer{display:none}
 body[data-reduced-motion=true] .cell.kinetic-drop-masked{opacity:1!important}
 @media(prefers-reduced-motion:reduce){.kinetic-drop-layer{display:none}.cell.kinetic-drop-masked{opacity:1!important}}
+
+/* This child follows the box; opacity reaches zero at its real landing, before squash. */
+.ruby-drop-flame{position:absolute;pointer-events:none!important;transform-origin:50% 100%}

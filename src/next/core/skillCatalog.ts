@@ -1,3 +1,4 @@
+import {definitionHasEffect,type SkillEffectMetadata,type SkillEffectTag} from './skillEffects.ts';
 import { cornerPattern, plusPattern, squarePattern, tPattern, zigzagPattern, cupPattern, diamondPattern, crossPattern, rescueKitPattern } from './shapePatterns.ts';
 import type { ShapePattern } from './shapePatterns.ts';
 import { defaultTuning,revisedSkillTuning } from './tuning.ts';
@@ -5,9 +6,9 @@ import type { GameTuning } from './tuning.ts';
 import { freeze } from './immutable.ts';
 import type { NormalSkillId } from './types.ts';
 export type SkillRewardAccess = 'shared' | 'starter-upgrade-only' | 'never' | 'trophy';
-export interface SkillDefinition { readonly id: NormalSkillId; readonly name: string; readonly kind: 'shape' | 'link' | 'passive' | 'instant'; readonly pattern?: ShapePattern; readonly upgradeable?: boolean; readonly rewardAccess?: SkillRewardAccess }
+export interface SkillDefinition extends SkillEffectMetadata { readonly id: NormalSkillId; readonly name: string; readonly kind: 'shape' | 'link' | 'passive' | 'instant'; readonly pattern?: ShapePattern; readonly upgradeable?: boolean; readonly rewardAccess?: SkillRewardAccess }
 export const skillCatalog: Readonly<Record<NormalSkillId, SkillDefinition>> = freeze({
-  'rescue-kit': {id:'rescue-kit',name:'救急箱',kind:'shape',pattern:rescueKitPattern,rewardAccess:'trophy',upgradeable:false},
+  'rescue-kit': {id:'rescue-kit',effectTags:['hp-heal'],name:'救急箱',kind:'shape',pattern:rescueKitPattern,rewardAccess:'trophy',upgradeable:false},
   'heavy-swing': {id:'heavy-swing',name:'大振り攻撃',kind:'link',rewardAccess:'trophy'},
   'clear-column': {id:'clear-column',name:'澄んだ支柱',kind:'link',rewardAccess:'trophy'},
   'pincer-strike': {id:'pincer-strike',name:'挟撃',kind:'link',rewardAccess:'trophy'},
@@ -30,22 +31,23 @@ export const skillCatalog: Readonly<Record<NormalSkillId, SkillDefinition>> = fr
   crossfire:{id:'crossfire',name:'交差砲火',kind:'link'},
   'last-stand':{id:'last-stand',name:'背水の陣',kind:'link'},
   'iron-wall':{id:'iron-wall',name:'鉄壁',kind:'passive'},
-  capacitor:{id:'capacitor',name:'充填カプセル',kind:'instant'},
+  capacitor:{id:'capacitor',effectTags:['gauge-gain'],name:'充填カプセル',kind:'instant'},
   solvent:{id:'solvent',name:'浄化溶剤',kind:'instant'},
   'combo-unit':{id:'combo-unit',name:'コンボユニット',kind:'shape',pattern:cornerPattern,upgradeable:false,rewardAccess:'never'},
   'death-arrow':{id:'death-arrow',name:'死の矢',kind:'link',upgradeable:false,rewardAccess:'never'},
   'poison-craft':{id:'poison-craft',name:'毒盛り術',kind:'passive',rewardAccess:'never'},
-  health: { id: 'health', name: 'ヘルス', kind: 'shape', pattern: plusPattern, rewardAccess: 'starter-upgrade-only' },
+  health: { id: 'health', effectTags:['hp-heal'], name: 'ヘルス', kind: 'shape', pattern: plusPattern, rewardAccess: 'starter-upgrade-only' },
   'grow-fire': { id: 'grow-fire', name: '成長する火', kind: 'link' },
-  charge: { id: 'charge', name: '蓄勢', kind: 'passive' },
+  charge: { id: 'charge', effectTags:['gauge-gain'], name: '蓄勢', kind: 'passive' },
   'first-guard': { id: 'first-guard', name: '初撃の守り', kind: 'passive' },
   'horizontal-slash': { id: 'horizontal-slash', name: '横薙ぎ', kind: 'link' },
   'diagonal-shot': { id: 'diagonal-shot', name: '斜め撃ち', kind: 'link' },
   'corner-strike': { id: 'corner-strike', name: '角打ち', kind: 'shape', pattern: cornerPattern },
   'square-strike': { id: 'square-strike', name: '四角打ち', kind: 'shape', pattern: squarePattern },
-  'healing-potion': { id: 'healing-potion', name: '回復ポーション', kind: 'instant' },
+  'healing-potion': { id: 'healing-potion', effectTags:['hp-heal'], name: '回復ポーション', kind: 'instant' },
   'magic-bullet': { id: 'magic-bullet', name: '魔法弾', kind: 'instant' },
 });
+export function skillHasEffect(id:NormalSkillId,tag:SkillEffectTag):boolean{return Object.hasOwn(skillCatalog,id)&&definitionHasEffect(skillCatalog[id],tag);}
 export const characterTrophySkillIds = freeze({blue:'clear-column',red:'pincer-strike',mint:'twin-diagonal',amber:'square-conduit',violet:'venom-edge',silver:'frost-edge',rose:'exact-four',imashiru:'shiny-relay'} as const);
 export const trophySkillIds = freeze(['heavy-swing','rescue-kit',...Object.values(characterTrophySkillIds)] as const);
 /** Stable pre-expansion draw order for unversioned trial and saved runs. */

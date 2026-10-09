@@ -2,6 +2,7 @@
 export interface KineticRect {left:number;top:number;width:number;height:number}
 export class KineticAnimation {
  cancelled=false;
+ startTime:number|null=null;
  finished:Promise<void>;
  readonly frames:Keyframe[];
  readonly options:KeyframeAnimationOptions;
@@ -47,7 +48,7 @@ export function kineticDom(){
  hud.className='hud';hud.rect={left:8,top:8,width:374,height:76};hud.clientLeft=1;hud.clientTop=1;player.id='player-image';player.rect={left:17,top:14,width:40,height:42};enemy.id='enemy-image';enemy.rect={left:333,top:14,width:40,height:42};hud.append(player,enemy);
  const cells:KineticNode[]=[];
  for(let row=0;row<8;row++){const cell=new KineticNode();cell.className='cell';cell.dataset.cellRow=String(row);cell.dataset.cellCol='0';cell.rect={left:50,top:142+row*44,width:42,height:42};board.append(cell);cells.push(cell);}
- globalThis.document={body,addEventListener:(name:string,fn:(event:Event)=>void)=>{let set=documentListeners.get(name);if(!set){set=new Set();documentListeners.set(name,set);}set.add(fn);},removeEventListener:(name:string,fn:(event:Event)=>void)=>documentListeners.get(name)?.delete(fn),createElement:()=>{const node=new KineticNode();node.animateFault=newNodeFault;if(unsupported)(node as unknown as {animate:undefined}).animate=undefined;return node;}} as unknown as Document;
+ globalThis.document={body,timeline:{currentTime:0},addEventListener:(name:string,fn:(event:Event)=>void)=>{let set=documentListeners.get(name);if(!set){set=new Set();documentListeners.set(name,set);}set.add(fn);},removeEventListener:(name:string,fn:(event:Event)=>void)=>documentListeners.get(name)?.delete(fn),createElement:()=>{const node=new KineticNode();node.animateFault=newNodeFault;if(unsupported)(node as unknown as {animate:undefined}).animate=undefined;return node;}} as unknown as Document;
  globalThis.window={matchMedia:()=>media,addEventListener:(name:string,fn:()=>void)=>{let set=listeners.get(name);if(!set){set=new Set();listeners.set(name,set);}set.add(fn);},removeEventListener:(name:string,fn:()=>void)=>listeners.get(name)?.delete(fn)} as unknown as Window&typeof globalThis;
  globalThis.ResizeObserver=class{private fn:()=>void;constructor(callback:ResizeObserverCallback){this.fn=()=>callback([],this as unknown as ResizeObserver);observers.add(this.fn);}observe():void{}unobserve():void{}disconnect():void{observers.delete(this.fn);}} as unknown as typeof ResizeObserver;
  globalThis.setTimeout=((fn:()=>void,delay:number)=>{const id=nextId++;timers.set(id,{fn,due:time+delay});return id;}) as unknown as typeof setTimeout;

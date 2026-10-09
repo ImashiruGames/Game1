@@ -1,3 +1,4 @@
+import type {SkillEffectMetadata} from './skillEffects.ts';
 import {revisedCharacters} from './characterRevision.ts';
 import {revisedBoardCatalog,isGlobalBoard,revisedBoardAvailable,resolveRevisedBoard} from './revisedBoards.ts';
 import {kitBalanceOf,LEGACY_KIT_BALANCE,CURRENT_BOARD_BALANCE} from '../meta/kitBalance.ts';
@@ -10,7 +11,7 @@ import type {BattleState,BoardSkillId,BattleTransition,Box,Cell,BattleConfig,Own
 export interface BoardTarget extends Cell {readonly orientation?:number}
 export type KitBoardKind='random-drop'|'random-area'|'poison-mark'|'single-enemy'|'single-own'|'single-any'|'column'|'l'|'line'|'plus'|'vertical-line'|'diagonal'|'square'|'horizontal-pair'|'diagonal-pair'|'long-line'|'vertical-pair';
 type BoardEffect={readonly action:'remove'}|{readonly action:'convert';readonly type?:BoxType}|{readonly action:'type';readonly type:BoxType;readonly from?:readonly BoxType[]};
-export interface KitBoardDefinition {id:BoardSkillId;name:string;description:string;gauge:number;hp:number;kind:KitBoardKind;owner?:Owner;effect:BoardEffect;expanded?:true}
+export interface KitBoardDefinition extends SkillEffectMetadata {id:BoardSkillId;name:string;description:string;gauge:number;hp:number;kind:KitBoardKind;owner?:Owner;effect:BoardEffect;expanded?:true}
 /** 日本語: 幾何・対象・効果を宣言的に分離。消去も変更も受動で、投入スキルを発火しない。
  * English: Geometry, ownership and effects are data, not per-character branches; mutations remain passive. */
 export const kitBoardCatalog:Partial<Record<BoardSkillId,KitBoardDefinition>>={

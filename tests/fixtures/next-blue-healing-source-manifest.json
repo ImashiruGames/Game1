@@ -1,0 +1,18 @@
+{
+  "revision": "1.14.12",
+  "scope": "User-approved A revised blue transformation and canonical definition effectTags; static classification only, no gameplay or save changes.",
+  "files": {
+    "src/next/main.ts": "033a09ba438d065c9ca4df0206702c58f2e41e4bbcb4525e8183d7fb7a4cb4ca",
+    "src/next/ui/battleAnimator.ts": "b623f19fb0a963bf78cc1126d3fbadcd0dbf1cdfabf31e297b03f6c39c0b8aab",
+    "src/next/core/skillCatalog.ts": "921a266b759bc5e8825764479ace1411bc67157cedcb27426e43b2e81c6b6346",
+    "src/next/core/kitBoards.ts": "ffa1b9363cdd9d3513d43f47ab3c8bdc82f4df9c18bc226228569c51212a49a3",
+    "src/next/core/skillEffects.ts": "b6ecad0aa05524a76d44607397b0b6aded88d5220dda2abeeb7c2b5beb8da2ef",
+    "src/next/ui/skillHud.ts": "0d2161cde61caf2de5c6fd530dbb93ccf605cc964dba260da56c8883e76974f5",
+    "src/next/ui/healingSkillTargets.ts": "b27041c127861f7359b03bc196015dcbb4afbac7cfa8540953c4cc99f3853aca",
+    "src/next/ui/blueTransformationLight.ts": "8f51784ff19e4ddd970f99bf58612df2baa4f68379dad9c4e5f5de31132f7cd6",
+    "src/next/ui/blueHealingLight.ts": "b3d95ca6f074626275a4d0057af7976e366360c698db3691532a4a52e4f917dc",
+    "src/next/version.ts": "d8984b9752b059564d1dca4087180bf99169c875f9c4861ff9b82381f3fa0977",
+    "public/docs/game1_content_catalog_next.html": "f12ce140b4ad1b9ede35d3a982a0569a408da5edf36fc7e1bef710a55da26cf4",
+    "public/docs/game1_content_catalog_next.json": "65b0ae2e6f820ae4d354a662223beb7a6b19c41407203fdfae5260bf5ca50c21"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "version": "1.14.10",
+  "previewRevision": 2,
+  "verifiedAt": "2026-10-09T05:09:27.412Z",
+  "scope": "Preview and regression tests only; all eight production source hashes in VERIFICATION.json remain identical.",
+  "diagnosis": {
+    "confirmedBySource": [
+      "Previous normal flight was 120ms; slow flight was 180ms; fast/short/reduced omitted moving drops. There was no observation-only playback rate.",
+      "Previous grid had implicit auto rows with content-dependent sizing; dropMotionGeometry rejects any route whose cell heights differ by more than 0.5px. That rejection left the committed landing visible. The preview ignored the boolean returned by drop.play."
+    ],
+    "runtimeStatus": "No connected CUA browser. Uneven-row suppression is reproduced with deterministic geometry; the original user browser pixels and exact runtime cause were not observed.",
+    "productionReview": "WAAPI uses a complete ordered path, initial inline transform, shared document start time, and matching flame/box duration. Flame steps off at the 2/3 landing boundary. No CSS transition, JS RAF position update, or playbackRate change drives the production fall. No production frame-jump defect established."
+  },
+  "changes": [
+    "Explicit repeat(8,minmax(0,1fr)) rows and min-height:0 keep empty and occupied cells equal.",
+    "Observation rates 1x / 0.25x / 0.1x apply the same drop budget to createBattleAnimator waits and actual dropMotion animations. Production timing constants are unchanged.",
+    "Initial / flight 60% / landing snapshots and slider pause and seek actual production WAAPI animations, with a bounded 60-second cleanup.",
+    "Visible geometry, start-success, OS motion preference and computed-frame diagnostics; old playback cleanup cannot clear a newer playback."
+  ],
+  "timings": {
+    "normal": {
+      "originalFlightMs": 120,
+      "quarterFlightMs": 480,
+      "tenthFlightMs": 1200
+    },
+    "slow": {
+      "originalFlightMs": 180,
+      "quarterFlightMs": 720,
+      "tenthFlightMs": 1800
+    }
+  },
+  "instructions": [
+    "Reload the isolated preview. Set battle speed to normal, short/reduced off, observation rate 0.1x, then press Replay: automatic drop.",
+    "Use Initial, Middle: flight time 60%, Landing: no flame, or the flight-time slider to hold real animation frames.",
+    "Floor/stack/terrain select landing geometry, not speed. OS reduced motion is respected."
+  ],
+  "validation": {
+    "newTests": 16,
+    "fullTests": 1324,
+    "passed": 1324,
+    "failed": 0,
+    "typecheck": "passed",
+    "build": "passed",
+    "previewTypeDiagnostics": 0,
+    "inlineControlsSyntax": "passed",
+    "diffCheck": "passed",
+    "physicalBrowserVerified": false
+  },
+  "url": "http://127.0.0.1:5195/experiments/ruby-auto-drop/",
+  "protected": "No server start/stop/restart, normal play/save access, old_game edits, commit, push or publication.",
+  "hashes": {
+    "experiments/ruby-auto-drop/index.html": "6325d4030e14a782c7e12d85345222e4d282e212a2799c4ce26ce8c528c846da",
+    "experiments/ruby-auto-drop/check.ts": "b3c25a71410222f7dd46feb4254b0485fa9ece2c9e3c41086d94eb0206798c8d",
+    "experiments/ruby-auto-drop/playback.ts": "5e856b7ac9ad14b79ed79808eadb48431744a153ef8f4c8cc6cf0ce2e3831cb2",
+    "tests/next-ruby-drop-preview.test.ts": "5c321c63ee729705c3e2ea6a79bbda123ceeb2e6706f1931014e1dae192a982d"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-ruby-drop-preview-final-check.log",
+    "modified": "2026-10-09T05:08:26.484Z",
+    "sha256": "a16929d829154e8420f10f9b472f977211d4a1e33c9b6412efe4e42340e7994c"
+  }
+}

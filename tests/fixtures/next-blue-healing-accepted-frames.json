@@ -1,0 +1,734 @@
+{
+  "sourceHash": "4e3fd3f7c76b813aed79c00b25397434c07307434fd88ffca3122903041996cf",
+  "frames": [
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.12,
+      "mode": "normal",
+      "hash": "d146a42f02b5bda2548ae8dccceada6048e92ab573f4666cef4790b7de0d529f"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.12,
+      "mode": "short",
+      "hash": "895ebae8780dc783b052c0df9a715049c354e5ee88df7fc40950ebfc30eb387d"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.12,
+      "mode": "reduced",
+      "hash": "d3196037cb5d6f42ab4a36c9abcfdf05c9647fdc8152acdb7dbc4e8841d59b73"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.3,
+      "mode": "normal",
+      "hash": "1d41919c89bdfe38110b76088c0ba9c88eee4ca3a51c7430e4308fb8dfd14604"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.3,
+      "mode": "short",
+      "hash": "aba4a8c61b6a8ec1364870234aea51440318f08ec8b46385c2db2a684c7c1aab"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.3,
+      "mode": "reduced",
+      "hash": "64596c22bc2496cf7fa287045467dfd10732762cb39c84863c2ac63f83c12551"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.48,
+      "mode": "normal",
+      "hash": "564ef6af82d78b2015a4bd6bbec6109f920961c7be28cf8949df250a946cdf92"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.48,
+      "mode": "short",
+      "hash": "f4e43a92be3ef47eaa3e01277cafd3774a81633e2d8dac964eb705b368114af1"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.48,
+      "mode": "reduced",
+      "hash": "64596c22bc2496cf7fa287045467dfd10732762cb39c84863c2ac63f83c12551"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.65,
+      "mode": "normal",
+      "hash": "8901986d7b0a89118e6d81f0ad5821e3ae3fe9f218d4576bbc752b2465532870"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.65,
+      "mode": "short",
+      "hash": "08bbf5683710cde5a1694883bda68da40a77b08e8d5b9397cdbbcc8bbb1ac28a"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.65,
+      "mode": "reduced",
+      "hash": "64596c22bc2496cf7fa287045467dfd10732762cb39c84863c2ac63f83c12551"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.76,
+      "mode": "normal",
+      "hash": "ccbaadc164473787231ce800a29c63bfdd519d3529f7d508e6f10ad9216f5356"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.76,
+      "mode": "short",
+      "hash": "2c11c15b8430ae2d01ff05908092001cfe8eea73f674d3567a20f890984f0160"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.76,
+      "mode": "reduced",
+      "hash": "64596c22bc2496cf7fa287045467dfd10732762cb39c84863c2ac63f83c12551"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.87,
+      "mode": "normal",
+      "hash": "8bc84e08c27adc22adb3a7cc1fce2690d697ebcf9a243840a68e998342102fc1"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.87,
+      "mode": "short",
+      "hash": "87b78bcd952d280fca6d51b35865107f1b66a4645317c0663f5390837e0862ef"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.87,
+      "mode": "reduced",
+      "hash": "80427ae924e418ab75ccc76b4813a7e1e620aabd0f6bbc97ac06cbd3dac68953"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.92,
+      "mode": "normal",
+      "hash": "3729f9883acf673a1d4ecfd0525d02d1ca7cd01a8adf476476ca675d9b5301f7"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.92,
+      "mode": "short",
+      "hash": "a34a0acf170b031f45bc33eced8a4e6154b1df36b6f998b7cd82d67f22883518"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.92,
+      "mode": "reduced",
+      "hash": "e3ac10c779c18e5eea33f78927e1b28bb48067d44ef05f915255c454f185c1f9"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.96,
+      "mode": "normal",
+      "hash": "48bd96f49840ca1ca5e08a417dd4aefc506aa5ddc3aef800d36668d31b02cfd8"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.96,
+      "mode": "short",
+      "hash": "101897645f339a6629821ed9cad9285b824d1cf701d5567868e2305c1865bb0d"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 0.96,
+      "mode": "reduced",
+      "hash": "1e53a9f8f37984cc4b7d994eab426849f40ba4fa475fa051f328c05ca352ec6e"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 1,
+      "mode": "normal",
+      "hash": "4507dc48811376760fcf0987eed3fd0abb741c7c4084a3e7d85965c45229ef50"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 1,
+      "mode": "short",
+      "hash": "4507dc48811376760fcf0987eed3fd0abb741c7c4084a3e7d85965c45229ef50"
+    },
+    {
+      "size": [
+        375,
+        667
+      ],
+      "p": 1,
+      "mode": "reduced",
+      "hash": "4507dc48811376760fcf0987eed3fd0abb741c7c4084a3e7d85965c45229ef50"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.12,
+      "mode": "normal",
+      "hash": "9d5b81c11c772d28f26cfbc973244cc7685220afe45e0f9ce3c6d168c4249f23"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.12,
+      "mode": "short",
+      "hash": "52c6e833322b192c941cd30a0ed1827a5dcf6b4137ac2e5757a4901bfa1551bc"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.12,
+      "mode": "reduced",
+      "hash": "c73e2084af6167b75f394b71b071fc81fd4f4558c8c84c5b5a7753f201c08498"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.3,
+      "mode": "normal",
+      "hash": "1c73eb3363203c26ad32d800d03af9a673a4ab30d3d3b21922d95c4cfdb97c88"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.3,
+      "mode": "short",
+      "hash": "a444c9a184b3530c2a506413a5408be1769156a6b74b5e6eebe7a9bcfeebfe9d"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.3,
+      "mode": "reduced",
+      "hash": "23b4a8df3956143f20bbd6ba395d8a3bca6d2013a74b14f7763b85746bbc1419"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.48,
+      "mode": "normal",
+      "hash": "bc3afdb2c8433f91c536b476d276a69294d40700aad9fa2a51ea2310f1e4b2a5"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.48,
+      "mode": "short",
+      "hash": "65dd20a7c301bc873df8ade24fade7abc9df0beb230ac5e467f153b205787e50"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.48,
+      "mode": "reduced",
+      "hash": "23b4a8df3956143f20bbd6ba395d8a3bca6d2013a74b14f7763b85746bbc1419"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.65,
+      "mode": "normal",
+      "hash": "c4d10007722d00f47c353cb2854ad202e9dca1e07468c14b634d722382fb1553"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.65,
+      "mode": "short",
+      "hash": "e7d2348af35433a2fba0ff43530021cc3483d4b3769fca3ba9d968f4d3a7918f"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.65,
+      "mode": "reduced",
+      "hash": "23b4a8df3956143f20bbd6ba395d8a3bca6d2013a74b14f7763b85746bbc1419"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.76,
+      "mode": "normal",
+      "hash": "a357dfffbbe56abacb42d68efed8a6941c2f1fbdcf9f4faf02fdfc598bbe1292"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.76,
+      "mode": "short",
+      "hash": "a561fe99eed5956d54ef7a74ad61b3ebf828cc8146549007361040c0e65c0d5f"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.76,
+      "mode": "reduced",
+      "hash": "23b4a8df3956143f20bbd6ba395d8a3bca6d2013a74b14f7763b85746bbc1419"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.87,
+      "mode": "normal",
+      "hash": "4332714f428a3a451844bf856d42128a8c6b335a8b811a1b9847ab2c59620bd8"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.87,
+      "mode": "short",
+      "hash": "d767fad3885008929351772b6906ae04896dc388b4672e3e9cadae7dc0e8f6b7"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.87,
+      "mode": "reduced",
+      "hash": "89610b539866afb8a5daee75f4c2c53b345d373f331e4cd0f77c550b1dc09ad0"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.92,
+      "mode": "normal",
+      "hash": "2544149f8be4369165b5c7168cc6d0667fec605aa09e8e855002152a34ba59af"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.92,
+      "mode": "short",
+      "hash": "acde79a18bffc75cba45650eb057a754d1e33903445a16b1247262cb062520b7"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.92,
+      "mode": "reduced",
+      "hash": "d65eca842994a534a3742426a9023af69870f5113aded61fbcd8e44d32c63f6a"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.96,
+      "mode": "normal",
+      "hash": "3cf93afebf4d86a70af2726795e38f4fc90875588e7d73e0f9938b5a40187ffc"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.96,
+      "mode": "short",
+      "hash": "1d2bf2d2607b7a0f2fc4170eed9cbbf199a3e73cfbb675d5a94bcccf8360ef11"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 0.96,
+      "mode": "reduced",
+      "hash": "104c1015f9e39326e9cc0472aadd8a0a383ee329b3fcf7b58d3330147ff979e4"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 1,
+      "mode": "normal",
+      "hash": "f5630b4e0aace06b46acc4cdb57d1ec271d22ffdfb9d9fe6298faa8d2be2988d"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 1,
+      "mode": "short",
+      "hash": "f5630b4e0aace06b46acc4cdb57d1ec271d22ffdfb9d9fe6298faa8d2be2988d"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "p": 1,
+      "mode": "reduced",
+      "hash": "f5630b4e0aace06b46acc4cdb57d1ec271d22ffdfb9d9fe6298faa8d2be2988d"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.12,
+      "mode": "normal",
+      "hash": "b6232c99e67f15b745168129d10d8e21fbe13def716fd2f4f2a763fe5f276c5b"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.12,
+      "mode": "short",
+      "hash": "67d635be619afb55930564c8712b2583e6148790c21230151d863088604b701a"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.12,
+      "mode": "reduced",
+      "hash": "dc26ef9310a622ec93436c5149927a59cc7464ba4fe8c97349a4cc3b32670e1c"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.3,
+      "mode": "normal",
+      "hash": "657ffd91994ccd3ca0d5d50c727fd73959ce30fb02a1373fdb500c9aa0bd11a0"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.3,
+      "mode": "short",
+      "hash": "726e6485d03ae89ca2f0e2b033ede1df93e4e2514a12f5d775b2b176c30b7905"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.3,
+      "mode": "reduced",
+      "hash": "f27a0c8bd4133e7e9706be898b6f7c8a80928dca3ca00a3af3fa51cd98c18ad4"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.48,
+      "mode": "normal",
+      "hash": "cf7d97cf5edb6f571a59f1b9d31bcd65d5216e6eacbf6359d1c98bf1e65c09e3"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.48,
+      "mode": "short",
+      "hash": "0011f011369015d30bbd55d9ea2c5890c38ddf62292a2087dc0727a6fbe1591e"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.48,
+      "mode": "reduced",
+      "hash": "f27a0c8bd4133e7e9706be898b6f7c8a80928dca3ca00a3af3fa51cd98c18ad4"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.65,
+      "mode": "normal",
+      "hash": "1462eab7d24cd9b856e809ef9d4ee5a87c430b4c35faaad14a5385557cc21a31"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.65,
+      "mode": "short",
+      "hash": "19af834a66b811344a64456ff6d322d22839b7d530f506d15577cb85fe43c432"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.65,
+      "mode": "reduced",
+      "hash": "f27a0c8bd4133e7e9706be898b6f7c8a80928dca3ca00a3af3fa51cd98c18ad4"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.76,
+      "mode": "normal",
+      "hash": "13997b47604b74898d7d52ed4b6563ba78c0162b38e0ff642ce65f57024f2913"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.76,
+      "mode": "short",
+      "hash": "249be80e842e8dacdc10df4ea8644de9162515adad7e62c39bf5dfee27aba2c2"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.76,
+      "mode": "reduced",
+      "hash": "f27a0c8bd4133e7e9706be898b6f7c8a80928dca3ca00a3af3fa51cd98c18ad4"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.87,
+      "mode": "normal",
+      "hash": "e8651f282379a3f0047c6bafbe43cd6242961360bd0a1d6ecd300e0169b54784"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.87,
+      "mode": "short",
+      "hash": "b9056a6ac960325320bd420c7c486b1262c5a25761ea3168c99554019d52c67d"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.87,
+      "mode": "reduced",
+      "hash": "61e43833939a806174d9a9b611bf8b21abc91b8ed5970046ab1729d7f9e045b4"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.92,
+      "mode": "normal",
+      "hash": "6617c95d8e508ea4ba8211bc73545b1ad96ce58244f9daaab8fd73ee84c7347c"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.92,
+      "mode": "short",
+      "hash": "8d609a48644d92b73f117cb0e9cf00065625d6e60c198fa068c786da0497f1da"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.92,
+      "mode": "reduced",
+      "hash": "68b27e421957ee5567b0fe2fb223d76c7072eca4fa0ba523203c58fac839f44d"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.96,
+      "mode": "normal",
+      "hash": "7a6c4994467060272969cb41ac300ff2dad152a6beea04d0fce27f5a248d9522"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.96,
+      "mode": "short",
+      "hash": "5dbc5a6ba45bf03cfaac478380613f14caa452ee3e107b47592caa7cc3de886a"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 0.96,
+      "mode": "reduced",
+      "hash": "7e7f32120b8be8aabf778ae8db224e37bdbcdeba8f6296df33ce2d09e4df7b25"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 1,
+      "mode": "normal",
+      "hash": "aff1677e0b55e8c1fb8cd653b9e987550e00f935677a1f9ba41d8a5f42e628cc"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 1,
+      "mode": "short",
+      "hash": "aff1677e0b55e8c1fb8cd653b9e987550e00f935677a1f9ba41d8a5f42e628cc"
+    },
+    {
+      "size": [
+        667,
+        375
+      ],
+      "p": 1,
+      "mode": "reduced",
+      "hash": "aff1677e0b55e8c1fb8cd653b9e987550e00f935677a1f9ba41d8a5f42e628cc"
+    }
+  ]
+}

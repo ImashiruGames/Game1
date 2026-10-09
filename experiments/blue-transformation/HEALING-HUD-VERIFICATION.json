@@ -1,0 +1,114 @@
+{
+  "verifiedAt": "2026-10-09T06:32:30.966Z",
+  "version": "1.14.11",
+  "adopted": false,
+  "url": "http://127.0.0.1:5195/experiments/blue-transformation/",
+  "selection": "A改：回復スキルへ波紋",
+  "preservedAlternatives": [
+    "A：波紋から光の帯",
+    "B：満ちる光から一筋の閃光",
+    "C：花びら状の光の収束"
+  ],
+  "effect": "Original A board ripple drawing is preserved. Smooth cyan-white branches deliver to all currently equipped visible HP-healing HUD cards, each with two small soft arrival ripples and a settled glow. No enemy-directed ribbon or enemy flash in this variant.",
+  "durationMs": {
+    "normal": 1300,
+    "slow": 1950,
+    "fast": 520,
+    "short": 520,
+    "reduced": 420
+  },
+  "timing": "All branches share one clock; target staggering is at most 1.8% of duration (23.4ms normal). Duration does not grow with target count.",
+  "classification": {
+    "investigated": [
+      "src/next/ui/skillHud.ts",
+      "src/next/core/skillCatalog.ts",
+      "src/next/core/types.ts",
+      "src/next/core/activeDrop.ts",
+      "src/next/core/instantSkills.ts",
+      "src/next/core/boardSkills.ts",
+      "src/next/core/effectDispatcher.ts",
+      "src/next/core/playerBuild.ts"
+    ],
+    "existingMetadata": "Catalog records kind/pattern, not a general effects array. Existing HealEvent.source is the typed authoritative HP-healing source contract. Preview-only generator parses that union with TypeScript AST; runtime intersects it with real skillCatalog, equipped build slots and actual HUD nodes. Test --check fails if the source contract changes.",
+    "included": [
+      {
+        "id": "health",
+        "name": "ヘルス",
+        "kind": "shape"
+      },
+      {
+        "id": "rescue-kit",
+        "name": "救急箱",
+        "kind": "shape"
+      },
+      {
+        "id": "healing-potion",
+        "name": "回復ポーション",
+        "kind": "instant"
+      }
+    ],
+    "excluded": "No current link, passive or board skill calls HP-healing dispatcher. Capacitor restores gauge, not HP. Enemy healing sources are excluded by catalog intersection. Unowned/consumed skills have no target.",
+    "limits": "Only existing visible HUD cards: no invented icons for legacy buildless, hidden passive or board effects. Disabled visible HUD cards remain eligible during animation. Entirely or partially clipped/offscreen, hidden, disconnected and stale slot-to-ID nodes are skipped. Zero targets plays board ripple only."
+  },
+  "fixtures": [
+    "three: health/rescue-kit/healing-potion",
+    "one plus nonhealing: health/capacitor/magic-bullet",
+    "mixed: health/rescue-kit/magic-bullet",
+    "zero: HUD hidden (Blue fixed health remains equipped)"
+  ],
+  "validation": {
+    "targetedTests": 75,
+    "fullTests": 1436,
+    "passed": 1436,
+    "failed": 0,
+    "typecheck": "passed",
+    "previewTypeDiagnostics": 0,
+    "inlineScriptSyntax": "passed",
+    "build": "passed",
+    "diffCheck": "passed",
+    "coreAppDiff": "none",
+    "coverage": [
+      "real skillHudHtml output and data-skill-info plus skill-trigger ID mapping",
+      "generated source freshness and gauge/HP distinction",
+      "preserved early A renderer output",
+      "HUD center arrival at 320x568,375x667,667x375",
+      "no enemy glow in improved variant",
+      "bounded duration for 0/1/3 targets",
+      "normal/slow/fast/short/reduced",
+      "actual portrait hook ordering, committed HP/RNG unchanged",
+      "pause/seek/resume/timeout",
+      "abort/resize/target move-hide-remove/home/pagehide/rapid replay cleanup"
+    ]
+  },
+  "browser": {
+    "verified": false,
+    "reason": "CUA listBrowsers returned []. Real browser pixels and live iframe were not inspected; mocked DOM/Canvas tests are not visual verification."
+  },
+  "protectedSourceHashes": {
+    "src/next/ui/rubyDropFlame.ts": "306b6240ae159e15f0d9fe6d6a62dda79ac21f2def5bbffea27e3d62397a69ee",
+    "src/next/ui/dropMotion.ts": "5fd18313dab78d087049fadd410b6497a18778a05eaa7a45d66ee083a87081b9",
+    "src/next/ui/dropMotion.css": "5ecc1f5b6dee668c58dfdc13a1da7b810513ef03f4e358be4518cf5c5264e42f",
+    "src/next/ui/imashiruLight.ts": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "src/next/ui/rubyEruption.ts": "ac8f7c9479fea925f95708012c81067035d577e0093560f57dd6510a8a4b54d9",
+    "src/next/ui/skillActivationEffects.ts": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96",
+    "src/next/version.ts": "acfefd3d1671d8e9ff1e0b73fbe7749ce6fc8e7792d718ac9a3c899f3babfc9d",
+    "experiments/ruby-auto-drop/candidates.ts": "2476eefa40dece2b62543d669a443bcef28f2bb4b2e005c0b1ac667a652ad3e4",
+    "tests/fixtures/next-ruby-comet-accepted-style.json": "8e4e298f907d8a6a773b9a091f254f8ad23fd19011b44e75bc8e5b34784695e6"
+  },
+  "files": {
+    "experiments/blue-transformation/index.html": "5823685a333f724d22ad83ccbd64c5d65e81e0cd20f36673ceb94375fc3bbf00",
+    "experiments/blue-transformation/frame.html": "9d1015daa65dc3e98a054e1411b9b0bbf644551fe1621e50626633b8cbc72829",
+    "experiments/blue-transformation/check.ts": "842af37ef1c1a30a98aeba8a0ecf29e79d9602dee24fa2a66e4c7a14ce4cc382",
+    "experiments/blue-transformation/effect.ts": "4e3fd3f7c76b813aed79c00b25397434c07307434fd88ffca3122903041996cf",
+    "experiments/blue-transformation/healingTargets.ts": "111ce3a56b50fe676f775b75c956784f7bf38cb45f9f03bce4d5de6d544417e6",
+    "experiments/blue-transformation/healingSources.ts": "9bea277f9f9fb18e43b5788e6be0151635c268b9bee37923b30663c99313f806",
+    "experiments/blue-transformation/generate-healing-sources.mjs": "55b9e1f51e96b60dcdac4b85ae7464dbd709b74d7738757bf350827f9fbfde55",
+    "tests/next-blue-transformation-preview.test.ts": "b5b8525097d19b32f39f2e8b2755ba3acafa61a6fc876500125bb142af4b36fa"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-blue-healing-final-check.log",
+    "modified": "2026-10-09T06:31:43.538Z",
+    "sha256": "63c492ba060b55a49f5e4396ad9b51075609f7198a7bd8893eff18c9de4ddec5"
+  },
+  "protected": "No production integration/version bump/gameplay changes. No server5195/save/old_game operation, commit/push/publication/auth changes."
+}

@@ -1,3 +1,4 @@
+import {rubyAutoDrop} from './rubyDropFlame.ts';
 import {settleBoxes} from '../core/board.ts';
 import type { BattleView } from '../app/BattleController.ts';
 import type { BattleEvent, BattleState, Resolution, Link } from '../core/types.ts';
@@ -24,7 +25,7 @@ export interface BattleAnimationHooks {
     render(state: BattleState, enemyAction?: BattleState | null): void;
     drop(event: Extract<BattleEvent, {
         type: 'drop';
-    }>, signal: AbortSignal, motion: AnimationMotion): void;
+    }>, signal: AbortSignal, motion: AnimationMotion, context?:{readonly rubyAutoDrop:boolean}): void;
     react(event: BattleEvent, signal: AbortSignal, motion: AnimationMotion): void;
     /** Cosmetic skill cues run after the committed event is drawn, never in a forecast. */
     boardSkill?(event: BattleEvent, resolution: Resolution, before: BattleState, signal: AbortSignal, motion: AnimationMotion): number|void;
@@ -155,7 +156,7 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
                 if (signal.aborted) return;
             }
             if (event.type === 'drop')
-                hooks.drop(event, signal, motion);
+                hooks.drop(event, signal, motion, {rubyAutoDrop:rubyAutoDrop(event,resolution,before)});
             if (feedback)
                 hooks.react(event, signal, motion);
             if (feedback) {
@@ -166,8 +167,11 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
                     return;
                 hooks.highlight([]);
             }
-            else if (event.type === 'transformation')
+            else if (event.type === 'transformation') {
+                // The portrait and its character-specific follow-up complete before the next committed event.
                 await hooks.transform(event, resolution, eventIndex, signal, motion, before);
+                if (signal.aborted) return;
+            }
             else if (event.type === 'drop' || event.type === 'turn-start')
                 await wait(profile.drop);
         }

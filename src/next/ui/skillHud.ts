@@ -18,7 +18,7 @@ export function skillHudHtml(s:BattleState,available:boolean):string {
  return '<span class="skill-hud-label">所持スキル｜</span><div class="skill-hud-cards">'+[build.fixed,...build.slots].map((skill,i)=>{
   if(!skill)return `<span class="hud-skill is-empty" aria-label="自由${i}空き">＋</span>`;
   const title=esc((skill.id==='combo-unit'?'連続成功'+(s.comboStreak??0)+'自手番（次の強化まで'+(3-(s.comboStreak??0)%3)+'回）。':'')+skillDescription(skill.id,skill.rank,tuningOf(s.config))),name=esc(skillName(skill.id,skill.rank)),consumable=i>0&&skill.uses!==null;
-  return `<button type="button" class="hud-skill skill-trigger--${skill.id}${i===0?' is-fixed':''}${consumable?' is-consumable':''}" data-skill-info="${i}" title="${name}：${title}${consumable?`・残り${skill.uses}回`:''}" aria-label="${name}・効果を見る${i===0?'・固有スキル':''}${consumable?`・残り${skill.uses}回`:''}" ${!available?'disabled':''}>${skillMiniArt(skill.id)}${skill.rank===2?'<span class="skill-rank" aria-hidden="true">＋</span>':''}${consumable?`<span class="skill-uses" aria-hidden="true">${skill.uses}</span>`:''}</button>`;
+  return `<button type="button" class="hud-skill skill-trigger--${skill.id}${i===0?' is-fixed':''}${consumable?' is-consumable':''}" data-skill-info="${i}" data-skill-effects="${skillCatalog[skill.id].effectTags?.join(' ')??''}" title="${name}：${title}${consumable?`・残り${skill.uses}回`:''}" aria-label="${name}・効果を見る${i===0?'・固有スキル':''}${consumable?`・残り${skill.uses}回`:''}" ${!available?'disabled':''}>${skillMiniArt(skill.id)}${skill.rank===2?'<span class="skill-rank" aria-hidden="true">＋</span>':''}${consumable?`<span class="skill-uses" aria-hidden="true">${skill.uses}</span>`:''}</button>`;
  }).join('')+'</div>';
 }
 /** 日本語: 報酬と同じカード部品で、強化候補ではなく今所持するランクを表示する。

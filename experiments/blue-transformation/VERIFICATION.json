@@ -1,0 +1,79 @@
+{
+  "verifiedAt": "2026-10-09T06:16:50.549Z",
+  "productionVersion": "1.14.11",
+  "adopted": false,
+  "url": "http://127.0.0.1:5195/experiments/blue-transformation/",
+  "candidates": {
+    "A": "Soft droplet and 3 thick cyan ripples, then a smooth ribbon to actual enemy target",
+    "B": "Overlapping soft light rises from below, lights boxes, gathers above into a narrow beam",
+    "C": "Six rounded petal lights gently approach separate boxes, gather and travel to enemy; no orbit"
+  },
+  "timingMs": {
+    "normal": 1300,
+    "slow": 1950,
+    "fast": 520,
+    "short": 520,
+    "reduced": 420
+  },
+  "controls": [
+    "actual portrait then prototype",
+    "prototype only",
+    "pause/resume",
+    "0.25x/0.1x observation",
+    "healing/gather/travel/arrival/end static frames",
+    "progress slider",
+    "variant switch on same frame",
+    "viewport presets",
+    "abort/home equivalent"
+  ],
+  "validation": {
+    "targetedTests": 52,
+    "fullTests": 1413,
+    "passed": 1413,
+    "failed": 0,
+    "typecheck": "passed",
+    "previewTypeDiagnostics": 0,
+    "build": "passed",
+    "inlineScriptSyntax": "passed",
+    "diffCheck": "passed",
+    "coreAppDiff": "none",
+    "coverage": [
+      "DOMRect prototype getters copied explicitly",
+      "finite blue-white filled-glow geometry at 320x568,375x667,667x375",
+      "real blue transformation identity only",
+      "real animator and actual preview transform hook wait for portrait before added light",
+      "committed battle HP/RNG/state unchanged by presentation",
+      "normal/slow/fast/short/reduced lifecycle",
+      "pause/seek/resume/60-second static cleanup",
+      "abort/resize/enemy layout/pagehide/home/replacement/stalled RAF/OS preference cleanup"
+    ]
+  },
+  "browser": {
+    "verified": false,
+    "reason": "CUA inventory returned no connected apps or browsers. Tests use real core/animator with mocked DOM/Canvas; pixels, actual iframe and browser animation have not been visually verified."
+  },
+  "preservedSourceHashes": {
+    "src/next/ui/rubyDropFlame.ts": "306b6240ae159e15f0d9fe6d6a62dda79ac21f2def5bbffea27e3d62397a69ee",
+    "src/next/ui/dropMotion.ts": "5fd18313dab78d087049fadd410b6497a18778a05eaa7a45d66ee083a87081b9",
+    "src/next/ui/dropMotion.css": "5ecc1f5b6dee668c58dfdc13a1da7b810513ef03f4e358be4518cf5c5264e42f",
+    "src/next/ui/imashiruLight.ts": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "src/next/ui/rubyEruption.ts": "ac8f7c9479fea925f95708012c81067035d577e0093560f57dd6510a8a4b54d9",
+    "src/next/ui/skillActivationEffects.ts": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96",
+    "src/next/version.ts": "acfefd3d1671d8e9ff1e0b73fbe7749ce6fc8e7792d718ac9a3c899f3babfc9d",
+    "experiments/ruby-auto-drop/candidates.ts": "2476eefa40dece2b62543d669a443bcef28f2bb4b2e005c0b1ac667a652ad3e4",
+    "tests/fixtures/next-ruby-comet-accepted-style.json": "8e4e298f907d8a6a773b9a091f254f8ad23fd19011b44e75bc8e5b34784695e6"
+  },
+  "files": {
+    "experiments/blue-transformation/index.html": "ddee16d5ba1ec036c52f62f2949deabd70a38af148d410a624cde66eaa096a15",
+    "experiments/blue-transformation/frame.html": "29e30098eca3cc3b30f515e0995066f9ceb0d123b9c23aa7a80e37e8aa712b09",
+    "experiments/blue-transformation/check.ts": "59df8bc5afe6f078cb02879a0a2f9a931276c7d3f3cdec68200c03690d03cfc9",
+    "experiments/blue-transformation/effect.ts": "18754f9ee80c6466cc2c4f71582e8045ec7a6253c738bf47a5828f62df745d9f",
+    "tests/next-blue-transformation-preview.test.ts": "7e5d73d52336aaab40988f02d8dbe5a89333fe1e71aeef78982bb0a862aa7751"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-blue-transformation-final-check.log",
+    "modified": "2026-10-09T06:16:16.071Z",
+    "sha256": "0f641fbe54e2183b616850b403b2dada59d50184a31d6ee45251376e9dc69b0e"
+  },
+  "protected": "No production integration or version bump. No server 5195 operation, normal play/save access, old_game edits, commit, push, publication or authentication changes."
+}

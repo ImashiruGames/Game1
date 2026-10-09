@@ -1,0 +1,58 @@
+{
+  "version": "1.14.11",
+  "verifiedAt": "2026-10-09T05:48:53.453Z",
+  "outcome": "User-approved B short comet is the production default for Ruby automatic turn-start drops. Exact accepted B styles were captured before extraction; the production and preview paths now use applyRubyComet and RUBY_COMET_STYLE from one shared definition.",
+  "implementation": {
+    "shared": "src/next/ui/rubyDropFlame.ts",
+    "production": "src/next/ui/dropMotion.ts",
+    "style": "src/next/ui/dropMotion.css",
+    "preview": "experiments/ruby-auto-drop/candidates.ts",
+    "acceptedSnapshot": "tests/fixtures/next-ruby-comet-accepted-style.json",
+    "unchangedIntegration": "main.ts drop hook -> createDropMotion; battleAnimator supplies Ruby automatic classification."
+  },
+  "appearance": "Two exact accepted elliptical CSS gradients. No recoloring, no D red shell, no added particles. Old pointed SVG is now only a comparison reference in the experiment.",
+  "behavior": "One moving box child on the same document clock and position; visual opacity becomes zero at actual landing (2/3 of full drop), including floor/stack/terrain. Existing frame path, waits, short/reduced policy, cleanup and actual-Ruby automatic-only predicate remain unchanged.",
+  "validation": {
+    "fullTests": 1361,
+    "passed": 1361,
+    "failed": 0,
+    "typecheck": "passed",
+    "build": "passed",
+    "previewTypeDiagnostics": 0,
+    "inlineControlsSyntax": "passed",
+    "diffCheck": "passed",
+    "coverage": [
+      "Exact pre-extraction approved B style equality with both production and preview",
+      "Actual main drop handler: floor/stack/terrain and speed/short/reduced routes",
+      "Duplicate event suppression and single B node, with no D particles",
+      "Real animator successive automatic starts with unchanged state and wait trace",
+      "Abort/resize/layout/pagehide/home/replacement/dispose cleanup",
+      "Other roster identities/manual/enemy exclusion"
+    ],
+    "coreAndAppDiff": "none"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:5195/experiments/ruby-auto-drop/",
+    "default": "B: short comet (adopted in main game)",
+    "alternatives": "A/C/D/original retained for comparison only",
+    "browserVerified": false,
+    "limitation": "CUA browser inventory empty. Actual rendered production pixels have not been checked in this pass; DOM/WAAPI integration tests are not a physical-browser substitute."
+  },
+  "preserved": "Accepted Ruby five-meteor transformation, Imashiru light gathering and GrowFire source hashes unchanged. No gameplay speed/power/RNG/save schema changes. No server 5195 operation, normal play/save access, old_game edits, commit, push or publication.",
+  "files": {
+    "src/next/ui/rubyDropFlame.ts": "306b6240ae159e15f0d9fe6d6a62dda79ac21f2def5bbffea27e3d62397a69ee",
+    "src/next/ui/dropMotion.ts": "5fd18313dab78d087049fadd410b6497a18778a05eaa7a45d66ee083a87081b9",
+    "src/next/ui/dropMotion.css": "5ecc1f5b6dee668c58dfdc13a1da7b810513ef03f4e358be4518cf5c5264e42f",
+    "src/next/ui/imashiruLight.ts": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "src/next/ui/rubyEruption.ts": "ac8f7c9479fea925f95708012c81067035d577e0093560f57dd6510a8a4b54d9",
+    "src/next/ui/skillActivationEffects.ts": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96",
+    "src/next/version.ts": "acfefd3d1671d8e9ff1e0b73fbe7749ce6fc8e7792d718ac9a3c899f3babfc9d",
+    "experiments/ruby-auto-drop/candidates.ts": "2476eefa40dece2b62543d669a443bcef28f2bb4b2e005c0b1ac667a652ad3e4",
+    "tests/fixtures/next-ruby-comet-accepted-style.json": "8e4e298f907d8a6a773b9a091f254f8ad23fd19011b44e75bc8e5b34784695e6"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-ruby-comet-adoption-final-check.log",
+    "modified": "2026-10-09T05:47:47.562Z",
+    "sha256": "a2f5bfb2ec7217e1a3099bd693dbe4651735aa73280a16b883a7f3382cefa4aa"
+  }
+}

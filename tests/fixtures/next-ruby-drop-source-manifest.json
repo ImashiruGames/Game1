@@ -1,0 +1,14 @@
+{
+  "revision": "1.14.11",
+  "scope": "User-approved B short comet for Ruby automatic turn-start boxes. Exact preview colors/geometry shared with production; no D halo or particles. Gameplay, RNG, saves, speed and accepted transformation effects unchanged.",
+  "files": {
+    "src/next/main.ts": "551b6cdf45ee11a4ba166a3faf1a3cd41e86f787fac3e1d184ea6818a19e7d76",
+    "src/next/ui/battleAnimator.ts": "c1166a2041334297e765673bce0aa2b9ce055305127d72be216b417c4e6dca94",
+    "src/next/ui/dropMotion.ts": "5fd18313dab78d087049fadd410b6497a18778a05eaa7a45d66ee083a87081b9",
+    "src/next/ui/dropMotion.css": "5ecc1f5b6dee668c58dfdc13a1da7b810513ef03f4e358be4518cf5c5264e42f",
+    "src/next/ui/rubyDropFlame.ts": "306b6240ae159e15f0d9fe6d6a62dda79ac21f2def5bbffea27e3d62397a69ee",
+    "src/next/version.ts": "acfefd3d1671d8e9ff1e0b73fbe7749ce6fc8e7792d718ac9a3c899f3babfc9d",
+    "public/docs/game1_content_catalog_next.html": "32d418d5027aea4213e7b3008f8e329024d3a339ff40b1fd4cf38e1d6cf7d8f4",
+    "public/docs/game1_content_catalog_next.json": "f261cceab5df41912532aacbd9edc6aaf729a136cf8cf709fda050e5e1b3c5e1"
+  }
+}

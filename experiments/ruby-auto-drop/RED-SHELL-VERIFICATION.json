@@ -1,0 +1,58 @@
+{
+  "version": "1.14.10",
+  "previewRevision": 4,
+  "verifiedAt": "2026-10-09T05:34:46.127Z",
+  "status": "D is an additional comparison candidate, not a final main-game choice; A/B/C and original remain available.",
+  "appearance": {
+    "name": "D：赤い外光＋少量の火の粉（改良案）",
+    "halo": "200% square bounds around the moving box; closest-side circular gradient. Transparent center through 43% radius, brightest red at 67% radius outside the square box side; no white/yellow center or pointed silhouette.",
+    "particles": "Exactly three small round embers, 1.8–4 CSS px depending on box size, each emitted once. Fixed slight lateral and upward offsets relative to the falling box. The box path is unchanged.",
+    "timing": "All particle WAAPI animations share the existing halo clock startTime and full-drop duration. Particles fade before landing; the parent halo opacity becomes zero at the exact 2/3 landing boundary, masking all descendants simultaneously.",
+    "cleanup": "Existing parent finish/cancel releases all child animation handles. Preview cancellation/end also clears them. No new timers, RAF loops, RNG calls or gameplay state.",
+    "inspection": "Paused inspection now includes descendant animations, so the three embers seek with the box and halo."
+  },
+  "comparison": {
+    "url": "http://127.0.0.1:5195/experiments/ruby-auto-drop/",
+    "operation": [
+      "Reload; select D: red outer glow plus sparse embers (new default comparison option).",
+      "Normal battle speed and 1x observation rate for main-game timing; 0.1x for slow observation.",
+      "Initial/Middle/Landing or time slider for paused frames; switch to A/B/C/original to compare."
+    ]
+  },
+  "validation": {
+    "newRegressionTests": 16,
+    "fullTests": 1358,
+    "passed": 1358,
+    "failed": 0,
+    "typecheck": "passed",
+    "build": "passed",
+    "previewTypeDiagnostics": 0,
+    "inlineControlsSyntax": "passed",
+    "diffCheck": "passed",
+    "coverage": [
+      "normal/0.1x/paused clocks",
+      "initial/mid/landing particle seek",
+      "parent geometry and vertical box path unchanged",
+      "abort/resize/layout/pagehide/clear",
+      "consecutive replacement and stale abort",
+      "manual/enemy/short/reduced exclusion",
+      "transparent center/red outer halo/three-particle bound"
+    ]
+  },
+  "visualVerification": {
+    "performed": false,
+    "reason": "No connected CUA browser. Deterministic DOM/WAAPI regression tests do not establish actual pixel quality or normal-speed visibility."
+  },
+  "preserved": "All 8 production source hashes from the prior 1.14.10 verification remain identical, including accepted Ruby transformation meteors and Imashiru light. No 5195 server operations, normal saves/tabs, old_game edits, commit, push or publication.",
+  "files": {
+    "experiments/ruby-auto-drop/candidates.ts": "49677ab96de054b2aeb22774a9db41b4cea91dfb46eaf4f0332c845614f4d353",
+    "experiments/ruby-auto-drop/check.ts": "bde0f31f37222a2647aae3776df919425ea4662e918db2617fd6e0e9679c2a8b",
+    "experiments/ruby-auto-drop/index.html": "e9d950f5680c9d886d670a8b5fc3942ccdf9ab0a5099f4f8ac705000daa54ee7",
+    "tests/next-ruby-red-shell.test.ts": "68bb81f759f9a12a761f6a76e85a57918c7b4be5ae5c10b5512859314c545f97"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-ruby-red-shell-final-check.log",
+    "modified": "2026-10-09T05:34:07.646Z",
+    "sha256": "0b8ca7de1da5873d0d0b3852e9b2d860b7aabcdd16f30fae832f51c99d360030"
+  }
+}

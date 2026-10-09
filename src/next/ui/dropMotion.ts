@@ -1,3 +1,4 @@
+import {applyRubyComet,rubyDropFlameFrames} from './rubyDropFlame.ts';
 import type {AnimationMotion} from './animationTimeline.ts';
 import {energyBoxMarkup} from './energyBox.ts';
 import type {EnergyAppearance} from './energyBox.ts';
@@ -6,6 +7,8 @@ import type {Cell,DropEvent} from '../core/types.ts';
 export interface DropMotionOptions {
  readonly signal?:AbortSignal;
  readonly motion:AnimationMotion;
+ /** Derived by the animator from the committed turn-start resolution, never saved. */
+ readonly rubyAutoDrop?:boolean;
 }
 export interface DropMotionRect {readonly left:number;readonly top:number;readonly width:number;readonly height:number}
 export interface DropMotionPoint {readonly x:number;readonly y:number}
@@ -76,6 +79,7 @@ export function createDropMotion(root:HTMLElement,appearance:()=>EnergyAppearanc
    // Static landing is the real, already-rendered box. Never mask it in short/reduced mode.
    if(reducedNow(options.motion))return false;
    let layer:HTMLElement|undefined,cell:HTMLElement|undefined,animation:Animation|undefined;
+   let flameAnimation:Animation|undefined;
    let timer:ReturnType<typeof setTimeout>|undefined;
    let finished=false;
    const finish=():void=>{
@@ -84,7 +88,7 @@ export function createDropMotion(root:HTMLElement,appearance:()=>EnergyAppearanc
     options.signal?.removeEventListener('abort',finish);
     // Remove only our class from the exact old cell, even after a render detached it.
     cell?.classList.remove('kinetic-drop-masked');
-    try{animation?.cancel();}catch{/* A decorative animation cannot hold the real box hidden. */}
+    try{flameAnimation?.cancel();animation?.cancel();}catch{/* A decorative animation cannot hold the real box hidden. */}
     layer?.remove();
     if(active?.clear===finish)active=undefined;
    };
@@ -93,7 +97,7 @@ export function createDropMotion(root:HTMLElement,appearance:()=>EnergyAppearanc
     if(cells.some(node=>!node||node.classList.contains('terrain')||node.classList.contains('invalid')))return false;
     cell=cells.at(-1)!;
     if(!cell?.classList.contains(event.box.owner))return false;
-    const areaRect=area.getBoundingClientRect(),rects=cells.map(node=>node!.getBoundingClientRect());
+    const areaRect=area.getBoundingClientRect(),boardRect=board.getBoundingClientRect(),rects=cells.map(node=>node!.getBoundingClientRect());
     const geometry=dropMotionGeometry(event,areaRect,rects);
     if(!geometry)return false;
     layer=document.createElement('div');layer.className='kinetic-drop-layer';layer.setAttribute('aria-hidden','true');
@@ -106,10 +110,20 @@ export function createDropMotion(root:HTMLElement,appearance:()=>EnergyAppearanc
     animation=box.animate(dropMotionFrames(geometry),{duration:options.motion.timeline?.drop??DROP_MOTION_TIMING.total,easing:'linear',fill:'both'});
     // Attach rejection handling before any later setup can fail and cancel the animation.
     animation.finished.catch(finish);
+    // A child of the actual moving box shares every position and its document timeline.
+    // One-cell routes have no flight; short/reduced paths already returned above.
+    const start=document.timeline?.currentTime;
+    if(options.rubyAutoDrop&&event.actor==='player'&&event.box.owner==='player'&&geometry.points.length>1&&typeof start==='number'){
+     const flame=document.createElement('span');flame.className='ruby-drop-flame';applyRubyComet(flame);box.append(flame);
+     flameAnimation=flame.animate(rubyDropFlameFrames(DROP_MOTION_TIMING.fall/DROP_MOTION_TIMING.total),{duration:options.motion.timeline?.drop??DROP_MOTION_TIMING.total,easing:'linear',fill:'both'});
+     flameAnimation.finished.catch(finish);
+     animation.startTime=start;flameAnimation.startTime=start;
+    }
     active={clear:finish,matchesLayout:()=>{
      if(!cell?.isConnected||cells.some(node=>!node?.isConnected))return false;
-     const now=area.getBoundingClientRect();
+     const now=area.getBoundingClientRect(),nowBoard=board.getBoundingClientRect();
      return ['left','top','width','height'].every(key=>Math.abs(now[key as keyof DropMotionRect]-areaRect[key as keyof DropMotionRect])<.5)
+      &&['left','top','width','height'].every(key=>Math.abs(nowBoard[key as keyof DropMotionRect]-boardRect[key as keyof DropMotionRect])<.5)
       &&cells.every((node,i)=>{const next=node!.getBoundingClientRect(),prior=rects[i]!;return ['left','top','width','height'].every(key=>Math.abs(next[key as keyof DropMotionRect]-prior[key as keyof DropMotionRect])<.5);});
     }};
     options.signal?.addEventListener('abort',finish,{once:true});

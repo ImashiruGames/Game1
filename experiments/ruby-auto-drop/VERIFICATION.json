@@ -1,0 +1,79 @@
+{
+  "version": "1.14.10",
+  "verifiedAt": "2026-10-09T04:48:05.063Z",
+  "head": "830298e12cf7d1b9ab3830b0fde3a421f9943f86",
+  "outcome": "Ruby automatic turn-start boxes carry a small flame and short upward tail only during the existing flight. Flame and moving box share a DOM parent and identical WAAPI start time/duration; opacity steps to zero at the real landing boundary, before squash.",
+  "locations": {
+    "export function resolveTurnStart": "src/next/core/turnLifecycle.ts:12",
+    "export function rubyAutoDrop": "src/next/ui/rubyDropFlame.ts:4",
+    "hooks.drop(event": "src/next/ui/battleAnimator.ts:159",
+    "drop:(event": "src/next/main.ts:382",
+    "const start=document.timeline": "src/next/ui/dropMotion.ts:115",
+    "function showHome": "src/next/main.ts:416"
+  },
+  "scope": "UI-only context from committed turn-start resolution and actual roster identity. Core/events/save schema/RNG/drop counts/targets/timing unchanged.",
+  "visualPolicy": {
+    "normal": "120ms flight + existing 60ms landing; no added pause",
+    "slow": "180ms flight + existing 90ms landing; no added pause",
+    "shortFastReduced": "Existing static landing retained; flame omitted",
+    "oneCell": "No flight and no flame",
+    "shape": "Two translucent SVG paths, clear center, tail approximately half a box high"
+  },
+  "cleanup": [
+    "abort",
+    "replacement",
+    "home",
+    "window resize",
+    "board layout resize",
+    "pagehide",
+    "dispose",
+    "original drop timeout"
+  ],
+  "validation": {
+    "newRegressionTests": 18,
+    "fullTests": 1308,
+    "passed": 1308,
+    "failed": 0,
+    "typecheck": "passed",
+    "build": "passed",
+    "previewTypeDiagnostics": 0,
+    "diffCheck": "passed",
+    "coreAndAppDiff": "none"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:5195/experiments/ruby-auto-drop/",
+    "features": [
+      "floor/stack/terrain",
+      "automatic/manual comparison",
+      "two successive automatic drops",
+      "normal/slow/fast/short/reduced",
+      "viewport size",
+      "cancel"
+    ],
+    "browserVerified": false,
+    "reason": "CUA browser inventory empty; localhost 5195 probe failed at verification time. Existing server was not started, stopped or restarted."
+  },
+  "preserved": {
+    "acceptedRubyFiveMeteors": "ac8f7c9479fea925f95708012c81067035d577e0093560f57dd6510a8a4b54d9",
+    "acceptedImashiruGather": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "growFire": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96",
+    "oldGame": "untouched",
+    "normalTabsAndSaves": "untouched",
+    "commitPushPublish": "none"
+  },
+  "hashes": {
+    "src/next/ui/rubyDropFlame.ts": "49f25493438eb538de7ddd5745c9da9056ab8c9e29e10087f6db856bdc7ba402",
+    "src/next/ui/dropMotion.ts": "33a8399a4da0c4363f53f2b37412a04ec3b289f3fd1c1bf91243e75fc6b7e72f",
+    "src/next/ui/dropMotion.css": "355c455387eba29a59d11724f87e60a1168f1b49e80bf3ef24eb59110f152642",
+    "src/next/ui/battleAnimator.ts": "c1166a2041334297e765673bce0aa2b9ce055305127d72be216b417c4e6dca94",
+    "src/next/main.ts": "894829a8109012486da5cf9288de8f5c8fd61a87313ba863390aa2ea0c9b7839",
+    "src/next/ui/imashiruLight.ts": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "src/next/ui/rubyEruption.ts": "ac8f7c9479fea925f95708012c81067035d577e0093560f57dd6510a8a4b54d9",
+    "src/next/ui/skillActivationEffects.ts": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-ruby-drop-final-check.log",
+    "modified": "2026-10-09T04:47:24.514Z",
+    "sha256": "9ac9aab6ac7f58808212af1c52b808fdeb492487e9bdc3bc3cdc40b0147ac384"
+  }
+}
