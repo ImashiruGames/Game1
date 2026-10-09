@@ -17,7 +17,7 @@ import {encodeSave,decodeSave} from '../src/next/app/saveCheckpoint.ts';
 import type {BoardSkillId,Box,BattleConfig} from '../src/next/core/types.ts';
 import type {BoardTarget} from '../src/next/core/kitBoards.ts';
 const b=(row:number,col:number,owner:Box['owner']='enemy',type:Box['type']='normal',poisonSource?:Box['poisonSource']):Box=>({id:`${row}:${col}`,row,col,owner,type,status:'normal',...(poisonSource?{poisonSource}:{})});
-function setup(id:RosterId,board:BoardSkillId){const p=createProfile(7);p.ownedCharacters=[...rosterIds];p.characters[id].xp=25480;p.characters[id].tree.board=boardUnlockStages(id).filter(s=>s.skill).length;p.characters[id].board=board;return prepareDeparture(freezeRunMeta(p,id,false),23);}
+function setup(id:RosterId,board:BoardSkillId){const p=createProfile(7);p.ownedCharacters=[...rosterIds];p.characters[id].xp=25480;p.characters[id].tree.board=boardUnlockStages(id).filter(s=>s.skill).length;p.characters[id].board=board;const meta=freezeRunMeta(p,id,false);delete meta.characterRevision;return prepareDeparture(meta,23);}
 function config(id:RosterId,board:BoardSkillId,boxes:Box[],gauge=100):BattleConfig{return {...setup(id,board).config,initialBoxes:boxes,initialGauge:gauge};}
 const cases:{id:RosterId;board:typeof expandedBoardIds[number];boxes:Box[];target:BoardTarget;remove?:true;owner?:Box['owner'];type?:Box['type'];source?:Box['poisonSource']}[]=[
  {id:'blue',board:'blue-crosscut',boxes:[b(3,2),b(4,1,'player'),b(4,2,'neutral'),b(4,3),b(5,2)],target:{row:3,col:2},remove:true},

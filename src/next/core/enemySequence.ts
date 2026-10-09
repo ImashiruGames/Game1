@@ -1,3 +1,4 @@
+import {protectedDamage,violetProtected} from './characterRevision.ts';
 import { freezeTargets, randomPlayerBoxes } from './monsterBehavior.ts';
 import { assignBoxType } from './boxTypes.ts';
 import {absorbBarrier} from './kitBoards.ts';
@@ -44,7 +45,7 @@ export function resolveEnemySequence(initial: BattleState, intent: Extract<Enemy
     if(state.hp.player.current<=0||state.hp.enemy.current<=0)break;
     if(step.type==='wait'){events.push({type:'enemy-wait',actor:'enemy'});continue;}
     if(step.type==='fixed-damage'){
-      const oldBarrier=state.barrier??0,guard=absorbBarrier(state,step.amount);state=guard.state;if(guard.absorbed)events.push({type:'barrier',before:oldBarrier,after:state.barrier??0});
+      const oldBarrier=state.barrier??0,guard=absorbBarrier(state,protectedDamage(state,'player',step.amount));state=guard.state;if(guard.absorbed)events.push({type:'barrier',before:oldBarrier,after:state.barrier??0});
       const change=damageHp(state.hp.player,guard.amount);
       state={...state,hp:{...state.hp,player:change.hp}};
       events.push({type:'damage',actor:'enemy',target:'player',source:'boss-fixed',damage:guard.amount,hpBefore:change.before,hpAfter:change.after});
@@ -75,6 +76,7 @@ export function resolveEnemySequence(initial: BattleState, intent: Extract<Enemy
     }
     const legal=getDropOptions(state).filter(o=>o.available);
     if(!legal.length){
+      if(violetProtected(state)){events.push({type:'blocked',actor:'enemy',plannedAction:'drop'});break;}
       const hp=state.hp.player.current;
       events.push({type:'blocked',actor:'enemy',plannedAction:'drop'},{type:'instant-kill',actor:'enemy',target:'player',damage:hp,hpBefore:hp,hpAfter:0});
       state={...state,hp:{...state.hp,player:{...state.hp.player,current:0}}};

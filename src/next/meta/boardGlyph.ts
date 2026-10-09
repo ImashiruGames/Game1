@@ -17,9 +17,9 @@ const glyphs: Record<BoardSkillId, Glyph> = {
   'imashiru-focus': g([[2, 2]], 'own', 'shiny', '自箱1個を輝きへ'),
   'imashiru-polish': g([[1, 2], [2, 2]], 'own', 'shiny', '横2個を輝きへ'),
   'imashiru-reset': g([[2, 2]], 'any', 'normal', '1個を通常へ戻す'),
-  'mint-observe': g([[1, 1], [1, 2], [2, 2]], 'any', 'remove', 'L形3箱を消す'),
-  'mint-diagonal': g([[1, 1], [2, 2], [3, 3]], 'any', 'remove', '斜め3箱を消す'),
-  'mint-frame': g([[1, 1], [2, 1], [1, 2], [2, 2]], 'any', 'remove', '2×2を消す'),
+  'mint-observe': g([[0, 0], [2, 0], [4, 0]], 'own', 'normal', '3放出点から自箱を投入', 'random'),
+  'mint-diagonal': g([[1, 0], [3, 0]], 'own', 'shiny', '2放出点から輝き投入', 'random'),
+  'mint-frame': g([[2,0],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[4,2],[1,3],[2,3],[3,3]], 'any', 'remove', '中心から距離2以下・最大13マス', 'random'),
   'rose-slice': g([[1, 2], [2, 2], [3, 2]], 'any', 'remove', '横3箱を消す'),
   'rose-longcut': g([[0, 2], [1, 2], [2, 2], [3, 2]], 'any', 'remove', '横4箱を消す'),
   'rose-twincut': g([[2, 1], [2, 2]], 'any', 'remove', '縦2箱を消す'),
@@ -36,7 +36,7 @@ const glyphs: Record<BoardSkillId, Glyph> = {
   'red-frontline': g([[1, 2], [2, 2]], 'enemy', 'convert', 'HPを払い横2個を占領', 'hp'),
   'red-brand': g([[2, 2]], 'enemy', 'brand', 'HPを払い占領してトゲへ', 'hp'),
   'violet-poison': g([[2, 2]], 'enemy', 'poison', '敵箱1個をどくへ'),
-  'violet-sting': g([[1, 2], [2, 2]], 'enemy', 'poison', '横2個をどくへ'),
+  'violet-sting': g([[0, 2], [2, 2], [4,3]], 'any', 'poison', '毒2回後にVanish'),
   'violet-venom': g([[2, 2]], 'enemy', 'deadly', 'どくをげきどくへ'),
 };
 

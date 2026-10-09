@@ -16,8 +16,8 @@ import type {Box,BattleState,NormalSkillId,Link} from '../src/next/core/types.ts
 const box=(row:number,col:number,owner:Box['owner']='player',type:Box['type']='normal'):Box=>({id:`${row}:${col}`,row,col,owner,type,status:'normal'});
 function state(id:NormalSkillId,rank:1|2=1,boxes:Box[]=[]):BattleState {return createBattle({...defaultConfig,characterId:'blue',initialBoxes:boxes,initialBuild:{fixed:createSkill('health'),slots:[createSkill(id,rank),null],power:{3:0,4:0,5:0}}});}
 const link=(boxes:Box[],count=3):Link=>({axis:'horizontal',count,tier:count>=5?5:count>=4?4:3,boxIds:boxes.map(b=>b.id)});
-test('36 identities, upgrade magnitudes, shared rewards and 20-of-26 pool selection remain coherent',()=>{
- assert.equal(normalSkillIds.length,36);
+test('38 identities, upgrade magnitudes, shared rewards and 20-of-26 pool selection remain coherent',()=>{
+ assert.equal(normalSkillIds.length,38);
  for(const id of normalSkillIds.filter(id=>id!=='poison-craft'&&skillCatalog[id].upgradeable!==false)){assert(skillDescription(id,1));assert(skillValue(id,2)>skillValue(id,1));}
  const build=state('full-power').build!;assert.equal(acquireSkill(build,'full-power')!.slots[0]!.rank,2);assert(!canReceiveSkillReward(acquireSkill(build,'full-power')!,'full-power'));
  assert(!rewardPool(build).includes('poison-craft'));assert(rewardPool(build).includes('capacitor'));

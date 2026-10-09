@@ -1,3 +1,4 @@
+import {violetProtected} from './characterRevision.ts';
 import {isKitBoard,canUseKitBoard,resolveKitBoard} from './kitBoards.ts';
 import {settleBoxTypes,resolvePoisonTurnEnd} from './boxTypes.ts';
 import {starterFor} from '../meta/kits.ts';
@@ -97,6 +98,7 @@ export function applyAction(initial: BattleState, action: BattleAction): ActionR
       if (step.events.some(e=>e.type==='instant-kill')) result={winner:'enemy',reason:'enemy-blocked'};
     }
     else if (intent!.type === 'heal') accept(applyHealingEffect(state, 'enemy', intent!.amount, state.config.enemyId === 'nigirin' ? 'nigirin' : 'enemy-pattern'));
+    else if (!legal.length&&violetProtected(state)) { events.push({type:'blocked',actor:'enemy',plannedAction:'drop'}); }
     else if (!legal.length) {
       events.push({ type: 'blocked', actor: 'enemy', plannedAction: 'drop' });
       events.push({ type: 'instant-kill', actor: 'enemy', target: 'player', damage: state.hp.player.current, hpBefore: state.hp.player.current, hpAfter: 0 });
@@ -119,6 +121,7 @@ export function applyAction(initial: BattleState, action: BattleAction): ActionR
   if (action.type !== 'skip'){const settled=settleBoxTypes(state.config.board,state.boxes);state={...state,boxes:settled.boxes};if(settled.crushed.length)events.push({type:'rubble-crushed',boxIds:settled.crushed});}
   if (initial.actor === 'player' && action.type !== 'start-turn') accept(completePlayerTurn(state));
   if(action.type!=='start-turn')accept(resolvePoisonTurnEnd(state,initial.actor));
+  if(initial.actor==='enemy'&&violetProtected(state)){state={...state,transformation:null};events.push({type:'transformation-ended',character:'violet'});}
   if (!result) {
     if (state.hp.player.current <= 0) result = { winner: 'enemy', reason: 'hp-zero' };
     else if (state.hp.enemy.current <= 0) result = { winner: 'player', reason: 'hp-zero' };

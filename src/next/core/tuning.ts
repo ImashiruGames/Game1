@@ -8,7 +8,7 @@ export interface GameTuning {
   readonly gauge: { readonly turnGain: number; readonly linkPerBox: number; readonly damagePerHp: number; readonly bands?: Readonly<Record<3 | 4 | 5 | 'sixPlus', number>>; readonly limits: Readonly<Record<CharacterId, { readonly cost: number; readonly cap: number }>> };
   readonly transformation: { readonly minimumLink: number; readonly redBonusStarts: number };
   readonly links: { readonly growFireGrowth: number };
-  readonly skills: Readonly<Record<Exclude<NormalSkillId,'poison-craft'|ExpansionSkillId|TrophySkillId>, readonly [number, number]> & Partial<Record<ExpansionSkillId|TrophySkillId, readonly [number,number]>>>;
+  readonly skills: Readonly<Record<Exclude<NormalSkillId,'poison-craft'|'combo-unit'|'death-arrow'|ExpansionSkillId|TrophySkillId>, readonly [number, number]> & Partial<Record<ExpansionSkillId|TrophySkillId, readonly [number,number]>>>;
   readonly enemies: Readonly<Record<EnemyId, EnemyBalance>>;
   readonly bosses: { readonly speedPulseEvery: number; readonly speedPulseDamage: number; readonly motherThresholdPercent: number; readonly motherPulseDamage: number };
   readonly progression: { readonly hpPerStage: number; readonly loopLength: number; readonly hpMultiplierStep: number; readonly attackPerLoop: number; readonly fixedDamagePerLoop: number };
@@ -95,7 +95,7 @@ export function validateTuning(tuning: GameTuning): void {
   if (tuning.gauge.bands) for (const key of [3, 4, 5, 'sixPlus'] as const) integer(tuning.gauge.bands[key]);
   integer(tuning.transformation.minimumLink, 3); integer(tuning.transformation.redBonusStarts, 1);
   integer(tuning.links.growFireGrowth);
-  for (const id of Object.keys(defaultTuning.skills) as Exclude<NormalSkillId,'poison-craft'>[]) { const values = tuning.skills[id]; if (values === undefined && !['health','grow-fire','charge','first-guard','horizontal-slash','diagonal-shot','corner-strike','square-strike','healing-potion','magic-bullet'].includes(id)) continue; if (!Array.isArray(values) || values.length !== 2) throw new Error('Every skill needs base and plus tuning'); integer(values[0]); integer(values[1]); }
+  for (const id of Object.keys(defaultTuning.skills) as Exclude<NormalSkillId,'poison-craft'|'combo-unit'|'death-arrow'>[]) { const values = tuning.skills[id]; if (values === undefined && !['health','grow-fire','charge','first-guard','horizontal-slash','diagonal-shot','corner-strike','square-strike','healing-potion','magic-bullet'].includes(id)) continue; if (!Array.isArray(values) || values.length !== 2) throw new Error('Every skill needs base and plus tuning'); integer(values[0]); integer(values[1]); }
   for (const id of Object.keys(defaultTuning.enemies) as EnemyId[]) {
     const enemy = tuning.enemies[id];
     // 日本語: 旧セーブの完全な調整表には追加敵がない。既存6体の欠落は許容しない。

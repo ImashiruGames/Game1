@@ -1,0 +1,11 @@
+Game1 1.14.4 responsive verification
+
+See verification.json for the observed 108/108 viewport audit, 1205/1205 tests, typecheck/build evidence and limitations.
+
+Reproduce: npm run dev -- --port 5194 --strictPort
+Open http://127.0.0.1:5194/experiments/responsive-check/
+Use the audit button for 9 views x 12 exact iframe CSS viewports. Size selection alone resizes the existing iframe, exercising ResizeObserver placement. Profile data lives only in memory.
+
+Changed production presentation: meta/home.css, style.css, main.ts, ui/viewportLayout.ts, ui/feedbackLayout.ts. Version: src/next/version.ts, start-new-game.bat, generated player guides. Authorized source manifest: tests/fixtures/next-responsive-source-manifest.json.
+
+No physical Safari or minimum iOS guarantee. No whole-page scale. Portrait home can fit one screen; extremely short landscape scrolls vertically. Existing save/game rules/RNG are unchanged.

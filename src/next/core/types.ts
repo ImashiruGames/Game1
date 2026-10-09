@@ -14,8 +14,8 @@ export type ExpansionLinkId = 'full-power' | 'foundation' | 'snake-line' | 'edge
 export type ExpansionSkillId = ExpansionShapeId | ExpansionLinkId | 'iron-wall' | 'capacitor' | 'solvent';
 export type TrophyLinkId = 'heavy-swing' | 'clear-column' | 'pincer-strike' | 'twin-diagonal' | 'square-conduit' | 'venom-edge' | 'frost-edge' | 'exact-four' | 'shiny-relay';
 export type TrophySkillId = TrophyLinkId | 'rescue-kit';
-export type ShapeSkillId = 'rescue-kit' | ExpansionShapeId | 'health' | 'corner-strike' | 'square-strike';
-export type LinkSkillId = TrophyLinkId | ExpansionLinkId | 'grow-fire' | 'horizontal-slash' | 'diagonal-shot';
+export type ShapeSkillId = 'combo-unit' | 'rescue-kit' | ExpansionShapeId | 'health' | 'corner-strike' | 'square-strike';
+export type LinkSkillId = 'death-arrow' | TrophyLinkId | ExpansionLinkId | 'grow-fire' | 'horizontal-slash' | 'diagonal-shot';
 export type PassiveSkillId = 'iron-wall' | 'charge' | 'first-guard' | 'poison-craft';
 export type InstantSkillId = 'capacitor' | 'solvent' | 'healing-potion' | 'magic-bullet';
 export type NormalSkillId = ShapeSkillId | LinkSkillId | PassiveSkillId | InstantSkillId;
@@ -28,7 +28,7 @@ export interface PlayerBuild {
 export type Transformation = { readonly character: 'blue'; readonly scope: 'stage' }
   | { readonly character: 'red'; readonly scope: 'run'; readonly remainingStarts: number }
   | { readonly character:'imashiru'; readonly scope:'turn' }
-  | { readonly character:'mint'; readonly scope:'stage' }
+  | { readonly character:'mint'; readonly scope:'stage'; readonly remainingOwnTurns?:number }
   | { readonly character:'amber'; readonly scope:'turn'; readonly remainingOwnTurns?:number }
   | { readonly character:'violet'|'silver'|'rose'; readonly scope:'turn' };
 export interface PlayerSkillLoadout {
@@ -38,6 +38,8 @@ export interface PlayerSkillLoadout {
 }
 export interface Box extends Cell {
   readonly poisonSource?: Actor;
+  /** Remaining settlements fixed by Toxic Erosion; removed when poison is cleared. */
+  readonly poisonCountdown?: 1 | 2;
   readonly id: string;
   readonly owner: Owner;
   readonly type: BoxType;
@@ -109,6 +111,8 @@ export interface BattleResult {
   readonly reason: 'hp-zero' | 'enemy-blocked';
 }
 export interface BattleState {
+  readonly comboStreak?:number;
+  readonly comboActivated?:boolean;
   readonly barrier?: number;
   readonly shinyNextDrop?: boolean;
   readonly config: BattleConfig;
@@ -196,8 +200,8 @@ export interface HealEvent {
   readonly hpAfter: number;
   readonly shapeBoxIds?: readonly string[];
 }
-export type BattleEvent = { readonly type: 'enemy-box-changed'; readonly boxIds: readonly string[]; readonly boxType: 'frozen' | 'poison' | 'absolute-zero' | 'neutral' } | DropEvent | AttackEvent | HealEvent
-  | { readonly type:'power-boost';readonly tier:3|4|5;readonly amount:number;readonly boxIds:readonly string[] }
+export type BattleEvent = {readonly type:'poison-vanished';readonly boxIds:readonly string[]} | { readonly type: 'enemy-box-changed'; readonly boxIds: readonly string[]; readonly boxType: 'frozen' | 'poison' | 'absolute-zero' | 'neutral' } | DropEvent | AttackEvent | HealEvent
+  | { readonly type:'power-boost';readonly source?:'combo-unit';readonly tier:3|4|5;readonly amount:number;readonly boxIds:readonly string[] }
   | { readonly type: 'instant-skill'; readonly skillId: InstantSkillId; readonly rank: 1 | 2 }
   | { readonly type: 'gauge'; readonly before: number; readonly after: number; readonly amount: number; readonly source: 'link' | 'damage' | 'turn' }
   | { readonly type: 'transformation'; readonly character: CharacterId | 'imashiru'|'mint'|'amber'|'violet'|'silver'|'rose'; readonly before: number; readonly after: number; readonly cost: number }

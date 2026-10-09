@@ -5,5 +5,5 @@ import {boardSkillName} from './kitInformation.ts';
 // English: Availability changes with turns and animations; equipped identity does not. Never substitute another skill for an empty loadout.
 export function equippedBoardName(config:BattleConfig):string {
  const id=getPlayerSkills(config).boardSkills[0];
- return id?boardSkillName(id):'盤面スキル';
+ return id?boardSkillName(id,config):'盤面スキル';
 }

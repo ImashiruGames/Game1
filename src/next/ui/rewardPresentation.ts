@@ -59,6 +59,7 @@ export function rewardCardView(state: BattleState, id: RewardId, asUnowned=false
     if(id==='capacitor')return {...base,icon:'bolt',metric:`${n}%`,effect:'最大ゲージから回復・1回限り',comparison:compare('ゲージ回復',`${old}%`,`${n}%`)};
   }
   switch(id) {
+    case 'combo-unit': case 'death-arrow': return {...base,icon:id==='combo-unit'?'shape':'sword',metric:String(basePlayerPower(state,4)),effect:id==='combo-unit'?'L形・4リンク相当':'4個以上・毒付与',placement:'固有固定スキル・強化なし',comparison:[]};
     case 'heavy-swing': return {...base,icon:'sword',metric:`5連 ×${n/100}`,effect:'5個以上リンクに火力加算',comparison:compare('現在の加算量',String(Math.floor(basePlayerPower(state,5)*old/100)),String(Math.floor(basePlayerPower(state,5)*n/100)))};
     case 'rescue-kit': return {...base,title:skillName(id,1),upgrade:false,family:'トロフィースキル · 強化なし',placement:owned?`${slot}に装備中 · 強化なし`:placement,tone:'pink',icon:'shape',metric:'HP 10',effect:'固定形で回復 · 中央上は任意',comparison:compare('回復量',String(old),'10')};
     case 'clear-column': case 'pincer-strike': case 'twin-diagonal': case 'square-conduit': case 'venom-edge': case 'frost-edge': case 'exact-four': case 'shiny-relay': return {...base,icon:'sword',metric:`+${n}`,effect:'現在の盤面条件でリンク強化',comparison:compare('条件成立時の加算',String(old),String(n))};

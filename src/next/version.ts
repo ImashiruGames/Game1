@@ -1,2 +1,2 @@
-/** Shared visible version, independent from checkpoint schema/kit version. */
-export const PRESENTATION_VERSION='1.13.8';
+/** Local Mint/Violet revision based on main 0c5517c. */
+export const PRESENTATION_VERSION='1.14.4';

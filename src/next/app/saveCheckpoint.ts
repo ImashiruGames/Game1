@@ -19,6 +19,7 @@ export const LATE_SAVE_RULES = 'next-1.10-encounters-bands-v2';
 export const ENCOUNTER_SAVE_RULES = 'next-1.9-encounters-bands-v1';
 export const RETIRED_SAVE_RULES = 'next-1.7-explicit-return-v1';
 /** 日本語: 深層（別ステージ1〜50階）のラン。旧版はこの保存を読まない。English: Deep-stage runs; older builds refuse rather than misread them. */
+export const CHARACTER_SAVE_RULES='next-1.14-mint-violet-v1';
 export const DEEP_SAVE_RULES = 'next-1.13-deep-v2';
 const MAX_SAVE_LENGTH=2_000_000;
 const MAX_SAVE_BOXES=64*64;
@@ -39,7 +40,7 @@ export interface RunCheckpoint {
    * English: A durable reward intent resumes from its pre-effect state, never a partly advanced stage. */
   readonly pendingReward?: PendingReward;
 }
-export interface SaveEnvelope { readonly format: typeof SAVE_FORMAT; readonly schema: typeof SAVE_SCHEMA; readonly rules: typeof SAVE_RULES | typeof SNAPSHOT_SAVE_RULES | typeof PROGRESSION_SAVE_RULES | typeof RETIRED_SAVE_RULES | typeof ENCOUNTER_SAVE_RULES | typeof LATE_SAVE_RULES | typeof DEEP_SAVE_RULES; readonly revision: number; readonly savedAt: number; readonly checkpoint: RunCheckpoint; readonly checksum: string }
+export interface SaveEnvelope { readonly format: typeof SAVE_FORMAT; readonly schema: typeof SAVE_SCHEMA; readonly rules: typeof SAVE_RULES | typeof SNAPSHOT_SAVE_RULES | typeof PROGRESSION_SAVE_RULES | typeof RETIRED_SAVE_RULES | typeof ENCOUNTER_SAVE_RULES | typeof LATE_SAVE_RULES | typeof DEEP_SAVE_RULES | typeof CHARACTER_SAVE_RULES; readonly revision: number; readonly savedAt: number; readonly checkpoint: RunCheckpoint; readonly checksum: string }
 const require=(ok:unknown,message:string):void=>{if(!ok)throw new Error(`セーブ内容を確認できません：${message}`);};
 const integer=(n:unknown,min=0,max=Number.MAX_SAFE_INTEGER)=>typeof n==='number'&&Number.isSafeInteger(n)&&n>=min&&n<=max;
 function record(v:unknown):v is Record<string,unknown>{return !!v&&typeof v==='object'&&!Array.isArray(v);}
@@ -68,6 +69,8 @@ export function validateCheckpoint(value:unknown):asserts value is RunCheckpoint
  for(const n of [s.enemyTurnCount,s.link3Growth])require(integer(n),'戦闘カウンター');
  require(integer(s.turn,1)&&integer(s.nextBoxId,1,Number.MAX_SAFE_INTEGER-BOX_ID_HEADROOM)&&integer(s.enemyPatternIndex,0,s.config.enemyPattern.length-1),'進行値');
  require(integer(s.rngState,0,0xffff_ffff)&&integer(c.rewardRng,0,0xffff_ffff),'乱数');
+ require(s.comboStreak===undefined||s.config.meta?.characterRevision===1&&s.config.meta.rosterId==='mint'&&integer(s.comboStreak),'コンボ連続数');
+ require(s.comboActivated===undefined||s.config.meta?.characterRevision===1&&s.config.meta.rosterId==='mint'&&typeof s.comboActivated==='boolean','コンボ発動');
  require(typeof s.playerTurnStarted==='boolean','追加投入開始');
  require(s.barrier===undefined||s.config.meta?.kitVersion===2&&s.config.meta.rosterId==='silver'&&integer(s.barrier,0,kitBalanceOf(s.config).silverBarrier),'バリア');
  require(s.shinyNextDrop===undefined||typeof s.shinyNextDrop==='boolean'&&s.config.meta?.rosterId==='imashiru','次の輝き投入');
@@ -99,7 +102,7 @@ export function validateCheckpoint(value:unknown):asserts value is RunCheckpoint
 /** A returned run preserves the live battle facts; only its run outcome becomes terminal. */
 export function canRetireCheckpoint(c:RunCheckpoint):boolean{return c.run?.status==='active'&&!c.pendingReward&&!c.state.result&&c.state.actor==='player'&&!needsTurnStart(c.state)&&isCheckpointBoundary(c.state,c.run);}
 export function prepareRetiredCheckpoint(c:RunCheckpoint):RunCheckpoint {validateCheckpoint(c);require(canRetireCheckpoint(c),'帰還できる自手番ではありません');const next=freeze(structuredClone({...c,run:{...c.run!,status:'retired' as const}}));validateCheckpoint(next);return next;}
-function saveRulesFor(checkpoint:RunCheckpoint):SaveEnvelope['rules']{return checkpoint.options.run?.encounterVersion==='deep-v2'?DEEP_SAVE_RULES:checkpoint.options.run?.encounterVersion==='bands-v2'?LATE_SAVE_RULES:checkpoint.options.run?.encounterVersion?ENCOUNTER_SAVE_RULES:checkpoint.run?.status==='retired'?RETIRED_SAVE_RULES:checkpoint.initialConfig.meta?.progressionVersion===2?PROGRESSION_SAVE_RULES:checkpoint.initialConfig.meta?.kitBalance===undefined?SAVE_RULES:SNAPSHOT_SAVE_RULES;}
+function saveRulesFor(checkpoint:RunCheckpoint):SaveEnvelope['rules']{return checkpoint.initialConfig.meta?.characterRevision===1?CHARACTER_SAVE_RULES:checkpoint.options.run?.encounterVersion==='deep-v2'?DEEP_SAVE_RULES:checkpoint.options.run?.encounterVersion==='bands-v2'?LATE_SAVE_RULES:checkpoint.options.run?.encounterVersion?ENCOUNTER_SAVE_RULES:checkpoint.run?.status==='retired'?RETIRED_SAVE_RULES:checkpoint.initialConfig.meta?.progressionVersion===2?PROGRESSION_SAVE_RULES:checkpoint.initialConfig.meta?.kitBalance===undefined?SAVE_RULES:SNAPSHOT_SAVE_RULES;}
 // Accidental corruption detection, not an authentication or anti-cheat mechanism.
 function checksum(text:string):string {let h=0x811c9dc5;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,0x01000193);}return(h>>>0).toString(16).padStart(8,'0');}
 export function encodeSave(checkpoint:RunCheckpoint,revision:number,savedAt=Date.now()):string {
@@ -109,7 +112,7 @@ export function encodeSave(checkpoint:RunCheckpoint,revision:number,savedAt=Date
 export function decodeSave(raw:string):SaveEnvelope {
  require(typeof raw==='string'&&raw.length<=MAX_SAVE_LENGTH,'保存サイズ');let data:unknown;try{data=JSON.parse(raw);}catch{throw new Error('セーブ内容が壊れています。自動で消去せずそのまま保持しました。');}
  require(record(data),'保存形式');const e=data as unknown as SaveEnvelope;
- if(e.format!==SAVE_FORMAT||e.schema!==SAVE_SCHEMA||(e.rules!==SAVE_RULES&&e.rules!==SNAPSHOT_SAVE_RULES&&e.rules!==PROGRESSION_SAVE_RULES&&e.rules!==RETIRED_SAVE_RULES&&e.rules!==ENCOUNTER_SAVE_RULES&&e.rules!==LATE_SAVE_RULES&&e.rules!==DEEP_SAVE_RULES))throw new Error('この版では読めないセーブです。元の保存は変更していません。');
+ if(e.format!==SAVE_FORMAT||e.schema!==SAVE_SCHEMA||(e.rules!==SAVE_RULES&&e.rules!==SNAPSHOT_SAVE_RULES&&e.rules!==PROGRESSION_SAVE_RULES&&e.rules!==RETIRED_SAVE_RULES&&e.rules!==ENCOUNTER_SAVE_RULES&&e.rules!==LATE_SAVE_RULES&&e.rules!==DEEP_SAVE_RULES&&e.rules!==CHARACTER_SAVE_RULES))throw new Error('この版では読めないセーブです。元の保存は変更していません。');
  require(integer(e.revision,1)&&integer(e.savedAt),'保存時刻');
  const body={format:e.format,schema:e.schema,rules:e.rules,revision:e.revision,savedAt:e.savedAt,checkpoint:e.checkpoint};require(e.checksum===checksum(JSON.stringify(body)),'破損チェック');validateCheckpoint(e.checkpoint);require(e.rules===saveRulesFor(e.checkpoint),'出発時の調整と保存ルールの対応');return freeze(structuredClone(e));
 }

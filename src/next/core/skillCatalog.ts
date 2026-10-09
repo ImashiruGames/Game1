@@ -32,6 +32,8 @@ export const skillCatalog: Readonly<Record<NormalSkillId, SkillDefinition>> = fr
   'iron-wall':{id:'iron-wall',name:'鉄壁',kind:'passive'},
   capacitor:{id:'capacitor',name:'充填カプセル',kind:'instant'},
   solvent:{id:'solvent',name:'浄化溶剤',kind:'instant'},
+  'combo-unit':{id:'combo-unit',name:'コンボユニット',kind:'shape',pattern:cornerPattern,upgradeable:false,rewardAccess:'never'},
+  'death-arrow':{id:'death-arrow',name:'死の矢',kind:'link',upgradeable:false,rewardAccess:'never'},
   'poison-craft':{id:'poison-craft',name:'毒盛り術',kind:'passive',rewardAccess:'never'},
   health: { id: 'health', name: 'ヘルス', kind: 'shape', pattern: plusPattern, rewardAccess: 'starter-upgrade-only' },
   'grow-fire': { id: 'grow-fire', name: '成長する火', kind: 'link' },
@@ -50,10 +52,12 @@ export const trophySkillIds = freeze(['heavy-swing','rescue-kit',...Object.value
 export const legacyNormalSkillIds: readonly NormalSkillId[] = ['poison-craft','health','grow-fire','charge','first-guard','horizontal-slash','diagonal-shot','corner-strike','square-strike','healing-potion','magic-bullet'];
 export const normalSkillIds = [...legacyNormalSkillIds,...(Object.keys(skillCatalog) as NormalSkillId[]).filter(id=>!legacyNormalSkillIds.includes(id))];
 export function skillName(id: NormalSkillId, rank: 1 | 2): string { return skillCatalog[id].name + (rank === 2 && skillCatalog[id].upgradeable !== false ? '＋' : ''); }
-export function skillValue(id: NormalSkillId, rank: 1 | 2, tuning: GameTuning = defaultTuning): number { return id==='poison-craft'?1:(tuning.skills[id] ?? defaultTuning.skills[id])![rank - 1]!; }
+export function skillValue(id: NormalSkillId, rank: 1 | 2, tuning: GameTuning = defaultTuning): number { return id==='poison-craft'||id==='combo-unit'||id==='death-arrow'?1:(tuning.skills[id] ?? defaultTuning.skills[id])![rank - 1]!; }
 export function skillDescription(id: NormalSkillId, rank: 1 | 2, tuning: GameTuning = revisedSkillTuning): string {
   const n = skillValue(id, rank, tuning);
   switch (id) {
+    case 'combo-unit': return '角打ちと同じL形で現在の4リンク火力相当のダメージ。連続成功3・6・9自手番目…ごとに4リンク火力＋1（ラン中維持）。盤面スキルを含めコンボ不成立の自手番で連続数は0。';
+    case 'death-arrow': return '縦横斜め4個以上の各リンクで4リンク相当以上のダメージ（長いリンクの火力は維持）。どく・げきどく以外のランダムな敵箱1個をげきどくへ。';
     case 'heavy-swing': return `5個以上の各リンクに現在の5リンク基礎火力×${n / 100}を加算（端数切捨て）`;
     case 'rescue-kit': return '上段は自箱・任意・自箱／下段は自箱3個でHP10回復・向き固定・強化なし';
     case 'clear-column': return `投入列に箱が3個以上あり全て自箱なら各リンク火力＋${n}`;

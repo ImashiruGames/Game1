@@ -1,0 +1,82 @@
+Game1 skill activation verification — 1.14.3
+Date: 2026-10-08 UTC
+Scope: authorized GrowFire relay ordering repair; no cleanup or responsive CSS work.
+
+Production change:
+src/next/ui/skillActivationEffects.ts uses existing LINK_PARTICLE_LAUNCH_MS from battleFeedback.ts.
+Available relay window = min(existing earliest attack launch, attack lead).
+Flight completes at 60% of that window; box outline reaches ignition peak at 85%.
+Current medium/slow: seed arrival 60ms; ignition peak <=85ms; first attack launch 100ms.
+Attack launch, impact, hold and game wait budgets are unchanged.
+Fast/reduced modes use local static outlines with no seed flights.
+No gameplay, RNG, event serialization or save format changes in this repair.
+
+Regression verification:
+9 added cases cover normal/slow/fast, legacy short, normal/slow low motion,
+system/body/control reduction, two consecutive four-axis activations.
+Actual production skill and attack renderer WAAPI schedules are compared.
+Assertions: arrival <= ignition < earliest attack launch; unchanged attack schedules,
+impact timing, state/timeline serialization, cleanup timers, no fire on other axes.
+Animator trace parity now includes all three speeds with and without low motion.
+Related tests: 30 passed.
+Full npm run check: 1201 passed, 0 failed; tsc --noEmit and Vite build passed.
+Log: C:/Users/612qw/AppData/Local/Temp/game1-fire-relay-final-check.log
+Log modified: 2026-10-08T15:08:31.629Z
+Source modified: 2026-10-08T15:06:51.578Z
+Manifest modified: 2026-10-08T15:08:14.946Z
+git diff --check passed.
+
+SHA256:
+src/next/ui/skillActivationEffects.ts
+77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96
+tests/next-skill-activation-effects.test.ts
+a1a510d35f6c77084a2e3166535e0e9657707f85761bc62a59a457d79506c3a8
+tests/fixtures/next-skill-activation-source-manifest.json
+00096a20e481928e94195b2a671f55d90ec83a4907b085df91f8e9d4b396846f
+
+Browser verification:
+Independent in-app browser tab 2, separate port 5193:
+http://127.0.0.1:5193/experiments/skill-activation-check/
+No save reads/writes; real core activations and production effect renderers,
+representative DOM layout, isolated cleanup timers and paused WAAPI for frame inspection.
+Observed Ruby slow frames 30/85/140ms; medium timing; fast and slow+low-motion static mode.
+Observed Blue health ring, Mint corners, Amber square corners, Violet diamond,
+Rose horizontal edge, Silver shield, Imashiru charge stars and gauge outline.
+No external operation detected on this dedicated tab.
+Production gameplay page, all responsive layouts and physical Safari/iPhones not verified.
+Harness added after full check; it is outside production build and tsconfig includes.
+No production source edits followed the full check.
+
+Preserved:
+old_game, user play tab/server 5192, all saves, user highlight fix files.
+No push/publication, deletions, moves, stash/reset/checkout switching.
+Dedicated verification server 5193 left available. No automatic cleanup.
+
+Future cleanup candidates ONLY (no deletion authorized now):
+TEMP game1-fire-relay-before.json, game1-skill-effects-before.json,
+game1-character-effects-before.json, superseded stage verification logs.
+Keep latest verification log, source/tests/manifests, this receipt and requested effect previews.
+Review references and user need before any deletion. Parent will provide concrete instructions.
+
+Queued follow-up from user, AFTER cleanup:
+「掃除が終わった後は今のスマホ版以前かつiPhone7以降のiPhoneサイズにも調整できるように、CSSでリサイズを行なってほしいです。特に技のダメージ玉やトップ画面などが崩れやすいため、重点的にチェックしてください。」
+Order: relay fix/verification -> authorized cleanup -> responsive CSS.
+Do not change game rules; preserve tap areas and readable text.
+Use CSS pixels, including iPhone7-class 375x667, SE, Plus and home-indicator devices.
+Viewport simulation and physical Safari testing must be reported separately.
+CSS work has NOT started.
+
+Known follow-up entry points (read-only reconnaissance):
+src/next/meta/home.ts mountHome()/render()/renderPanel(): #meta-home and home layout.
+src/next/meta/home.css: fixed inset #meta-home, grid rows, max-width 1040px,
+safe-area bottom; width 349/400/700px and height 600px breakpoints.
+src/next/meta/panel.css: home subpanels (not inspected for this repair).
+src/next/style.css: .game 100vh/100svh, safe-area top/bottom,
+width 370/430/700px and height 520px breakpoints; later cascade overrides exist.
+src/next/main.ts renderBoard()/renderActions()/render(), feedback bubble geometry around line358.
+src/next/ui/energyLinks.ts createEnergyLinks()/attackParticleFrames():
+DOM rectangles to .game-local center via bounds/clientLeft/clientTop; targets player/enemy portraits.
+src/next/ui/energyBox.css lines39-46: .energy-link-layer/.energy-attack-particle.
+src/next/ui/battleFeedback.ts feedbackPosition(): clamp numerical bubble into board area.
+src/next/ui/skillActivationEffects.ts createSkillActivationEffects(): icon/cell/portrait/gauge
+rectangles, same local coordinate conversion, cleanup on resize/scroll/geometry changes.

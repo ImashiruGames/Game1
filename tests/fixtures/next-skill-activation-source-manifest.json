@@ -1,0 +1,18 @@
+{
+  "revision": "1.14.3",
+  "scope": "Authorized skill activation presentation. Ephemeral WeakMap metadata preserves existing serialized events, state and save rules. Mint/Violet files and highlight tests are retained.",
+  "files": {
+    "src/next/core/activeDrop.ts": "09a15c7ffdfb0371c4b8b8d2efd2cec996965a8af9e91888712ae54341cf9847",
+    "src/next/core/normalSkillEffects.ts": "8a489077659916b8e3f64a6f21eef0f68ace616bafd279198ac6b8244ff7e7b5",
+    "src/next/core/skillActivationRecord.ts": "adc787d3d7df5f9b39bfe73f2da7ad4fb08d0f4cbbdff76fa93a0a45d790605a",
+    "src/next/ui/skillHud.ts": "4ad66174ef2368456e59938c27db7a377659a552119ea1884be4dde8c6c40c7f",
+    "src/next/ui/battleAnimator.ts": "a8dd5be8eef82e5ce22c5bdcc4892bab05073eb1955702710a16bdbd241cbaec",
+    "src/next/ui/skillActivationEffects.ts": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96",
+    "src/next/ui/skillActivationEffects.css": "448b00b3439c9dadf63b4e58c184b3202d3f763a77afa1fed88e1141f1b67335",
+    "src/next/main.ts": "cae50628c94bfe0a39e7bfbf90b2727ca52fd966ee0eb1d6abfbf06d706b9e91",
+    "src/next/version.ts": "f193077047320a156603ca4857a48fd0e507cca0fdc5a72597c60621f3dbc8ef",
+    "public/docs/game1_content_catalog_next.html": "683fea2b6b913a5b00beeb545c5185a268dfe404b9a58d5c4ea0c912f51f53aa",
+    "public/docs/game1_content_catalog_next.json": "ac9ce4fb4a62ea61b657b8119c872bc559c0266490e49160c954c7f0ee6ff52f",
+    "src/next/core/transformations.ts": "865668b9a38b89afd690a017add379a50da4aafbc15a899ba446013357139e59"
+  }
+}

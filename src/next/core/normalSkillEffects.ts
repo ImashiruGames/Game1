@@ -2,29 +2,30 @@ import {tuningOf} from './tuning.ts';
 import {ownSquareMembers} from './boxPowerStatus.ts';
 import {foundationBonus} from './foundation.ts';
 import {activeSkillValue,playerPower} from './playerBuild.ts';
-import type {BattleState,Box,Link} from './types.ts';
+import type {BattleState,Box,Link,NormalSkillId} from './types.ts';
 /** 日本語: 元作の分かりやすい盤面条件を採用。未来の連続回数・追加回復・基礎火力の永続変更は導入しない。
  * English: Adapt original Game1's readable current-board conditions, without future counters, more healing, or persistent base-power mutation.
  * Source: ImashiruGames/Game1@869769deedbc5e7aece8e841d3a1f17639188be6/index.html#L1314-L1439
  */
 export function hasOwnSquare(state:Pick<BattleState,'boxes'>):boolean {return ownSquareMembers(state).size>0;}
-export function normalLinkBonus(state:BattleState,origin:Box,link:Link,links:readonly Link[]):number {
- const value=(id:Parameters<typeof activeSkillValue>[1])=>activeSkillValue(state,id);
+export function normalLinkBonus(state:BattleState,origin:Box,link:Link,links:readonly Link[],onActivate?:(id:NormalSkillId)=>void):number {
+ const value=(id:NormalSkillId)=>{const n=activeSkillValue(state,id);if(n>0)onActivate?.(id);return n;};
+ const foundation=foundationBonus(state);if(foundation>0)onActivate?.('foundation');
  const adjacent=state.boxes.filter(b=>b.owner==='enemy'&&Math.abs(b.row-origin.row)+Math.abs(b.col-origin.col)===1).length;
  const edge=state.boxes.some(b=>link.boxIds.includes(b.id)&&(b.col===0||b.col===state.config.board.width-1));
  return (state.hp.player.current===state.hp.player.max?value('full-power'):0)
-  +foundationBonus(state)+(link.count>=5?value('snake-line'):0)
-  +(edge?value('edge-strike'):0)+adjacent*value('siege')
+  +foundation+(link.count>=5?value('snake-line'):0)
+  +(edge?value('edge-strike'):0)+(adjacent?adjacent*value('siege'):0)
   +(links.filter(l=>l.tier!==null).length>=2?value('crossfire'):0)
   +(tuningOf(state.config).skillRevision!==2&&state.hp.player.current*2<=state.hp.player.max?value('last-stand'):0)
-  +trophyLinkBonus(state,origin,link,links);
+  +trophyLinkBonus(state,origin,link,links,onActivate);
 }
 export function normalLinkGuard(state:BattleState):number {return hasOwnSquare(state)?activeSkillValue(state,'iron-wall'):0;}
 
 /** Current insertion geometry only. Bonuses are added before shiny/frozen modifiers; no counters or RNG. */
-export function trophyLinkBonus(state:BattleState,origin:Box,link:Link,links:readonly Link[]):number {
+export function trophyLinkBonus(state:BattleState,origin:Box,link:Link,links:readonly Link[],onActivate?:(id:NormalSkillId)=>void):number {
  if(link.tier===null)return 0;
- const value=(id:Parameters<typeof activeSkillValue>[1])=>activeSkillValue(state,id);
+ const value=(id:NormalSkillId)=>{const n=activeSkillValue(state,id);if(n>0)onActivate?.(id);return n;};
  const at=new Map(state.boxes.map(b=>[`${b.row}:${b.col}`,b]));
  const own=state.boxes.filter(b=>b.owner==='player');
  const members=new Set(link.boxIds);

@@ -1,3 +1,5 @@
+import {revisedCharacters} from './characterRevision.ts';
+import {revisedBoardCatalog,isGlobalBoard,revisedBoardAvailable,resolveRevisedBoard} from './revisedBoards.ts';
 import {kitBalanceOf,LEGACY_KIT_BALANCE,CURRENT_BOARD_BALANCE} from '../meta/kitBalance.ts';
 import type {KitBalanceSnapshot,BoardBalanceSnapshot,BalancedBoardId,ExpandedBoardId} from '../meta/kitBalance.ts';
 import {hasNewKit,characterBoardChoices,BOARD_CATALOG_VERSION} from '../meta/kits.ts';
@@ -6,7 +8,7 @@ import type {BoxType} from './boxTypes.ts';
 import {applyDamageEffect} from './effectDispatcher.ts';
 import type {BattleState,BoardSkillId,BattleTransition,Box,Cell,BattleConfig,Owner} from './types.ts';
 export interface BoardTarget extends Cell {readonly orientation?:number}
-export type KitBoardKind='single-enemy'|'single-own'|'single-any'|'column'|'l'|'line'|'plus'|'vertical-line'|'diagonal'|'square'|'horizontal-pair'|'diagonal-pair'|'long-line'|'vertical-pair';
+export type KitBoardKind='random-drop'|'random-area'|'poison-mark'|'single-enemy'|'single-own'|'single-any'|'column'|'l'|'line'|'plus'|'vertical-line'|'diagonal'|'square'|'horizontal-pair'|'diagonal-pair'|'long-line'|'vertical-pair';
 type BoardEffect={readonly action:'remove'}|{readonly action:'convert';readonly type?:BoxType}|{readonly action:'type';readonly type:BoxType;readonly from?:readonly BoxType[]};
 export interface KitBoardDefinition {id:BoardSkillId;name:string;description:string;gauge:number;hp:number;kind:KitBoardKind;owner?:Owner;effect:BoardEffect;expanded?:true}
 /** 日本語: 幾何・対象・効果を宣言的に分離。消去も変更も受動で、投入スキルを発火しない。
@@ -50,19 +52,23 @@ const patterns:Partial<Record<KitBoardKind,readonly Pattern[]>>={
 export const isKitBoard=(id:BoardSkillId):boolean=>!!kitBoardCatalog[id];
 export function kitBoardOrientations(id:BoardSkillId):number {const d=kitBoardCatalog[id];return d?patterns[d.kind]?.length??1:1;}
 export function kitBoardForBalance(balance:KitBalanceSnapshot,id:BoardSkillId,boardBalance:BoardBalanceSnapshot=CURRENT_BOARD_BALANCE):KitBoardDefinition|undefined {const d=kitBoardCatalog[id];return d?{...d,...(d.expanded?boardBalance.boards[id as ExpandedBoardId]:balance.boards[id as BalancedBoardId])}:undefined;}
-export function kitBoardDefinition(config:Pick<BattleConfig,'meta'>,id:BoardSkillId):KitBoardDefinition|undefined{return kitBoardForBalance(kitBalanceOf(config),id,config.meta?.boardBalance);}
+export function kitBoardDefinition(config:Pick<BattleConfig,'meta'>,id:BoardSkillId):KitBoardDefinition|undefined{return revisedCharacters(config)&&revisedBoardCatalog[id]?revisedBoardCatalog[id]:kitBoardForBalance(kitBalanceOf(config),id,config.meta?.boardBalance);}
 function eligibleTarget(d:KitBoardDefinition,b:Box):boolean {return (!d.owner||b.owner===d.owner)&&(d.effect.action!=='type'||b.type!==d.effect.type&&(!d.effect.from||d.effect.from.includes(b.type)));}
+/** Return highlight targets without advancing random effects; global poison targets ignore the anchor. */
 export function kitBoardTargets(state:BattleState,id:BoardSkillId,target:BoardTarget):readonly Box[]{
- const d=kitBoardDefinition(state.config,id),orientation=target.orientation??0;if(!d||!hasNewKit(state.config)||state.config.meta?.board!==id||d.expanded&&(state.config.meta.boardCatalogVersion!==BOARD_CATALOG_VERSION||!state.config.meta.boardBalance)||!Number.isSafeInteger(orientation)||orientation<0||orientation>=kitBoardOrientations(id)||!Number.isSafeInteger(target.row)||!Number.isSafeInteger(target.col)||target.row<0||target.col<0||target.row>=state.config.board.height||target.col>=state.config.board.width)return [];
+ const d=kitBoardDefinition(state.config,id);
+ if(isGlobalBoard(d))return d?.kind==='poison-mark'&&revisedBoardAvailable(state,id)?state.boxes.filter(b=>b.type==='poison'||b.type==='deadly-poison'):[];
+ const orientation=target.orientation??0;if(!d||!hasNewKit(state.config)||state.config.meta?.board!==id||d.expanded&&(state.config.meta.boardCatalogVersion!==BOARD_CATALOG_VERSION||!state.config.meta.boardBalance)||!Number.isSafeInteger(orientation)||orientation<0||orientation>=kitBoardOrientations(id)||!Number.isSafeInteger(target.row)||!Number.isSafeInteger(target.col)||target.row<0||target.col<0||target.row>=state.config.board.height||target.col>=state.config.board.width)return [];
  const at=(r:number,c:number)=>state.boxes.find(b=>b.row===r&&b.col===c);
  if(d.kind==='column')return state.boxes.filter(b=>b.col===target.col&&eligibleTarget(d,b)).sort((a,b)=>a.row-b.row).slice(0,2);
  const pattern=patterns[d.kind]?.[orientation];if(pattern){const boxes=pattern.map(([r,c])=>at(target.row+r,target.col+c));return boxes.every((b):b is Box=>!!b&&eligibleTarget(d,b))?boxes:[];}
  const b=at(target.row,target.col);return b&&eligibleTarget(d,b)?[b]:[];
 }
-export function canUseKitBoard(state:BattleState,id:BoardSkillId,target?:BoardTarget):boolean{const d=kitBoardDefinition(state.config,id);if(!d||!hasNewKit(state.config)||state.gauge<d.gauge)return false;if(target)return kitBoardTargets(state,id,target).length>0;for(let row=0;row<state.config.board.height;row++)for(let col=0;col<state.config.board.width;col++)for(let orientation=0;orientation<kitBoardOrientations(id);orientation++)if(kitBoardTargets(state,id,{row,col,orientation}).length)return true;return false;}
+export function canUseKitBoard(state:BattleState,id:BoardSkillId,target?:BoardTarget):boolean{const d=kitBoardDefinition(state.config,id);if(isGlobalBoard(d))return revisedBoardAvailable(state,id);if(!d||!hasNewKit(state.config)||state.gauge<d.gauge)return false;if(target)return kitBoardTargets(state,id,target).length>0;for(let row=0;row<state.config.board.height;row++)for(let col=0;col<state.config.board.width;col++)for(let orientation=0;orientation<kitBoardOrientations(id);orientation++)if(kitBoardTargets(state,id,{row,col,orientation}).length)return true;return false;}
 export function resolveKitBoard(initial:BattleState,id:BoardSkillId,target:BoardTarget):BattleTransition {
  // 日本語: 公開ヘルパーを直接呼んでも不正対象・不足費用で副作用を起こさない。
  // English: The public resolver is safe even when called outside the action boundary.
+ if(isGlobalBoard(kitBoardDefinition(initial.config,id)))return resolveRevisedBoard(initial,id);
  if(!canUseKitBoard(initial,id,target))return {state:initial,events:[]};
  const d=kitBoardDefinition(initial.config,id)!,targets=kitBoardTargets(initial,id,target),ids=new Set(targets.map(b=>b.id));let state:BattleState={...initial,gauge:initial.gauge-d.gauge};const events:BattleTransition['events'][number][]=[{type:'board-skill',actor:'player',skillId:id},{type:'gauge-spent',before:initial.gauge,after:state.gauge,amount:d.gauge}];
  if(d.hp){const paid=applyDamageEffect(state,'player',d.hp,id);state=paid.state;events.push(...paid.events);if(state.hp.player.current<=0)return {state,events};}
@@ -73,4 +79,4 @@ export function resolveKitBoard(initial:BattleState,id:BoardSkillId,target:Board
 }
 export function isCharacterBoard(id:BoardSkillId,rosterId:NonNullable<BattleState['config']['meta']>['rosterId']):boolean{return characterBoardChoices(rosterId,true).includes(id);}
 export function absorbBarrier(state:BattleState,amount:number):{state:BattleState;amount:number;absorbed:number}{const absorbed=Math.min(state.barrier??0,amount);return {state:absorbed?{...state,barrier:(state.barrier??0)-absorbed}:state,amount:amount-absorbed,absorbed};}
-export function newKitTransformationAvailable(state:BattleState):boolean {if(!hasNewKit(state.config))return true;const id=state.config.meta!.rosterId;if(id==='violet')return state.boxes.some(b=>b.owner==='enemy'&&b.type!=='deadly-poison');if(id==='silver')return (state.barrier??0)<kitBalanceOf(state.config).silverBarrier;return true;}
+export function newKitTransformationAvailable(state:BattleState):boolean {if(!hasNewKit(state.config))return true;const id=state.config.meta!.rosterId;if(id==='violet')return state.boxes.some(b=>b.owner==='enemy'&&b.type!=='deadly-poison'&&(!revisedCharacters(state.config)||b.type!=='poison'));if(id==='silver')return (state.barrier??0)<kitBalanceOf(state.config).silverBarrier;return true;}

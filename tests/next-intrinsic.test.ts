@@ -61,7 +61,7 @@ test('Health15/20, nominal Blue reflection and repeat active insertion effects a
 });
 test('next content catalog matches metadata and preserves explicit policy boundaries',()=>{
  const data=JSON.parse(readFileSync(new URL('../public/docs/game1_content_catalog_next.json',import.meta.url),'utf8'));const html=readFileSync(new URL('../public/docs/game1_content_catalog_next.html',import.meta.url),'utf8');
- assert.equal(data.revision,'1.12');assert.equal(data.skills.length,35);assert.ok(html.includes(data.revision));
+ assert.equal(data.revision,'1.14');assert.equal(data.skills.length,37);assert.ok(html.includes(data.revision));
  for(const id of normalSkillIds){const record=[...data.skills,...data.fixedPassives].find((s:{id:string})=>s.id===id);assert.equal(record.rewardAccess,skillCatalog[id].rewardAccess??'shared');assert.equal(record.initialRewardEligible.red,canReceiveSkillReward(createPlayerBuild('red'),id));assert.equal(record.initialRewardEligible.blue,canReceiveSkillReward(createPlayerBuild('blue'),id));}
  assert.equal(data.recoveryPolicy.reviewAxes.length,6);assert.ok(data.futureOnly.includes('将来案'));assert.ok(data.preserved.some((s:string)=>s.includes('回数上限なし')));
 });

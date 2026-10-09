@@ -1,0 +1,14 @@
+{
+  "revision": "1.14.4",
+  "scope": "Authorized small-screen presentation: responsive CSS, available viewport height, feedback position after resize/scroll. No battle rules, RNG or save changes.",
+  "files": {
+    "src/next/main.ts": "5e806c359f07d93581de19190da758b13a3eb10e98689f712663366e10b53ece",
+    "src/next/style.css": "33adc49c7b6a9198ca010c3d86011b8f418d8117a7c90daeabccbc7f1d3bcd84",
+    "src/next/meta/home.css": "3fcbc970377331c152c7c72a27d0ccad1ed8f86e2aee237de5b417c781e3cb32",
+    "src/next/ui/viewportLayout.ts": "5ac54c46702debdef7e33fe4775cbb08139b9f5b955ded1d9aac70b8fadbc850",
+    "src/next/ui/feedbackLayout.ts": "1a20e78c135099489b952488f371a8bd3003da93e6b0c7e7e0c90abcd94731ed",
+    "src/next/version.ts": "00dd633f4a6f527d7bff11cd84ec4798b3741ba581ea8d04125b50d9e82003c0",
+    "public/docs/game1_content_catalog_next.html": "9466498757111c20e91f51640b17d38326eb89a0f5d5e1973e9311d1640e5ed3",
+    "public/docs/game1_content_catalog_next.json": "a4f8fc9774cc4f72aeb7d700a07f652f4154f9bcdbc178a0179382cac7f4bb30"
+  }
+}

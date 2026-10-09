@@ -57,6 +57,6 @@ export function validatePlayerBuild(build: PlayerBuild, config: BattleConfig): v
   if (!config.characterId || build.fixed.id !== expected || build.slots.length !== (config.meta?.slots ?? 2)) throw new Error('Invalid fixed starter or flexible slots');
   const skills = [build.fixed, ...build.slots.filter((s): s is SkillInstance => s !== null)];
   if (new Set(skills.map(s => s.id)).size !== skills.length) throw new Error('Duplicate equipped skill identities');
-  for (const skill of skills) if ((skill.id === 'health' && expected !== 'health')||(skill.id==='poison-craft'&&(expected!=='poison-craft'||skill.rank!==1)) || (skillCatalog[skill.id]?.upgradeable === false && skill.rank !== 1) || !normalSkillIds.includes(skill.id) || ![1, 2].includes(skill.rank) || skill.uses !== (skillCatalog[skill.id].kind === 'instant' ? 1 : null)) throw new Error('Invalid skill instance');
+  for (const skill of skills) if ((skill.id === 'health' && expected !== 'health')||(['combo-unit','death-arrow'].includes(skill.id)&&skill.id!==expected)||(skill.id==='poison-craft'&&(expected!=='poison-craft'||skill.rank!==1)) || (skillCatalog[skill.id]?.upgradeable === false && skill.rank !== 1) || !normalSkillIds.includes(skill.id) || ![1, 2].includes(skill.rank) || skill.uses !== (skillCatalog[skill.id].kind === 'instant' ? 1 : null)) throw new Error('Invalid skill instance');
   for (const tier of [3, 4, 5] as const) if (!Number.isSafeInteger(build.power[tier]) || build.power[tier] < 0) throw new Error('Invalid permanent power');
 }

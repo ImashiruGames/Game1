@@ -1,0 +1,108 @@
+{
+  "version": "1.14.4",
+  "recordedAt": "2026-10-08T17:56:48.139Z",
+  "browser": {
+    "method": "Codex in-app Chromium; isolated iframe CSS viewport; real mountHome and production styles; representative battle markup with production renderers and feedback placement; in-memory profile only",
+    "viewports": [
+      "375x667",
+      "375x568",
+      "375x600",
+      "414x736",
+      "375x812",
+      "390x844",
+      "393x852",
+      "390x600",
+      "390x640",
+      "320x568",
+      "667x375",
+      "736x414"
+    ],
+    "views": [
+      "home",
+      "long-home",
+      "deep-home",
+      "battle",
+      "damage-left",
+      "damage-right",
+      "damage-large",
+      "home-dialog",
+      "skill-dialog"
+    ],
+    "cases": 108,
+    "passed": 108,
+    "failures": [],
+    "evidence": "Observed audit summary in browser accessibility output. Original all-results JSON download was interrupted; this is a summary of observed results, not the original report.",
+    "spotChecks": [
+      {
+        "view": "home",
+        "viewport": [
+          375,
+          568
+        ],
+        "scrollWidth": 375,
+        "clientWidth": 375,
+        "scrollHeight": 568,
+        "startButtonHeight": 48,
+        "failures": []
+      },
+      {
+        "view": "damage-large",
+        "viewport": [
+          320,
+          568
+        ],
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "bubble": {
+          "left": 14,
+          "top": 234.1,
+          "width": 280,
+          "height": 74.9
+        },
+        "failures": []
+      },
+      {
+        "view": "damage-large",
+        "viewport": [
+          375,
+          667
+        ],
+        "action": "Resize same iframe from 320x568 without reloading",
+        "scrollWidth": 375,
+        "clientWidth": 375,
+        "bubble": {
+          "left": 14,
+          "top": 294.15,
+          "width": 280,
+          "height": 76.35
+        },
+        "failures": []
+      }
+    ],
+    "landscapeHomeScrollHeight": {
+      "667x375": 499,
+      "736x414": 638
+    }
+  },
+  "checks": {
+    "tests": 1205,
+    "passed": 1205,
+    "failed": 0,
+    "typecheck": "passed",
+    "build": "passed",
+    "log": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-responsive-final-check.log",
+    "lastModified": "2026-10-08T15:59:20.637Z",
+    "sha256": "8948488cbfa797726ff10e8907c8f83e59100278a58a0afec9be73eb00a57cb6"
+  },
+  "limitations": [
+    "Physical iPhone/Safari and browser toolbar/safe-area behavior not tested; no minimum iOS support guarantee.",
+    "Full-game end-to-end play not run in this task; existing player tabs and save data were not operated.",
+    "Screenshots observed through browser tools; no persistent screenshot file exported."
+  ],
+  "preserved": [
+    "GrowFire timing implementation hash unchanged",
+    "Mint/Violet kitBoards and highlight regression test hashes unchanged",
+    "old_game and cleanup archive untouched",
+    "No commit, push or publication"
+  ]
+}

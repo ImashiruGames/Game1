@@ -6,7 +6,7 @@ import type {Box,BattleState} from '../core/types.ts';
 export interface BoxTypeRow { readonly label:'状態'|'効果'|'解除'|'対象外'; readonly text:string }
 /** 日本語: 種類ごとに同じ見出し（効果・解除・対象外）で並べる。フローズンと絶対零度の違いは「解除」の行で比べられる。
  * English: Every type uses the same rows, so frozen vs absolute zero differ in the same "release" row. */
-export function boxTypeRows(box:Box,state:BattleState):BoxTypeRow[]{return [...typeRows(box,state),...boxPowerStatuses(state,box).map(text=>({label:'状態' as const,text}))];}
+export function boxTypeRows(box:Box,state:BattleState):BoxTypeRow[]{return [...(box.poisonCountdown?[{label:'状態' as const,text:'毒の侵食：あと'+box.poisonCountdown+'回の毒処理後にVanish状態になります。'}]:[]),...typeRows(box,state),...boxPowerStatuses(state,box).map(text=>({label:'状態' as const,text}))];}
 function typeRows(box:Box,state:BattleState):BoxTypeRow[]{
  const half=state.config.frozenRule==='half-melt-v1',unaffected:BoxTypeRow={label:'対象外',text:'形状スキル・回復・ゲージには影響しません。'};
  switch(box.type){

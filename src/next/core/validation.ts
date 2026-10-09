@@ -45,12 +45,14 @@ export function validateConfig(config: BattleConfig): void {
   require(config.initialGauge === undefined || Number.isSafeInteger(config.initialGauge) && config.initialGauge >= 0 && config.initialGauge <= (gauge?.cap ?? 150), 'initial gauge is outside its character cap');
   if (config.initialTransformation) {
     const effect = config.initialTransformation;
+    if(effect.character==='mint')require(config.meta?.characterRevision===1?Number.isSafeInteger(effect.remainingOwnTurns)&&effect.remainingOwnTurns!>=1&&effect.remainingOwnTurns!<=7:effect.remainingOwnTurns===undefined,'invalid revelation duration');
     if(effect.character==='amber'){const turns=kitBalanceOf(config).amber.ownTurns;require(turns>1?Number.isSafeInteger(effect.remainingOwnTurns)&&effect.remainingOwnTurns!>=1&&effect.remainingOwnTurns!<=turns:effect.remainingOwnTurns===undefined,'invalid power-form duration');}
     require(config.characterId === undefined || (effect.character === config.characterId||effect.character==='imashiru'&&config.meta?.rosterId==='imashiru'||config.meta?.kitVersion===2&&effect.character===config.meta.rosterId), 'initial transformation must match character');
     require(config.meta?.kitVersion===2&&effect.character===config.meta.rosterId&&(effect.character==='mint'?effect.scope==='stage':['amber','violet','silver','rose'].includes(effect.character)&&effect.scope==='turn')||effect.character==='imashiru'&&effect.scope==='turn'&&config.meta?.rosterId==='imashiru'||effect.character === 'blue' && effect.scope === 'stage' || effect.character === 'red' && effect.scope === 'run'
       && Number.isSafeInteger(effect.remainingStarts) && effect.remainingStarts >= 0 && effect.remainingStarts <= tuningOf(config).transformation.redBonusStarts, 'invalid transformation runtime');
   }
   if(config.meta){const m=config.meta;
+    require(m.characterRevision===undefined||m.characterRevision===1&&m.kitVersion===2,'invalid character revision');
     require(m.balanceVersion===undefined||m.balanceVersion===2,'unknown roster balance');
     require(m.treeVersion===undefined||m.treeVersion===2,'unknown tree version');
     require(m.progressionVersion===undefined||m.progressionVersion===2,'unknown progression terms');
@@ -64,7 +66,7 @@ export function validateConfig(config: BattleConfig): void {
     require([m.tree.three,m.tree.four,m.tree.five].every(n=>n<=5+(m.treeVersion===2?Math.floor(m.level/5):0))&&m.tree.board<=(m.treeCostVersion===2?boardUnlockStages(m.rosterId).filter(s=>s.skill).length:1)&&(m.tree.rewardHeal===undefined||Number.isSafeInteger(m.tree.rewardHeal)&&m.tree.rewardHeal>=0&&m.tree.rewardHeal<=(m.treeVersion===2?5+Math.floor(m.level/5):0)),'invalid tree ranks');
     require(m.treeCostVersion===undefined||m.treeCostVersion===2,'invalid tree pricing');
     require(paidTreePoints(m.tree,m.treeCostVersion)<=2+(m.level-1)*2,'overspent tree');
-    const allowedBoards=m.boardCatalogVersion===BOARD_CATALOG_VERSION?(m.treeCostVersion===2?sequentialBoardChoices(m.rosterId,m.tree.board):characterBoardChoices(m.rosterId,!!m.tree.board)):legacyBoardChoices(m.rosterId,!!m.tree.board,m.kitVersion===2);require(allowedBoards.includes(m.board),'locked board skill');
+    const allowedBoards=m.boardCatalogVersion===BOARD_CATALOG_VERSION?(m.treeCostVersion===2?sequentialBoardChoices(m.rosterId,m.tree.board,m.characterRevision===1):characterBoardChoices(m.rosterId,!!m.tree.board,m.characterRevision===1)):legacyBoardChoices(m.rosterId,!!m.tree.board,m.kitVersion===2);require(allowedBoards.includes(m.board),'locked board skill');
     require(Array.isArray(m.pool)&&m.pool.length>=6&&m.pool.length<=20&&new Set(m.pool).size===m.pool.length&&m.pool.every(id=>normalSkillIds.includes(id)&&skillCatalog[id].rewardAccess!=='never'&&(skillCatalog[id].rewardAccess!=='starter-upgrade-only'||roster[m.rosterId].starter===id)),'invalid frozen reward pool');
   }
   if (config.initialBuild) validatePlayerBuild(config.initialBuild, config);
@@ -101,6 +103,7 @@ export function validateConfig(config: BattleConfig): void {
     require(['player', 'enemy', 'neutral'].includes(box.owner), `unsupported owner on ${box.id}`);
     require(boxTypeIds.includes(box.type) && box.status === 'normal', `unsupported box type or status on ${box.id}`);
     require(box.poisonSource===undefined||(box.type==='poison'||box.type==='deadly-poison')&&['player','enemy'].includes(box.poisonSource),'invalid poison source');
+    require(box.poisonCountdown===undefined||config.meta?.characterRevision===1&&(box.type==='poison'||box.type==='deadly-poison')&&[1,2].includes(box.poisonCountdown),'invalid poison countdown');
     ids.add(box.id); cells.add(cellKey(box));
   }
   for (const actor of ['player', 'enemy'] as const) {

@@ -1,3 +1,4 @@
+import {boardSkillName} from './kitInformation.ts';
 import type {AnimationMotion} from './animationTimeline.ts';
 import {kitBoardCatalog} from '../core/kitBoards.ts';
 import {energyBoxMarkup,energyAppearance} from './energyBox.ts';
@@ -31,7 +32,7 @@ export function boardSkillCueForEvent(event:BattleEvent,resolution:Resolution,be
  const {width,height}=before.config.board;
  const validCell=(cell:Cell)=>Number.isInteger(cell.row)&&Number.isInteger(cell.col)&&cell.row>=0&&cell.row<height&&cell.col>=0&&cell.col<width;
  if(activation.skillId==='pain-shared'&&(!Number.isInteger(activation.row)||activation.row!<0||activation.row!>=height))return null;
- const base={activation,skillId:activation.skillId,name:names[activation.skillId]};
+ const base={activation,skillId:activation.skillId,name:boardSkillName(activation.skillId,before.config)};
  if(event.type==='board-skill')return {...base,phase:'activation',targets:[]};
  if(event.type==='row-cleared'&&(activation.skillId!=='pain-shared'||event.row!==activation.row))return null;
  if(event.type==='boxes-converted'&&(activation.skillId!=='ember'||event.actor!=='player'||event.from!=='enemy'||event.to!=='player'))return null;

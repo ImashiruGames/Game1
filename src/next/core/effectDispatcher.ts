@@ -1,3 +1,4 @@
+import {protectedDamage} from './characterRevision.ts';
 import { tuningOf } from './tuning.ts';
 import { damageHp, healHp } from './combatEffects.ts';
 import { gainGauge } from './gauge.ts';
@@ -7,6 +8,7 @@ export type DamageSource = BoardSkillId | ShapeSkillId | InstantSkillId | 'blue-
 /** 日本語: HP変化を共通経路に集め、被ダメージ充填と回復への反応を取りこぼさない。
  * English: Shared HP transitions dispatch resource gains and healing reactions exactly once. */
 export function applyDamageEffect(state: BattleState, target: Actor, amount: number, source: DamageSource, shapeBoxIds?: readonly string[]): BattleTransition {
+  amount=protectedDamage(state,target,amount);
   const change = damageHp(state.hp[target], amount);
   const changed = { ...state, hp: { ...state.hp, [target]: change.hp } };
   const charge = target === 'player' ? gainGauge(changed, change.actual * tuningOf(state.config).gauge.damagePerHp, 'damage') : { state: changed, events: [] };

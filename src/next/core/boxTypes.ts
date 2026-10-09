@@ -1,3 +1,4 @@
+import {protectedDamage} from './characterRevision.ts';
 import {settleBoxes} from './board.ts';
 import {damageHp} from './combatEffects.ts';
 import {gainGauge} from './gauge.ts';
@@ -17,12 +18,23 @@ export function thornDamage(config:BattleState['config'],maxHp:number,thorn:Box,
 }
 export type BoxType=typeof boxTypeIds[number];
 export const boxTypeLabels:Record<BoxType,string>={normal:'通常',shiny:'輝き',frozen:'フローズン','absolute-zero':'絶対零度',poison:'どく','deadly-poison':'げきどく',rubble:'ガレキ',thorn:'トゲ'};
-export function assignBoxType(box:Box,type:BoxType,source?:Actor):Box{const {poisonSource:_source,...rest}=box;return {...rest,type,...((type==='poison'||type==='deadly-poison')&&source?{poisonSource:source}:{})};}
+export function assignBoxType(box:Box,type:BoxType,source?:Actor):Box{const {poisonSource:_source,poisonCountdown:_count,...rest}=box;return {...rest,type,...((type==='poison'||type==='deadly-poison')&&_count?{poisonCountdown:_count}:{}),...((type==='poison'||type==='deadly-poison')&&source?{poisonSource:source}:{})};}
 export function ownSquareCount(boxes:readonly Box[],owner:Actor):number{const cells=new Set(boxes.filter(b=>b.owner===owner).map(b=>`${b.row}:${b.col}`));let count=0;for(const b of boxes)if(b.owner===owner&&cells.has(`${b.row}:${b.col+1}`)&&cells.has(`${b.row+1}:${b.col}`)&&cells.has(`${b.row+1}:${b.col+1}`))count++;return count;}
 export function poisonDamageSummary(state:BattleState,actor:Actor):{boxes:number;base:number;bonus:number;squares:number;damage:number}{const targets=state.boxes.filter(b=>b.owner===actor&&(b.type==='poison'||b.type==='deadly-poison')),squares=state.config.meta?.kitVersion===2&&state.build?.fixed.id==='poison-craft'?ownSquareCount(state.boxes,'player'):0,base=targets.reduce((n,b)=>n+(b.type==='poison'?1:2),0),bonus=targets.filter(b=>b.poisonSource==='player').length*squares;return {boxes:targets.length,base,bonus,squares,damage:base+bonus};}
 export function frozenPenalty(boxes:readonly Box[],ids:readonly string[]):number{const members=new Set(ids);return boxes.filter(b=>b.type==='frozen'&&members.has(b.id)).length;}
 /** Poison is one own-turn-end settlement after the entire action, never per insertion. */
-export function resolvePoisonTurnEnd(state:BattleState,actor:Actor):BattleTransition {const amount=poisonDamageSummary(state,actor).damage;if(!amount||state.hp[actor].current<=0)return {state,events:[]};const change=damageHp(state.hp[actor],amount),changed={...state,hp:{...state.hp,[actor]:change.hp}};const charged=actor==='player'?gainGauge(changed,change.actual*tuningOf(state.config).gauge.damagePerHp,'damage'):{state:changed,events:[]};return {state:charged.state,events:[{type:'type-damage',actor,target:actor,source:'poison',damage:amount,hpBefore:change.before,hpAfter:change.after},...charged.events]};}
+export function resolvePoisonTurnEnd(state:BattleState,actor:Actor):BattleTransition {
+ if(state.hp[actor].current<=0)return {state,events:[]};
+ const targets=state.boxes.filter(b=>b.owner===actor&&(b.type==='poison'||b.type==='deadly-poison'));
+ if(!targets.length)return {state,events:[]};
+ const amount=protectedDamage(state,actor,poisonDamageSummary(state,actor).damage),change=damageHp(state.hp[actor],amount);
+ let changed:BattleState={...state,hp:{...state.hp,[actor]:change.hp}};
+ const charged=actor==='player'?gainGauge(changed,change.actual*tuningOf(state.config).gauge.damagePerHp,'damage'):{state:changed,events:[]};
+ const gone=targets.filter(b=>b.poisonCountdown===1).map(b=>b.id),settledIds=new Set(targets.map(b=>b.id));
+ changed={...charged.state,boxes:charged.state.boxes.filter(b=>!gone.includes(b.id)).map(b=>settledIds.has(b.id)&&b.poisonCountdown===2?{...b,poisonCountdown:1 as const}:b)};
+ const settled=gone.length?settleBoxTypes(changed.config.board,changed.boxes):{boxes:changed.boxes,crushed:[]};changed={...changed,boxes:settled.boxes};
+ return {state:changed,events:[{type:'type-damage',actor,target:actor,source:'poison',damage:amount,hpBefore:change.before,hpAfter:change.after},...charged.events,...(settled.crushed.length?[{type:'rubble-crushed' as const,boxIds:settled.crushed}]:[]),...(gone.length?[{type:'poison-vanished' as const,boxIds:gone}]:[])]};
+}
 /** Rubble crushes under two directly stacked boxes; all resulting falls are passive. */
 export function settleBoxTypes(board:BoardDefinition,initial:readonly Box[]):{boxes:readonly Box[];crushed:readonly string[]}{let boxes=settleBoxes(board,initial);const crushed:string[]=[];for(let pass=0;pass<initial.length;pass++){const at=new Set(boxes.map(b=>`${b.row}:${b.col}`));const removes=boxes.filter(b=>b.type==='rubble'&&at.has(`${b.row-1}:${b.col}`)&&at.has(`${b.row-2}:${b.col}`)).map(b=>b.id);if(!removes.length)break;crushed.push(...removes);const removed=new Set(removes);boxes=settleBoxes(board,boxes.filter(b=>!removed.has(b.id)));}return {boxes,crushed};}
 
@@ -31,7 +43,7 @@ export function resolveThornInsertion(initial:BattleState,inserted:Box):BattleTr
  const adjacent=initial.boxes.filter(b=>b.id!==inserted.id&&b.type==='thorn'&&Math.abs(b.row-inserted.row)<=1&&Math.abs(b.col-inserted.col)<=1);
  if(!adjacent.length)return {state:initial,events:[]};let state=initial;const events:BattleTransition['events'][number][]=[];
  const actor=initial.actor;
- for(const thorn of adjacent){if(state.hp[actor].current<=0)break;const amount=thornDamage(initial.config,initial.hp[actor].max,thorn,inserted,actor);if(amount<=0)continue;const change=damageHp(state.hp[actor],amount);state={...state,hp:{...state.hp,[actor]:change.hp}};
+ for(const thorn of adjacent){if(state.hp[actor].current<=0)break;const amount=protectedDamage(state,actor,thornDamage(initial.config,initial.hp[actor].max,thorn,inserted,actor));if(amount<=0)continue;const change=damageHp(state.hp[actor],amount);state={...state,hp:{...state.hp,[actor]:change.hp}};
   events.push({type:'type-damage',actor,target:actor,source:'thorn',sourceBoxIds:[thorn.id],damage:amount,hpBefore:change.before,hpAfter:change.after});
   if(actor==='player'){const charged=gainGauge(state,change.actual*tuningOf(state.config).gauge.damagePerHp,'damage');state=charged.state;events.push(...charged.events);}
  }

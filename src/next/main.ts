@@ -1,3 +1,5 @@
+import {installViewportHeight} from './ui/viewportLayout.ts';
+import {placeFeedbackBubble} from './ui/feedbackLayout.ts';
 import {boxPowerStatusHtml,boxPowerStatusLabel} from './ui/boxPowerStatus.ts';
 import './ui/foundation.css';
 import {completeBasicTutorial} from './meta/tutorialCatalog.ts';
@@ -15,6 +17,7 @@ import {transformationIdentity} from './ui/transformationIdentity.ts';
 import {isTerminalRun} from './app/BattleRun.ts';
 import {canRetireCheckpoint,prepareRetiredCheckpoint} from './app/saveCheckpoint.ts';
 import {boardSkillName} from './ui/kitInformation.ts';
+import {isGlobalBoard} from './core/revisedBoards.ts';
 import {kitBoardDefinition,isKitBoard,kitBoardTargets,canUseKitBoard,kitBoardOrientations} from './core/kitBoards.ts';
 import type {BoardTarget} from './core/kitBoards.ts';
 import {PRESENTATION_VERSION} from './version.ts';
@@ -34,6 +37,8 @@ import {TutorialController} from './tutorial/controller.ts';
 import {createTutorialUi} from './tutorial/ui.ts';
 import {installImpactReview} from './ui/impactReview.ts';
 import {energyReviewCases,energyReviewFixture} from './ui/energyReviewFixture.ts';
+import {createSkillActivationEffects} from './ui/skillActivationEffects.ts';
+import './ui/skillActivationEffects.css';
 import {createEnergyLinks} from './ui/energyLinks.ts';
 import {energyBoxMarkup,energyAppearance} from './ui/energyBox.ts';
 import './ui/energyBox.css';
@@ -91,7 +96,7 @@ import type { BattleState, BattleEvent, CharacterId, EnemyId, BoardSkillId } fro
 import { prepareTrialSetup } from './config.ts';
 import type { TrialSetupFixture } from './config.ts';
 import { playerPortraits, enemyPortraits, transformedPortraits } from './portraits.ts';
-import {feedbackForEvent,feedbackPosition,feedbackTiming} from './ui/battleFeedback.ts';
+import {feedbackForEvent,feedbackTiming} from './ui/battleFeedback.ts';
 import {observeRecentDrop,retainRecentDrop,renderRecentDrop,emptyActionBreakdowns,recordActionBreakdown,lastActionBreakdownsHtml} from './ui/battleReadability.ts';
 import type {RecentDrop,LastActionBreakdowns} from './ui/battleReadability.ts';
 import './ui/battleReadability.css';
@@ -108,6 +113,8 @@ import {runResultHtml} from './ui/runResult.ts';
 /** 日本語: 盤面は常時表示。対象選択は下部に出し、詳細は要求時だけ開く。
  * English: Keep the board visible while targeting; optional details open only on request. */
 const root = document.querySelector<HTMLElement>('#app')!;
+installViewportHeight(document.documentElement);
+let feedbackPlacement:(()=>void)|undefined;
 const presentationVersion=PRESENTATION_VERSION;
 root.innerHTML = `<main class="game" aria-label="Game1 試作${presentationVersion}"><header class="hud"><section class="player-hud"><button type="button" id="player-portrait" class="portrait-viewer-trigger" data-portrait="player" aria-label="自分の姿を見る" disabled><img id="player-image" alt=""></button><div><span id="player-name"></span><strong id="player-hp"></strong><div class="hp-track"><i id="player-fill"></i></div></div></section><section class="enemy-hud"><div><span id="enemy-name"></span><strong id="enemy-hp"></strong><div class="hp-track"><i id="enemy-fill"></i></div></div><button type="button" id="enemy-portrait" class="portrait-viewer-trigger" data-portrait="enemy" aria-label="敵の姿を見る" disabled><img id="enemy-image" alt=""></button></section><div class="gauge-row"><span id="gauge-text"></span><div class="gauge-track"><i id="gauge-fill"></i></div><span id="intent"></span></div></header><div class="strip"><span id="stage"></span><strong id="form"></strong><span id="turn"></span><label class="battle-speed"><select id="battle-speed" aria-label="戦闘速度"><option value="slow">遅</option><option value="medium" selected>中</option><option value="fast">速</option></select><small id="battle-speed-note" role="status" hidden></small></label></div><section class="board-area" aria-label="共有盤面"><div class="board-wrap"><div id="drop-buttons" class="drops"></div><div id="board" class="board"></div></div><div id="feedback-layer" aria-live="polite"></div><dialog id="end" class="end" aria-label="ラン結果"></dialog></section><section id="skill-hud" class="skill-hud" aria-label="所持通常スキル"></section><footer class="controls"><div class="hint-line"><p id="hint" aria-live="polite"></p><span id="save-status" role="status">保存確認中</span></div><div class="action-strip"><div id="actions" class="actions"></div><div id="audio-controls"></div><div id="music-controls"></div></div><p class="meta"><span id="latest"></span><span>試作 ${presentationVersion} · <a href="/">1.0</a> · <a href="/lab/">スキル実験</a></span></p></footer></main><dialog id="details" aria-label="スキルと設定"><div class="dialog-top"><h2>スキルと設定</h2><button data-close="details">閉じる</button></div><p class="build-info">試作 ${presentationVersion} · <a href="/">1.0</a> · <a href="/lab/">スキル実験</a></p><p id="save-description" hidden></p><div id="presentation-controls"></div><div id="details-body"></div><section id="qa-restart-settings" class="settings"><h3>再開始の設定</h3><p>新しい50階ラン：1–24階は基本攻撃／26–39階は単独ギミック／41–49階は上位種。25・40階はスピードコア／50階はマザーコア。敵はシードと階数で抽選し「通常敵の検証用」の選択は使いません。再開した旧ランは以前の出現順を維持します。</p><label>キャラクター<select id="character"><option value="blue">青の子</option><option value="red">ルビィ</option></select></label><label>通常敵の検証用<select id="enemy"><option value="marujiro">マルジロ</option><option value="hikikizan">ヒキキザン</option><option value="nigirin">ニギリン</option><option value="merarun">メラルン</option></select></label><label>変化方式<select id="mode"><option value="manual">手動・ゆっくり充填</option><option value="automatic">旧自動・6リンクと旧充填</option></select></label><label>進行<select id="route"><option value="boss-loop">50階クリア・階層別の敵</option><option value="standard">通常敵で検証・50階まで</option></select></label><label>開始ステージ<input id="start-stage" type="number" min="1" max="50" step="1" value="1"></label><label>検証状態<select id="fixture"><option value="normal">通常の連続対戦</option><option value="charged">ゲージ準備済み</option><option value="reward">報酬直前（3列目で撃破）</option><option value="speed-pulse">中ボス：5手番目の固定攻撃</option><option value="mother-wait">大ボス：5手番目の待機</option><option value="mother-double">大ボス：6手番目の2回投入</option><option value="mother-critical">大ボス：HP20%から新ループ</option></select></label><label>乱数シード<input id="seed" type="number" min="0" max="4294967295" step="1" value="1"></label><input id="reduce" type="checkbox" hidden aria-hidden="true"><button id="restart">この設定で再開始</button><p id="error" role="alert"></p></section></dialog><dialog id="battle-log" aria-labelledby="battle-log-title"><div class="dialog-top"><h2 id="battle-log-title">戦闘ログ</h2><button data-close="battle-log">閉じる</button></div><div id="action-history"></div><ol id="logs"></ol></dialog><dialog id="skill-info" class="skill-card-surface" aria-labelledby="skill-info-title"></dialog><dialog id="reward" aria-label="撃破報酬" aria-labelledby="reward-title"></dialog><dialog id="save-dialog" aria-label="セーブと再開"><h2 id="save-title"></h2><p id="save-message"></p><div id="save-actions"></div></dialog>`;
 if(SAVE_PREVIEW){document.title='Game1 · セーブ検証版';root.querySelector('.game')!.setAttribute('aria-label','Game1 セーブ検証版');root.querySelector('.meta>span:last-child')!.insertAdjacentText('afterbegin','セーブ検証版 · ');root.querySelector('#save-description')!.insertAdjacentHTML('afterend','<section class="skill-card"><h3>保存の検証（このページだけ）</h3><label><input id="save-fail-once" type="checkbox"> 次の保存を1回失敗させる</label><p id="save-lifecycle">復帰方式を確認中</p></section>');}
@@ -143,6 +150,7 @@ const dropMotion=createDropMotion(root,()=>energyAppearance(displayed));
 const boardSkillPresentation=createBoardSkillPresentation(root);
 const boardSkillBanner=createBoardSkillBanner(root);
 const energyLinks=createEnergyLinks(root);
+const skillActivationEffects=createSkillActivationEffects(root);
 const rowDoubleTap=createRowDoubleTap();
 const stageNumberCinematic=createStageNumberCinematic({onSkipPointer:point=>cancelClickGuard.mark(point)});
 let suppressRestoredTransitionTo:number|null=null;
@@ -175,6 +183,8 @@ function available(s=displayed):boolean{return !locked&&!portraitViewer.active&&
 function formText(s:BattleState):string{
  const t=s.transformation;
  if(t?.character==='amber')return `アンバーの変化 · 残${t.remainingOwnTurns??1}自手番`;
+ if(t?.character==='mint'&&s.config.meta?.characterRevision===1)return '天啓授与 · 残り'+t.remainingOwnTurns+'自手番';
+ if(t?.character==='violet'&&s.config.meta?.characterRevision===1)return '暗箭傷人 · 相手手番終了まで被ダメージなし';
  if(t&&['mint','amber','violet','silver','rose'].includes(t.character))return `${roster[t.character].name}の変化 · ${t.scope==='stage'?'この戦闘':'この自手番'}${s.barrier?` · バリア${s.barrier}`:''}`;
  if(t?.character==='imashiru')return 'ピコーン閃いた！ · この自手番';
  if(t?.character==='blue')return `${transformationIdentity(s.config,'blue').name}の変化中 · この戦闘中`;
@@ -185,6 +195,7 @@ function fitBoard():void{
  if(!displayed)return;const area=el('board').closest<HTMLElement>('.board-area')!;const rect=area.getBoundingClientRect();const {width,height}=displayed.config.board;
  const size=Math.max(24,Math.floor(Math.min((rect.width-28-2*(width-1))/width,(rect.height-34-2*(height-1))/height,64)));
  root.style.setProperty('--cell',`${size}px`);root.style.setProperty('--cols',String(width));root.style.setProperty('--rows',String(height));
+ feedbackPlacement?.();
 }
 const boxMaterialArrival=createBoxMaterialArrival();
 function renderBoard(s:BattleState):void{
@@ -238,7 +249,7 @@ function renderActions(s:BattleState):void{
   const p=selected.row===null?null:getRowSkillPreview(s,selected.row);
   hint=p?`${selected.row!+1}行目をもう一度タップ`:'消す行を盤面で選んでください';
   markup=button('取消','data-cancel="true"',!can);
- }else if(selected?.kind==='target'){const d=kitBoardDefinition(s.config,selected.skillId)!;hint=`${d.name} · ゲージ${d.gauge}${d.hp?` · HP${d.hp}`:''} · 盤面の対象をタップ`;markup=button('対象を確定','data-confirm="true"',!can||!selected.target||!canUseKitBoard(s,selected.skillId,selected.target))+(kitBoardOrientations(selected.skillId)>1?button('向きを変える','data-kit-rotate="true"',!can):'')+button('取消','data-cancel="true"',!can);
+ }else if(selected?.kind==='target'){const d=kitBoardDefinition(s.config,selected.skillId)!;hint=`${d.name} · ゲージ${d.gauge}${d.hp?` · HP${d.hp}`:''} · ${isGlobalBoard(d)?'対象は自動で決まります':'盤面の対象をタップ'}`;markup=button(isGlobalBoard(d)?'発動する':'対象を確定','data-confirm="true"',!can||!selected.target||!canUseKitBoard(s,selected.skillId,selected.target))+(!isGlobalBoard(d)&&kitBoardOrientations(selected.skillId)>1?button('向きを変える','data-kit-rotate="true"',!can):'')+button('取消','data-cancel="true"',!can);
  }else if(selected?.kind==='insight'){hint='ゲージ −30 · 1手消費 · 次の自箱を輝きタイプに';markup=button('いま、知りたい！を使う','data-confirm="true"',!can)+button('取消','data-cancel="true"',!can);
  }else if(selected?.kind==='ember'){
   const rules=tuningOf(s.config).board;hint=`自HP −${rules.emberCost} · 敵箱を最大${rules.emberConversions}個自箱へ`;
@@ -296,6 +307,7 @@ function render(s:BattleState,resolving:boolean,run:BattleRunState|null,enemyAct
  turnPresentation.update(s,resolving,run,presentationMotion());
  if(run?.status!=='retired')bossPresentation.update(s,presentationMotion());
  const end=el<HTMLDialogElement>('end');const ended=!tutorial&&(run?.status==='retired'||!!s.result&&run?.status!=='reward'&&run?.status!=='transitioning');if(!ended){if(end.open)end.close();}else{end.innerHTML=runResultHtml(s,run,controller.runOrigin)+settlementHtml()+`<div class="result-actions">${button('ホームへ・育成する','data-home-return="true" class="primary"',locked)}${button('設定を開く','data-details="true"',locked)}</div>`;if(!locked&&!end.open)end.showModal();}
+ skillActivationEffects.refresh();
  stagePresentation.update(s,run,controller.runOrigin,presentationMotion());
  if(tutorial){el('save-status').textContent='練習中・保存されません';tutorialUi.afterRender();}
 }
@@ -326,6 +338,7 @@ function describe(event:BattleEvent,before?:BattleState):string|null{
  if(event.type==='transformation'){const caster=before?transformationIdentity(before.config,event.character).name:roster[event.character].name;return `${caster}が変化・ゲージ −${event.cost}`;}
  if(event.type==='transformation-ended'){const caster=before?transformationIdentity(before.config,event.character).name:roster[event.character].name;return `${caster}の変化が終了`;}
  if(event.type==='boxes-thawed')return `フローズン${event.boxIds.length}個が溶けて通常タイプに戻る`;
+ if(event.type==='poison-vanished')return '毒の侵食：'+event.boxIds.length+'箱がVanish状態になり消滅';
  if(event.type==='rubble-crushed')return `ガレキ${event.boxIds.length}個が重みで崩れる（落下では攻撃しない）`;
  if(event.type==='type-damage')return `${event.source==='poison'?'どく':'トゲ'}：${event.damage}ダメージ（HP ${event.hpBefore}→${event.hpAfter}）`;
  if(event.type==='kit-board-changed')return `盤面を変更：${event.boxIds.length}箱（受動・リンク発動なし）`;
@@ -335,36 +348,37 @@ function describe(event:BattleEvent,before?:BattleState):string|null{
  if(event.type==='boxes-shining')return `自箱${event.boxIds.length}個を輝きに変換（この変換自体では攻撃しない）`;
  if(event.type==='turn-start'){const caster=before?transformationIdentity(before.config,'red').name:'ルビィ';return event.skipped?`${caster}：追加投入なし・残り回数を消費`:`${caster}の追加投入・残り${event.remainingStarts}回`;}
  if(event.type==='instant-kill')return '敵の投入不能：自分HP 0';
- if(event.type==='power-boost')return `Xエナジー：${event.tier===5?'5+':event.tier}リンク火力＋${event.amount}`;
+ if(event.type==='power-boost')return (event.source==='combo-unit'?'コンボユニット':'Xエナジー')+'：'+(event.tier===5?'5+':event.tier)+'リンク火力＋'+event.amount;
  if(event.type==='link-growth')return `成長する火：3リンク火力＋${event.amount}（この戦闘＋${event.after}）`;
  if(event.type==='boxes-converted')return `敵箱${event.boxIds.length}個を自箱へ変換（受動リンクは発動しない）`;
  if(event.type==='row-cleared')return `${event.row+1}行目を消去：自箱${event.playerCount}・敵箱${event.enemyCount}・中立${event.neutralCount}`;
- if(event.type==='board-skill')return `${boardSkillName(event.skillId)}を使用`;
+ if(event.type==='board-skill')return `${boardSkillName(event.skillId,before?.config)}を使用`;
  if(event.type==='instant-skill')return `${skillName(event.skillId,event.rank)}を使用（1手・残り0回）`;
  return null;
 }
 function showFeedback(feedback:BattleFeedback,state:BattleState,reduced:boolean,shape:ShapeFeedback|null=null,holdMs=feedbackTiming(reduced).hold):HTMLElement{
- const area=root.querySelector<HTMLElement>('.board-area')!,layer=el('feedback-layer');const areaRect=area.getBoundingClientRect();
+ const area=root.querySelector<HTMLElement>('.board-area')!,layer=el('feedback-layer');
  const bubble=document.createElement('div');bubble.className=`floating-feedback ${feedback.tone}`;const strong=document.createElement('strong');strong.textContent=feedback.text;const small=document.createElement('small');small.textContent=shape?.detail??feedback.detail;bubble.append(strong,small);if(shape)bubble.insertAdjacentHTML('afterbegin',shapeFeedbackHtml(shape));layer.replaceChildren(bubble);
- const cells=state.boxes.filter(box=>feedback.boxIds.includes(box.id)).flatMap(box=>{const cell=el('board').querySelector<HTMLElement>(`[data-cell-row="${box.row}"][data-cell-col="${box.col}"]`);if(!cell)return [];const r=cell.getBoundingClientRect();return [{left:r.left-areaRect.left,right:r.right-areaRect.left,top:r.top-areaRect.top,bottom:r.bottom-areaRect.top}];});
- const p=feedbackPosition({width:areaRect.width,height:areaRect.height},cells,{width:bubble.offsetWidth,height:bubble.offsetHeight},feedback.anchor,boardSkillPresentation.feedbackInsetTop());bubble.style.left=`${p.x}px`;bubble.style.top=`${p.y}px`;bubble.style.setProperty('--rise',`${-p.rise}px`);bubble.style.setProperty('--hold',`${holdMs}ms`);if(!reduced)bubble.classList.add('moving');return bubble;
+ feedbackPlacement=()=>{if(!bubble.isConnected){feedbackPlacement=undefined;return;}const cells=state.boxes.filter(box=>feedback.boxIds.includes(box.id)).flatMap(box=>{const cell=el('board').querySelector<HTMLElement>('[data-cell-row="'+box.row+'"][data-cell-col="'+box.col+'"]');return cell?[cell]:[];});placeFeedbackBubble(area,layer,bubble,cells,feedback.anchor,boardSkillPresentation.feedbackInsetTop());};
+ feedbackPlacement();bubble.style.setProperty('--hold',holdMs+'ms');if(!reduced)bubble.classList.add('moving');return bubble;
 }
 const initialSetup=prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:1,fixture:'normal',route:'boss-loop'});
 const view:BattleView={
  render,
  animate:createBattleAnimator({
   motion:presentationMotion,
-  begin:motion=>{activeAnimationMotion=motion;},
-  end:()=>{vanishing=null;activeAnimationMotion=undefined;dropMotion.clear();portraitReactions.clear();boardSkillPresentation.clear();energyLinks.clear();},
+  begin:motion=>{skillActivationEffects.clear();activeAnimationMotion=motion;},
+  end:()=>{vanishing=null;activeAnimationMotion=undefined;dropMotion.clear();portraitReactions.clear();boardSkillPresentation.clear();energyLinks.clear();skillActivationEffects.finish();},
   playSound:(event,resolution,index,signal,before)=>audio.playEvent(event,resolution,index,signal,{playerCharacterId:before.config.characterId??'blue'}),
   describe(event,before){const label=describe(event,before);if(label){last=label;history.push(`${before.turn}手目 ${label}`);}},
   observe:event=>{recentDrop=observeRecentDrop(recentDrop,event);},
-  highlight(ids,tone){if(!ids.length)energyLinks.clear();highlights=ids;if(tone)highlightTone=tone;},
+  highlight(ids,tone){if(!ids.length){energyLinks.clear();}highlights=ids;if(tone)highlightTone=tone;},
   render:(state,enemyAction=null)=>{lastEnemyAction=enemyAction;render(state,true,controller.runSnapshot,enemyAction);},
   vanish:(ids,phase,ms)=>{vanishing=ids.length?{ids:new Set(ids),phase}:null;root.style.setProperty('--vanish-ms',`${ms}ms`);render(displayed,true,controller.runSnapshot,lastEnemyAction);},
   drop:(event,signal,motion)=>dropMotion.play(event,{signal,motion}),
   react:(event,signal,motion)=>portraitReactions.play(event,{signal,motion}),
-  boardSkill:(event,resolution,before,signal,motion)=>{const banner=event.type==='board-skill'&&event.actor==='player'?boardSkillBanner.play(event.skillId,boardSkillName(event.skillId),{motion,signal}):0;if(boardSkillPresentation.play(event,resolution,before,{signal,motion}))return Math.max(banner,event.type==='board-skill'?motion.timeline!.skill.name:motion.timeline!.skill.effect);if(banner)return banner;},
+  boardSkill:(event,resolution,before,signal,motion)=>{const banner=event.type==='board-skill'&&event.actor==='player'?boardSkillBanner.play(event.skillId,boardSkillName(event.skillId,before.config),{motion,signal}):0;if(boardSkillPresentation.play(event,resolution,before,{signal,motion}))return Math.max(banner,event.type==='board-skill'?motion.timeline!.skill.name:motion.timeline!.skill.effect);if(banner)return banner;},
+  skillActivation:(event,links,state,signal,motion)=>{skillActivationEffects.play(event,links,state,signal,motion);},
   energy:(event,links,state,signal,motion)=>{energyLinks.play(event,links,state,signal,motion);},
   impact:event=>energyLinks.impact(event),
   feedback:showFeedback,
@@ -372,13 +386,13 @@ const view:BattleView={
   complete:(resolution,turn)=>{lastActions=recordActionBreakdown(lastActions,resolution,turn);},
  }),
  async animateStageTransition(_before,after,run,signal){
-  boardSkillPresentation.clear();energyLinks.clear();
+  boardSkillPresentation.clear();energyLinks.clear();skillActivationEffects.clear();
   last=`${stageLabel(run.stage)} · ${run.stage===1?'ラン開始':'次の戦闘'}`;render(after,true,run);
   const restored=suppressRestoredTransitionTo===run.stage;if(restored)suppressRestoredTransitionTo=null;
   await stageNumberCinematic.play({eventId:after,event:{type:'stage-transition',fromStage:run.stage-1,toStage:run.stage},restored,signal,motion:presentationMotion()});
  },
- reset(){portraitViewer.close(false);boardSkillPresentation.clear();boardSkillBanner.clear();energyLinks.clear();stageNumberCinematic.reset();suppressRestoredTransitionTo=null;cancelClickGuard.reset();rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();transformCinematic.cancel('restart');audio.reset();music.restart();turnPresentation.reset();bossPresentation.reset();stagePresentation.reset();selected=null;highlights=[];el('feedback-layer').replaceChildren();const end=el<HTMLDialogElement>('end');if(end.open)end.close();history.length=0;last='';rewardDialog.reset();},
- reportError(){portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();stageNumberCinematic.cancel('presentation-error');rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();last='表示を更新しました。確定した行動は保持されています';}
+ reset(){portraitViewer.close(false);boardSkillPresentation.clear();boardSkillBanner.clear();energyLinks.clear();skillActivationEffects.clear();stageNumberCinematic.reset();suppressRestoredTransitionTo=null;cancelClickGuard.reset();rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();transformCinematic.cancel('restart');audio.reset();music.restart();turnPresentation.reset();bossPresentation.reset();stagePresentation.reset();selected=null;highlights=[];el('feedback-layer').replaceChildren();const end=el<HTMLDialogElement>('end');if(end.open)end.close();history.length=0;last='';rewardDialog.reset();},
+ reportError(){portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();skillActivationEffects.clear();stageNumberCinematic.cancel('presentation-error');rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();last='表示を更新しました。確定した行動は保持されています';}
 };
 const ownership=new SaveOwnership();
 let save:LocalSave|undefined;
@@ -395,7 +409,7 @@ function lastSavedLabel():string{const at=save?.latest?.savedAt;return typeof at
 function reportSaveError(error:unknown):void{portraitViewer.close(false);el('save-status').textContent='保存停止';savePrompt('保存を確認してください',error instanceof Error?error.message:'自動保存できませんでした',button('保存を再試行','data-save="retry" class="save-primary"')+button(`未保存分を破棄して最後の保存${lastSavedLabel()}へ戻る`,'data-save="restore"'));}
 const home=mountHome(root,{mountMusic:host=>mountHomeMusicControls(music,audio,host),store:()=>profileStore!,saved:()=>save?.latest?.checkpoint??null,preview:SAVE_PREVIEW,async qa(kind){if(!SAVE_PREVIEW)return;if(kind==='selected-kit'){const p=profileStore!.current,x=prepareDeparture(freezeRunMeta(p,p.selected,false),19),initialGauge=gaugeDefinition(x.config.characterId,tuningOf(x.config))!.cap;await newRun({...x,config:{...x.config,initialGauge,initialBoxes:[[7,0,'player'],[7,1,'player'],[7,2,'player'],[6,0,'player'],[6,1,'player'],[7,3,'enemy'],[7,4,'enemy'],[7,5,'enemy'],[6,3,'enemy'],[6,4,'enemy']].map(([row,col,owner],i)=>({id:`kit-qa:${i}`,row:Number(row),col:Number(col),owner:owner as 'player'|'enemy',type:'normal' as const,status:'normal' as const})),combatants:{player:{...x.config.combatants.player,maxHp:1000,initialHp:1000},enemy:{...x.config.combatants.enemy,maxHp:1000,initialHp:1000}}}});}else if(kind==='types'){const x=prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:13,mode:'manual',stage:1,fixture:'normal',route:'boss-loop'});await newRun({...x,config:{...x.config,initialBoxes:[{id:'type:0',row:7,col:0,owner:'player',type:'rubble',status:'normal'},{id:'type:1',row:6,col:0,owner:'player',type:'normal',status:'normal'},{id:'type:2',row:7,col:1,owner:'player',type:'poison',status:'normal'},{id:'type:3',row:7,col:2,owner:'enemy',type:'deadly-poison',status:'normal'},{id:'type:4',row:7,col:3,owner:'player',type:'frozen',status:'normal'},{id:'type:5',row:7,col:4,owner:'player',type:'shiny',status:'normal'},{id:'type:6',row:7,col:5,owner:'neutral',type:'thorn',status:'normal'}],combatants:{player:{...x.config.combatants.player,maxHp:1000,initialHp:1000},enemy:{...x.config.combatants.enemy,maxHp:1000,initialHp:1000}}}});}else if(kind==='imashiru'){const p=profileStore!.current;const meta=profileStore!.current.ownedCharacters.includes('imashiru')?prepareDeparture(freezeRunMeta(p,'imashiru',false),11):null;if(!meta)return;await newRun({...meta,config:{...meta.config,initialGauge:230,initialBoxes:[0,1].map(col=>({id:`imashiru-qa:${col}`,row:7,col,owner:'player' as const,type:'normal' as const,status:'normal' as const})),combatants:{...meta.config.combatants,enemy:{...meta.config.combatants.enemy,maxHp:999,initialHp:999}}}});}else await newRun(prepareTrialSetup({character:'blue',firstEnemy:'marujiro',seed:1,mode:'manual',stage:kind==='speed'?25:50,fixture:'charged',route:'boss-loop'}));},continue(){saveDialog.close();void musicScene.enterBattle(controller.snapshot.config.enemyId);void controller.start();},retire:requestRetirement,tutorial(){void startTutorial(false);},async launch(meta:RunMeta,route){const seed=crypto.getRandomValues(new Uint32Array(1))[0]!;await newRun(prepareDeparture(meta,seed,route));}});
 function reconcileSavedSettlement():void{if(!profileStore||!save)throw new Error('保存の準備ができていません');reconcileSavedProgress(save,profileStore);}
-function showHome():void{el<HTMLDialogElement>('battle-log').close();el<HTMLDialogElement>('skill-info').close();if(!profileStore)return;try{reconcileSavedSettlement();}catch(error){saveRecovery='boot';reportSaveError(error);return;}details.close();rewardDialog.reset();el<HTMLDialogElement>('end').close();saveDialog.close();selected=null;void musicScene.showHome();home.show();}
+function showHome():void{el<HTMLDialogElement>('battle-log').close();el<HTMLDialogElement>('skill-info').close();skillActivationEffects.clear();if(!profileStore)return;try{reconcileSavedSettlement();}catch(error){saveRecovery='boot';reportSaveError(error);return;}details.close();rewardDialog.reset();el<HTMLDialogElement>('end').close();saveDialog.close();selected=null;void musicScene.showHome();home.show();}
 function requestRetirement():boolean {
  if(!save||!profileStore||controller.isResolving||controller.persistenceBlocked)return false;
  save.guard();profileStore.guard();
@@ -471,7 +485,7 @@ function endTutorial(completed:boolean):void{
  showHome();if(!first)home.showTutorials();
 }
 async function boot():Promise<void>{
- profileReady=false;profileReadComplete=false;void musicScene.showHome();home.hide();portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();stageNumberCinematic.reset();suppressRestoredTransitionTo=null;cancelClickGuard.reset();rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();const epoch=++bootEpoch;controller?.destroy();turnPresentation.reset();bossPresentation.reset();stagePresentation.reset();el('feedback-layer').replaceChildren();const result=el<HTMLDialogElement>('end');if(result.open)result.close();selected=null;highlights=[];last='';history.length=0;if(details.open)details.close();rewardDialog.reset();
+ profileReady=false;profileReadComplete=false;void musicScene.showHome();home.hide();portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();skillActivationEffects.clear();stageNumberCinematic.reset();suppressRestoredTransitionTo=null;cancelClickGuard.reset();rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();resetReadability();const epoch=++bootEpoch;controller?.destroy();turnPresentation.reset();bossPresentation.reset();stagePresentation.reset();el('feedback-layer').replaceChildren();const result=el<HTMLDialogElement>('end');if(result.open)result.close();selected=null;highlights=[];last='';history.length=0;if(details.open)details.close();rewardDialog.reset();
  savePrompt('セーブを確認中','このブラウザの保存を確認しています','');
  try{
   if(!await ownership.acquire(navigator.locks)){savePrompt('別のタブでプレイ中','同時の上書きを防ぐためこのタブは開始していません。ほかのプレイ中のタブを閉じてから再確認してください。',button('再確認','data-save="read"'));return;}
@@ -542,8 +556,8 @@ root.addEventListener('click',event=>{
   else if(!selected||selected.kind==='drop'){const o=dropForCell(getDropOptions(displayed),{row:Number(b.dataset.cellRow),col:Number(b.dataset.cellCol)});if(o){if(selected?.kind==='drop'&&selected.id===o.id)void commit();else{selected={kind:'drop',id:o.id};render(controller.snapshot,false,controller.runSnapshot);}}}return;
  }
  if(b.dataset.rowProjection&&available()&&selected?.kind==='row'&&selected.row!==null){if(!getRowSkillPreview(controller.snapshot,selected.row).valid)return;selected={...selected,after:b.dataset.rowProjection==='after'};render(controller.snapshot,false,controller.runSnapshot);root.querySelector<HTMLButtonElement>('button[data-row-projection]')?.focus({preventScroll:true});return;}
- if(b.dataset.board&&available()){const id=getAvailableBoardSkills(displayed)[0]!;selected=isKitBoard(id)?{kind:'target',skillId:id,target:null,orientation:0}:id==='imashiru-insight'?{kind:'insight'}:getAvailableBoardSkills(displayed)[0]==='ember'?{kind:'ember'}:{kind:'row',row:null};render(controller.snapshot,false,controller.runSnapshot);return;}
- if(b.dataset.cancel){boardSkillPresentation.clear();energyLinks.clear();cancelClickGuard.mark(event);selected=null;render(controller.snapshot,locked,controller.runSnapshot);return;}
+ if(b.dataset.board&&available()){const id=getAvailableBoardSkills(displayed)[0]!;selected=isKitBoard(id)?{kind:'target',skillId:id,target:isGlobalBoard(kitBoardDefinition(displayed.config,id))?{row:0,col:0}:null,orientation:0}:id==='imashiru-insight'?{kind:'insight'}:getAvailableBoardSkills(displayed)[0]==='ember'?{kind:'ember'}:{kind:'row',row:null};render(controller.snapshot,false,controller.runSnapshot);return;}
+ if(b.dataset.cancel){boardSkillPresentation.clear();energyLinks.clear();skillActivationEffects.clear();cancelClickGuard.mark(event);selected=null;render(controller.snapshot,locked,controller.runSnapshot);return;}
  if(b.dataset.confirm){void commit();return;}
  if(b.dataset.transform){selected=null;void controller.transform();return;}
  if(b.dataset.instant!==undefined&&available()&&instantSlots(displayed).includes(Number(b.dataset.instant))){details.close();el<HTMLDialogElement>('skill-info').close();selected={kind:'instant',slot:Number(b.dataset.instant)};render(controller.snapshot,locked,controller.runSnapshot);return;}
@@ -558,9 +572,10 @@ el('restart').addEventListener('click',()=>{
  try {const setup=prepareTrialSetup({fixture:el<HTMLSelectElement>('fixture').value as TrialSetupFixture,character:el<HTMLSelectElement>('character').value as CharacterId,firstEnemy:el<HTMLSelectElement>('enemy').value as EnemyId,seed,mode:el<HTMLSelectElement>('mode').value as 'manual'|'automatic',stage:Number(el<HTMLInputElement>('start-stage').value),route:el<HTMLSelectElement>('route').value as 'standard'|'boss-loop'});details.close();void newRun(setup);}
  catch(error){el('error').textContent=error instanceof Error?error.message:'設定を確認してください';}
 });
-window.addEventListener('keydown',event=>{if(portraitViewer.active||el<HTMLDialogElement>('skill-info').open||el<HTMLDialogElement>('battle-log').open)return;if(event.key==='Escape'){boardSkillPresentation.clear();energyLinks.clear();}if(event.key==='Escape'&&selected&&!details.open&&!reward.open){rowDoubleTap.reset();selected=null;render(controller.snapshot,locked,controller.runSnapshot);}});
+window.addEventListener('keydown',event=>{if(portraitViewer.active||el<HTMLDialogElement>('skill-info').open||el<HTMLDialogElement>('battle-log').open)return;if(event.key==='Escape'){boardSkillPresentation.clear();energyLinks.clear();skillActivationEffects.clear();}if(event.key==='Escape'&&selected&&!details.open&&!reward.open){rowDoubleTap.reset();selected=null;render(controller.snapshot,locked,controller.runSnapshot);}});
 new ResizeObserver(fitBoard).observe(root.querySelector('.board-area')!);
-window.addEventListener('pagehide',()=>{el<HTMLDialogElement>('skill-info').close();portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();stageNumberCinematic.cancel('pagehide');rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();transformCinematic.cancel('pagehide');audio.setHidden(true);audio.reset();bootEpoch++;controller?.destroy();ownership.release();});
+root.querySelector('.board-area')!.addEventListener('scroll',()=>feedbackPlacement?.(),{passive:true});
+window.addEventListener('pagehide',()=>{el<HTMLDialogElement>('skill-info').close();portraitViewer.close(false);boardSkillPresentation.clear();energyLinks.clear();skillActivationEffects.clear();stageNumberCinematic.cancel('pagehide');rowDoubleTap.reset();dropMotion.clear();portraitReactions.clear();transformCinematic.cancel('pagehide');audio.setHidden(true);audio.reset();bootEpoch++;controller?.destroy();ownership.release();});
 window.addEventListener('pageshow',event=>{audio.setHidden(document.hidden);if(SAVE_PREVIEW)el('save-lifecycle').textContent=event.persisted?'BFCacheから復帰':'新しくページを読み込み';if(event.persisted)void boot();});
 window.addEventListener('storage',event=>{if((event.key===SAVE_KEY||event.key===profileStore?.key)&&ownership.owned){try{save?.guard();profileStore?.guard();}catch(error){controller?.destroy();reportSaveError(error);}}});
 void boot();

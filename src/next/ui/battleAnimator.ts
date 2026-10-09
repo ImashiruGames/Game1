@@ -30,6 +30,8 @@ export interface BattleAnimationHooks {
     boardSkill?(event: BattleEvent, resolution: Resolution, before: BattleState, signal: AbortSignal, motion: AnimationMotion): number|void;
     /** One committed axis cue, within the shared event lead/hold budget. */
     energy?(event:BattleEvent, links:readonly Link[], state:BattleState, signal:AbortSignal, motion:AnimationMotion):void;
+    /** Cosmetic activation metadata, within existing feedback time; never adds waits. */
+    skillActivation?(event:BattleEvent,links:readonly Link[],state:BattleState,signal:AbortSignal,motion:AnimationMotion):void;
     /** Complete the current visual flight immediately before changing the displayed HP. */
     impact?(event:BattleEvent):void;
     feedback(effect: BattleFeedback, state: BattleState, short: boolean, shape: ShapeFeedback | null, holdMs:number): {
@@ -44,7 +46,7 @@ export interface BattleAnimationHooks {
     vanish?(ids: readonly string[], phase: 'marked' | 'fading', milliseconds: number): void;
 }
 /** 日本語: 消える箱を描画の最後まで残してよい解決か（あとから箱を足す・書き換える出来事がないとき）。 */
-const VANISH_BLOCKERS = new Set(['drop', 'boxes-converted', 'boxes-shining', 'enemy-box-changed', 'kit-board-changed', 'row-cleared', 'rubble-crushed', 'transformation', 'turn-start']);
+const VANISH_BLOCKERS = new Set(['drop', 'boxes-converted', 'boxes-shining', 'enemy-box-changed', 'kit-board-changed', 'row-cleared', 'rubble-crushed', 'poison-vanished', 'transformation', 'turn-start']);
 export const VANISH_MS = Object.freeze({ full: 900, short: 160 });
 /** 日本語: 中断は待ち時間だけを終える。計算や保存を再実行しない。
  * English: Aborting releases presentation waits; it never recomputes or saves a battle. */
@@ -89,6 +91,7 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
             hooks.highlight(feedback?.boxIds ?? [], feedback?.tone ?? 'damage');
             if (feedback) {
                 hooks.render(shown, resolution.actor === 'enemy' ? before : null);
+                try{hooks.skillActivation?.(event,activeLinks,shown,signal,motion);}catch{/* Cosmetic failures must not block a committed action. */}
                 hooks.energy?.(event, activeLinks, shown, signal, motion);
                 await wait(feedbackTime.lead);
                 if (signal.aborted)
@@ -117,7 +120,7 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
             if(event.type==='boxes-thawed'){const ids=new Set(event.boxIds);shown={...shown,boxes:shown.boxes.map(box=>ids.has(box.id)?{...box,type:'normal'}:box)};}
             // 日本語: 消える箱はVanish状態にして残し、計算がすべて終わってからゆっくり消す。
             // English: Boxes to be removed enter the Vanish state and leave only after every calculation, slowly.
-            const gone=event.type==='kit-board-changed'?event.boxIds.filter(id=>!after.boxes.some(box=>box.id===id)):[];
+            const gone=event.type==='poison-vanished'?event.boxIds:event.type==='kit-board-changed'?event.boxIds.filter(id=>!after.boxes.some(box=>box.id===id)):[];
             if((event.type==='row-cleared'||event.type==='rubble-crushed'||gone.length>0)&&hooks.vanish&&canDefer(eventIndex)){
                 const removing=event.type==='row-cleared'||event.type==='rubble-crushed'?event.boxIds:gone;
                 for(const id of removing)if(!vanishing.includes(id)&&shown.boxes.some(box=>box.id===id))vanishing.push(id);
@@ -125,11 +128,13 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
             }
             else{
                 if(event.type==='rubble-crushed'){const removed=new Set(event.boxIds);shown={...shown,boxes:settleBoxes(shown.config.board,shown.boxes.filter(box=>!removed.has(box.id)))};}
-                if (event.type === 'row-cleared' || event.type === 'boxes-converted'||event.type==='boxes-shining'||event.type==='kit-board-changed'||event.type==='enemy-box-changed')
+                if(event.type==='kit-board-changed'&&resolution.events.slice(eventIndex+1).some(e=>e.type==='poison-vanished')){const ids=new Set(event.boxIds);shown={...shown,boxes:shown.boxes.map(b=>ids.has(b.id)?after.boxes.find(a=>a.id===b.id)??b:b)};}
+                else if (event.type === 'poison-vanished'||event.type === 'row-cleared' || event.type === 'boxes-converted'||event.type==='boxes-shining'||event.type==='kit-board-changed'||event.type==='enemy-box-changed')
                     shown = { ...shown, boxes: after.boxes };
             }
             if(event.type==='power-boost'&&shown.build)shown={...shown,build:{...shown.build,power:{...shown.build.power,[event.tier]:shown.build.power[event.tier]+event.amount}}};
             hooks.render(shown, resolution.actor === 'enemy' ? before : null);
+            if(!feedback)try{hooks.skillActivation?.(event,activeLinks,shown,signal,motion);}catch{/* Optional local passive cue. */}
             const skillDuration=hooks.boardSkill?.(event, resolution, before, signal, motion);
             // A replacing skill cue owns its own tail; never unlock input with a cue still running.
             if(typeof skillDuration==='number'){

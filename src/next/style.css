@@ -95,3 +95,31 @@ dialog.end{width:min(490px,calc(100vw - 24px));max-height:calc(100svh - 24px);pa
   user-select: text;
   -webkit-touch-callout: default;
 }
+
+/* Viewport-height fallback is maintained by viewportLayout.ts, including browsers without svh. */
+.game{height:var(--available-viewport-height,100vh);grid-template-columns:minmax(0,1fr);padding:8px;padding-top:calc(8px + env(safe-area-inset-top,0px));padding-bottom:calc(8px + env(safe-area-inset-bottom,0px));padding-left:calc(8px + env(safe-area-inset-left,0px));padding-right:calc(8px + env(safe-area-inset-right,0px))}
+@supports(height:100svh){.game{height:var(--available-viewport-height,100svh)}}
+.game>.hud,.game>.strip,.game>.controls{min-width:0}
+.hud #player-name,.hud #enemy-name{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.floating-feedback{width:max-content;min-width:0;max-width:calc(100% - 16px);max-width:min(280px,calc(100% - 16px));padding:5px 8px}
+.floating-feedback strong{max-width:100%;font-size:22px;font-size:clamp(20px,5.5vw,28px);line-height:1.15;overflow-wrap:break-word;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.floating-feedback small{font-size:11px;line-height:1.3;overflow-wrap:break-word;overflow-wrap:anywhere}
+dialog,dialog.end,#skill-info,#meta-panel{max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);max-height:calc(var(--available-viewport-height,100vh) - 24px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+dialog .dialog-top,.meta-panel-header{min-width:0}
+dialog .dialog-top>h2,.meta-panel-header>div{min-width:0;overflow-wrap:break-word}
+dialog .dialog-top>button,#meta-panel .meta-panel-header button{min-height:44px;flex-shrink:0}
+#meta-panel .meta-panel-header small{flex-wrap:wrap;gap:3px 8px}
+#meta-panel .meta-art-frame{height:55vh;height:calc(var(--available-viewport-height,100vh)*.55);min-height:160px}
+@media(max-width:430px){
+ .game .hud{column-gap:8px;padding-inline:6px}.hud section{gap:4px}.hud #player-name,.hud #enemy-name{font-size:12px}
+ .gauge-row{gap:5px;grid-template-columns:auto minmax(12px,1fr) auto}
+ .game .battle-speed{flex-basis:76px}
+ .game .hint-line{grid-template-columns:minmax(0,1fr) auto;gap:4px}
+ .skill-hud{max-width:100%}
+}
+@media(max-height:520px){
+ /* Short landscape gets a usable board and 44px controls; the page scrolls vertically. */
+ .game{height:auto;min-height:560px;grid-template-rows:76px 44px minmax(260px,1fr) 48px 72px;overflow:visible}
+ .game:has(#hint:is(.ember-forecast,.row-forecast)){grid-template-rows:76px 44px minmax(260px,1fr) 48px 108px}
+ .board-area{min-height:260px}
+}
