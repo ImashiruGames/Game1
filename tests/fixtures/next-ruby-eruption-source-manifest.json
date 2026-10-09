@@ -1,0 +1,11 @@
+{
+  "revision": "1.14.9",
+  "scope": "Authorized Ruby post-transformation cosmetic fire shower. Visual-only deterministic particles; battle rules, RNG, saves, Imashiru effect and GrowFire relay unchanged. Five large vertically falling flame meteors replace thirty small drifting sparks; no gameplay impact.",
+  "files": {
+    "src/next/main.ts": "3d06cb5dd6977dc667d6a95f5600883ecbc7d71a5190949fc996434e5dfbe91d",
+    "src/next/ui/rubyEruption.ts": "ac8f7c9479fea925f95708012c81067035d577e0093560f57dd6510a8a4b54d9",
+    "src/next/version.ts": "550e77d2e008cbebe3afe4a1fb9821aa04f64496d1ce56de5e5f3bb9905b080f",
+    "public/docs/game1_content_catalog_next.html": "97328871dcb4befa2b43638b2e461cc865d1f01757e3175fa985cba8f6e2c12c",
+    "public/docs/game1_content_catalog_next.json": "f1f08bb6fb8b19d2eb15534b195923a15e12e5e0ced8cc6bd701050ab6130984"
+  }
+}

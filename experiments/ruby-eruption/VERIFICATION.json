@@ -1,0 +1,57 @@
+{
+  "version": "1.14.8",
+  "baseHead": "fb3a8d73253a6c81576ed5a2c11e9c46fb69d887",
+  "sequence": [
+    "createBattleAnimator awaits main transform hook",
+    "Existing portrait cinematic completes or is skipped",
+    "Only actual red identity plus red transformation starts rubyEruption",
+    "Promise settles after cleanup before animator completes"
+  ],
+  "durationMs": {
+    "normal": 900,
+    "slow": 1350,
+    "fastOrShort": 360,
+    "reducedMotion": 280,
+    "normalIncludingExistingPortrait": 3000
+  },
+  "particles": {
+    "full": 30,
+    "subdued": 16,
+    "reducedStatic": 6,
+    "sizeRangeCssPx": [
+      1.5,
+      4
+    ],
+    "source": "Fixed visual-only hash by particle index; no game RNG or Math.random access",
+    "motion": "Top-to-bottom accelerating fall; per-particle delayed birth, lifetime, brightness, size, sideways drift and curved short tail"
+  },
+  "checks": {
+    "tests": 1240,
+    "pass": 1240,
+    "fail": 0,
+    "relatedTests": 43,
+    "typecheck": "passed",
+    "build": "passed",
+    "diffCheck": "passed",
+    "log": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-ruby-eruption-final-check.log",
+    "modified": "2026-10-09T03:08:06.093Z",
+    "sha256": "c23674cfae364ae789980464dd92014976cf212fe27cb012d12bc25b8b0657b5"
+  },
+  "preservedHashes": {
+    "imashiruLight": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "skillActivationEffects": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:5195/experiments/ruby-eruption/",
+    "storage": "Standalone in-memory battle fixture; no save storage reads/writes",
+    "visualVerified": false,
+    "reason": "No connected browser in CUA inventory; physical iPhone/Safari untested"
+  },
+  "preserved": [
+    "User-owned 5195 server untouched",
+    "Existing uncommitted work retained",
+    "old_game and normal play tabs/saves untouched",
+    "No game performance, targets, RNG or save changes",
+    "No commit, push or publication"
+  ]
+}

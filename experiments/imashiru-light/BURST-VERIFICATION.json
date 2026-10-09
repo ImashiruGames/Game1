@@ -1,0 +1,56 @@
+{
+  "version": "1.14.7",
+  "timing": {
+    "gatherMediumMs": {
+      "before": 2100,
+      "after": 1550
+    },
+    "gatherSlowMs": {
+      "before": 3150,
+      "after": 2325
+    },
+    "fastOrShortMs": {
+      "before": 520,
+      "after": 480
+    },
+    "reducedMotionMs": 360,
+    "portraitMediumMs": 2100,
+    "totalMediumWithPortraitMs": {
+      "before": 4200,
+      "after": 3650
+    },
+    "initialConstantRadiusMs": {
+      "before": 446.88,
+      "after": 178.56
+    },
+    "fusionAtMs": 1116,
+    "burstAndFadeMs": 434
+  },
+  "acceleration": "q=progress/0.72, u=clamp((q-0.16)/0.84), collapse=smoothstep(u). Radius=1-collapse. Turns=0.65*q+3.8*0.84*(u^3-0.5*u^4); angular speed proportional to 0.65+3.8*collapse (6.85x near center). Both heads keep opposite phase and identical radius.",
+  "burst": "Localized single envelope; three filled radial glow layers, 20 layered rays (up to 3.2px bright core / 8px halo), concentric ring stroke layers 2.8/5/12px. Fine comet strands retained. Fast/short flash intensity 38%; reduced motion remains a still soft disk and thin ring.",
+  "checks": {
+    "tests": 1225,
+    "pass": 1225,
+    "fail": 0,
+    "relatedTests": 28,
+    "typecheck": "passed",
+    "build": "passed",
+    "diffCheck": "passed",
+    "log": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-imashiru-burst-final-check.log",
+    "modified": "2026-10-09T02:57:09.206Z",
+    "sha256": "94d077c3f7c54b938914bfa5d3c0c55c309445ede119cc73b9c32410871bedd3"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:5195/experiments/imashiru-light/",
+    "browserVerified": false,
+    "reason": "No connected browser available (inventory empty). Physical Safari untested."
+  },
+  "preserved": [
+    "Circularity and fractional CSS/DPR mapping",
+    "Portrait → gather → burst → shiny order",
+    "Existing cancellation/resize cleanup",
+    "Skill performance, target selection, saved state",
+    "User-owned 5195 server untouched; old_game untouched",
+    "No commit, push or publication"
+  ]
+}

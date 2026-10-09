@@ -1,0 +1,67 @@
+{
+  "version": "1.14.9",
+  "change": {
+    "normalCount": {
+      "before": 30,
+      "after": 5
+    },
+    "shortCount": {
+      "before": 16,
+      "after": 3
+    },
+    "reducedStaticCount": {
+      "before": 6,
+      "after": 2
+    },
+    "bodyDiameterCssPxAt264Board": {
+      "before": [
+        3,
+        8
+      ],
+      "after": [
+        26,
+        36
+      ]
+    },
+    "bodyDiameterCssPxAt190Board": [
+      18.71,
+      25.91
+    ],
+    "normalDurationMs": {
+      "before": 900,
+      "after": 900
+    },
+    "slowDurationMs": 1350,
+    "shortDurationMs": 360,
+    "reducedDurationMs": 280,
+    "trajectory": "Fixed x per meteor; strictly downward accelerating y; no sideways drift or arc. Five separated vertical lanes, staggered births. Broad filled upward flame tail and three nested solid head disks. Visual only, no impact gameplay."
+  },
+  "checks": {
+    "tests": 1242,
+    "pass": 1242,
+    "fail": 0,
+    "relatedTests": 45,
+    "typecheck": "passed",
+    "build": "passed",
+    "diffCheck": "passed",
+    "log": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-ruby-meteor-final-check.log",
+    "modified": "2026-10-09T03:15:48.760Z",
+    "sha256": "25a719382c103252ef23307612cadefcd533b1401f13285554531bda3c817720"
+  },
+  "preservedHashes": {
+    "imashiruLight": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "skillActivationEffects": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:5195/experiments/ruby-eruption/",
+    "visualVerified": false,
+    "reason": "Browser connection inventory empty; physical Safari untested"
+  },
+  "preserved": [
+    "Existing stats, targets, game RNG and saves",
+    "Accepted Imashiru effect, GrowFire relay and small-screen CSS",
+    "User-owned 5195 server and regular gameplay untouched",
+    "old_game untouched",
+    "No commit, push or publication"
+  ]
+}

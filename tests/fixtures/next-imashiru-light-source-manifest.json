@@ -1,0 +1,12 @@
+{
+  "revision": "1.14.7",
+  "scope": "Authorized Imashiru presentation: portrait completion, counterclockwise light convergence, then committed shiny-box event. Core rules, targets, RNG and saves unchanged. Main comet orbits use equal circular radii; only thin tail strands wobble. Canvas CSS-pixel scaling corrects fractional raster rounding. Shorter convergence-linked angular acceleration and a single layered localized fusion burst; subdued fast/short and static reduced motion.",
+  "files": {
+    "src/next/main.ts": "af34544d70e50be8676521f7f0eeb2c87671aa264fe2e5716ab87d4fef551b20",
+    "src/next/ui/battleAnimator.ts": "92e87ddbfe7cc6ceead096d29a84f6760b1497b9d7f27d823ae12cdaa5135a82",
+    "src/next/ui/imashiruLight.ts": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "src/next/version.ts": "338e5e6b8364053683d8616ebd2981c96c521d38a92fd73e661913e417763e16",
+    "public/docs/game1_content_catalog_next.html": "13e16eb2464e614b830f2c0dfcddefb97e1948ffc4fe03bac8a0610d20a9ff25",
+    "public/docs/game1_content_catalog_next.json": "e731bad5e4d716dbcc8e0f0e84a92577543a0df156b1b6025c7870ff6f6292d7"
+  }
+}

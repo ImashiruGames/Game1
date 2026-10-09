@@ -1,0 +1,34 @@
+{
+  "version": "1.14.6",
+  "baseHead": "fb3a8d73253a6c81576ed5a2c11e9c46fb69d887",
+  "change": "Main light heads share the exact same circular radius with opposite phase. Removed angle-dependent radial waves (6.5% + 2.5%) from the main orbit; small waves remain on fine tail strands. Shrink curve, counterclockwise angle, timing and reveal order unchanged.",
+  "canvas": "configureLightCanvas maps actual integer bitmap size to fractional CSS bounds independently per axis, cancelling DPR rounding when composited. Same helper in production and preview.",
+  "checks": {
+    "tests": 1222,
+    "passed": 1222,
+    "failed": 0,
+    "relatedTests": 25,
+    "typecheck": "passed",
+    "build": "passed",
+    "diffCheck": "passed",
+    "log": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-imashiru-circle-final-check.log",
+    "logModified": "2026-10-09T02:45:33.500Z",
+    "logSha256": "58baa50bd052d99c1506195b98fb10a6f9f070bb6e085233322bf10dc95eb896",
+    "geometry": "761 trajectory samples; actual painter at 5 board dimensions x 4 DPR values x 20 opening phases; screen-space equal radius, opposite phase, monotonic convergence"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:5195/experiments/imashiru-light/",
+    "visualVerification": "not performed; connected browser inventory was empty",
+    "server": "User-started server not stopped or restarted"
+  },
+  "preserved": [
+    "Existing uncommitted 1.14.5 work retained",
+    "Portrait-gather-shiny sequence and cancellation logic unchanged",
+    "old_game, normal play and saves untouched",
+    "No commit, push or publication"
+  ],
+  "limitations": [
+    "No browser screenshot or motion visual verification by agent",
+    "No physical Safari test"
+  ]
+}

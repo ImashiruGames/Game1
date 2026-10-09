@@ -67,6 +67,16 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
     return async (resolution, before, after, signal) => {
         let shown = { ...before };
         let activeLinks = resolution.links;
+        // Final snapshots may be used by earlier row/board events. Do not reveal
+        // Imashiru's future shiny types before the awaited transformation sequence.
+        const shiningIndex=resolution.events.findIndex(e=>e.type==='boxes-shining');
+        const pendingShine=new Set(resolution.events.some((e,i)=>i<shiningIndex&&e.type==='transformation'&&e.character==='imashiru')?resolution.events.flatMap(e=>e.type==='boxes-shining'?e.boxIds:[]):[]);
+        const replayBoxes=()=>after.boxes.map(box=>{
+            const prior=shown.boxes.find(b=>b.id===box.id);
+            if(!pendingShine.has(box.id)||box.type!=='shiny'||!prior)return box;
+            const {poisonSource:_source,poisonCountdown:_count,...rest}=box;
+            return {...rest,type:prior.type,...(prior.poisonSource?{poisonSource:prior.poisonSource}:{}),...(prior.poisonCountdown?{poisonCountdown:prior.poisonCountdown}:{})};
+        });
         const motion = captureAnimationMotion(hooks.motion(),timing.dropHoldMs,timing.shortDropHoldMs);
         const profile=motion.timeline!,short=profile.short;
         let elapsed=0,skillEnd=0;
@@ -78,6 +88,7 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
         for (const [eventIndex, event] of resolution.events.entries()) {
             if (signal.aborted)
                 return;
+            if(event.type==='boxes-shining')for(const id of event.boxIds)pendingShine.delete(id);
             if (event.type !== 'transformation')
                 hooks.playSound(event, resolution, eventIndex, signal, before);
             if (event.type !== 'attack')
@@ -128,9 +139,9 @@ export function createBattleAnimator(hooks: BattleAnimationHooks, timing: Battle
             }
             else{
                 if(event.type==='rubble-crushed'){const removed=new Set(event.boxIds);shown={...shown,boxes:settleBoxes(shown.config.board,shown.boxes.filter(box=>!removed.has(box.id)))};}
-                if(event.type==='kit-board-changed'&&resolution.events.slice(eventIndex+1).some(e=>e.type==='poison-vanished')){const ids=new Set(event.boxIds);shown={...shown,boxes:shown.boxes.map(b=>ids.has(b.id)?after.boxes.find(a=>a.id===b.id)??b:b)};}
+                if(event.type==='kit-board-changed'&&resolution.events.slice(eventIndex+1).some(e=>e.type==='poison-vanished')){const ids=new Set(event.boxIds);shown={...shown,boxes:shown.boxes.map(b=>ids.has(b.id)?replayBoxes().find(a=>a.id===b.id)??b:b)};}
                 else if (event.type === 'poison-vanished'||event.type === 'row-cleared' || event.type === 'boxes-converted'||event.type==='boxes-shining'||event.type==='kit-board-changed'||event.type==='enemy-box-changed')
-                    shown = { ...shown, boxes: after.boxes };
+                    shown = { ...shown, boxes: replayBoxes() };
             }
             if(event.type==='power-boost'&&shown.build)shown={...shown,build:{...shown.build,power:{...shown.build.power,[event.tier]:shown.build.power[event.tier]+event.amount}}};
             hooks.render(shown, resolution.actor === 'enemy' ? before : null);

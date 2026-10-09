@@ -1,0 +1,63 @@
+{
+  "version": "1.14.9",
+  "verifiedAt": "2026-10-09T03:26:42.322Z",
+  "head": "fb3a8d73253a6c81576ed5a2c11e9c46fb69d887",
+  "outcome": "Both accepted effects were already connected to the main game; no production changes or version bump were needed in this integration verification.",
+  "addedTest": "tests/next-main-transformation-integration.test.ts",
+  "integration": {
+    "handler": "src/next/main.ts:389",
+    "awaitedBy": "src/next/ui/battleAnimator.ts:170",
+    "homeCleanup": "src/next/main.ts:416",
+    "testMethod": "Extract and transpile the actual main.ts transform handler and showHome; exercise real core, battle animator, audio wrapper, identity checks and effect lifecycle with a mocked portrait completion clock, Canvas and DOM.",
+    "cases": [
+      "8 roster identities x normal, slow, fast, short setting, reduced motion (40)",
+      "Ruby and Imashiru: skipped portrait, abort during portrait, abort during effect, actual showHome cleanup (8)"
+    ],
+    "assertions": [
+      "Portrait completes before the applicable effect begins once",
+      "Other six roster identities do not trigger either effect",
+      "Animator waits for effect completion before completing; Imashiru shiny boxes follow effect completion",
+      "Aborts prevent completion and leave no canvas, animation frame or timer",
+      "Home transition clears active effect resources",
+      "Core state and resolution are unchanged by presentation"
+    ]
+  },
+  "validation": {
+    "addedTests": {
+      "passed": 48,
+      "failed": 0
+    },
+    "fullCheck": {
+      "command": "npm.cmd run check",
+      "passed": 1290,
+      "failed": 0,
+      "typecheck": "passed",
+      "build": "passed"
+    },
+    "diffCheck": "passed"
+  },
+  "visualVerification": {
+    "performed": false,
+    "reason": "CUA browser inventory was empty. No physical-browser or Safari playback checked in this pass.",
+    "acceptedVisuals": "User accepted Imashiru 1.14.7 and Ruby 1.14.9; unchanged during this pass."
+  },
+  "protected": {
+    "oldGame": "untouched",
+    "vite5195": "not started, stopped or restarted",
+    "playTabsAndSaves": "untouched",
+    "commitPushPublication": "none"
+  },
+  "hashes": {
+    "src/next/main.ts": "bb229553068cfbabb9722ad4c38416f166c861ba979ee56d9b40c3ced80f79c0",
+    "src/next/ui/battleAnimator.ts": "92e87ddbfe7cc6ceead096d29a84f6760b1497b9d7f27d823ae12cdaa5135a82",
+    "src/next/ui/imashiruLight.ts": "ae53dec93ef0839de4bb161db678325f09c7d401911c6690e8a4e071f5184907",
+    "src/next/ui/rubyEruption.ts": "ac8f7c9479fea925f95708012c81067035d577e0093560f57dd6510a8a4b54d9",
+    "src/next/ui/skillActivationEffects.ts": "77ed8937583498b9eccae70c30b71d837c734dcb7fe0c96a8d94cc057ea58a96",
+    "tests/next-main-transformation-integration.test.ts": "c38e0f7d6061a658a5303912d2f25cc925f17c571ef9a0bf669b97e1408df8bb"
+  },
+  "log": {
+    "path": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-transformation-integration-final-check.log",
+    "mtime": "2026-10-09T03:25:33.798Z",
+    "sha256": "cfde365f6443af20f7a0e78df3bca4c86380e825c7e9f4f7e3220ff8bc5f2bb3"
+  }
+}

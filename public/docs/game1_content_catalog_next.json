@@ -753,7 +753,7 @@
     }
   ],
   "presentationSupplement": {
-    "revision": "1.14.4",
+    "revision": "1.14.9",
     "updated": "2026-10-04",
     "scope": "通常スキル基礎値は1.2を保持。新出発はホーム個別設定、保存済みランは戦闘詳細が適用値。",
     "growth": "新育成Lv12/24ポイント。過去のレベル・ポイント・EXPを保持。ラン終了精算後、次の出発に反映。"
@@ -769,7 +769,7 @@
     "autoStartsNewRun": false
   },
   "playerGuide": {
-    "version": "1.14.4",
+    "version": "1.14.9",
     "encounters": {
       "bands": [
         {

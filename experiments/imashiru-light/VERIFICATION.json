@@ -1,0 +1,47 @@
+{
+  "version": "1.14.5",
+  "baseHead": "fb3a8d73253a6c81576ed5a2c11e9c46fb69d887",
+  "initialWorktree": "clean",
+  "sequence": [
+    "core transformations.ts already emits transformation then boxes-shining; unchanged",
+    "main.ts awaits playTransformationWithSample / transformationCinematic.play",
+    "transformationThenLight awaits portrait completion or skip, then light gather",
+    "createBattleAnimator advances to boxes-shining only after the sequence resolves",
+    "replayBoxes masks future shiny types in earlier final-snapshot render paths"
+  ],
+  "presentation": {
+    "fullMediumMs": 2100,
+    "fullSlowMs": 3150,
+    "fastOrShortMs": 520,
+    "reducedMotionMs": 360,
+    "design": "Two counterclockwise wavy orbital comet trails; hollow opening; continuous inward spiral; simultaneous central fusion, rays, outward ring and afterglow. Reduced motion uses a still soft signal."
+  },
+  "checks": {
+    "tests": 1220,
+    "pass": 1220,
+    "fail": 0,
+    "typecheck": "passed",
+    "build": "passed",
+    "diffCheck": "passed",
+    "log": "C:\\Users\\612qw\\AppData\\Local\\Temp\\game1-imashiru-light-final-check.log",
+    "logModified": "2026-10-09T02:24:29.126Z",
+    "logSha256": "4453482f427e2b07fb10ba3a18752a559a2237f45c60db2f6085bfc2062d9d34"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:5195/experiments/imashiru-light/",
+    "storage": "in-memory fixture only; no LocalSave/ProfileStore read/write",
+    "visualVerification": "not performed: CUA browser unavailable and listBrowsers returned []",
+    "controls": "Full sequence, speed, short mode, reduced motion, abort, phase stills and iframe sizes"
+  },
+  "limitations": [
+    "No visual browser pass or screenshots in this task",
+    "No physical iPhone/Safari test",
+    "Preview uses production cinematic/animator/gather/core but representative board DOM, not a full gameplay session"
+  ],
+  "preserved": [
+    "Core transformations and target boxes unchanged",
+    "Existing skillActivationEffects and all responsive CSS unchanged",
+    "old_game untouched",
+    "No commit, push or publication"
+  ]
+}
