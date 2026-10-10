@@ -76,7 +76,7 @@ console.log(`runs ${logs.length} in ${((Date.now()-t0)/1000).toFixed(0)}s`);
 console.log('\n| モード | キャラ | ボット | クリア率 | 平均到達階 | 中央値 | 1戦の平均ターン |');console.log('|---|---|---|---|---|---|---|');
 for(const mode of ['standard','deep'] as const)for(const character of ['blue','red'] as const)for(const bot of ['random','greedy'] as const){
  const g=logs.filter(l=>l.mode===mode&&l.character===character&&l.bot===bot),reach=g.map(l=>l.reached).sort((a,b)=>a-b),turns=g.flatMap(l=>l.battles.filter(b=>b.won).map(b=>b.turns));
- console.log(`| ${mode==='deep'?'深層':'通常'} | ${character==='blue'?'青':'赤'} | ${bot==='greedy'?'考える':'ランダム'} | ${Math.round(g.filter(l=>l.cleared).length/g.length*100)}% | ${fmt(reach.reduce((a,b)=>a+b,0)/reach.length)} | ${reach[Math.floor(reach.length/2)]} | ${turns.length?fmt(turns.reduce((a,b)=>a+b,0)/turns.length):'勝ちなし'} |`);
+ console.log(`| ${mode==='deep'?'深層':'通常'} | ${character==='blue'?'アオイ':'アカリ'} | ${bot==='greedy'?'考える':'ランダム'} | ${Math.round(g.filter(l=>l.cleared).length/g.length*100)}% | ${fmt(reach.reduce((a,b)=>a+b,0)/reach.length)} | ${reach[Math.floor(reach.length/2)]} | ${turns.length?fmt(turns.reduce((a,b)=>a+b,0)/turns.length):'勝ちなし'} |`);
 }
 // 日本語: 負けた戦闘の敵と、敵ごとの1戦あたり被ダメージ（考えるボットのみ）。English: killers and damage per battle, greedy bot only.
 for(const mode of ['standard','deep'] as const){

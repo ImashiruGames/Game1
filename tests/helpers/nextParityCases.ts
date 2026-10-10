@@ -8,7 +8,7 @@ function canonical(value: unknown): unknown {
 }
 export function parityDigest(config: BattleConfig): string {
   // Compare gameplay with the frozen reference while retaining its historical display name.
-  config = { ...config, description: config.description.replaceAll('ルビィ', '赤の子') };
+  config = { ...config, title: config.title.replaceAll('アオイ', '青').replaceAll('アカリ', '赤'), description: config.description.replaceAll('アオイの変化', '青の変化').replaceAll('アカリの変化', '赤の変化').replaceAll('アオイ', '青の子').replaceAll('アカリ', '赤の子').replaceAll('ルビィ', '赤の子') };
   let state = createBattle(config); const trace: unknown[] = [state];
   for (let step = 0; step < 24 && !state.result; step += 1) {
     let action: BattleAction;

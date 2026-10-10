@@ -1,3 +1,5 @@
+> 現在の入口は `/next/` です。`/` は `/next/` への案内専用になりました。旧1.0画面は別保管済みのため撤去し、共有画像と旧ルールの互換性検証コード・fixture・元manifestは保持しています。整理範囲と復元方法は `docs/root-retirement.md` を参照してください。以下の旧版説明は履歴資料です。
+
 # Game1 1.2 trial: save, clear50, battle feedback
 
 Playable entry: `/next/`. This is a separate trial, not adoption of the 25 skill proposals.

@@ -19,7 +19,7 @@ test('full HP Blue forecast separates zero actual healing, nominal healing and r
  const s=health(),view=forecastAction(s,drop)!;
  assert.deepEqual(view,{enemyLoss:19,selfLoss:0,healed:0,nominalHeal:15,damage:19,reflection:15,overkill:0,result:null});
  assert.match(forecastPrimary(view),/敵HP −19 \/ 回復 ＋0/);assert.match(forecastSecondary(view),/回復予定15 · 反射ダメ15/);
- assert.match(forecastDetailsHtml(view),/攻撃の合計 19（うち青の反射 15）/);
+ assert.match(forecastDetailsHtml(view),/攻撃の合計 19（うちアオイの反射 15）/);
 });
 test('limited and uncapped healing show true recovered HP without changing nominal reflection',()=>{
  for(const [hp,healed] of [[27,3],[10,15]]){const v=forecastAction(health(hp),drop)!;assert.equal(v.healed,healed);assert.equal(v.nominalHeal,15);assert.equal(v.reflection,15);assert.equal(v.damage,19);}

@@ -48,7 +48,7 @@ test('recorded full-HP Blue event keeps zero actual healing, nominal15, reflecti
   assert.deepEqual(view.rows.map(row => [row.kind, row.actual]), [['heal', 0], ['reflection', 15], ['axis', 4]]);
   const heal = view.rows[0]!; assert.equal(heal.kind, 'heal'); if (heal.kind === 'heal') { assert.equal(heal.nominal, 15); assert.equal(heal.capped, 15); }
   assert.deepEqual(view.lost, { player: 0, enemy: 19 }); assert.deepEqual(view.healed, { player: 0, enemy: 0 });
-  const html = actionBreakdownHtml(view); assert.match(html, /実回復 ＋0/); assert.match(html, /名目 15 \/ 上限で未回復 15/); assert.match(html, /青の反射/); assert.match(html, /横軸/);
+  const html = actionBreakdownHtml(view); assert.match(html, /実回復 ＋0/); assert.match(html, /名目 15 \/ 上限で未回復 15/); assert.match(html, /アオイの反射/); assert.match(html, /横軸/);
   assert.equal(JSON.stringify(input), before);
 });
 

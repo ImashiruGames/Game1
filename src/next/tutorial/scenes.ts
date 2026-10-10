@@ -53,8 +53,8 @@ export const scenes = {
     enemy: ['E1', 'A2', 'C2', 'F2', 'B3', 'D3', 'E3', 'A4', 'B4', 'E4', 'F4', 'C5', 'D5'],
     enemyHp: 25, playerHp: 'keep',
   },
-  // 3-3 変化：1-5と同じ十字の一歩手前。ゲージは満タン（青の子は80）
-  // 日本語: ヘルス15がそのまま回復＋反撃になるよう、青の子のHPは減った状態から始める。
+  // 3-3 変化：1-5と同じ十字の一歩手前。ゲージは満タン（アオイは80）
+  // 日本語: ヘルス15がそのまま回復＋反撃になるよう、アオイのHPは減った状態から始める。
   transform: { ...SHAPE_BOARD, enemyHp: 15, playerHp: 12, gauge: 80 },
 } as const satisfies Record<string, SceneSpec>;
 export type SceneName = keyof typeof scenes;

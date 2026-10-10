@@ -5,7 +5,7 @@ export const energyReviewCases=[
  {id:'axes',button:'検証用：4軸の順番リンク',instructions:'3列目へ投入。横・縦・斜め2方向のリンクを1軸ずつ表示します。'},
  {id:'enemy',button:'検証用：敵リンクの着弾',instructions:'開始直後の敵の縦4リンクで自分のHPと着弾を確認します。'},
  {id:'lethal',button:'検証用：着弾後の50階クリア',instructions:'3列目へ投入。敵HP3を倒す着弾を確認しリンク演出後に50階クリアへ進みます。'},
- {id:'red',button:'検証用：赤の染色と変化',instructions:'ほむらの火種で敵箱を自箱に染色。変化ボタンで変化中の箱も確認できます。'},
+ {id:'red',button:'検証用：アカリの染色と変化',instructions:'ほむらの火種で敵箱を自箱に染色。変化ボタンで変化中の箱も確認できます。'},
 ] as const;
 export function energyReviewFixture(kind:typeof energyReviewCases[number]['id']):{config:BattleConfig;options:BattleControllerOptions}{
  const item=energyReviewCases.find(item=>item.id===kind);if(!item)throw new Error('Unknown energy review fixture');

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { createBattle as baselineCreate, applyAction as baselineAction } from '../src/core/battle.ts';
 import { battleFixtures } from '../src/core/definitions.ts';
@@ -12,8 +12,20 @@ import { ownsSquare } from '../src/lab/mechanics.ts';
 import type { BattleConfig } from '../src/lab/engine/types.ts';
 const attack=(r:ReturnType<typeof applyAction>)=>r.resolution!.events.filter(e=>e.type==='attack');
 const drop=(s:ReturnType<typeof createBattle>,col:number)=>applyAction(s,{type:'drop',candidateId:`ceiling:${col}:0`});
-// Only the display-name rename is excluded from the historical byte comparison.
-test('lab preserves release source files apart from the Ruby display-name rename',()=>{const manifest=JSON.parse(readFileSync(new URL('../src/lab/baseline-manifest.json',import.meta.url),'utf8'));for(const [file,hash] of Object.entries(manifest.files))assert.equal(createHash('sha256').update(['src/core/definitions.ts','src/ui/BattleShell.ts','src/ui/battleMarkup.ts','src/ui/portraits.ts'].includes(file)?readFileSync(new URL(`../${file}`,import.meta.url),'utf8').replaceAll('ルビィ','赤の子'):readFileSync(new URL(`../${file}`,import.meta.url))).digest('hex'),hash,file);});
+// Keep the original baseline manifest unchanged; only explicitly retired UI paths are absent.
+const retirement=JSON.parse(readFileSync(new URL('./fixtures/root-retirement.json',import.meta.url),'utf8')) as {deleted:{path:string;category:string}[];replacementEntries:string[]};
+const retiredUi=new Set(retirement.deleted.filter(f=>f.category==='old').map(f=>f.path));
+test('lab preserves retained release sources and explicitly retired UI stays absent',()=>{
+ const portraits=JSON.parse(readFileSync(new URL('./fixtures/next-aoi-akari-source-manifest.json',import.meta.url),'utf8'));
+ const manifest=JSON.parse(readFileSync(new URL('../src/lab/baseline-manifest.json',import.meta.url),'utf8'));
+ for(const [file,hash] of Object.entries({...manifest.files,...Object.fromEntries(Object.entries(portraits.files).filter(([file])=>file in manifest.files))})){
+  if(retiredUi.has(file)){assert.equal(existsSync(new URL('../'+file,import.meta.url)),false,file);continue;}
+  if(retirement.replacementEntries.includes(file)){assert.equal(file,'index.html');assert.match(readFileSync(new URL('../'+file,import.meta.url),'utf8'),/url=\.\/next\//);continue;}
+  const raw=readFileSync(new URL('../'+file,import.meta.url));
+  const bytes=raw;
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),hash,file);
+ }
+});
 test('unequipped lab matches original engine states and events over deterministic traces',()=>{for(const fixture of battleFixtures){let base=baselineCreate(fixture),lab=createBattle(fixture);for(let i=0;i<30&&!base.result;i++){const legal=getDropOptions(lab).filter(o=>o.available);const action=lab.actor==='enemy'?{type:'enemy' as const}:lab.transformation?.character==='red'&&!lab.playerTurnStarted&&lab.transformation.remainingStarts>0?{type:'start-turn' as const}:legal.length?{type:'drop' as const,candidateId:legal[i%legal.length]!.id}:{type:'skip' as const};const a=baselineAction(base,action),b=applyAction(lab,action);assert.deepEqual(b,a,`${fixture.id} step ${i}`);base=a.state;lab=b.state;if(!a.accepted)break;}}});
 test('A061 includes the newly inserted bottom box and adds three once',()=>{const config=fixtureConfig('foundation-on','blue','marujiro',1,'A061'),state=createBattle(config);const r=drop(state,2);assert.equal(attack(r)[0]!.damage,7);assert.equal(state.boxes.length,2);assert.equal(r.resolution!.events.filter(e=>e.type==='experiment'&&e.triggered).length,1);});
 test('A061 does not count elevated own boxes or neutral bottom supports',()=>assert.equal(attack(drop(createBattle(fixtureConfig('foundation-off','blue','marujiro',1,'A061')),2))[0]!.damage,4));

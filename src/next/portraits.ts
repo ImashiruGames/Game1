@@ -1,10 +1,7 @@
+import type {RosterId} from './meta/roster.ts';
 import { enemyPortraits as originals, playerPortraits as originalPlayers, transformedPortraits as originalTransformations } from '../ui/portraits.ts';
-/** 日本語: nextの全身表示に説明を合わせ、旧版の表示用データは変更しない。
- * English: Full-body display in next uses full-body descriptions; legacy framing metadata stays unchanged. */
-export const playerPortraits = {
-  blue: { ...originalPlayers.blue, alt: '青い髪のキャラクター。アイスを持った座り姿の全身' },
-  red: { ...originalPlayers.red, alt: '赤い髪のキャラクター。両手でアイスを持った座り姿の全身' },
-} as const;
+/** Share the user-supplied full-body portraits across next and lab. */
+export const playerPortraits = originalPlayers;
 /** 日本語: 承認済みの透過WebPをnextだけで使い、旧PNGと旧版の参照は保つ。
  * English: Approved transparent portraits override only next; original PNGs remain for legacy routes. */
 export const enemyPortraits = {
@@ -32,9 +29,8 @@ export const enemyPortraits = {
   'mother-core': { label: 'マザーコア', alt: '青紫の大型人型ボス、マザーコア', src: new URL('./assets/mother-core-transparent.webp',import.meta.url).href },
 } as const;
 
-/** 日本語: ユーザー採用の全身原画。旧変化後PNGは旧版のため保持する。
- * English: Use the approved full-body originals only in next; preserve legacy transformation PNGs. */
-export const transformedPortraits = {
-  blue: { ...originalTransformations.blue, alt: '変化した青の子。プリズムの賢者、全身', src: new URL('./assets/blue-transformed-prism-oracle.webp',import.meta.url).href },
-  red: { ...originalTransformations.red, alt: '変化したルビィ。炎メイド、全身', src: new URL('./assets/red-transformed-solar-flame-maid.webp',import.meta.url).href },
-} as const;
+/** Normal and transformed art share one canonical asset per form. */
+export const transformedPortraits = originalTransformations;
+
+/** User-supplied originals; reuse these URLs for cards, gacha, battle and full-size views. */
+export const rosterArt:Partial<Record<RosterId,{normal:string;transformed:string}>>={rose:{normal:new URL('../assets/characters/rose.webp',import.meta.url).href,transformed:new URL('../assets/characters/rose-transformed.webp',import.meta.url).href},violet:{normal:new URL('../assets/characters/バイオレット.webp',import.meta.url).href,transformed:new URL('../assets/characters/バイオレット-transformed.webp',import.meta.url).href},silver:{normal:new URL('../assets/characters/silver.webp',import.meta.url).href,transformed:new URL('../assets/characters/silver-transformed.webp',import.meta.url).href},mint:{normal:new URL('../assets/characters/Mint.webp',import.meta.url).href,transformed:new URL('../assets/characters/Mint-transformed.webp',import.meta.url).href},amber:{normal:new URL('../assets/characters/アンバー.webp',import.meta.url).href,transformed:new URL('../assets/characters/アンバー-transformed.webp',import.meta.url).href},imashiru:{normal:new URL('../assets/characters/Imashiru.webp',import.meta.url).href,transformed:new URL('../assets/characters/Imashiru-transformed.webp',import.meta.url).href}};

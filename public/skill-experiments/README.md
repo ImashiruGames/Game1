@@ -1,6 +1,6 @@
 # Game1 skill lab 0.2
 
-Experimental implementations of the catalog's exact 25 priority proposals. These are not adopted production balance. Open `/lab/`; the root entry remains release1.0.
+Experimental implementations of the catalog's exact 25 priority proposals. These are not adopted production balance. Open `/lab/`; the root entry now opens `/next/`. The separately archived release1.0 UI is retired; compatibility logic, frozen traces and the original source manifest remain.
 
 ## Fair comparisons
 
@@ -22,7 +22,7 @@ D001 permits zero-actual-heal use at full HP. The use's own completion is exclud
 
 ## Architecture and reproduction
 
-- `src/core`, `src/app`, `src/ui`, `src/main.ts`, `src/style.css`, `index.html` stay byte-identical to the recorded release source
+- Retained `src/core`, `src/app`, shared portraits and compatibility helpers stay byte-identical apart from the documented Ruby label. The original baseline manifest is retained; the explicitly retired UI paths are recorded in `tests/fixtures/root-retirement.json`.
 - `src/lab/engine` is a deliberately isolated snapshot; experimental changes live only here and in small lab modules
 - `src/lab/tuning.ts` is the typed numerical source for experiments
 - `src/lab/preparedCases.json` contains the 50 independent-review favorable/boundary cases

@@ -40,7 +40,7 @@ export function forecastSecondary(view:ActionForecast,location=''):string{
 }
 export function forecastDetailsHtml(view:ActionForecast|null):string{
  if(!view)return '';
- return `<section class="skill-card action-forecast"><h3>選択中の1行動の予告</h3><p>${forecastPrimary(view)}</p><p>攻撃の合計 ${view.damage}（うち青の反射 ${view.reflection}） / 敵の残りHPを超える分 ${view.overkill}</p><p>実回復 ${view.healed} / 回復予定 ${view.nominalHeal} / 上限で回復しない分 ${Math.max(0,view.nominalHeal-view.healed)}</p><p>HP減少と回復は別表示です。反射は攻撃合計に含まれます。敵の次の行動は含めていません。</p></section>`;
+ return `<section class="skill-card action-forecast"><h3>選択中の1行動の予告</h3><p>${forecastPrimary(view)}</p><p>攻撃の合計 ${view.damage}（うちアオイの反射 ${view.reflection}） / 敵の残りHPを超える分 ${view.overkill}</p><p>実回復 ${view.healed} / 回復予定 ${view.nominalHeal} / 上限で回復しない分 ${Math.max(0,view.nominalHeal-view.healed)}</p><p>HP減少と回復は別表示です。反射は攻撃合計に含まれます。敵の次の行動は含めていません。</p></section>`;
 }
 
 /** 日本語: 空振り・自滅も既存の確定予測に従って明示。技の可否や乱数は変えない。

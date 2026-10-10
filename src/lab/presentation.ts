@@ -4,11 +4,11 @@ import type { BattleState } from './engine/types.ts';
 export function transformationStatus(state:Pick<BattleState,'transformation'|'actor'|'playerTurnStarted'>):{label:string;detail:string;active:boolean} {
  const form=state.transformation;
  if(!form)return{label:'通常形態',detail:'',active:false};
- if(form.character==='blue')return{label:'青の変化中 · この戦闘中',detail:'回復予定量と同じダメージを敵へ与える',active:true};
- if(form.remainingStarts===0)return{label:'赤の変化中 · この手番で終了',detail:'この手番の追加投入は完了。通常行動を終えると戻る',active:true};
- if(state.actor==='player'&&!state.playerTurnStarted)return{label:`赤の変化中 · 追加投入あと${form.remainingStarts}回`,detail:'この手番の追加投入待ち（残り回数に含む）',active:true};
- if(state.actor==='player')return{label:`赤の変化中 · 次回の追加投入あと${form.remainingStarts}回`,detail:'今手番の追加投入は完了。通常行動を選べる',active:true};
- return{label:`赤の変化中 · 追加投入あと${form.remainingStarts}回`,detail:'次の自分の手番開始に追加投入',active:true};
+ if(form.character==='blue')return{label:'アオイの変化中 · この戦闘中',detail:'回復予定量と同じダメージを敵へ与える',active:true};
+ if(form.remainingStarts===0)return{label:'アカリの変化中 · この手番で終了',detail:'この手番の追加投入は完了。通常行動を終えると戻る',active:true};
+ if(state.actor==='player'&&!state.playerTurnStarted)return{label:`アカリの変化中 · 追加投入あと${form.remainingStarts}回`,detail:'この手番の追加投入待ち（残り回数に含む）',active:true};
+ if(state.actor==='player')return{label:`アカリの変化中 · 次回の追加投入あと${form.remainingStarts}回`,detail:'今手番の追加投入は完了。通常行動を選べる',active:true};
+ return{label:`アカリの変化中 · 追加投入あと${form.remainingStarts}回`,detail:'次の自分の手番開始に追加投入',active:true};
 }
 
 import type { ExperimentEvent } from './model.ts';

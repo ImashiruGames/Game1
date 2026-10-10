@@ -1,0 +1,169 @@
+{
+  "reason": "User-approved display names and four supplied portraits; internal IDs and save format unchanged. Original manifests and frozen traces retained.",
+  "sourceCommit": "eed68074928d5be985391aeb07998c28f28cf246",
+  "retiredAssets": [
+    {
+      "path": "src/assets/characters/blue.png",
+      "bytes": 725332,
+      "gitBlob": "2e4962305da7da44ae6f399763c363486934b96d"
+    },
+    {
+      "path": "src/assets/characters/red.png",
+      "bytes": 711099,
+      "gitBlob": "4697c604cb444f2cf9507d4bea95637f650bcc82"
+    },
+    {
+      "path": "src/assets/characters/blue-transformed.png",
+      "bytes": 87900,
+      "gitBlob": "d5b0f71725a57826dc5c73b6dc4363a117c1f234"
+    },
+    {
+      "path": "src/assets/characters/red-transformed.png",
+      "bytes": 95944,
+      "gitBlob": "44db24952b785e752941271c3ba2b115d35e5051"
+    },
+    {
+      "path": "src/next/assets/blue-transformed-prism-oracle.webp",
+      "bytes": 183274,
+      "gitBlob": "6d6d07b851691125e97ce5a0201870031f1b566d"
+    },
+    {
+      "path": "src/next/assets/red-transformed-solar-flame-maid.webp",
+      "bytes": 226288,
+      "gitBlob": "b7c2a23283b83db58be3ffabf198b3b76b74b84c"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/blue-BN5Qq7qb.png",
+      "bytes": 725332,
+      "gitBlob": "2e4962305da7da44ae6f399763c363486934b96d"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/blue-transformed-CAdoCTvw.png",
+      "bytes": 87900,
+      "gitBlob": "d5b0f71725a57826dc5c73b6dc4363a117c1f234"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/blue-transformed-prism-oracle-CycMBTqq.webp",
+      "bytes": 1342004,
+      "gitBlob": "2e1d18519e4e0e7710816e54edd9af6be2a53eeb"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/red-Bujbjea_.png",
+      "bytes": 711099,
+      "gitBlob": "4697c604cb444f2cf9507d4bea95637f650bcc82"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/red-transformed-Cz5lXFHs.png",
+      "bytes": 95944,
+      "gitBlob": "44db24952b785e752941271c3ba2b115d35e5051"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/red-transformed-solar-flame-maid-Dqhqfyui.webp",
+      "bytes": 1491316,
+      "gitBlob": "7777336a14888060ce87dc2a01a26636f4c186cb"
+    },
+    {
+      "path": "public/build-ui-preview/assets/blue-BN5Qq7qb.png",
+      "bytes": 725332,
+      "gitBlob": "2e4962305da7da44ae6f399763c363486934b96d"
+    },
+    {
+      "path": "public/build-ui-preview/assets/blue-transformed-CAdoCTvw.png",
+      "bytes": 87900,
+      "gitBlob": "d5b0f71725a57826dc5c73b6dc4363a117c1f234"
+    },
+    {
+      "path": "public/build-ui-preview/assets/red-Bujbjea_.png",
+      "bytes": 711099,
+      "gitBlob": "4697c604cb444f2cf9507d4bea95637f650bcc82"
+    },
+    {
+      "path": "public/build-ui-preview/assets/red-transformed-Cz5lXFHs.png",
+      "bytes": 95944,
+      "gitBlob": "44db24952b785e752941271c3ba2b115d35e5051"
+    },
+    {
+      "path": "public/save-preview/assets/blue-BN5Qq7qb.png",
+      "bytes": 725332,
+      "gitBlob": "2e4962305da7da44ae6f399763c363486934b96d"
+    },
+    {
+      "path": "public/save-preview/assets/blue-transformed-CAdoCTvw.png",
+      "bytes": 87900,
+      "gitBlob": "d5b0f71725a57826dc5c73b6dc4363a117c1f234"
+    },
+    {
+      "path": "public/save-preview/assets/red-Bujbjea_.png",
+      "bytes": 711099,
+      "gitBlob": "4697c604cb444f2cf9507d4bea95637f650bcc82"
+    },
+    {
+      "path": "public/save-preview/assets/red-transformed-Cz5lXFHs.png",
+      "bytes": 95944,
+      "gitBlob": "44db24952b785e752941271c3ba2b115d35e5051"
+    },
+    {
+      "path": "public/transform-preview/assets/blue-BN5Qq7qb.png",
+      "bytes": 725332,
+      "gitBlob": "2e4962305da7da44ae6f399763c363486934b96d"
+    },
+    {
+      "path": "public/transform-preview/assets/blue-transformed-CAdoCTvw.png",
+      "bytes": 87900,
+      "gitBlob": "d5b0f71725a57826dc5c73b6dc4363a117c1f234"
+    },
+    {
+      "path": "public/transform-preview/assets/red-Bujbjea_.png",
+      "bytes": 711099,
+      "gitBlob": "4697c604cb444f2cf9507d4bea95637f650bcc82"
+    },
+    {
+      "path": "public/transform-preview/assets/red-transformed-Cz5lXFHs.png",
+      "bytes": 95944,
+      "gitBlob": "44db24952b785e752941271c3ba2b115d35e5051"
+    }
+  ],
+  "files": {
+    "public/docs/game1_content_catalog_next.html": "e9114c9932598cd1c19dafa18b246dcc8e64e5723f36c29ab11eb45e01bd9465",
+    "public/docs/game1_content_catalog_next.json": "5e3b7663a9a03a46abe04c43e36d11ff78b1eebde0447760e5cdcd7c156b9376",
+    "scripts/docs/build-player-guide.mts": "136d10b6d0e364dcb6a1c6fcc5e47c5cb9be1e86ad3721a3f3a4a75351fde44d",
+    "src/core/definitions.ts": "173c8432f205393b758ff22b7f568e99bde726b4cc2bb1e57f202bef53e359da",
+    "src/next/core/definitions.ts": "0bcde14918714cba29b01658b2674228caaba9ef43fc78416c5547bf2f689455",
+    "src/next/main.ts": "4e0884b0d5a1f2f0c1ffaa84364f148f88eff42835329b2f4fd885fef1291089",
+    "src/next/meta/home.ts": "6474959cb1d5cbfbaae350dbdb95fada201ffc0233bf74f4eabd5e9195a0c7e4",
+    "src/next/meta/roster.ts": "1650cebe4de4b9a14f3ffb10e910f4b83af7317ec643989aa816127b29013ca1",
+    "src/next/portraits.ts": "063c3e541dc0c35c8780acdf83289b9966d736fe545e7a1da0bbd233ddd045c5",
+    "src/next/ui/actionForecast.ts": "45f09b9bd807c485255d4cc67de5f4bbd2f0d8eba4287edf2af2ad0eac0094ad",
+    "src/next/ui/battleFeedback.ts": "ec4a157ef08c00614f4f4e4560569a1627cf188c8c5049b53d331eddeccc9212",
+    "src/next/ui/battleReadability.ts": "4ccfb8796c3b49bf8c2f18c74b604e7e324c789049457adccd51e491ddd17ed2",
+    "src/next/ui/energyReviewFixture.ts": "04b0f11e954cf11d449e7881bd1b2a8ccb8718cb8363d853ece7f2492a1e2f04",
+    "src/next/ui/kitInformation.ts": "ba192a043abf649231fc7ceb79b05ab10aca5f93ba9ed3fc88aa010df67a3e9c",
+    "src/ui/portraits.ts": "0e88d548b17e92cf9c881c64288c643114131b1a60c75b202747b38d37c53904",
+    "src/assets/characters/Aoi.webp": "4fa006550e19f85f5891a91490efd15e1a87bdb40d4fc21a2086c49155b2bfff",
+    "src/assets/characters/Aoi-transformed.webp": "4cf38cacb113a8c15532b66ce9b83e444cf6e25e60ba21434bee11df09c447b6",
+    "src/assets/characters/Akari.webp": "e5d5c53a718a9f26c650f5ba9a20518121a0d50bc40baa5d5419322293a2451c",
+    "src/assets/characters/Akari-transformed.webp": "88dadd2b30599e8d325f8aa901d07a81ac09e0bf407b849515435e3d41d704e6"
+  },
+  "previewBundles": [
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-d240d68f.js",
+      "sha256": "d240d68f2fc0c0e3df5a0bdb5e8032fddb3389a2deeb25ce54c6e8263b2d49a8"
+    },
+    {
+      "path": "public/build-card-preview/assets/rewardPreview-fd9a1976.js",
+      "sha256": "fd9a1976bae6cadbe16ee548f23a85f5751ee25f2adcec7d0c29477d7575b893"
+    },
+    {
+      "path": "public/build-ui-preview/assets/buildUiPreview-d6a38e52.js",
+      "sha256": "d6a38e527bdefd9ecaeca3e0d653f611f17fb259327769b51c40adc5b97ee20c"
+    },
+    {
+      "path": "public/save-preview/assets/savePreview-cc965a32.js",
+      "sha256": "cc965a32c1baf3830b0946ae53f17937d47851880204aabb4fbf6bbb5fdbc51b"
+    },
+    {
+      "path": "public/transform-preview/assets/index-a8b03b96.js",
+      "sha256": "a8b03b96e4cdef0a49f08020e770d73058df3046c3e1b1660776026ab2cca4ba"
+    }
+  ]
+}

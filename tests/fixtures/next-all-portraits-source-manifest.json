@@ -1,0 +1,247 @@
+{
+  "reason": "User-requested adoption of all 16 supplied portraits. Keep source bytes, IDs, gameplay and saves unchanged; contain landscape and portrait artwork.",
+  "sourceCommit": "eed68074928d5be985391aeb07998c28f28cf246",
+  "assets": [
+    {
+      "id": "blue",
+      "transformed": false,
+      "path": "src/assets/characters/Aoi.webp",
+      "bytes": 107146,
+      "width": 876,
+      "height": 1280,
+      "sha256": "4fa006550e19f85f5891a91490efd15e1a87bdb40d4fc21a2086c49155b2bfff"
+    },
+    {
+      "id": "blue",
+      "transformed": true,
+      "path": "src/assets/characters/Aoi-transformed.webp",
+      "bytes": 239832,
+      "width": 876,
+      "height": 1280,
+      "sha256": "4cf38cacb113a8c15532b66ce9b83e444cf6e25e60ba21434bee11df09c447b6"
+    },
+    {
+      "id": "red",
+      "transformed": false,
+      "path": "src/assets/characters/Akari.webp",
+      "bytes": 125374,
+      "width": 876,
+      "height": 1280,
+      "sha256": "e5d5c53a718a9f26c650f5ba9a20518121a0d50bc40baa5d5419322293a2451c"
+    },
+    {
+      "id": "red",
+      "transformed": true,
+      "path": "src/assets/characters/Akari-transformed.webp",
+      "bytes": 261770,
+      "width": 876,
+      "height": 1280,
+      "sha256": "88dadd2b30599e8d325f8aa901d07a81ac09e0bf407b849515435e3d41d704e6"
+    },
+    {
+      "id": "mint",
+      "transformed": false,
+      "path": "src/assets/characters/Mint.webp",
+      "bytes": 208622,
+      "width": 875,
+      "height": 1280,
+      "sha256": "4100f4dba71284c7923c074bddd81dfc3f83e782a6a21efb0c407f8396c96c33"
+    },
+    {
+      "id": "mint",
+      "transformed": true,
+      "path": "src/assets/characters/Mint-transformed.webp",
+      "bytes": 229068,
+      "width": 875,
+      "height": 1280,
+      "sha256": "079aba45423e51166475f048eeafe3e257116a631de945a7d58b23b5b636a3de"
+    },
+    {
+      "id": "imashiru",
+      "transformed": false,
+      "path": "src/assets/characters/Imashiru.webp",
+      "bytes": 100634,
+      "width": 875,
+      "height": 1280,
+      "sha256": "d5fbf9cc3db41af00d9a5d26ac77d3718885fec5c59110f8a39030292ab3e639"
+    },
+    {
+      "id": "imashiru",
+      "transformed": true,
+      "path": "src/assets/characters/Imashiru-transformed.webp",
+      "bytes": 295960,
+      "width": 875,
+      "height": 1280,
+      "sha256": "7752564d1d9733acee952546b2bbb27eb1f0c55c07500661eee9c5c74abe7d1a"
+    },
+    {
+      "id": "violet",
+      "transformed": false,
+      "path": "src/assets/characters/バイオレット.webp",
+      "bytes": 136714,
+      "width": 876,
+      "height": 1280,
+      "sha256": "8001af92c443823cc0cd3a345b010f2ef96d21ce34885e581d14b79004b51800"
+    },
+    {
+      "id": "violet",
+      "transformed": true,
+      "path": "src/assets/characters/バイオレット-transformed.webp",
+      "bytes": 334948,
+      "width": 876,
+      "height": 1280,
+      "sha256": "2ed81bf67fd68161662074b75501c07409e6479220f70b451851715179b79c5d"
+    },
+    {
+      "id": "amber",
+      "transformed": false,
+      "path": "src/assets/characters/アンバー.webp",
+      "bytes": 122984,
+      "width": 876,
+      "height": 1280,
+      "sha256": "add2a86e991da3c8c79fdafb6290f0a16bb17d69747ee3dbed008c916cbf6255"
+    },
+    {
+      "id": "amber",
+      "transformed": true,
+      "path": "src/assets/characters/アンバー-transformed.webp",
+      "bytes": 286854,
+      "width": 876,
+      "height": 1280,
+      "sha256": "8dfbd162cc79508d596af87ef1e2206945a100ab68f905af97d4be6cd44de413"
+    },
+    {
+      "id": "rose",
+      "transformed": false,
+      "path": "src/assets/characters/rose.webp",
+      "bytes": 108060,
+      "width": 876,
+      "height": 1280,
+      "sha256": "61751a0063fad0af8254b33efbe39321c9b12adf198d800fe1e43d99aba22e22"
+    },
+    {
+      "id": "rose",
+      "transformed": true,
+      "path": "src/assets/characters/rose-transformed.webp",
+      "bytes": 187354,
+      "width": 1280,
+      "height": 853,
+      "sha256": "49a47f0f69c6b6d231014c6ec9fe335e1aa15f6cae4ad7102ff146050f82111e"
+    },
+    {
+      "id": "silver",
+      "transformed": false,
+      "path": "src/assets/characters/silver.webp",
+      "bytes": 197974,
+      "width": 876,
+      "height": 1280,
+      "sha256": "4902a4505e7bcb1fb9e74b1b36c92b23ed18c81a9af2131246c544867593a814"
+    },
+    {
+      "id": "silver",
+      "transformed": true,
+      "path": "src/assets/characters/silver-transformed.webp",
+      "bytes": 207826,
+      "width": 1280,
+      "height": 853,
+      "sha256": "b620b4e1fc28eb7a69818b86dc35b98bc0b312af2a087fd1538506381818c735"
+    }
+  ],
+  "retiredAssets": [
+    {
+      "path": "src/next/assets/roster/mint-normal.webp",
+      "bytes": 140288,
+      "gitBlob": "bbb6314999ddb13768276674d6a6b7352ca8af84"
+    },
+    {
+      "path": "src/next/assets/roster/mint-transformed.webp",
+      "bytes": 242852,
+      "gitBlob": "6cb78b385581da2492970be992d67de8a03e9c2a"
+    },
+    {
+      "path": "src/next/assets/roster/thumbnails/mint-normal-128.webp",
+      "bytes": 12472,
+      "gitBlob": "377903f55028d00eb9efccc7012f696109e38ef1"
+    },
+    {
+      "path": "src/next/assets/roster/imashiru-normal.webp",
+      "bytes": 139476,
+      "gitBlob": "d3a3c0439cda839d566e5e1a3866c512e7cffbd3"
+    },
+    {
+      "path": "src/next/assets/roster/imashiru-transformed.webp",
+      "bytes": 276720,
+      "gitBlob": "95f9dd2d3570b7f6a234d615fd97f56e530a3e1c"
+    },
+    {
+      "path": "src/next/assets/roster/thumbnails/imashiru-normal-128.webp",
+      "bytes": 12042,
+      "gitBlob": "d57e2ab002b78640b914be2adafd692edd15fe93"
+    },
+    {
+      "path": "src/next/assets/roster/violet-normal.webp",
+      "bytes": 212732,
+      "gitBlob": "91b6c5ef0ef2cfa85a9a5e47b1720d9a07a08b89"
+    },
+    {
+      "path": "src/next/assets/roster/violet-transformed.webp",
+      "bytes": 309158,
+      "gitBlob": "1d980b0cabd8b69ebfdf578597e75d7dbf77d393"
+    },
+    {
+      "path": "src/next/assets/roster/thumbnails/violet-normal-128.webp",
+      "bytes": 15420,
+      "gitBlob": "dcc47c13ce236983d769d06b13b9c8ee6f0b7865"
+    },
+    {
+      "path": "src/next/assets/roster/amber-normal.webp",
+      "bytes": 171662,
+      "gitBlob": "e69d74f13e21f7ea0177fe44bc47f7d620f7632c"
+    },
+    {
+      "path": "src/next/assets/roster/amber-transformed.webp",
+      "bytes": 244944,
+      "gitBlob": "bb12c1a11cc71b9b782ab4cffd115e1c9d029942"
+    },
+    {
+      "path": "src/next/assets/roster/thumbnails/amber-normal-128.webp",
+      "bytes": 14636,
+      "gitBlob": "4e60861a02617122de419f247400f09ffea9a514"
+    },
+    {
+      "path": "src/next/assets/roster/rose-normal.webp",
+      "bytes": 139514,
+      "gitBlob": "3213007000996f7d7c213d637f5a8e944ada9af1"
+    },
+    {
+      "path": "src/next/assets/roster/rose-transformed.webp",
+      "bytes": 223592,
+      "gitBlob": "53ea19a92a9f56820d1e66b90fec2a76569a4077"
+    },
+    {
+      "path": "src/next/assets/roster/thumbnails/rose-normal-128.webp",
+      "bytes": 11638,
+      "gitBlob": "b5acf83192ee422f58fc6cf79541999314c34995"
+    },
+    {
+      "path": "src/next/assets/roster/silver-normal.webp",
+      "bytes": 167888,
+      "gitBlob": "8eb05ccf4cc103e2a69911ab829db3ee01e24741"
+    },
+    {
+      "path": "src/next/assets/roster/silver-transformed.webp",
+      "bytes": 243208,
+      "gitBlob": "26a60bc169619bedb6a39c928afd8b2fcbcdcbf3"
+    },
+    {
+      "path": "src/next/assets/roster/thumbnails/silver-normal-128.webp",
+      "bytes": 14528,
+      "gitBlob": "9162ac2f4015e93dbbfb6b4e6c14a907f07f383b"
+    }
+  ],
+  "files": {
+    "src/next/portraits.ts": "8113a8849ab484995d118a0db4da01bad02ff64bb0d27ac061fe7c9eaf241c73",
+    "src/next/meta/home.ts": "c82b7c6eaa196c01661815699ef08f65871ee47afb842b5b6c10c83982777431",
+    "src/next/meta/home.css": "12207060977a50c86ef6a9410e036658113ca9ab11b3e51d6238345e4f8cb5a7"
+  }
+}

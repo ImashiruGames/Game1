@@ -13,7 +13,7 @@ export interface TutorialUiHooks {
   readonly area: () => HTMLElement;
   readonly drops: () => HTMLElement;
 }
-const NAMES = { ao: '青の子', star: 'チュートリアル星人' } as const;
+const NAMES = { ao: 'アオイ', star: 'チュートリアル星人' } as const;
 const GUIDE: Record<string, string> = {
   drop: '光っている▼をタップ。もう一度タップで決定',
   board: '光っている盤面スキルをタップ → 光っている1段目をタップ → もう一度タップで決定',

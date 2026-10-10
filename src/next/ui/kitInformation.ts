@@ -32,7 +32,7 @@ function effect(id:RosterId|undefined,newKit:boolean,character:BattleConfig['cha
   if(id==='silver')return `鋼の守り：バリアを${b.silverBarrier}にする（加算ではない）。敵のリンク・固定攻撃だけを軽減。この戦闘中使い切るまで持続。毒・トゲ・自己コスト・投入不能は防ぎません。満タンでは使用不可。`;
   if(id==='rose')return `横一閃：発動した今の自手番が終わるまで横リンクのダメージ＋${b.roseHorizontalBonus}。`;
  }
- return character==='blue'?'青の変化：この戦闘中回復予定量と同じダメージを敵へ。HP満タンで実回復0でも反応します。戦闘外の回復報酬は対象外。':`赤の変化：次の自手番開始から追加投入を${t.transformation.redBonusStarts}回。今の手番には追加しません。投入不能でもその回数は消費。残り回数は次の戦闘へ持ち越します。`;
+ return character==='blue'?'アオイの変化：この戦闘中回復予定量と同じダメージを敵へ。HP満タンで実回復0でも反応します。戦闘外の回復報酬は対象外。':`アカリの変化：次の自手番開始から追加投入を${t.transformation.redBonusStarts}回。今の手番には追加しません。投入不能でもその回数は消費。残り回数は次の戦闘へ持ち越します。`;
 }
 const revisedForms:Partial<Record<RosterId,string>>={mint:'天啓授与：発動手番を含む7自手番、自分の投入箱が輝きになります。盤面スキル投入にも適用。戦闘終了で解除。',violet:'暗箭傷人：どく・げきどく以外のランダムな敵箱1個をどくに。直後から相手手番終了まで被ダメージなし。対象がない時は使用不可。'};
 function withCost(text:string,limits:{cost:number;cap:number}|null):string{return text+(limits?` ゲージ${limits.cost}・上限${limits.cap}。手動発動は通常行動を消費しません。`:'');}

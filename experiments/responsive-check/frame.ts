@@ -64,7 +64,7 @@ if(view.includes('home')){
  const step=resolveActiveDrop(before,{id:'test',available:true,landing:origin,spawn:origin,edge:{...origin,side:'top'},segmentEndRow:7,path:[origin]}),state={...step.state,build:{...step.state.build!}};
  state.build!.slots=[createSkill('full-power'),createSkill('foundation'),createSkill('health'),createSkill('crossfire')];
  const art=rosterPortrait('red');el<HTMLImageElement>('player-image').src=art.src;el<HTMLImageElement>('enemy-image').src=rosterPortrait('violet').src;
- el('player-name').textContent='ルビィ';el('enemy-name').textContent='ヴァイオレット・強敵';el('player-hp').textContent='9999 / 9999';el('enemy-hp').textContent='999999 / 999999';
+ el('player-name').textContent='アカリ';el('enemy-name').textContent='ヴァイオレット・強敵';el('player-hp').textContent='9999 / 9999';el('enemy-hp').textContent='999999 / 999999';
  el('gauge-text').textContent='ゲージ 99 / 100';el('intent').textContent='攻撃 999';el('stage').textContent='STAGE 50';el('turn').textContent='999手';el('form').textContent='通常';
  el('skill-hud').innerHTML=skillHudHtml(state,true);el('hint').textContent='列をタップして着地点を確認';el('save-status').textContent='保存済み';
  el('actions').innerHTML='<button data-board="true">ほむらの火種</button>'+transformationButton(state,true)+'<button class="settings-icon-button" aria-label="設定">'+controlIcon('settings')+'</button>';

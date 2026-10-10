@@ -6,7 +6,7 @@ export interface BattleFeedback {
 }
 const axes={vertical:'縦',horizontal:'横','diagonal-down':'右下斜め','diagonal-up':'右上斜め'};
 function sourceName(source:string):string {
- if(source==='blue-transformation')return '青の変化・名目回復の反射';
+ if(source==='blue-transformation')return 'アオイの変化・名目回復の反射';
  if(source==='red-capture')return '炎の占領・自己コスト';
  if(source==='ember')return 'ほむらの火種・自己コスト';
  if(source==='pain-shared')return '列消去・双方同時の被害';

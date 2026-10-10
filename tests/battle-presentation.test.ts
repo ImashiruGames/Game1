@@ -1,6 +1,5 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { applyAction, battleFixtures, createBattle, createCharacterBattleConfig } from '../src/core/index.ts';
 import type { BattleState, Resolution } from '../src/core/index.ts';
 import { activeDropPose, damageLabelAnchor, effectForEvent, effectTiming, feedbackText, feedbackAnchor } from '../src/ui/battlePresentation.ts';
@@ -80,17 +79,6 @@ test('reduced motion retains readable ordered feedback but never floats it', () 
   assert.ok(effectTiming(true).hold >= 150);
   assert.ok(effectTiming(true).hold < effectTiming(false).hold);
   assert.ok(effectTiming(false).float > 0);
-});
-
-test('render path never lights the complete link set and clears each effect before advancing', () => {
-  const main = readFileSync(new URL('../src/main.ts', import.meta.url), 'utf8');
-  const scene = readFileSync(new URL('../src/ui/BoardScene.ts', import.meta.url), 'utf8');
-  assert.doesNotMatch(main + scene, /draw\([^\n]*resolution\.links/);
-  assert.ok(main.indexOf('scene.showEffect(presented, effect)') < main.indexOf('scene.showFeedback(presented, effect'));
-  assert.ok(main.includes('if (signal.aborted) return;\n        scene.clearEffect();'));
-  assert.ok(scene.includes('this.effectLayer.destroy(true)'));
-  assert.ok(scene.includes('this.tweens.killTweensOf(child)'));
-  assert.ok(main.includes('controller.destroy(); scene.cancel(); game.destroy(true)'));
 });
 
 test('an attack without matching recorded geometry does not fabricate a link', () => {

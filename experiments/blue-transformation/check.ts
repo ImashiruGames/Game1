@@ -32,7 +32,7 @@ async function play(d:Request){example=['multiple','single','mixed','zero'].incl
  if(d.kind!=='play'){render(r.state);await additional(false);return;}
  await createBattleAnimator({motion:()=>motion,playSound(){},describe(){},observe(){},highlight(){},render,drop(){},react(){},feedback(){return {remove(){}};},complete(){},transform:async event=>{
   if(!bluePreviewApplies(before.config,event))return;const identity=transformationIdentity(before.config,event.character);
-  await transformationThenLight(async()=>{emit('青の子：変化イラスト');return cinematic.play({eventId:event,event,portraitCharacter:identity.id,formName:identity.formName,beforeSrc:rosterPortrait('blue').src,afterSrc:rosterPortrait('blue',true).src,signal,motion});},additional,signal);
+  await transformationThenLight(async()=>{emit('アオイ：変化イラスト');return cinematic.play({eventId:event,event,portraitCharacter:identity.id,formName:identity.formName,beforeSrc:rosterPortrait('blue').src,afterSrc:rosterPortrait('blue',true).src,signal,motion});},additional,signal);
  }})(r.resolution!,before,r.state,signal);
 }
 window.addEventListener('message',e=>{if(e.source!==parent||e.origin!==location.origin)return;const d=e.data as Request;if(['play','effect','still'].includes(d.kind))void play(d).catch(err=>emit(String(err)));else if(d.kind==='pause'){pauseAfterPortrait=true;effect.pause();emit(effect.active?'一時停止':'イラスト終了後の追加演出で停止します');}else if(d.kind==='resume'){pauseAfterPortrait=false;effect.resume();emit('再開');}else if(d.kind==='cancel'||d.kind==='home'){reset();emit('終了 / 残留Canvas '+document.querySelectorAll('.blue-transformation-preview').length);}});

@@ -28,7 +28,7 @@ const say = (who: Beat['who'], text: string, extra: Partial<Beat> = {}): Beat =>
 
 export const beats: readonly Beat[] = [
   // 1-1 あいさつ
-  say('ao', 'はじめまして！わたしは青の子。ここは箱を積んで戦う『箱積みの戦場』だよ', { scene: 'hello' }),
+  say('ao', 'はじめまして！わたしはアオイ。ここは箱を積んで戦う『箱積みの戦場』だよ', { scene: 'hello' }),
   say('ao', '上の▼から箱を落とすと下まで落ちて積み重なっていくの。自分と相手で交互に落としていくよ'),
   say('ao', 'あそこにいるのがチュートリアル星人。今日の練習相手だよ'),
   say('star', 'よろしく〜！'),

@@ -1,6 +1,6 @@
 # Game1 スキル試験場 / Skill lab 0.2
 
-通常版1.0を保存したまま、優先25案を1つずつ試せます。実験用の仮数値であり、正式採用・正式バランスではありません。
+旧版とのルール比較を保ちながら、優先25案を1つずつ試せます。旧1.0画面は別保管済みで、`/` は `/next/` への入口です。実験用の仮数値であり、正式採用・正式バランスではありません。
 
 ## 開き方
 
@@ -13,6 +13,6 @@
 
 初期設定は折りたたまれています。キャラクター、敵、シード、自動敵行動は「試行の条件を変更」から設定できます。仕込み盤面は準備済みの能力・HPを使います。
 
-通常版の起動URL `/` と元のソースは変更していません。実験コードは `src/lab/`、追加の検証は `tests/lab*.test.ts`。`npm run check` で全検証と両方の配信用ビルドを行います。ブラウザーの操作評価と自動の戦闘ログは別の証拠です。
+旧1.0画面の入口と専用UIは撤去済みです。互換性比較用の旧core/appと元manifestは保持しています。実験コードは `src/lab/`、追加の検証は `tests/lab*.test.ts`。`npm run check` で全検証と両方の配信用ビルドを行います。ブラウザーの操作評価と自動の戦闘ログは別の証拠です。
 
-English: Start the existing app, then open `/lab/`. Choose one proposal and use the paired reset for the exact same initial conditions. Scripted favorable/boundary boards verify mechanics; they do not establish natural activation frequency. Canceling a target is free. Exports contain reproducible state/action/event traces. The release entry and source remain separate and unchanged; no experimental skill has been promoted into production.
+English: The root now opens `/next/`; the old 1.0 UI is archived separately. Start the existing app, then open `/lab/`. Choose one proposal and use the paired reset for the exact same initial conditions. Scripted favorable/boundary boards verify mechanics; they do not establish natural activation frequency. Canceling a target is free. Exports contain reproducible state/action/event traces. The release entry and source remain separate and unchanged; no experimental skill has been promoted into production.

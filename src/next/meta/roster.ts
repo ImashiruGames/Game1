@@ -5,8 +5,8 @@ export const rosterIds = ['blue','red','mint','amber','violet','silver','rose','
 export type RosterId = typeof rosterIds[number];
 export interface RosterEntry { id:RosterId;name:string;subtitle:string;color:string;archetype:CharacterId;starter:NormalSkillId;board:BoardSkillId;hp:number;attacks:Record<3|4|5,number>;prototype:boolean }
 export const roster:Readonly<Record<RosterId,RosterEntry>> = {
- blue:{id:'blue',name:'青の子',subtitle:'プリズムの賢者',color:'#65c8ed',archetype:'blue',starter:'health',board:'pain-shared',hp:30,attacks:{3:4,4:7,5:11},prototype:false},
- red:{id:'red',name:'ルビィ',subtitle:'炎の育て手',color:'#ee777d',archetype:'red',starter:'grow-fire',board:'ember',hp:30,attacks:{3:4,4:7,5:11},prototype:false},
+ blue:{id:'blue',name:'アオイ',subtitle:'プリズムの賢者',color:'#65c8ed',archetype:'blue',starter:'health',board:'pain-shared',hp:30,attacks:{3:4,4:7,5:11},prototype:false},
+ red:{id:'red',name:'アカリ',subtitle:'炎の育て手',color:'#ee777d',archetype:'red',starter:'grow-fire',board:'ember',hp:30,attacks:{3:4,4:7,5:11},prototype:false},
  mint:{id:'mint',name:'ミント',subtitle:'角を読む観測者',color:'#80d6b8',archetype:'red',starter:'combo-unit',board:'mint-observe',hp:35,attacks:{3:3,4:4,5:7},prototype:true},
  amber:{id:'amber',name:'アンバー',subtitle:'四角の造形師',color:'#e9bb68',archetype:'red',starter:'square-strike',board:'amber-convert',hp:28,attacks:{3:6,4:9,5:13},prototype:true},
  violet:{id:'violet',name:'バイオレット',subtitle:'毒を操るアサシン',color:'#b299de',archetype:'red',starter:'death-arrow',board:'violet-poison',hp:28,attacks:{3:1,4:2,5:3},prototype:true},

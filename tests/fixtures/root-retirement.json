@@ -1,0 +1,231 @@
+{
+  "sourceCommit": "eed68074928d5be985391aeb07998c28f28cf246",
+  "reason": "User-authorized retirement of the separately archived root v1.0 UI and audit category C. Retain next, lab, QA, all shared art and compatibility baselines.",
+  "replacementEntries": [
+    "index.html"
+  ],
+  "deleted": [
+    {
+      "path": "balance-autoplay.json",
+      "category": "c",
+      "bytes": 59210,
+      "headBlob": "15f700aea97a82d834ad7f8fcf8a76dfffddbb2d"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-BcLwL8L5.js",
+      "category": "c",
+      "bytes": 192426,
+      "headBlob": "be7c915fd5699779ea6e60ed9f38e56c9c29562e"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-BL_R5HH0.css",
+      "category": "c",
+      "bytes": 63291,
+      "headBlob": "85cf77b3587d5972ffe255dd9ef26832f02440d2"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-BPMV-KFD.css",
+      "category": "c",
+      "bytes": 65840,
+      "headBlob": "1aa59ab6b6d83f7d11f4769c67d04e30b66e081e"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-BRYznvCw.js",
+      "category": "c",
+      "bytes": 191414,
+      "headBlob": "2ff098b15364c86c64948500b0d315ffe1fbd3a3"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-BsjAfzfB.js",
+      "category": "c",
+      "bytes": 201143,
+      "headBlob": "9b11f822fa64f2b3673001763fa817c37cd8f83a"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-CbU8mUYG.js",
+      "category": "c",
+      "bytes": 192836,
+      "headBlob": "5120f51a6df5f7d37df686b0cf6754057f58cd9a"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-CFMmPo6F.js",
+      "category": "c",
+      "bytes": 191212,
+      "headBlob": "62cb9215c47bb702ed660563529ead5c0a20159a"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-CLV3uVlz.css",
+      "category": "c",
+      "bytes": 65723,
+      "headBlob": "97b343f25379af4d7d2dec1df2d56d08b09a9ca7"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-CM-8x3rj.css",
+      "category": "c",
+      "bytes": 65093,
+      "headBlob": "bd11c5e85e601f696af006e9b73a787779b937c0"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-CTeYP_Kc.js",
+      "category": "c",
+      "bytes": 201087,
+      "headBlob": "25e323576100a09e1f116324d9bc5a889b5f42d2"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-CXkn5LwB.js",
+      "category": "c",
+      "bytes": 181820,
+      "headBlob": "c4f983bfe3616225af89e5e1d11e6d42579e8fd6"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-CzMPZjkT.css",
+      "category": "c",
+      "bytes": 66664,
+      "headBlob": "ebe8535efe235296c52b25f373526d1fc1d154ec"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-D5MdFvhK.js",
+      "category": "c",
+      "bytes": 193575,
+      "headBlob": "d27e7733c1cf325533d05a6a438d68fffbed1949"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-Dc5oK_d0.js",
+      "category": "c",
+      "bytes": 200710,
+      "headBlob": "593ee201af899114bf1254b67cb6b83d02d65da6"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-Dez2EOjC.js",
+      "category": "c",
+      "bytes": 204370,
+      "headBlob": "00d981ec06549d742ed4328820c60219ab5d4bbb"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-DPbvi_QK.js",
+      "category": "c",
+      "bytes": 204164,
+      "headBlob": "e7e773388b4806bba10e874c3fd2101d0e58342a"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-DruWvBys.css",
+      "category": "c",
+      "bytes": 63915,
+      "headBlob": "fa12790d3fce526090eac28c738d0c8010bd34ef"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-DuXcabAx.css",
+      "category": "c",
+      "bytes": 56741,
+      "headBlob": "4d05c3fec4b53e6eac7059a591b536c588f6839f"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/audioAssetPreview-UnKPsOy6.js",
+      "category": "c",
+      "bytes": 200710,
+      "headBlob": "9992d113642cd1c6ba3318f9fac91f12bf47ccd8"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/mother-core-QusaYGB-.png",
+      "category": "c",
+      "bytes": 231140,
+      "headBlob": "132bd832f82882c0df6689acb12bc71d2a121ac9"
+    },
+    {
+      "path": "public/audio-asset-preview/assets/speed-core-BMlHLkla.png",
+      "category": "c",
+      "bytes": 185604,
+      "headBlob": "bea793dc4f014e1fad1044b1f2873ce6c2283aad"
+    },
+    {
+      "path": "src/main.ts",
+      "category": "old",
+      "bytes": 6550,
+      "headBlob": "d03d3dd97766e86d2ea104ce8b358113bb815fa5"
+    },
+    {
+      "path": "src/style.css",
+      "category": "old",
+      "bytes": 22558,
+      "headBlob": "22c0ecc5f494a49386589a83e7df3d9a1c77a16d"
+    },
+    {
+      "path": "src/ui/BattleLog.ts",
+      "category": "old",
+      "bytes": 4402,
+      "headBlob": "ee5c59f798f2fcf2cc83968616bba33717213ed2"
+    },
+    {
+      "path": "src/ui/battleMarkup.ts",
+      "category": "old",
+      "bytes": 9734,
+      "headBlob": "861832977b1bdbf3d70e9637e06e78ff931c6b99"
+    },
+    {
+      "path": "src/ui/BattleSettings.ts",
+      "category": "old",
+      "bytes": 3552,
+      "headBlob": "38edd88d7287853d53d0f2addc3daea895840d72"
+    },
+    {
+      "path": "src/ui/BattleShell.ts",
+      "category": "old",
+      "bytes": 22377,
+      "headBlob": "05aa8ff9ba250650ebc234e5d28c317b12a939c5"
+    },
+    {
+      "path": "src/ui/BoardScene.ts",
+      "category": "old",
+      "bytes": 16050,
+      "headBlob": "94d777d0f4de3bb4ef14f97f192deffe0fce6769"
+    },
+    {
+      "path": "src/ui/boardViewport.ts",
+      "category": "old",
+      "bytes": 791,
+      "headBlob": "7d99a8a8398c6cb8e0743acbc97ec2dfab2a0e64"
+    },
+    {
+      "path": "src/ui/dom.ts",
+      "category": "old",
+      "bytes": 223,
+      "headBlob": "fac78c4e1cec817345c8e617fd41262f7ed528fe"
+    },
+    {
+      "path": "src/ui/LoadoutView.ts",
+      "category": "old",
+      "bytes": 3152,
+      "headBlob": "e50dd7980269a8fee6300acd723a907b035e4a35"
+    },
+    {
+      "path": "src/ui/RewardPanel.ts",
+      "category": "old",
+      "bytes": 5463,
+      "headBlob": "5dc494c759a0443a887318766889fc6e43309f14"
+    },
+    {
+      "path": "src/ui/theme.ts",
+      "category": "old",
+      "bytes": 541,
+      "headBlob": "82812b91c79d15d06cebfa8474a4967d10fb0629"
+    },
+    {
+      "path": "tests/reward-ui.test.ts",
+      "category": "tests",
+      "bytes": 4834,
+      "headBlob": "75bfafb960702c7fb9c3f493d9604be8554f4b9d"
+    },
+    {
+      "path": "tests/ui-layout.test.ts",
+      "category": "tests",
+      "bytes": 9176,
+      "headBlob": "c906ee2c9165e4ec0a9fed82e16413b6bf09f2b5"
+    },
+    {
+      "path": "tests/ui-lifecycle.test.ts",
+      "category": "tests",
+      "bytes": 10789,
+      "headBlob": "3643a4023d57c99531691b15457c883ba4f7e0e8"
+    }
+  ]
+}
